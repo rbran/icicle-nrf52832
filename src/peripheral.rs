@@ -1,4 +1,40 @@
-use icicle_vm::cpu::mem::MemResult;
+use icicle_vm::cpu::mem::{MemError, MemResult};
+
+#[repr(u8)]
+pub enum GpioPull {
+    None = 0,
+    Down = 1,
+    Up = 3,
+}
+impl TryFrom<u8> for GpioPull {
+    type Error = ();
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        match value {
+            0 => Ok(GpioPull::None),
+            1 => Ok(GpioPull::Down),
+            3 => Ok(GpioPull::Up),
+            _ => Err(()),
+        }
+    }
+}
+
+#[repr(u8)]
+pub enum GpioSense {
+    Disabled = 0,
+    High = 2,
+    Low = 3,
+}
+impl TryFrom<u8> for GpioSense {
+    type Error = ();
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        match value {
+            0 => Ok(GpioSense::Disabled),
+            2 => Ok(GpioSense::High),
+            3 => Ok(GpioSense::Low),
+            _ => Err(()),
+        }
+    }
+}
 
 #[derive(Default)]
 pub struct Peripherals {
@@ -6,6 +42,124 @@ pub struct Peripherals {
     _todo: (),
 }
 impl Peripherals {
+    pub fn ram_is_on(&mut self, _block: u8) -> bool {
+        todo!()
+    }
+    pub fn ram_is_keep_on(&mut self, _block: u8) -> bool {
+        todo!()
+    }
+    pub fn ram_set_keep_on(&mut self, _block: u8, _on: bool) {
+        todo!()
+    }
+    pub fn ram_is_retain_on(&mut self, _block: u8) -> bool {
+        todo!()
+    }
+    pub fn ram_set_retain_on(&mut self, _block: u8, _on: bool) {
+        todo!()
+    }
+
+    pub fn mpu_is_protected(&mut self, _region: u8) -> bool {
+        todo!()
+    }
+    pub fn mpu_enable_protection(&mut self, _region: u8) {
+        todo!()
+    }
+
+    pub fn radio_ap(&mut self, _ap: u8) -> u8 {
+        todo!()
+    }
+    pub fn radio_set_ap(&mut self, _ap: u8, _value: u8) {
+        todo!()
+    }
+    pub fn radio_is_recv_on_ap(&mut self, _ap: u8) -> bool {
+        todo!()
+    }
+    pub fn radio_set_recv_on_ap(&mut self, _ap: u8, _on: bool) {
+        todo!()
+    }
+    pub fn radio_is_ena(&mut self, _da: u8) -> bool {
+        todo!()
+    }
+    pub fn radio_set_ena(&mut self, _da: u8, _on: bool) {
+        todo!()
+    }
+    pub fn radio_is_txadd(&mut self, _da: u8) -> bool {
+        todo!()
+    }
+    pub fn radio_set_txadd(&mut self, _da: u8, _on: bool) {
+        todo!()
+    }
+
+    pub fn ppi_is_on(&mut self, _channel: u8) -> bool {
+        todo!()
+    }
+    pub fn ppi_set_on(&mut self, _channel: u8, _on: bool) {
+        todo!()
+    }
+    pub fn ppi_is_included(&mut self, _dim: usize, _channel: u8) -> bool {
+        todo!()
+    }
+    pub fn ppi_set_included(
+        &mut self,
+        _dim: usize,
+        _channel: u8,
+        _value: bool,
+    ) {
+        todo!()
+    }
+
+    pub fn gpio_out_state(&mut self, _port: u8) -> bool {
+        todo!()
+    }
+    pub fn gpio_set_out_state(&mut self, _port: u8, _high: bool) {
+        todo!()
+    }
+    pub fn gpio_read_input(&mut self, _port: u8) -> bool {
+        todo!()
+    }
+    pub fn gpio_get_direction(&mut self, _port: u8) -> bool {
+        todo!()
+    }
+    pub fn gpio_set_direction(&mut self, _port: u8, _output: bool) {
+        todo!()
+    }
+    pub fn gpio_is_connected_buffer(&mut self, _port: u8) -> bool {
+        todo!()
+    }
+    pub fn gpio_set_connected_buffer(&mut self, _port: u8, _output: bool) {
+        todo!()
+    }
+    pub fn gpio_get_pull(&mut self, _port: u8) -> GpioPull {
+        todo!()
+    }
+    pub fn gpio_set_pull(&mut self, _port: u8, _pull: GpioPull) {
+        todo!()
+    }
+    pub fn gpio_get_sense(&mut self, _port: u8) -> u8 {
+        todo!()
+    }
+    pub fn gpio_set_sense(&mut self, _port: u8, _sense: u8) {
+        match _sense {
+            // Standard '0', standard '1'
+            0 => todo!(),
+            // High drive '0', standard '1'
+            1 => todo!(),
+            // Standard '0', high drive '1'
+            2 => todo!(),
+            // High drive '0', high 'drive '1''
+            3 => todo!(),
+            // Disconnect '0' standard '1'
+            4 => todo!(),
+            // Disconnect '0', high drive '1'
+            5 => todo!(),
+            // Standard '0'. disconnect '1'
+            6 => todo!(),
+            // High drive '0', disconnect '1'
+            7 => todo!(),
+            _ => unreachable!(),
+        }
+    }
+
     pub fn write_power_tasks_constlat(
         &mut self,
         _byte_0: Option<&u8>,
@@ -60,257 +214,199 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_powerclock_intenset_pofwarn(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_powerclock_intenset_pofwarn(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_powerclock_intenset_pofwarn(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_powerclock_intenset_hfclkstarted(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_powerclock_intenset_hfclkstarted(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_powerclock_intenset_hfclkstarted(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_powerclock_intenset_lfclkstarted(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_powerclock_intenset_lfclkstarted(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_powerclock_intenset_lfclkstarted(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_powerclock_intenset_done(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_powerclock_intenset_done(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_powerclock_intenset_done(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_powerclock_intenset_ctto(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_powerclock_intenset_ctto(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_powerclock_intenset_ctto(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_powerclock_intenclr_pofwarn(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_powerclock_intenclr_pofwarn(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_powerclock_intenclr_pofwarn(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_powerclock_intenclr_hfclkstarted(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_powerclock_intenclr_hfclkstarted(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_powerclock_intenclr_hfclkstarted(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_powerclock_intenclr_lfclkstarted(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_powerclock_intenclr_lfclkstarted(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_powerclock_intenclr_lfclkstarted(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_powerclock_intenclr_done(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_powerclock_intenclr_done(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_powerclock_intenclr_done(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_powerclock_intenclr_ctto(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_powerclock_intenclr_ctto(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_powerclock_intenclr_ctto(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_power_resetreas_resetpin(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_power_resetreas_resetpin(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_power_resetreas_resetpin(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_power_resetreas_dog(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_power_resetreas_dog(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_power_resetreas_dog(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_power_resetreas_dog(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_power_resetreas_sreq(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_power_resetreas_sreq(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_power_resetreas_sreq(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_power_resetreas_sreq(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_power_resetreas_lockup(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_power_resetreas_lockup(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_power_resetreas_lockup(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_power_resetreas_off(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_power_resetreas_off(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_power_resetreas_off(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_power_resetreas_off(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_power_resetreas_lpcomp(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_power_resetreas_lpcomp(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_power_resetreas_lpcomp(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_power_resetreas_dif(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_power_resetreas_dif(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_power_resetreas_dif(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_power_resetreas_dif(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_power_ramstatus_ramblock0(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_power_ramstatus_ramblock0(&mut self) -> MemResult<u8> {
+        Ok(self.ram_is_on(0) as u8)
     }
-    pub fn read_power_ramstatus_ramblock1(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_power_ramstatus_ramblock1(&mut self) -> MemResult<u8> {
+        Ok(self.ram_is_on(1) as u8)
     }
-    pub fn read_power_ramstatus_ramblock2(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_power_ramstatus_ramblock2(&mut self) -> MemResult<u8> {
+        Ok(self.ram_is_on(2) as u8)
     }
-    pub fn read_power_ramstatus_ramblock3(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_power_ramstatus_ramblock3(&mut self) -> MemResult<u8> {
+        Ok(self.ram_is_on(3) as u8)
     }
     pub fn write_power_systemoff_systemoff(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
@@ -320,188 +416,129 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_power_pofcon_pof(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_power_pofcon_pof(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_power_pofcon_threshold(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_power_pofcon_threshold(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 3u64;
         todo!()
     }
     pub fn write_power_pofcon_threshold(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_power_gpregret_gpregret(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_power_gpregret_gpregret(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 255u64;
         todo!()
     }
     pub fn write_power_gpregret_gpregret(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_power_ramon_onram0(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 1u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_power_ramon_onram0(&mut self) -> MemResult<u8> {
+        Ok(self.ram_is_keep_on(0) as u8)
     }
-    pub fn write_power_ramon_onram0(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_power_ramon_onram0(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ram_set_keep_on(0, _value != 0))
     }
-    pub fn read_power_ramon_onram1(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 1u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_power_ramon_onram1(&mut self) -> MemResult<u8> {
+        Ok(self.ram_is_keep_on(1) as u8)
     }
-    pub fn write_power_ramon_onram1(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_power_ramon_onram1(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ram_set_keep_on(1, _value != 0))
     }
-    pub fn read_power_ramon_offram0(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_power_ramon_offram0(&mut self) -> MemResult<u8> {
+        Ok(self.ram_is_retain_on(0) as u8)
     }
-    pub fn write_power_ramon_offram0(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_power_ramon_offram0(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ram_set_retain_on(0, _value != 0))
     }
-    pub fn read_power_ramon_offram1(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_power_ramon_offram1(&mut self) -> MemResult<u8> {
+        Ok(self.ram_is_retain_on(1) as u8)
     }
-    pub fn write_power_ramon_offram1(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_power_ramon_offram1(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ram_set_retain_on(1, _value != 0))
     }
     pub fn read_power_reset_reset(&self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_power_reset_reset(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_power_reset_reset(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_power_ramonb_onram2(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 1u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_power_ramonb_onram2(&mut self) -> MemResult<u8> {
+        Ok(self.ram_is_keep_on(2) as u8)
     }
-    pub fn write_power_ramonb_onram2(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_power_ramonb_onram2(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ram_set_keep_on(2, _value != 0))
     }
-    pub fn read_power_ramonb_onram3(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 1u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_power_ramonb_onram3(&mut self) -> MemResult<u8> {
+        Ok(self.ram_is_keep_on(3) as u8)
     }
-    pub fn write_power_ramonb_onram3(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_power_ramonb_onram3(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ram_set_keep_on(3, _value != 0))
     }
-    pub fn read_power_ramonb_offram2(
-        &self,
-    ) -> MemResult<u8> {
+    #[inline]
+    pub fn read_power_ramonb_offram2(&mut self) -> MemResult<u8> {
+        Ok(self.ram_is_retain_on(2) as u8)
+    }
+    #[inline]
+    pub fn write_power_ramonb_offram2(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ram_set_retain_on(2, _value != 0))
+    }
+    #[inline]
+    pub fn read_power_ramonb_offram3(&mut self) -> MemResult<u8> {
+        Ok(self.ram_is_retain_on(3) as u8)
+    }
+    #[inline]
+    pub fn write_power_ramonb_offram3(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ram_set_retain_on(3, _value != 0))
+    }
+    pub fn read_power_dcdcen_dcdcen(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_power_ramonb_offram2(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_power_dcdcen_dcdcen(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_power_ramonb_offram3(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_power_ramonb_offram3(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_power_dcdcen_dcdcen(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_power_dcdcen_dcdcen(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_power_dcdcforce_forceoff(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_power_dcdcforce_forceoff(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_power_dcdcforce_forceoff(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_power_dcdcforce_forceon(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_power_dcdcforce_forceon(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_power_dcdcforce_forceon(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
@@ -709,66 +746,47 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_clock_hfclkrun_status(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_clock_hfclkrun_status(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn read_clock_hfclkstat_src(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_clock_hfclkstat_src(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn read_clock_hfclkstat_state(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_clock_hfclkstat_state(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn read_clock_lfclkrun_status(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_clock_lfclkrun_status(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn read_clock_lfclkstat_src(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_clock_lfclkstat_src(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 3u64;
         todo!()
     }
-    pub fn read_clock_lfclkstat_state(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_clock_lfclkstat_state(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn read_clock_lfclksrccopy_src(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_clock_lfclksrccopy_src(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 3u64;
         todo!()
     }
-    pub fn read_clock_lfclksrc_src(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_clock_lfclksrc_src(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 3u64;
         todo!()
     }
-    pub fn write_clock_lfclksrc_src(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_clock_lfclksrc_src(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_clock_ctiv_ctiv(&self) -> MemResult<u8> {
@@ -776,36 +794,26 @@ impl Peripherals {
         const _RESET_MASK: u64 = 127u64;
         todo!()
     }
-    pub fn write_clock_ctiv_ctiv(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_clock_ctiv_ctiv(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_clock_xtalfreq_xtalfreq(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_clock_xtalfreq_xtalfreq(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 255u64;
         const _RESET_MASK: u64 = 255u64;
         todo!()
     }
     pub fn write_clock_xtalfreq_xtalfreq(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_mpu_perr0_power_clock(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_mpu_perr0_power_clock(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_mpu_perr0_power_clock(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_mpu_perr0_power_clock(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_mpu_perr0_radio(&self) -> MemResult<u8> {
@@ -813,10 +821,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_mpu_perr0_radio(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_mpu_perr0_radio(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_mpu_perr0_uart0(&self) -> MemResult<u8> {
@@ -824,36 +829,23 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_mpu_perr0_uart0(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_mpu_perr0_uart0(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_mpu_perr0_spi0_twi0(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_mpu_perr0_spi0_twi0(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_mpu_perr0_spi0_twi0(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_mpu_perr0_spi0_twi0(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_mpu_perr0_spi1_twi1(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_mpu_perr0_spi1_twi1(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_mpu_perr0_spi1_twi1(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_mpu_perr0_spi1_twi1(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_mpu_perr0_gpiote(&self) -> MemResult<u8> {
@@ -861,10 +853,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_mpu_perr0_gpiote(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_mpu_perr0_gpiote(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_mpu_perr0_adc(&self) -> MemResult<u8> {
@@ -872,10 +861,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_mpu_perr0_adc(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_mpu_perr0_adc(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_mpu_perr0_timer0(&self) -> MemResult<u8> {
@@ -883,10 +869,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_mpu_perr0_timer0(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_mpu_perr0_timer0(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_mpu_perr0_timer1(&self) -> MemResult<u8> {
@@ -894,10 +877,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_mpu_perr0_timer1(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_mpu_perr0_timer1(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_mpu_perr0_timer2(&self) -> MemResult<u8> {
@@ -905,10 +885,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_mpu_perr0_timer2(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_mpu_perr0_timer2(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_mpu_perr0_rtc0(&self) -> MemResult<u8> {
@@ -916,10 +893,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_mpu_perr0_rtc0(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_mpu_perr0_rtc0(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_mpu_perr0_temp(&self) -> MemResult<u8> {
@@ -927,10 +901,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_mpu_perr0_temp(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_mpu_perr0_temp(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_mpu_perr0_rng(&self) -> MemResult<u8> {
@@ -938,10 +909,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_mpu_perr0_rng(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_mpu_perr0_rng(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_mpu_perr0_ecb(&self) -> MemResult<u8> {
@@ -949,10 +917,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_mpu_perr0_ecb(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_mpu_perr0_ecb(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_mpu_perr0_ccm_aar(&self) -> MemResult<u8> {
@@ -960,10 +925,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_mpu_perr0_ccm_aar(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_mpu_perr0_ccm_aar(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_mpu_perr0_wdt(&self) -> MemResult<u8> {
@@ -971,10 +933,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_mpu_perr0_wdt(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_mpu_perr0_wdt(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_mpu_perr0_rtc1(&self) -> MemResult<u8> {
@@ -982,10 +941,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_mpu_perr0_rtc1(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_mpu_perr0_rtc1(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_mpu_perr0_qdec(&self) -> MemResult<u8> {
@@ -993,10 +949,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_mpu_perr0_qdec(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_mpu_perr0_qdec(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_mpu_perr0_lpcomp(&self) -> MemResult<u8> {
@@ -1004,10 +957,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_mpu_perr0_lpcomp(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_mpu_perr0_lpcomp(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_mpu_perr0_nvmc(&self) -> MemResult<u8> {
@@ -1015,10 +965,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_mpu_perr0_nvmc(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_mpu_perr0_nvmc(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_mpu_perr0_ppi(&self) -> MemResult<u8> {
@@ -1026,10 +973,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_mpu_perr0_ppi(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_mpu_perr0_ppi(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_mpu_rlenr0(
@@ -1060,860 +1004,920 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_mpu_protenset0_protreg0(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg0(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(0) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg0(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(0)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg1(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg1(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(1) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg1(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(1)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg2(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg2(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(2) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg2(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(2)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg3(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg3(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(3) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg3(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(3)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg4(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg4(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(4) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg4(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(4)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg5(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg5(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(5) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg5(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(5)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg6(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg6(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(6) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg6(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(6)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg7(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg7(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(7) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg7(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(7)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg8(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg8(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(8) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg8(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(8)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg9(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg9(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(9) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg9(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(9)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg10(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg10(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(10) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg10(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(10)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg11(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg11(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(11) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg11(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(11)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg12(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg12(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(12) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg12(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(12)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg13(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg13(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(13) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg13(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(13)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg14(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg14(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(14) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg14(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(14)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg15(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg15(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(15) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg15(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(15)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg16(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg16(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(16) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg16(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(16)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg17(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg17(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(17) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg17(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(17)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg18(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg18(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(18) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg18(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(18)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg19(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg19(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(19) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg19(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(19)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg20(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg20(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(20) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg20(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(20)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg21(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg21(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(21) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg21(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(21)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg22(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg22(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(22) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg22(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(22)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg23(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg23(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(23) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg23(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(23)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg24(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg24(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(24) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg24(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(24)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg25(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg25(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(25) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg25(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(25)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg26(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg26(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(26) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg26(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(26)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg27(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg27(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(27) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg27(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(27)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg28(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg28(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(28) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg28(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(28)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg29(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg29(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(29) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg29(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(29)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg30(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg30(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(30) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg30(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(30)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset0_protreg31(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset0_protreg31(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(31) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset0_protreg31(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(31)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg32(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg32(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(32) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg32(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(32)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg33(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg33(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(33) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg33(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(33)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg34(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg34(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(34) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg34(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(34)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg35(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg35(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(35) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg35(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(35)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg36(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg36(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(36) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg36(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(36)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg37(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg37(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(37) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg37(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(37)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg38(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg38(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(38) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg38(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(38)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg39(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg39(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(39) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg39(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(39)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg40(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg40(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(40) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg40(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(40)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg41(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg41(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(41) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg41(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(41)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg42(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg42(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(42) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg42(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(42)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg43(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg43(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(43) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg43(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(43)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg44(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg44(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(44) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg44(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(44)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg45(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg45(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(45) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg45(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(45)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg46(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg46(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(46) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg46(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(46)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg47(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg47(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(47) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg47(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(47)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg48(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg48(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(48) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg48(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(48)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg49(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg49(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(49) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg49(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(49)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg50(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg50(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(50) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg50(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(50)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg51(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg51(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(51) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg51(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(51)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg52(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg52(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(52) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg52(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(52)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg53(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg53(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(53) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg53(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(53)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg54(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg54(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(54) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg54(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(54)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg55(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg55(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(55) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg55(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(55)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg56(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg56(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(56) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg56(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(56)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg57(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg57(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(57) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg57(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(57)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg58(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg58(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(58) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg58(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(58)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg59(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg59(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(59) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg59(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(59)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg60(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg60(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(60) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg60(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(60)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg61(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg61(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(61) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg61(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(61)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg62(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg62(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(62) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg62(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(62)
+        }
+        Ok(())
     }
-    pub fn read_mpu_protenset1_protreg63(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_mpu_protenset1_protreg63(&mut self) -> MemResult<u8> {
+        Ok(self.mpu_is_protected(63) as u8)
     }
+    #[inline]
     pub fn write_mpu_protenset1_protreg63(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        if _value != 0 {
+            self.mpu_enable_protection(63)
+        }
+        Ok(())
     }
-    pub fn read_mpu_disableindebug_disableindebug(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_mpu_disableindebug_disableindebug(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 1u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_mpu_disableindebug_disableindebug(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_mpu_protblocksize_protblocksize(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_mpu_protblocksize_protblocksize(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 3u64;
         todo!()
     }
     pub fn write_mpu_protblocksize_protblocksize(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
@@ -2287,354 +2291,286 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_radio_shorts_ready_start(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_shorts_ready_start(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_shorts_ready_start(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_shorts_end_disable(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_shorts_end_disable(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_shorts_end_disable(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_shorts_disabled_txen(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_shorts_disabled_txen(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_shorts_disabled_txen(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_shorts_disabled_rxen(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_shorts_disabled_rxen(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_shorts_disabled_rxen(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_shorts_address_rssistart(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_shorts_address_rssistart(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_shorts_address_rssistart(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_shorts_end_start(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_shorts_end_start(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_shorts_end_start(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_shorts_address_bcstart(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_shorts_address_bcstart(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_shorts_address_bcstart(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_shorts_disabled_rssistop(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_shorts_disabled_rssistop(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_shorts_disabled_rssistop(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_intenset_ready(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_intenset_ready(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_radio_intenset_ready(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_radio_intenset_ready(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_intenset_address(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_intenset_address(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_intenset_address(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_intenset_payload(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_intenset_payload(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_intenset_payload(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_intenset_end(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_intenset_end(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_radio_intenset_end(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_radio_intenset_end(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_intenset_disabled(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_intenset_disabled(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_intenset_disabled(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_intenset_devmatch(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_intenset_devmatch(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_intenset_devmatch(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_intenset_devmiss(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_intenset_devmiss(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_intenset_devmiss(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_intenset_rssiend(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_intenset_rssiend(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_intenset_rssiend(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_intenset_bcmatch(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_intenset_bcmatch(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_intenset_bcmatch(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_intenclr_ready(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_intenclr_ready(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_radio_intenclr_ready(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_radio_intenclr_ready(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_intenclr_address(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_intenclr_address(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_intenclr_address(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_intenclr_payload(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_intenclr_payload(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_intenclr_payload(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_intenclr_end(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_intenclr_end(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_radio_intenclr_end(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_radio_intenclr_end(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_intenclr_disabled(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_intenclr_disabled(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_intenclr_disabled(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_intenclr_devmatch(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_intenclr_devmatch(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_intenclr_devmatch(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_intenclr_devmiss(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_intenclr_devmiss(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_intenclr_devmiss(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_intenclr_rssiend(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_intenclr_rssiend(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_intenclr_rssiend(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_intenclr_bcmatch(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_intenclr_bcmatch(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_intenclr_bcmatch(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_crcstatus_crcstatus(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_crcstatus_crcstatus(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn read_radio_rxmatch_rxmatch(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_rxmatch_rxmatch(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 7u64;
         todo!()
@@ -2686,30 +2622,23 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_radio_frequency_frequency(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_frequency_frequency(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 2u64;
         const _RESET_MASK: u64 = 127u64;
         todo!()
     }
     pub fn write_radio_frequency_frequency(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_txpower_txpower(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_txpower_txpower(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 255u64;
         todo!()
     }
-    pub fn write_radio_txpower_txpower(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_radio_txpower_txpower(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_radio_mode_mode(&self) -> MemResult<u8> {
@@ -2717,10 +2646,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 3u64;
         todo!()
     }
-    pub fn write_radio_mode_mode(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_radio_mode_mode(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_radio_pcnf0_lflen(&self) -> MemResult<u8> {
@@ -2728,10 +2654,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 15u64;
         todo!()
     }
-    pub fn write_radio_pcnf0_lflen(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_radio_pcnf0_lflen(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_radio_pcnf0_s0len(&self) -> MemResult<u8> {
@@ -2739,10 +2662,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_radio_pcnf0_s0len(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_radio_pcnf0_s0len(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_radio_pcnf0_s1len(&self) -> MemResult<u8> {
@@ -2750,36 +2670,23 @@ impl Peripherals {
         const _RESET_MASK: u64 = 15u64;
         todo!()
     }
-    pub fn write_radio_pcnf0_s1len(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_radio_pcnf0_s1len(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_pcnf1_maxlen(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_pcnf1_maxlen(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 255u64;
         todo!()
     }
-    pub fn write_radio_pcnf1_maxlen(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_radio_pcnf1_maxlen(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_pcnf1_statlen(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_pcnf1_statlen(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 255u64;
         todo!()
     }
-    pub fn write_radio_pcnf1_statlen(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_radio_pcnf1_statlen(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_radio_pcnf1_balen(&self) -> MemResult<u8> {
@@ -2787,36 +2694,23 @@ impl Peripherals {
         const _RESET_MASK: u64 = 7u64;
         todo!()
     }
-    pub fn write_radio_pcnf1_balen(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_radio_pcnf1_balen(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_pcnf1_endian(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_pcnf1_endian(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_radio_pcnf1_endian(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_radio_pcnf1_endian(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_pcnf1_whiteen(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_pcnf1_whiteen(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_radio_pcnf1_whiteen(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_radio_pcnf1_whiteen(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_radio_base0(
@@ -2875,233 +2769,183 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_radio_prefix0_ap0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_prefix0_ap0(&mut self) -> MemResult<u8> {
+        Ok(self.radio_ap(0))
     }
-    pub fn write_radio_prefix0_ap0(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_prefix0_ap0(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ap(0, _value))
     }
-    pub fn read_radio_prefix0_ap1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_prefix0_ap1(&mut self) -> MemResult<u8> {
+        Ok(self.radio_ap(1))
     }
-    pub fn write_radio_prefix0_ap1(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_prefix0_ap1(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ap(1, _value))
     }
-    pub fn read_radio_prefix0_ap2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_prefix0_ap2(&mut self) -> MemResult<u8> {
+        Ok(self.radio_ap(2))
     }
-    pub fn write_radio_prefix0_ap2(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_prefix0_ap2(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ap(2, _value))
     }
-    pub fn read_radio_prefix0_ap3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_prefix0_ap3(&mut self) -> MemResult<u8> {
+        Ok(self.radio_ap(3))
     }
-    pub fn write_radio_prefix0_ap3(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_prefix0_ap3(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ap(3, _value))
     }
-    pub fn read_radio_prefix1_ap4(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_prefix1_ap4(&mut self) -> MemResult<u8> {
+        Ok(self.radio_ap(4))
     }
-    pub fn write_radio_prefix1_ap4(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_prefix1_ap4(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ap(4, _value))
     }
-    pub fn read_radio_prefix1_ap5(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_prefix1_ap5(&mut self) -> MemResult<u8> {
+        Ok(self.radio_ap(5))
     }
-    pub fn write_radio_prefix1_ap5(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_prefix1_ap5(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ap(5, _value))
     }
-    pub fn read_radio_prefix1_ap6(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_prefix1_ap6(&mut self) -> MemResult<u8> {
+        Ok(self.radio_ap(6))
     }
-    pub fn write_radio_prefix1_ap6(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_prefix1_ap6(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ap(6, _value))
     }
-    pub fn read_radio_prefix1_ap7(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_prefix1_ap7(&mut self) -> MemResult<u8> {
+        Ok(self.radio_ap(7))
     }
-    pub fn write_radio_prefix1_ap7(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_prefix1_ap7(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ap(7, _value))
     }
-    pub fn read_radio_txaddress_txaddress(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_txaddress_txaddress(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 7u64;
         todo!()
     }
     pub fn write_radio_txaddress_txaddress(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_rxaddresses_addr0(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_rxaddresses_addr0(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_recv_on_ap(0) as u8)
     }
+    #[inline]
     pub fn write_radio_rxaddresses_addr0(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.radio_set_recv_on_ap(0, _value != 0))
     }
-    pub fn read_radio_rxaddresses_addr1(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_rxaddresses_addr1(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_recv_on_ap(1) as u8)
     }
+    #[inline]
     pub fn write_radio_rxaddresses_addr1(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.radio_set_recv_on_ap(1, _value != 0))
     }
-    pub fn read_radio_rxaddresses_addr2(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_rxaddresses_addr2(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_recv_on_ap(2) as u8)
     }
+    #[inline]
     pub fn write_radio_rxaddresses_addr2(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.radio_set_recv_on_ap(2, _value != 0))
     }
-    pub fn read_radio_rxaddresses_addr3(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_rxaddresses_addr3(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_recv_on_ap(3) as u8)
     }
+    #[inline]
     pub fn write_radio_rxaddresses_addr3(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.radio_set_recv_on_ap(3, _value != 0))
     }
-    pub fn read_radio_rxaddresses_addr4(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_rxaddresses_addr4(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_recv_on_ap(4) as u8)
     }
+    #[inline]
     pub fn write_radio_rxaddresses_addr4(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.radio_set_recv_on_ap(4, _value != 0))
     }
-    pub fn read_radio_rxaddresses_addr5(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_rxaddresses_addr5(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_recv_on_ap(5) as u8)
     }
+    #[inline]
     pub fn write_radio_rxaddresses_addr5(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.radio_set_recv_on_ap(5, _value != 0))
     }
-    pub fn read_radio_rxaddresses_addr6(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_rxaddresses_addr6(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_recv_on_ap(6) as u8)
     }
+    #[inline]
     pub fn write_radio_rxaddresses_addr6(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.radio_set_recv_on_ap(6, _value != 0))
     }
-    pub fn read_radio_rxaddresses_addr7(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_rxaddresses_addr7(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_recv_on_ap(7) as u8)
     }
+    #[inline]
     pub fn write_radio_rxaddresses_addr7(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.radio_set_recv_on_ap(7, _value != 0))
     }
     pub fn read_radio_crccnf_len(&self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 3u64;
         todo!()
     }
-    pub fn write_radio_crccnf_len(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_radio_crccnf_len(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_crccnf_skipaddr(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_crccnf_skipaddr(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_radio_crccnf_skipaddr(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_radio_crccnf_skipaddr(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_radio_crcpoly_crcpoly(
@@ -3156,30 +3000,23 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_radio_test_constcarrier(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_test_constcarrier(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_test_constcarrier(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_test_plllock(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_test_plllock(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_radio_test_plllock(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_radio_test_plllock(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_radio_tifs_tifs(&self) -> MemResult<u8> {
@@ -3187,15 +3024,10 @@ impl Peripherals {
         const _RESET_MASK: u64 = 255u64;
         todo!()
     }
-    pub fn write_radio_tifs_tifs(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_radio_tifs_tifs(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_radio_rssisample_rssisample(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_rssisample_rssisample(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 127u64;
         todo!()
@@ -3205,15 +3037,13 @@ impl Peripherals {
         const _RESET_MASK: u64 = 15u64;
         todo!()
     }
-    pub fn read_radio_datawhiteiv_datawhiteiv(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_datawhiteiv_datawhiteiv(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 64u64;
         const _RESET_MASK: u64 = 127u64;
         todo!()
     }
     pub fn write_radio_datawhiteiv_datawhiteiv(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
@@ -3302,197 +3132,133 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_radio_dacnf_ena0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_dacnf_ena0(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_ena(0) as u8)
     }
-    pub fn write_radio_dacnf_ena0(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_dacnf_ena0(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ena(0, _value != 0))
     }
-    pub fn read_radio_dacnf_ena1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_dacnf_ena1(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_ena(1) as u8)
     }
-    pub fn write_radio_dacnf_ena1(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_dacnf_ena1(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ena(1, _value != 0))
     }
-    pub fn read_radio_dacnf_ena2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_dacnf_ena2(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_ena(2) as u8)
     }
-    pub fn write_radio_dacnf_ena2(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_dacnf_ena2(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ena(2, _value != 0))
     }
-    pub fn read_radio_dacnf_ena3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_dacnf_ena3(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_ena(3) as u8)
     }
-    pub fn write_radio_dacnf_ena3(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_dacnf_ena3(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ena(3, _value != 0))
     }
-    pub fn read_radio_dacnf_ena4(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_dacnf_ena4(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_ena(4) as u8)
     }
-    pub fn write_radio_dacnf_ena4(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_dacnf_ena4(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ena(4, _value != 0))
     }
-    pub fn read_radio_dacnf_ena5(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_dacnf_ena5(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_ena(5) as u8)
     }
-    pub fn write_radio_dacnf_ena5(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_dacnf_ena5(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ena(5, _value != 0))
     }
-    pub fn read_radio_dacnf_ena6(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_dacnf_ena6(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_ena(6) as u8)
     }
-    pub fn write_radio_dacnf_ena6(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_dacnf_ena6(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ena(6, _value != 0))
     }
-    pub fn read_radio_dacnf_ena7(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_dacnf_ena7(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_ena(7) as u8)
     }
-    pub fn write_radio_dacnf_ena7(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_dacnf_ena7(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ena(7, _value != 0))
     }
-    pub fn read_radio_dacnf_txadd0(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_dacnf_txadd0(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_txadd(0) as u8)
     }
-    pub fn write_radio_dacnf_txadd0(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_dacnf_txadd0(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ena(0, _value != 0))
     }
-    pub fn read_radio_dacnf_txadd1(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_dacnf_txadd1(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_txadd(1) as u8)
     }
-    pub fn write_radio_dacnf_txadd1(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_dacnf_txadd1(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ena(1, _value != 0))
     }
-    pub fn read_radio_dacnf_txadd2(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_dacnf_txadd2(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_txadd(2) as u8)
     }
-    pub fn write_radio_dacnf_txadd2(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_dacnf_txadd2(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ena(2, _value != 0))
     }
-    pub fn read_radio_dacnf_txadd3(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_dacnf_txadd3(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_txadd(3) as u8)
     }
-    pub fn write_radio_dacnf_txadd3(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_dacnf_txadd3(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ena(3, _value != 0))
     }
-    pub fn read_radio_dacnf_txadd4(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_dacnf_txadd4(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_txadd(4) as u8)
     }
-    pub fn write_radio_dacnf_txadd4(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_dacnf_txadd4(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ena(4, _value != 0))
     }
-    pub fn read_radio_dacnf_txadd5(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_dacnf_txadd5(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_txadd(5) as u8)
     }
-    pub fn write_radio_dacnf_txadd5(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_dacnf_txadd5(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ena(5, _value != 0))
     }
-    pub fn read_radio_dacnf_txadd6(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_dacnf_txadd6(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_txadd(6) as u8)
     }
-    pub fn write_radio_dacnf_txadd6(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_dacnf_txadd6(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ena(6, _value != 0))
     }
-    pub fn read_radio_dacnf_txadd7(
-        &self,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_radio_dacnf_txadd7(&mut self) -> MemResult<u8> {
+        Ok(self.radio_is_txadd(7) as u8)
     }
-    pub fn write_radio_dacnf_txadd7(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_radio_dacnf_txadd7(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.radio_set_ena(7, _value != 0))
     }
     pub fn read_radio_override0_override0(
         &mut self,
@@ -3634,15 +3400,13 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_radio_override4_enable(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_radio_override4_enable(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_radio_override4_enable(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
@@ -3652,10 +3416,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_radio_power_power(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_radio_power_power(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn write_uart0_tasks_startrx(
@@ -3891,251 +3652,168 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_uart0_shorts_cts_startrx(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_uart0_shorts_cts_startrx(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_uart0_shorts_cts_startrx(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_uart0_shorts_ncts_stoprx(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_uart0_shorts_ncts_stoprx(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_uart0_shorts_ncts_stoprx(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_uart0_intenset_cts(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_uart0_intenset_cts(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_uart0_intenset_cts(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_uart0_intenset_cts(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_uart0_intenset_ncts(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_uart0_intenset_ncts(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_uart0_intenset_ncts(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_uart0_intenset_ncts(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_uart0_intenset_rxdrdy(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_uart0_intenset_rxdrdy(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_uart0_intenset_rxdrdy(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_uart0_intenset_rxdrdy(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_uart0_intenset_txdrdy(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_uart0_intenset_txdrdy(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_uart0_intenset_txdrdy(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_uart0_intenset_txdrdy(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_uart0_intenset_error(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_uart0_intenset_error(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_uart0_intenset_error(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_uart0_intenset_error(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_uart0_intenset_rxto(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_uart0_intenset_rxto(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_uart0_intenset_rxto(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_uart0_intenset_rxto(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_uart0_intenclr_cts(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_uart0_intenclr_cts(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_uart0_intenclr_cts(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_uart0_intenclr_cts(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_uart0_intenclr_ncts(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_uart0_intenclr_ncts(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_uart0_intenclr_ncts(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_uart0_intenclr_ncts(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_uart0_intenclr_rxdrdy(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_uart0_intenclr_rxdrdy(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_uart0_intenclr_rxdrdy(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_uart0_intenclr_rxdrdy(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_uart0_intenclr_txdrdy(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_uart0_intenclr_txdrdy(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_uart0_intenclr_txdrdy(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_uart0_intenclr_txdrdy(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_uart0_intenclr_error(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_uart0_intenclr_error(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_uart0_intenclr_error(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_uart0_intenclr_error(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_uart0_intenclr_rxto(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_uart0_intenclr_rxto(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_uart0_intenclr_rxto(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_uart0_intenclr_rxto(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_uart0_errorsrc_overrun(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_uart0_errorsrc_overrun(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_uart0_errorsrc_overrun(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_uart0_errorsrc_parity(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_uart0_errorsrc_parity(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_uart0_errorsrc_parity(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_uart0_errorsrc_parity(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_uart0_errorsrc_framing(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_uart0_errorsrc_framing(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_uart0_errorsrc_framing(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_uart0_errorsrc_break(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_uart0_errorsrc_break(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_uart0_errorsrc_break(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_uart0_errorsrc_break(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_uart0_enable_enable(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_uart0_enable_enable(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 7u64;
         todo!()
     }
-    pub fn write_uart0_enable_enable(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_uart0_enable_enable(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_uart0_pselrts(
@@ -4255,10 +3933,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 255u64;
         todo!()
     }
-    pub fn write_uart0_txd_txd(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_uart0_txd_txd(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_uart0_baudrate_baudrate(
@@ -4294,23 +3969,15 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_uart0_config_hwfc(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_uart0_config_hwfc(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_uart0_config_parity(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_uart0_config_parity(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 7u64;
         todo!()
     }
-    pub fn write_uart0_config_parity(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_uart0_config_parity(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_uart0_power_power(&self) -> MemResult<u8> {
@@ -4318,10 +3985,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_uart0_power_power(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_uart0_power_power(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_spi0twi0_events_ready(
@@ -4352,171 +4016,139 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_spi0twi0_intenset_ready(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spi0twi0_intenset_ready(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_spi0twi0_intenset_ready(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spi0twi0_intenset_stopped(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spi0twi0_intenset_stopped(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_spi0twi0_intenset_stopped(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spi0twi0_intenset_txdsent(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spi0twi0_intenset_txdsent(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_spi0twi0_intenset_txdsent(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spi0twi0_intenset_error(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spi0twi0_intenset_error(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_spi0twi0_intenset_error(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spi0twi0_intenset_bb(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spi0twi0_intenset_bb(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_spi0twi0_intenset_bb(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_spi0twi0_intenset_bb(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spi0twi0_intenset_suspended(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spi0twi0_intenset_suspended(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_spi0twi0_intenset_suspended(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spi0twi0_intenclr_ready(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spi0twi0_intenclr_ready(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_spi0twi0_intenclr_ready(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spi0twi0_intenclr_stopped(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spi0twi0_intenclr_stopped(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_spi0twi0_intenclr_stopped(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spi0twi0_intenclr_txdsent(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spi0twi0_intenclr_txdsent(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_spi0twi0_intenclr_txdsent(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spi0twi0_intenclr_error(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spi0twi0_intenclr_error(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_spi0twi0_intenclr_error(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spi0twi0_intenclr_bb(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spi0twi0_intenclr_bb(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_spi0twi0_intenclr_bb(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_spi0twi0_intenclr_bb(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spi0twi0_intenclr_suspended(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spi0twi0_intenclr_suspended(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_spi0twi0_intenclr_suspended(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spi0twi0_enable_enable(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spi0twi0_enable_enable(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 7u64;
         todo!()
     }
     pub fn write_spi0twi0_enable_enable(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
@@ -4615,10 +4247,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 255u64;
         todo!()
     }
-    pub fn write_spi0twi0_txd_txd(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_spi0twi0_txd_txd(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_spi0twi0_frequency_frequency(
@@ -4654,10 +4283,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_spi0_config_order(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_spi0_config_order(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_spi0_config_cpha(&self) -> MemResult<u8> {
@@ -4665,10 +4291,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_spi0_config_cpha(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_spi0_config_cpha(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_spi0_config_cpol(&self) -> MemResult<u8> {
@@ -4676,23 +4299,15 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_spi0_config_cpol(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_spi0_config_cpol(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spi0twi0_power_power(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spi0twi0_power_power(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_spi0twi0_power_power(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_spi0twi0_power_power(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn write_twi0_tasks_startrx(
@@ -4900,82 +4515,55 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_twi0_shorts_bb_suspend(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_twi0_shorts_bb_suspend(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_twi0_shorts_bb_suspend(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_twi0_shorts_bb_stop(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_twi0_shorts_bb_stop(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_twi0_shorts_bb_stop(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_twi0_shorts_bb_stop(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_twi0_errorsrc_overrun(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_twi0_errorsrc_overrun(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_twi0_errorsrc_overrun(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_twi0_errorsrc_overrun(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_twi0_errorsrc_anack(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_twi0_errorsrc_anack(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_twi0_errorsrc_anack(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_twi0_errorsrc_anack(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_twi0_errorsrc_dnack(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_twi0_errorsrc_dnack(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_twi0_errorsrc_dnack(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_twi0_errorsrc_dnack(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_twi0_address_address(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_twi0_address_address(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 127u64;
         todo!()
     }
-    pub fn write_twi0_address_address(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_twi0_address_address(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn write_spis1_tasks_acquire(
@@ -5088,141 +4676,98 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_spis1_shorts_end_acquire(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spis1_shorts_end_acquire(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_spis1_shorts_end_acquire(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spis1_intenset_end(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spis1_intenset_end(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_spis1_intenset_end(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_spis1_intenset_end(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spis1_intenset_endrx(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spis1_intenset_endrx(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_spis1_intenset_endrx(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_spis1_intenset_endrx(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spis1_intenset_acquired(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spis1_intenset_acquired(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_spis1_intenset_acquired(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spis1_intenclr_end(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spis1_intenclr_end(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_spis1_intenclr_end(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_spis1_intenclr_end(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spis1_intenclr_endrx(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spis1_intenclr_endrx(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_spis1_intenclr_endrx(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_spis1_intenclr_endrx(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spis1_intenclr_acquired(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spis1_intenclr_acquired(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_spis1_intenclr_acquired(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spis1_semstat_semstat(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spis1_semstat_semstat(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 1u64;
         const _RESET_MASK: u64 = 3u64;
         todo!()
     }
-    pub fn read_spis1_status_overread(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spis1_status_overread(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_spis1_status_overread(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_spis1_status_overread(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spis1_status_overflow(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spis1_status_overflow(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_spis1_status_overflow(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_spis1_status_overflow(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spis1_enable_enable(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spis1_enable_enable(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 7u64;
         todo!()
     }
-    pub fn write_spis1_enable_enable(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_spis1_enable_enable(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_spis1_pselsck(
@@ -5370,15 +4915,10 @@ impl Peripherals {
         const _RESET_MASK: u64 = 255u64;
         todo!()
     }
-    pub fn write_spis1_maxrx_maxrx(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_spis1_maxrx_maxrx(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spis1_amountrx_amountrx(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spis1_amountrx_amountrx(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 255u64;
         todo!()
@@ -5416,30 +4956,20 @@ impl Peripherals {
         const _RESET_MASK: u64 = 255u64;
         todo!()
     }
-    pub fn write_spis1_maxtx_maxtx(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_spis1_maxtx_maxtx(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_spis1_amounttx_amounttx(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spis1_amounttx_amounttx(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 255u64;
         todo!()
     }
-    pub fn read_spis1_config_order(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_spis1_config_order(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_spis1_config_order(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_spis1_config_order(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_spis1_config_cpha(&self) -> MemResult<u8> {
@@ -5447,10 +4977,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_spis1_config_cpha(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_spis1_config_cpha(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_spis1_config_cpol(&self) -> MemResult<u8> {
@@ -5458,10 +4985,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_spis1_config_cpol(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_spis1_config_cpol(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_spis1_def_def(&self) -> MemResult<u8> {
@@ -5469,10 +4993,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 255u64;
         todo!()
     }
-    pub fn write_spis1_def_def(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_spis1_def_def(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_spis1_orc_orc(&self) -> MemResult<u8> {
@@ -5480,10 +5001,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 255u64;
         todo!()
     }
-    pub fn write_spis1_orc_orc(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_spis1_orc_orc(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_spis1_power_power(&self) -> MemResult<u8> {
@@ -5491,10 +5009,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_spis1_power_power(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_spis1_power_power(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn write_gpiote_tasks_outn(
@@ -5569,168 +5084,112 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_gpiote_intenset_in0(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_gpiote_intenset_in0(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_gpiote_intenset_in0(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_gpiote_intenset_in0(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_gpiote_intenset_in1(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_gpiote_intenset_in1(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_gpiote_intenset_in1(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_gpiote_intenset_in1(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_gpiote_intenset_in2(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_gpiote_intenset_in2(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_gpiote_intenset_in2(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_gpiote_intenset_in2(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_gpiote_intenset_in3(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_gpiote_intenset_in3(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_gpiote_intenset_in3(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_gpiote_intenset_in3(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_gpiote_intenset_port(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_gpiote_intenset_port(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_gpiote_intenset_port(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_gpiote_intenset_port(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_gpiote_intenclr_in0(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_gpiote_intenclr_in0(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_gpiote_intenclr_in0(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_gpiote_intenclr_in0(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_gpiote_intenclr_in1(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_gpiote_intenclr_in1(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_gpiote_intenclr_in1(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_gpiote_intenclr_in1(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_gpiote_intenclr_in2(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_gpiote_intenclr_in2(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_gpiote_intenclr_in2(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_gpiote_intenclr_in2(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_gpiote_intenclr_in3(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_gpiote_intenclr_in3(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_gpiote_intenclr_in3(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_gpiote_intenclr_in3(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_gpiote_intenclr_port(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_gpiote_intenclr_port(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_gpiote_intenclr_port(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_gpiote_intenclr_port(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_gpiote_confign_mode(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
+    pub fn read_gpiote_confign_mode(&mut self, _dim: usize) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 3u64;
         todo!()
     }
     pub fn write_gpiote_confign_mode(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_gpiote_confign_psel(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
+    pub fn read_gpiote_confign_psel(&mut self, _dim: usize) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 31u64;
         todo!()
     }
     pub fn write_gpiote_confign_psel(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
     pub fn read_gpiote_confign_polarity(
-        &self,
+        &mut self,
         _dim: usize,
     ) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
@@ -5738,14 +5197,14 @@ impl Peripherals {
         todo!()
     }
     pub fn write_gpiote_confign_polarity(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
     pub fn read_gpiote_confign_outinit(
-        &self,
+        &mut self,
         _dim: usize,
     ) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
@@ -5753,23 +5212,18 @@ impl Peripherals {
         todo!()
     }
     pub fn write_gpiote_confign_outinit(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_gpiote_power_power(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_gpiote_power_power(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_gpiote_power_power(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_gpiote_power_power(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn write_adc_tasks_start(
@@ -5831,10 +5285,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_adc_intenset_end(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_adc_intenset_end(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_adc_intenclr_end(&self) -> MemResult<u8> {
@@ -5842,10 +5293,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_adc_intenclr_end(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_adc_intenclr_end(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_adc_busy_busy(&self) -> MemResult<u8> {
@@ -5858,10 +5306,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 3u64;
         todo!()
     }
-    pub fn write_adc_enable_enable(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_adc_enable_enable(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_adc_config_res(&self) -> MemResult<u8> {
@@ -5869,10 +5314,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 3u64;
         todo!()
     }
-    pub fn write_adc_config_res(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_adc_config_res(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_adc_config_inpsel(&self) -> MemResult<u8> {
@@ -5880,10 +5322,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 7u64;
         todo!()
     }
-    pub fn write_adc_config_inpsel(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_adc_config_inpsel(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_adc_config_refsel(&self) -> MemResult<u8> {
@@ -5891,10 +5330,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 3u64;
         todo!()
     }
-    pub fn write_adc_config_refsel(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_adc_config_refsel(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_adc_config_psel(&self) -> MemResult<u8> {
@@ -5902,23 +5338,15 @@ impl Peripherals {
         const _RESET_MASK: u64 = 255u64;
         todo!()
     }
-    pub fn write_adc_config_psel(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_adc_config_psel(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_adc_config_extrefsel(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_adc_config_extrefsel(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 3u64;
         todo!()
     }
-    pub fn write_adc_config_extrefsel(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_adc_config_extrefsel(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_adc_result_result(
@@ -5939,10 +5367,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_adc_power_power(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_adc_power_power(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn write_timer0_tasks_start(
@@ -6054,210 +5479,178 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_timer0_shorts_compare0_clear(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_timer0_shorts_compare0_clear(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_timer0_shorts_compare0_clear(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_timer0_shorts_compare1_clear(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_timer0_shorts_compare1_clear(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_timer0_shorts_compare1_clear(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_timer0_shorts_compare2_clear(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_timer0_shorts_compare2_clear(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_timer0_shorts_compare2_clear(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_timer0_shorts_compare3_clear(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_timer0_shorts_compare3_clear(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_timer0_shorts_compare3_clear(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_timer0_shorts_compare0_stop(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_timer0_shorts_compare0_stop(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_timer0_shorts_compare0_stop(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_timer0_shorts_compare1_stop(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_timer0_shorts_compare1_stop(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_timer0_shorts_compare1_stop(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_timer0_shorts_compare2_stop(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_timer0_shorts_compare2_stop(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_timer0_shorts_compare2_stop(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_timer0_shorts_compare3_stop(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_timer0_shorts_compare3_stop(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_timer0_shorts_compare3_stop(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_timer0_intenset_compare0(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_timer0_intenset_compare0(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_timer0_intenset_compare0(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_timer0_intenset_compare1(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_timer0_intenset_compare1(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_timer0_intenset_compare1(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_timer0_intenset_compare2(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_timer0_intenset_compare2(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_timer0_intenset_compare2(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_timer0_intenset_compare3(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_timer0_intenset_compare3(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_timer0_intenset_compare3(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_timer0_intenclr_compare0(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_timer0_intenclr_compare0(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_timer0_intenclr_compare0(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_timer0_intenclr_compare1(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_timer0_intenclr_compare1(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_timer0_intenclr_compare1(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_timer0_intenclr_compare2(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_timer0_intenclr_compare2(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_timer0_intenclr_compare2(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_timer0_intenclr_compare3(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_timer0_intenclr_compare3(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_timer0_intenclr_compare3(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
@@ -6267,34 +5660,27 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_timer0_mode_mode(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_timer0_mode_mode(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_timer0_bitmode_bitmode(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_timer0_bitmode_bitmode(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 3u64;
         todo!()
     }
     pub fn write_timer0_bitmode_bitmode(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_timer0_prescaler_prescaler(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_timer0_prescaler_prescaler(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 4u64;
         const _RESET_MASK: u64 = 15u64;
         todo!()
     }
     pub fn write_timer0_prescaler_prescaler(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
@@ -6329,17 +5715,12 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_timer0_power_power(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_timer0_power_power(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_timer0_power_power(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_timer0_power_power(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn write_rtc0_tasks_start(
@@ -6480,158 +5861,122 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_rtc0_intenset_tick(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_intenset_tick(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_rtc0_intenset_tick(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_rtc0_intenset_tick(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_intenset_ovrflw(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_intenset_ovrflw(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_rtc0_intenset_ovrflw(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_rtc0_intenset_ovrflw(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_intenset_compare0(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_intenset_compare0(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_rtc0_intenset_compare0(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_intenset_compare1(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_intenset_compare1(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_rtc0_intenset_compare1(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_intenset_compare2(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_intenset_compare2(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_rtc0_intenset_compare2(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_intenset_compare3(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_intenset_compare3(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_rtc0_intenset_compare3(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_intenclr_tick(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_intenclr_tick(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_rtc0_intenclr_tick(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_rtc0_intenclr_tick(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_intenclr_ovrflw(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_intenclr_ovrflw(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_rtc0_intenclr_ovrflw(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_rtc0_intenclr_ovrflw(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_intenclr_compare0(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_intenclr_compare0(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_rtc0_intenclr_compare0(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_intenclr_compare1(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_intenclr_compare1(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_rtc0_intenclr_compare1(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_intenclr_compare2(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_intenclr_compare2(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_rtc0_intenclr_compare2(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_intenclr_compare3(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_intenclr_compare3(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_rtc0_intenclr_compare3(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
@@ -6641,10 +5986,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_rtc0_evten_tick(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_rtc0_evten_tick(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_rtc0_evten_ovrflw(&self) -> MemResult<u8> {
@@ -6652,216 +5994,157 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_rtc0_evten_ovrflw(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_rtc0_evten_ovrflw(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_evten_compare0(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_evten_compare0(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_rtc0_evten_compare0(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_rtc0_evten_compare0(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_evten_compare1(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_evten_compare1(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_rtc0_evten_compare1(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_rtc0_evten_compare1(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_evten_compare2(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_evten_compare2(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_rtc0_evten_compare2(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_rtc0_evten_compare2(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_evten_compare3(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_evten_compare3(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_rtc0_evten_compare3(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_rtc0_evten_compare3(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_evtenset_tick(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_evtenset_tick(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_rtc0_evtenset_tick(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_rtc0_evtenset_tick(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_evtenset_ovrflw(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_evtenset_ovrflw(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_rtc0_evtenset_ovrflw(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_rtc0_evtenset_ovrflw(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_evtenset_compare0(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_evtenset_compare0(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_rtc0_evtenset_compare0(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_evtenset_compare1(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_evtenset_compare1(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_rtc0_evtenset_compare1(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_evtenset_compare2(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_evtenset_compare2(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_rtc0_evtenset_compare2(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_evtenset_compare3(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_evtenset_compare3(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_rtc0_evtenset_compare3(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_evtenclr_tick(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_evtenclr_tick(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_rtc0_evtenclr_tick(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_rtc0_evtenclr_tick(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_evtenclr_ovrflw(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_evtenclr_ovrflw(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_rtc0_evtenclr_ovrflw(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_rtc0_evtenclr_ovrflw(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_evtenclr_compare0(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_evtenclr_compare0(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_rtc0_evtenclr_compare0(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_evtenclr_compare1(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_evtenclr_compare1(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_rtc0_evtenclr_compare1(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_evtenclr_compare2(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_evtenclr_compare2(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_rtc0_evtenclr_compare2(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rtc0_evtenclr_compare3(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rtc0_evtenclr_compare3(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_rtc0_evtenclr_compare3(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
@@ -6937,10 +6220,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_rtc0_power_power(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_rtc0_power_power(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn write_temp_tasks_start(
@@ -6997,30 +6277,20 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_temp_intenset_datardy(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_temp_intenset_datardy(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_temp_intenset_datardy(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_temp_intenset_datardy(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_temp_intenclr_datardy(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_temp_intenclr_datardy(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_temp_intenclr_datardy(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_temp_intenclr_datardy(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_temp_temp(
@@ -7043,10 +6313,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_temp_power_power(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_temp_power_power(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn write_rng_tasks_start(
@@ -7103,43 +6370,31 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_rng_shorts_valrdy_stop(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rng_shorts_valrdy_stop(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_rng_shorts_valrdy_stop(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rng_intenset_valrdy(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rng_intenset_valrdy(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_rng_intenset_valrdy(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_rng_intenset_valrdy(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_rng_intenclr_valrdy(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_rng_intenclr_valrdy(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_rng_intenclr_valrdy(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_rng_intenclr_valrdy(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_rng_config_dercen(&self) -> MemResult<u8> {
@@ -7147,10 +6402,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_rng_config_dercen(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_rng_config_dercen(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_rng_value_value(&self) -> MemResult<u8> {
@@ -7163,10 +6415,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_rng_power_power(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_rng_power_power(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn write_ecb_tasks_startecb(
@@ -7251,56 +6500,36 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_ecb_intenset_endecb(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_ecb_intenset_endecb(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_ecb_intenset_endecb(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_ecb_intenset_endecb(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_ecb_intenset_errorecb(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_ecb_intenset_errorecb(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_ecb_intenset_errorecb(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_ecb_intenset_errorecb(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_ecb_intenclr_endecb(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_ecb_intenclr_endecb(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_ecb_intenclr_endecb(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_ecb_intenclr_endecb(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_ecb_intenclr_errorecb(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_ecb_intenclr_errorecb(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_ecb_intenclr_errorecb(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_ecb_intenclr_errorecb(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_ecb_ecbdataptr(
@@ -7336,10 +6565,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_ecb_power_power(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_ecb_power_power(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn write_aarccm_tasks_start(
@@ -7452,102 +6678,77 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_aarccm_intenset_end(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_aarccm_intenset_end(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_aarccm_intenset_end(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_aarccm_intenset_end(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_aarccm_intenset_resolved(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_aarccm_intenset_resolved(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_aarccm_intenset_resolved(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_aarccm_intenset_notresolved(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_aarccm_intenset_notresolved(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_aarccm_intenset_notresolved(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_aarccm_intenclr_end(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_aarccm_intenclr_end(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_aarccm_intenclr_end(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_aarccm_intenclr_end(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_aarccm_intenclr_resolved(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_aarccm_intenclr_resolved(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_aarccm_intenclr_resolved(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_aarccm_intenclr_notresolved(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_aarccm_intenclr_notresolved(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_aarccm_intenclr_notresolved(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_aarccm_status_status(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_aarccm_status_status(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 15u64;
         todo!()
     }
-    pub fn read_aarccm_enable_enable(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_aarccm_enable_enable(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 3u64;
         todo!()
     }
-    pub fn write_aarccm_enable_enable(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_aarccm_enable_enable(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_aarccm_nirk_nirk(&self) -> MemResult<u8> {
@@ -7555,10 +6756,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 31u64;
         todo!()
     }
-    pub fn write_aarccm_nirk_nirk(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_aarccm_nirk_nirk(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_aarccm_irkptr(
@@ -7645,17 +6843,12 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_aarccm_power_power(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_aarccm_power_power(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_aarccm_power_power(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_aarccm_power_power(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn write_ccm_tasks_crypt(
@@ -7671,15 +6864,13 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_ccm_shorts_endksgen_crypt(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_ccm_shorts_endksgen_crypt(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_ccm_shorts_endksgen_crypt(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
@@ -7753,35 +6944,23 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_wdt_intenset_timeout(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_wdt_intenset_timeout(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_wdt_intenset_timeout(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_wdt_intenset_timeout(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_wdt_intenclr_timeout(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_wdt_intenclr_timeout(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_wdt_intenclr_timeout(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_wdt_intenclr_timeout(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_wdt_runstatus_runstatus(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_wdt_runstatus_runstatus(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
@@ -7859,10 +7038,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_wdt_rren_rr0(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_wdt_rren_rr0(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_wdt_rren_rr1(&self) -> MemResult<u8> {
@@ -7870,10 +7046,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_wdt_rren_rr1(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_wdt_rren_rr1(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_wdt_rren_rr2(&self) -> MemResult<u8> {
@@ -7881,10 +7054,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_wdt_rren_rr2(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_wdt_rren_rr2(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_wdt_rren_rr3(&self) -> MemResult<u8> {
@@ -7892,10 +7062,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_wdt_rren_rr3(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_wdt_rren_rr3(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_wdt_rren_rr4(&self) -> MemResult<u8> {
@@ -7903,10 +7070,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_wdt_rren_rr4(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_wdt_rren_rr4(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_wdt_rren_rr5(&self) -> MemResult<u8> {
@@ -7914,10 +7078,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_wdt_rren_rr5(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_wdt_rren_rr5(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_wdt_rren_rr6(&self) -> MemResult<u8> {
@@ -7925,10 +7086,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_wdt_rren_rr6(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_wdt_rren_rr6(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_wdt_rren_rr7(&self) -> MemResult<u8> {
@@ -7936,10 +7094,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_wdt_rren_rr7(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_wdt_rren_rr7(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_wdt_config_sleep(&self) -> MemResult<u8> {
@@ -7947,10 +7102,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_wdt_config_sleep(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_wdt_config_sleep(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_wdt_config_halt(&self) -> MemResult<u8> {
@@ -7958,10 +7110,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_wdt_config_halt(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_wdt_config_halt(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn write_wdt_rrn_rr(
@@ -7983,10 +7132,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_wdt_power_power(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_wdt_power_power(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn write_qdec_tasks_start(
@@ -8112,145 +7258,111 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_qdec_shorts_reportrdy_readclracc(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_qdec_shorts_reportrdy_readclracc(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_qdec_shorts_reportrdy_readclracc(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_qdec_shorts_samplerdy_stop(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_qdec_shorts_samplerdy_stop(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_qdec_shorts_samplerdy_stop(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_qdec_intenset_samplerdy(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_qdec_intenset_samplerdy(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_qdec_intenset_samplerdy(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_qdec_intenset_reportrdy(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_qdec_intenset_reportrdy(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_qdec_intenset_reportrdy(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_qdec_intenset_accof(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_qdec_intenset_accof(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_qdec_intenset_accof(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_qdec_intenset_accof(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_qdec_intenclr_samplerdy(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_qdec_intenclr_samplerdy(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_qdec_intenclr_samplerdy(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_qdec_intenclr_reportrdy(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_qdec_intenclr_reportrdy(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_qdec_intenclr_reportrdy(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_qdec_intenclr_accof(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_qdec_intenclr_accof(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_qdec_intenclr_accof(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_qdec_intenclr_accof(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_qdec_enable_enable(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_qdec_enable_enable(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_qdec_enable_enable(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_qdec_enable_enable(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_qdec_ledpol_ledpol(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_qdec_ledpol_ledpol(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_qdec_ledpol_ledpol(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_qdec_ledpol_ledpol(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_qdec_sampleper_sampleper(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_qdec_sampleper_sampleper(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 7u64;
         todo!()
     }
     pub fn write_qdec_sampleper_sampleper(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
@@ -8270,15 +7382,13 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_qdec_reportper_reportper(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_qdec_reportper_reportper(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 7u64;
         todo!()
     }
     pub fn write_qdec_reportper_reportper(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
@@ -8402,10 +7512,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_qdec_dbfen_dbfen(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_qdec_dbfen_dbfen(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_qdec_ledpre_ledpre(
@@ -8432,16 +7539,12 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_qdec_accdbl_accdbl(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_qdec_accdbl_accdbl(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 15u64;
         todo!()
     }
-    pub fn read_qdec_accdblread_accdblread(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_qdec_accdblread_accdblread(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 15u64;
         todo!()
@@ -8451,10 +7554,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_qdec_power_power(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_qdec_power_power(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn write_lpcomp_tasks_start(
@@ -8608,193 +7708,133 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_lpcomp_shorts_ready_sample(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_lpcomp_shorts_ready_sample(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_lpcomp_shorts_ready_sample(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_lpcomp_shorts_ready_stop(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_lpcomp_shorts_ready_stop(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_lpcomp_shorts_ready_stop(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_lpcomp_shorts_down_stop(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_lpcomp_shorts_down_stop(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_lpcomp_shorts_down_stop(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_lpcomp_shorts_up_stop(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_lpcomp_shorts_up_stop(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_lpcomp_shorts_up_stop(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_lpcomp_shorts_up_stop(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_lpcomp_shorts_cross_stop(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_lpcomp_shorts_cross_stop(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_lpcomp_shorts_cross_stop(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_lpcomp_intenset_ready(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_lpcomp_intenset_ready(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_lpcomp_intenset_ready(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_lpcomp_intenset_ready(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_lpcomp_intenset_down(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_lpcomp_intenset_down(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_lpcomp_intenset_down(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_lpcomp_intenset_down(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_lpcomp_intenset_up(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_lpcomp_intenset_up(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_lpcomp_intenset_up(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_lpcomp_intenset_up(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_lpcomp_intenset_cross(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_lpcomp_intenset_cross(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_lpcomp_intenset_cross(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_lpcomp_intenset_cross(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_lpcomp_intenclr_ready(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_lpcomp_intenclr_ready(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_lpcomp_intenclr_ready(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_lpcomp_intenclr_ready(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_lpcomp_intenclr_down(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_lpcomp_intenclr_down(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_lpcomp_intenclr_down(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_lpcomp_intenclr_down(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_lpcomp_intenclr_up(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_lpcomp_intenclr_up(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_lpcomp_intenclr_up(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_lpcomp_intenclr_up(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_lpcomp_intenclr_cross(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_lpcomp_intenclr_cross(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_lpcomp_intenclr_cross(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_lpcomp_intenclr_cross(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_lpcomp_result_result(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_lpcomp_result_result(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn read_lpcomp_enable_enable(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_lpcomp_enable_enable(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 3u64;
         todo!()
     }
-    pub fn write_lpcomp_enable_enable(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_lpcomp_enable_enable(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_lpcomp_psel_psel(&self) -> MemResult<u8> {
@@ -8802,62 +7842,45 @@ impl Peripherals {
         const _RESET_MASK: u64 = 7u64;
         todo!()
     }
-    pub fn write_lpcomp_psel_psel(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_lpcomp_psel_psel(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_lpcomp_refsel_refsel(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_lpcomp_refsel_refsel(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 7u64;
         todo!()
     }
-    pub fn write_lpcomp_refsel_refsel(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_lpcomp_refsel_refsel(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_lpcomp_extrefsel_extrefsel(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_lpcomp_extrefsel_extrefsel(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_lpcomp_extrefsel_extrefsel(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_lpcomp_anadetect_anadetect(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_lpcomp_anadetect_anadetect(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 3u64;
         todo!()
     }
     pub fn write_lpcomp_anadetect_anadetect(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_lpcomp_power_power(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_lpcomp_power_power(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn write_lpcomp_power_power(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_lpcomp_power_power(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_swi_unused(
@@ -8885,10 +7908,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 3u64;
         todo!()
     }
-    pub fn write_nvmc_config_wen(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_nvmc_config_wen(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_nvmc_erasepage(
@@ -8919,15 +7939,13 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_nvmc_eraseall_eraseall(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_nvmc_eraseall_eraseall(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_nvmc_eraseall_eraseall(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
@@ -8960,1362 +7978,1192 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_nvmc_eraseuicr_eraseuicr(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_nvmc_eraseuicr_eraseuicr(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
     pub fn write_nvmc_eraseuicr_eraseuicr(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_ppi_chen_ch0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch0(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch1(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch2(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch3(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch4(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch4(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch5(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch5(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch6(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch6(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch7(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch7(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch8(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch8(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch9(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch9(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch10(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch10(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch11(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch11(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch12(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch12(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch13(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch13(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch14(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch14(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch15(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch15(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch20(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch20(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch21(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch21(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch22(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch22(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch23(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch23(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch24(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch24(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch25(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch25(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch26(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch26(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch27(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch27(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch28(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch28(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch29(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch29(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch30(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch30(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chen_ch31(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chen_ch31(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch0(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch1(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch2(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch3(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch4(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch4(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch5(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch5(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch6(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch6(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch7(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch7(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch8(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch8(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch9(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch9(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch10(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch10(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch11(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chen_ch0(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(0) as u8)
     }
-    pub fn write_ppi_chenset_ch11(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch12(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch12(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch13(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch13(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch14(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch14(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch15(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch15(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch20(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch20(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch21(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch21(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch22(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch22(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch23(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch23(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch24(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch24(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch25(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch25(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch26(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch26(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch27(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch27(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch28(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch28(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch29(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch29(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch30(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch30(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenset_ch31(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenset_ch31(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenclr_ch0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenclr_ch0(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenclr_ch1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenclr_ch1(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenclr_ch2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenclr_ch2(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenclr_ch3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenclr_ch3(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenclr_ch4(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenclr_ch4(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenclr_ch5(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenclr_ch5(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenclr_ch6(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenclr_ch6(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenclr_ch7(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenclr_ch7(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_ppi_chen_ch0(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(0, _value != 0))
     }
-    pub fn read_ppi_chenclr_ch8(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenclr_ch8(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenclr_ch9(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenclr_ch9(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenclr_ch10(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenclr_ch10(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenclr_ch11(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_ppi_chenclr_ch11(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_ppi_chenclr_ch12(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chen_ch1(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(1) as u8)
     }
-    pub fn write_ppi_chenclr_ch12(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_ppi_chen_ch1(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(1, _value != 0))
     }
-    pub fn read_ppi_chenclr_ch13(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chen_ch2(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(2) as u8)
     }
-    pub fn write_ppi_chenclr_ch13(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_ppi_chen_ch2(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(2, _value != 0))
     }
-    pub fn read_ppi_chenclr_ch14(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chen_ch3(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(3) as u8)
     }
-    pub fn write_ppi_chenclr_ch14(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_ppi_chen_ch3(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(3, _value != 0))
     }
-    pub fn read_ppi_chenclr_ch15(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chen_ch4(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(4) as u8)
     }
-    pub fn write_ppi_chenclr_ch15(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_ppi_chen_ch4(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(4, _value != 0))
     }
-    pub fn read_ppi_chenclr_ch20(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chen_ch5(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(5) as u8)
     }
-    pub fn write_ppi_chenclr_ch20(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_ppi_chen_ch5(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(5, _value != 0))
     }
-    pub fn read_ppi_chenclr_ch21(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chen_ch6(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(6) as u8)
     }
-    pub fn write_ppi_chenclr_ch21(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_ppi_chen_ch6(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(6, _value != 0))
     }
-    pub fn read_ppi_chenclr_ch22(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chen_ch7(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(7) as u8)
     }
-    pub fn write_ppi_chenclr_ch22(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_ppi_chen_ch7(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(7, _value != 0))
     }
-    pub fn read_ppi_chenclr_ch23(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chen_ch8(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(8) as u8)
     }
-    pub fn write_ppi_chenclr_ch23(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_ppi_chen_ch8(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(8, _value != 0))
     }
-    pub fn read_ppi_chenclr_ch24(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chen_ch9(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(9) as u8)
     }
-    pub fn write_ppi_chenclr_ch24(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_ppi_chen_ch9(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(9, _value != 0))
     }
-    pub fn read_ppi_chenclr_ch25(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chen_ch10(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(10) as u8)
     }
-    pub fn write_ppi_chenclr_ch25(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_ppi_chen_ch10(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(10, _value != 0))
     }
-    pub fn read_ppi_chenclr_ch26(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chen_ch11(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(11) as u8)
     }
-    pub fn write_ppi_chenclr_ch26(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_ppi_chen_ch11(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(11, _value != 0))
     }
-    pub fn read_ppi_chenclr_ch27(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chen_ch12(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(12) as u8)
     }
-    pub fn write_ppi_chenclr_ch27(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_ppi_chen_ch12(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(12, _value != 0))
     }
-    pub fn read_ppi_chenclr_ch28(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chen_ch13(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(13) as u8)
     }
-    pub fn write_ppi_chenclr_ch28(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_ppi_chen_ch13(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(13, _value != 0))
     }
-    pub fn read_ppi_chenclr_ch29(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chen_ch14(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(14) as u8)
     }
-    pub fn write_ppi_chenclr_ch29(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_ppi_chen_ch14(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(14, _value != 0))
     }
-    pub fn read_ppi_chenclr_ch30(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chen_ch15(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(15) as u8)
     }
-    pub fn write_ppi_chenclr_ch30(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_ppi_chen_ch15(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(15, _value != 0))
     }
-    pub fn read_ppi_chenclr_ch31(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chen_ch20(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(20) as u8)
     }
-    pub fn write_ppi_chenclr_ch31(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_ppi_chen_ch20(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(20, _value != 0))
     }
-    pub fn read_ppi_chgn_ch0(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chen_ch21(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(21) as u8)
     }
+    #[inline]
+    pub fn write_ppi_chen_ch21(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(21, _value != 0))
+    }
+    #[inline]
+    pub fn read_ppi_chen_ch22(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(22) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chen_ch22(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(22, _value != 0))
+    }
+    #[inline]
+    pub fn read_ppi_chen_ch23(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(23) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chen_ch23(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(23, _value != 0))
+    }
+    #[inline]
+    pub fn read_ppi_chen_ch24(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(24) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chen_ch24(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(24, _value != 0))
+    }
+    #[inline]
+    pub fn read_ppi_chen_ch25(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(25) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chen_ch25(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(25, _value != 0))
+    }
+    #[inline]
+    pub fn read_ppi_chen_ch26(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(26) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chen_ch26(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(26, _value != 0))
+    }
+    #[inline]
+    pub fn read_ppi_chen_ch27(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(27) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chen_ch27(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(27, _value != 0))
+    }
+    #[inline]
+    pub fn read_ppi_chen_ch28(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(28) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chen_ch28(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(28, _value != 0))
+    }
+    #[inline]
+    pub fn read_ppi_chen_ch29(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(29) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chen_ch29(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(29, _value != 0))
+    }
+    #[inline]
+    pub fn read_ppi_chen_ch30(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(30) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chen_ch30(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(30, _value != 0))
+    }
+    #[inline]
+    pub fn read_ppi_chen_ch31(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(31) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chen_ch31(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.ppi_set_on(31, _value != 0))
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch0(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(0) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch0(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(0, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch1(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(1) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch1(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(1, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch2(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(2) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch2(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(2, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch3(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(3) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch3(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(3, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch4(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(4) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch4(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(4, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch5(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(5) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch5(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(5, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch6(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(6) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch6(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(6, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch7(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(7) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch7(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(7, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch8(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(8) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch8(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(8, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch9(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(9) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch9(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(9, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch10(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(10) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch10(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(10, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch11(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(11) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch11(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(11, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch12(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(12) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch12(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(12, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch13(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(13) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch13(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(13, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch14(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(14) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch14(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(14, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch15(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(15) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch15(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(15, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch20(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(20) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch20(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(20, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch21(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(21) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch21(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(21, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch22(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(22) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch22(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(22, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch23(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(23) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch23(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(23, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch24(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(24) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch24(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(24, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch25(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(25) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch25(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(25, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch26(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(26) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch26(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(26, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch27(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(27) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch27(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(27, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch28(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(28) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch28(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(28, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch29(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(29) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch29(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(29, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch30(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(30) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch30(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(30, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenset_ch31(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(31) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenset_ch31(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(31, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch0(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(0) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch0(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(0, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch1(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(1) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch1(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(1, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch2(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(2) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch2(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(2, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch3(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(3) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch3(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(3, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch4(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(4) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch4(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(4, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch5(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(5) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch5(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(5, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch6(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(6) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch6(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(6, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch7(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(7) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch7(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(7, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch8(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(8) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch8(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(8, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch9(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(9) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch9(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(9, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch10(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(10) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch10(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(10, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch11(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(11) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch11(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(11, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch12(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(12) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch12(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(12, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch13(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(13) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch13(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(13, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch14(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(14) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch14(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(14, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch15(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(15) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch15(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(15, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch20(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(20) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch20(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(20, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch21(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(21) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch21(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(21, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch22(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(22) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch22(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(22, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch23(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(23) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch23(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(23, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch24(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(24) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch24(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(24, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch25(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(25) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch25(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(25, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch26(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(26) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch26(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(26, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch27(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(27) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch27(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(27, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch28(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(28) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch28(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(28, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch29(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(29) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch29(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(29, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch30(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(30) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch30(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(30, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chenclr_ch31(&mut self) -> MemResult<u8> {
+        Ok(self.ppi_is_on(31) as u8)
+    }
+    #[inline]
+    pub fn write_ppi_chenclr_ch31(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.ppi_set_on(31, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_ppi_chgn_ch0(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 0) as u8)
+    }
+    #[inline]
     pub fn write_ppi_chgn_ch0(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 0, _value != 0))
     }
-    pub fn read_ppi_chgn_ch1(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch1(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 1) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch1(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 1, _value != 0))
     }
-    pub fn read_ppi_chgn_ch2(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch2(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 2) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch2(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 2, _value != 0))
     }
-    pub fn read_ppi_chgn_ch3(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch3(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 3) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch3(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 3, _value != 0))
     }
-    pub fn read_ppi_chgn_ch4(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch4(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 4) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch4(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 4, _value != 0))
     }
-    pub fn read_ppi_chgn_ch5(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch5(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 5) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch5(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 5, _value != 0))
     }
-    pub fn read_ppi_chgn_ch6(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch6(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 6) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch6(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 6, _value != 0))
     }
-    pub fn read_ppi_chgn_ch7(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch7(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 7) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch7(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 7, _value != 0))
     }
-    pub fn read_ppi_chgn_ch8(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch8(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 8) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch8(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 8, _value != 0))
     }
-    pub fn read_ppi_chgn_ch9(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch9(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 9) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch9(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 9, _value != 0))
     }
-    pub fn read_ppi_chgn_ch10(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch10(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 10) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch10(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 10, _value != 0))
     }
-    pub fn read_ppi_chgn_ch11(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch11(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 11) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch11(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 11, _value != 0))
     }
-    pub fn read_ppi_chgn_ch12(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch12(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 12) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch12(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 12, _value != 0))
     }
-    pub fn read_ppi_chgn_ch13(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch13(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 13) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch13(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 13, _value != 0))
     }
-    pub fn read_ppi_chgn_ch14(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch14(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 14) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch14(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 14, _value != 0))
     }
-    pub fn read_ppi_chgn_ch15(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch15(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 15) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch15(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 15, _value != 0))
     }
-    pub fn read_ppi_chgn_ch20(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch20(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 20) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch20(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 20, _value != 0))
     }
-    pub fn read_ppi_chgn_ch21(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch21(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 21) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch21(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 21, _value != 0))
     }
-    pub fn read_ppi_chgn_ch22(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch22(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 22) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch22(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 22, _value != 0))
     }
-    pub fn read_ppi_chgn_ch23(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch23(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 23) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch23(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 23, _value != 0))
     }
-    pub fn read_ppi_chgn_ch24(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch24(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 24) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch24(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 24, _value != 0))
     }
-    pub fn read_ppi_chgn_ch25(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch25(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 25) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch25(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 25, _value != 0))
     }
-    pub fn read_ppi_chgn_ch26(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch26(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 26) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch26(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 26, _value != 0))
     }
-    pub fn read_ppi_chgn_ch27(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch27(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 27) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch27(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 27, _value != 0))
     }
-    pub fn read_ppi_chgn_ch28(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch28(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 28) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch28(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 28, _value != 0))
     }
-    pub fn read_ppi_chgn_ch29(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch29(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 29) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch29(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 29, _value != 0))
     }
-    pub fn read_ppi_chgn_ch30(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch30(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 30) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch30(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 30, _value != 0))
     }
-    pub fn read_ppi_chgn_ch31(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_ppi_chgn_ch31(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.ppi_is_included(_dim, 31) as u8)
     }
+    #[inline]
     pub fn write_ppi_chgn_ch31(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.ppi_set_included(_dim, 31, _value != 0))
     }
     pub fn read_ficr_codepagesize(
         &mut self,
@@ -10472,9 +9320,7 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_ficr_deviceaddrtype_deviceaddrtype(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_ficr_deviceaddrtype_deviceaddrtype(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
@@ -10495,16 +9341,12 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_ficr_overrideen_nrf_1mbit(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_ficr_overrideen_nrf_1mbit(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
     }
-    pub fn read_ficr_overrideen_ble_1mbit(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_ficr_overrideen_ble_1mbit(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
@@ -10574,10 +9416,7 @@ impl Peripherals {
         const _RESET_MASK: u64 = 255u64;
         todo!()
     }
-    pub fn write_uicr_rbpconf_pr0(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_uicr_rbpconf_pr0(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
     pub fn read_uicr_rbpconf_pall(&self) -> MemResult<u8> {
@@ -10585,21 +9424,16 @@ impl Peripherals {
         const _RESET_MASK: u64 = 255u64;
         todo!()
     }
-    pub fn write_uicr_rbpconf_pall(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
+    pub fn write_uicr_rbpconf_pall(&mut self, _value: u8) -> MemResult<()> {
         todo!()
     }
-    pub fn read_uicr_xtalfreq_xtalfreq(
-        &self,
-    ) -> MemResult<u8> {
+    pub fn read_uicr_xtalfreq_xtalfreq(&mut self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 255u64;
         todo!()
     }
     pub fn write_uicr_xtalfreq_xtalfreq(
-        &self,
+        &mut self,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
@@ -10707,2351 +9541,2122 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_gpio_out_pin0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin0(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin1(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin2(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin3(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin4(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin4(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin5(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin5(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin6(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin6(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin7(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin7(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin8(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin8(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin9(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin9(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin10(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin10(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin11(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin11(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin12(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin12(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin13(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin13(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin14(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin14(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin15(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin15(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin16(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin16(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin17(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin17(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin18(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin18(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin19(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin19(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin20(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin20(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin21(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin21(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin22(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin22(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin23(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin23(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin24(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin24(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin25(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin25(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin26(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin26(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin27(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin27(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin28(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin28(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin29(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin29(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin30(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin30(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_out_pin31(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_out_pin31(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin0(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin1(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin2(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin3(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin4(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin4(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin5(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin5(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin6(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin6(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin7(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin7(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin8(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin8(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin9(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin9(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin10(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin10(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin11(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin11(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin12(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin12(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin13(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin13(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin14(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin14(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin15(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin15(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin16(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin16(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin17(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin17(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin18(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin18(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin19(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin19(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin20(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin20(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin21(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin21(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin22(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin22(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin23(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin23(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin24(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin24(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin25(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin25(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin26(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin26(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin27(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin27(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin28(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin28(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin29(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin29(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin30(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin30(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outset_pin31(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outset_pin31(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin0(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin1(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin2(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin3(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin4(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin4(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin5(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin5(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin6(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin6(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin7(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin7(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin8(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin8(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin9(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin9(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin10(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin10(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin11(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin11(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin12(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin12(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin13(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin13(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin14(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin14(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin15(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin15(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin16(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin16(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin17(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin17(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin18(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin18(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin19(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin19(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin20(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin20(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin21(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin21(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin22(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin22(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin23(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin23(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin24(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin24(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin25(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin25(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin26(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin26(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin27(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin27(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin28(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin28(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin29(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin29(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin30(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin30(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_outclr_pin31(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_outclr_pin31(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_in_pin0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin4(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin5(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin6(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin7(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin8(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin9(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin10(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin11(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin12(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin13(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin14(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin15(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin16(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin17(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin18(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin19(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin20(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin21(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin22(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin23(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin24(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin25(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin26(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin27(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin28(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin29(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin30(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_in_pin31(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn read_gpio_dir_pin0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin0(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin1(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin2(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin3(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin4(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin4(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin5(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin5(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin6(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin6(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin7(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin7(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin8(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin8(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin9(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin9(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin10(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin10(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin11(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin11(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin12(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin12(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin13(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin13(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin14(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin14(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin15(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin15(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin16(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin16(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin17(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin17(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin18(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin18(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin19(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin19(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin20(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin20(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin21(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin21(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin22(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin22(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin23(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin23(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin24(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin24(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin25(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin25(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin26(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin26(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin27(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin27(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin28(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin28(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin29(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin29(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin30(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin30(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dir_pin31(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dir_pin31(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin0(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin1(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin2(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin3(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin4(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin4(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin5(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin5(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin6(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin6(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin7(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin7(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin8(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin8(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin9(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin9(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin10(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin10(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin11(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin11(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin12(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin12(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin13(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin13(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin14(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin14(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin15(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin15(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin16(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin16(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin17(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin17(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin18(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin18(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin19(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin19(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin20(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin20(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin21(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin21(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin22(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin22(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin23(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin23(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin24(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin24(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin25(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin25(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin26(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin26(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin27(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin27(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin28(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin28(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin29(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin29(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin30(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin30(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirset_pin31(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirset_pin31(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin0(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin1(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin2(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin3(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin4(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin4(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin5(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin5(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin6(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin6(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin7(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin7(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin8(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin8(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin9(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin9(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin10(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin10(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin11(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin11(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin12(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin12(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin13(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin13(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin14(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin14(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin15(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin15(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin16(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin16(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin17(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin17(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin18(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin18(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin19(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin19(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin20(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin20(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin21(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin21(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin22(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin22(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin23(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin23(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin24(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin24(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin25(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin25(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin26(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin26(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin27(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin27(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin28(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin28(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin29(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin29(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin30(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin30(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_dirclr_pin31(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
-    pub fn write_gpio_dirclr_pin31(
-        &self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo!()
-    }
-    pub fn read_gpio_pin_cnfn_dir(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
-    }
+    #[inline]
+    pub fn read_gpio_out_pin0(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(0) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin0(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(0, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin1(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(1) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin1(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(1, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin2(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(2) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin2(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(2, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin3(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(3) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin3(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(3, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin4(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(4) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin4(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(4, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin5(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(5) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin5(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(5, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin6(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(6) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin6(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(6, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin7(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(7) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin7(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(7, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin8(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(8) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin8(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(8, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin9(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(9) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin9(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(9, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin10(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(10) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin10(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(10, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin11(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(11) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin11(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(11, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin12(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(12) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin12(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(12, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin13(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(13) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin13(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(13, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin14(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(14) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin14(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(14, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin15(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(15) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin15(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(15, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin16(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(16) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin16(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(16, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin17(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(17) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin17(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(17, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin18(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(18) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin18(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(18, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin19(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(19) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin19(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(19, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin20(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(20) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin20(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(20, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin21(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(21) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin21(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(21, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin22(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(22) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin22(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(22, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin23(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(23) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin23(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(23, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin24(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(24) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin24(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(24, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin25(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(25) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin25(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(25, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin26(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(26) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin26(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(26, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin27(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(27) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin27(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(27, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin28(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(28) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin28(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(28, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin29(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(29) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin29(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(29, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin30(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(30) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin30(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(30, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_out_pin31(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(31) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_out_pin31(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_out_state(31, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin0(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(0) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin0(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(0, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin1(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(1) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin1(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(1, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin2(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(2) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin2(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(2, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin3(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(3) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin3(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(3, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin4(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(4) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin4(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(4, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin5(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(5) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin5(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(5, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin6(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(6) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin6(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(6, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin7(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(7) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin7(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(7, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin8(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(8) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin8(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(8, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin9(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(9) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin9(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(9, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin10(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(10) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin10(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(10, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin11(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(11) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin11(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(11, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin12(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(12) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin12(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(12, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin13(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(13) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin13(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(13, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin14(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(14) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin14(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(14, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin15(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(15) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin15(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(15, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin16(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(16) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin16(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(16, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin17(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(17) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin17(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(17, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin18(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(18) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin18(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(18, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin19(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(19) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin19(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(19, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin20(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(20) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin20(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(20, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin21(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(21) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin21(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(21, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin22(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(22) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin22(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(22, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin23(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(23) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin23(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(23, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin24(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(24) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin24(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(24, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin25(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(25) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin25(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(25, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin26(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(26) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin26(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(26, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin27(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(27) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin27(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(27, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin28(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(28) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin28(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(28, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin29(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(29) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin29(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(29, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin30(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(30) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin30(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(30, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outset_pin31(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(31) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outset_pin31(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(31, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin0(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(0) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin0(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(0, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin1(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(1) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin1(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(1, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin2(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(2) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin2(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(2, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin3(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(3) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin3(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(3, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin4(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(4) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin4(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(4, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin5(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(5) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin5(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(5, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin6(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(6) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin6(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(6, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin7(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(7) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin7(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(7, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin8(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(8) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin8(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(8, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin9(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(9) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin9(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(9, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin10(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(10) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin10(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(10, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin11(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(11) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin11(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(11, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin12(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(12) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin12(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(12, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin13(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(13) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin13(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(13, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin14(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(14) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin14(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(14, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin15(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(15) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin15(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(15, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin16(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(16) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin16(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(16, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin17(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(17) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin17(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(17, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin18(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(18) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin18(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(18, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin19(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(19) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin19(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(19, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin20(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(20) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin20(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(20, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin21(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(21) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin21(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(21, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin22(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(22) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin22(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(22, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin23(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(23) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin23(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(23, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin24(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(24) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin24(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(24, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin25(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(25) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin25(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(25, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin26(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(26) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin26(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(26, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin27(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(27) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin27(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(27, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin28(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(28) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin28(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(28, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin29(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(29) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin29(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(29, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin30(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(30) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin30(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(30, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_outclr_pin31(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_out_state(31) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_outclr_pin31(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_out_state(31, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_in_pin0(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(0) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin1(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(1) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin2(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(2) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin3(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(3) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin4(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(4) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin5(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(5) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin6(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(6) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin7(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(7) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin8(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(8) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin9(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(9) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin10(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(10) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin11(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(11) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin12(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(12) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin13(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(13) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin14(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(14) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin15(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(15) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin16(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(16) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin17(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(17) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin18(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(18) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin19(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(19) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin20(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(20) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin21(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(21) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin22(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(22) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin23(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(23) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin24(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(24) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin25(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(25) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin26(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(26) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin27(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(27) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin28(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(28) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin29(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(29) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin30(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(30) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_in_pin31(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_read_input(31) as u8)
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin0(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(0) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin0(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(0, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin1(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(1) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin1(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(1, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin2(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(2) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin2(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(2, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin3(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(3) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin3(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(3, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin4(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(4) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin4(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(4, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin5(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(5) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin5(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(5, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin6(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(6) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin6(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(6, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin7(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(7) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin7(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(7, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin8(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(8) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin8(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(8, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin9(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(9) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin9(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(9, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin10(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(10) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin10(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(10, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin11(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(11) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin11(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(11, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin12(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(12) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin12(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(12, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin13(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(13) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin13(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(13, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin14(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(14) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin14(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(14, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin15(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(15) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin15(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(15, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin16(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(16) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin16(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(16, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin17(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(17) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin17(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(17, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin18(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(18) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin18(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(18, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin19(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(19) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin19(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(19, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin20(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(20) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin20(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(20, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin21(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(21) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin21(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(21, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin22(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(22) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin22(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(22, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin23(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(23) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin23(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(23, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin24(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(24) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin24(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(24, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin25(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(25) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin25(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(25, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin26(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(26) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin26(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(26, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin27(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(27) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin27(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(27, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin28(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(28) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin28(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(28, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin29(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(29) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin29(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(29, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin30(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(30) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin30(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(30, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dir_pin31(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(31) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dir_pin31(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.gpio_set_direction(31, _value != 0))
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin0(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(0) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin0(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(0, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin1(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(1) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin1(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(1, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin2(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(2) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin2(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(2, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin3(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(3) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin3(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(3, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin4(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(4) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin4(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(4, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin5(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(5) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin5(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(5, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin6(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(6) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin6(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(6, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin7(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(7) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin7(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(7, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin8(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(8) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin8(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(8, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin9(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(9) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin9(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(9, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin10(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(10) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin10(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(10, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin11(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(11) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin11(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(11, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin12(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(12) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin12(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(12, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin13(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(13) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin13(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(13, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin14(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(14) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin14(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(14, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin15(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(15) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin15(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(15, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin16(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(16) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin16(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(16, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin17(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(17) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin17(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(17, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin18(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(18) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin18(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(18, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin19(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(19) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin19(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(19, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin20(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(20) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin20(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(20, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin21(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(21) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin21(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(21, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin22(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(22) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin22(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(22, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin23(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(23) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin23(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(23, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin24(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(24) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin24(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(24, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin25(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(25) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin25(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(25, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin26(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(26) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin26(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(26, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin27(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(27) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin27(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(27, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin28(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(28) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin28(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(28, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin29(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(29) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin29(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(29, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin30(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(30) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin30(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(30, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirset_pin31(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(31) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirset_pin31(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(31, true);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin0(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(0) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin0(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(0, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin1(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(1) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin1(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(1, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin2(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(2) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin2(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(2, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin3(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(3) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin3(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(3, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin4(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(4) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin4(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(4, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin5(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(5) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin5(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(5, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin6(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(6) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin6(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(6, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin7(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(7) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin7(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(7, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin8(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(8) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin8(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(8, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin9(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(9) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin9(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(9, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin10(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(10) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin10(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(10, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin11(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(11) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin11(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(11, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin12(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(12) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin12(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(12, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin13(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(13) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin13(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(13, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin14(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(14) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin14(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(14, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin15(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(15) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin15(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(15, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin16(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(16) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin16(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(16, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin17(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(17) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin17(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(17, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin18(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(18) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin18(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(18, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin19(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(19) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin19(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(19, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin20(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(20) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin20(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(20, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin21(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(21) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin21(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(21, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin22(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(22) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin22(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(22, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin23(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(23) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin23(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(23, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin24(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(24) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin24(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(24, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin25(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(25) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin25(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(25, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin26(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(26) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin26(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(26, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin27(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(27) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin27(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(27, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin28(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(28) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin28(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(28, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin29(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(29) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin29(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(29, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin30(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(30) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin30(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(30, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_dirclr_pin31(&mut self) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(31) as u8)
+    }
+    #[inline]
+    pub fn write_gpio_dirclr_pin31(&mut self, _value: u8) -> MemResult<()> {
+        if _value != 0 {
+            self.gpio_set_direction(31, false);
+        }
+        Ok(())
+    }
+    #[inline]
+    pub fn read_gpio_pin_cnfn_dir(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.gpio_get_direction(_dim as u8) as u8)
+    }
+    #[inline]
     pub fn write_gpio_pin_cnfn_dir(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.gpio_set_direction(_dim as u8, _value != 0))
     }
-    pub fn read_gpio_pin_cnfn_input(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 1u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+    #[inline]
+    pub fn read_gpio_pin_cnfn_input(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.gpio_is_connected_buffer(_dim as u8) as u8)
     }
+    #[inline]
     pub fn write_gpio_pin_cnfn_input(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.gpio_set_connected_buffer(_dim as u8, _value != 0))
     }
-    pub fn read_gpio_pin_cnfn_pull(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 3u64;
-        todo!()
+    #[inline]
+    pub fn read_gpio_pin_cnfn_pull(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.gpio_get_pull(_dim as u8) as u8)
     }
+    #[inline]
     pub fn write_gpio_pin_cnfn_pull(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        // TODO allow invalid values in GpioPull??
+        Ok(self.gpio_set_pull(
+            _dim as u8,
+            _value.try_into().map_err(|_| MemError::WriteViolation)?,
+        ))
     }
-    pub fn read_gpio_pin_cnfn_drive(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
+    #[inline]
+    pub fn read_gpio_pin_cnfn_drive(&mut self, _dim: usize) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 7u64;
         todo!()
     }
+    #[inline]
     pub fn write_gpio_pin_cnfn_drive(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_gpio_pin_cnfn_sense(
-        &self,
-        _dim: usize,
-    ) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 3u64;
-        todo!()
+    #[inline]
+    pub fn read_gpio_pin_cnfn_sense(&mut self, _dim: usize) -> MemResult<u8> {
+        Ok(self.gpio_get_sense(_dim as u8) as u8)
     }
+    #[inline]
     pub fn write_gpio_pin_cnfn_sense(
-        &self,
+        &mut self,
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        // TODO allow invalid values in GpioSense??
+        Ok(self.gpio_set_sense(
+            _dim as u8,
+            _value.try_into().map_err(|_| MemError::WriteViolation)?,
+        ))
     }
 }
