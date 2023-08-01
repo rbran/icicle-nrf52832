@@ -1,45 +1,13 @@
 use icicle_vm::cpu::mem::{MemError, MemResult};
 
-#[repr(u8)]
-pub enum GpioPull {
-    None = 0,
-    Down = 1,
-    Up = 3,
-}
-impl TryFrom<u8> for GpioPull {
-    type Error = ();
-    fn try_from(value: u8) -> Result<Self, Self::Error> {
-        match value {
-            0 => Ok(GpioPull::None),
-            1 => Ok(GpioPull::Down),
-            3 => Ok(GpioPull::Up),
-            _ => Err(()),
-        }
-    }
-}
-
-#[repr(u8)]
-pub enum GpioSense {
-    Disabled = 0,
-    High = 2,
-    Low = 3,
-}
-impl TryFrom<u8> for GpioSense {
-    type Error = ();
-    fn try_from(value: u8) -> Result<Self, Self::Error> {
-        match value {
-            0 => Ok(GpioSense::Disabled),
-            2 => Ok(GpioSense::High),
-            3 => Ok(GpioSense::Low),
-            _ => Err(()),
-        }
-    }
-}
+mod gpio;
+use gpio::*;
 
 #[derive(Default)]
 pub struct Peripherals {
     #[doc = "TODO: implement the peripherals data here"]
-    _todo: (),
+    pub _todo: (),
+    pub gpio: [Gpio; 32],
 }
 impl Peripherals {
     pub fn ram_is_on(&mut self, _block: u8) -> bool {
@@ -106,58 +74,6 @@ impl Peripherals {
         _value: bool,
     ) {
         todo!()
-    }
-
-    pub fn gpio_out_state(&mut self, _port: u8) -> bool {
-        todo!()
-    }
-    pub fn gpio_set_out_state(&mut self, _port: u8, _high: bool) {
-        todo!()
-    }
-    pub fn gpio_read_input(&mut self, _port: u8) -> bool {
-        todo!()
-    }
-    pub fn gpio_get_direction(&mut self, _port: u8) -> bool {
-        todo!()
-    }
-    pub fn gpio_set_direction(&mut self, _port: u8, _output: bool) {
-        todo!()
-    }
-    pub fn gpio_is_connected_buffer(&mut self, _port: u8) -> bool {
-        todo!()
-    }
-    pub fn gpio_set_connected_buffer(&mut self, _port: u8, _output: bool) {
-        todo!()
-    }
-    pub fn gpio_get_pull(&mut self, _port: u8) -> GpioPull {
-        todo!()
-    }
-    pub fn gpio_set_pull(&mut self, _port: u8, _pull: GpioPull) {
-        todo!()
-    }
-    pub fn gpio_get_sense(&mut self, _port: u8) -> u8 {
-        todo!()
-    }
-    pub fn gpio_set_sense(&mut self, _port: u8, _sense: u8) {
-        match _sense {
-            // Standard '0', standard '1'
-            0 => todo!(),
-            // High drive '0', standard '1'
-            1 => todo!(),
-            // Standard '0', high drive '1'
-            2 => todo!(),
-            // High drive '0', high 'drive '1''
-            3 => todo!(),
-            // Disconnect '0' standard '1'
-            4 => todo!(),
-            // Disconnect '0', high drive '1'
-            5 => todo!(),
-            // Standard '0'. disconnect '1'
-            6 => todo!(),
-            // High drive '0', disconnect '1'
-            7 => todo!(),
-            _ => unreachable!(),
-        }
     }
 
     pub fn write_power_tasks_constlat(
@@ -9543,2055 +9459,2055 @@ impl Peripherals {
     }
     #[inline]
     pub fn read_gpio_out_pin0(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(0) as u8)
+        Ok(self.gpio[0].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin0(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(0, _value != 0))
+        Ok(self.gpio[0].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin1(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(1) as u8)
+        Ok(self.gpio[1].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin1(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(1, _value != 0))
+        Ok(self.gpio[1].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin2(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(2) as u8)
+        Ok(self.gpio[2].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin2(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(2, _value != 0))
+        Ok(self.gpio[2].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin3(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(3) as u8)
+        Ok(self.gpio[3].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin3(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(3, _value != 0))
+        Ok(self.gpio[3].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin4(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(4) as u8)
+        Ok(self.gpio[4].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin4(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(4, _value != 0))
+        Ok(self.gpio[4].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin5(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(5) as u8)
+        Ok(self.gpio[5].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin5(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(5, _value != 0))
+        Ok(self.gpio[5].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin6(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(6) as u8)
+        Ok(self.gpio[6].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin6(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(6, _value != 0))
+        Ok(self.gpio[6].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin7(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(7) as u8)
+        Ok(self.gpio[7].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin7(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(7, _value != 0))
+        Ok(self.gpio[7].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin8(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(8) as u8)
+        Ok(self.gpio[8].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin8(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(8, _value != 0))
+        Ok(self.gpio[8].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin9(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(9) as u8)
+        Ok(self.gpio[9].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin9(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(9, _value != 0))
+        Ok(self.gpio[9].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin10(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(10) as u8)
+        Ok(self.gpio[10].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin10(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(10, _value != 0))
+        Ok(self.gpio[10].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin11(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(11) as u8)
+        Ok(self.gpio[11].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin11(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(11, _value != 0))
+        Ok(self.gpio[11].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin12(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(12) as u8)
+        Ok(self.gpio[12].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin12(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(12, _value != 0))
+        Ok(self.gpio[12].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin13(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(13) as u8)
+        Ok(self.gpio[13].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin13(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(13, _value != 0))
+        Ok(self.gpio[13].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin14(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(14) as u8)
+        Ok(self.gpio[14].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin14(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(14, _value != 0))
+        Ok(self.gpio[14].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin15(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(15) as u8)
+        Ok(self.gpio[15].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin15(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(15, _value != 0))
+        Ok(self.gpio[15].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin16(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(16) as u8)
+        Ok(self.gpio[16].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin16(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(16, _value != 0))
+        Ok(self.gpio[16].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin17(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(17) as u8)
+        Ok(self.gpio[17].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin17(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(17, _value != 0))
+        Ok(self.gpio[17].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin18(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(18) as u8)
+        Ok(self.gpio[18].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin18(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(18, _value != 0))
+        Ok(self.gpio[18].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin19(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(19) as u8)
+        Ok(self.gpio[19].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin19(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(19, _value != 0))
+        Ok(self.gpio[19].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin20(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(20) as u8)
+        Ok(self.gpio[20].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin20(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(20, _value != 0))
+        Ok(self.gpio[20].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin21(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(21) as u8)
+        Ok(self.gpio[21].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin21(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(21, _value != 0))
+        Ok(self.gpio[21].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin22(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(22) as u8)
+        Ok(self.gpio[22].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin22(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(22, _value != 0))
+        Ok(self.gpio[22].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin23(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(23) as u8)
+        Ok(self.gpio[23].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin23(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(23, _value != 0))
+        Ok(self.gpio[23].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin24(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(24) as u8)
+        Ok(self.gpio[24].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin24(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(24, _value != 0))
+        Ok(self.gpio[24].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin25(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(25) as u8)
+        Ok(self.gpio[25].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin25(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(25, _value != 0))
+        Ok(self.gpio[25].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin26(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(26) as u8)
+        Ok(self.gpio[26].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin26(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(26, _value != 0))
+        Ok(self.gpio[26].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin27(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(27) as u8)
+        Ok(self.gpio[27].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin27(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(27, _value != 0))
+        Ok(self.gpio[27].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin28(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(28) as u8)
+        Ok(self.gpio[28].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin28(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(28, _value != 0))
+        Ok(self.gpio[28].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin29(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(29) as u8)
+        Ok(self.gpio[29].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin29(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(29, _value != 0))
+        Ok(self.gpio[29].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin30(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(30) as u8)
+        Ok(self.gpio[30].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin30(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(30, _value != 0))
+        Ok(self.gpio[30].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_out_pin31(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(31) as u8)
+        Ok(self.gpio[31].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_out_pin31(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_out_state(31, _value != 0))
+        Ok(self.gpio[31].set_out_high(_value != 0))
     }
     #[inline]
     pub fn read_gpio_outset_pin0(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(0) as u8)
+        Ok(self.gpio[0].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin0(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(0, true);
+            self.gpio[0].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin1(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(1) as u8)
+        Ok(self.gpio[1].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin1(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(1, true);
+            self.gpio[1].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin2(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(2) as u8)
+        Ok(self.gpio[2].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin2(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(2, true);
+            self.gpio[2].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin3(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(3) as u8)
+        Ok(self.gpio[3].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin3(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(3, true);
+            self.gpio[3].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin4(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(4) as u8)
+        Ok(self.gpio[4].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin4(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(4, true);
+            self.gpio[4].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin5(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(5) as u8)
+        Ok(self.gpio[5].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin5(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(5, true);
+            self.gpio[5].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin6(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(6) as u8)
+        Ok(self.gpio[6].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin6(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(6, true);
+            self.gpio[6].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin7(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(7) as u8)
+        Ok(self.gpio[7].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin7(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(7, true);
+            self.gpio[7].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin8(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(8) as u8)
+        Ok(self.gpio[8].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin8(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(8, true);
+            self.gpio[8].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin9(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(9) as u8)
+        Ok(self.gpio[9].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin9(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(9, true);
+            self.gpio[9].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin10(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(10) as u8)
+        Ok(self.gpio[10].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin10(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(10, true);
+            self.gpio[10].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin11(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(11) as u8)
+        Ok(self.gpio[11].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin11(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(11, true);
+            self.gpio[11].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin12(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(12) as u8)
+        Ok(self.gpio[12].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin12(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(12, true);
+            self.gpio[12].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin13(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(13) as u8)
+        Ok(self.gpio[13].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin13(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(13, true);
+            self.gpio[13].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin14(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(14) as u8)
+        Ok(self.gpio[14].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin14(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(14, true);
+            self.gpio[14].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin15(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(15) as u8)
+        Ok(self.gpio[15].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin15(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(15, true);
+            self.gpio[15].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin16(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(16) as u8)
+        Ok(self.gpio[16].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin16(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(16, true);
+            self.gpio[16].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin17(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(17) as u8)
+        Ok(self.gpio[17].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin17(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(17, true);
+            self.gpio[17].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin18(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(18) as u8)
+        Ok(self.gpio[18].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin18(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(18, true);
+            self.gpio[18].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin19(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(19) as u8)
+        Ok(self.gpio[19].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin19(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(19, true);
+            self.gpio[19].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin20(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(20) as u8)
+        Ok(self.gpio[20].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin20(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(20, true);
+            self.gpio[20].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin21(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(21) as u8)
+        Ok(self.gpio[21].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin21(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(21, true);
+            self.gpio[21].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin22(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(22) as u8)
+        Ok(self.gpio[22].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin22(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(22, true);
+            self.gpio[22].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin23(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(23) as u8)
+        Ok(self.gpio[23].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin23(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(23, true);
+            self.gpio[23].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin24(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(24) as u8)
+        Ok(self.gpio[24].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin24(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(24, true);
+            self.gpio[24].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin25(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(25) as u8)
+        Ok(self.gpio[25].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin25(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(25, true);
+            self.gpio[25].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin26(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(26) as u8)
+        Ok(self.gpio[26].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin26(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(26, true);
+            self.gpio[26].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin27(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(27) as u8)
+        Ok(self.gpio[27].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin27(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(27, true);
+            self.gpio[27].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin28(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(28) as u8)
+        Ok(self.gpio[28].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin28(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(28, true);
+            self.gpio[28].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin29(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(29) as u8)
+        Ok(self.gpio[29].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin29(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(29, true);
+            self.gpio[29].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin30(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(30) as u8)
+        Ok(self.gpio[30].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin30(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(30, true);
+            self.gpio[30].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outset_pin31(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(31) as u8)
+        Ok(self.gpio[31].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outset_pin31(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(31, true);
+            self.gpio[31].set_out_high(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin0(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(0) as u8)
+        Ok(self.gpio[0].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin0(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(0, false);
+            self.gpio[0].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin1(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(1) as u8)
+        Ok(self.gpio[1].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin1(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(1, false);
+            self.gpio[1].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin2(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(2) as u8)
+        Ok(self.gpio[2].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin2(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(2, false);
+            self.gpio[2].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin3(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(3) as u8)
+        Ok(self.gpio[3].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin3(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(3, false);
+            self.gpio[3].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin4(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(4) as u8)
+        Ok(self.gpio[4].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin4(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(4, false);
+            self.gpio[4].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin5(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(5) as u8)
+        Ok(self.gpio[5].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin5(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(5, false);
+            self.gpio[5].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin6(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(6) as u8)
+        Ok(self.gpio[6].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin6(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(6, false);
+            self.gpio[6].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin7(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(7) as u8)
+        Ok(self.gpio[7].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin7(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(7, false);
+            self.gpio[7].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin8(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(8) as u8)
+        Ok(self.gpio[8].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin8(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(8, false);
+            self.gpio[8].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin9(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(9) as u8)
+        Ok(self.gpio[9].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin9(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(9, false);
+            self.gpio[9].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin10(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(10) as u8)
+        Ok(self.gpio[10].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin10(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(10, false);
+            self.gpio[10].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin11(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(11) as u8)
+        Ok(self.gpio[11].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin11(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(11, false);
+            self.gpio[11].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin12(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(12) as u8)
+        Ok(self.gpio[12].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin12(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(12, false);
+            self.gpio[12].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin13(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(13) as u8)
+        Ok(self.gpio[13].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin13(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(13, false);
+            self.gpio[13].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin14(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(14) as u8)
+        Ok(self.gpio[14].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin14(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(14, false);
+            self.gpio[14].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin15(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(15) as u8)
+        Ok(self.gpio[15].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin15(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(15, false);
+            self.gpio[15].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin16(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(16) as u8)
+        Ok(self.gpio[16].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin16(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(16, false);
+            self.gpio[16].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin17(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(17) as u8)
+        Ok(self.gpio[17].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin17(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(17, false);
+            self.gpio[17].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin18(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(18) as u8)
+        Ok(self.gpio[18].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin18(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(18, false);
+            self.gpio[18].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin19(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(19) as u8)
+        Ok(self.gpio[19].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin19(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(19, false);
+            self.gpio[19].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin20(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(20) as u8)
+        Ok(self.gpio[20].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin20(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(20, false);
+            self.gpio[20].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin21(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(21) as u8)
+        Ok(self.gpio[21].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin21(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(21, false);
+            self.gpio[21].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin22(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(22) as u8)
+        Ok(self.gpio[22].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin22(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(22, false);
+            self.gpio[22].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin23(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(23) as u8)
+        Ok(self.gpio[23].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin23(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(23, false);
+            self.gpio[23].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin24(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(24) as u8)
+        Ok(self.gpio[24].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin24(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(24, false);
+            self.gpio[24].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin25(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(25) as u8)
+        Ok(self.gpio[25].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin25(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(25, false);
+            self.gpio[25].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin26(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(26) as u8)
+        Ok(self.gpio[26].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin26(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(26, false);
+            self.gpio[26].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin27(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(27) as u8)
+        Ok(self.gpio[27].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin27(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(27, false);
+            self.gpio[27].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin28(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(28) as u8)
+        Ok(self.gpio[28].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin28(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(28, false);
+            self.gpio[28].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin29(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(29) as u8)
+        Ok(self.gpio[29].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin29(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(29, false);
+            self.gpio[29].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin30(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(30) as u8)
+        Ok(self.gpio[30].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin30(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(30, false);
+            self.gpio[30].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_outclr_pin31(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_out_state(31) as u8)
+        Ok(self.gpio[31].is_out_high() as u8)
     }
     #[inline]
     pub fn write_gpio_outclr_pin31(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_out_state(31, false);
+            self.gpio[31].set_out_high(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_in_pin0(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(0) as u8)
+        Ok(self.gpio[0].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin1(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(1) as u8)
+        Ok(self.gpio[1].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin2(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(2) as u8)
+        Ok(self.gpio[2].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin3(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(3) as u8)
+        Ok(self.gpio[3].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin4(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(4) as u8)
+        Ok(self.gpio[4].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin5(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(5) as u8)
+        Ok(self.gpio[5].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin6(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(6) as u8)
+        Ok(self.gpio[6].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin7(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(7) as u8)
+        Ok(self.gpio[7].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin8(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(8) as u8)
+        Ok(self.gpio[8].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin9(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(9) as u8)
+        Ok(self.gpio[9].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin10(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(10) as u8)
+        Ok(self.gpio[10].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin11(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(11) as u8)
+        Ok(self.gpio[11].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin12(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(12) as u8)
+        Ok(self.gpio[12].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin13(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(13) as u8)
+        Ok(self.gpio[13].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin14(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(14) as u8)
+        Ok(self.gpio[14].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin15(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(15) as u8)
+        Ok(self.gpio[15].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin16(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(16) as u8)
+        Ok(self.gpio[16].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin17(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(17) as u8)
+        Ok(self.gpio[17].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin18(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(18) as u8)
+        Ok(self.gpio[18].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin19(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(19) as u8)
+        Ok(self.gpio[19].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin20(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(20) as u8)
+        Ok(self.gpio[20].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin21(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(21) as u8)
+        Ok(self.gpio[21].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin22(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(22) as u8)
+        Ok(self.gpio[22].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin23(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(23) as u8)
+        Ok(self.gpio[23].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin24(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(24) as u8)
+        Ok(self.gpio[24].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin25(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(25) as u8)
+        Ok(self.gpio[25].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin26(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(26) as u8)
+        Ok(self.gpio[26].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin27(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(27) as u8)
+        Ok(self.gpio[27].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin28(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(28) as u8)
+        Ok(self.gpio[28].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin29(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(29) as u8)
+        Ok(self.gpio[29].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin30(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(30) as u8)
+        Ok(self.gpio[30].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_in_pin31(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_read_input(31) as u8)
+        Ok(self.gpio[31].read_input() as u8)
     }
     #[inline]
     pub fn read_gpio_dir_pin0(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(0) as u8)
+        Ok(self.gpio[0].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin0(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(0, _value != 0))
+        Ok(self.gpio[0].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin1(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(1) as u8)
+        Ok(self.gpio[1].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin1(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(1, _value != 0))
+        Ok(self.gpio[1].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin2(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(2) as u8)
+        Ok(self.gpio[2].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin2(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(2, _value != 0))
+        Ok(self.gpio[2].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin3(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(3) as u8)
+        Ok(self.gpio[3].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin3(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(3, _value != 0))
+        Ok(self.gpio[3].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin4(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(4) as u8)
+        Ok(self.gpio[4].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin4(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(4, _value != 0))
+        Ok(self.gpio[4].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin5(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(5) as u8)
+        Ok(self.gpio[5].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin5(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(5, _value != 0))
+        Ok(self.gpio[5].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin6(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(6) as u8)
+        Ok(self.gpio[6].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin6(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(6, _value != 0))
+        Ok(self.gpio[6].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin7(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(7) as u8)
+        Ok(self.gpio[7].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin7(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(7, _value != 0))
+        Ok(self.gpio[7].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin8(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(8) as u8)
+        Ok(self.gpio[8].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin8(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(8, _value != 0))
+        Ok(self.gpio[8].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin9(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(9) as u8)
+        Ok(self.gpio[9].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin9(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(9, _value != 0))
+        Ok(self.gpio[9].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin10(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(10) as u8)
+        Ok(self.gpio[10].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin10(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(10, _value != 0))
+        Ok(self.gpio[10].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin11(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(11) as u8)
+        Ok(self.gpio[11].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin11(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(11, _value != 0))
+        Ok(self.gpio[11].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin12(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(12) as u8)
+        Ok(self.gpio[12].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin12(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(12, _value != 0))
+        Ok(self.gpio[12].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin13(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(13) as u8)
+        Ok(self.gpio[13].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin13(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(13, _value != 0))
+        Ok(self.gpio[13].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin14(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(14) as u8)
+        Ok(self.gpio[14].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin14(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(14, _value != 0))
+        Ok(self.gpio[14].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin15(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(15) as u8)
+        Ok(self.gpio[15].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin15(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(15, _value != 0))
+        Ok(self.gpio[15].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin16(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(16) as u8)
+        Ok(self.gpio[16].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin16(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(16, _value != 0))
+        Ok(self.gpio[16].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin17(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(17) as u8)
+        Ok(self.gpio[17].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin17(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(17, _value != 0))
+        Ok(self.gpio[17].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin18(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(18) as u8)
+        Ok(self.gpio[18].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin18(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(18, _value != 0))
+        Ok(self.gpio[18].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin19(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(19) as u8)
+        Ok(self.gpio[19].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin19(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(19, _value != 0))
+        Ok(self.gpio[19].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin20(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(20) as u8)
+        Ok(self.gpio[20].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin20(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(20, _value != 0))
+        Ok(self.gpio[20].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin21(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(21) as u8)
+        Ok(self.gpio[21].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin21(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(21, _value != 0))
+        Ok(self.gpio[21].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin22(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(22) as u8)
+        Ok(self.gpio[22].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin22(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(22, _value != 0))
+        Ok(self.gpio[22].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin23(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(23) as u8)
+        Ok(self.gpio[23].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin23(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(23, _value != 0))
+        Ok(self.gpio[23].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin24(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(24) as u8)
+        Ok(self.gpio[24].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin24(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(24, _value != 0))
+        Ok(self.gpio[24].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin25(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(25) as u8)
+        Ok(self.gpio[25].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin25(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(25, _value != 0))
+        Ok(self.gpio[25].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin26(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(26) as u8)
+        Ok(self.gpio[26].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin26(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(26, _value != 0))
+        Ok(self.gpio[26].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin27(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(27) as u8)
+        Ok(self.gpio[27].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin27(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(27, _value != 0))
+        Ok(self.gpio[27].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin28(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(28) as u8)
+        Ok(self.gpio[28].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin28(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(28, _value != 0))
+        Ok(self.gpio[28].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin29(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(29) as u8)
+        Ok(self.gpio[29].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin29(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(29, _value != 0))
+        Ok(self.gpio[29].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin30(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(30) as u8)
+        Ok(self.gpio[30].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin30(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(30, _value != 0))
+        Ok(self.gpio[30].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dir_pin31(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(31) as u8)
+        Ok(self.gpio[31].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dir_pin31(&mut self, _value: u8) -> MemResult<()> {
-        Ok(self.gpio_set_direction(31, _value != 0))
+        Ok(self.gpio[31].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_dirset_pin0(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(0) as u8)
+        Ok(self.gpio[0].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin0(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(0, true);
+            self.gpio[0].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin1(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(1) as u8)
+        Ok(self.gpio[1].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin1(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(1, true);
+            self.gpio[1].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin2(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(2) as u8)
+        Ok(self.gpio[2].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin2(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(2, true);
+            self.gpio[2].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin3(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(3) as u8)
+        Ok(self.gpio[3].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin3(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(3, true);
+            self.gpio[3].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin4(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(4) as u8)
+        Ok(self.gpio[4].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin4(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(4, true);
+            self.gpio[4].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin5(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(5) as u8)
+        Ok(self.gpio[5].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin5(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(5, true);
+            self.gpio[5].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin6(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(6) as u8)
+        Ok(self.gpio[6].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin6(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(6, true);
+            self.gpio[6].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin7(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(7) as u8)
+        Ok(self.gpio[7].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin7(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(7, true);
+            self.gpio[7].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin8(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(8) as u8)
+        Ok(self.gpio[8].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin8(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(8, true);
+            self.gpio[8].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin9(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(9) as u8)
+        Ok(self.gpio[9].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin9(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(9, true);
+            self.gpio[9].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin10(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(10) as u8)
+        Ok(self.gpio[10].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin10(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(10, true);
+            self.gpio[10].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin11(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(11) as u8)
+        Ok(self.gpio[11].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin11(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(11, true);
+            self.gpio[11].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin12(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(12) as u8)
+        Ok(self.gpio[12].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin12(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(12, true);
+            self.gpio[12].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin13(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(13) as u8)
+        Ok(self.gpio[13].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin13(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(13, true);
+            self.gpio[13].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin14(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(14) as u8)
+        Ok(self.gpio[14].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin14(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(14, true);
+            self.gpio[14].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin15(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(15) as u8)
+        Ok(self.gpio[15].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin15(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(15, true);
+            self.gpio[15].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin16(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(16) as u8)
+        Ok(self.gpio[16].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin16(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(16, true);
+            self.gpio[16].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin17(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(17) as u8)
+        Ok(self.gpio[17].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin17(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(17, true);
+            self.gpio[17].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin18(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(18) as u8)
+        Ok(self.gpio[18].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin18(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(18, true);
+            self.gpio[18].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin19(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(19) as u8)
+        Ok(self.gpio[19].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin19(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(19, true);
+            self.gpio[19].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin20(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(20) as u8)
+        Ok(self.gpio[20].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin20(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(20, true);
+            self.gpio[20].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin21(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(21) as u8)
+        Ok(self.gpio[21].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin21(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(21, true);
+            self.gpio[21].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin22(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(22) as u8)
+        Ok(self.gpio[22].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin22(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(22, true);
+            self.gpio[22].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin23(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(23) as u8)
+        Ok(self.gpio[23].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin23(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(23, true);
+            self.gpio[23].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin24(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(24) as u8)
+        Ok(self.gpio[24].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin24(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(24, true);
+            self.gpio[24].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin25(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(25) as u8)
+        Ok(self.gpio[25].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin25(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(25, true);
+            self.gpio[25].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin26(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(26) as u8)
+        Ok(self.gpio[26].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin26(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(26, true);
+            self.gpio[26].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin27(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(27) as u8)
+        Ok(self.gpio[27].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin27(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(27, true);
+            self.gpio[27].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin28(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(28) as u8)
+        Ok(self.gpio[28].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin28(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(28, true);
+            self.gpio[28].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin29(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(29) as u8)
+        Ok(self.gpio[29].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin29(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(29, true);
+            self.gpio[29].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin30(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(30) as u8)
+        Ok(self.gpio[30].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin30(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(30, true);
+            self.gpio[30].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirset_pin31(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(31) as u8)
+        Ok(self.gpio[31].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirset_pin31(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(31, true);
+            self.gpio[31].set_direction(true);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin0(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(0) as u8)
+        Ok(self.gpio[0].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin0(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(0, false);
+            self.gpio[0].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin1(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(1) as u8)
+        Ok(self.gpio[1].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin1(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(1, false);
+            self.gpio[1].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin2(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(2) as u8)
+        Ok(self.gpio[2].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin2(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(2, false);
+            self.gpio[2].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin3(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(3) as u8)
+        Ok(self.gpio[3].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin3(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(3, false);
+            self.gpio[3].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin4(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(4) as u8)
+        Ok(self.gpio[4].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin4(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(4, false);
+            self.gpio[4].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin5(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(5) as u8)
+        Ok(self.gpio[5].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin5(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(5, false);
+            self.gpio[5].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin6(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(6) as u8)
+        Ok(self.gpio[6].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin6(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(6, false);
+            self.gpio[6].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin7(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(7) as u8)
+        Ok(self.gpio[7].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin7(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(7, false);
+            self.gpio[7].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin8(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(8) as u8)
+        Ok(self.gpio[8].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin8(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(8, false);
+            self.gpio[8].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin9(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(9) as u8)
+        Ok(self.gpio[9].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin9(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(9, false);
+            self.gpio[9].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin10(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(10) as u8)
+        Ok(self.gpio[10].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin10(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(10, false);
+            self.gpio[10].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin11(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(11) as u8)
+        Ok(self.gpio[11].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin11(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(11, false);
+            self.gpio[11].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin12(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(12) as u8)
+        Ok(self.gpio[12].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin12(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(12, false);
+            self.gpio[12].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin13(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(13) as u8)
+        Ok(self.gpio[13].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin13(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(13, false);
+            self.gpio[13].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin14(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(14) as u8)
+        Ok(self.gpio[14].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin14(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(14, false);
+            self.gpio[14].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin15(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(15) as u8)
+        Ok(self.gpio[15].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin15(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(15, false);
+            self.gpio[15].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin16(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(16) as u8)
+        Ok(self.gpio[16].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin16(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(16, false);
+            self.gpio[16].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin17(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(17) as u8)
+        Ok(self.gpio[17].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin17(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(17, false);
+            self.gpio[17].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin18(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(18) as u8)
+        Ok(self.gpio[18].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin18(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(18, false);
+            self.gpio[18].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin19(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(19) as u8)
+        Ok(self.gpio[19].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin19(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(19, false);
+            self.gpio[19].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin20(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(20) as u8)
+        Ok(self.gpio[20].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin20(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(20, false);
+            self.gpio[20].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin21(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(21) as u8)
+        Ok(self.gpio[21].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin21(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(21, false);
+            self.gpio[21].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin22(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(22) as u8)
+        Ok(self.gpio[22].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin22(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(22, false);
+            self.gpio[22].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin23(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(23) as u8)
+        Ok(self.gpio[23].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin23(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(23, false);
+            self.gpio[23].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin24(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(24) as u8)
+        Ok(self.gpio[24].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin24(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(24, false);
+            self.gpio[24].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin25(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(25) as u8)
+        Ok(self.gpio[25].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin25(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(25, false);
+            self.gpio[25].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin26(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(26) as u8)
+        Ok(self.gpio[26].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin26(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(26, false);
+            self.gpio[26].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin27(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(27) as u8)
+        Ok(self.gpio[27].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin27(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(27, false);
+            self.gpio[27].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin28(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(28) as u8)
+        Ok(self.gpio[28].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin28(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(28, false);
+            self.gpio[28].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin29(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(29) as u8)
+        Ok(self.gpio[29].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin29(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(29, false);
+            self.gpio[29].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin30(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(30) as u8)
+        Ok(self.gpio[30].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin30(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(30, false);
+            self.gpio[30].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_dirclr_pin31(&mut self) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(31) as u8)
+        Ok(self.gpio[31].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_dirclr_pin31(&mut self, _value: u8) -> MemResult<()> {
         if _value != 0 {
-            self.gpio_set_direction(31, false);
+            self.gpio[31].set_direction(false);
         }
         Ok(())
     }
     #[inline]
     pub fn read_gpio_pin_cnfn_dir(&mut self, _dim: usize) -> MemResult<u8> {
-        Ok(self.gpio_get_direction(_dim as u8) as u8)
+        Ok(self.gpio[_dim].get_direction() as u8)
     }
     #[inline]
     pub fn write_gpio_pin_cnfn_dir(
@@ -11599,11 +11515,11 @@ impl Peripherals {
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        Ok(self.gpio_set_direction(_dim as u8, _value != 0))
+        Ok(self.gpio[_dim].set_direction(_value != 0))
     }
     #[inline]
     pub fn read_gpio_pin_cnfn_input(&mut self, _dim: usize) -> MemResult<u8> {
-        Ok(self.gpio_is_connected_buffer(_dim as u8) as u8)
+        Ok(self.gpio[_dim].is_connected_buffer() as u8)
     }
     #[inline]
     pub fn write_gpio_pin_cnfn_input(
@@ -11611,11 +11527,11 @@ impl Peripherals {
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        Ok(self.gpio_set_connected_buffer(_dim as u8, _value != 0))
+        Ok(self.gpio[_dim].set_connected_buffer(_value != 0))
     }
     #[inline]
     pub fn read_gpio_pin_cnfn_pull(&mut self, _dim: usize) -> MemResult<u8> {
-        Ok(self.gpio_get_pull(_dim as u8) as u8)
+        Ok(self.gpio[_dim].get_pull() as u8)
     }
     #[inline]
     pub fn write_gpio_pin_cnfn_pull(
@@ -11624,16 +11540,12 @@ impl Peripherals {
         _value: u8,
     ) -> MemResult<()> {
         // TODO allow invalid values in GpioPull??
-        Ok(self.gpio_set_pull(
-            _dim as u8,
-            _value.try_into().map_err(|_| MemError::WriteViolation)?,
-        ))
+        Ok(self.gpio[_dim]
+            .set_pull(_value.try_into().map_err(|_| MemError::WriteViolation)?))
     }
     #[inline]
     pub fn read_gpio_pin_cnfn_drive(&mut self, _dim: usize) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 7u64;
-        todo!()
+        Ok(self.gpio[_dim].get_sense() as u8)
     }
     #[inline]
     pub fn write_gpio_pin_cnfn_drive(
@@ -11641,11 +11553,11 @@ impl Peripherals {
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.gpio[_dim].set_sense(_value.try_into().unwrap()))
     }
     #[inline]
     pub fn read_gpio_pin_cnfn_sense(&mut self, _dim: usize) -> MemResult<u8> {
-        Ok(self.gpio_get_sense(_dim as u8) as u8)
+        Ok(self.gpio[_dim].get_sense() as u8)
     }
     #[inline]
     pub fn write_gpio_pin_cnfn_sense(
@@ -11654,8 +11566,7 @@ impl Peripherals {
         _value: u8,
     ) -> MemResult<()> {
         // TODO allow invalid values in GpioSense??
-        Ok(self.gpio_set_sense(
-            _dim as u8,
+        Ok(self.gpio[_dim].set_sense(
             _value.try_into().map_err(|_| MemError::WriteViolation)?,
         ))
     }
