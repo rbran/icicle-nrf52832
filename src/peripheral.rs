@@ -3,11 +3,17 @@ use icicle_vm::cpu::mem::{MemError, MemResult};
 mod gpio;
 use gpio::*;
 
-#[derive(Default)]
 pub struct Peripherals {
-    #[doc = "TODO: implement the peripherals data here"]
-    _todo: (),
     pub gpio: [Gpio; 32],
+    pub interrupts_enabled: [bool; 128],
+}
+impl Default for Peripherals {
+    fn default() -> Self {
+        Self {
+            gpio: Default::default(),
+            interrupts_enabled: [false; 128],
+        }
+    }
 }
 impl Peripherals {
     pub fn ram_is_on(&self, _block: u8) -> bool {
@@ -75,6 +81,80 @@ impl Peripherals {
     ) {
         todo!()
     }
+
+    pub fn nvic_get_interrupts<'a>(
+        &self,
+        _nvic: usize,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
+    ) -> MemResult<()> {
+        for (byte_i, byte) in [_byte_0, _byte_1, _byte_2, _byte_3]
+            .into_iter()
+            .enumerate()
+            .filter_map(|(i, b)| Some((i, b.as_mut()?)))
+        {
+            for bit in 0..8 {
+                let _inter_num = (_nvic * 32) + bit + (byte_i * 8);
+                **byte |= (self.is_interrupt_on(_inter_num) as u8) << bit;
+            }
+        }
+        Ok(())
+    }
+    pub fn nvic_set_interrupts(
+        &mut self,
+        _nvic: usize,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        let bytes = [_byte_0, _byte_1, _byte_2, _byte_3]
+            .into_iter()
+            .enumerate()
+            .filter_map(|(i, b)| Some((i, b?)));
+        let _nvic_bit = _nvic * 32;
+        for (byte_i, byte) in bytes {
+            for bit in 0..8 {
+                let _inter_num = _nvic_bit + (byte_i * 8) + bit;
+                if ((*byte >> bit) & 1) != 0 {
+                    self.set_interrupt_on(_inter_num, true);
+                }
+            }
+        }
+        Ok(())
+    }
+    pub fn nvic_clr_interrupts(
+        &mut self,
+        _nvic: usize,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        let bytes = [_byte_0, _byte_1, _byte_2, _byte_3]
+            .into_iter()
+            .enumerate()
+            .filter_map(|(i, b)| Some((i, b?)));
+        let _nvic_bit = _nvic * 32;
+        for (byte_i, byte) in bytes {
+            for bit in 0..8 {
+                let _inter_num = _nvic_bit + (byte_i * 8) + bit;
+                if ((*byte >> bit) & 1) == 0 {
+                    self.set_interrupt_on(_inter_num, false);
+                }
+            }
+        }
+        Ok(())
+    }
+    pub fn is_interrupt_on(&self, _interrupt: usize) -> bool {
+        self.interrupts_enabled[_interrupt]
+    }
+    pub fn set_interrupt_on(&mut self, _interrupt: usize, _on: bool) {
+        self.interrupts_enabled[_interrupt] = _on
+    }
+
     pub fn read_control_actlr_disoofp(&self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
@@ -199,7 +279,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_control_icsr_vectpending(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
     ) -> MemResult<()> {
@@ -234,7 +314,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_control_icsr_vectactive(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
     ) -> MemResult<()> {
@@ -258,7 +338,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_control_vtor_tbloff(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -304,7 +384,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_control_aircr_vectkey(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
     ) -> MemResult<()> {
@@ -946,7 +1026,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_control_mmfar(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -974,7 +1054,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_control_bfar(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -1002,7 +1082,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_control_afsr(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -1136,7 +1216,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_id_cpuid_partno(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
     ) -> MemResult<()> {
@@ -1169,7 +1249,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_id_id_afr0(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -1204,7 +1284,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_id_id_mmfr1(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -1224,7 +1304,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_id_id_mmfr3(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -1456,7 +1536,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_fpe_fpcar(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -1614,7 +1694,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_systick_strvr_reload(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -1640,7 +1720,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_systick_stcvr_current(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -1676,7 +1756,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_systick_stcr_tenms(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -1694,21 +1774,17 @@ impl Peripherals {
         const _RESET_MASK: u64 = 15u64;
         todo!()
     }
-    pub fn read_nvic_nvic_iser0(
-        &mut self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+    #[inline]
+    pub fn read_nvic_nvic_iser0<'a>(
+        &self,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_get_interrupts(0, _byte_0, _byte_1, _byte_2, _byte_3)
     }
+    #[inline]
     pub fn write_nvic_nvic_iser0(
         &mut self,
         _byte_0: Option<&u8>,
@@ -1716,27 +1792,19 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_set_interrupts(0, _byte_0, _byte_1, _byte_2, _byte_3)
     }
-    pub fn read_nvic_nvic_iser1(
-        &mut self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+    #[inline]
+    pub fn read_nvic_nvic_iser1<'a>(
+        &self,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_get_interrupts(1, _byte_0, _byte_1, _byte_2, _byte_3)
     }
+    #[inline]
     pub fn write_nvic_nvic_iser1(
         &mut self,
         _byte_0: Option<&u8>,
@@ -1744,27 +1812,19 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_set_interrupts(1, _byte_0, _byte_1, _byte_2, _byte_3)
     }
-    pub fn read_nvic_nvic_iser2(
-        &mut self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+    #[inline]
+    pub fn read_nvic_nvic_iser2<'a>(
+        &self,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_get_interrupts(2, _byte_0, _byte_1, _byte_2, _byte_3)
     }
+    #[inline]
     pub fn write_nvic_nvic_iser2(
         &mut self,
         _byte_0: Option<&u8>,
@@ -1772,27 +1832,19 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_set_interrupts(2, _byte_0, _byte_1, _byte_2, _byte_3)
     }
-    pub fn read_nvic_nvic_iser3(
-        &mut self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+    #[inline]
+    pub fn read_nvic_nvic_iser3<'a>(
+        &self,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_get_interrupts(3, _byte_0, _byte_1, _byte_2, _byte_3)
     }
+    #[inline]
     pub fn write_nvic_nvic_iser3(
         &mut self,
         _byte_0: Option<&u8>,
@@ -1800,27 +1852,19 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_set_interrupts(3, _byte_0, _byte_1, _byte_2, _byte_3)
     }
-    pub fn read_nvic_nvic_iser4(
-        &mut self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+    #[inline]
+    pub fn read_nvic_nvic_iser4<'a>(
+        &self,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_get_interrupts(4, _byte_0, _byte_1, _byte_2, _byte_3)
     }
+    #[inline]
     pub fn write_nvic_nvic_iser4(
         &mut self,
         _byte_0: Option<&u8>,
@@ -1828,27 +1872,19 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_set_interrupts(4, _byte_0, _byte_1, _byte_2, _byte_3)
     }
-    pub fn read_nvic_nvic_iser5(
-        &mut self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+    #[inline]
+    pub fn read_nvic_nvic_iser5<'a>(
+        &self,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_get_interrupts(5, _byte_0, _byte_1, _byte_2, _byte_3)
     }
+    #[inline]
     pub fn write_nvic_nvic_iser5(
         &mut self,
         _byte_0: Option<&u8>,
@@ -1856,27 +1892,19 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_set_interrupts(5, _byte_0, _byte_1, _byte_2, _byte_3)
     }
-    pub fn read_nvic_nvic_iser6(
-        &mut self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+    #[inline]
+    pub fn read_nvic_nvic_iser6<'a>(
+        &self,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_get_interrupts(6, _byte_0, _byte_1, _byte_2, _byte_3)
     }
+    #[inline]
     pub fn write_nvic_nvic_iser6(
         &mut self,
         _byte_0: Option<&u8>,
@@ -1884,27 +1912,19 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_set_interrupts(6, _byte_0, _byte_1, _byte_2, _byte_3)
     }
-    pub fn read_nvic_nvic_iser7(
-        &mut self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+    #[inline]
+    pub fn read_nvic_nvic_iser7<'a>(
+        &self,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_get_interrupts(7, _byte_0, _byte_1, _byte_2, _byte_3)
     }
+    #[inline]
     pub fn write_nvic_nvic_iser7(
         &mut self,
         _byte_0: Option<&u8>,
@@ -1912,27 +1932,19 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_set_interrupts(7, _byte_0, _byte_1, _byte_2, _byte_3)
     }
-    pub fn read_nvic_nvic_icer0(
-        &mut self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+    #[inline]
+    pub fn read_nvic_nvic_icer0<'a>(
+        &self,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_get_interrupts(0, _byte_0, _byte_1, _byte_2, _byte_3)
     }
+    #[inline]
     pub fn write_nvic_nvic_icer0(
         &mut self,
         _byte_0: Option<&u8>,
@@ -1940,27 +1952,19 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_clr_interrupts(0, _byte_0, _byte_1, _byte_2, _byte_3)
     }
-    pub fn read_nvic_nvic_icer1(
-        &mut self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+    #[inline]
+    pub fn read_nvic_nvic_icer1<'a>(
+        &self,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_get_interrupts(1, _byte_0, _byte_1, _byte_2, _byte_3)
     }
+    #[inline]
     pub fn write_nvic_nvic_icer1(
         &mut self,
         _byte_0: Option<&u8>,
@@ -1968,27 +1972,19 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_clr_interrupts(1, _byte_0, _byte_1, _byte_2, _byte_3)
     }
-    pub fn read_nvic_nvic_icer2(
-        &mut self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+    #[inline]
+    pub fn read_nvic_nvic_icer2<'a>(
+        &self,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_get_interrupts(2, _byte_0, _byte_1, _byte_2, _byte_3)
     }
+    #[inline]
     pub fn write_nvic_nvic_icer2(
         &mut self,
         _byte_0: Option<&u8>,
@@ -1996,27 +1992,19 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_clr_interrupts(2, _byte_0, _byte_1, _byte_2, _byte_3)
     }
-    pub fn read_nvic_nvic_icer3(
-        &mut self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+    #[inline]
+    pub fn read_nvic_nvic_icer3<'a>(
+        &self,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_get_interrupts(3, _byte_0, _byte_1, _byte_2, _byte_3)
     }
+    #[inline]
     pub fn write_nvic_nvic_icer3(
         &mut self,
         _byte_0: Option<&u8>,
@@ -2024,27 +2012,19 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_clr_interrupts(3, _byte_0, _byte_1, _byte_2, _byte_3)
     }
-    pub fn read_nvic_nvic_icer4(
-        &mut self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+    #[inline]
+    pub fn read_nvic_nvic_icer4<'a>(
+        &self,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_get_interrupts(4, _byte_0, _byte_1, _byte_2, _byte_3)
     }
+    #[inline]
     pub fn write_nvic_nvic_icer4(
         &mut self,
         _byte_0: Option<&u8>,
@@ -2052,27 +2032,19 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_clr_interrupts(4, _byte_0, _byte_1, _byte_2, _byte_3)
     }
-    pub fn read_nvic_nvic_icer5(
-        &mut self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+    #[inline]
+    pub fn read_nvic_nvic_icer5<'a>(
+        &self,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_get_interrupts(5, _byte_0, _byte_1, _byte_2, _byte_3)
     }
+    #[inline]
     pub fn write_nvic_nvic_icer5(
         &mut self,
         _byte_0: Option<&u8>,
@@ -2080,27 +2052,19 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_clr_interrupts(5, _byte_0, _byte_1, _byte_2, _byte_3)
     }
-    pub fn read_nvic_nvic_icer6(
-        &mut self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+    #[inline]
+    pub fn read_nvic_nvic_icer6<'a>(
+        &self,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_get_interrupts(6, _byte_0, _byte_1, _byte_2, _byte_3)
     }
+    #[inline]
     pub fn write_nvic_nvic_icer6(
         &mut self,
         _byte_0: Option<&u8>,
@@ -2108,27 +2072,21 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_clr_interrupts(6, _byte_0, _byte_1, _byte_2, _byte_3)
     }
-    pub fn read_nvic_nvic_icer7(
-        &mut self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+    #[inline]
+    pub fn read_nvic_nvic_icer7<'a>(
+        &self,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_get_interrupts(7, _byte_0, _byte_1, _byte_2, _byte_3)
     }
+    #[inline]
     pub fn write_nvic_nvic_icer7(
         &mut self,
         _byte_0: Option<&u8>,
@@ -2136,14 +2094,10 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.nvic_clr_interrupts(7, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     pub fn read_nvic_nvic_ispr0(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -2171,7 +2125,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_nvic_nvic_ispr1(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -2199,7 +2153,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_nvic_nvic_ispr2(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -2227,7 +2181,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_nvic_nvic_ispr3(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -2255,7 +2209,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_nvic_nvic_ispr4(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -2283,7 +2237,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_nvic_nvic_ispr5(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -2311,7 +2265,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_nvic_nvic_ispr6(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -2339,7 +2293,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_nvic_nvic_ispr7(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -2367,7 +2321,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_nvic_nvic_icpr0(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -2395,7 +2349,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_nvic_nvic_icpr1(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -2423,7 +2377,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_nvic_nvic_icpr2(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -2451,7 +2405,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_nvic_nvic_icpr3(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -2479,7 +2433,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_nvic_nvic_icpr4(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -2507,7 +2461,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_nvic_nvic_icpr5(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -2535,7 +2489,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_nvic_nvic_icpr6(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -2563,7 +2517,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_nvic_nvic_icpr7(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -2591,7 +2545,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_nvic_nvic_iabr0(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -2619,7 +2573,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_nvic_nvic_iabr1(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -2647,7 +2601,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_nvic_nvic_iabr2(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -2675,7 +2629,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_nvic_nvic_iabr3(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -2703,7 +2657,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_nvic_nvic_iabr4(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -2731,7 +2685,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_nvic_nvic_iabr5(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -2759,7 +2713,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_nvic_nvic_iabr6(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -2787,7 +2741,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_nvic_nvic_iabr7(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -5520,7 +5474,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_mpu_mpu_rbar_a1_addr(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -5828,7 +5782,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_mpu_mpu_rbar_a3_addr(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -5957,7 +5911,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_power_events_pofwarn(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -6405,7 +6359,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_clock_events_hfclkstarted(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -6433,7 +6387,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_clock_events_lfclkstarted(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -6461,7 +6415,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_clock_events_done(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -6489,7 +6443,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_clock_events_ctto(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -6747,7 +6701,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_mpu_rlenr0(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -7810,7 +7764,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_radio_events_ready(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -7838,7 +7792,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_radio_events_address(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -7866,7 +7820,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_radio_events_payload(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -7894,7 +7848,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_radio_events_end(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -7922,7 +7876,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_radio_events_disabled(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -7950,7 +7904,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_radio_events_devmatch(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -7978,7 +7932,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_radio_events_devmiss(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -8006,7 +7960,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_radio_events_rssiend(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -8034,7 +7988,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_radio_events_bcmatch(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -8346,7 +8300,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_radio_rxcrc_rxcrc(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -8365,7 +8319,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_radio_packetptr(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -8484,7 +8438,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_radio_base0(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -8512,7 +8466,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_radio_base1(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -8719,7 +8673,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_radio_crcpoly_crcpoly(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -8745,7 +8699,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_radio_crcinit_crcinit(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -8819,7 +8773,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_radio_bcc(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -8847,7 +8801,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_radio_dabn(
-        &mut self,
+        &self,
         _dim: usize,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
@@ -8877,7 +8831,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_radio_dapn_dap(
-        &mut self,
+        &self,
         _dim: usize,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
@@ -9031,7 +8985,7 @@ impl Peripherals {
         Ok(self.radio_set_ena(7, _value != 0))
     }
     pub fn read_radio_override0_override0(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -9059,7 +9013,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_radio_override1_override1(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -9087,7 +9041,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_radio_override2_override2(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -9115,7 +9069,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_radio_override3_override3(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -9143,7 +9097,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_radio_override4_override4(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -9255,7 +9209,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_uart0_events_cts(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -9283,7 +9237,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_uart0_events_ncts(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -9311,7 +9265,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_uart0_events_rxdrdy(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -9339,7 +9293,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_uart0_events_txdrdy(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -9367,7 +9321,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_uart0_events_error(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -9395,7 +9349,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_uart0_events_rxto(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -9587,7 +9541,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_uart0_pselrts(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -9615,7 +9569,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_uart0_pseltxd(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -9643,7 +9597,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_uart0_pselcts(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -9671,7 +9625,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_uart0_pselrxd(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -9707,7 +9661,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_uart0_baudrate_baudrate(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -9759,7 +9713,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_spi0twi0_events_ready(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -9924,7 +9878,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_spi0twi0_pselsck(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -9952,7 +9906,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_spi0twi0_pselmosi(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -9980,7 +9934,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_spi0_pselmiso(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -10021,7 +9975,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_spi0twi0_frequency_frequency(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -10146,7 +10100,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_twi0_events_stopped(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -10174,7 +10128,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_twi0_events_txdsent(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -10202,7 +10156,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_twi0_events_error(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -10230,7 +10184,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_twi0_events_bb(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -10258,7 +10212,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_twi0_events_suspended(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -10363,7 +10317,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_spis1_events_end(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -10391,7 +10345,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_spis1_events_endrx(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -10419,7 +10373,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_spis1_events_acquired(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -10541,7 +10495,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_spis1_pselsck(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -10569,7 +10523,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_spis1_pselmiso(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -10597,7 +10551,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_spis1_pselmosi(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -10625,7 +10579,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_spis1_pselcsn(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -10653,7 +10607,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_spis1_rxdptr(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -10694,7 +10648,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_spis1_txdptr(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -10797,7 +10751,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_gpiote_events_inn(
-        &mut self,
+        &self,
         _dim: usize,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
@@ -10827,7 +10781,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_gpiote_events_port(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -10958,10 +10912,7 @@ impl Peripherals {
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_gpiote_confign_polarity(
-        &mut self,
-        _dim: usize,
-    ) -> MemResult<u8> {
+    pub fn read_gpiote_confign_polarity(&self, _dim: usize) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 3u64;
         todo!()
@@ -10973,10 +10924,7 @@ impl Peripherals {
     ) -> MemResult<()> {
         todo!()
     }
-    pub fn read_gpiote_confign_outinit(
-        &mut self,
-        _dim: usize,
-    ) -> MemResult<u8> {
+    pub fn read_gpiote_confign_outinit(&self, _dim: usize) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 1u64;
         todo!()
@@ -11023,7 +10971,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_adc_events_end(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -11120,7 +11068,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_adc_result_result(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
     ) -> MemResult<()> {
@@ -11220,7 +11168,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_timer0_events_comparen(
-        &mut self,
+        &self,
         _dim: usize,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
@@ -11456,7 +11404,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_timer0_ccn(
-        &mut self,
+        &self,
         _dim: usize,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
@@ -11546,7 +11494,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_rtc0_events_tick(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -11574,7 +11522,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_rtc0_events_ovrflw(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -11602,7 +11550,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_rtc0_events_comparen(
-        &mut self,
+        &self,
         _dim: usize,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
@@ -11920,7 +11868,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_rtc0_counter_counter(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -11934,7 +11882,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_rtc0_prescaler_prescaler(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
     ) -> MemResult<()> {
@@ -11958,7 +11906,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_rtc0_ccn_compare(
-        &mut self,
+        &self,
         _dim: usize,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
@@ -12020,7 +11968,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_temp_events_datardy(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -12064,7 +12012,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_temp_temp(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -12113,7 +12061,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_rng_events_valrdy(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -12215,7 +12163,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_ecb_events_endecb(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -12243,7 +12191,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_ecb_events_errorecb(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -12303,7 +12251,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_ecb_ecbdataptr(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -12365,7 +12313,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_aarccm_events_end(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -12393,7 +12341,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_aarccm_events_resolved(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -12421,7 +12369,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_aarccm_events_notresolved(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -12530,7 +12478,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_aarccm_irkptr(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -12558,7 +12506,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_aarccm_addrptr(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -12586,7 +12534,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_aarccm_scratchptr(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -12646,7 +12594,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_ccm_inptr(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -12687,7 +12635,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_wdt_events_timeout(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -12776,7 +12724,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_wdt_crv(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -12945,7 +12893,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_qdec_events_samplerdy(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -12973,7 +12921,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_qdec_events_reportrdy(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -13001,7 +12949,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_qdec_events_accof(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -13138,7 +13086,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_qdec_sample_sample(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -13164,7 +13112,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_qdec_acc(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -13179,7 +13127,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_qdec_accread(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -13194,7 +13142,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_qdec_pselled(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -13222,7 +13170,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_qdec_psela(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -13250,7 +13198,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_qdec_pselb(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -13286,7 +13234,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_qdec_ledpre_ledpre(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
     ) -> MemResult<()> {
@@ -13367,7 +13315,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_lpcomp_events_ready(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -13395,7 +13343,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_lpcomp_events_down(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -13423,7 +13371,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_lpcomp_events_up(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -13451,7 +13399,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_lpcomp_events_cross(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -13654,7 +13602,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_swi_unused(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -13682,7 +13630,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_nvmc_erasepage(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -13721,7 +13669,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_nvmc_erasepcr0(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -14936,7 +14884,7 @@ impl Peripherals {
         Ok(self.ppi_set_included(_dim, 31, _value != 0))
     }
     pub fn read_ficr_codepagesize(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -14951,7 +14899,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_ficr_codesize(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -14966,7 +14914,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_ficr_clenr0(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -14986,7 +14934,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_ficr_numramblock(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -15001,7 +14949,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_ficr_sizeramblocks(
-        &mut self,
+        &self,
         _dim: usize,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
@@ -15017,7 +14965,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_ficr_configid_hwid(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
     ) -> MemResult<()> {
@@ -15030,7 +14978,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_ficr_configid_fwid(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
     ) -> MemResult<()> {
@@ -15043,7 +14991,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_ficr_deviceidn(
-        &mut self,
+        &self,
         _dim: usize,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
@@ -15059,7 +15007,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_ficr_ern(
-        &mut self,
+        &self,
         _dim: usize,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
@@ -15075,7 +15023,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_ficr_irn(
-        &mut self,
+        &self,
         _dim: usize,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
@@ -15096,7 +15044,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_ficr_deviceaddrn(
-        &mut self,
+        &self,
         _dim: usize,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
@@ -15122,7 +15070,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_ficr_nrf_1mbitn(
-        &mut self,
+        &self,
         _dim: usize,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
@@ -15138,7 +15086,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_ficr_ble_1mbitn(
-        &mut self,
+        &self,
         _dim: usize,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
@@ -15154,7 +15102,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_uicr_clenr0(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
@@ -15209,7 +15157,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_uicr_fwid_fwid(
-        &mut self,
+        &self,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
     ) -> MemResult<()> {
@@ -15222,7 +15170,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_uicr_bootloaderaddr(
-        &mut self,
+        &self,
         _dim: usize,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
@@ -15252,7 +15200,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_uicr_nrfhwn(
-        &mut self,
+        &self,
         _dim: usize,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
@@ -15282,7 +15230,7 @@ impl Peripherals {
         todo!();
     }
     pub fn read_uicr_customern(
-        &mut self,
+        &self,
         _dim: usize,
         _byte_0: &mut Option<&mut u8>,
         _byte_1: &mut Option<&mut u8>,
