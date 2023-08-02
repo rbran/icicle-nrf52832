@@ -9,40 +9,40 @@ pub struct Gpio {
 }
 
 impl Gpio {
-    pub fn is_out_high(&mut self) -> bool {
+    pub fn is_out_high(&self) -> bool {
         self.output_high
     }
     pub fn set_out_high(&mut self, _high: bool) {
         self.output_high = _high;
     }
-    pub fn read_input(&mut self) -> bool {
+    pub fn read_input(&self) -> bool {
         todo!()
     }
-    pub fn get_direction(&mut self) -> bool {
+    pub fn get_direction(&self) -> bool {
         !self.input
     }
     pub fn set_direction(&mut self, _output: bool) {
         self.input = !_output
     }
-    pub fn is_connected_buffer(&mut self) -> bool {
+    pub fn is_connected_buffer(&self) -> bool {
         self.buffered
     }
     pub fn set_connected_buffer(&mut self, _on: bool) {
         self.buffered = _on
     }
-    pub fn get_pull(&mut self) -> GpioPull {
+    pub fn get_pull(&self) -> GpioPull {
         self.pull
     }
     pub fn set_pull(&mut self, _pull: GpioPull) {
         self.pull = _pull
     }
-    pub fn get_drive(&mut self) -> GpioDrive {
+    pub fn get_drive(&self) -> GpioDrive {
         self.drive
     }
     pub fn set_drive(&mut self, _drive: GpioDrive) {
         self.drive = _drive
     }
-    pub fn get_sense(&mut self) -> GpioSense {
+    pub fn get_sense(&self) -> GpioSense {
         self.sense
     }
     pub fn set_sense(&mut self, _sense: GpioSense) {

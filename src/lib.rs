@@ -136,4 +136,10 @@ pub fn map_cpu(
             std::sync::Arc::clone(_pe),
         ));
     _cpu.mem.map_memory_len(1342177280, 4096u64, io);
+    let io = _cpu
+        .mem
+        .register_io_handler(pages::PeripheralPage0xE000E000(
+            std::sync::Arc::clone(_pe),
+        ));
+    _cpu.mem.map_memory_len(3758153728, 4096u64, io);
 }

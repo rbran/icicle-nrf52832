@@ -1,3 +1,4 @@
+use icicle_vm::cpu::mem::MemResult;
 fn buffer_mut(
     _start: u64,
     _end: u64,
@@ -25,11 +26,7 @@ pub struct PeripheralPage0x10000000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10000000 {
-    fn read(
-        &mut self,
-        _addr: u64,
-        _buf: &mut [u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
         let _start = _addr - 268435456;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -394,11 +391,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10000000 {
         }
         Ok(())
     }
-    fn write(
-        &mut self,
-        _addr: u64,
-        _buf: &[u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
         let _start = _addr - 268435456;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -575,7 +568,7 @@ impl PeripheralPage0x10000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -599,7 +592,7 @@ impl PeripheralPage0x10000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -632,7 +625,7 @@ impl PeripheralPage0x10000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -661,7 +654,7 @@ impl PeripheralPage0x10000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -689,11 +682,7 @@ pub struct PeripheralPage0x10001000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
-    fn read(
-        &mut self,
-        _addr: u64,
-        _buf: &mut [u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
         let _start = _addr - 268439552;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -1347,11 +1336,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
         }
         Ok(())
     }
-    fn write(
-        &mut self,
-        _addr: u64,
-        _buf: &[u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
         let _start = _addr - 268439552;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -2008,7 +1993,7 @@ impl PeripheralPage0x10001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -2030,12 +2015,12 @@ impl PeripheralPage0x10001000 {
         Ok(())
     }
     fn write_uicr_rbpconf(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -2056,7 +2041,7 @@ impl PeripheralPage0x10001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -2076,12 +2061,12 @@ impl PeripheralPage0x10001000 {
         Ok(())
     }
     fn write_uicr_xtalfreq(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -2096,7 +2081,7 @@ impl PeripheralPage0x10001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -2122,11 +2107,7 @@ pub struct PeripheralPage0x40000000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40000000 {
-    fn read(
-        &mut self,
-        _addr: u64,
-        _buf: &mut [u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
         let _start = _addr - 1073741824;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -2506,11 +2487,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40000000 {
         }
         Ok(())
     }
-    fn write(
-        &mut self,
-        _addr: u64,
-        _buf: &[u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
         let _start = _addr - 1073741824;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -2918,7 +2895,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -2962,12 +2939,12 @@ impl PeripheralPage0x40000000 {
         Ok(())
     }
     fn write_powerclock_intenset(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -3006,7 +2983,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -3050,12 +3027,12 @@ impl PeripheralPage0x40000000 {
         Ok(())
     }
     fn write_powerclock_intenclr(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -3094,7 +3071,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -3134,12 +3111,12 @@ impl PeripheralPage0x40000000 {
         Ok(())
     }
     fn write_power_resetreas(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -3190,7 +3167,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -3222,12 +3199,12 @@ impl PeripheralPage0x40000000 {
         Ok(())
     }
     fn write_power_systemoff(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -3242,7 +3219,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -3265,12 +3242,12 @@ impl PeripheralPage0x40000000 {
         Ok(())
     }
     fn write_power_pofcon(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -3291,7 +3268,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -3311,12 +3288,12 @@ impl PeripheralPage0x40000000 {
         Ok(())
     }
     fn write_power_gpregret(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -3331,7 +3308,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -3359,12 +3336,12 @@ impl PeripheralPage0x40000000 {
         Ok(())
     }
     fn write_power_ramon(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -3397,7 +3374,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -3416,12 +3393,12 @@ impl PeripheralPage0x40000000 {
         Ok(())
     }
     fn write_power_reset(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -3436,7 +3413,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -3464,12 +3441,12 @@ impl PeripheralPage0x40000000 {
         Ok(())
     }
     fn write_power_ramonb(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -3502,7 +3479,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -3521,12 +3498,12 @@ impl PeripheralPage0x40000000 {
         Ok(())
     }
     fn write_power_dcdcen(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -3541,7 +3518,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -3565,12 +3542,12 @@ impl PeripheralPage0x40000000 {
         Ok(())
     }
     fn write_power_dcdcforce(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -3591,7 +3568,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -3615,7 +3592,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -3642,7 +3619,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -3666,7 +3643,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -3693,7 +3670,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -3718,7 +3695,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -3737,12 +3714,12 @@ impl PeripheralPage0x40000000 {
         Ok(())
     }
     fn write_clock_lfclksrc(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -3757,7 +3734,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -3776,12 +3753,12 @@ impl PeripheralPage0x40000000 {
         Ok(())
     }
     fn write_clock_ctiv(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -3796,7 +3773,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -3816,12 +3793,12 @@ impl PeripheralPage0x40000000 {
         Ok(())
     }
     fn write_clock_xtalfreq(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -3836,7 +3813,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -3915,12 +3892,12 @@ impl PeripheralPage0x40000000 {
         Ok(())
     }
     fn write_mpu_perr0(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -4055,7 +4032,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -4199,12 +4176,12 @@ impl PeripheralPage0x40000000 {
         Ok(())
     }
     fn write_mpu_protenset0(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -4405,7 +4382,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -4549,12 +4526,12 @@ impl PeripheralPage0x40000000 {
         Ok(())
     }
     fn write_mpu_protenset1(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -4755,7 +4732,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -4779,12 +4756,12 @@ impl PeripheralPage0x40000000 {
         Ok(())
     }
     fn write_mpu_disableindebug(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -4799,7 +4776,7 @@ impl PeripheralPage0x40000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -4823,12 +4800,12 @@ impl PeripheralPage0x40000000 {
         Ok(())
     }
     fn write_mpu_protblocksize(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -4842,11 +4819,7 @@ pub struct PeripheralPage0x40001000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40001000 {
-    fn read(
-        &mut self,
-        _addr: u64,
-        _buf: &mut [u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
         let _start = _addr - 1073745920;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -5523,11 +5496,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40001000 {
         }
         Ok(())
     }
-    fn write(
-        &mut self,
-        _addr: u64,
-        _buf: &[u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
         let _start = _addr - 1073745920;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -6227,7 +6196,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -6284,12 +6253,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_shorts(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -6346,7 +6315,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -6396,12 +6365,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_intenset(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -6464,7 +6433,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -6514,12 +6483,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_intenclr(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -6582,7 +6551,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -6607,7 +6576,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -6631,7 +6600,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -6658,7 +6627,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -6682,7 +6651,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -6702,12 +6671,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_frequency(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -6722,7 +6691,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -6741,12 +6710,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_txpower(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -6761,7 +6730,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -6780,12 +6749,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_mode(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -6800,7 +6769,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -6825,12 +6794,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_pcnf0(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -6857,7 +6826,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -6888,12 +6857,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_pcnf1(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -6932,7 +6901,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -6960,12 +6929,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_prefix0(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -6998,7 +6967,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -7026,12 +6995,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_prefix1(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -7064,7 +7033,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -7084,12 +7053,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_txaddress(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -7104,7 +7073,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -7152,12 +7121,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_rxaddresses(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -7214,7 +7183,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -7236,12 +7205,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_crccnf(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -7262,7 +7231,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -7284,12 +7253,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_crcpoly(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if _byte_0.is_some() || _byte_1.is_some() || _byte_2.is_some() {
             self.0
                 .lock()
@@ -7304,7 +7273,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -7326,12 +7295,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_crcinit(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if _byte_0.is_some() || _byte_1.is_some() || _byte_2.is_some() {
             self.0
                 .lock()
@@ -7346,7 +7315,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -7369,12 +7338,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_test(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -7395,7 +7364,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -7414,12 +7383,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_tifs(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -7434,7 +7403,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -7459,7 +7428,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -7483,7 +7452,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -7507,12 +7476,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_datawhiteiv(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -7528,7 +7497,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -7550,13 +7519,13 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_dapn(
-        &self,
+        &mut self,
         _dim: usize,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if _byte_0.is_some() || _byte_1.is_some() {
             self.0
                 .lock()
@@ -7571,7 +7540,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -7635,12 +7604,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_dacnf(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -7745,7 +7714,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -7770,12 +7739,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_override0(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if _byte_0.is_some()
             || _byte_1.is_some()
             || _byte_2.is_some()
@@ -7793,7 +7762,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -7818,12 +7787,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_override1(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if _byte_0.is_some()
             || _byte_1.is_some()
             || _byte_2.is_some()
@@ -7841,7 +7810,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -7866,12 +7835,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_override2(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if _byte_0.is_some()
             || _byte_1.is_some()
             || _byte_2.is_some()
@@ -7889,7 +7858,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -7914,12 +7883,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_override3(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if _byte_0.is_some()
             || _byte_1.is_some()
             || _byte_2.is_some()
@@ -7937,7 +7906,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -7966,12 +7935,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_override4(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if _byte_0.is_some()
             || _byte_1.is_some()
             || _byte_2.is_some()
@@ -7995,7 +7964,7 @@ impl PeripheralPage0x40001000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -8014,12 +7983,12 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
     fn write_radio_power(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -8033,11 +8002,7 @@ pub struct PeripheralPage0x40002000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40002000 {
-    fn read(
-        &mut self,
-        _addr: u64,
-        _buf: &mut [u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
         let _start = _addr - 1073750016;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -8283,11 +8248,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40002000 {
         }
         Ok(())
     }
-    fn write(
-        &mut self,
-        _addr: u64,
-        _buf: &[u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
         let _start = _addr - 1073750016;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -8566,7 +8527,7 @@ impl PeripheralPage0x40002000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -8590,12 +8551,12 @@ impl PeripheralPage0x40002000 {
         Ok(())
     }
     fn write_uart0_shorts(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -8616,7 +8577,7 @@ impl PeripheralPage0x40002000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -8650,12 +8611,12 @@ impl PeripheralPage0x40002000 {
         Ok(())
     }
     fn write_uart0_intenset(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -8700,7 +8661,7 @@ impl PeripheralPage0x40002000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -8734,12 +8695,12 @@ impl PeripheralPage0x40002000 {
         Ok(())
     }
     fn write_uart0_intenclr(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -8784,7 +8745,7 @@ impl PeripheralPage0x40002000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -8814,12 +8775,12 @@ impl PeripheralPage0x40002000 {
         Ok(())
     }
     fn write_uart0_errorsrc(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -8852,7 +8813,7 @@ impl PeripheralPage0x40002000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -8871,12 +8832,12 @@ impl PeripheralPage0x40002000 {
         Ok(())
     }
     fn write_uart0_enable(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -8891,7 +8852,7 @@ impl PeripheralPage0x40002000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -8910,12 +8871,12 @@ impl PeripheralPage0x40002000 {
         Ok(())
     }
     fn write_uart0_txd(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -8930,7 +8891,7 @@ impl PeripheralPage0x40002000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -8955,12 +8916,12 @@ impl PeripheralPage0x40002000 {
         Ok(())
     }
     fn write_uart0_baudrate(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if _byte_0.is_some()
             || _byte_1.is_some()
             || _byte_2.is_some()
@@ -8978,7 +8939,7 @@ impl PeripheralPage0x40002000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -9000,12 +8961,12 @@ impl PeripheralPage0x40002000 {
         Ok(())
     }
     fn write_uart0_config(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -9026,7 +8987,7 @@ impl PeripheralPage0x40002000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -9045,12 +9006,12 @@ impl PeripheralPage0x40002000 {
         Ok(())
     }
     fn write_uart0_power(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -9064,11 +9025,7 @@ pub struct PeripheralPage0x40003000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40003000 {
-    fn read(
-        &mut self,
-        _addr: u64,
-        _buf: &mut [u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
         let _start = _addr - 1073754112;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -9329,11 +9286,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40003000 {
         }
         Ok(())
     }
-    fn write(
-        &mut self,
-        _addr: u64,
-        _buf: &[u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
         let _start = _addr - 1073754112;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -9622,7 +9575,7 @@ impl PeripheralPage0x40003000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -9661,12 +9614,12 @@ impl PeripheralPage0x40003000 {
         Ok(())
     }
     fn write_spi0twi0_intenset(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -9711,7 +9664,7 @@ impl PeripheralPage0x40003000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -9750,12 +9703,12 @@ impl PeripheralPage0x40003000 {
         Ok(())
     }
     fn write_spi0twi0_intenclr(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -9800,7 +9753,7 @@ impl PeripheralPage0x40003000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -9820,12 +9773,12 @@ impl PeripheralPage0x40003000 {
         Ok(())
     }
     fn write_spi0twi0_enable(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -9840,7 +9793,7 @@ impl PeripheralPage0x40003000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -9864,7 +9817,7 @@ impl PeripheralPage0x40003000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -9883,12 +9836,12 @@ impl PeripheralPage0x40003000 {
         Ok(())
     }
     fn write_spi0twi0_txd(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -9903,7 +9856,7 @@ impl PeripheralPage0x40003000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -9928,12 +9881,12 @@ impl PeripheralPage0x40003000 {
         Ok(())
     }
     fn write_spi0twi0_frequency(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if _byte_0.is_some()
             || _byte_1.is_some()
             || _byte_2.is_some()
@@ -9951,7 +9904,7 @@ impl PeripheralPage0x40003000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -9976,12 +9929,12 @@ impl PeripheralPage0x40003000 {
         Ok(())
     }
     fn write_spi0_config(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -10008,7 +9961,7 @@ impl PeripheralPage0x40003000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -10027,12 +9980,12 @@ impl PeripheralPage0x40003000 {
         Ok(())
     }
     fn write_spi0twi0_power(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -10047,7 +10000,7 @@ impl PeripheralPage0x40003000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -10070,12 +10023,12 @@ impl PeripheralPage0x40003000 {
         Ok(())
     }
     fn write_twi0_shorts(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -10096,7 +10049,7 @@ impl PeripheralPage0x40003000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -10121,12 +10074,12 @@ impl PeripheralPage0x40003000 {
         Ok(())
     }
     fn write_twi0_errorsrc(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -10153,7 +10106,7 @@ impl PeripheralPage0x40003000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -10172,12 +10125,12 @@ impl PeripheralPage0x40003000 {
         Ok(())
     }
     fn write_twi0_address(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -10191,11 +10144,7 @@ pub struct PeripheralPage0x40004000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40004000 {
-    fn read(
-        &mut self,
-        _addr: u64,
-        _buf: &mut [u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
         let _start = _addr - 1073758208;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -10471,11 +10420,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40004000 {
         }
         Ok(())
     }
-    fn write(
-        &mut self,
-        _addr: u64,
-        _buf: &[u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
         let _start = _addr - 1073758208;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -10754,7 +10699,7 @@ impl PeripheralPage0x40004000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -10774,12 +10719,12 @@ impl PeripheralPage0x40004000 {
         Ok(())
     }
     fn write_spis1_shorts(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -10794,7 +10739,7 @@ impl PeripheralPage0x40004000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -10820,12 +10765,12 @@ impl PeripheralPage0x40004000 {
         Ok(())
     }
     fn write_spis1_intenset(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -10852,7 +10797,7 @@ impl PeripheralPage0x40004000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -10878,12 +10823,12 @@ impl PeripheralPage0x40004000 {
         Ok(())
     }
     fn write_spis1_intenclr(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -10910,7 +10855,7 @@ impl PeripheralPage0x40004000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -10934,7 +10879,7 @@ impl PeripheralPage0x40004000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -10956,12 +10901,12 @@ impl PeripheralPage0x40004000 {
         Ok(())
     }
     fn write_spis1_status(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -10982,7 +10927,7 @@ impl PeripheralPage0x40004000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -11001,12 +10946,12 @@ impl PeripheralPage0x40004000 {
         Ok(())
     }
     fn write_spis1_enable(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -11021,7 +10966,7 @@ impl PeripheralPage0x40004000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -11040,12 +10985,12 @@ impl PeripheralPage0x40004000 {
         Ok(())
     }
     fn write_spis1_maxrx(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -11060,7 +11005,7 @@ impl PeripheralPage0x40004000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -11085,7 +11030,7 @@ impl PeripheralPage0x40004000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -11104,12 +11049,12 @@ impl PeripheralPage0x40004000 {
         Ok(())
     }
     fn write_spis1_maxtx(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -11124,7 +11069,7 @@ impl PeripheralPage0x40004000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -11149,7 +11094,7 @@ impl PeripheralPage0x40004000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -11174,12 +11119,12 @@ impl PeripheralPage0x40004000 {
         Ok(())
     }
     fn write_spis1_config(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -11206,7 +11151,7 @@ impl PeripheralPage0x40004000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -11225,12 +11170,12 @@ impl PeripheralPage0x40004000 {
         Ok(())
     }
     fn write_spis1_def(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -11245,7 +11190,7 @@ impl PeripheralPage0x40004000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -11264,12 +11209,12 @@ impl PeripheralPage0x40004000 {
         Ok(())
     }
     fn write_spis1_orc(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -11284,7 +11229,7 @@ impl PeripheralPage0x40004000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -11303,12 +11248,12 @@ impl PeripheralPage0x40004000 {
         Ok(())
     }
     fn write_spis1_power(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -11322,11 +11267,7 @@ pub struct PeripheralPage0x40006000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40006000 {
-    fn read(
-        &mut self,
-        _addr: u64,
-        _buf: &mut [u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
         let _start = _addr - 1073766400;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -11486,11 +11427,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40006000 {
         }
         Ok(())
     }
-    fn write(
-        &mut self,
-        _addr: u64,
-        _buf: &[u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
         let _start = _addr - 1073766400;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -11682,7 +11619,7 @@ impl PeripheralPage0x40006000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -11713,12 +11650,12 @@ impl PeripheralPage0x40006000 {
         Ok(())
     }
     fn write_gpiote_intenset(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -11757,7 +11694,7 @@ impl PeripheralPage0x40006000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -11788,12 +11725,12 @@ impl PeripheralPage0x40006000 {
         Ok(())
     }
     fn write_gpiote_intenclr(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -11833,7 +11770,7 @@ impl PeripheralPage0x40006000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -11865,13 +11802,13 @@ impl PeripheralPage0x40006000 {
         Ok(())
     }
     fn write_gpiote_confign(
-        &self,
+        &mut self,
         _dim: usize,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -11904,7 +11841,7 @@ impl PeripheralPage0x40006000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -11923,12 +11860,12 @@ impl PeripheralPage0x40006000 {
         Ok(())
     }
     fn write_gpiote_power(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -11942,11 +11879,7 @@ pub struct PeripheralPage0x40007000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40007000 {
-    fn read(
-        &mut self,
-        _addr: u64,
-        _buf: &mut [u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
         let _start = _addr - 1073770496;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -12052,11 +11985,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40007000 {
         }
         Ok(())
     }
-    fn write(
-        &mut self,
-        _addr: u64,
-        _buf: &[u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
         let _start = _addr - 1073770496;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -12170,7 +12099,7 @@ impl PeripheralPage0x40007000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -12189,12 +12118,12 @@ impl PeripheralPage0x40007000 {
         Ok(())
     }
     fn write_adc_intenset(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -12209,7 +12138,7 @@ impl PeripheralPage0x40007000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -12228,12 +12157,12 @@ impl PeripheralPage0x40007000 {
         Ok(())
     }
     fn write_adc_intenclr(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -12248,7 +12177,7 @@ impl PeripheralPage0x40007000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -12272,7 +12201,7 @@ impl PeripheralPage0x40007000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -12291,12 +12220,12 @@ impl PeripheralPage0x40007000 {
         Ok(())
     }
     fn write_adc_enable(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -12311,7 +12240,7 @@ impl PeripheralPage0x40007000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -12342,12 +12271,12 @@ impl PeripheralPage0x40007000 {
         Ok(())
     }
     fn write_adc_config(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -12386,7 +12315,7 @@ impl PeripheralPage0x40007000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -12413,7 +12342,7 @@ impl PeripheralPage0x40007000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -12432,12 +12361,12 @@ impl PeripheralPage0x40007000 {
         Ok(())
     }
     fn write_adc_power(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -12451,11 +12380,7 @@ pub struct PeripheralPage0x40008000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40008000 {
-    fn read(
-        &mut self,
-        _addr: u64,
-        _buf: &mut [u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
         let _start = _addr - 1073774592;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -12666,11 +12591,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40008000 {
         }
         Ok(())
     }
-    fn write(
-        &mut self,
-        _addr: u64,
-        _buf: &[u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
         let _start = _addr - 1073774592;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -12938,7 +12859,7 @@ impl PeripheralPage0x40008000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -12990,12 +12911,12 @@ impl PeripheralPage0x40008000 {
         Ok(())
     }
     fn write_timer0_shorts(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -13052,7 +12973,7 @@ impl PeripheralPage0x40008000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -13084,12 +13005,12 @@ impl PeripheralPage0x40008000 {
         Ok(())
     }
     fn write_timer0_intenset(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_2 {
             self.0
                 .lock()
@@ -13122,7 +13043,7 @@ impl PeripheralPage0x40008000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -13154,12 +13075,12 @@ impl PeripheralPage0x40008000 {
         Ok(())
     }
     fn write_timer0_intenclr(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_2 {
             self.0
                 .lock()
@@ -13192,7 +13113,7 @@ impl PeripheralPage0x40008000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -13211,12 +13132,12 @@ impl PeripheralPage0x40008000 {
         Ok(())
     }
     fn write_timer0_mode(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -13231,7 +13152,7 @@ impl PeripheralPage0x40008000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -13251,12 +13172,12 @@ impl PeripheralPage0x40008000 {
         Ok(())
     }
     fn write_timer0_bitmode(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -13271,7 +13192,7 @@ impl PeripheralPage0x40008000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -13291,12 +13212,12 @@ impl PeripheralPage0x40008000 {
         Ok(())
     }
     fn write_timer0_prescaler(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -13311,7 +13232,7 @@ impl PeripheralPage0x40008000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -13330,12 +13251,12 @@ impl PeripheralPage0x40008000 {
         Ok(())
     }
     fn write_timer0_power(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -13349,11 +13270,7 @@ pub struct PeripheralPage0x4000B000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000B000 {
-    fn read(
-        &mut self,
-        _addr: u64,
-        _buf: &mut [u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
         let _start = _addr - 1073786880;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -13577,11 +13494,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000B000 {
         }
         Ok(())
     }
-    fn write(
-        &mut self,
-        _addr: u64,
-        _buf: &[u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
         let _start = _addr - 1073786880;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -13828,7 +13741,7 @@ impl PeripheralPage0x4000B000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -13866,12 +13779,12 @@ impl PeripheralPage0x4000B000 {
         Ok(())
     }
     fn write_rtc0_intenset(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -13916,7 +13829,7 @@ impl PeripheralPage0x4000B000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -13954,12 +13867,12 @@ impl PeripheralPage0x4000B000 {
         Ok(())
     }
     fn write_rtc0_intenclr(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -14004,7 +13917,7 @@ impl PeripheralPage0x4000B000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -14038,12 +13951,12 @@ impl PeripheralPage0x4000B000 {
         Ok(())
     }
     fn write_rtc0_evten(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -14088,7 +14001,7 @@ impl PeripheralPage0x4000B000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -14126,12 +14039,12 @@ impl PeripheralPage0x4000B000 {
         Ok(())
     }
     fn write_rtc0_evtenset(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -14176,7 +14089,7 @@ impl PeripheralPage0x4000B000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -14214,12 +14127,12 @@ impl PeripheralPage0x4000B000 {
         Ok(())
     }
     fn write_rtc0_evtenclr(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -14264,7 +14177,7 @@ impl PeripheralPage0x4000B000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -14291,7 +14204,7 @@ impl PeripheralPage0x4000B000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -14313,12 +14226,12 @@ impl PeripheralPage0x4000B000 {
         Ok(())
     }
     fn write_rtc0_prescaler(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if _byte_0.is_some() || _byte_1.is_some() {
             self.0
                 .lock()
@@ -14334,7 +14247,7 @@ impl PeripheralPage0x4000B000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -14356,13 +14269,13 @@ impl PeripheralPage0x4000B000 {
         Ok(())
     }
     fn write_rtc0_ccn(
-        &self,
+        &mut self,
         _dim: usize,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if _byte_0.is_some() || _byte_1.is_some() || _byte_2.is_some() {
             self.0
                 .lock()
@@ -14377,7 +14290,7 @@ impl PeripheralPage0x4000B000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -14396,12 +14309,12 @@ impl PeripheralPage0x4000B000 {
         Ok(())
     }
     fn write_rtc0_power(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -14415,11 +14328,7 @@ pub struct PeripheralPage0x4000C000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000C000 {
-    fn read(
-        &mut self,
-        _addr: u64,
-        _buf: &mut [u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
         let _start = _addr - 1073790976;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -14493,11 +14402,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000C000 {
         }
         Ok(())
     }
-    fn write(
-        &mut self,
-        _addr: u64,
-        _buf: &[u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
         let _start = _addr - 1073790976;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -14584,7 +14489,7 @@ impl PeripheralPage0x4000C000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -14603,12 +14508,12 @@ impl PeripheralPage0x4000C000 {
         Ok(())
     }
     fn write_temp_intenset(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -14623,7 +14528,7 @@ impl PeripheralPage0x4000C000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -14642,12 +14547,12 @@ impl PeripheralPage0x4000C000 {
         Ok(())
     }
     fn write_temp_intenclr(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -14662,7 +14567,7 @@ impl PeripheralPage0x4000C000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -14681,12 +14586,12 @@ impl PeripheralPage0x4000C000 {
         Ok(())
     }
     fn write_temp_power(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -14700,11 +14605,7 @@ pub struct PeripheralPage0x4000D000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000D000 {
-    fn read(
-        &mut self,
-        _addr: u64,
-        _buf: &mut [u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
         let _start = _addr - 1073795072;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -14800,11 +14701,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000D000 {
         }
         Ok(())
     }
-    fn write(
-        &mut self,
-        _addr: u64,
-        _buf: &[u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
         let _start = _addr - 1073795072;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -14913,7 +14810,7 @@ impl PeripheralPage0x4000D000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -14933,12 +14830,12 @@ impl PeripheralPage0x4000D000 {
         Ok(())
     }
     fn write_rng_shorts(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -14953,7 +14850,7 @@ impl PeripheralPage0x4000D000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -14972,12 +14869,12 @@ impl PeripheralPage0x4000D000 {
         Ok(())
     }
     fn write_rng_intenset(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -14992,7 +14889,7 @@ impl PeripheralPage0x4000D000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -15011,12 +14908,12 @@ impl PeripheralPage0x4000D000 {
         Ok(())
     }
     fn write_rng_intenclr(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -15031,7 +14928,7 @@ impl PeripheralPage0x4000D000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -15050,12 +14947,12 @@ impl PeripheralPage0x4000D000 {
         Ok(())
     }
     fn write_rng_config(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -15070,7 +14967,7 @@ impl PeripheralPage0x4000D000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -15094,7 +14991,7 @@ impl PeripheralPage0x4000D000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -15113,12 +15010,12 @@ impl PeripheralPage0x4000D000 {
         Ok(())
     }
     fn write_rng_power(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -15132,11 +15029,7 @@ pub struct PeripheralPage0x4000E000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000E000 {
-    fn read(
-        &mut self,
-        _addr: u64,
-        _buf: &mut [u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
         let _start = _addr - 1073799168;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -15220,11 +15113,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000E000 {
         }
         Ok(())
     }
-    fn write(
-        &mut self,
-        _addr: u64,
-        _buf: &[u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
         let _start = _addr - 1073799168;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -15326,7 +15215,7 @@ impl PeripheralPage0x4000E000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -15348,12 +15237,12 @@ impl PeripheralPage0x4000E000 {
         Ok(())
     }
     fn write_ecb_intenset(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -15374,7 +15263,7 @@ impl PeripheralPage0x4000E000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -15396,12 +15285,12 @@ impl PeripheralPage0x4000E000 {
         Ok(())
     }
     fn write_ecb_intenclr(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -15422,7 +15311,7 @@ impl PeripheralPage0x4000E000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -15441,12 +15330,12 @@ impl PeripheralPage0x4000E000 {
         Ok(())
     }
     fn write_ecb_power(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -15460,11 +15349,7 @@ pub struct PeripheralPage0x4000F000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000F000 {
-    fn read(
-        &mut self,
-        _addr: u64,
-        _buf: &mut [u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
         let _start = _addr - 1073803264;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -15635,11 +15520,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000F000 {
         }
         Ok(())
     }
-    fn write(
-        &mut self,
-        _addr: u64,
-        _buf: &[u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
         let _start = _addr - 1073803264;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -15828,7 +15709,7 @@ impl PeripheralPage0x4000F000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -15855,12 +15736,12 @@ impl PeripheralPage0x4000F000 {
         Ok(())
     }
     fn write_aarccm_intenset(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -15887,7 +15768,7 @@ impl PeripheralPage0x4000F000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -15914,12 +15795,12 @@ impl PeripheralPage0x4000F000 {
         Ok(())
     }
     fn write_aarccm_intenclr(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -15946,7 +15827,7 @@ impl PeripheralPage0x4000F000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -15970,7 +15851,7 @@ impl PeripheralPage0x4000F000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -15989,12 +15870,12 @@ impl PeripheralPage0x4000F000 {
         Ok(())
     }
     fn write_aarccm_enable(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -16009,7 +15890,7 @@ impl PeripheralPage0x4000F000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -16028,12 +15909,12 @@ impl PeripheralPage0x4000F000 {
         Ok(())
     }
     fn write_aarccm_nirk(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -16048,7 +15929,7 @@ impl PeripheralPage0x4000F000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -16067,12 +15948,12 @@ impl PeripheralPage0x4000F000 {
         Ok(())
     }
     fn write_aarccm_power(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -16087,7 +15968,7 @@ impl PeripheralPage0x4000F000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -16107,12 +15988,12 @@ impl PeripheralPage0x4000F000 {
         Ok(())
     }
     fn write_ccm_shorts(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -16126,11 +16007,7 @@ pub struct PeripheralPage0x40010000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40010000 {
-    fn read(
-        &mut self,
-        _addr: u64,
-        _buf: &mut [u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
         let _start = _addr - 1073807360;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -16285,11 +16162,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40010000 {
         }
         Ok(())
     }
-    fn write(
-        &mut self,
-        _addr: u64,
-        _buf: &[u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
         let _start = _addr - 1073807360;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -16495,7 +16368,7 @@ impl PeripheralPage0x40010000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -16514,12 +16387,12 @@ impl PeripheralPage0x40010000 {
         Ok(())
     }
     fn write_wdt_intenset(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -16534,7 +16407,7 @@ impl PeripheralPage0x40010000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -16553,12 +16426,12 @@ impl PeripheralPage0x40010000 {
         Ok(())
     }
     fn write_wdt_intenclr(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -16573,7 +16446,7 @@ impl PeripheralPage0x40010000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -16598,7 +16471,7 @@ impl PeripheralPage0x40010000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -16643,7 +16516,7 @@ impl PeripheralPage0x40010000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -16683,12 +16556,12 @@ impl PeripheralPage0x40010000 {
         Ok(())
     }
     fn write_wdt_rren(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -16745,7 +16618,7 @@ impl PeripheralPage0x40010000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -16767,12 +16640,12 @@ impl PeripheralPage0x40010000 {
         Ok(())
     }
     fn write_wdt_config(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -16788,13 +16661,13 @@ impl PeripheralPage0x40010000 {
         Ok(())
     }
     fn write_wdt_rrn(
-        &self,
+        &mut self,
         _dim: usize,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if _byte_0.is_some()
             || _byte_1.is_some()
             || _byte_2.is_some()
@@ -16813,7 +16686,7 @@ impl PeripheralPage0x40010000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -16832,12 +16705,12 @@ impl PeripheralPage0x40010000 {
         Ok(())
     }
     fn write_wdt_power(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -16851,11 +16724,7 @@ pub struct PeripheralPage0x40012000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40012000 {
-    fn read(
-        &mut self,
-        _addr: u64,
-        _buf: &mut [u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
         let _start = _addr - 1073815552;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -17096,11 +16965,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40012000 {
         }
         Ok(())
     }
-    fn write(
-        &mut self,
-        _addr: u64,
-        _buf: &[u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
         let _start = _addr - 1073815552;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -17339,7 +17204,7 @@ impl PeripheralPage0x40012000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -17367,12 +17232,12 @@ impl PeripheralPage0x40012000 {
         Ok(())
     }
     fn write_qdec_shorts(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -17393,7 +17258,7 @@ impl PeripheralPage0x40012000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -17420,12 +17285,12 @@ impl PeripheralPage0x40012000 {
         Ok(())
     }
     fn write_qdec_intenset(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -17452,7 +17317,7 @@ impl PeripheralPage0x40012000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -17479,12 +17344,12 @@ impl PeripheralPage0x40012000 {
         Ok(())
     }
     fn write_qdec_intenclr(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -17511,7 +17376,7 @@ impl PeripheralPage0x40012000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -17530,12 +17395,12 @@ impl PeripheralPage0x40012000 {
         Ok(())
     }
     fn write_qdec_enable(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -17550,7 +17415,7 @@ impl PeripheralPage0x40012000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -17569,12 +17434,12 @@ impl PeripheralPage0x40012000 {
         Ok(())
     }
     fn write_qdec_ledpol(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -17589,7 +17454,7 @@ impl PeripheralPage0x40012000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -17609,12 +17474,12 @@ impl PeripheralPage0x40012000 {
         Ok(())
     }
     fn write_qdec_sampleper(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -17629,7 +17494,7 @@ impl PeripheralPage0x40012000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -17660,7 +17525,7 @@ impl PeripheralPage0x40012000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -17680,12 +17545,12 @@ impl PeripheralPage0x40012000 {
         Ok(())
     }
     fn write_qdec_reportper(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -17700,7 +17565,7 @@ impl PeripheralPage0x40012000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -17719,12 +17584,12 @@ impl PeripheralPage0x40012000 {
         Ok(())
     }
     fn write_qdec_dbfen(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -17739,7 +17604,7 @@ impl PeripheralPage0x40012000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -17761,12 +17626,12 @@ impl PeripheralPage0x40012000 {
         Ok(())
     }
     fn write_qdec_ledpre(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if _byte_0.is_some() || _byte_1.is_some() {
             self.0
                 .lock()
@@ -17781,7 +17646,7 @@ impl PeripheralPage0x40012000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -17805,7 +17670,7 @@ impl PeripheralPage0x40012000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -17830,7 +17695,7 @@ impl PeripheralPage0x40012000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -17849,12 +17714,12 @@ impl PeripheralPage0x40012000 {
         Ok(())
     }
     fn write_qdec_power(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -17868,11 +17733,7 @@ pub struct PeripheralPage0x40013000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40013000 {
-    fn read(
-        &mut self,
-        _addr: u64,
-        _buf: &mut [u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
         let _start = _addr - 1073819648;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -18045,11 +17906,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40013000 {
         }
         Ok(())
     }
-    fn write(
-        &mut self,
-        _addr: u64,
-        _buf: &[u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
         let _start = _addr - 1073819648;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -18240,7 +18097,7 @@ impl PeripheralPage0x40013000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -18275,12 +18132,12 @@ impl PeripheralPage0x40013000 {
         Ok(())
     }
     fn write_lpcomp_shorts(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -18319,7 +18176,7 @@ impl PeripheralPage0x40013000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -18347,12 +18204,12 @@ impl PeripheralPage0x40013000 {
         Ok(())
     }
     fn write_lpcomp_intenset(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -18385,7 +18242,7 @@ impl PeripheralPage0x40013000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -18413,12 +18270,12 @@ impl PeripheralPage0x40013000 {
         Ok(())
     }
     fn write_lpcomp_intenclr(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -18451,7 +18308,7 @@ impl PeripheralPage0x40013000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -18475,7 +18332,7 @@ impl PeripheralPage0x40013000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -18494,12 +18351,12 @@ impl PeripheralPage0x40013000 {
         Ok(())
     }
     fn write_lpcomp_enable(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -18514,7 +18371,7 @@ impl PeripheralPage0x40013000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -18533,12 +18390,12 @@ impl PeripheralPage0x40013000 {
         Ok(())
     }
     fn write_lpcomp_psel(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -18553,7 +18410,7 @@ impl PeripheralPage0x40013000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -18572,12 +18429,12 @@ impl PeripheralPage0x40013000 {
         Ok(())
     }
     fn write_lpcomp_refsel(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -18592,7 +18449,7 @@ impl PeripheralPage0x40013000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -18612,12 +18469,12 @@ impl PeripheralPage0x40013000 {
         Ok(())
     }
     fn write_lpcomp_extrefsel(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -18632,7 +18489,7 @@ impl PeripheralPage0x40013000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -18652,12 +18509,12 @@ impl PeripheralPage0x40013000 {
         Ok(())
     }
     fn write_lpcomp_anadetect(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -18672,7 +18529,7 @@ impl PeripheralPage0x40013000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -18691,12 +18548,12 @@ impl PeripheralPage0x40013000 {
         Ok(())
     }
     fn write_lpcomp_power(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -18710,11 +18567,7 @@ pub struct PeripheralPage0x40014000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40014000 {
-    fn read(
-        &mut self,
-        _addr: u64,
-        _buf: &mut [u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
         let _start = _addr - 1073823744;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -18732,11 +18585,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40014000 {
         }
         Ok(())
     }
-    fn write(
-        &mut self,
-        _addr: u64,
-        _buf: &[u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
         let _start = _addr - 1073823744;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -18755,11 +18604,7 @@ pub struct PeripheralPage0x4001E000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4001E000 {
-    fn read(
-        &mut self,
-        _addr: u64,
-        _buf: &mut [u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
         let _start = _addr - 1073864704;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -18831,11 +18676,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4001E000 {
         }
         Ok(())
     }
-    fn write(
-        &mut self,
-        _addr: u64,
-        _buf: &[u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
         let _start = _addr - 1073864704;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -18910,7 +18751,7 @@ impl PeripheralPage0x4001E000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -18934,7 +18775,7 @@ impl PeripheralPage0x4001E000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -18953,12 +18794,12 @@ impl PeripheralPage0x4001E000 {
         Ok(())
     }
     fn write_nvmc_config(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -18973,7 +18814,7 @@ impl PeripheralPage0x4001E000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -18993,12 +18834,12 @@ impl PeripheralPage0x4001E000 {
         Ok(())
     }
     fn write_nvmc_eraseall(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -19013,7 +18854,7 @@ impl PeripheralPage0x4001E000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -19033,12 +18874,12 @@ impl PeripheralPage0x4001E000 {
         Ok(())
     }
     fn write_nvmc_eraseuicr(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -19052,11 +18893,7 @@ pub struct PeripheralPage0x4001F000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4001F000 {
-    fn read(
-        &mut self,
-        _addr: u64,
-        _buf: &mut [u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
         let _start = _addr - 1073868800;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -19143,11 +18980,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4001F000 {
         }
         Ok(())
     }
-    fn write(
-        &mut self,
-        _addr: u64,
-        _buf: &[u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
         let _start = _addr - 1073868800;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -19242,7 +19075,7 @@ impl PeripheralPage0x4001F000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -19342,12 +19175,12 @@ impl PeripheralPage0x4001F000 {
         Ok(())
     }
     fn write_ppi_chen(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -19524,7 +19357,7 @@ impl PeripheralPage0x4001F000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -19624,12 +19457,12 @@ impl PeripheralPage0x4001F000 {
         Ok(())
     }
     fn write_ppi_chenset(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -19806,7 +19639,7 @@ impl PeripheralPage0x4001F000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -19906,12 +19739,12 @@ impl PeripheralPage0x4001F000 {
         Ok(())
     }
     fn write_ppi_chenclr(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -20089,7 +19922,7 @@ impl PeripheralPage0x4001F000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -20189,13 +20022,13 @@ impl PeripheralPage0x4001F000 {
         Ok(())
     }
     fn write_ppi_chgn(
-        &self,
+        &mut self,
         _dim: usize,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -20371,11 +20204,7 @@ pub struct PeripheralPage0x50000000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x50000000 {
-    fn read(
-        &mut self,
-        _addr: u64,
-        _buf: &mut [u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
         let _start = _addr - 1342177280;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -20809,11 +20638,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x50000000 {
         }
         Ok(())
     }
-    fn write(
-        &mut self,
-        _addr: u64,
-        _buf: &[u8],
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
         let _start = _addr - 1342177280;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -21250,7 +21075,7 @@ impl PeripheralPage0x50000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -21362,12 +21187,12 @@ impl PeripheralPage0x50000000 {
         Ok(())
     }
     fn write_gpio_out(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -21568,7 +21393,7 @@ impl PeripheralPage0x50000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -21680,12 +21505,12 @@ impl PeripheralPage0x50000000 {
         Ok(())
     }
     fn write_gpio_outset(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -21886,7 +21711,7 @@ impl PeripheralPage0x50000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -21998,12 +21823,12 @@ impl PeripheralPage0x50000000 {
         Ok(())
     }
     fn write_gpio_outclr(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -22204,7 +22029,7 @@ impl PeripheralPage0x50000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -22321,7 +22146,7 @@ impl PeripheralPage0x50000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -22433,12 +22258,12 @@ impl PeripheralPage0x50000000 {
         Ok(())
     }
     fn write_gpio_dir(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -22639,7 +22464,7 @@ impl PeripheralPage0x50000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -22751,12 +22576,12 @@ impl PeripheralPage0x50000000 {
         Ok(())
     }
     fn write_gpio_dirset(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -22957,7 +22782,7 @@ impl PeripheralPage0x50000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -23069,12 +22894,12 @@ impl PeripheralPage0x50000000 {
         Ok(())
     }
     fn write_gpio_dirclr(
-        &self,
+        &mut self,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -23276,7 +23101,7 @@ impl PeripheralPage0x50000000 {
         _byte_1: &mut Option<&mut u8>,
         _byte_2: &mut Option<&mut u8>,
         _byte_3: &mut Option<&mut u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(_byte) = _byte_0 {
             **_byte = 0;
         }
@@ -23311,13 +23136,13 @@ impl PeripheralPage0x50000000 {
         Ok(())
     }
     fn write_gpio_pin_cnfn(
-        &self,
+        &mut self,
         _dim: usize,
         _byte_0: Option<&u8>,
         _byte_1: Option<&u8>,
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
-    ) -> icicle_vm::cpu::mem::MemResult<()> {
+    ) -> MemResult<()> {
         if let Some(byte) = _byte_0 {
             self.0
                 .lock()
@@ -23347,6 +23172,10316 @@ impl PeripheralPage0x50000000 {
                 .lock()
                 .unwrap()
                 .write_gpio_pin_cnfn_sense(_dim, (*byte >> 0) & 3)?;
+        }
+        Ok(())
+    }
+}
+pub struct PeripheralPage0xE000E000(
+    pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
+);
+impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0xE000E000 {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
+        let _start = _addr - 3758153728;
+        let _end = _start + u64::try_from(_buf.len()).unwrap();
+        match (_start, _end) {
+            (4..=11, 5..=12) => {
+                if (_start >= 8 && _start < 12) || (_end > 8 && _end <= 12) {
+                    self.read_control_actlr(
+                        &mut buffer_mut(_start, _end, 8, _buf),
+                        &mut buffer_mut(_start, _end, 9, _buf),
+                        &mut buffer_mut(_start, _end, 10, _buf),
+                        &mut buffer_mut(_start, _end, 11, _buf),
+                    )?;
+                }
+                if (_start >= 4 && _start < 8) || (_end > 4 && _end <= 8) {
+                    self.read_nvic_ictr(
+                        &mut buffer_mut(_start, _end, 4, _buf),
+                        &mut buffer_mut(_start, _end, 5, _buf),
+                        &mut buffer_mut(_start, _end, 6, _buf),
+                        &mut buffer_mut(_start, _end, 7, _buf),
+                    )?;
+                }
+            }
+            (16..=31, 17..=32) => {
+                if (_start >= 16 && _start < 20) || (_end > 16 && _end <= 20) {
+                    self.read_systick_stcsr(
+                        &mut buffer_mut(_start, _end, 16, _buf),
+                        &mut buffer_mut(_start, _end, 17, _buf),
+                        &mut buffer_mut(_start, _end, 18, _buf),
+                        &mut buffer_mut(_start, _end, 19, _buf),
+                    )?;
+                }
+                if (_start >= 20 && _start < 24) || (_end > 20 && _end <= 24) {
+                    self.read_systick_strvr(
+                        &mut buffer_mut(_start, _end, 20, _buf),
+                        &mut buffer_mut(_start, _end, 21, _buf),
+                        &mut buffer_mut(_start, _end, 22, _buf),
+                        &mut buffer_mut(_start, _end, 23, _buf),
+                    )?;
+                }
+                if (_start >= 24 && _start < 28) || (_end > 24 && _end <= 28) {
+                    self.read_systick_stcvr(
+                        &mut buffer_mut(_start, _end, 24, _buf),
+                        &mut buffer_mut(_start, _end, 25, _buf),
+                        &mut buffer_mut(_start, _end, 26, _buf),
+                        &mut buffer_mut(_start, _end, 27, _buf),
+                    )?;
+                }
+                if (_start >= 28 && _start < 32) || (_end > 28 && _end <= 32) {
+                    self.read_systick_stcr(
+                        &mut buffer_mut(_start, _end, 28, _buf),
+                        &mut buffer_mut(_start, _end, 29, _buf),
+                        &mut buffer_mut(_start, _end, 30, _buf),
+                        &mut buffer_mut(_start, _end, 31, _buf),
+                    )?;
+                }
+            }
+            (256..=287, 257..=288) => {
+                if (_start >= 256 && _start < 260)
+                    || (_end > 256 && _end <= 260)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_iser0(
+                        &mut buffer_mut(_start, _end, 256, _buf),
+                        &mut buffer_mut(_start, _end, 257, _buf),
+                        &mut buffer_mut(_start, _end, 258, _buf),
+                        &mut buffer_mut(_start, _end, 259, _buf),
+                    )?;
+                }
+                if (_start >= 260 && _start < 264)
+                    || (_end > 260 && _end <= 264)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_iser1(
+                        &mut buffer_mut(_start, _end, 260, _buf),
+                        &mut buffer_mut(_start, _end, 261, _buf),
+                        &mut buffer_mut(_start, _end, 262, _buf),
+                        &mut buffer_mut(_start, _end, 263, _buf),
+                    )?;
+                }
+                if (_start >= 264 && _start < 268)
+                    || (_end > 264 && _end <= 268)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_iser2(
+                        &mut buffer_mut(_start, _end, 264, _buf),
+                        &mut buffer_mut(_start, _end, 265, _buf),
+                        &mut buffer_mut(_start, _end, 266, _buf),
+                        &mut buffer_mut(_start, _end, 267, _buf),
+                    )?;
+                }
+                if (_start >= 268 && _start < 272)
+                    || (_end > 268 && _end <= 272)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_iser3(
+                        &mut buffer_mut(_start, _end, 268, _buf),
+                        &mut buffer_mut(_start, _end, 269, _buf),
+                        &mut buffer_mut(_start, _end, 270, _buf),
+                        &mut buffer_mut(_start, _end, 271, _buf),
+                    )?;
+                }
+                if (_start >= 272 && _start < 276)
+                    || (_end > 272 && _end <= 276)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_iser4(
+                        &mut buffer_mut(_start, _end, 272, _buf),
+                        &mut buffer_mut(_start, _end, 273, _buf),
+                        &mut buffer_mut(_start, _end, 274, _buf),
+                        &mut buffer_mut(_start, _end, 275, _buf),
+                    )?;
+                }
+                if (_start >= 276 && _start < 280)
+                    || (_end > 276 && _end <= 280)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_iser5(
+                        &mut buffer_mut(_start, _end, 276, _buf),
+                        &mut buffer_mut(_start, _end, 277, _buf),
+                        &mut buffer_mut(_start, _end, 278, _buf),
+                        &mut buffer_mut(_start, _end, 279, _buf),
+                    )?;
+                }
+                if (_start >= 280 && _start < 284)
+                    || (_end > 280 && _end <= 284)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_iser6(
+                        &mut buffer_mut(_start, _end, 280, _buf),
+                        &mut buffer_mut(_start, _end, 281, _buf),
+                        &mut buffer_mut(_start, _end, 282, _buf),
+                        &mut buffer_mut(_start, _end, 283, _buf),
+                    )?;
+                }
+                if (_start >= 284 && _start < 288)
+                    || (_end > 284 && _end <= 288)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_iser7(
+                        &mut buffer_mut(_start, _end, 284, _buf),
+                        &mut buffer_mut(_start, _end, 285, _buf),
+                        &mut buffer_mut(_start, _end, 286, _buf),
+                        &mut buffer_mut(_start, _end, 287, _buf),
+                    )?;
+                }
+            }
+            (384..=415, 385..=416) => {
+                if (_start >= 384 && _start < 388)
+                    || (_end > 384 && _end <= 388)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_icer0(
+                        &mut buffer_mut(_start, _end, 384, _buf),
+                        &mut buffer_mut(_start, _end, 385, _buf),
+                        &mut buffer_mut(_start, _end, 386, _buf),
+                        &mut buffer_mut(_start, _end, 387, _buf),
+                    )?;
+                }
+                if (_start >= 388 && _start < 392)
+                    || (_end > 388 && _end <= 392)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_icer1(
+                        &mut buffer_mut(_start, _end, 388, _buf),
+                        &mut buffer_mut(_start, _end, 389, _buf),
+                        &mut buffer_mut(_start, _end, 390, _buf),
+                        &mut buffer_mut(_start, _end, 391, _buf),
+                    )?;
+                }
+                if (_start >= 392 && _start < 396)
+                    || (_end > 392 && _end <= 396)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_icer2(
+                        &mut buffer_mut(_start, _end, 392, _buf),
+                        &mut buffer_mut(_start, _end, 393, _buf),
+                        &mut buffer_mut(_start, _end, 394, _buf),
+                        &mut buffer_mut(_start, _end, 395, _buf),
+                    )?;
+                }
+                if (_start >= 396 && _start < 400)
+                    || (_end > 396 && _end <= 400)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_icer3(
+                        &mut buffer_mut(_start, _end, 396, _buf),
+                        &mut buffer_mut(_start, _end, 397, _buf),
+                        &mut buffer_mut(_start, _end, 398, _buf),
+                        &mut buffer_mut(_start, _end, 399, _buf),
+                    )?;
+                }
+                if (_start >= 400 && _start < 404)
+                    || (_end > 400 && _end <= 404)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_icer4(
+                        &mut buffer_mut(_start, _end, 400, _buf),
+                        &mut buffer_mut(_start, _end, 401, _buf),
+                        &mut buffer_mut(_start, _end, 402, _buf),
+                        &mut buffer_mut(_start, _end, 403, _buf),
+                    )?;
+                }
+                if (_start >= 404 && _start < 408)
+                    || (_end > 404 && _end <= 408)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_icer5(
+                        &mut buffer_mut(_start, _end, 404, _buf),
+                        &mut buffer_mut(_start, _end, 405, _buf),
+                        &mut buffer_mut(_start, _end, 406, _buf),
+                        &mut buffer_mut(_start, _end, 407, _buf),
+                    )?;
+                }
+                if (_start >= 408 && _start < 412)
+                    || (_end > 408 && _end <= 412)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_icer6(
+                        &mut buffer_mut(_start, _end, 408, _buf),
+                        &mut buffer_mut(_start, _end, 409, _buf),
+                        &mut buffer_mut(_start, _end, 410, _buf),
+                        &mut buffer_mut(_start, _end, 411, _buf),
+                    )?;
+                }
+                if (_start >= 412 && _start < 416)
+                    || (_end > 412 && _end <= 416)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_icer7(
+                        &mut buffer_mut(_start, _end, 412, _buf),
+                        &mut buffer_mut(_start, _end, 413, _buf),
+                        &mut buffer_mut(_start, _end, 414, _buf),
+                        &mut buffer_mut(_start, _end, 415, _buf),
+                    )?;
+                }
+            }
+            (512..=543, 513..=544) => {
+                if (_start >= 512 && _start < 516)
+                    || (_end > 512 && _end <= 516)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_ispr0(
+                        &mut buffer_mut(_start, _end, 512, _buf),
+                        &mut buffer_mut(_start, _end, 513, _buf),
+                        &mut buffer_mut(_start, _end, 514, _buf),
+                        &mut buffer_mut(_start, _end, 515, _buf),
+                    )?;
+                }
+                if (_start >= 516 && _start < 520)
+                    || (_end > 516 && _end <= 520)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_ispr1(
+                        &mut buffer_mut(_start, _end, 516, _buf),
+                        &mut buffer_mut(_start, _end, 517, _buf),
+                        &mut buffer_mut(_start, _end, 518, _buf),
+                        &mut buffer_mut(_start, _end, 519, _buf),
+                    )?;
+                }
+                if (_start >= 520 && _start < 524)
+                    || (_end > 520 && _end <= 524)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_ispr2(
+                        &mut buffer_mut(_start, _end, 520, _buf),
+                        &mut buffer_mut(_start, _end, 521, _buf),
+                        &mut buffer_mut(_start, _end, 522, _buf),
+                        &mut buffer_mut(_start, _end, 523, _buf),
+                    )?;
+                }
+                if (_start >= 524 && _start < 528)
+                    || (_end > 524 && _end <= 528)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_ispr3(
+                        &mut buffer_mut(_start, _end, 524, _buf),
+                        &mut buffer_mut(_start, _end, 525, _buf),
+                        &mut buffer_mut(_start, _end, 526, _buf),
+                        &mut buffer_mut(_start, _end, 527, _buf),
+                    )?;
+                }
+                if (_start >= 528 && _start < 532)
+                    || (_end > 528 && _end <= 532)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_ispr4(
+                        &mut buffer_mut(_start, _end, 528, _buf),
+                        &mut buffer_mut(_start, _end, 529, _buf),
+                        &mut buffer_mut(_start, _end, 530, _buf),
+                        &mut buffer_mut(_start, _end, 531, _buf),
+                    )?;
+                }
+                if (_start >= 532 && _start < 536)
+                    || (_end > 532 && _end <= 536)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_ispr5(
+                        &mut buffer_mut(_start, _end, 532, _buf),
+                        &mut buffer_mut(_start, _end, 533, _buf),
+                        &mut buffer_mut(_start, _end, 534, _buf),
+                        &mut buffer_mut(_start, _end, 535, _buf),
+                    )?;
+                }
+                if (_start >= 536 && _start < 540)
+                    || (_end > 536 && _end <= 540)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_ispr6(
+                        &mut buffer_mut(_start, _end, 536, _buf),
+                        &mut buffer_mut(_start, _end, 537, _buf),
+                        &mut buffer_mut(_start, _end, 538, _buf),
+                        &mut buffer_mut(_start, _end, 539, _buf),
+                    )?;
+                }
+                if (_start >= 540 && _start < 544)
+                    || (_end > 540 && _end <= 544)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_ispr7(
+                        &mut buffer_mut(_start, _end, 540, _buf),
+                        &mut buffer_mut(_start, _end, 541, _buf),
+                        &mut buffer_mut(_start, _end, 542, _buf),
+                        &mut buffer_mut(_start, _end, 543, _buf),
+                    )?;
+                }
+            }
+            (640..=671, 641..=672) => {
+                if (_start >= 640 && _start < 644)
+                    || (_end > 640 && _end <= 644)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_icpr0(
+                        &mut buffer_mut(_start, _end, 640, _buf),
+                        &mut buffer_mut(_start, _end, 641, _buf),
+                        &mut buffer_mut(_start, _end, 642, _buf),
+                        &mut buffer_mut(_start, _end, 643, _buf),
+                    )?;
+                }
+                if (_start >= 644 && _start < 648)
+                    || (_end > 644 && _end <= 648)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_icpr1(
+                        &mut buffer_mut(_start, _end, 644, _buf),
+                        &mut buffer_mut(_start, _end, 645, _buf),
+                        &mut buffer_mut(_start, _end, 646, _buf),
+                        &mut buffer_mut(_start, _end, 647, _buf),
+                    )?;
+                }
+                if (_start >= 648 && _start < 652)
+                    || (_end > 648 && _end <= 652)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_icpr2(
+                        &mut buffer_mut(_start, _end, 648, _buf),
+                        &mut buffer_mut(_start, _end, 649, _buf),
+                        &mut buffer_mut(_start, _end, 650, _buf),
+                        &mut buffer_mut(_start, _end, 651, _buf),
+                    )?;
+                }
+                if (_start >= 652 && _start < 656)
+                    || (_end > 652 && _end <= 656)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_icpr3(
+                        &mut buffer_mut(_start, _end, 652, _buf),
+                        &mut buffer_mut(_start, _end, 653, _buf),
+                        &mut buffer_mut(_start, _end, 654, _buf),
+                        &mut buffer_mut(_start, _end, 655, _buf),
+                    )?;
+                }
+                if (_start >= 656 && _start < 660)
+                    || (_end > 656 && _end <= 660)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_icpr4(
+                        &mut buffer_mut(_start, _end, 656, _buf),
+                        &mut buffer_mut(_start, _end, 657, _buf),
+                        &mut buffer_mut(_start, _end, 658, _buf),
+                        &mut buffer_mut(_start, _end, 659, _buf),
+                    )?;
+                }
+                if (_start >= 660 && _start < 664)
+                    || (_end > 660 && _end <= 664)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_icpr5(
+                        &mut buffer_mut(_start, _end, 660, _buf),
+                        &mut buffer_mut(_start, _end, 661, _buf),
+                        &mut buffer_mut(_start, _end, 662, _buf),
+                        &mut buffer_mut(_start, _end, 663, _buf),
+                    )?;
+                }
+                if (_start >= 664 && _start < 668)
+                    || (_end > 664 && _end <= 668)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_icpr6(
+                        &mut buffer_mut(_start, _end, 664, _buf),
+                        &mut buffer_mut(_start, _end, 665, _buf),
+                        &mut buffer_mut(_start, _end, 666, _buf),
+                        &mut buffer_mut(_start, _end, 667, _buf),
+                    )?;
+                }
+                if (_start >= 668 && _start < 672)
+                    || (_end > 668 && _end <= 672)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_icpr7(
+                        &mut buffer_mut(_start, _end, 668, _buf),
+                        &mut buffer_mut(_start, _end, 669, _buf),
+                        &mut buffer_mut(_start, _end, 670, _buf),
+                        &mut buffer_mut(_start, _end, 671, _buf),
+                    )?;
+                }
+            }
+            (768..=799, 769..=800) => {
+                if (_start >= 768 && _start < 772)
+                    || (_end > 768 && _end <= 772)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_iabr0(
+                        &mut buffer_mut(_start, _end, 768, _buf),
+                        &mut buffer_mut(_start, _end, 769, _buf),
+                        &mut buffer_mut(_start, _end, 770, _buf),
+                        &mut buffer_mut(_start, _end, 771, _buf),
+                    )?;
+                }
+                if (_start >= 772 && _start < 776)
+                    || (_end > 772 && _end <= 776)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_iabr1(
+                        &mut buffer_mut(_start, _end, 772, _buf),
+                        &mut buffer_mut(_start, _end, 773, _buf),
+                        &mut buffer_mut(_start, _end, 774, _buf),
+                        &mut buffer_mut(_start, _end, 775, _buf),
+                    )?;
+                }
+                if (_start >= 776 && _start < 780)
+                    || (_end > 776 && _end <= 780)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_iabr2(
+                        &mut buffer_mut(_start, _end, 776, _buf),
+                        &mut buffer_mut(_start, _end, 777, _buf),
+                        &mut buffer_mut(_start, _end, 778, _buf),
+                        &mut buffer_mut(_start, _end, 779, _buf),
+                    )?;
+                }
+                if (_start >= 780 && _start < 784)
+                    || (_end > 780 && _end <= 784)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_iabr3(
+                        &mut buffer_mut(_start, _end, 780, _buf),
+                        &mut buffer_mut(_start, _end, 781, _buf),
+                        &mut buffer_mut(_start, _end, 782, _buf),
+                        &mut buffer_mut(_start, _end, 783, _buf),
+                    )?;
+                }
+                if (_start >= 784 && _start < 788)
+                    || (_end > 784 && _end <= 788)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_iabr4(
+                        &mut buffer_mut(_start, _end, 784, _buf),
+                        &mut buffer_mut(_start, _end, 785, _buf),
+                        &mut buffer_mut(_start, _end, 786, _buf),
+                        &mut buffer_mut(_start, _end, 787, _buf),
+                    )?;
+                }
+                if (_start >= 788 && _start < 792)
+                    || (_end > 788 && _end <= 792)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_iabr5(
+                        &mut buffer_mut(_start, _end, 788, _buf),
+                        &mut buffer_mut(_start, _end, 789, _buf),
+                        &mut buffer_mut(_start, _end, 790, _buf),
+                        &mut buffer_mut(_start, _end, 791, _buf),
+                    )?;
+                }
+                if (_start >= 792 && _start < 796)
+                    || (_end > 792 && _end <= 796)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_iabr6(
+                        &mut buffer_mut(_start, _end, 792, _buf),
+                        &mut buffer_mut(_start, _end, 793, _buf),
+                        &mut buffer_mut(_start, _end, 794, _buf),
+                        &mut buffer_mut(_start, _end, 795, _buf),
+                    )?;
+                }
+                if (_start >= 796 && _start < 800)
+                    || (_end > 796 && _end <= 800)
+                {
+                    self.0.lock().unwrap().read_nvic_nvic_iabr7(
+                        &mut buffer_mut(_start, _end, 796, _buf),
+                        &mut buffer_mut(_start, _end, 797, _buf),
+                        &mut buffer_mut(_start, _end, 798, _buf),
+                        &mut buffer_mut(_start, _end, 799, _buf),
+                    )?;
+                }
+            }
+            (1024..=1263, 1025..=1264) => {
+                if (_start >= 1024 && _start < 1028)
+                    || (_end > 1024 && _end <= 1028)
+                {
+                    self.read_nvic_nvic_ipr0(
+                        &mut buffer_mut(_start, _end, 1024, _buf),
+                        &mut buffer_mut(_start, _end, 1025, _buf),
+                        &mut buffer_mut(_start, _end, 1026, _buf),
+                        &mut buffer_mut(_start, _end, 1027, _buf),
+                    )?;
+                }
+                if (_start >= 1028 && _start < 1032)
+                    || (_end > 1028 && _end <= 1032)
+                {
+                    self.read_nvic_nvic_ipr1(
+                        &mut buffer_mut(_start, _end, 1028, _buf),
+                        &mut buffer_mut(_start, _end, 1029, _buf),
+                        &mut buffer_mut(_start, _end, 1030, _buf),
+                        &mut buffer_mut(_start, _end, 1031, _buf),
+                    )?;
+                }
+                if (_start >= 1032 && _start < 1036)
+                    || (_end > 1032 && _end <= 1036)
+                {
+                    self.read_nvic_nvic_ipr2(
+                        &mut buffer_mut(_start, _end, 1032, _buf),
+                        &mut buffer_mut(_start, _end, 1033, _buf),
+                        &mut buffer_mut(_start, _end, 1034, _buf),
+                        &mut buffer_mut(_start, _end, 1035, _buf),
+                    )?;
+                }
+                if (_start >= 1036 && _start < 1040)
+                    || (_end > 1036 && _end <= 1040)
+                {
+                    self.read_nvic_nvic_ipr3(
+                        &mut buffer_mut(_start, _end, 1036, _buf),
+                        &mut buffer_mut(_start, _end, 1037, _buf),
+                        &mut buffer_mut(_start, _end, 1038, _buf),
+                        &mut buffer_mut(_start, _end, 1039, _buf),
+                    )?;
+                }
+                if (_start >= 1040 && _start < 1044)
+                    || (_end > 1040 && _end <= 1044)
+                {
+                    self.read_nvic_nvic_ipr4(
+                        &mut buffer_mut(_start, _end, 1040, _buf),
+                        &mut buffer_mut(_start, _end, 1041, _buf),
+                        &mut buffer_mut(_start, _end, 1042, _buf),
+                        &mut buffer_mut(_start, _end, 1043, _buf),
+                    )?;
+                }
+                if (_start >= 1044 && _start < 1048)
+                    || (_end > 1044 && _end <= 1048)
+                {
+                    self.read_nvic_nvic_ipr5(
+                        &mut buffer_mut(_start, _end, 1044, _buf),
+                        &mut buffer_mut(_start, _end, 1045, _buf),
+                        &mut buffer_mut(_start, _end, 1046, _buf),
+                        &mut buffer_mut(_start, _end, 1047, _buf),
+                    )?;
+                }
+                if (_start >= 1048 && _start < 1052)
+                    || (_end > 1048 && _end <= 1052)
+                {
+                    self.read_nvic_nvic_ipr6(
+                        &mut buffer_mut(_start, _end, 1048, _buf),
+                        &mut buffer_mut(_start, _end, 1049, _buf),
+                        &mut buffer_mut(_start, _end, 1050, _buf),
+                        &mut buffer_mut(_start, _end, 1051, _buf),
+                    )?;
+                }
+                if (_start >= 1052 && _start < 1056)
+                    || (_end > 1052 && _end <= 1056)
+                {
+                    self.read_nvic_nvic_ipr7(
+                        &mut buffer_mut(_start, _end, 1052, _buf),
+                        &mut buffer_mut(_start, _end, 1053, _buf),
+                        &mut buffer_mut(_start, _end, 1054, _buf),
+                        &mut buffer_mut(_start, _end, 1055, _buf),
+                    )?;
+                }
+                if (_start >= 1056 && _start < 1060)
+                    || (_end > 1056 && _end <= 1060)
+                {
+                    self.read_nvic_nvic_ipr8(
+                        &mut buffer_mut(_start, _end, 1056, _buf),
+                        &mut buffer_mut(_start, _end, 1057, _buf),
+                        &mut buffer_mut(_start, _end, 1058, _buf),
+                        &mut buffer_mut(_start, _end, 1059, _buf),
+                    )?;
+                }
+                if (_start >= 1060 && _start < 1064)
+                    || (_end > 1060 && _end <= 1064)
+                {
+                    self.read_nvic_nvic_ipr9(
+                        &mut buffer_mut(_start, _end, 1060, _buf),
+                        &mut buffer_mut(_start, _end, 1061, _buf),
+                        &mut buffer_mut(_start, _end, 1062, _buf),
+                        &mut buffer_mut(_start, _end, 1063, _buf),
+                    )?;
+                }
+                if (_start >= 1064 && _start < 1068)
+                    || (_end > 1064 && _end <= 1068)
+                {
+                    self.read_nvic_nvic_ipr10(
+                        &mut buffer_mut(_start, _end, 1064, _buf),
+                        &mut buffer_mut(_start, _end, 1065, _buf),
+                        &mut buffer_mut(_start, _end, 1066, _buf),
+                        &mut buffer_mut(_start, _end, 1067, _buf),
+                    )?;
+                }
+                if (_start >= 1068 && _start < 1072)
+                    || (_end > 1068 && _end <= 1072)
+                {
+                    self.read_nvic_nvic_ipr11(
+                        &mut buffer_mut(_start, _end, 1068, _buf),
+                        &mut buffer_mut(_start, _end, 1069, _buf),
+                        &mut buffer_mut(_start, _end, 1070, _buf),
+                        &mut buffer_mut(_start, _end, 1071, _buf),
+                    )?;
+                }
+                if (_start >= 1072 && _start < 1076)
+                    || (_end > 1072 && _end <= 1076)
+                {
+                    self.read_nvic_nvic_ipr12(
+                        &mut buffer_mut(_start, _end, 1072, _buf),
+                        &mut buffer_mut(_start, _end, 1073, _buf),
+                        &mut buffer_mut(_start, _end, 1074, _buf),
+                        &mut buffer_mut(_start, _end, 1075, _buf),
+                    )?;
+                }
+                if (_start >= 1076 && _start < 1080)
+                    || (_end > 1076 && _end <= 1080)
+                {
+                    self.read_nvic_nvic_ipr13(
+                        &mut buffer_mut(_start, _end, 1076, _buf),
+                        &mut buffer_mut(_start, _end, 1077, _buf),
+                        &mut buffer_mut(_start, _end, 1078, _buf),
+                        &mut buffer_mut(_start, _end, 1079, _buf),
+                    )?;
+                }
+                if (_start >= 1080 && _start < 1084)
+                    || (_end > 1080 && _end <= 1084)
+                {
+                    self.read_nvic_nvic_ipr14(
+                        &mut buffer_mut(_start, _end, 1080, _buf),
+                        &mut buffer_mut(_start, _end, 1081, _buf),
+                        &mut buffer_mut(_start, _end, 1082, _buf),
+                        &mut buffer_mut(_start, _end, 1083, _buf),
+                    )?;
+                }
+                if (_start >= 1084 && _start < 1088)
+                    || (_end > 1084 && _end <= 1088)
+                {
+                    self.read_nvic_nvic_ipr15(
+                        &mut buffer_mut(_start, _end, 1084, _buf),
+                        &mut buffer_mut(_start, _end, 1085, _buf),
+                        &mut buffer_mut(_start, _end, 1086, _buf),
+                        &mut buffer_mut(_start, _end, 1087, _buf),
+                    )?;
+                }
+                if (_start >= 1088 && _start < 1092)
+                    || (_end > 1088 && _end <= 1092)
+                {
+                    self.read_nvic_nvic_ipr16(
+                        &mut buffer_mut(_start, _end, 1088, _buf),
+                        &mut buffer_mut(_start, _end, 1089, _buf),
+                        &mut buffer_mut(_start, _end, 1090, _buf),
+                        &mut buffer_mut(_start, _end, 1091, _buf),
+                    )?;
+                }
+                if (_start >= 1092 && _start < 1096)
+                    || (_end > 1092 && _end <= 1096)
+                {
+                    self.read_nvic_nvic_ipr17(
+                        &mut buffer_mut(_start, _end, 1092, _buf),
+                        &mut buffer_mut(_start, _end, 1093, _buf),
+                        &mut buffer_mut(_start, _end, 1094, _buf),
+                        &mut buffer_mut(_start, _end, 1095, _buf),
+                    )?;
+                }
+                if (_start >= 1096 && _start < 1100)
+                    || (_end > 1096 && _end <= 1100)
+                {
+                    self.read_nvic_nvic_ipr18(
+                        &mut buffer_mut(_start, _end, 1096, _buf),
+                        &mut buffer_mut(_start, _end, 1097, _buf),
+                        &mut buffer_mut(_start, _end, 1098, _buf),
+                        &mut buffer_mut(_start, _end, 1099, _buf),
+                    )?;
+                }
+                if (_start >= 1100 && _start < 1104)
+                    || (_end > 1100 && _end <= 1104)
+                {
+                    self.read_nvic_nvic_ipr19(
+                        &mut buffer_mut(_start, _end, 1100, _buf),
+                        &mut buffer_mut(_start, _end, 1101, _buf),
+                        &mut buffer_mut(_start, _end, 1102, _buf),
+                        &mut buffer_mut(_start, _end, 1103, _buf),
+                    )?;
+                }
+                if (_start >= 1104 && _start < 1108)
+                    || (_end > 1104 && _end <= 1108)
+                {
+                    self.read_nvic_nvic_ipr20(
+                        &mut buffer_mut(_start, _end, 1104, _buf),
+                        &mut buffer_mut(_start, _end, 1105, _buf),
+                        &mut buffer_mut(_start, _end, 1106, _buf),
+                        &mut buffer_mut(_start, _end, 1107, _buf),
+                    )?;
+                }
+                if (_start >= 1108 && _start < 1112)
+                    || (_end > 1108 && _end <= 1112)
+                {
+                    self.read_nvic_nvic_ipr21(
+                        &mut buffer_mut(_start, _end, 1108, _buf),
+                        &mut buffer_mut(_start, _end, 1109, _buf),
+                        &mut buffer_mut(_start, _end, 1110, _buf),
+                        &mut buffer_mut(_start, _end, 1111, _buf),
+                    )?;
+                }
+                if (_start >= 1112 && _start < 1116)
+                    || (_end > 1112 && _end <= 1116)
+                {
+                    self.read_nvic_nvic_ipr22(
+                        &mut buffer_mut(_start, _end, 1112, _buf),
+                        &mut buffer_mut(_start, _end, 1113, _buf),
+                        &mut buffer_mut(_start, _end, 1114, _buf),
+                        &mut buffer_mut(_start, _end, 1115, _buf),
+                    )?;
+                }
+                if (_start >= 1116 && _start < 1120)
+                    || (_end > 1116 && _end <= 1120)
+                {
+                    self.read_nvic_nvic_ipr23(
+                        &mut buffer_mut(_start, _end, 1116, _buf),
+                        &mut buffer_mut(_start, _end, 1117, _buf),
+                        &mut buffer_mut(_start, _end, 1118, _buf),
+                        &mut buffer_mut(_start, _end, 1119, _buf),
+                    )?;
+                }
+                if (_start >= 1120 && _start < 1124)
+                    || (_end > 1120 && _end <= 1124)
+                {
+                    self.read_nvic_nvic_ipr24(
+                        &mut buffer_mut(_start, _end, 1120, _buf),
+                        &mut buffer_mut(_start, _end, 1121, _buf),
+                        &mut buffer_mut(_start, _end, 1122, _buf),
+                        &mut buffer_mut(_start, _end, 1123, _buf),
+                    )?;
+                }
+                if (_start >= 1124 && _start < 1128)
+                    || (_end > 1124 && _end <= 1128)
+                {
+                    self.read_nvic_nvic_ipr25(
+                        &mut buffer_mut(_start, _end, 1124, _buf),
+                        &mut buffer_mut(_start, _end, 1125, _buf),
+                        &mut buffer_mut(_start, _end, 1126, _buf),
+                        &mut buffer_mut(_start, _end, 1127, _buf),
+                    )?;
+                }
+                if (_start >= 1128 && _start < 1132)
+                    || (_end > 1128 && _end <= 1132)
+                {
+                    self.read_nvic_nvic_ipr26(
+                        &mut buffer_mut(_start, _end, 1128, _buf),
+                        &mut buffer_mut(_start, _end, 1129, _buf),
+                        &mut buffer_mut(_start, _end, 1130, _buf),
+                        &mut buffer_mut(_start, _end, 1131, _buf),
+                    )?;
+                }
+                if (_start >= 1132 && _start < 1136)
+                    || (_end > 1132 && _end <= 1136)
+                {
+                    self.read_nvic_nvic_ipr27(
+                        &mut buffer_mut(_start, _end, 1132, _buf),
+                        &mut buffer_mut(_start, _end, 1133, _buf),
+                        &mut buffer_mut(_start, _end, 1134, _buf),
+                        &mut buffer_mut(_start, _end, 1135, _buf),
+                    )?;
+                }
+                if (_start >= 1136 && _start < 1140)
+                    || (_end > 1136 && _end <= 1140)
+                {
+                    self.read_nvic_nvic_ipr28(
+                        &mut buffer_mut(_start, _end, 1136, _buf),
+                        &mut buffer_mut(_start, _end, 1137, _buf),
+                        &mut buffer_mut(_start, _end, 1138, _buf),
+                        &mut buffer_mut(_start, _end, 1139, _buf),
+                    )?;
+                }
+                if (_start >= 1140 && _start < 1144)
+                    || (_end > 1140 && _end <= 1144)
+                {
+                    self.read_nvic_nvic_ipr29(
+                        &mut buffer_mut(_start, _end, 1140, _buf),
+                        &mut buffer_mut(_start, _end, 1141, _buf),
+                        &mut buffer_mut(_start, _end, 1142, _buf),
+                        &mut buffer_mut(_start, _end, 1143, _buf),
+                    )?;
+                }
+                if (_start >= 1144 && _start < 1148)
+                    || (_end > 1144 && _end <= 1148)
+                {
+                    self.read_nvic_nvic_ipr30(
+                        &mut buffer_mut(_start, _end, 1144, _buf),
+                        &mut buffer_mut(_start, _end, 1145, _buf),
+                        &mut buffer_mut(_start, _end, 1146, _buf),
+                        &mut buffer_mut(_start, _end, 1147, _buf),
+                    )?;
+                }
+                if (_start >= 1148 && _start < 1152)
+                    || (_end > 1148 && _end <= 1152)
+                {
+                    self.read_nvic_nvic_ipr31(
+                        &mut buffer_mut(_start, _end, 1148, _buf),
+                        &mut buffer_mut(_start, _end, 1149, _buf),
+                        &mut buffer_mut(_start, _end, 1150, _buf),
+                        &mut buffer_mut(_start, _end, 1151, _buf),
+                    )?;
+                }
+                if (_start >= 1152 && _start < 1156)
+                    || (_end > 1152 && _end <= 1156)
+                {
+                    self.read_nvic_nvic_ipr32(
+                        &mut buffer_mut(_start, _end, 1152, _buf),
+                        &mut buffer_mut(_start, _end, 1153, _buf),
+                        &mut buffer_mut(_start, _end, 1154, _buf),
+                        &mut buffer_mut(_start, _end, 1155, _buf),
+                    )?;
+                }
+                if (_start >= 1156 && _start < 1160)
+                    || (_end > 1156 && _end <= 1160)
+                {
+                    self.read_nvic_nvic_ipr33(
+                        &mut buffer_mut(_start, _end, 1156, _buf),
+                        &mut buffer_mut(_start, _end, 1157, _buf),
+                        &mut buffer_mut(_start, _end, 1158, _buf),
+                        &mut buffer_mut(_start, _end, 1159, _buf),
+                    )?;
+                }
+                if (_start >= 1160 && _start < 1164)
+                    || (_end > 1160 && _end <= 1164)
+                {
+                    self.read_nvic_nvic_ipr34(
+                        &mut buffer_mut(_start, _end, 1160, _buf),
+                        &mut buffer_mut(_start, _end, 1161, _buf),
+                        &mut buffer_mut(_start, _end, 1162, _buf),
+                        &mut buffer_mut(_start, _end, 1163, _buf),
+                    )?;
+                }
+                if (_start >= 1164 && _start < 1168)
+                    || (_end > 1164 && _end <= 1168)
+                {
+                    self.read_nvic_nvic_ipr35(
+                        &mut buffer_mut(_start, _end, 1164, _buf),
+                        &mut buffer_mut(_start, _end, 1165, _buf),
+                        &mut buffer_mut(_start, _end, 1166, _buf),
+                        &mut buffer_mut(_start, _end, 1167, _buf),
+                    )?;
+                }
+                if (_start >= 1168 && _start < 1172)
+                    || (_end > 1168 && _end <= 1172)
+                {
+                    self.read_nvic_nvic_ipr36(
+                        &mut buffer_mut(_start, _end, 1168, _buf),
+                        &mut buffer_mut(_start, _end, 1169, _buf),
+                        &mut buffer_mut(_start, _end, 1170, _buf),
+                        &mut buffer_mut(_start, _end, 1171, _buf),
+                    )?;
+                }
+                if (_start >= 1172 && _start < 1176)
+                    || (_end > 1172 && _end <= 1176)
+                {
+                    self.read_nvic_nvic_ipr37(
+                        &mut buffer_mut(_start, _end, 1172, _buf),
+                        &mut buffer_mut(_start, _end, 1173, _buf),
+                        &mut buffer_mut(_start, _end, 1174, _buf),
+                        &mut buffer_mut(_start, _end, 1175, _buf),
+                    )?;
+                }
+                if (_start >= 1176 && _start < 1180)
+                    || (_end > 1176 && _end <= 1180)
+                {
+                    self.read_nvic_nvic_ipr38(
+                        &mut buffer_mut(_start, _end, 1176, _buf),
+                        &mut buffer_mut(_start, _end, 1177, _buf),
+                        &mut buffer_mut(_start, _end, 1178, _buf),
+                        &mut buffer_mut(_start, _end, 1179, _buf),
+                    )?;
+                }
+                if (_start >= 1180 && _start < 1184)
+                    || (_end > 1180 && _end <= 1184)
+                {
+                    self.read_nvic_nvic_ipr39(
+                        &mut buffer_mut(_start, _end, 1180, _buf),
+                        &mut buffer_mut(_start, _end, 1181, _buf),
+                        &mut buffer_mut(_start, _end, 1182, _buf),
+                        &mut buffer_mut(_start, _end, 1183, _buf),
+                    )?;
+                }
+                if (_start >= 1184 && _start < 1188)
+                    || (_end > 1184 && _end <= 1188)
+                {
+                    self.read_nvic_nvic_ipr40(
+                        &mut buffer_mut(_start, _end, 1184, _buf),
+                        &mut buffer_mut(_start, _end, 1185, _buf),
+                        &mut buffer_mut(_start, _end, 1186, _buf),
+                        &mut buffer_mut(_start, _end, 1187, _buf),
+                    )?;
+                }
+                if (_start >= 1188 && _start < 1192)
+                    || (_end > 1188 && _end <= 1192)
+                {
+                    self.read_nvic_nvic_ipr41(
+                        &mut buffer_mut(_start, _end, 1188, _buf),
+                        &mut buffer_mut(_start, _end, 1189, _buf),
+                        &mut buffer_mut(_start, _end, 1190, _buf),
+                        &mut buffer_mut(_start, _end, 1191, _buf),
+                    )?;
+                }
+                if (_start >= 1192 && _start < 1196)
+                    || (_end > 1192 && _end <= 1196)
+                {
+                    self.read_nvic_nvic_ipr42(
+                        &mut buffer_mut(_start, _end, 1192, _buf),
+                        &mut buffer_mut(_start, _end, 1193, _buf),
+                        &mut buffer_mut(_start, _end, 1194, _buf),
+                        &mut buffer_mut(_start, _end, 1195, _buf),
+                    )?;
+                }
+                if (_start >= 1196 && _start < 1200)
+                    || (_end > 1196 && _end <= 1200)
+                {
+                    self.read_nvic_nvic_ipr43(
+                        &mut buffer_mut(_start, _end, 1196, _buf),
+                        &mut buffer_mut(_start, _end, 1197, _buf),
+                        &mut buffer_mut(_start, _end, 1198, _buf),
+                        &mut buffer_mut(_start, _end, 1199, _buf),
+                    )?;
+                }
+                if (_start >= 1200 && _start < 1204)
+                    || (_end > 1200 && _end <= 1204)
+                {
+                    self.read_nvic_nvic_ipr44(
+                        &mut buffer_mut(_start, _end, 1200, _buf),
+                        &mut buffer_mut(_start, _end, 1201, _buf),
+                        &mut buffer_mut(_start, _end, 1202, _buf),
+                        &mut buffer_mut(_start, _end, 1203, _buf),
+                    )?;
+                }
+                if (_start >= 1204 && _start < 1208)
+                    || (_end > 1204 && _end <= 1208)
+                {
+                    self.read_nvic_nvic_ipr45(
+                        &mut buffer_mut(_start, _end, 1204, _buf),
+                        &mut buffer_mut(_start, _end, 1205, _buf),
+                        &mut buffer_mut(_start, _end, 1206, _buf),
+                        &mut buffer_mut(_start, _end, 1207, _buf),
+                    )?;
+                }
+                if (_start >= 1208 && _start < 1212)
+                    || (_end > 1208 && _end <= 1212)
+                {
+                    self.read_nvic_nvic_ipr46(
+                        &mut buffer_mut(_start, _end, 1208, _buf),
+                        &mut buffer_mut(_start, _end, 1209, _buf),
+                        &mut buffer_mut(_start, _end, 1210, _buf),
+                        &mut buffer_mut(_start, _end, 1211, _buf),
+                    )?;
+                }
+                if (_start >= 1212 && _start < 1216)
+                    || (_end > 1212 && _end <= 1216)
+                {
+                    self.read_nvic_nvic_ipr47(
+                        &mut buffer_mut(_start, _end, 1212, _buf),
+                        &mut buffer_mut(_start, _end, 1213, _buf),
+                        &mut buffer_mut(_start, _end, 1214, _buf),
+                        &mut buffer_mut(_start, _end, 1215, _buf),
+                    )?;
+                }
+                if (_start >= 1216 && _start < 1220)
+                    || (_end > 1216 && _end <= 1220)
+                {
+                    self.read_nvic_nvic_ipr48(
+                        &mut buffer_mut(_start, _end, 1216, _buf),
+                        &mut buffer_mut(_start, _end, 1217, _buf),
+                        &mut buffer_mut(_start, _end, 1218, _buf),
+                        &mut buffer_mut(_start, _end, 1219, _buf),
+                    )?;
+                }
+                if (_start >= 1220 && _start < 1224)
+                    || (_end > 1220 && _end <= 1224)
+                {
+                    self.read_nvic_nvic_ipr49(
+                        &mut buffer_mut(_start, _end, 1220, _buf),
+                        &mut buffer_mut(_start, _end, 1221, _buf),
+                        &mut buffer_mut(_start, _end, 1222, _buf),
+                        &mut buffer_mut(_start, _end, 1223, _buf),
+                    )?;
+                }
+                if (_start >= 1224 && _start < 1228)
+                    || (_end > 1224 && _end <= 1228)
+                {
+                    self.read_nvic_nvic_ipr50(
+                        &mut buffer_mut(_start, _end, 1224, _buf),
+                        &mut buffer_mut(_start, _end, 1225, _buf),
+                        &mut buffer_mut(_start, _end, 1226, _buf),
+                        &mut buffer_mut(_start, _end, 1227, _buf),
+                    )?;
+                }
+                if (_start >= 1228 && _start < 1232)
+                    || (_end > 1228 && _end <= 1232)
+                {
+                    self.read_nvic_nvic_ipr51(
+                        &mut buffer_mut(_start, _end, 1228, _buf),
+                        &mut buffer_mut(_start, _end, 1229, _buf),
+                        &mut buffer_mut(_start, _end, 1230, _buf),
+                        &mut buffer_mut(_start, _end, 1231, _buf),
+                    )?;
+                }
+                if (_start >= 1232 && _start < 1236)
+                    || (_end > 1232 && _end <= 1236)
+                {
+                    self.read_nvic_nvic_ipr52(
+                        &mut buffer_mut(_start, _end, 1232, _buf),
+                        &mut buffer_mut(_start, _end, 1233, _buf),
+                        &mut buffer_mut(_start, _end, 1234, _buf),
+                        &mut buffer_mut(_start, _end, 1235, _buf),
+                    )?;
+                }
+                if (_start >= 1236 && _start < 1240)
+                    || (_end > 1236 && _end <= 1240)
+                {
+                    self.read_nvic_nvic_ipr53(
+                        &mut buffer_mut(_start, _end, 1236, _buf),
+                        &mut buffer_mut(_start, _end, 1237, _buf),
+                        &mut buffer_mut(_start, _end, 1238, _buf),
+                        &mut buffer_mut(_start, _end, 1239, _buf),
+                    )?;
+                }
+                if (_start >= 1240 && _start < 1244)
+                    || (_end > 1240 && _end <= 1244)
+                {
+                    self.read_nvic_nvic_ipr54(
+                        &mut buffer_mut(_start, _end, 1240, _buf),
+                        &mut buffer_mut(_start, _end, 1241, _buf),
+                        &mut buffer_mut(_start, _end, 1242, _buf),
+                        &mut buffer_mut(_start, _end, 1243, _buf),
+                    )?;
+                }
+                if (_start >= 1244 && _start < 1248)
+                    || (_end > 1244 && _end <= 1248)
+                {
+                    self.read_nvic_nvic_ipr55(
+                        &mut buffer_mut(_start, _end, 1244, _buf),
+                        &mut buffer_mut(_start, _end, 1245, _buf),
+                        &mut buffer_mut(_start, _end, 1246, _buf),
+                        &mut buffer_mut(_start, _end, 1247, _buf),
+                    )?;
+                }
+                if (_start >= 1248 && _start < 1252)
+                    || (_end > 1248 && _end <= 1252)
+                {
+                    self.read_nvic_nvic_ipr56(
+                        &mut buffer_mut(_start, _end, 1248, _buf),
+                        &mut buffer_mut(_start, _end, 1249, _buf),
+                        &mut buffer_mut(_start, _end, 1250, _buf),
+                        &mut buffer_mut(_start, _end, 1251, _buf),
+                    )?;
+                }
+                if (_start >= 1252 && _start < 1256)
+                    || (_end > 1252 && _end <= 1256)
+                {
+                    self.read_nvic_nvic_ipr57(
+                        &mut buffer_mut(_start, _end, 1252, _buf),
+                        &mut buffer_mut(_start, _end, 1253, _buf),
+                        &mut buffer_mut(_start, _end, 1254, _buf),
+                        &mut buffer_mut(_start, _end, 1255, _buf),
+                    )?;
+                }
+                if (_start >= 1256 && _start < 1260)
+                    || (_end > 1256 && _end <= 1260)
+                {
+                    self.read_nvic_nvic_ipr58(
+                        &mut buffer_mut(_start, _end, 1256, _buf),
+                        &mut buffer_mut(_start, _end, 1257, _buf),
+                        &mut buffer_mut(_start, _end, 1258, _buf),
+                        &mut buffer_mut(_start, _end, 1259, _buf),
+                    )?;
+                }
+                if (_start >= 1260 && _start < 1264)
+                    || (_end > 1260 && _end <= 1264)
+                {
+                    self.read_nvic_nvic_ipr59(
+                        &mut buffer_mut(_start, _end, 1260, _buf),
+                        &mut buffer_mut(_start, _end, 1261, _buf),
+                        &mut buffer_mut(_start, _end, 1262, _buf),
+                        &mut buffer_mut(_start, _end, 1263, _buf),
+                    )?;
+                }
+            }
+            (3328..=3443, 3329..=3444) => {
+                if (_start >= 3332 && _start < 3336)
+                    || (_end > 3332 && _end <= 3336)
+                {
+                    self.read_control_icsr(
+                        &mut buffer_mut(_start, _end, 3332, _buf),
+                        &mut buffer_mut(_start, _end, 3333, _buf),
+                        &mut buffer_mut(_start, _end, 3334, _buf),
+                        &mut buffer_mut(_start, _end, 3335, _buf),
+                    )?;
+                }
+                if (_start >= 3336 && _start < 3340)
+                    || (_end > 3336 && _end <= 3340)
+                {
+                    self.read_control_vtor(
+                        &mut buffer_mut(_start, _end, 3336, _buf),
+                        &mut buffer_mut(_start, _end, 3337, _buf),
+                        &mut buffer_mut(_start, _end, 3338, _buf),
+                        &mut buffer_mut(_start, _end, 3339, _buf),
+                    )?;
+                }
+                if (_start >= 3340 && _start < 3344)
+                    || (_end > 3340 && _end <= 3344)
+                {
+                    self.read_control_aircr(
+                        &mut buffer_mut(_start, _end, 3340, _buf),
+                        &mut buffer_mut(_start, _end, 3341, _buf),
+                        &mut buffer_mut(_start, _end, 3342, _buf),
+                        &mut buffer_mut(_start, _end, 3343, _buf),
+                    )?;
+                }
+                if (_start >= 3344 && _start < 3348)
+                    || (_end > 3344 && _end <= 3348)
+                {
+                    self.read_control_scr(
+                        &mut buffer_mut(_start, _end, 3344, _buf),
+                        &mut buffer_mut(_start, _end, 3345, _buf),
+                        &mut buffer_mut(_start, _end, 3346, _buf),
+                        &mut buffer_mut(_start, _end, 3347, _buf),
+                    )?;
+                }
+                if (_start >= 3348 && _start < 3352)
+                    || (_end > 3348 && _end <= 3352)
+                {
+                    self.read_control_ccr(
+                        &mut buffer_mut(_start, _end, 3348, _buf),
+                        &mut buffer_mut(_start, _end, 3349, _buf),
+                        &mut buffer_mut(_start, _end, 3350, _buf),
+                        &mut buffer_mut(_start, _end, 3351, _buf),
+                    )?;
+                }
+                if (_start >= 3352 && _start < 3356)
+                    || (_end > 3352 && _end <= 3356)
+                {
+                    self.read_control_shpr1(
+                        &mut buffer_mut(_start, _end, 3352, _buf),
+                        &mut buffer_mut(_start, _end, 3353, _buf),
+                        &mut buffer_mut(_start, _end, 3354, _buf),
+                        &mut buffer_mut(_start, _end, 3355, _buf),
+                    )?;
+                }
+                if (_start >= 3356 && _start < 3360)
+                    || (_end > 3356 && _end <= 3360)
+                {
+                    self.read_control_shpr2(
+                        &mut buffer_mut(_start, _end, 3356, _buf),
+                        &mut buffer_mut(_start, _end, 3357, _buf),
+                        &mut buffer_mut(_start, _end, 3358, _buf),
+                        &mut buffer_mut(_start, _end, 3359, _buf),
+                    )?;
+                }
+                if (_start >= 3360 && _start < 3364)
+                    || (_end > 3360 && _end <= 3364)
+                {
+                    self.read_control_shpr3(
+                        &mut buffer_mut(_start, _end, 3360, _buf),
+                        &mut buffer_mut(_start, _end, 3361, _buf),
+                        &mut buffer_mut(_start, _end, 3362, _buf),
+                        &mut buffer_mut(_start, _end, 3363, _buf),
+                    )?;
+                }
+                if (_start >= 3364 && _start < 3368)
+                    || (_end > 3364 && _end <= 3368)
+                {
+                    self.read_control_shcsr(
+                        &mut buffer_mut(_start, _end, 3364, _buf),
+                        &mut buffer_mut(_start, _end, 3365, _buf),
+                        &mut buffer_mut(_start, _end, 3366, _buf),
+                        &mut buffer_mut(_start, _end, 3367, _buf),
+                    )?;
+                }
+                if (_start >= 3368 && _start < 3372)
+                    || (_end > 3368 && _end <= 3372)
+                {
+                    self.read_control_cfsr(
+                        &mut buffer_mut(_start, _end, 3368, _buf),
+                        &mut buffer_mut(_start, _end, 3369, _buf),
+                        &mut buffer_mut(_start, _end, 3370, _buf),
+                        &mut buffer_mut(_start, _end, 3371, _buf),
+                    )?;
+                }
+                if (_start >= 3372 && _start < 3376)
+                    || (_end > 3372 && _end <= 3376)
+                {
+                    self.read_control_hfsr(
+                        &mut buffer_mut(_start, _end, 3372, _buf),
+                        &mut buffer_mut(_start, _end, 3373, _buf),
+                        &mut buffer_mut(_start, _end, 3374, _buf),
+                        &mut buffer_mut(_start, _end, 3375, _buf),
+                    )?;
+                }
+                if (_start >= 3376 && _start < 3380)
+                    || (_end > 3376 && _end <= 3380)
+                {
+                    self.read_control_dfsr(
+                        &mut buffer_mut(_start, _end, 3376, _buf),
+                        &mut buffer_mut(_start, _end, 3377, _buf),
+                        &mut buffer_mut(_start, _end, 3378, _buf),
+                        &mut buffer_mut(_start, _end, 3379, _buf),
+                    )?;
+                }
+                if (_start >= 3380 && _start < 3384)
+                    || (_end > 3380 && _end <= 3384)
+                {
+                    self.0.lock().unwrap().read_control_mmfar(
+                        &mut buffer_mut(_start, _end, 3380, _buf),
+                        &mut buffer_mut(_start, _end, 3381, _buf),
+                        &mut buffer_mut(_start, _end, 3382, _buf),
+                        &mut buffer_mut(_start, _end, 3383, _buf),
+                    )?;
+                }
+                if (_start >= 3384 && _start < 3388)
+                    || (_end > 3384 && _end <= 3388)
+                {
+                    self.0.lock().unwrap().read_control_bfar(
+                        &mut buffer_mut(_start, _end, 3384, _buf),
+                        &mut buffer_mut(_start, _end, 3385, _buf),
+                        &mut buffer_mut(_start, _end, 3386, _buf),
+                        &mut buffer_mut(_start, _end, 3387, _buf),
+                    )?;
+                }
+                if (_start >= 3388 && _start < 3392)
+                    || (_end > 3388 && _end <= 3392)
+                {
+                    self.0.lock().unwrap().read_control_afsr(
+                        &mut buffer_mut(_start, _end, 3388, _buf),
+                        &mut buffer_mut(_start, _end, 3389, _buf),
+                        &mut buffer_mut(_start, _end, 3390, _buf),
+                        &mut buffer_mut(_start, _end, 3391, _buf),
+                    )?;
+                }
+                if (_start >= 3328 && _start < 3332)
+                    || (_end > 3328 && _end <= 3332)
+                {
+                    self.read_id_cpuid(
+                        &mut buffer_mut(_start, _end, 3328, _buf),
+                        &mut buffer_mut(_start, _end, 3329, _buf),
+                        &mut buffer_mut(_start, _end, 3330, _buf),
+                        &mut buffer_mut(_start, _end, 3331, _buf),
+                    )?;
+                }
+                if (_start >= 3392 && _start < 3396)
+                    || (_end > 3392 && _end <= 3396)
+                {
+                    self.read_id_id_pfr0(
+                        &mut buffer_mut(_start, _end, 3392, _buf),
+                        &mut buffer_mut(_start, _end, 3393, _buf),
+                        &mut buffer_mut(_start, _end, 3394, _buf),
+                        &mut buffer_mut(_start, _end, 3395, _buf),
+                    )?;
+                }
+                if (_start >= 3396 && _start < 3400)
+                    || (_end > 3396 && _end <= 3400)
+                {
+                    self.read_id_id_pfr1(
+                        &mut buffer_mut(_start, _end, 3396, _buf),
+                        &mut buffer_mut(_start, _end, 3397, _buf),
+                        &mut buffer_mut(_start, _end, 3398, _buf),
+                        &mut buffer_mut(_start, _end, 3399, _buf),
+                    )?;
+                }
+                if (_start >= 3400 && _start < 3404)
+                    || (_end > 3400 && _end <= 3404)
+                {
+                    self.read_id_id_dfr0(
+                        &mut buffer_mut(_start, _end, 3400, _buf),
+                        &mut buffer_mut(_start, _end, 3401, _buf),
+                        &mut buffer_mut(_start, _end, 3402, _buf),
+                        &mut buffer_mut(_start, _end, 3403, _buf),
+                    )?;
+                }
+                if (_start >= 3404 && _start < 3408)
+                    || (_end > 3404 && _end <= 3408)
+                {
+                    self.0.lock().unwrap().read_id_id_afr0(
+                        &mut buffer_mut(_start, _end, 3404, _buf),
+                        &mut buffer_mut(_start, _end, 3405, _buf),
+                        &mut buffer_mut(_start, _end, 3406, _buf),
+                        &mut buffer_mut(_start, _end, 3407, _buf),
+                    )?;
+                }
+                if (_start >= 3408 && _start < 3412)
+                    || (_end > 3408 && _end <= 3412)
+                {
+                    self.read_id_id_mmfr0(
+                        &mut buffer_mut(_start, _end, 3408, _buf),
+                        &mut buffer_mut(_start, _end, 3409, _buf),
+                        &mut buffer_mut(_start, _end, 3410, _buf),
+                        &mut buffer_mut(_start, _end, 3411, _buf),
+                    )?;
+                }
+                if (_start >= 3412 && _start < 3416)
+                    || (_end > 3412 && _end <= 3416)
+                {
+                    self.0.lock().unwrap().read_id_id_mmfr1(
+                        &mut buffer_mut(_start, _end, 3412, _buf),
+                        &mut buffer_mut(_start, _end, 3413, _buf),
+                        &mut buffer_mut(_start, _end, 3414, _buf),
+                        &mut buffer_mut(_start, _end, 3415, _buf),
+                    )?;
+                }
+                if (_start >= 3416 && _start < 3420)
+                    || (_end > 3416 && _end <= 3420)
+                {
+                    self.read_id_id_mmfr2(
+                        &mut buffer_mut(_start, _end, 3416, _buf),
+                        &mut buffer_mut(_start, _end, 3417, _buf),
+                        &mut buffer_mut(_start, _end, 3418, _buf),
+                        &mut buffer_mut(_start, _end, 3419, _buf),
+                    )?;
+                }
+                if (_start >= 3420 && _start < 3424)
+                    || (_end > 3420 && _end <= 3424)
+                {
+                    self.0.lock().unwrap().read_id_id_mmfr3(
+                        &mut buffer_mut(_start, _end, 3420, _buf),
+                        &mut buffer_mut(_start, _end, 3421, _buf),
+                        &mut buffer_mut(_start, _end, 3422, _buf),
+                        &mut buffer_mut(_start, _end, 3423, _buf),
+                    )?;
+                }
+                if (_start >= 3424 && _start < 3428)
+                    || (_end > 3424 && _end <= 3428)
+                {
+                    self.read_id_id_isar0(
+                        &mut buffer_mut(_start, _end, 3424, _buf),
+                        &mut buffer_mut(_start, _end, 3425, _buf),
+                        &mut buffer_mut(_start, _end, 3426, _buf),
+                        &mut buffer_mut(_start, _end, 3427, _buf),
+                    )?;
+                }
+                if (_start >= 3428 && _start < 3432)
+                    || (_end > 3428 && _end <= 3432)
+                {
+                    self.read_id_id_isar1(
+                        &mut buffer_mut(_start, _end, 3428, _buf),
+                        &mut buffer_mut(_start, _end, 3429, _buf),
+                        &mut buffer_mut(_start, _end, 3430, _buf),
+                        &mut buffer_mut(_start, _end, 3431, _buf),
+                    )?;
+                }
+                if (_start >= 3432 && _start < 3436)
+                    || (_end > 3432 && _end <= 3436)
+                {
+                    self.read_id_id_isar2(
+                        &mut buffer_mut(_start, _end, 3432, _buf),
+                        &mut buffer_mut(_start, _end, 3433, _buf),
+                        &mut buffer_mut(_start, _end, 3434, _buf),
+                        &mut buffer_mut(_start, _end, 3435, _buf),
+                    )?;
+                }
+                if (_start >= 3436 && _start < 3440)
+                    || (_end > 3436 && _end <= 3440)
+                {
+                    self.read_id_id_isar3(
+                        &mut buffer_mut(_start, _end, 3436, _buf),
+                        &mut buffer_mut(_start, _end, 3437, _buf),
+                        &mut buffer_mut(_start, _end, 3438, _buf),
+                        &mut buffer_mut(_start, _end, 3439, _buf),
+                    )?;
+                }
+                if (_start >= 3440 && _start < 3444)
+                    || (_end > 3440 && _end <= 3444)
+                {
+                    self.read_id_id_isar4(
+                        &mut buffer_mut(_start, _end, 3440, _buf),
+                        &mut buffer_mut(_start, _end, 3441, _buf),
+                        &mut buffer_mut(_start, _end, 3442, _buf),
+                        &mut buffer_mut(_start, _end, 3443, _buf),
+                    )?;
+                }
+            }
+            (3464..=3467, 3465..=3468) => {
+                if (_start >= 3464 && _start < 3468)
+                    || (_end > 3464 && _end <= 3468)
+                {
+                    self.read_control_cpacr(
+                        &mut buffer_mut(_start, _end, 3464, _buf),
+                        &mut buffer_mut(_start, _end, 3465, _buf),
+                        &mut buffer_mut(_start, _end, 3466, _buf),
+                        &mut buffer_mut(_start, _end, 3467, _buf),
+                    )?;
+                }
+            }
+            (3472..=3515, 3473..=3516) => {
+                if (_start >= 3472 && _start < 3476)
+                    || (_end > 3472 && _end <= 3476)
+                {
+                    self.read_mpu_mpu_type(
+                        &mut buffer_mut(_start, _end, 3472, _buf),
+                        &mut buffer_mut(_start, _end, 3473, _buf),
+                        &mut buffer_mut(_start, _end, 3474, _buf),
+                        &mut buffer_mut(_start, _end, 3475, _buf),
+                    )?;
+                }
+                if (_start >= 3476 && _start < 3480)
+                    || (_end > 3476 && _end <= 3480)
+                {
+                    self.read_mpu_mpu_ctrl(
+                        &mut buffer_mut(_start, _end, 3476, _buf),
+                        &mut buffer_mut(_start, _end, 3477, _buf),
+                        &mut buffer_mut(_start, _end, 3478, _buf),
+                        &mut buffer_mut(_start, _end, 3479, _buf),
+                    )?;
+                }
+                if (_start >= 3480 && _start < 3484)
+                    || (_end > 3480 && _end <= 3484)
+                {
+                    self.read_mpu_mpu_rnr(
+                        &mut buffer_mut(_start, _end, 3480, _buf),
+                        &mut buffer_mut(_start, _end, 3481, _buf),
+                        &mut buffer_mut(_start, _end, 3482, _buf),
+                        &mut buffer_mut(_start, _end, 3483, _buf),
+                    )?;
+                }
+                if (_start >= 3484 && _start < 3488)
+                    || (_end > 3484 && _end <= 3488)
+                {
+                    self.read_mpu_mpu_rbar(
+                        &mut buffer_mut(_start, _end, 3484, _buf),
+                        &mut buffer_mut(_start, _end, 3485, _buf),
+                        &mut buffer_mut(_start, _end, 3486, _buf),
+                        &mut buffer_mut(_start, _end, 3487, _buf),
+                    )?;
+                }
+                if (_start >= 3488 && _start < 3492)
+                    || (_end > 3488 && _end <= 3492)
+                {
+                    self.read_mpu_mpu_rasr(
+                        &mut buffer_mut(_start, _end, 3488, _buf),
+                        &mut buffer_mut(_start, _end, 3489, _buf),
+                        &mut buffer_mut(_start, _end, 3490, _buf),
+                        &mut buffer_mut(_start, _end, 3491, _buf),
+                    )?;
+                }
+                if (_start >= 3492 && _start < 3496)
+                    || (_end > 3492 && _end <= 3496)
+                {
+                    self.read_mpu_mpu_rbar_a1(
+                        &mut buffer_mut(_start, _end, 3492, _buf),
+                        &mut buffer_mut(_start, _end, 3493, _buf),
+                        &mut buffer_mut(_start, _end, 3494, _buf),
+                        &mut buffer_mut(_start, _end, 3495, _buf),
+                    )?;
+                }
+                if (_start >= 3496 && _start < 3500)
+                    || (_end > 3496 && _end <= 3500)
+                {
+                    self.read_mpu_mpu_rasr_a1(
+                        &mut buffer_mut(_start, _end, 3496, _buf),
+                        &mut buffer_mut(_start, _end, 3497, _buf),
+                        &mut buffer_mut(_start, _end, 3498, _buf),
+                        &mut buffer_mut(_start, _end, 3499, _buf),
+                    )?;
+                }
+                if (_start >= 3500 && _start < 3504)
+                    || (_end > 3500 && _end <= 3504)
+                {
+                    self.read_mpu_mpu_rbar_a2(
+                        &mut buffer_mut(_start, _end, 3500, _buf),
+                        &mut buffer_mut(_start, _end, 3501, _buf),
+                        &mut buffer_mut(_start, _end, 3502, _buf),
+                        &mut buffer_mut(_start, _end, 3503, _buf),
+                    )?;
+                }
+                if (_start >= 3504 && _start < 3508)
+                    || (_end > 3504 && _end <= 3508)
+                {
+                    self.read_mpu_mpu_rasr_a2(
+                        &mut buffer_mut(_start, _end, 3504, _buf),
+                        &mut buffer_mut(_start, _end, 3505, _buf),
+                        &mut buffer_mut(_start, _end, 3506, _buf),
+                        &mut buffer_mut(_start, _end, 3507, _buf),
+                    )?;
+                }
+                if (_start >= 3508 && _start < 3512)
+                    || (_end > 3508 && _end <= 3512)
+                {
+                    self.read_mpu_mpu_rbar_a3(
+                        &mut buffer_mut(_start, _end, 3508, _buf),
+                        &mut buffer_mut(_start, _end, 3509, _buf),
+                        &mut buffer_mut(_start, _end, 3510, _buf),
+                        &mut buffer_mut(_start, _end, 3511, _buf),
+                    )?;
+                }
+                if (_start >= 3512 && _start < 3516)
+                    || (_end > 3512 && _end <= 3516)
+                {
+                    self.read_mpu_mpu_rasr_a3(
+                        &mut buffer_mut(_start, _end, 3512, _buf),
+                        &mut buffer_mut(_start, _end, 3513, _buf),
+                        &mut buffer_mut(_start, _end, 3514, _buf),
+                        &mut buffer_mut(_start, _end, 3515, _buf),
+                    )?;
+                }
+            }
+            (3580..=3583, 3581..=3584) => {
+                if (_start >= 3580 && _start < 3584)
+                    || (_end > 3580 && _end <= 3584)
+                {
+                    self.read_control_demcr(
+                        &mut buffer_mut(_start, _end, 3580, _buf),
+                        &mut buffer_mut(_start, _end, 3581, _buf),
+                        &mut buffer_mut(_start, _end, 3582, _buf),
+                        &mut buffer_mut(_start, _end, 3583, _buf),
+                    )?;
+                }
+            }
+            (3840..=3843, 3841..=3844) => {
+                if (_start >= 3840 && _start < 3844)
+                    || (_end > 3840 && _end <= 3844)
+                {
+                    return Err(icicle_vm::cpu::mem::MemError::WriteViolation);
+                }
+            }
+            (3892..=3911, 3893..=3912) => {
+                if (_start >= 3892 && _start < 3896)
+                    || (_end > 3892 && _end <= 3896)
+                {
+                    self.read_fpe_fpccr(
+                        &mut buffer_mut(_start, _end, 3892, _buf),
+                        &mut buffer_mut(_start, _end, 3893, _buf),
+                        &mut buffer_mut(_start, _end, 3894, _buf),
+                        &mut buffer_mut(_start, _end, 3895, _buf),
+                    )?;
+                }
+                if (_start >= 3896 && _start < 3900)
+                    || (_end > 3896 && _end <= 3900)
+                {
+                    self.0.lock().unwrap().read_fpe_fpcar(
+                        &mut buffer_mut(_start, _end, 3896, _buf),
+                        &mut buffer_mut(_start, _end, 3897, _buf),
+                        &mut buffer_mut(_start, _end, 3898, _buf),
+                        &mut buffer_mut(_start, _end, 3899, _buf),
+                    )?;
+                }
+                if (_start >= 3900 && _start < 3904)
+                    || (_end > 3900 && _end <= 3904)
+                {
+                    self.read_fpe_fpdscr(
+                        &mut buffer_mut(_start, _end, 3900, _buf),
+                        &mut buffer_mut(_start, _end, 3901, _buf),
+                        &mut buffer_mut(_start, _end, 3902, _buf),
+                        &mut buffer_mut(_start, _end, 3903, _buf),
+                    )?;
+                }
+                if (_start >= 3904 && _start < 3908)
+                    || (_end > 3904 && _end <= 3908)
+                {
+                    self.read_fpe_mvfr0(
+                        &mut buffer_mut(_start, _end, 3904, _buf),
+                        &mut buffer_mut(_start, _end, 3905, _buf),
+                        &mut buffer_mut(_start, _end, 3906, _buf),
+                        &mut buffer_mut(_start, _end, 3907, _buf),
+                    )?;
+                }
+                if (_start >= 3908 && _start < 3912)
+                    || (_end > 3908 && _end <= 3912)
+                {
+                    self.read_fpe_mvfr1(
+                        &mut buffer_mut(_start, _end, 3908, _buf),
+                        &mut buffer_mut(_start, _end, 3909, _buf),
+                        &mut buffer_mut(_start, _end, 3910, _buf),
+                        &mut buffer_mut(_start, _end, 3911, _buf),
+                    )?;
+                }
+            }
+            _ => return Err(icicle_vm::cpu::mem::MemError::Unmapped),
+        }
+        Ok(())
+    }
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
+        let _start = _addr - 3758153728;
+        let _end = _start + u64::try_from(_buf.len()).unwrap();
+        match (_start, _end) {
+            (4..=11, 5..=12) => {
+                if (_start >= 8 && _start < 12) || (_end > 8 && _end <= 12) {
+                    self.write_control_actlr(
+                        buffer_const(_start, _end, 8, _buf),
+                        buffer_const(_start, _end, 9, _buf),
+                        buffer_const(_start, _end, 10, _buf),
+                        buffer_const(_start, _end, 11, _buf),
+                    )?;
+                }
+                if (_start >= 4 && _start < 8) || (_end > 4 && _end <= 8) {
+                    return Err(icicle_vm::cpu::mem::MemError::WriteViolation);
+                }
+            }
+            (16..=31, 17..=32) => {
+                if (_start >= 16 && _start < 20) || (_end > 16 && _end <= 20) {
+                    self.write_systick_stcsr(
+                        buffer_const(_start, _end, 16, _buf),
+                        buffer_const(_start, _end, 17, _buf),
+                        buffer_const(_start, _end, 18, _buf),
+                        buffer_const(_start, _end, 19, _buf),
+                    )?;
+                }
+                if (_start >= 20 && _start < 24) || (_end > 20 && _end <= 24) {
+                    self.write_systick_strvr(
+                        buffer_const(_start, _end, 20, _buf),
+                        buffer_const(_start, _end, 21, _buf),
+                        buffer_const(_start, _end, 22, _buf),
+                        buffer_const(_start, _end, 23, _buf),
+                    )?;
+                }
+                if (_start >= 24 && _start < 28) || (_end > 24 && _end <= 28) {
+                    self.write_systick_stcvr(
+                        buffer_const(_start, _end, 24, _buf),
+                        buffer_const(_start, _end, 25, _buf),
+                        buffer_const(_start, _end, 26, _buf),
+                        buffer_const(_start, _end, 27, _buf),
+                    )?;
+                }
+                if (_start >= 28 && _start < 32) || (_end > 28 && _end <= 32) {
+                    return Err(icicle_vm::cpu::mem::MemError::WriteViolation);
+                }
+            }
+            (256..=287, 257..=288) => {
+                if (_start >= 256 && _start < 260)
+                    || (_end > 256 && _end <= 260)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_iser0(
+                        buffer_const(_start, _end, 256, _buf),
+                        buffer_const(_start, _end, 257, _buf),
+                        buffer_const(_start, _end, 258, _buf),
+                        buffer_const(_start, _end, 259, _buf),
+                    )?;
+                }
+                if (_start >= 260 && _start < 264)
+                    || (_end > 260 && _end <= 264)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_iser1(
+                        buffer_const(_start, _end, 260, _buf),
+                        buffer_const(_start, _end, 261, _buf),
+                        buffer_const(_start, _end, 262, _buf),
+                        buffer_const(_start, _end, 263, _buf),
+                    )?;
+                }
+                if (_start >= 264 && _start < 268)
+                    || (_end > 264 && _end <= 268)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_iser2(
+                        buffer_const(_start, _end, 264, _buf),
+                        buffer_const(_start, _end, 265, _buf),
+                        buffer_const(_start, _end, 266, _buf),
+                        buffer_const(_start, _end, 267, _buf),
+                    )?;
+                }
+                if (_start >= 268 && _start < 272)
+                    || (_end > 268 && _end <= 272)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_iser3(
+                        buffer_const(_start, _end, 268, _buf),
+                        buffer_const(_start, _end, 269, _buf),
+                        buffer_const(_start, _end, 270, _buf),
+                        buffer_const(_start, _end, 271, _buf),
+                    )?;
+                }
+                if (_start >= 272 && _start < 276)
+                    || (_end > 272 && _end <= 276)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_iser4(
+                        buffer_const(_start, _end, 272, _buf),
+                        buffer_const(_start, _end, 273, _buf),
+                        buffer_const(_start, _end, 274, _buf),
+                        buffer_const(_start, _end, 275, _buf),
+                    )?;
+                }
+                if (_start >= 276 && _start < 280)
+                    || (_end > 276 && _end <= 280)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_iser5(
+                        buffer_const(_start, _end, 276, _buf),
+                        buffer_const(_start, _end, 277, _buf),
+                        buffer_const(_start, _end, 278, _buf),
+                        buffer_const(_start, _end, 279, _buf),
+                    )?;
+                }
+                if (_start >= 280 && _start < 284)
+                    || (_end > 280 && _end <= 284)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_iser6(
+                        buffer_const(_start, _end, 280, _buf),
+                        buffer_const(_start, _end, 281, _buf),
+                        buffer_const(_start, _end, 282, _buf),
+                        buffer_const(_start, _end, 283, _buf),
+                    )?;
+                }
+                if (_start >= 284 && _start < 288)
+                    || (_end > 284 && _end <= 288)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_iser7(
+                        buffer_const(_start, _end, 284, _buf),
+                        buffer_const(_start, _end, 285, _buf),
+                        buffer_const(_start, _end, 286, _buf),
+                        buffer_const(_start, _end, 287, _buf),
+                    )?;
+                }
+            }
+            (384..=415, 385..=416) => {
+                if (_start >= 384 && _start < 388)
+                    || (_end > 384 && _end <= 388)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_icer0(
+                        buffer_const(_start, _end, 384, _buf),
+                        buffer_const(_start, _end, 385, _buf),
+                        buffer_const(_start, _end, 386, _buf),
+                        buffer_const(_start, _end, 387, _buf),
+                    )?;
+                }
+                if (_start >= 388 && _start < 392)
+                    || (_end > 388 && _end <= 392)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_icer1(
+                        buffer_const(_start, _end, 388, _buf),
+                        buffer_const(_start, _end, 389, _buf),
+                        buffer_const(_start, _end, 390, _buf),
+                        buffer_const(_start, _end, 391, _buf),
+                    )?;
+                }
+                if (_start >= 392 && _start < 396)
+                    || (_end > 392 && _end <= 396)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_icer2(
+                        buffer_const(_start, _end, 392, _buf),
+                        buffer_const(_start, _end, 393, _buf),
+                        buffer_const(_start, _end, 394, _buf),
+                        buffer_const(_start, _end, 395, _buf),
+                    )?;
+                }
+                if (_start >= 396 && _start < 400)
+                    || (_end > 396 && _end <= 400)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_icer3(
+                        buffer_const(_start, _end, 396, _buf),
+                        buffer_const(_start, _end, 397, _buf),
+                        buffer_const(_start, _end, 398, _buf),
+                        buffer_const(_start, _end, 399, _buf),
+                    )?;
+                }
+                if (_start >= 400 && _start < 404)
+                    || (_end > 400 && _end <= 404)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_icer4(
+                        buffer_const(_start, _end, 400, _buf),
+                        buffer_const(_start, _end, 401, _buf),
+                        buffer_const(_start, _end, 402, _buf),
+                        buffer_const(_start, _end, 403, _buf),
+                    )?;
+                }
+                if (_start >= 404 && _start < 408)
+                    || (_end > 404 && _end <= 408)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_icer5(
+                        buffer_const(_start, _end, 404, _buf),
+                        buffer_const(_start, _end, 405, _buf),
+                        buffer_const(_start, _end, 406, _buf),
+                        buffer_const(_start, _end, 407, _buf),
+                    )?;
+                }
+                if (_start >= 408 && _start < 412)
+                    || (_end > 408 && _end <= 412)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_icer6(
+                        buffer_const(_start, _end, 408, _buf),
+                        buffer_const(_start, _end, 409, _buf),
+                        buffer_const(_start, _end, 410, _buf),
+                        buffer_const(_start, _end, 411, _buf),
+                    )?;
+                }
+                if (_start >= 412 && _start < 416)
+                    || (_end > 412 && _end <= 416)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_icer7(
+                        buffer_const(_start, _end, 412, _buf),
+                        buffer_const(_start, _end, 413, _buf),
+                        buffer_const(_start, _end, 414, _buf),
+                        buffer_const(_start, _end, 415, _buf),
+                    )?;
+                }
+            }
+            (512..=543, 513..=544) => {
+                if (_start >= 512 && _start < 516)
+                    || (_end > 512 && _end <= 516)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_ispr0(
+                        buffer_const(_start, _end, 512, _buf),
+                        buffer_const(_start, _end, 513, _buf),
+                        buffer_const(_start, _end, 514, _buf),
+                        buffer_const(_start, _end, 515, _buf),
+                    )?;
+                }
+                if (_start >= 516 && _start < 520)
+                    || (_end > 516 && _end <= 520)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_ispr1(
+                        buffer_const(_start, _end, 516, _buf),
+                        buffer_const(_start, _end, 517, _buf),
+                        buffer_const(_start, _end, 518, _buf),
+                        buffer_const(_start, _end, 519, _buf),
+                    )?;
+                }
+                if (_start >= 520 && _start < 524)
+                    || (_end > 520 && _end <= 524)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_ispr2(
+                        buffer_const(_start, _end, 520, _buf),
+                        buffer_const(_start, _end, 521, _buf),
+                        buffer_const(_start, _end, 522, _buf),
+                        buffer_const(_start, _end, 523, _buf),
+                    )?;
+                }
+                if (_start >= 524 && _start < 528)
+                    || (_end > 524 && _end <= 528)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_ispr3(
+                        buffer_const(_start, _end, 524, _buf),
+                        buffer_const(_start, _end, 525, _buf),
+                        buffer_const(_start, _end, 526, _buf),
+                        buffer_const(_start, _end, 527, _buf),
+                    )?;
+                }
+                if (_start >= 528 && _start < 532)
+                    || (_end > 528 && _end <= 532)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_ispr4(
+                        buffer_const(_start, _end, 528, _buf),
+                        buffer_const(_start, _end, 529, _buf),
+                        buffer_const(_start, _end, 530, _buf),
+                        buffer_const(_start, _end, 531, _buf),
+                    )?;
+                }
+                if (_start >= 532 && _start < 536)
+                    || (_end > 532 && _end <= 536)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_ispr5(
+                        buffer_const(_start, _end, 532, _buf),
+                        buffer_const(_start, _end, 533, _buf),
+                        buffer_const(_start, _end, 534, _buf),
+                        buffer_const(_start, _end, 535, _buf),
+                    )?;
+                }
+                if (_start >= 536 && _start < 540)
+                    || (_end > 536 && _end <= 540)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_ispr6(
+                        buffer_const(_start, _end, 536, _buf),
+                        buffer_const(_start, _end, 537, _buf),
+                        buffer_const(_start, _end, 538, _buf),
+                        buffer_const(_start, _end, 539, _buf),
+                    )?;
+                }
+                if (_start >= 540 && _start < 544)
+                    || (_end > 540 && _end <= 544)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_ispr7(
+                        buffer_const(_start, _end, 540, _buf),
+                        buffer_const(_start, _end, 541, _buf),
+                        buffer_const(_start, _end, 542, _buf),
+                        buffer_const(_start, _end, 543, _buf),
+                    )?;
+                }
+            }
+            (640..=671, 641..=672) => {
+                if (_start >= 640 && _start < 644)
+                    || (_end > 640 && _end <= 644)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_icpr0(
+                        buffer_const(_start, _end, 640, _buf),
+                        buffer_const(_start, _end, 641, _buf),
+                        buffer_const(_start, _end, 642, _buf),
+                        buffer_const(_start, _end, 643, _buf),
+                    )?;
+                }
+                if (_start >= 644 && _start < 648)
+                    || (_end > 644 && _end <= 648)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_icpr1(
+                        buffer_const(_start, _end, 644, _buf),
+                        buffer_const(_start, _end, 645, _buf),
+                        buffer_const(_start, _end, 646, _buf),
+                        buffer_const(_start, _end, 647, _buf),
+                    )?;
+                }
+                if (_start >= 648 && _start < 652)
+                    || (_end > 648 && _end <= 652)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_icpr2(
+                        buffer_const(_start, _end, 648, _buf),
+                        buffer_const(_start, _end, 649, _buf),
+                        buffer_const(_start, _end, 650, _buf),
+                        buffer_const(_start, _end, 651, _buf),
+                    )?;
+                }
+                if (_start >= 652 && _start < 656)
+                    || (_end > 652 && _end <= 656)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_icpr3(
+                        buffer_const(_start, _end, 652, _buf),
+                        buffer_const(_start, _end, 653, _buf),
+                        buffer_const(_start, _end, 654, _buf),
+                        buffer_const(_start, _end, 655, _buf),
+                    )?;
+                }
+                if (_start >= 656 && _start < 660)
+                    || (_end > 656 && _end <= 660)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_icpr4(
+                        buffer_const(_start, _end, 656, _buf),
+                        buffer_const(_start, _end, 657, _buf),
+                        buffer_const(_start, _end, 658, _buf),
+                        buffer_const(_start, _end, 659, _buf),
+                    )?;
+                }
+                if (_start >= 660 && _start < 664)
+                    || (_end > 660 && _end <= 664)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_icpr5(
+                        buffer_const(_start, _end, 660, _buf),
+                        buffer_const(_start, _end, 661, _buf),
+                        buffer_const(_start, _end, 662, _buf),
+                        buffer_const(_start, _end, 663, _buf),
+                    )?;
+                }
+                if (_start >= 664 && _start < 668)
+                    || (_end > 664 && _end <= 668)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_icpr6(
+                        buffer_const(_start, _end, 664, _buf),
+                        buffer_const(_start, _end, 665, _buf),
+                        buffer_const(_start, _end, 666, _buf),
+                        buffer_const(_start, _end, 667, _buf),
+                    )?;
+                }
+                if (_start >= 668 && _start < 672)
+                    || (_end > 668 && _end <= 672)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_icpr7(
+                        buffer_const(_start, _end, 668, _buf),
+                        buffer_const(_start, _end, 669, _buf),
+                        buffer_const(_start, _end, 670, _buf),
+                        buffer_const(_start, _end, 671, _buf),
+                    )?;
+                }
+            }
+            (768..=799, 769..=800) => {
+                if (_start >= 768 && _start < 772)
+                    || (_end > 768 && _end <= 772)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_iabr0(
+                        buffer_const(_start, _end, 768, _buf),
+                        buffer_const(_start, _end, 769, _buf),
+                        buffer_const(_start, _end, 770, _buf),
+                        buffer_const(_start, _end, 771, _buf),
+                    )?;
+                }
+                if (_start >= 772 && _start < 776)
+                    || (_end > 772 && _end <= 776)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_iabr1(
+                        buffer_const(_start, _end, 772, _buf),
+                        buffer_const(_start, _end, 773, _buf),
+                        buffer_const(_start, _end, 774, _buf),
+                        buffer_const(_start, _end, 775, _buf),
+                    )?;
+                }
+                if (_start >= 776 && _start < 780)
+                    || (_end > 776 && _end <= 780)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_iabr2(
+                        buffer_const(_start, _end, 776, _buf),
+                        buffer_const(_start, _end, 777, _buf),
+                        buffer_const(_start, _end, 778, _buf),
+                        buffer_const(_start, _end, 779, _buf),
+                    )?;
+                }
+                if (_start >= 780 && _start < 784)
+                    || (_end > 780 && _end <= 784)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_iabr3(
+                        buffer_const(_start, _end, 780, _buf),
+                        buffer_const(_start, _end, 781, _buf),
+                        buffer_const(_start, _end, 782, _buf),
+                        buffer_const(_start, _end, 783, _buf),
+                    )?;
+                }
+                if (_start >= 784 && _start < 788)
+                    || (_end > 784 && _end <= 788)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_iabr4(
+                        buffer_const(_start, _end, 784, _buf),
+                        buffer_const(_start, _end, 785, _buf),
+                        buffer_const(_start, _end, 786, _buf),
+                        buffer_const(_start, _end, 787, _buf),
+                    )?;
+                }
+                if (_start >= 788 && _start < 792)
+                    || (_end > 788 && _end <= 792)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_iabr5(
+                        buffer_const(_start, _end, 788, _buf),
+                        buffer_const(_start, _end, 789, _buf),
+                        buffer_const(_start, _end, 790, _buf),
+                        buffer_const(_start, _end, 791, _buf),
+                    )?;
+                }
+                if (_start >= 792 && _start < 796)
+                    || (_end > 792 && _end <= 796)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_iabr6(
+                        buffer_const(_start, _end, 792, _buf),
+                        buffer_const(_start, _end, 793, _buf),
+                        buffer_const(_start, _end, 794, _buf),
+                        buffer_const(_start, _end, 795, _buf),
+                    )?;
+                }
+                if (_start >= 796 && _start < 800)
+                    || (_end > 796 && _end <= 800)
+                {
+                    self.0.lock().unwrap().write_nvic_nvic_iabr7(
+                        buffer_const(_start, _end, 796, _buf),
+                        buffer_const(_start, _end, 797, _buf),
+                        buffer_const(_start, _end, 798, _buf),
+                        buffer_const(_start, _end, 799, _buf),
+                    )?;
+                }
+            }
+            (1024..=1263, 1025..=1264) => {
+                if (_start >= 1024 && _start < 1028)
+                    || (_end > 1024 && _end <= 1028)
+                {
+                    self.write_nvic_nvic_ipr0(
+                        buffer_const(_start, _end, 1024, _buf),
+                        buffer_const(_start, _end, 1025, _buf),
+                        buffer_const(_start, _end, 1026, _buf),
+                        buffer_const(_start, _end, 1027, _buf),
+                    )?;
+                }
+                if (_start >= 1028 && _start < 1032)
+                    || (_end > 1028 && _end <= 1032)
+                {
+                    self.write_nvic_nvic_ipr1(
+                        buffer_const(_start, _end, 1028, _buf),
+                        buffer_const(_start, _end, 1029, _buf),
+                        buffer_const(_start, _end, 1030, _buf),
+                        buffer_const(_start, _end, 1031, _buf),
+                    )?;
+                }
+                if (_start >= 1032 && _start < 1036)
+                    || (_end > 1032 && _end <= 1036)
+                {
+                    self.write_nvic_nvic_ipr2(
+                        buffer_const(_start, _end, 1032, _buf),
+                        buffer_const(_start, _end, 1033, _buf),
+                        buffer_const(_start, _end, 1034, _buf),
+                        buffer_const(_start, _end, 1035, _buf),
+                    )?;
+                }
+                if (_start >= 1036 && _start < 1040)
+                    || (_end > 1036 && _end <= 1040)
+                {
+                    self.write_nvic_nvic_ipr3(
+                        buffer_const(_start, _end, 1036, _buf),
+                        buffer_const(_start, _end, 1037, _buf),
+                        buffer_const(_start, _end, 1038, _buf),
+                        buffer_const(_start, _end, 1039, _buf),
+                    )?;
+                }
+                if (_start >= 1040 && _start < 1044)
+                    || (_end > 1040 && _end <= 1044)
+                {
+                    self.write_nvic_nvic_ipr4(
+                        buffer_const(_start, _end, 1040, _buf),
+                        buffer_const(_start, _end, 1041, _buf),
+                        buffer_const(_start, _end, 1042, _buf),
+                        buffer_const(_start, _end, 1043, _buf),
+                    )?;
+                }
+                if (_start >= 1044 && _start < 1048)
+                    || (_end > 1044 && _end <= 1048)
+                {
+                    self.write_nvic_nvic_ipr5(
+                        buffer_const(_start, _end, 1044, _buf),
+                        buffer_const(_start, _end, 1045, _buf),
+                        buffer_const(_start, _end, 1046, _buf),
+                        buffer_const(_start, _end, 1047, _buf),
+                    )?;
+                }
+                if (_start >= 1048 && _start < 1052)
+                    || (_end > 1048 && _end <= 1052)
+                {
+                    self.write_nvic_nvic_ipr6(
+                        buffer_const(_start, _end, 1048, _buf),
+                        buffer_const(_start, _end, 1049, _buf),
+                        buffer_const(_start, _end, 1050, _buf),
+                        buffer_const(_start, _end, 1051, _buf),
+                    )?;
+                }
+                if (_start >= 1052 && _start < 1056)
+                    || (_end > 1052 && _end <= 1056)
+                {
+                    self.write_nvic_nvic_ipr7(
+                        buffer_const(_start, _end, 1052, _buf),
+                        buffer_const(_start, _end, 1053, _buf),
+                        buffer_const(_start, _end, 1054, _buf),
+                        buffer_const(_start, _end, 1055, _buf),
+                    )?;
+                }
+                if (_start >= 1056 && _start < 1060)
+                    || (_end > 1056 && _end <= 1060)
+                {
+                    self.write_nvic_nvic_ipr8(
+                        buffer_const(_start, _end, 1056, _buf),
+                        buffer_const(_start, _end, 1057, _buf),
+                        buffer_const(_start, _end, 1058, _buf),
+                        buffer_const(_start, _end, 1059, _buf),
+                    )?;
+                }
+                if (_start >= 1060 && _start < 1064)
+                    || (_end > 1060 && _end <= 1064)
+                {
+                    self.write_nvic_nvic_ipr9(
+                        buffer_const(_start, _end, 1060, _buf),
+                        buffer_const(_start, _end, 1061, _buf),
+                        buffer_const(_start, _end, 1062, _buf),
+                        buffer_const(_start, _end, 1063, _buf),
+                    )?;
+                }
+                if (_start >= 1064 && _start < 1068)
+                    || (_end > 1064 && _end <= 1068)
+                {
+                    self.write_nvic_nvic_ipr10(
+                        buffer_const(_start, _end, 1064, _buf),
+                        buffer_const(_start, _end, 1065, _buf),
+                        buffer_const(_start, _end, 1066, _buf),
+                        buffer_const(_start, _end, 1067, _buf),
+                    )?;
+                }
+                if (_start >= 1068 && _start < 1072)
+                    || (_end > 1068 && _end <= 1072)
+                {
+                    self.write_nvic_nvic_ipr11(
+                        buffer_const(_start, _end, 1068, _buf),
+                        buffer_const(_start, _end, 1069, _buf),
+                        buffer_const(_start, _end, 1070, _buf),
+                        buffer_const(_start, _end, 1071, _buf),
+                    )?;
+                }
+                if (_start >= 1072 && _start < 1076)
+                    || (_end > 1072 && _end <= 1076)
+                {
+                    self.write_nvic_nvic_ipr12(
+                        buffer_const(_start, _end, 1072, _buf),
+                        buffer_const(_start, _end, 1073, _buf),
+                        buffer_const(_start, _end, 1074, _buf),
+                        buffer_const(_start, _end, 1075, _buf),
+                    )?;
+                }
+                if (_start >= 1076 && _start < 1080)
+                    || (_end > 1076 && _end <= 1080)
+                {
+                    self.write_nvic_nvic_ipr13(
+                        buffer_const(_start, _end, 1076, _buf),
+                        buffer_const(_start, _end, 1077, _buf),
+                        buffer_const(_start, _end, 1078, _buf),
+                        buffer_const(_start, _end, 1079, _buf),
+                    )?;
+                }
+                if (_start >= 1080 && _start < 1084)
+                    || (_end > 1080 && _end <= 1084)
+                {
+                    self.write_nvic_nvic_ipr14(
+                        buffer_const(_start, _end, 1080, _buf),
+                        buffer_const(_start, _end, 1081, _buf),
+                        buffer_const(_start, _end, 1082, _buf),
+                        buffer_const(_start, _end, 1083, _buf),
+                    )?;
+                }
+                if (_start >= 1084 && _start < 1088)
+                    || (_end > 1084 && _end <= 1088)
+                {
+                    self.write_nvic_nvic_ipr15(
+                        buffer_const(_start, _end, 1084, _buf),
+                        buffer_const(_start, _end, 1085, _buf),
+                        buffer_const(_start, _end, 1086, _buf),
+                        buffer_const(_start, _end, 1087, _buf),
+                    )?;
+                }
+                if (_start >= 1088 && _start < 1092)
+                    || (_end > 1088 && _end <= 1092)
+                {
+                    self.write_nvic_nvic_ipr16(
+                        buffer_const(_start, _end, 1088, _buf),
+                        buffer_const(_start, _end, 1089, _buf),
+                        buffer_const(_start, _end, 1090, _buf),
+                        buffer_const(_start, _end, 1091, _buf),
+                    )?;
+                }
+                if (_start >= 1092 && _start < 1096)
+                    || (_end > 1092 && _end <= 1096)
+                {
+                    self.write_nvic_nvic_ipr17(
+                        buffer_const(_start, _end, 1092, _buf),
+                        buffer_const(_start, _end, 1093, _buf),
+                        buffer_const(_start, _end, 1094, _buf),
+                        buffer_const(_start, _end, 1095, _buf),
+                    )?;
+                }
+                if (_start >= 1096 && _start < 1100)
+                    || (_end > 1096 && _end <= 1100)
+                {
+                    self.write_nvic_nvic_ipr18(
+                        buffer_const(_start, _end, 1096, _buf),
+                        buffer_const(_start, _end, 1097, _buf),
+                        buffer_const(_start, _end, 1098, _buf),
+                        buffer_const(_start, _end, 1099, _buf),
+                    )?;
+                }
+                if (_start >= 1100 && _start < 1104)
+                    || (_end > 1100 && _end <= 1104)
+                {
+                    self.write_nvic_nvic_ipr19(
+                        buffer_const(_start, _end, 1100, _buf),
+                        buffer_const(_start, _end, 1101, _buf),
+                        buffer_const(_start, _end, 1102, _buf),
+                        buffer_const(_start, _end, 1103, _buf),
+                    )?;
+                }
+                if (_start >= 1104 && _start < 1108)
+                    || (_end > 1104 && _end <= 1108)
+                {
+                    self.write_nvic_nvic_ipr20(
+                        buffer_const(_start, _end, 1104, _buf),
+                        buffer_const(_start, _end, 1105, _buf),
+                        buffer_const(_start, _end, 1106, _buf),
+                        buffer_const(_start, _end, 1107, _buf),
+                    )?;
+                }
+                if (_start >= 1108 && _start < 1112)
+                    || (_end > 1108 && _end <= 1112)
+                {
+                    self.write_nvic_nvic_ipr21(
+                        buffer_const(_start, _end, 1108, _buf),
+                        buffer_const(_start, _end, 1109, _buf),
+                        buffer_const(_start, _end, 1110, _buf),
+                        buffer_const(_start, _end, 1111, _buf),
+                    )?;
+                }
+                if (_start >= 1112 && _start < 1116)
+                    || (_end > 1112 && _end <= 1116)
+                {
+                    self.write_nvic_nvic_ipr22(
+                        buffer_const(_start, _end, 1112, _buf),
+                        buffer_const(_start, _end, 1113, _buf),
+                        buffer_const(_start, _end, 1114, _buf),
+                        buffer_const(_start, _end, 1115, _buf),
+                    )?;
+                }
+                if (_start >= 1116 && _start < 1120)
+                    || (_end > 1116 && _end <= 1120)
+                {
+                    self.write_nvic_nvic_ipr23(
+                        buffer_const(_start, _end, 1116, _buf),
+                        buffer_const(_start, _end, 1117, _buf),
+                        buffer_const(_start, _end, 1118, _buf),
+                        buffer_const(_start, _end, 1119, _buf),
+                    )?;
+                }
+                if (_start >= 1120 && _start < 1124)
+                    || (_end > 1120 && _end <= 1124)
+                {
+                    self.write_nvic_nvic_ipr24(
+                        buffer_const(_start, _end, 1120, _buf),
+                        buffer_const(_start, _end, 1121, _buf),
+                        buffer_const(_start, _end, 1122, _buf),
+                        buffer_const(_start, _end, 1123, _buf),
+                    )?;
+                }
+                if (_start >= 1124 && _start < 1128)
+                    || (_end > 1124 && _end <= 1128)
+                {
+                    self.write_nvic_nvic_ipr25(
+                        buffer_const(_start, _end, 1124, _buf),
+                        buffer_const(_start, _end, 1125, _buf),
+                        buffer_const(_start, _end, 1126, _buf),
+                        buffer_const(_start, _end, 1127, _buf),
+                    )?;
+                }
+                if (_start >= 1128 && _start < 1132)
+                    || (_end > 1128 && _end <= 1132)
+                {
+                    self.write_nvic_nvic_ipr26(
+                        buffer_const(_start, _end, 1128, _buf),
+                        buffer_const(_start, _end, 1129, _buf),
+                        buffer_const(_start, _end, 1130, _buf),
+                        buffer_const(_start, _end, 1131, _buf),
+                    )?;
+                }
+                if (_start >= 1132 && _start < 1136)
+                    || (_end > 1132 && _end <= 1136)
+                {
+                    self.write_nvic_nvic_ipr27(
+                        buffer_const(_start, _end, 1132, _buf),
+                        buffer_const(_start, _end, 1133, _buf),
+                        buffer_const(_start, _end, 1134, _buf),
+                        buffer_const(_start, _end, 1135, _buf),
+                    )?;
+                }
+                if (_start >= 1136 && _start < 1140)
+                    || (_end > 1136 && _end <= 1140)
+                {
+                    self.write_nvic_nvic_ipr28(
+                        buffer_const(_start, _end, 1136, _buf),
+                        buffer_const(_start, _end, 1137, _buf),
+                        buffer_const(_start, _end, 1138, _buf),
+                        buffer_const(_start, _end, 1139, _buf),
+                    )?;
+                }
+                if (_start >= 1140 && _start < 1144)
+                    || (_end > 1140 && _end <= 1144)
+                {
+                    self.write_nvic_nvic_ipr29(
+                        buffer_const(_start, _end, 1140, _buf),
+                        buffer_const(_start, _end, 1141, _buf),
+                        buffer_const(_start, _end, 1142, _buf),
+                        buffer_const(_start, _end, 1143, _buf),
+                    )?;
+                }
+                if (_start >= 1144 && _start < 1148)
+                    || (_end > 1144 && _end <= 1148)
+                {
+                    self.write_nvic_nvic_ipr30(
+                        buffer_const(_start, _end, 1144, _buf),
+                        buffer_const(_start, _end, 1145, _buf),
+                        buffer_const(_start, _end, 1146, _buf),
+                        buffer_const(_start, _end, 1147, _buf),
+                    )?;
+                }
+                if (_start >= 1148 && _start < 1152)
+                    || (_end > 1148 && _end <= 1152)
+                {
+                    self.write_nvic_nvic_ipr31(
+                        buffer_const(_start, _end, 1148, _buf),
+                        buffer_const(_start, _end, 1149, _buf),
+                        buffer_const(_start, _end, 1150, _buf),
+                        buffer_const(_start, _end, 1151, _buf),
+                    )?;
+                }
+                if (_start >= 1152 && _start < 1156)
+                    || (_end > 1152 && _end <= 1156)
+                {
+                    self.write_nvic_nvic_ipr32(
+                        buffer_const(_start, _end, 1152, _buf),
+                        buffer_const(_start, _end, 1153, _buf),
+                        buffer_const(_start, _end, 1154, _buf),
+                        buffer_const(_start, _end, 1155, _buf),
+                    )?;
+                }
+                if (_start >= 1156 && _start < 1160)
+                    || (_end > 1156 && _end <= 1160)
+                {
+                    self.write_nvic_nvic_ipr33(
+                        buffer_const(_start, _end, 1156, _buf),
+                        buffer_const(_start, _end, 1157, _buf),
+                        buffer_const(_start, _end, 1158, _buf),
+                        buffer_const(_start, _end, 1159, _buf),
+                    )?;
+                }
+                if (_start >= 1160 && _start < 1164)
+                    || (_end > 1160 && _end <= 1164)
+                {
+                    self.write_nvic_nvic_ipr34(
+                        buffer_const(_start, _end, 1160, _buf),
+                        buffer_const(_start, _end, 1161, _buf),
+                        buffer_const(_start, _end, 1162, _buf),
+                        buffer_const(_start, _end, 1163, _buf),
+                    )?;
+                }
+                if (_start >= 1164 && _start < 1168)
+                    || (_end > 1164 && _end <= 1168)
+                {
+                    self.write_nvic_nvic_ipr35(
+                        buffer_const(_start, _end, 1164, _buf),
+                        buffer_const(_start, _end, 1165, _buf),
+                        buffer_const(_start, _end, 1166, _buf),
+                        buffer_const(_start, _end, 1167, _buf),
+                    )?;
+                }
+                if (_start >= 1168 && _start < 1172)
+                    || (_end > 1168 && _end <= 1172)
+                {
+                    self.write_nvic_nvic_ipr36(
+                        buffer_const(_start, _end, 1168, _buf),
+                        buffer_const(_start, _end, 1169, _buf),
+                        buffer_const(_start, _end, 1170, _buf),
+                        buffer_const(_start, _end, 1171, _buf),
+                    )?;
+                }
+                if (_start >= 1172 && _start < 1176)
+                    || (_end > 1172 && _end <= 1176)
+                {
+                    self.write_nvic_nvic_ipr37(
+                        buffer_const(_start, _end, 1172, _buf),
+                        buffer_const(_start, _end, 1173, _buf),
+                        buffer_const(_start, _end, 1174, _buf),
+                        buffer_const(_start, _end, 1175, _buf),
+                    )?;
+                }
+                if (_start >= 1176 && _start < 1180)
+                    || (_end > 1176 && _end <= 1180)
+                {
+                    self.write_nvic_nvic_ipr38(
+                        buffer_const(_start, _end, 1176, _buf),
+                        buffer_const(_start, _end, 1177, _buf),
+                        buffer_const(_start, _end, 1178, _buf),
+                        buffer_const(_start, _end, 1179, _buf),
+                    )?;
+                }
+                if (_start >= 1180 && _start < 1184)
+                    || (_end > 1180 && _end <= 1184)
+                {
+                    self.write_nvic_nvic_ipr39(
+                        buffer_const(_start, _end, 1180, _buf),
+                        buffer_const(_start, _end, 1181, _buf),
+                        buffer_const(_start, _end, 1182, _buf),
+                        buffer_const(_start, _end, 1183, _buf),
+                    )?;
+                }
+                if (_start >= 1184 && _start < 1188)
+                    || (_end > 1184 && _end <= 1188)
+                {
+                    self.write_nvic_nvic_ipr40(
+                        buffer_const(_start, _end, 1184, _buf),
+                        buffer_const(_start, _end, 1185, _buf),
+                        buffer_const(_start, _end, 1186, _buf),
+                        buffer_const(_start, _end, 1187, _buf),
+                    )?;
+                }
+                if (_start >= 1188 && _start < 1192)
+                    || (_end > 1188 && _end <= 1192)
+                {
+                    self.write_nvic_nvic_ipr41(
+                        buffer_const(_start, _end, 1188, _buf),
+                        buffer_const(_start, _end, 1189, _buf),
+                        buffer_const(_start, _end, 1190, _buf),
+                        buffer_const(_start, _end, 1191, _buf),
+                    )?;
+                }
+                if (_start >= 1192 && _start < 1196)
+                    || (_end > 1192 && _end <= 1196)
+                {
+                    self.write_nvic_nvic_ipr42(
+                        buffer_const(_start, _end, 1192, _buf),
+                        buffer_const(_start, _end, 1193, _buf),
+                        buffer_const(_start, _end, 1194, _buf),
+                        buffer_const(_start, _end, 1195, _buf),
+                    )?;
+                }
+                if (_start >= 1196 && _start < 1200)
+                    || (_end > 1196 && _end <= 1200)
+                {
+                    self.write_nvic_nvic_ipr43(
+                        buffer_const(_start, _end, 1196, _buf),
+                        buffer_const(_start, _end, 1197, _buf),
+                        buffer_const(_start, _end, 1198, _buf),
+                        buffer_const(_start, _end, 1199, _buf),
+                    )?;
+                }
+                if (_start >= 1200 && _start < 1204)
+                    || (_end > 1200 && _end <= 1204)
+                {
+                    self.write_nvic_nvic_ipr44(
+                        buffer_const(_start, _end, 1200, _buf),
+                        buffer_const(_start, _end, 1201, _buf),
+                        buffer_const(_start, _end, 1202, _buf),
+                        buffer_const(_start, _end, 1203, _buf),
+                    )?;
+                }
+                if (_start >= 1204 && _start < 1208)
+                    || (_end > 1204 && _end <= 1208)
+                {
+                    self.write_nvic_nvic_ipr45(
+                        buffer_const(_start, _end, 1204, _buf),
+                        buffer_const(_start, _end, 1205, _buf),
+                        buffer_const(_start, _end, 1206, _buf),
+                        buffer_const(_start, _end, 1207, _buf),
+                    )?;
+                }
+                if (_start >= 1208 && _start < 1212)
+                    || (_end > 1208 && _end <= 1212)
+                {
+                    self.write_nvic_nvic_ipr46(
+                        buffer_const(_start, _end, 1208, _buf),
+                        buffer_const(_start, _end, 1209, _buf),
+                        buffer_const(_start, _end, 1210, _buf),
+                        buffer_const(_start, _end, 1211, _buf),
+                    )?;
+                }
+                if (_start >= 1212 && _start < 1216)
+                    || (_end > 1212 && _end <= 1216)
+                {
+                    self.write_nvic_nvic_ipr47(
+                        buffer_const(_start, _end, 1212, _buf),
+                        buffer_const(_start, _end, 1213, _buf),
+                        buffer_const(_start, _end, 1214, _buf),
+                        buffer_const(_start, _end, 1215, _buf),
+                    )?;
+                }
+                if (_start >= 1216 && _start < 1220)
+                    || (_end > 1216 && _end <= 1220)
+                {
+                    self.write_nvic_nvic_ipr48(
+                        buffer_const(_start, _end, 1216, _buf),
+                        buffer_const(_start, _end, 1217, _buf),
+                        buffer_const(_start, _end, 1218, _buf),
+                        buffer_const(_start, _end, 1219, _buf),
+                    )?;
+                }
+                if (_start >= 1220 && _start < 1224)
+                    || (_end > 1220 && _end <= 1224)
+                {
+                    self.write_nvic_nvic_ipr49(
+                        buffer_const(_start, _end, 1220, _buf),
+                        buffer_const(_start, _end, 1221, _buf),
+                        buffer_const(_start, _end, 1222, _buf),
+                        buffer_const(_start, _end, 1223, _buf),
+                    )?;
+                }
+                if (_start >= 1224 && _start < 1228)
+                    || (_end > 1224 && _end <= 1228)
+                {
+                    self.write_nvic_nvic_ipr50(
+                        buffer_const(_start, _end, 1224, _buf),
+                        buffer_const(_start, _end, 1225, _buf),
+                        buffer_const(_start, _end, 1226, _buf),
+                        buffer_const(_start, _end, 1227, _buf),
+                    )?;
+                }
+                if (_start >= 1228 && _start < 1232)
+                    || (_end > 1228 && _end <= 1232)
+                {
+                    self.write_nvic_nvic_ipr51(
+                        buffer_const(_start, _end, 1228, _buf),
+                        buffer_const(_start, _end, 1229, _buf),
+                        buffer_const(_start, _end, 1230, _buf),
+                        buffer_const(_start, _end, 1231, _buf),
+                    )?;
+                }
+                if (_start >= 1232 && _start < 1236)
+                    || (_end > 1232 && _end <= 1236)
+                {
+                    self.write_nvic_nvic_ipr52(
+                        buffer_const(_start, _end, 1232, _buf),
+                        buffer_const(_start, _end, 1233, _buf),
+                        buffer_const(_start, _end, 1234, _buf),
+                        buffer_const(_start, _end, 1235, _buf),
+                    )?;
+                }
+                if (_start >= 1236 && _start < 1240)
+                    || (_end > 1236 && _end <= 1240)
+                {
+                    self.write_nvic_nvic_ipr53(
+                        buffer_const(_start, _end, 1236, _buf),
+                        buffer_const(_start, _end, 1237, _buf),
+                        buffer_const(_start, _end, 1238, _buf),
+                        buffer_const(_start, _end, 1239, _buf),
+                    )?;
+                }
+                if (_start >= 1240 && _start < 1244)
+                    || (_end > 1240 && _end <= 1244)
+                {
+                    self.write_nvic_nvic_ipr54(
+                        buffer_const(_start, _end, 1240, _buf),
+                        buffer_const(_start, _end, 1241, _buf),
+                        buffer_const(_start, _end, 1242, _buf),
+                        buffer_const(_start, _end, 1243, _buf),
+                    )?;
+                }
+                if (_start >= 1244 && _start < 1248)
+                    || (_end > 1244 && _end <= 1248)
+                {
+                    self.write_nvic_nvic_ipr55(
+                        buffer_const(_start, _end, 1244, _buf),
+                        buffer_const(_start, _end, 1245, _buf),
+                        buffer_const(_start, _end, 1246, _buf),
+                        buffer_const(_start, _end, 1247, _buf),
+                    )?;
+                }
+                if (_start >= 1248 && _start < 1252)
+                    || (_end > 1248 && _end <= 1252)
+                {
+                    self.write_nvic_nvic_ipr56(
+                        buffer_const(_start, _end, 1248, _buf),
+                        buffer_const(_start, _end, 1249, _buf),
+                        buffer_const(_start, _end, 1250, _buf),
+                        buffer_const(_start, _end, 1251, _buf),
+                    )?;
+                }
+                if (_start >= 1252 && _start < 1256)
+                    || (_end > 1252 && _end <= 1256)
+                {
+                    self.write_nvic_nvic_ipr57(
+                        buffer_const(_start, _end, 1252, _buf),
+                        buffer_const(_start, _end, 1253, _buf),
+                        buffer_const(_start, _end, 1254, _buf),
+                        buffer_const(_start, _end, 1255, _buf),
+                    )?;
+                }
+                if (_start >= 1256 && _start < 1260)
+                    || (_end > 1256 && _end <= 1260)
+                {
+                    self.write_nvic_nvic_ipr58(
+                        buffer_const(_start, _end, 1256, _buf),
+                        buffer_const(_start, _end, 1257, _buf),
+                        buffer_const(_start, _end, 1258, _buf),
+                        buffer_const(_start, _end, 1259, _buf),
+                    )?;
+                }
+                if (_start >= 1260 && _start < 1264)
+                    || (_end > 1260 && _end <= 1264)
+                {
+                    self.write_nvic_nvic_ipr59(
+                        buffer_const(_start, _end, 1260, _buf),
+                        buffer_const(_start, _end, 1261, _buf),
+                        buffer_const(_start, _end, 1262, _buf),
+                        buffer_const(_start, _end, 1263, _buf),
+                    )?;
+                }
+            }
+            (3328..=3443, 3329..=3444) => {
+                if (_start >= 3332 && _start < 3336)
+                    || (_end > 3332 && _end <= 3336)
+                {
+                    self.write_control_icsr(
+                        buffer_const(_start, _end, 3332, _buf),
+                        buffer_const(_start, _end, 3333, _buf),
+                        buffer_const(_start, _end, 3334, _buf),
+                        buffer_const(_start, _end, 3335, _buf),
+                    )?;
+                }
+                if (_start >= 3336 && _start < 3340)
+                    || (_end > 3336 && _end <= 3340)
+                {
+                    self.write_control_vtor(
+                        buffer_const(_start, _end, 3336, _buf),
+                        buffer_const(_start, _end, 3337, _buf),
+                        buffer_const(_start, _end, 3338, _buf),
+                        buffer_const(_start, _end, 3339, _buf),
+                    )?;
+                }
+                if (_start >= 3340 && _start < 3344)
+                    || (_end > 3340 && _end <= 3344)
+                {
+                    self.write_control_aircr(
+                        buffer_const(_start, _end, 3340, _buf),
+                        buffer_const(_start, _end, 3341, _buf),
+                        buffer_const(_start, _end, 3342, _buf),
+                        buffer_const(_start, _end, 3343, _buf),
+                    )?;
+                }
+                if (_start >= 3344 && _start < 3348)
+                    || (_end > 3344 && _end <= 3348)
+                {
+                    self.write_control_scr(
+                        buffer_const(_start, _end, 3344, _buf),
+                        buffer_const(_start, _end, 3345, _buf),
+                        buffer_const(_start, _end, 3346, _buf),
+                        buffer_const(_start, _end, 3347, _buf),
+                    )?;
+                }
+                if (_start >= 3348 && _start < 3352)
+                    || (_end > 3348 && _end <= 3352)
+                {
+                    self.write_control_ccr(
+                        buffer_const(_start, _end, 3348, _buf),
+                        buffer_const(_start, _end, 3349, _buf),
+                        buffer_const(_start, _end, 3350, _buf),
+                        buffer_const(_start, _end, 3351, _buf),
+                    )?;
+                }
+                if (_start >= 3352 && _start < 3356)
+                    || (_end > 3352 && _end <= 3356)
+                {
+                    self.write_control_shpr1(
+                        buffer_const(_start, _end, 3352, _buf),
+                        buffer_const(_start, _end, 3353, _buf),
+                        buffer_const(_start, _end, 3354, _buf),
+                        buffer_const(_start, _end, 3355, _buf),
+                    )?;
+                }
+                if (_start >= 3356 && _start < 3360)
+                    || (_end > 3356 && _end <= 3360)
+                {
+                    self.write_control_shpr2(
+                        buffer_const(_start, _end, 3356, _buf),
+                        buffer_const(_start, _end, 3357, _buf),
+                        buffer_const(_start, _end, 3358, _buf),
+                        buffer_const(_start, _end, 3359, _buf),
+                    )?;
+                }
+                if (_start >= 3360 && _start < 3364)
+                    || (_end > 3360 && _end <= 3364)
+                {
+                    self.write_control_shpr3(
+                        buffer_const(_start, _end, 3360, _buf),
+                        buffer_const(_start, _end, 3361, _buf),
+                        buffer_const(_start, _end, 3362, _buf),
+                        buffer_const(_start, _end, 3363, _buf),
+                    )?;
+                }
+                if (_start >= 3364 && _start < 3368)
+                    || (_end > 3364 && _end <= 3368)
+                {
+                    self.write_control_shcsr(
+                        buffer_const(_start, _end, 3364, _buf),
+                        buffer_const(_start, _end, 3365, _buf),
+                        buffer_const(_start, _end, 3366, _buf),
+                        buffer_const(_start, _end, 3367, _buf),
+                    )?;
+                }
+                if (_start >= 3368 && _start < 3372)
+                    || (_end > 3368 && _end <= 3372)
+                {
+                    self.write_control_cfsr(
+                        buffer_const(_start, _end, 3368, _buf),
+                        buffer_const(_start, _end, 3369, _buf),
+                        buffer_const(_start, _end, 3370, _buf),
+                        buffer_const(_start, _end, 3371, _buf),
+                    )?;
+                }
+                if (_start >= 3372 && _start < 3376)
+                    || (_end > 3372 && _end <= 3376)
+                {
+                    self.write_control_hfsr(
+                        buffer_const(_start, _end, 3372, _buf),
+                        buffer_const(_start, _end, 3373, _buf),
+                        buffer_const(_start, _end, 3374, _buf),
+                        buffer_const(_start, _end, 3375, _buf),
+                    )?;
+                }
+                if (_start >= 3376 && _start < 3380)
+                    || (_end > 3376 && _end <= 3380)
+                {
+                    self.write_control_dfsr(
+                        buffer_const(_start, _end, 3376, _buf),
+                        buffer_const(_start, _end, 3377, _buf),
+                        buffer_const(_start, _end, 3378, _buf),
+                        buffer_const(_start, _end, 3379, _buf),
+                    )?;
+                }
+                if (_start >= 3380 && _start < 3384)
+                    || (_end > 3380 && _end <= 3384)
+                {
+                    self.0.lock().unwrap().write_control_mmfar(
+                        buffer_const(_start, _end, 3380, _buf),
+                        buffer_const(_start, _end, 3381, _buf),
+                        buffer_const(_start, _end, 3382, _buf),
+                        buffer_const(_start, _end, 3383, _buf),
+                    )?;
+                }
+                if (_start >= 3384 && _start < 3388)
+                    || (_end > 3384 && _end <= 3388)
+                {
+                    self.0.lock().unwrap().write_control_bfar(
+                        buffer_const(_start, _end, 3384, _buf),
+                        buffer_const(_start, _end, 3385, _buf),
+                        buffer_const(_start, _end, 3386, _buf),
+                        buffer_const(_start, _end, 3387, _buf),
+                    )?;
+                }
+                if (_start >= 3388 && _start < 3392)
+                    || (_end > 3388 && _end <= 3392)
+                {
+                    self.0.lock().unwrap().write_control_afsr(
+                        buffer_const(_start, _end, 3388, _buf),
+                        buffer_const(_start, _end, 3389, _buf),
+                        buffer_const(_start, _end, 3390, _buf),
+                        buffer_const(_start, _end, 3391, _buf),
+                    )?;
+                }
+                if (_start >= 3328 && _start < 3332)
+                    || (_end > 3328 && _end <= 3332)
+                {
+                    return Err(icicle_vm::cpu::mem::MemError::WriteViolation);
+                }
+                if (_start >= 3392 && _start < 3396)
+                    || (_end > 3392 && _end <= 3396)
+                {
+                    return Err(icicle_vm::cpu::mem::MemError::WriteViolation);
+                }
+                if (_start >= 3396 && _start < 3400)
+                    || (_end > 3396 && _end <= 3400)
+                {
+                    return Err(icicle_vm::cpu::mem::MemError::WriteViolation);
+                }
+                if (_start >= 3400 && _start < 3404)
+                    || (_end > 3400 && _end <= 3404)
+                {
+                    return Err(icicle_vm::cpu::mem::MemError::WriteViolation);
+                }
+                if (_start >= 3404 && _start < 3408)
+                    || (_end > 3404 && _end <= 3408)
+                {
+                    return Err(icicle_vm::cpu::mem::MemError::WriteViolation);
+                }
+                if (_start >= 3408 && _start < 3412)
+                    || (_end > 3408 && _end <= 3412)
+                {
+                    return Err(icicle_vm::cpu::mem::MemError::WriteViolation);
+                }
+                if (_start >= 3412 && _start < 3416)
+                    || (_end > 3412 && _end <= 3416)
+                {
+                    return Err(icicle_vm::cpu::mem::MemError::WriteViolation);
+                }
+                if (_start >= 3416 && _start < 3420)
+                    || (_end > 3416 && _end <= 3420)
+                {
+                    return Err(icicle_vm::cpu::mem::MemError::WriteViolation);
+                }
+                if (_start >= 3420 && _start < 3424)
+                    || (_end > 3420 && _end <= 3424)
+                {
+                    return Err(icicle_vm::cpu::mem::MemError::WriteViolation);
+                }
+                if (_start >= 3424 && _start < 3428)
+                    || (_end > 3424 && _end <= 3428)
+                {
+                    return Err(icicle_vm::cpu::mem::MemError::WriteViolation);
+                }
+                if (_start >= 3428 && _start < 3432)
+                    || (_end > 3428 && _end <= 3432)
+                {
+                    return Err(icicle_vm::cpu::mem::MemError::WriteViolation);
+                }
+                if (_start >= 3432 && _start < 3436)
+                    || (_end > 3432 && _end <= 3436)
+                {
+                    return Err(icicle_vm::cpu::mem::MemError::WriteViolation);
+                }
+                if (_start >= 3436 && _start < 3440)
+                    || (_end > 3436 && _end <= 3440)
+                {
+                    return Err(icicle_vm::cpu::mem::MemError::WriteViolation);
+                }
+                if (_start >= 3440 && _start < 3444)
+                    || (_end > 3440 && _end <= 3444)
+                {
+                    return Err(icicle_vm::cpu::mem::MemError::WriteViolation);
+                }
+            }
+            (3464..=3467, 3465..=3468) => {
+                if (_start >= 3464 && _start < 3468)
+                    || (_end > 3464 && _end <= 3468)
+                {
+                    self.write_control_cpacr(
+                        buffer_const(_start, _end, 3464, _buf),
+                        buffer_const(_start, _end, 3465, _buf),
+                        buffer_const(_start, _end, 3466, _buf),
+                        buffer_const(_start, _end, 3467, _buf),
+                    )?;
+                }
+            }
+            (3472..=3515, 3473..=3516) => {
+                if (_start >= 3472 && _start < 3476)
+                    || (_end > 3472 && _end <= 3476)
+                {
+                    return Err(icicle_vm::cpu::mem::MemError::WriteViolation);
+                }
+                if (_start >= 3476 && _start < 3480)
+                    || (_end > 3476 && _end <= 3480)
+                {
+                    self.write_mpu_mpu_ctrl(
+                        buffer_const(_start, _end, 3476, _buf),
+                        buffer_const(_start, _end, 3477, _buf),
+                        buffer_const(_start, _end, 3478, _buf),
+                        buffer_const(_start, _end, 3479, _buf),
+                    )?;
+                }
+                if (_start >= 3480 && _start < 3484)
+                    || (_end > 3480 && _end <= 3484)
+                {
+                    self.write_mpu_mpu_rnr(
+                        buffer_const(_start, _end, 3480, _buf),
+                        buffer_const(_start, _end, 3481, _buf),
+                        buffer_const(_start, _end, 3482, _buf),
+                        buffer_const(_start, _end, 3483, _buf),
+                    )?;
+                }
+                if (_start >= 3484 && _start < 3488)
+                    || (_end > 3484 && _end <= 3488)
+                {
+                    self.write_mpu_mpu_rbar(
+                        buffer_const(_start, _end, 3484, _buf),
+                        buffer_const(_start, _end, 3485, _buf),
+                        buffer_const(_start, _end, 3486, _buf),
+                        buffer_const(_start, _end, 3487, _buf),
+                    )?;
+                }
+                if (_start >= 3488 && _start < 3492)
+                    || (_end > 3488 && _end <= 3492)
+                {
+                    self.write_mpu_mpu_rasr(
+                        buffer_const(_start, _end, 3488, _buf),
+                        buffer_const(_start, _end, 3489, _buf),
+                        buffer_const(_start, _end, 3490, _buf),
+                        buffer_const(_start, _end, 3491, _buf),
+                    )?;
+                }
+                if (_start >= 3492 && _start < 3496)
+                    || (_end > 3492 && _end <= 3496)
+                {
+                    self.write_mpu_mpu_rbar_a1(
+                        buffer_const(_start, _end, 3492, _buf),
+                        buffer_const(_start, _end, 3493, _buf),
+                        buffer_const(_start, _end, 3494, _buf),
+                        buffer_const(_start, _end, 3495, _buf),
+                    )?;
+                }
+                if (_start >= 3496 && _start < 3500)
+                    || (_end > 3496 && _end <= 3500)
+                {
+                    self.write_mpu_mpu_rasr_a1(
+                        buffer_const(_start, _end, 3496, _buf),
+                        buffer_const(_start, _end, 3497, _buf),
+                        buffer_const(_start, _end, 3498, _buf),
+                        buffer_const(_start, _end, 3499, _buf),
+                    )?;
+                }
+                if (_start >= 3500 && _start < 3504)
+                    || (_end > 3500 && _end <= 3504)
+                {
+                    self.write_mpu_mpu_rbar_a2(
+                        buffer_const(_start, _end, 3500, _buf),
+                        buffer_const(_start, _end, 3501, _buf),
+                        buffer_const(_start, _end, 3502, _buf),
+                        buffer_const(_start, _end, 3503, _buf),
+                    )?;
+                }
+                if (_start >= 3504 && _start < 3508)
+                    || (_end > 3504 && _end <= 3508)
+                {
+                    self.write_mpu_mpu_rasr_a2(
+                        buffer_const(_start, _end, 3504, _buf),
+                        buffer_const(_start, _end, 3505, _buf),
+                        buffer_const(_start, _end, 3506, _buf),
+                        buffer_const(_start, _end, 3507, _buf),
+                    )?;
+                }
+                if (_start >= 3508 && _start < 3512)
+                    || (_end > 3508 && _end <= 3512)
+                {
+                    self.write_mpu_mpu_rbar_a3(
+                        buffer_const(_start, _end, 3508, _buf),
+                        buffer_const(_start, _end, 3509, _buf),
+                        buffer_const(_start, _end, 3510, _buf),
+                        buffer_const(_start, _end, 3511, _buf),
+                    )?;
+                }
+                if (_start >= 3512 && _start < 3516)
+                    || (_end > 3512 && _end <= 3516)
+                {
+                    self.write_mpu_mpu_rasr_a3(
+                        buffer_const(_start, _end, 3512, _buf),
+                        buffer_const(_start, _end, 3513, _buf),
+                        buffer_const(_start, _end, 3514, _buf),
+                        buffer_const(_start, _end, 3515, _buf),
+                    )?;
+                }
+            }
+            (3580..=3583, 3581..=3584) => {
+                if (_start >= 3580 && _start < 3584)
+                    || (_end > 3580 && _end <= 3584)
+                {
+                    return Err(icicle_vm::cpu::mem::MemError::WriteViolation);
+                }
+            }
+            (3840..=3843, 3841..=3844) => {
+                if (_start >= 3840 && _start < 3844)
+                    || (_end > 3840 && _end <= 3844)
+                {
+                    self.write_control_stir(
+                        buffer_const(_start, _end, 3840, _buf),
+                        buffer_const(_start, _end, 3841, _buf),
+                        buffer_const(_start, _end, 3842, _buf),
+                        buffer_const(_start, _end, 3843, _buf),
+                    )?;
+                }
+            }
+            (3892..=3911, 3893..=3912) => {
+                if (_start >= 3892 && _start < 3896)
+                    || (_end > 3892 && _end <= 3896)
+                {
+                    self.write_fpe_fpccr(
+                        buffer_const(_start, _end, 3892, _buf),
+                        buffer_const(_start, _end, 3893, _buf),
+                        buffer_const(_start, _end, 3894, _buf),
+                        buffer_const(_start, _end, 3895, _buf),
+                    )?;
+                }
+                if (_start >= 3896 && _start < 3900)
+                    || (_end > 3896 && _end <= 3900)
+                {
+                    self.0.lock().unwrap().write_fpe_fpcar(
+                        buffer_const(_start, _end, 3896, _buf),
+                        buffer_const(_start, _end, 3897, _buf),
+                        buffer_const(_start, _end, 3898, _buf),
+                        buffer_const(_start, _end, 3899, _buf),
+                    )?;
+                }
+                if (_start >= 3900 && _start < 3904)
+                    || (_end > 3900 && _end <= 3904)
+                {
+                    self.write_fpe_fpdscr(
+                        buffer_const(_start, _end, 3900, _buf),
+                        buffer_const(_start, _end, 3901, _buf),
+                        buffer_const(_start, _end, 3902, _buf),
+                        buffer_const(_start, _end, 3903, _buf),
+                    )?;
+                }
+                if (_start >= 3904 && _start < 3908)
+                    || (_end > 3904 && _end <= 3908)
+                {
+                    return Err(icicle_vm::cpu::mem::MemError::WriteViolation);
+                }
+                if (_start >= 3908 && _start < 3912)
+                    || (_end > 3908 && _end <= 3912)
+                {
+                    return Err(icicle_vm::cpu::mem::MemError::WriteViolation);
+                }
+            }
+            _ => return Err(icicle_vm::cpu::mem::MemError::Unmapped),
+        }
+        Ok(())
+    }
+}
+impl PeripheralPage0xE000E000 {
+    fn read_control_actlr(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_control_actlr_disoofp()? << 1;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_control_actlr_disfpca()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_control_actlr_disfold()? << 2;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_control_actlr_disdefwbuf()? << 1;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_control_actlr_dismcycint()? << 0;
+        }
+        Ok(())
+    }
+    fn write_control_actlr(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_actlr_disoofp((*byte >> 1) & 1)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_actlr_disfpca((*byte >> 0) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_actlr_disfold((*byte >> 2) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_actlr_disdefwbuf((*byte >> 1) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_actlr_dismcycint((*byte >> 0) & 1)?;
+        }
+        Ok(())
+    }
+    fn read_control_icsr(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_control_icsr_nmipendset()? << 7;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_control_icsr_pendsvset()? << 4;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_control_icsr_pendsvclr()? << 3;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_control_icsr_pendstset()? << 2;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_control_icsr_pendstclr()? << 1;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_control_icsr_isrpreempt()? << 7;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_control_icsr_isrpending()? << 6;
+        }
+        if _byte_1.is_some() || _byte_2.is_some() {
+            self.0
+                .lock()
+                .unwrap()
+                .read_control_icsr_vectpending(_byte_1, _byte_2)?;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_control_icsr_rettobase()? << 3;
+        }
+        if _byte_0.is_some() || _byte_1.is_some() {
+            self.0
+                .lock()
+                .unwrap()
+                .read_control_icsr_vectactive(_byte_0, _byte_1)?;
+        }
+        Ok(())
+    }
+    fn write_control_icsr(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_icsr_nmipendset((*byte >> 7) & 1)?;
+        }
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_icsr_pendsvset((*byte >> 4) & 1)?;
+        }
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_icsr_pendsvclr((*byte >> 3) & 1)?;
+        }
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_icsr_pendstset((*byte >> 2) & 1)?;
+        }
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_icsr_pendstclr((*byte >> 1) & 1)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_icsr_isrpreempt((*byte >> 7) & 1)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_icsr_isrpending((*byte >> 6) & 1)?;
+        }
+        if _byte_1.is_some() || _byte_2.is_some() {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_icsr_vectpending(_byte_1, _byte_2)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_icsr_rettobase((*byte >> 3) & 1)?;
+        }
+        if _byte_0.is_some() || _byte_1.is_some() {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_icsr_vectactive(_byte_0, _byte_1)?;
+        }
+        Ok(())
+    }
+    fn read_control_vtor(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if _byte_0.is_some()
+            || _byte_1.is_some()
+            || _byte_2.is_some()
+            || _byte_3.is_some()
+        {
+            self.0
+                .lock()
+                .unwrap()
+                .read_control_vtor_tbloff(_byte_0, _byte_1, _byte_2, _byte_3)?;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_control_vtor_tblbase()? << 5;
+        }
+        Ok(())
+    }
+    fn write_control_vtor(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if _byte_0.is_some()
+            || _byte_1.is_some()
+            || _byte_2.is_some()
+            || _byte_3.is_some()
+        {
+            self.0.lock().unwrap().write_control_vtor_tbloff(
+                _byte_0, _byte_1, _byte_2, _byte_3,
+            )?;
+        }
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_vtor_tblbase((*byte >> 5) & 1)?;
+        }
+        Ok(())
+    }
+    fn read_control_demcr(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_control_demcr_mon_en()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_control_demcr_mon_pend()? << 1;
+        }
+        Ok(())
+    }
+    fn read_control_aircr(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if _byte_2.is_some() || _byte_3.is_some() {
+            self.0
+                .lock()
+                .unwrap()
+                .read_control_aircr_vectkey(_byte_2, _byte_3)?;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_control_aircr_endianness()? << 7;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_control_aircr_prigroup()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_control_aircr_sysresetreq()? << 2;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_control_aircr_vectclractive()? << 1;
+        }
+        Ok(())
+    }
+    fn write_control_aircr(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if _byte_2.is_some() || _byte_3.is_some() {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_aircr_vectkey(_byte_2, _byte_3)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_aircr_endianness((*byte >> 7) & 1)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_aircr_prigroup((*byte >> 0) & 7)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_aircr_sysresetreq((*byte >> 2) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_aircr_vectclractive((*byte >> 1) & 1)?;
+        }
+        Ok(())
+    }
+    fn read_control_scr(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_control_scr_sevonpend()? << 4;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_control_scr_sleepdeep()? << 2;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_control_scr_sleeponexit()? << 1;
+        }
+        Ok(())
+    }
+    fn write_control_scr(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_scr_sevonpend((*byte >> 4) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_scr_sleepdeep((*byte >> 2) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_scr_sleeponexit((*byte >> 1) & 1)?;
+        }
+        Ok(())
+    }
+    fn read_control_ccr(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_control_ccr_stkalign()? << 1;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_control_ccr_bfhfnmign()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_control_ccr_div_0_trp()? << 4;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_control_ccr_unalign_trp()? << 3;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_control_ccr_usersetmpend()? << 1;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_control_ccr_nonbasethrdena()? << 0;
+        }
+        Ok(())
+    }
+    fn write_control_ccr(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_ccr_stkalign((*byte >> 1) & 1)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_ccr_bfhfnmign((*byte >> 0) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_ccr_div_0_trp((*byte >> 4) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_ccr_unalign_trp((*byte >> 3) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_ccr_usersetmpend((*byte >> 1) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_ccr_nonbasethrdena((*byte >> 0) & 1)?;
+        }
+        Ok(())
+    }
+    fn read_control_shpr1(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_control_shpr1_pri_7()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_control_shpr1_pri_6()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_control_shpr1_pri_5()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_control_shpr1_pri_4()? << 0;
+        }
+        Ok(())
+    }
+    fn write_control_shpr1(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shpr1_pri_7((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shpr1_pri_6((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shpr1_pri_5((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shpr1_pri_4((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_control_shpr2(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_control_shpr2_pri_11()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_control_shpr2_pri_10()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_control_shpr2_pri_9()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_control_shpr2_pri_8()? << 0;
+        }
+        Ok(())
+    }
+    fn write_control_shpr2(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shpr2_pri_11((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shpr2_pri_10((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shpr2_pri_9((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shpr2_pri_8((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_control_shpr3(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_control_shpr3_pri_15()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_control_shpr3_pri_14()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_control_shpr3_pri_13()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_control_shpr3_pri_12()? << 0;
+        }
+        Ok(())
+    }
+    fn write_control_shpr3(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shpr3_pri_15((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shpr3_pri_14((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shpr3_pri_13((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shpr3_pri_12((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_control_shcsr(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_control_shcsr_usgfaultena()? << 2;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_control_shcsr_busfaultena()? << 1;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_control_shcsr_memfaultena()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_control_shcsr_svcallpended()? << 7;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_control_shcsr_busfaultpended()?
+                    << 6;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_control_shcsr_memfaultpended()?
+                    << 5;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_control_shcsr_usgfaultpended()?
+                    << 4;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_control_shcsr_systickact()? << 3;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_control_shcsr_pendsvact()? << 2;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_control_shcsr_monitoract()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_control_shcsr_svcallact()? << 7;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_control_shcsr_usgfaultact()? << 3;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_control_shcsr_busfaultact()? << 1;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_control_shcsr_memfaultact()? << 0;
+        }
+        Ok(())
+    }
+    fn write_control_shcsr(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shcsr_usgfaultena((*byte >> 2) & 1)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shcsr_busfaultena((*byte >> 1) & 1)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shcsr_memfaultena((*byte >> 0) & 1)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shcsr_svcallpended((*byte >> 7) & 1)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shcsr_busfaultpended((*byte >> 6) & 1)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shcsr_memfaultpended((*byte >> 5) & 1)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shcsr_usgfaultpended((*byte >> 4) & 1)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shcsr_systickact((*byte >> 3) & 1)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shcsr_pendsvact((*byte >> 2) & 1)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shcsr_monitoract((*byte >> 0) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shcsr_svcallact((*byte >> 7) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shcsr_usgfaultact((*byte >> 3) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shcsr_busfaultact((*byte >> 1) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_shcsr_memfaultact((*byte >> 0) & 1)?;
+        }
+        Ok(())
+    }
+    fn read_control_cfsr(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_control_cfsr_divbyzero()? << 1;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_control_cfsr_unaligned()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_control_cfsr_nocp()? << 3;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_control_cfsr_invpc()? << 2;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_control_cfsr_invstate()? << 1;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_control_cfsr_undefinstr()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_control_cfsr_bfarvalid()? << 7;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_control_cfsr_lsperr()? << 5;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_control_cfsr_stkerr()? << 4;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_control_cfsr_unstkerr()? << 3;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_control_cfsr_impreciserr()? << 2;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_control_cfsr_preciserr()? << 1;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_control_cfsr_ibuserr()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_control_cfsr_mmarvalid()? << 7;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_control_cfsr_mlsperr()? << 5;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_control_cfsr_mstkerr()? << 4;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_control_cfsr_munstkerr()? << 3;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_control_cfsr_daccviol()? << 1;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_control_cfsr_iaccviol()? << 0;
+        }
+        Ok(())
+    }
+    fn write_control_cfsr(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cfsr_divbyzero((*byte >> 1) & 1)?;
+        }
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cfsr_unaligned((*byte >> 0) & 1)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cfsr_nocp((*byte >> 3) & 1)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cfsr_invpc((*byte >> 2) & 1)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cfsr_invstate((*byte >> 1) & 1)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cfsr_undefinstr((*byte >> 0) & 1)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cfsr_bfarvalid((*byte >> 7) & 1)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cfsr_lsperr((*byte >> 5) & 1)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cfsr_stkerr((*byte >> 4) & 1)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cfsr_unstkerr((*byte >> 3) & 1)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cfsr_impreciserr((*byte >> 2) & 1)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cfsr_preciserr((*byte >> 1) & 1)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cfsr_ibuserr((*byte >> 0) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cfsr_mmarvalid((*byte >> 7) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cfsr_mlsperr((*byte >> 5) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cfsr_mstkerr((*byte >> 4) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cfsr_munstkerr((*byte >> 3) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cfsr_daccviol((*byte >> 1) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cfsr_iaccviol((*byte >> 0) & 1)?;
+        }
+        Ok(())
+    }
+    fn read_control_hfsr(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_control_hfsr_debugevt()? << 7;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_control_hfsr_forced()? << 6;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_control_hfsr_vecttbl()? << 1;
+        }
+        Ok(())
+    }
+    fn write_control_hfsr(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_hfsr_debugevt((*byte >> 7) & 1)?;
+        }
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_hfsr_forced((*byte >> 6) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_hfsr_vecttbl((*byte >> 1) & 1)?;
+        }
+        Ok(())
+    }
+    fn read_control_dfsr(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_control_dfsr_external()? << 4;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_control_dfsr_vcatch()? << 3;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_control_dfsr_dwttrap()? << 2;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_control_dfsr_bkpt()? << 1;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_control_dfsr_halted()? << 0;
+        }
+        Ok(())
+    }
+    fn write_control_dfsr(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_dfsr_external((*byte >> 4) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_dfsr_vcatch((*byte >> 3) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_dfsr_dwttrap((*byte >> 2) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_dfsr_bkpt((*byte >> 1) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_dfsr_halted((*byte >> 0) & 1)?;
+        }
+        Ok(())
+    }
+    fn read_control_cpacr(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_control_cpacr_cp11()? << 6;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_control_cpacr_cp10()? << 4;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_control_cpacr_cp7()? << 6;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_control_cpacr_cp6()? << 4;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_control_cpacr_cp5()? << 2;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_control_cpacr_cp4()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_control_cpacr_cp3()? << 6;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_control_cpacr_cp2()? << 4;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_control_cpacr_cp1()? << 2;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_control_cpacr_cp0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_control_cpacr(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cpacr_cp11((*byte >> 6) & 3)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cpacr_cp10((*byte >> 4) & 3)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cpacr_cp7((*byte >> 6) & 3)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cpacr_cp6((*byte >> 4) & 3)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cpacr_cp5((*byte >> 2) & 3)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cpacr_cp4((*byte >> 0) & 3)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cpacr_cp3((*byte >> 6) & 3)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cpacr_cp2((*byte >> 4) & 3)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cpacr_cp1((*byte >> 2) & 3)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_cpacr_cp0((*byte >> 0) & 3)?;
+        }
+        Ok(())
+    }
+    fn write_control_stir(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if _byte_0.is_some() || _byte_1.is_some() {
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_stir_intid(_byte_0, _byte_1)?;
+        }
+        Ok(())
+    }
+    fn read_id_cpuid(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_id_cpuid_implementer()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_id_cpuid_variant()? << 4;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_id_cpuid_constant()? << 0;
+        }
+        if _byte_0.is_some() || _byte_1.is_some() {
+            self.0
+                .lock()
+                .unwrap()
+                .read_id_cpuid_partno(_byte_0, _byte_1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_id_cpuid_revision()? << 0;
+        }
+        Ok(())
+    }
+    fn read_id_id_pfr0(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_id_id_pfr0_state1()? << 4;
+        }
+        Ok(())
+    }
+    fn read_id_id_pfr1(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_id_id_pfr1_m_profile()? << 0;
+        }
+        Ok(())
+    }
+    fn read_id_id_dfr0(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_id_id_dfr0_m_profile()? << 4;
+        }
+        Ok(())
+    }
+    fn read_id_id_mmfr0(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self
+                .0
+                .lock()
+                .unwrap()
+                .read_id_id_mmfr0_auxiliary_registers()?
+                << 4;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self
+                .0
+                .lock()
+                .unwrap()
+                .read_id_id_mmfr0_shareability_levels()?
+                << 4;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self
+                .0
+                .lock()
+                .unwrap()
+                .read_id_id_mmfr0_outermost_shareability()?
+                << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_id_id_mmfr0_pmsa()? << 4;
+        }
+        Ok(())
+    }
+    fn read_id_id_mmfr2(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_id_id_mmfr2_wfi()? << 0;
+        }
+        Ok(())
+    }
+    fn read_id_id_isar0(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar0_divide_instrs()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar0_debug_instrs()? << 4;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar0_coproc_instrs()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar0_cmpbranch_instrs()?
+                    << 4;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar0_bitfield_instrs()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar0_bitcount_instrs()? << 4;
+        }
+        Ok(())
+    }
+    fn read_id_id_isar1(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar1_interwork_instrs()?
+                    << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar1_immediate_instrs()?
+                    << 4;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar1_ifthen_instrs()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar1_extend_instrs()? << 4;
+        }
+        Ok(())
+    }
+    fn read_id_id_isar2(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar2_reversal_instrs()? << 4;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar2_multu_instrs()? << 4;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar2_mults_instrs()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar2_mult_instrs()? << 4;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self
+                .0
+                .lock()
+                .unwrap()
+                .read_id_id_isar2_multiaccessint_instrs()?
+                << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self
+                .0
+                .lock()
+                .unwrap()
+                .read_id_id_isar2_multiaccessint_instrs()?
+                << 4;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar2_loadstore_instrs()?
+                    << 0;
+        }
+        Ok(())
+    }
+    fn read_id_id_isar3(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar3_truenop_instrs()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar3_thumbcopy_instrs()?
+                    << 4;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar3_tabbranch_instrs()?
+                    << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar3_synchprim_instrs()?
+                    << 4;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar3_svc_instrs()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar3_simd_instrs()? << 4;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar3_saturate_instrs()? << 0;
+        }
+        Ok(())
+    }
+    fn read_id_id_isar4(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar4_psr_m_instrs()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self
+                .0
+                .lock()
+                .unwrap()
+                .read_id_id_isar4_synchprim_instrs_frac()?
+                << 4;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar4_barrier_instrs()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar4_writeback_instrs()?
+                    << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self
+                .0
+                .lock()
+                .unwrap()
+                .read_id_id_isar4_withshifts_instrs()?
+                << 4;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_id_id_isar4_unpriv_instrs()? << 0;
+        }
+        Ok(())
+    }
+    fn read_fpe_fpccr(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_fpe_fpccr_aspen()? << 7;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_fpe_fpccr_lspen()? << 6;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_fpe_fpccr_monrdy()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_fpe_fpccr_bfrdy()? << 6;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_fpe_fpccr_mmrdy()? << 5;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_fpe_fpccr_hfrdy()? << 4;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_fpe_fpccr_thread()? << 3;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_fpe_fpccr_user()? << 1;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_fpe_fpccr_lspact()? << 0;
+        }
+        Ok(())
+    }
+    fn write_fpe_fpccr(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_fpe_fpccr_aspen((*byte >> 7) & 1)?;
+        }
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_fpe_fpccr_lspen((*byte >> 6) & 1)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_fpe_fpccr_monrdy((*byte >> 0) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_fpe_fpccr_bfrdy((*byte >> 6) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_fpe_fpccr_mmrdy((*byte >> 5) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_fpe_fpccr_hfrdy((*byte >> 4) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_fpe_fpccr_thread((*byte >> 3) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_fpe_fpccr_user((*byte >> 1) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_fpe_fpccr_lspact((*byte >> 0) & 1)?;
+        }
+        Ok(())
+    }
+    fn read_fpe_fpdscr(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_fpe_fpdscr_ahp()? << 2;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_fpe_fpdscr_dn()? << 1;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_fpe_fpdscr_fz()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_fpe_fpdscr_rmode()? << 6;
+        }
+        Ok(())
+    }
+    fn write_fpe_fpdscr(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_fpe_fpdscr_ahp((*byte >> 2) & 1)?;
+        }
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_fpe_fpdscr_dn((*byte >> 1) & 1)?;
+        }
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_fpe_fpdscr_fz((*byte >> 0) & 1)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_fpe_fpdscr_rmode((*byte >> 6) & 3)?;
+        }
+        Ok(())
+    }
+    fn read_fpe_mvfr0(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_fpe_mvfr0_fp_rounding_modes()? << 4;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_fpe_mvfr0_short_vectors()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_fpe_mvfr0_square_root()? << 4;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_fpe_mvfr0_divide()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self
+                .0
+                .lock()
+                .unwrap()
+                .read_fpe_mvfr0_fp_exception_trapping()?
+                << 4;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_fpe_mvfr0_double_precision()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_fpe_mvfr0_single_precision()? << 4;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_fpe_mvfr0_a_simd()? << 0;
+        }
+        Ok(())
+    }
+    fn read_fpe_mvfr1(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_fpe_mvfr1_fp_fused_mac()? << 4;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_fpe_mvfr1_fp_hpfp()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_fpe_mvfr1_d_nan()? << 4;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_fpe_mvfr1_ftz()? << 0;
+        }
+        Ok(())
+    }
+    fn read_systick_stcsr(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_systick_stcsr_countflag()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_systick_stcsr_clksource()? << 2;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_systick_stcsr_tickint()? << 1;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_systick_stcsr_enable()? << 0;
+        }
+        Ok(())
+    }
+    fn write_systick_stcsr(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_systick_stcsr_countflag((*byte >> 0) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_systick_stcsr_clksource((*byte >> 2) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_systick_stcsr_tickint((*byte >> 1) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_systick_stcsr_enable((*byte >> 0) & 1)?;
+        }
+        Ok(())
+    }
+    fn read_systick_strvr(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if _byte_0.is_some() || _byte_1.is_some() || _byte_2.is_some() {
+            self.0
+                .lock()
+                .unwrap()
+                .read_systick_strvr_reload(_byte_0, _byte_1, _byte_2)?;
+        }
+        Ok(())
+    }
+    fn write_systick_strvr(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if _byte_0.is_some() || _byte_1.is_some() || _byte_2.is_some() {
+            self.0
+                .lock()
+                .unwrap()
+                .write_systick_strvr_reload(_byte_0, _byte_1, _byte_2)?;
+        }
+        Ok(())
+    }
+    fn read_systick_stcvr(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if _byte_0.is_some() || _byte_1.is_some() || _byte_2.is_some() {
+            self.0
+                .lock()
+                .unwrap()
+                .read_systick_stcvr_current(_byte_0, _byte_1, _byte_2)?;
+        }
+        Ok(())
+    }
+    fn write_systick_stcvr(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if _byte_0.is_some() || _byte_1.is_some() || _byte_2.is_some() {
+            self.0
+                .lock()
+                .unwrap()
+                .write_systick_stcvr_current(_byte_0, _byte_1, _byte_2)?;
+        }
+        Ok(())
+    }
+    fn read_systick_stcr(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_systick_stcr_noref()? << 7;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_systick_stcr_skew()? << 6;
+        }
+        if _byte_0.is_some() || _byte_1.is_some() || _byte_2.is_some() {
+            self.0
+                .lock()
+                .unwrap()
+                .read_systick_stcr_tenms(_byte_0, _byte_1, _byte_2)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_ictr(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_nvic_ictr_intlinesnum()? << 0;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr0(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr0_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr0_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr0_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr0_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr0(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr0_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr0_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr0_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr0_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr1(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr1_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr1_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr1_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr1_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr1(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr1_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr1_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr1_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr1_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr2(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr2_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr2_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr2_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr2_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr2(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr2_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr2_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr2_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr2_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr3(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr3_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr3_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr3_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr3_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr3(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr3_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr3_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr3_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr3_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr4(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr4_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr4_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr4_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr4_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr4(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr4_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr4_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr4_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr4_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr5(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr5_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr5_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr5_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr5_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr5(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr5_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr5_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr5_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr5_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr6(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr6_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr6_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr6_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr6_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr6(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr6_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr6_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr6_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr6_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr7(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr7_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr7_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr7_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr7_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr7(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr7_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr7_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr7_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr7_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr8(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr8_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr8_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr8_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr8_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr8(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr8_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr8_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr8_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr8_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr9(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr9_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr9_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr9_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_nvic_nvic_ipr9_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr9(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr9_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr9_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr9_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr9_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr10(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr10_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr10_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr10_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr10_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr10(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr10_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr10_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr10_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr10_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr11(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr11_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr11_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr11_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr11_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr11(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr11_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr11_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr11_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr11_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr12(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr12_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr12_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr12_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr12_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr12(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr12_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr12_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr12_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr12_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr13(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr13_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr13_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr13_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr13_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr13(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr13_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr13_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr13_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr13_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr14(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr14_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr14_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr14_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr14_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr14(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr14_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr14_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr14_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr14_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr15(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr15_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr15_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr15_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr15_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr15(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr15_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr15_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr15_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr15_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr16(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr16_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr16_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr16_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr16_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr16(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr16_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr16_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr16_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr16_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr17(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr17_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr17_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr17_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr17_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr17(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr17_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr17_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr17_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr17_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr18(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr18_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr18_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr18_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr18_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr18(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr18_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr18_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr18_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr18_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr19(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr19_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr19_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr19_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr19_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr19(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr19_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr19_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr19_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr19_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr20(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr20_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr20_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr20_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr20_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr20(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr20_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr20_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr20_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr20_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr21(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr21_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr21_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr21_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr21_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr21(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr21_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr21_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr21_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr21_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr22(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr22_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr22_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr22_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr22_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr22(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr22_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr22_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr22_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr22_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr23(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr23_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr23_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr23_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr23_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr23(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr23_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr23_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr23_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr23_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr24(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr24_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr24_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr24_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr24_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr24(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr24_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr24_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr24_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr24_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr25(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr25_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr25_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr25_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr25_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr25(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr25_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr25_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr25_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr25_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr26(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr26_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr26_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr26_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr26_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr26(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr26_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr26_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr26_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr26_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr27(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr27_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr27_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr27_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr27_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr27(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr27_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr27_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr27_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr27_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr28(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr28_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr28_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr28_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr28_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr28(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr28_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr28_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr28_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr28_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr29(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr29_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr29_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr29_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr29_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr29(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr29_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr29_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr29_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr29_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr30(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr30_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr30_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr30_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr30_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr30(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr30_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr30_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr30_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr30_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr31(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr31_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr31_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr31_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr31_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr31(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr31_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr31_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr31_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr31_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr32(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr32_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr32_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr32_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr32_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr32(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr32_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr32_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr32_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr32_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr33(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr33_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr33_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr33_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr33_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr33(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr33_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr33_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr33_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr33_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr34(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr34_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr34_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr34_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr34_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr34(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr34_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr34_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr34_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr34_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr35(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr35_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr35_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr35_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr35_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr35(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr35_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr35_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr35_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr35_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr36(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr36_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr36_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr36_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr36_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr36(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr36_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr36_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr36_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr36_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr37(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr37_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr37_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr37_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr37_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr37(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr37_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr37_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr37_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr37_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr38(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr38_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr38_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr38_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr38_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr38(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr38_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr38_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr38_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr38_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr39(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr39_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr39_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr39_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr39_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr39(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr39_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr39_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr39_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr39_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr40(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr40_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr40_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr40_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr40_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr40(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr40_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr40_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr40_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr40_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr41(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr41_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr41_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr41_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr41_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr41(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr41_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr41_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr41_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr41_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr42(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr42_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr42_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr42_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr42_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr42(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr42_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr42_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr42_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr42_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr43(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr43_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr43_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr43_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr43_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr43(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr43_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr43_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr43_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr43_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr44(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr44_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr44_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr44_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr44_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr44(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr44_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr44_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr44_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr44_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr45(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr45_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr45_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr45_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr45_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr45(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr45_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr45_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr45_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr45_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr46(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr46_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr46_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr46_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr46_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr46(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr46_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr46_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr46_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr46_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr47(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr47_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr47_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr47_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr47_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr47(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr47_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr47_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr47_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr47_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr48(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr48_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr48_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr48_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr48_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr48(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr48_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr48_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr48_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr48_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr49(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr49_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr49_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr49_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr49_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr49(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr49_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr49_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr49_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr49_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr50(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr50_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr50_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr50_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr50_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr50(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr50_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr50_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr50_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr50_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr51(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr51_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr51_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr51_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr51_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr51(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr51_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr51_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr51_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr51_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr52(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr52_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr52_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr52_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr52_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr52(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr52_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr52_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr52_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr52_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr53(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr53_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr53_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr53_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr53_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr53(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr53_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr53_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr53_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr53_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr54(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr54_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr54_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr54_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr54_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr54(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr54_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr54_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr54_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr54_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr55(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr55_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr55_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr55_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr55_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr55(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr55_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr55_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr55_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr55_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr56(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr56_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr56_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr56_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr56_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr56(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr56_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr56_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr56_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr56_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr57(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr57_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr57_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr57_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr57_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr57(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr57_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr57_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr57_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr57_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr58(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr58_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr58_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr58_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr58_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr58(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr58_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr58_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr58_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr58_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_nvic_nvic_ipr59(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr59_pri_n3()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr59_pri_n2()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr59_pri_n1()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_nvic_nvic_ipr59_pri_n0()? << 0;
+        }
+        Ok(())
+    }
+    fn write_nvic_nvic_ipr59(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr59_pri_n3((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr59_pri_n2((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr59_pri_n1((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_nvic_nvic_ipr59_pri_n0((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_mpu_mpu_type(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_type_separate()? << 0;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_type_dregion()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_type_iregion()? << 0;
+        }
+        Ok(())
+    }
+    fn read_mpu_mpu_ctrl(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_ctrl_enable()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_ctrl_hfnmiena()? << 1;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_mpu_mpu_ctrl_privdefena()? << 2;
+        }
+        Ok(())
+    }
+    fn write_mpu_mpu_ctrl(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_ctrl_enable((*byte >> 0) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_ctrl_hfnmiena((*byte >> 1) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_ctrl_privdefena((*byte >> 2) & 1)?;
+        }
+        Ok(())
+    }
+    fn read_mpu_mpu_rnr(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rnr_region()? << 0;
+        }
+        Ok(())
+    }
+    fn write_mpu_mpu_rnr(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rnr_region((*byte >> 0) & 255)?;
+        }
+        Ok(())
+    }
+    fn read_mpu_mpu_rbar(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rbar_region()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rbar_valid()? << 4;
+        }
+        if _byte_0.is_some()
+            || _byte_1.is_some()
+            || _byte_2.is_some()
+            || _byte_3.is_some()
+        {
+            self.0
+                .lock()
+                .unwrap()
+                .read_mpu_mpu_rbar_addr(_byte_0, _byte_1, _byte_2, _byte_3)?;
+        }
+        Ok(())
+    }
+    fn write_mpu_mpu_rbar(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rbar_region((*byte >> 0) & 15)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rbar_valid((*byte >> 4) & 1)?;
+        }
+        if _byte_0.is_some()
+            || _byte_1.is_some()
+            || _byte_2.is_some()
+            || _byte_3.is_some()
+        {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rbar_addr(_byte_0, _byte_1, _byte_2, _byte_3)?;
+        }
+        Ok(())
+    }
+    fn read_mpu_mpu_rasr(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_enable()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_size()? << 1;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_srd()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_b()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_c()? << 1;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_s()? << 2;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_tex()? << 3;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_ap()? << 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_xn()? << 4;
+        }
+        Ok(())
+    }
+    fn write_mpu_mpu_rasr(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_enable((*byte >> 0) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_size((*byte >> 1) & 31)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_srd((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_b((*byte >> 0) & 1)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_c((*byte >> 1) & 1)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_s((*byte >> 2) & 1)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_tex((*byte >> 3) & 7)?;
+        }
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_ap((*byte >> 0) & 7)?;
+        }
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_xn((*byte >> 4) & 1)?;
+        }
+        Ok(())
+    }
+    fn read_mpu_mpu_rbar_a1(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_mpu_mpu_rbar_a1_region()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rbar_a1_valid()? << 4;
+        }
+        if _byte_0.is_some()
+            || _byte_1.is_some()
+            || _byte_2.is_some()
+            || _byte_3.is_some()
+        {
+            self.0.lock().unwrap().read_mpu_mpu_rbar_a1_addr(
+                _byte_0, _byte_1, _byte_2, _byte_3,
+            )?;
+        }
+        Ok(())
+    }
+    fn write_mpu_mpu_rbar_a1(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rbar_a1_region((*byte >> 0) & 15)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rbar_a1_valid((*byte >> 4) & 1)?;
+        }
+        if _byte_0.is_some()
+            || _byte_1.is_some()
+            || _byte_2.is_some()
+            || _byte_3.is_some()
+        {
+            self.0.lock().unwrap().write_mpu_mpu_rbar_a1_addr(
+                _byte_0, _byte_1, _byte_2, _byte_3,
+            )?;
+        }
+        Ok(())
+    }
+    fn read_mpu_mpu_rasr_a1(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_mpu_mpu_rasr_a1_enable()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a1_size()? << 1;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a1_srd()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a1_b()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a1_c()? << 1;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a1_s()? << 2;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a1_tex()? << 3;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a1_ap()? << 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a1_xn()? << 4;
+        }
+        Ok(())
+    }
+    fn write_mpu_mpu_rasr_a1(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a1_enable((*byte >> 0) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a1_size((*byte >> 1) & 31)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a1_srd((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a1_b((*byte >> 0) & 1)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a1_c((*byte >> 1) & 1)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a1_s((*byte >> 2) & 1)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a1_tex((*byte >> 3) & 7)?;
+        }
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a1_ap((*byte >> 0) & 7)?;
+        }
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a1_xn((*byte >> 4) & 1)?;
+        }
+        Ok(())
+    }
+    fn read_mpu_mpu_rbar_a2(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_mpu_mpu_rbar_a2_region()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rbar_a2_valid()? << 4;
+        }
+        if _byte_0.is_some()
+            || _byte_1.is_some()
+            || _byte_2.is_some()
+            || _byte_3.is_some()
+        {
+            self.0.lock().unwrap().read_mpu_mpu_rbar_a2_addr(
+                _byte_0, _byte_1, _byte_2, _byte_3,
+            )?;
+        }
+        Ok(())
+    }
+    fn write_mpu_mpu_rbar_a2(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rbar_a2_region((*byte >> 0) & 15)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rbar_a2_valid((*byte >> 4) & 1)?;
+        }
+        if _byte_0.is_some()
+            || _byte_1.is_some()
+            || _byte_2.is_some()
+            || _byte_3.is_some()
+        {
+            self.0.lock().unwrap().write_mpu_mpu_rbar_a2_addr(
+                _byte_0, _byte_1, _byte_2, _byte_3,
+            )?;
+        }
+        Ok(())
+    }
+    fn read_mpu_mpu_rasr_a2(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_mpu_mpu_rasr_a2_enable()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a2_size()? << 1;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a2_srd()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a2_b()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a2_c()? << 1;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a2_s()? << 2;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a2_tex()? << 3;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a2_ap()? << 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a2_xn()? << 4;
+        }
+        Ok(())
+    }
+    fn write_mpu_mpu_rasr_a2(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a2_enable((*byte >> 0) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a2_size((*byte >> 1) & 31)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a2_srd((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a2_b((*byte >> 0) & 1)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a2_c((*byte >> 1) & 1)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a2_s((*byte >> 2) & 1)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a2_tex((*byte >> 3) & 7)?;
+        }
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a2_ap((*byte >> 0) & 7)?;
+        }
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a2_xn((*byte >> 4) & 1)?;
+        }
+        Ok(())
+    }
+    fn read_mpu_mpu_rbar_a3(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_mpu_mpu_rbar_a3_region()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rbar_a3_valid()? << 4;
+        }
+        if _byte_0.is_some()
+            || _byte_1.is_some()
+            || _byte_2.is_some()
+            || _byte_3.is_some()
+        {
+            self.0.lock().unwrap().read_mpu_mpu_rbar_a3_addr(
+                _byte_0, _byte_1, _byte_2, _byte_3,
+            )?;
+        }
+        Ok(())
+    }
+    fn write_mpu_mpu_rbar_a3(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rbar_a3_region((*byte >> 0) & 15)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rbar_a3_valid((*byte >> 4) & 1)?;
+        }
+        if _byte_0.is_some()
+            || _byte_1.is_some()
+            || _byte_2.is_some()
+            || _byte_3.is_some()
+        {
+            self.0.lock().unwrap().write_mpu_mpu_rbar_a3_addr(
+                _byte_0, _byte_1, _byte_2, _byte_3,
+            )?;
+        }
+        Ok(())
+    }
+    fn read_mpu_mpu_rasr_a3(
+        &self,
+        _byte_0: &mut Option<&mut u8>,
+        _byte_1: &mut Option<&mut u8>,
+        _byte_2: &mut Option<&mut u8>,
+        _byte_3: &mut Option<&mut u8>,
+    ) -> MemResult<()> {
+        if let Some(_byte) = _byte_0 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_1 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_2 {
+            **_byte = 0;
+        }
+        if let Some(_byte) = _byte_3 {
+            **_byte = 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |=
+                self.0.lock().unwrap().read_mpu_mpu_rasr_a3_enable()? << 0;
+        }
+        if let Some(byte) = _byte_0 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a3_size()? << 1;
+        }
+        if let Some(byte) = _byte_1 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a3_srd()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a3_b()? << 0;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a3_c()? << 1;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a3_s()? << 2;
+        }
+        if let Some(byte) = _byte_2 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a3_tex()? << 3;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a3_ap()? << 0;
+        }
+        if let Some(byte) = _byte_3 {
+            **byte |= self.0.lock().unwrap().read_mpu_mpu_rasr_a3_xn()? << 4;
+        }
+        Ok(())
+    }
+    fn write_mpu_mpu_rasr_a3(
+        &mut self,
+        _byte_0: Option<&u8>,
+        _byte_1: Option<&u8>,
+        _byte_2: Option<&u8>,
+        _byte_3: Option<&u8>,
+    ) -> MemResult<()> {
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a3_enable((*byte >> 0) & 1)?;
+        }
+        if let Some(byte) = _byte_0 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a3_size((*byte >> 1) & 31)?;
+        }
+        if let Some(byte) = _byte_1 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a3_srd((*byte >> 0) & 255)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a3_b((*byte >> 0) & 1)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a3_c((*byte >> 1) & 1)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a3_s((*byte >> 2) & 1)?;
+        }
+        if let Some(byte) = _byte_2 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a3_tex((*byte >> 3) & 7)?;
+        }
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a3_ap((*byte >> 0) & 7)?;
+        }
+        if let Some(byte) = _byte_3 {
+            self.0
+                .lock()
+                .unwrap()
+                .write_mpu_mpu_rasr_a3_xn((*byte >> 4) & 1)?;
         }
         Ok(())
     }
