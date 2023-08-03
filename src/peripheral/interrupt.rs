@@ -26,6 +26,7 @@ impl Interrupts {
             .enumerate()
             .filter_map(|(i, b)| Some((i, b.as_mut()?)))
         {
+            **byte = 0;
             for bit in 0..8 {
                 let _inter_num = (_nvic * 32) + bit + (byte_i * 8);
                 **byte |= (self.is_on(_inter_num) as u8) << bit;
@@ -101,6 +102,7 @@ impl Interrupts {
             .enumerate()
             .filter_map(|(i, b)| Some((i, b.as_mut()?)))
         {
+            **byte = 0;
             for bit in 0..8 {
                 let _inter_num = (_nvic * 32) + bit + (byte_i * 8);
                 **byte |= (self.is_pending(_inter_num) as u8) << bit;
@@ -184,11 +186,12 @@ impl Interrupts {
             .enumerate()
             .filter_map(|(i, b)| Some((i, b.as_mut()?)))
         {
+            **byte = 0;
             for bit in 0..8 {
                 let _inter_num = (_nvic * 32) + bit + (byte_i * 8);
-                **byte |= ((self.is_pending(_inter_num)
-                    || self.is_pending(_inter_num))
-                    as u8)
+                let active = self.is_pending(_inter_num)
+                    || self.is_pending(_inter_num);
+                **byte |= (active as u8)
                     << bit;
             }
         }

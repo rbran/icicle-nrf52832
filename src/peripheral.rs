@@ -2402,6 +2402,7 @@ impl Peripherals {
         self.interrupts
             .nvic_clr_pending(7, _byte_0, _byte_1, _byte_2, _byte_3)
     }
+    #[inline]
     pub fn read_nvic_nvic_iabr0<'a>(
         &self,
         _byte_0: &mut Option<&'a mut u8>,
@@ -2425,6 +2426,7 @@ impl Peripherals {
         }
         todo!();
     }
+    #[inline]
     pub fn read_nvic_nvic_iabr1<'a>(
         &self,
         _byte_0: &mut Option<&'a mut u8>,
@@ -2448,6 +2450,7 @@ impl Peripherals {
         }
         todo!();
     }
+    #[inline]
     pub fn read_nvic_nvic_iabr2<'a>(
         &self,
         _byte_0: &mut Option<&'a mut u8>,
@@ -2471,6 +2474,7 @@ impl Peripherals {
         }
         todo!();
     }
+    #[inline]
     pub fn read_nvic_nvic_iabr3<'a>(
         &self,
         _byte_0: &mut Option<&'a mut u8>,
@@ -2494,6 +2498,7 @@ impl Peripherals {
         }
         todo!();
     }
+    #[inline]
     pub fn read_nvic_nvic_iabr4<'a>(
         &self,
         _byte_0: &mut Option<&'a mut u8>,
@@ -2517,6 +2522,7 @@ impl Peripherals {
         }
         todo!();
     }
+    #[inline]
     pub fn read_nvic_nvic_iabr5<'a>(
         &self,
         _byte_0: &mut Option<&'a mut u8>,
@@ -2540,6 +2546,7 @@ impl Peripherals {
         }
         todo!();
     }
+    #[inline]
     pub fn read_nvic_nvic_iabr6<'a>(
         &self,
         _byte_0: &mut Option<&'a mut u8>,
@@ -2563,6 +2570,7 @@ impl Peripherals {
         }
         todo!();
     }
+    #[inline]
     pub fn read_nvic_nvic_iabr7<'a>(
         &self,
         _byte_0: &mut Option<&'a mut u8>,
