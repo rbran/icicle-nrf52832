@@ -8,6 +8,8 @@ mod clock;
 use clock::*;
 mod watchdog;
 use watchdog::*;
+mod control;
+use control::*;
 
 #[derive(Default)]
 pub struct Peripherals {
@@ -15,6 +17,7 @@ pub struct Peripherals {
     pub interrupts: Interrupts,
     pub clock: Clock,
     pub wdt: Wdt,
+    pub control: Control,
 }
 impl Peripherals {
     pub fn ram_is_on(&self, _block: u8) -> bool {
@@ -379,32 +382,32 @@ impl Peripherals {
     ) -> MemResult<()> {
         todo!()
     }
+    #[inline]
     pub fn read_control_scr_sevonpend(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+        Ok(self.control.event_on_pending() as u8)
     }
+    #[inline]
     pub fn write_control_scr_sevonpend(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.control.set_event_on_pending(_value != 0))
     }
+    #[inline]
     pub fn read_control_scr_sleepdeep(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+        Ok(self.control.sleep_deep() as u8)
     }
+    #[inline]
     pub fn write_control_scr_sleepdeep(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.control.set_sleep_deep(_value != 0))
     }
+    #[inline]
     pub fn read_control_scr_sleeponexit(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+        Ok(self.control.sleep_on_exit() as u8)
     }
+    #[inline]
     pub fn write_control_scr_sleeponexit(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.control.set_sleep_on_exit(_value != 0))
     }
     pub fn read_control_ccr_stkalign(&self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
@@ -463,101 +466,149 @@ impl Peripherals {
     ) -> MemResult<()> {
         todo!()
     }
+    #[inline]
     pub fn read_control_shpr1_pri_7(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.control.priority(SysHandlerPriority::Pri7))
     }
-    pub fn write_control_shpr1_pri_7(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_control_shpr1_pri_7(
+        &mut self,
+        _priority: u8,
+    ) -> MemResult<()> {
+        self.control
+            .set_priority(SysHandlerPriority::Pri7, _priority)
     }
+    #[inline]
     pub fn read_control_shpr1_pri_6(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.control.priority(SysHandlerPriority::Pri6))
     }
-    pub fn write_control_shpr1_pri_6(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_control_shpr1_pri_6(
+        &mut self,
+        _priority: u8,
+    ) -> MemResult<()> {
+        self.control
+            .set_priority(SysHandlerPriority::Pri6, _priority)
     }
+    #[inline]
     pub fn read_control_shpr1_pri_5(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.control.priority(SysHandlerPriority::Pri5))
     }
-    pub fn write_control_shpr1_pri_5(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_control_shpr1_pri_5(
+        &mut self,
+        _priority: u8,
+    ) -> MemResult<()> {
+        self.control
+            .set_priority(SysHandlerPriority::Pri5, _priority)
     }
+    #[inline]
     pub fn read_control_shpr1_pri_4(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.control.priority(SysHandlerPriority::Pri4))
     }
-    pub fn write_control_shpr1_pri_4(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_control_shpr1_pri_4(
+        &mut self,
+        _priority: u8,
+    ) -> MemResult<()> {
+        self.control
+            .set_priority(SysHandlerPriority::Pri4, _priority)
     }
+    #[inline]
     pub fn read_control_shpr2_pri_11(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.control.priority(SysHandlerPriority::Pri11))
     }
-    pub fn write_control_shpr2_pri_11(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_control_shpr2_pri_11(
+        &mut self,
+        _priority: u8,
+    ) -> MemResult<()> {
+        self.control
+            .set_priority(SysHandlerPriority::Pri11, _priority)
     }
+    #[inline]
     pub fn read_control_shpr2_pri_10(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.control.priority(SysHandlerPriority::Pri10))
     }
-    pub fn write_control_shpr2_pri_10(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_control_shpr2_pri_10(
+        &mut self,
+        _priority: u8,
+    ) -> MemResult<()> {
+        self.control
+            .set_priority(SysHandlerPriority::Pri10, _priority)
     }
+    #[inline]
     pub fn read_control_shpr2_pri_9(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.control.priority(SysHandlerPriority::Pri9))
     }
-    pub fn write_control_shpr2_pri_9(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_control_shpr2_pri_9(
+        &mut self,
+        _priority: u8,
+    ) -> MemResult<()> {
+        self.control
+            .set_priority(SysHandlerPriority::Pri9, _priority)
     }
+    #[inline]
     pub fn read_control_shpr2_pri_8(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.control.priority(SysHandlerPriority::Pri8))
     }
-    pub fn write_control_shpr2_pri_8(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_control_shpr2_pri_8(
+        &mut self,
+        _priority: u8,
+    ) -> MemResult<()> {
+        self.control
+            .set_priority(SysHandlerPriority::Pri8, _priority)
     }
+    #[inline]
     pub fn read_control_shpr3_pri_15(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.control.priority(SysHandlerPriority::Pri15))
     }
-    pub fn write_control_shpr3_pri_15(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_control_shpr3_pri_15(
+        &mut self,
+        _priority: u8,
+    ) -> MemResult<()> {
+        self.control
+            .set_priority(SysHandlerPriority::Pri15, _priority)
     }
+    #[inline]
     pub fn read_control_shpr3_pri_14(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.control.priority(SysHandlerPriority::Pri14))
     }
-    pub fn write_control_shpr3_pri_14(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_control_shpr3_pri_14(
+        &mut self,
+        _priority: u8,
+    ) -> MemResult<()> {
+        self.control
+            .set_priority(SysHandlerPriority::Pri14, _priority)
     }
+    #[inline]
     pub fn read_control_shpr3_pri_13(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.control.priority(SysHandlerPriority::Pri13))
     }
-    pub fn write_control_shpr3_pri_13(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_control_shpr3_pri_13(
+        &mut self,
+        _priority: u8,
+    ) -> MemResult<()> {
+        self.control
+            .set_priority(SysHandlerPriority::Pri13, _priority)
     }
+    #[inline]
     pub fn read_control_shpr3_pri_12(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.control.priority(SysHandlerPriority::Pri12))
     }
-    pub fn write_control_shpr3_pri_12(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+    #[inline]
+    pub fn write_control_shpr3_pri_12(
+        &mut self,
+        _priority: u8,
+    ) -> MemResult<()> {
+        self.control
+            .set_priority(SysHandlerPriority::Pri12, _priority)
     }
     pub fn read_control_shcsr_usgfaultena(&self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
@@ -17171,7 +17222,6 @@ impl Peripherals {
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        // TODO allow invalid values in GpioPull??
         Ok(self.gpio[_dim]
             .set_pull(_value.try_into().map_err(|_| MemError::WriteViolation)?))
     }
@@ -17197,7 +17247,6 @@ impl Peripherals {
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        // TODO allow invalid values in GpioSense??
         Ok(self.gpio[_dim].set_sense(
             _value.try_into().map_err(|_| MemError::WriteViolation)?,
         ))
