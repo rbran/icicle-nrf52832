@@ -2,18 +2,13 @@ use icicle_vm::cpu::mem::{MemError, MemResult};
 
 mod gpio;
 use gpio::*;
+mod interrupt;
+use interrupt::*;
 
+#[derive(Default)]
 pub struct Peripherals {
     pub gpio: [Gpio; 32],
-    pub interrupts_enabled: [bool; 128],
-}
-impl Default for Peripherals {
-    fn default() -> Self {
-        Self {
-            gpio: Default::default(),
-            interrupts_enabled: [false; 128],
-        }
-    }
+    pub interrupts: Interrupts,
 }
 impl Peripherals {
     pub fn ram_is_on(&self, _block: u8) -> bool {
@@ -80,79 +75,6 @@ impl Peripherals {
         _value: bool,
     ) {
         todo!()
-    }
-
-    pub fn nvic_get_interrupts<'a>(
-        &self,
-        _nvic: usize,
-        _byte_0: &mut Option<&'a mut u8>,
-        _byte_1: &mut Option<&'a mut u8>,
-        _byte_2: &mut Option<&'a mut u8>,
-        _byte_3: &mut Option<&'a mut u8>,
-    ) -> MemResult<()> {
-        for (byte_i, byte) in [_byte_0, _byte_1, _byte_2, _byte_3]
-            .into_iter()
-            .enumerate()
-            .filter_map(|(i, b)| Some((i, b.as_mut()?)))
-        {
-            for bit in 0..8 {
-                let _inter_num = (_nvic * 32) + bit + (byte_i * 8);
-                **byte |= (self.is_interrupt_on(_inter_num) as u8) << bit;
-            }
-        }
-        Ok(())
-    }
-    pub fn nvic_set_interrupts(
-        &mut self,
-        _nvic: usize,
-        _byte_0: Option<&u8>,
-        _byte_1: Option<&u8>,
-        _byte_2: Option<&u8>,
-        _byte_3: Option<&u8>,
-    ) -> MemResult<()> {
-        let bytes = [_byte_0, _byte_1, _byte_2, _byte_3]
-            .into_iter()
-            .enumerate()
-            .filter_map(|(i, b)| Some((i, b?)));
-        let _nvic_bit = _nvic * 32;
-        for (byte_i, byte) in bytes {
-            for bit in 0..8 {
-                let _inter_num = _nvic_bit + (byte_i * 8) + bit;
-                if ((*byte >> bit) & 1) != 0 {
-                    self.set_interrupt_on(_inter_num, true);
-                }
-            }
-        }
-        Ok(())
-    }
-    pub fn nvic_clr_interrupts(
-        &mut self,
-        _nvic: usize,
-        _byte_0: Option<&u8>,
-        _byte_1: Option<&u8>,
-        _byte_2: Option<&u8>,
-        _byte_3: Option<&u8>,
-    ) -> MemResult<()> {
-        let bytes = [_byte_0, _byte_1, _byte_2, _byte_3]
-            .into_iter()
-            .enumerate()
-            .filter_map(|(i, b)| Some((i, b?)));
-        let _nvic_bit = _nvic * 32;
-        for (byte_i, byte) in bytes {
-            for bit in 0..8 {
-                let _inter_num = _nvic_bit + (byte_i * 8) + bit;
-                if ((*byte >> bit) & 1) == 0 {
-                    self.set_interrupt_on(_inter_num, false);
-                }
-            }
-        }
-        Ok(())
-    }
-    pub fn is_interrupt_on(&self, _interrupt: usize) -> bool {
-        self.interrupts_enabled[_interrupt]
-    }
-    pub fn set_interrupt_on(&mut self, _interrupt: usize, _on: bool) {
-        self.interrupts_enabled[_interrupt] = _on
     }
 
     pub fn read_control_actlr_disoofp(&self) -> MemResult<u8> {
@@ -1782,7 +1704,7 @@ impl Peripherals {
         _byte_2: &mut Option<&'a mut u8>,
         _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        self.nvic_get_interrupts(0, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts.nvic_read(0, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn write_nvic_nvic_iser0(
@@ -1792,7 +1714,8 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        self.nvic_set_interrupts(0, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts
+            .nvic_write(0, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn read_nvic_nvic_iser1<'a>(
@@ -1802,7 +1725,7 @@ impl Peripherals {
         _byte_2: &mut Option<&'a mut u8>,
         _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        self.nvic_get_interrupts(1, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts.nvic_read(1, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn write_nvic_nvic_iser1(
@@ -1812,7 +1735,8 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        self.nvic_set_interrupts(1, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts
+            .nvic_write(1, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn read_nvic_nvic_iser2<'a>(
@@ -1822,7 +1746,7 @@ impl Peripherals {
         _byte_2: &mut Option<&'a mut u8>,
         _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        self.nvic_get_interrupts(2, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts.nvic_read(2, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn write_nvic_nvic_iser2(
@@ -1832,7 +1756,8 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        self.nvic_set_interrupts(2, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts
+            .nvic_write(2, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn read_nvic_nvic_iser3<'a>(
@@ -1842,7 +1767,7 @@ impl Peripherals {
         _byte_2: &mut Option<&'a mut u8>,
         _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        self.nvic_get_interrupts(3, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts.nvic_read(3, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn write_nvic_nvic_iser3(
@@ -1852,7 +1777,8 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        self.nvic_set_interrupts(3, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts
+            .nvic_write(3, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn read_nvic_nvic_iser4<'a>(
@@ -1862,7 +1788,7 @@ impl Peripherals {
         _byte_2: &mut Option<&'a mut u8>,
         _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        self.nvic_get_interrupts(4, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts.nvic_read(4, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn write_nvic_nvic_iser4(
@@ -1872,7 +1798,8 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        self.nvic_set_interrupts(4, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts
+            .nvic_write(4, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn read_nvic_nvic_iser5<'a>(
@@ -1882,7 +1809,7 @@ impl Peripherals {
         _byte_2: &mut Option<&'a mut u8>,
         _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        self.nvic_get_interrupts(5, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts.nvic_read(5, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn write_nvic_nvic_iser5(
@@ -1892,7 +1819,8 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        self.nvic_set_interrupts(5, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts
+            .nvic_write(5, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn read_nvic_nvic_iser6<'a>(
@@ -1902,7 +1830,7 @@ impl Peripherals {
         _byte_2: &mut Option<&'a mut u8>,
         _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        self.nvic_get_interrupts(6, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts.nvic_read(6, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn write_nvic_nvic_iser6(
@@ -1912,7 +1840,8 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        self.nvic_set_interrupts(6, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts
+            .nvic_write(6, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn read_nvic_nvic_iser7<'a>(
@@ -1922,7 +1851,7 @@ impl Peripherals {
         _byte_2: &mut Option<&'a mut u8>,
         _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        self.nvic_get_interrupts(7, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts.nvic_read(7, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn write_nvic_nvic_iser7(
@@ -1932,7 +1861,8 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        self.nvic_set_interrupts(7, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts
+            .nvic_write(7, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn read_nvic_nvic_icer0<'a>(
@@ -1942,7 +1872,7 @@ impl Peripherals {
         _byte_2: &mut Option<&'a mut u8>,
         _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        self.nvic_get_interrupts(0, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts.nvic_read(0, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn write_nvic_nvic_icer0(
@@ -1952,7 +1882,8 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        self.nvic_clr_interrupts(0, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts
+            .nvic_clr(0, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn read_nvic_nvic_icer1<'a>(
@@ -1962,7 +1893,7 @@ impl Peripherals {
         _byte_2: &mut Option<&'a mut u8>,
         _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        self.nvic_get_interrupts(1, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts.nvic_read(1, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn write_nvic_nvic_icer1(
@@ -1972,7 +1903,8 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        self.nvic_clr_interrupts(1, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts
+            .nvic_clr(1, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn read_nvic_nvic_icer2<'a>(
@@ -1982,7 +1914,7 @@ impl Peripherals {
         _byte_2: &mut Option<&'a mut u8>,
         _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        self.nvic_get_interrupts(2, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts.nvic_read(2, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn write_nvic_nvic_icer2(
@@ -1992,7 +1924,8 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        self.nvic_clr_interrupts(2, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts
+            .nvic_clr(2, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn read_nvic_nvic_icer3<'a>(
@@ -2002,7 +1935,7 @@ impl Peripherals {
         _byte_2: &mut Option<&'a mut u8>,
         _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        self.nvic_get_interrupts(3, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts.nvic_read(3, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn write_nvic_nvic_icer3(
@@ -2012,7 +1945,8 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        self.nvic_clr_interrupts(3, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts
+            .nvic_clr(3, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn read_nvic_nvic_icer4<'a>(
@@ -2022,7 +1956,7 @@ impl Peripherals {
         _byte_2: &mut Option<&'a mut u8>,
         _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        self.nvic_get_interrupts(4, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts.nvic_read(4, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn write_nvic_nvic_icer4(
@@ -2032,7 +1966,8 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        self.nvic_clr_interrupts(4, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts
+            .nvic_clr(4, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn read_nvic_nvic_icer5<'a>(
@@ -2042,7 +1977,7 @@ impl Peripherals {
         _byte_2: &mut Option<&'a mut u8>,
         _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        self.nvic_get_interrupts(5, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts.nvic_read(5, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn write_nvic_nvic_icer5(
@@ -2052,7 +1987,8 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        self.nvic_clr_interrupts(5, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts
+            .nvic_clr(5, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn read_nvic_nvic_icer6<'a>(
@@ -2062,7 +1998,7 @@ impl Peripherals {
         _byte_2: &mut Option<&'a mut u8>,
         _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        self.nvic_get_interrupts(6, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts.nvic_read(6, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn write_nvic_nvic_icer6(
@@ -2072,7 +2008,8 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        self.nvic_clr_interrupts(6, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts
+            .nvic_clr(6, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn read_nvic_nvic_icer7<'a>(
@@ -2084,7 +2021,7 @@ impl Peripherals {
     ) -> MemResult<()> {
         const _RESET_VALUE: u64 = 0u64;
         const _RESET_MASK: u64 = 18446744073709551615u64;
-        self.nvic_get_interrupts(7, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts.nvic_read(7, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     #[inline]
     pub fn write_nvic_nvic_icer7(
@@ -2094,7 +2031,8 @@ impl Peripherals {
         _byte_2: Option<&u8>,
         _byte_3: Option<&u8>,
     ) -> MemResult<()> {
-        self.nvic_clr_interrupts(7, _byte_0, _byte_1, _byte_2, _byte_3)
+        self.interrupts
+            .nvic_clr(7, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     pub fn read_nvic_nvic_ispr0(
         &self,
