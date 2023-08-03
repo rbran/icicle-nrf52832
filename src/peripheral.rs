@@ -6,12 +6,15 @@ mod interrupt;
 use interrupt::*;
 mod clock;
 use clock::*;
+mod watchdog;
+use watchdog::*;
 
 #[derive(Default)]
 pub struct Peripherals {
     pub gpio: [Gpio; 32],
     pub interrupts: Interrupts,
     pub clock: Clock,
+    pub wdt: Wdt,
 }
 impl Peripherals {
     pub fn ram_is_on(&self, _block: u8) -> bool {
@@ -12508,9 +12511,7 @@ impl Peripherals {
         todo!()
     }
     pub fn read_wdt_runstatus_runstatus(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 1u64;
-        todo!()
+        Ok(self.wdt.run_status() as u8)
     }
     pub fn read_wdt_reqstatus_rr0(&self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 1u64;
