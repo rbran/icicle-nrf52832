@@ -4,11 +4,14 @@ mod gpio;
 use gpio::*;
 mod interrupt;
 use interrupt::*;
+mod clock;
+use clock::*;
 
 #[derive(Default)]
 pub struct Peripherals {
     pub gpio: [Gpio; 32],
     pub interrupts: Interrupts,
+    pub clock: Clock,
 }
 impl Peripherals {
     pub fn ram_is_on(&self, _block: u8) -> bool {
@@ -6337,12 +6340,12 @@ impl Peripherals {
         todo!()
     }
     pub fn write_clock_lfclksrc_src(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        let _value =
+            Source::try_from(_value).map_err(|_| MemError::WriteViolation)?;
+        Ok(self.clock.set_source(_value))
     }
     pub fn read_clock_ctiv_ctiv(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 127u64;
-        todo!()
+        Ok(self.clock.source() as u8)
     }
     pub fn write_clock_ctiv_ctiv(&mut self, _value: u8) -> MemResult<()> {
         todo!()
