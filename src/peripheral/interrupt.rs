@@ -162,4 +162,36 @@ impl Interrupts {
     pub fn set_pending(&mut self, _interrupt: usize, _on: bool) {
         self.interrupts_pending[_interrupt] = _on
     }
+
+    pub fn nvic_active<'a>(
+        &self,
+        _nvic: usize,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
+    ) -> MemResult<()> {
+        // From "Cortex-M4 Device Generic User Guide" "4.2.6"
+        // A bit reads as one if the status of the corresponding interrupt is
+        // active or active and pending.
+        //
+        // What the Fuck is this suppose to mean?
+        // "active || (active && pending)"?
+        // so basically only if active?
+        // I'll assume it means "active || pending"
+        for (byte_i, byte) in [_byte_0, _byte_1, _byte_2, _byte_3]
+            .into_iter()
+            .enumerate()
+            .filter_map(|(i, b)| Some((i, b.as_mut()?)))
+        {
+            for bit in 0..8 {
+                let _inter_num = (_nvic * 32) + bit + (byte_i * 8);
+                **byte |= ((self.is_pending(_inter_num)
+                    || self.is_pending(_inter_num))
+                    as u8)
+                    << bit;
+            }
+        }
+        Ok(())
+    }
 }

@@ -2402,20 +2402,15 @@ impl Peripherals {
         self.interrupts
             .nvic_clr_pending(7, _byte_0, _byte_1, _byte_2, _byte_3)
     }
-    pub fn read_nvic_nvic_iabr0(
+    pub fn read_nvic_nvic_iabr0<'a>(
         &self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.interrupts
+            .nvic_active(0, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     pub fn write_nvic_nvic_iabr0(
         &mut self,
@@ -2430,20 +2425,15 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_nvic_nvic_iabr1(
+    pub fn read_nvic_nvic_iabr1<'a>(
         &self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.interrupts
+            .nvic_active(1, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     pub fn write_nvic_nvic_iabr1(
         &mut self,
@@ -2458,20 +2448,15 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_nvic_nvic_iabr2(
+    pub fn read_nvic_nvic_iabr2<'a>(
         &self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.interrupts
+            .nvic_active(2, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     pub fn write_nvic_nvic_iabr2(
         &mut self,
@@ -2486,20 +2471,15 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_nvic_nvic_iabr3(
+    pub fn read_nvic_nvic_iabr3<'a>(
         &self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.interrupts
+            .nvic_active(3, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     pub fn write_nvic_nvic_iabr3(
         &mut self,
@@ -2514,20 +2494,15 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_nvic_nvic_iabr4(
+    pub fn read_nvic_nvic_iabr4<'a>(
         &self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.interrupts
+            .nvic_active(4, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     pub fn write_nvic_nvic_iabr4(
         &mut self,
@@ -2542,20 +2517,15 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_nvic_nvic_iabr5(
+    pub fn read_nvic_nvic_iabr5<'a>(
         &self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.interrupts
+            .nvic_active(5, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     pub fn write_nvic_nvic_iabr5(
         &mut self,
@@ -2570,20 +2540,15 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_nvic_nvic_iabr6(
+    pub fn read_nvic_nvic_iabr6<'a>(
         &self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.interrupts
+            .nvic_active(6, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     pub fn write_nvic_nvic_iabr6(
         &mut self,
@@ -2598,20 +2563,15 @@ impl Peripherals {
         }
         todo!();
     }
-    pub fn read_nvic_nvic_iabr7(
+    pub fn read_nvic_nvic_iabr7<'a>(
         &self,
-        _byte_0: &mut Option<&mut u8>,
-        _byte_1: &mut Option<&mut u8>,
-        _byte_2: &mut Option<&mut u8>,
-        _byte_3: &mut Option<&mut u8>,
+        _byte_0: &mut Option<&'a mut u8>,
+        _byte_1: &mut Option<&'a mut u8>,
+        _byte_2: &mut Option<&'a mut u8>,
+        _byte_3: &mut Option<&'a mut u8>,
     ) -> MemResult<()> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 18446744073709551615u64;
-        match (_byte_0, _byte_1, _byte_2, _byte_3) {
-            (None, None, None, None) => unreachable!(),
-            _ => {}
-        }
-        todo!();
+        self.interrupts
+            .nvic_active(7, _byte_0, _byte_1, _byte_2, _byte_3)
     }
     pub fn write_nvic_nvic_iabr7(
         &mut self,
