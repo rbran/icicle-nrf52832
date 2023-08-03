@@ -3,12 +3,14 @@ use icicle_vm::cpu::mem::MemResult;
 pub struct Interrupts {
     pub interrupts_enabled: [bool; 256],
     pub interrupts_pending: [bool; 256],
+    pub interrupts_priority: [u8; 240],
 }
 impl Default for Interrupts {
     fn default() -> Self {
         Self {
             interrupts_enabled: [false; 256],
             interrupts_pending: [false; 256],
+            interrupts_priority: [0; 240],
         }
     }
 }
@@ -189,12 +191,26 @@ impl Interrupts {
             **byte = 0;
             for bit in 0..8 {
                 let _inter_num = (_nvic * 32) + bit + (byte_i * 8);
-                let active = self.is_pending(_inter_num)
-                    || self.is_pending(_inter_num);
-                **byte |= (active as u8)
-                    << bit;
+                let active =
+                    self.is_pending(_inter_num) || self.is_pending(_inter_num);
+                **byte |= (active as u8) << bit;
             }
         }
         Ok(())
+    }
+
+    #[inline]
+    pub fn priority(&self, _interrupt: usize) -> u8 {
+        if _interrupt >= 240 {
+            unreachable!()
+        }
+        self.interrupts_priority[_interrupt]
+    }
+    #[inline]
+    pub fn set_priority(&mut self, _interrupt: usize, _pri: u8) {
+        if _interrupt >= 240 {
+            unreachable!()
+        }
+        self.interrupts_priority[_interrupt] = _pri
     }
 }

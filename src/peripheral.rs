@@ -2594,2525 +2594,2525 @@ impl Peripherals {
         }
         todo!();
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr0_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 0) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr0_pri_n3(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 0) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr0_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 0) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr0_pri_n2(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 0) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr0_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 0) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr0_pri_n1(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 0) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr0_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 0) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr0_pri_n0(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 0) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr1_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 1) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr1_pri_n3(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 1) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr1_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 1) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr1_pri_n2(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 1) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr1_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 1) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr1_pri_n1(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 1) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr1_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 1) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr1_pri_n0(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 1) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr2_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 2) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr2_pri_n3(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 2) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr2_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 2) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr2_pri_n2(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 2) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr2_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 2) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr2_pri_n1(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 2) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr2_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 2) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr2_pri_n0(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 2) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr3_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 3) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr3_pri_n3(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 3) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr3_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 3) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr3_pri_n2(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 3) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr3_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 3) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr3_pri_n1(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 3) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr3_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 3) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr3_pri_n0(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 3) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr4_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 4) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr4_pri_n3(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 4) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr4_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 4) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr4_pri_n2(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 4) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr4_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 4) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr4_pri_n1(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 4) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr4_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 4) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr4_pri_n0(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 4) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr5_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 5) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr5_pri_n3(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 5) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr5_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 5) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr5_pri_n2(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 5) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr5_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 5) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr5_pri_n1(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 5) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr5_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 5) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr5_pri_n0(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 5) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr6_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 6) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr6_pri_n3(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 6) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr6_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 6) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr6_pri_n2(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 6) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr6_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 6) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr6_pri_n1(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 6) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr6_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 6) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr6_pri_n0(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 6) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr7_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 7) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr7_pri_n3(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 7) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr7_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 7) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr7_pri_n2(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 7) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr7_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 7) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr7_pri_n1(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 7) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr7_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 7) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr7_pri_n0(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 7) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr8_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 8) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr8_pri_n3(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 8) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr8_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 8) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr8_pri_n2(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 8) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr8_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 8) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr8_pri_n1(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 8) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr8_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 8) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr8_pri_n0(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 8) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr9_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 9) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr9_pri_n3(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 9) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr9_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 9) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr9_pri_n2(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 9) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr9_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 9) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr9_pri_n1(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 9) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr9_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 9) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr9_pri_n0(&mut self, _value: u8) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 9) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr10_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 10) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr10_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 10) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr10_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 10) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr10_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 10) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr10_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 10) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr10_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 10) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr10_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 10) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr10_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 10) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr11_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 11) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr11_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 11) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr11_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 11) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr11_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 11) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr11_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 11) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr11_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 11) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr11_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 11) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr11_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 11) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr12_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 12) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr12_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 12) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr12_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 12) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr12_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 12) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr12_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 12) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr12_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 12) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr12_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 12) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr12_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 12) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr13_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 13) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr13_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 13) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr13_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 13) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr13_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 13) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr13_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 13) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr13_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 13) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr13_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 13) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr13_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 13) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr14_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 14) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr14_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 14) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr14_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 14) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr14_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 14) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr14_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 14) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr14_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 14) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr14_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 14) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr14_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 14) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr15_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 15) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr15_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 15) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr15_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 15) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr15_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 15) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr15_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 15) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr15_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 15) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr15_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 15) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr15_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 15) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr16_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 16) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr16_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 16) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr16_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 16) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr16_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 16) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr16_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 16) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr16_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 16) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr16_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 16) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr16_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 16) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr17_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 17) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr17_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 17) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr17_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 17) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr17_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 17) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr17_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 17) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr17_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 17) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr17_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 17) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr17_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 17) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr18_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 18) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr18_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 18) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr18_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 18) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr18_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 18) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr18_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 18) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr18_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 18) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr18_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 18) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr18_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 18) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr19_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 19) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr19_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 19) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr19_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 19) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr19_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 19) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr19_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 19) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr19_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 19) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr19_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 19) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr19_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 19) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr20_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 20) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr20_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 20) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr20_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 20) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr20_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 20) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr20_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 20) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr20_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 20) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr20_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 20) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr20_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 20) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr21_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 21) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr21_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 21) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr21_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 21) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr21_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 21) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr21_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 21) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr21_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 21) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr21_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 21) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr21_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 21) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr22_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 22) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr22_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 22) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr22_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 22) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr22_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 22) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr22_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 22) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr22_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 22) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr22_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 22) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr22_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 22) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr23_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 23) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr23_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 23) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr23_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 23) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr23_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 23) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr23_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 23) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr23_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 23) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr23_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 23) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr23_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 23) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr24_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 24) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr24_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 24) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr24_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 24) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr24_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 24) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr24_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 24) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr24_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 24) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr24_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 24) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr24_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 24) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr25_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 25) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr25_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 25) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr25_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 25) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr25_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 25) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr25_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 25) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr25_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 25) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr25_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 25) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr25_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 25) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr26_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 26) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr26_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 26) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr26_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 26) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr26_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 26) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr26_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 26) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr26_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 26) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr26_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 26) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr26_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 26) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr27_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 27) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr27_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 27) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr27_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 27) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr27_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 27) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr27_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 27) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr27_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 27) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr27_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 27) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr27_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 27) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr28_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 28) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr28_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 28) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr28_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 28) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr28_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 28) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr28_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 28) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr28_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 28) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr28_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 28) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr28_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 28) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr29_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 29) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr29_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 29) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr29_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 29) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr29_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 29) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr29_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 29) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr29_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 29) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr29_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 29) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr29_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 29) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr30_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 30) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr30_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 30) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr30_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 30) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr30_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 30) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr30_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 30) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr30_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 30) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr30_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 30) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr30_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 30) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr31_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 31) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr31_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 31) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr31_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 31) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr31_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 31) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr31_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 31) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr31_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 31) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr31_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 31) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr31_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 31) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr32_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 32) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr32_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 32) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr32_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 32) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr32_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 32) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr32_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 32) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr32_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 32) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr32_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 32) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr32_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 32) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr33_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 33) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr33_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 33) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr33_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 33) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr33_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 33) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr33_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 33) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr33_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 33) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr33_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 33) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr33_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 33) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr34_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 34) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr34_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 34) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr34_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 34) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr34_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 34) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr34_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 34) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr34_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 34) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr34_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 34) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr34_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 34) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr35_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 35) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr35_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 35) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr35_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 35) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr35_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 35) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr35_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 35) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr35_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 35) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr35_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 35) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr35_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 35) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr36_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 36) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr36_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 36) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr36_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 36) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr36_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 36) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr36_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 36) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr36_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 36) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr36_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 36) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr36_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 36) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr37_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 37) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr37_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 37) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr37_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 37) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr37_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 37) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr37_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 37) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr37_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 37) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr37_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 37) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr37_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 37) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr38_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 38) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr38_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 38) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr38_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 38) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr38_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 38) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr38_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 38) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr38_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 38) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr38_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 38) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr38_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 38) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr39_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 39) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr39_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 39) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr39_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 39) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr39_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 39) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr39_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 39) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr39_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 39) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr39_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 39) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr39_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 39) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr40_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 40) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr40_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 40) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr40_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 40) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr40_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 40) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr40_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 40) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr40_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 40) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr40_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 40) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr40_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 40) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr41_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 41) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr41_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 41) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr41_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 41) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr41_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 41) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr41_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 41) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr41_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 41) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr41_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 41) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr41_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 41) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr42_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 42) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr42_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 42) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr42_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 42) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr42_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 42) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr42_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 42) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr42_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 42) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr42_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 42) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr42_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 42) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr43_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 43) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr43_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 43) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr43_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 43) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr43_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 43) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr43_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 43) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr43_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 43) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr43_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 43) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr43_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 43) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr44_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 44) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr44_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 44) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr44_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 44) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr44_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 44) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr44_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 44) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr44_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 44) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr44_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 44) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr44_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 44) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr45_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 45) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr45_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 45) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr45_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 45) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr45_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 45) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr45_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 45) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr45_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 45) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr45_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 45) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr45_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 45) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr46_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 46) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr46_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 46) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr46_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 46) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr46_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 46) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr46_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 46) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr46_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 46) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr46_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 46) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr46_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 46) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr47_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 47) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr47_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 47) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr47_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 47) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr47_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 47) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr47_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 47) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr47_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 47) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr47_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 47) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr47_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 47) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr48_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 48) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr48_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 48) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr48_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 48) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr48_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 48) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr48_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 48) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr48_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 48) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr48_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 48) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr48_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 48) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr49_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 49) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr49_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 49) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr49_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 49) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr49_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 49) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr49_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 49) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr49_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 49) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr49_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 49) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr49_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 49) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr50_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 50) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr50_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 50) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr50_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 50) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr50_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 50) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr50_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 50) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr50_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 50) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr50_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 50) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr50_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 50) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr51_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 51) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr51_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 51) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr51_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 51) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr51_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 51) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr51_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 51) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr51_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 51) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr51_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 51) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr51_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 51) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr52_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 52) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr52_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 52) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr52_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 52) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr52_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 52) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr52_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 52) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr52_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 52) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr52_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 52) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr52_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 52) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr53_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 53) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr53_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 53) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr53_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 53) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr53_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 53) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr53_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 53) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr53_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 53) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr53_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 53) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr53_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 53) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr54_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 54) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr54_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 54) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr54_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 54) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr54_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 54) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr54_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 54) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr54_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 54) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr54_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 54) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr54_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 54) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr55_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 55) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr55_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 55) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr55_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 55) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr55_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 55) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr55_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 55) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr55_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 55) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr55_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 55) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr55_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 55) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr56_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 56) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr56_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 56) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr56_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 56) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr56_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 56) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr56_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 56) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr56_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 56) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr56_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 56) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr56_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 56) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr57_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 57) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr57_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 57) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr57_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 57) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr57_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 57) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr57_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 57) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr57_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 57) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr57_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 57) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr57_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 57) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr58_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 58) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr58_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 58) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr58_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 58) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr58_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 58) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr58_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 58) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr58_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 58) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr58_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 58) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr58_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 58) + 0, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr59_pri_n3(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 59) + 3))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr59_pri_n3(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 59) + 3, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr59_pri_n2(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 59) + 2))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr59_pri_n2(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 59) + 2, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr59_pri_n1(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 59) + 1))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr59_pri_n1(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 59) + 1, _value))
     }
+    #[inline]
     pub fn read_nvic_nvic_ipr59_pri_n0(&self) -> MemResult<u8> {
-        const _RESET_VALUE: u64 = 0u64;
-        const _RESET_MASK: u64 = 255u64;
-        todo!()
+        Ok(self.interrupts.priority((4 * 59) + 0))
     }
+    #[inline]
     pub fn write_nvic_nvic_ipr59_pri_n0(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!()
+        Ok(self.interrupts.set_priority((4 * 59) + 0, _value))
     }
     pub fn read_mpu_mpu_type_separate(&self) -> MemResult<u8> {
         const _RESET_VALUE: u64 = 0u64;
