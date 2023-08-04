@@ -3,7 +3,6 @@ pub struct Gpio {
     pull: GpioPull,
     drive: GpioDrive,
     sense: GpioSense,
-    buffered: bool,
     input: bool,
     output_high: bool,
 }
@@ -23,12 +22,6 @@ impl Gpio {
     }
     pub fn set_direction(&mut self, _output: bool) {
         self.input = !_output
-    }
-    pub fn is_connected_buffer(&self) -> bool {
-        self.buffered
-    }
-    pub fn set_connected_buffer(&mut self, _on: bool) {
-        self.buffered = _on
     }
     pub fn get_pull(&self) -> GpioPull {
         self.pull
