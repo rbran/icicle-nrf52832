@@ -1,5 +1,5 @@
 use icicle_vm::cpu::mem::{MemError, MemResult};
-pub struct PeripheralPage0x10000000(
+pub(crate) struct PeripheralPage0x10000000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10000000 {
@@ -706,7 +706,7 @@ impl PeripheralPage0x10000000 {
         Ok(_value)
     }
 }
-pub struct PeripheralPage0x10001000(
+pub(crate) struct PeripheralPage0x10001000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
@@ -2960,7 +2960,7 @@ impl PeripheralPage0x10001000 {
         Ok(_value)
     }
 }
-pub struct PeripheralPage0x40000000(
+pub(crate) struct PeripheralPage0x40000000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40000000 {
@@ -5387,7 +5387,7 @@ impl PeripheralPage0x40000000 {
         Ok(())
     }
 }
-pub struct PeripheralPage0x40001000(
+pub(crate) struct PeripheralPage0x40001000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40001000 {
@@ -8303,7 +8303,7 @@ impl PeripheralPage0x40001000 {
         Ok(())
     }
 }
-pub struct PeripheralPage0x40002000(
+pub(crate) struct PeripheralPage0x40002000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40002000 {
@@ -9349,7 +9349,7 @@ impl PeripheralPage0x40002000 {
         Ok(())
     }
 }
-pub struct PeripheralPage0x40003000(
+pub(crate) struct PeripheralPage0x40003000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40003000 {
@@ -10453,7 +10453,7 @@ impl PeripheralPage0x40003000 {
         Ok(())
     }
 }
-pub struct PeripheralPage0x40004000(
+pub(crate) struct PeripheralPage0x40004000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40004000 {
@@ -11515,7 +11515,7 @@ impl PeripheralPage0x40004000 {
         Ok(())
     }
 }
-pub struct PeripheralPage0x40006000(
+pub(crate) struct PeripheralPage0x40006000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40006000 {
@@ -12128,7 +12128,7 @@ impl PeripheralPage0x40006000 {
         Ok(())
     }
 }
-pub struct PeripheralPage0x40007000(
+pub(crate) struct PeripheralPage0x40007000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40007000 {
@@ -12541,7 +12541,7 @@ impl PeripheralPage0x40007000 {
         Ok(())
     }
 }
-pub struct PeripheralPage0x40008000(
+pub(crate) struct PeripheralPage0x40008000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40008000 {
@@ -13430,7 +13430,7 @@ impl PeripheralPage0x40008000 {
         Ok(())
     }
 }
-pub struct PeripheralPage0x4000B000(
+pub(crate) struct PeripheralPage0x4000B000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000B000 {
@@ -14453,7 +14453,7 @@ impl PeripheralPage0x4000B000 {
         Ok(())
     }
 }
-pub struct PeripheralPage0x4000C000(
+pub(crate) struct PeripheralPage0x4000C000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000C000 {
@@ -14712,7 +14712,7 @@ impl PeripheralPage0x4000C000 {
         Ok(())
     }
 }
-pub struct PeripheralPage0x4000D000(
+pub(crate) struct PeripheralPage0x4000D000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000D000 {
@@ -15070,7 +15070,7 @@ impl PeripheralPage0x4000D000 {
         Ok(())
     }
 }
-pub struct PeripheralPage0x4000E000(
+pub(crate) struct PeripheralPage0x4000E000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000E000 {
@@ -15397,7 +15397,7 @@ impl PeripheralPage0x4000E000 {
         Ok(())
     }
 }
-pub struct PeripheralPage0x4000F000(
+pub(crate) struct PeripheralPage0x4000F000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000F000 {
@@ -16055,7 +16055,7 @@ impl PeripheralPage0x4000F000 {
         Ok(())
     }
 }
-pub struct PeripheralPage0x40010000(
+pub(crate) struct PeripheralPage0x40010000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40010000 {
@@ -16653,7 +16653,7 @@ impl PeripheralPage0x40010000 {
         Ok(())
     }
 }
-pub struct PeripheralPage0x40012000(
+pub(crate) struct PeripheralPage0x40012000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40012000 {
@@ -17565,7 +17565,7 @@ impl PeripheralPage0x40012000 {
         Ok(())
     }
 }
-pub struct PeripheralPage0x40013000(
+pub(crate) struct PeripheralPage0x40013000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40013000 {
@@ -18331,7 +18331,7 @@ impl PeripheralPage0x40013000 {
         Ok(())
     }
 }
-pub struct PeripheralPage0x40014000(
+pub(crate) struct PeripheralPage0x40014000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40014000 {
@@ -18371,7 +18371,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40014000 {
     }
 }
 impl PeripheralPage0x40014000 {}
-pub struct PeripheralPage0x4001E000(
+pub(crate) struct PeripheralPage0x4001E000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4001E000 {
@@ -18625,7 +18625,7 @@ impl PeripheralPage0x4001E000 {
         Ok(())
     }
 }
-pub struct PeripheralPage0x4001F000(
+pub(crate) struct PeripheralPage0x4001F000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4001F000 {
@@ -19871,7 +19871,7 @@ impl PeripheralPage0x4001F000 {
         Ok(())
     }
 }
-pub struct PeripheralPage0x50000000(
+pub(crate) struct PeripheralPage0x50000000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x50000000 {
@@ -22688,7 +22688,7 @@ impl PeripheralPage0x50000000 {
         Ok(())
     }
 }
-pub struct PeripheralPage0xE000E000(
+pub(crate) struct PeripheralPage0xE000E000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
 impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0xE000E000 {
