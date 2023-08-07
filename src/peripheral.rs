@@ -6861,7 +6861,7 @@ impl Peripherals {
     #[doc = "CLOCK LFCLKSRC SRC: Clock source."]
     #[inline]
     pub(crate) fn read_clock_lfclksrc_src(&self) -> MemResult<u8> {
-        todo!("read CLOCK LFCLKSRC SRC reset value 0x00 mask 0x03")
+        Ok(self.clock.source() as u8)
     }
     #[doc = "CLOCK LFCLKSRC SRC: Clock source."]
     #[inline]
@@ -6869,7 +6869,10 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo!("write CLOCK LFCLKSRC SRC reset value 0x00 mask 0x03")
+        Ok(self.clock.set_source(
+            clock::Source::try_from(_value)
+                .map_err(|_| MemError::WriteViolation)?,
+        ))
     }
     #[doc = "CLOCK CTIV CTIV: Calibration timer interval in 0.25s resolution."]
     #[inline]
