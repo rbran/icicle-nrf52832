@@ -42,10 +42,10 @@ pub fn map_cpu(
     _cpu.mem.map_memory_len(1073754112, 4096u64, io);
     let io = _cpu
         .mem
-        .register_io_handler(pages::PeripheralPage0x40004000(
+        .register_io_handler(pages::PeripheralPage0x40005000(
             std::sync::Arc::clone(_pe),
         ));
-    _cpu.mem.map_memory_len(1073758208, 4096u64, io);
+    _cpu.mem.map_memory_len(1073762304, 4096u64, io);
     let io = _cpu
         .mem
         .register_io_handler(pages::PeripheralPage0x40006000(
@@ -120,6 +120,24 @@ pub fn map_cpu(
     _cpu.mem.map_memory_len(1073823744, 4096u64, io);
     let io = _cpu
         .mem
+        .register_io_handler(pages::PeripheralPage0x4001A000(
+            std::sync::Arc::clone(_pe),
+        ));
+    _cpu.mem.map_memory_len(1073848320, 4096u64, io);
+    let io = _cpu
+        .mem
+        .register_io_handler(pages::PeripheralPage0x4001C000(
+            std::sync::Arc::clone(_pe),
+        ));
+    _cpu.mem.map_memory_len(1073856512, 4096u64, io);
+    let io = _cpu
+        .mem
+        .register_io_handler(pages::PeripheralPage0x4001D000(
+            std::sync::Arc::clone(_pe),
+        ));
+    _cpu.mem.map_memory_len(1073860608, 4096u64, io);
+    let io = _cpu
+        .mem
         .register_io_handler(pages::PeripheralPage0x4001E000(
             std::sync::Arc::clone(_pe),
         ));
@@ -130,6 +148,24 @@ pub fn map_cpu(
             std::sync::Arc::clone(_pe),
         ));
     _cpu.mem.map_memory_len(1073868800, 4096u64, io);
+    let io = _cpu
+        .mem
+        .register_io_handler(pages::PeripheralPage0x40020000(
+            std::sync::Arc::clone(_pe),
+        ));
+    _cpu.mem.map_memory_len(1073872896, 4096u64, io);
+    let io = _cpu
+        .mem
+        .register_io_handler(pages::PeripheralPage0x40025000(
+            std::sync::Arc::clone(_pe),
+        ));
+    _cpu.mem.map_memory_len(1073893376, 4096u64, io);
+    let io = _cpu
+        .mem
+        .register_io_handler(pages::PeripheralPage0x40026000(
+            std::sync::Arc::clone(_pe),
+        ));
+    _cpu.mem.map_memory_len(1073897472, 4096u64, io);
     let io = _cpu
         .mem
         .register_io_handler(pages::PeripheralPage0x50000000(

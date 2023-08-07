@@ -351,7 +351,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "icicle-nrf51"
+name = "icicle-nrf52832"
 version = "0.1.0"
 dependencies = [
  "icicle-vm",

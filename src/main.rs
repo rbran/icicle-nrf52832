@@ -1,6 +1,6 @@
 use std::sync::{Arc, Mutex};
 
-use icicle_nrf51::{map_cpu, peripheral::Peripherals};
+use icicle_nrf52832::{map_cpu, peripheral::Peripherals};
 
 fn main() {
     let cpu_config =
