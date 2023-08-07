@@ -12873,7 +12873,7 @@ impl Peripherals {
     #[doc = "WDT RUNSTATUS RUNSTATUS: Watchdog running status."]
     #[inline]
     pub(crate) fn read_wdt_runstatus_runstatus(&self) -> MemResult<bool> {
-        todo!("read WDT RUNSTATUS RUNSTATUS reset value false")
+        Ok(self.wdt.is_on())
     }
     #[doc = "WDT REQSTATUS RR0: Request status for RR[0]."]
     #[inline]
