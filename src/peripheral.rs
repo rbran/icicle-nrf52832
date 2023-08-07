@@ -15415,7 +15415,7 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo!("write PPI EN reset value 0x00 mask 0xffffffffffffffff")
+        Ok(self.ppi.set_group_on(_dim, true))
     }
     #[doc = "PPI DIS: Disable channel group."]
     #[inline]
@@ -15424,12 +15424,12 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo!("write PPI DIS reset value 0x00 mask 0xffffffffffffffff")
+        Ok(self.ppi.set_group_on(_dim, false))
     }
     #[doc = "PPI EEP: Channel event end-point."]
     #[inline]
     pub(crate) fn read_ppi_eep(&self, _dim: usize) -> MemResult<u32> {
-        todo!("read PPI EEP reset value 0x00 mask 0xffffffffffffffff")
+        Ok(self.ppi.event(_dim))
     }
     #[doc = "PPI EEP: Channel event end-point."]
     #[inline]
@@ -15438,12 +15438,12 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo!("write PPI EEP reset value 0x00 mask 0xffffffffffffffff")
+        Ok(self.ppi.set_event(_dim, _value))
     }
     #[doc = "PPI TEP: Channel task end-point."]
     #[inline]
     pub(crate) fn read_ppi_tep(&self, _dim: usize) -> MemResult<u32> {
-        todo!("read PPI TEP reset value 0x00 mask 0xffffffffffffffff")
+        Ok(self.ppi.task(_dim))
     }
     #[doc = "PPI TEP: Channel task end-point."]
     #[inline]
@@ -15452,7 +15452,7 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo!("write PPI TEP reset value 0x00 mask 0xffffffffffffffff")
+        Ok(self.ppi.set_task(_dim, _value))
     }
     #[doc = "FICR CODEPAGESIZE: Code memory page size in bytes."]
     #[inline]

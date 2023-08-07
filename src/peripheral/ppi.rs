@@ -21,39 +21,32 @@ impl PPI {
         }
     }
     pub fn is_included(&self, channel: usize, included: usize) -> bool {
-        self.group[channel].is_included(included)
+        self.group[channel].included[included]
     }
     pub fn set_included(&mut self, channel: usize, included: usize, on: bool) {
-        self.group[channel].set_included(included, on)
+        self.group[channel].included[included] = on
     }
     pub fn event(&self, channel: usize) -> u32 {
-        match channel {
-            0..=15 => self.channels[channel].event,
-            20..=31 => todo!(),
-            _ => unreachable!(),
-        }
+        self.channels[channel].event
+    }
+    pub fn set_event(&mut self, channel: usize, event: u32) {
+        self.channels[channel].event = event
     }
     pub fn task(&self, channel: usize) -> u32 {
-        match channel {
-            0..=15 => self.channels[channel].task,
-            20..=31 => todo!(),
-            _ => unreachable!(),
-        }
+        self.channels[channel].task
+    }
+    pub fn set_task(&mut self, channel: usize, task: u32) {
+        self.channels[channel].task = task
+    }
+    pub fn set_group_on(&mut self, group: usize, on: bool) {
+        self.group[group].on = on
     }
 }
 
 #[derive(Default)]
 pub struct PPIChannelGroup {
+    on: bool,
     included: [bool; 32],
-}
-
-impl PPIChannelGroup {
-    pub fn is_included(&self, included: usize) -> bool {
-        self.included[included]
-    }
-    pub fn set_included(&mut self, included: usize, on: bool) {
-        self.included[included] = on
-    }
 }
 
 #[derive(Default)]
