@@ -1,11 +1,13 @@
 use icicle_vm::cpu::mem::{MemError, MemResult};
 
+mod event;
+
 mod gpio;
 use gpio::*;
 mod interrupt;
 use interrupt::*;
-mod clock;
-use clock::*;
+mod powerclock;
+use powerclock::*;
 mod watchdog;
 use watchdog::*;
 mod control;
@@ -22,7 +24,7 @@ use ppi::*;
 pub struct Peripherals {
     pub gpio: [Gpio; 32],
     pub interrupts: Interrupts,
-    pub clock: Clock,
+    pub powerclock: PowerClock,
     pub wdt: Wdt,
     pub control: Control,
     pub ram: [RamBlock; 4],
@@ -36,7 +38,7 @@ impl Default for Peripherals {
         Self {
             gpio: Default::default(),
             interrupts: Default::default(),
-            clock: Default::default(),
+            powerclock: Default::default(),
             wdt: Default::default(),
             control: Default::default(),
             ram: Default::default(),
@@ -272,12 +274,14 @@ impl Peripherals {
     #[doc = "Control DEMCR MON_EN: Enable the DebugMonitor exception"]
     #[inline]
     pub(crate) fn read_control_demcr_mon_en(&self) -> MemResult<bool> {
-        todo!("read Control DEMCR MON_EN reset value false")
+        //TODO debug off by default
+        Ok(false)
     }
     #[doc = "Control DEMCR MON_PEND: Sets or clears the pending state of the DebugMonitor exception"]
     #[inline]
     pub(crate) fn read_control_demcr_mon_pend(&self) -> MemResult<bool> {
-        todo!("read Control DEMCR MON_PEND reset value false")
+        //TODO debug off by default
+        Ok(false)
     }
     #[doc = "Control AIRCR VECTKEY: Vector Key\n\nControl AIRCR VECTKEYSTAT: UNKNOWN"]
     #[inline]
@@ -6260,7 +6264,7 @@ impl Peripherals {
     #[doc = "POWER INTENSET POFWARN: Enable interrupt on POFWARN event."]
     #[inline]
     pub(crate) fn read_powerclock_intenset_pofwarn(&self) -> MemResult<bool> {
-        todo!("read POWER INTENSET POFWARN reset value false")
+        Ok(self.powerclock.event(powerclock::EventId::POFWARN).on)
     }
     #[doc = "POWER INTENSET POFWARN: Enable interrupt on POFWARN event."]
     #[inline]
@@ -6268,14 +6272,17 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write POWER INTENSET POFWARN reset value false")
+        if _value {
+            self.powerclock.event_mut(powerclock::EventId::POFWARN).on = true
+        }
+        Ok(())
     }
     #[doc = "CLOCK INTENSET HFCLKSTARTED: Enable interrupt on HFCLKSTARTED event."]
     #[inline]
     pub(crate) fn read_powerclock_intenset_hfclkstarted(
         &self,
     ) -> MemResult<bool> {
-        todo!("read CLOCK INTENSET HFCLKSTARTED reset value false")
+        Ok(self.powerclock.event(powerclock::EventId::HFCLKSTARTED).on)
     }
     #[doc = "CLOCK INTENSET HFCLKSTARTED: Enable interrupt on HFCLKSTARTED event."]
     #[inline]
@@ -6283,14 +6290,17 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write CLOCK INTENSET HFCLKSTARTED reset value false")
+        if _value {
+            self.powerclock.event_mut(powerclock::EventId::HFCLKSTARTED).on = true
+        }
+        Ok(())
     }
     #[doc = "CLOCK INTENSET LFCLKSTARTED: Enable interrupt on LFCLKSTARTED event."]
     #[inline]
     pub(crate) fn read_powerclock_intenset_lfclkstarted(
         &self,
     ) -> MemResult<bool> {
-        todo!("read CLOCK INTENSET LFCLKSTARTED reset value false")
+        Ok(self.powerclock.event(powerclock::EventId::LFCLKSTARTED).on)
     }
     #[doc = "CLOCK INTENSET LFCLKSTARTED: Enable interrupt on LFCLKSTARTED event."]
     #[inline]
@@ -6298,12 +6308,15 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write CLOCK INTENSET LFCLKSTARTED reset value false")
+        if _value {
+            self.powerclock.event_mut(powerclock::EventId::LFCLKSTARTED).on = true
+        }
+        Ok(())
     }
     #[doc = "CLOCK INTENSET DONE: Enable interrupt on DONE event."]
     #[inline]
     pub(crate) fn read_powerclock_intenset_done(&self) -> MemResult<bool> {
-        todo!("read CLOCK INTENSET DONE reset value false")
+        Ok(self.powerclock.event(powerclock::EventId::DONE).on)
     }
     #[doc = "CLOCK INTENSET DONE: Enable interrupt on DONE event."]
     #[inline]
@@ -6311,12 +6324,15 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write CLOCK INTENSET DONE reset value false")
+        if _value {
+            self.powerclock.event_mut(powerclock::EventId::DONE).on = true
+        }
+        Ok(())
     }
     #[doc = "CLOCK INTENSET CTTO: Enable interrupt on CTTO event."]
     #[inline]
     pub(crate) fn read_powerclock_intenset_ctto(&self) -> MemResult<bool> {
-        todo!("read CLOCK INTENSET CTTO reset value false")
+        Ok(self.powerclock.event(powerclock::EventId::CTTO).on)
     }
     #[doc = "CLOCK INTENSET CTTO: Enable interrupt on CTTO event."]
     #[inline]
@@ -6324,12 +6340,15 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write CLOCK INTENSET CTTO reset value false")
+        if _value {
+            self.powerclock.event_mut(powerclock::EventId::CTTO).on = true
+        }
+        Ok(())
     }
     #[doc = "POWER INTENCLR POFWARN: Disable interrupt on POFWARN event."]
     #[inline]
     pub(crate) fn read_powerclock_intenclr_pofwarn(&self) -> MemResult<bool> {
-        todo!("read POWER INTENCLR POFWARN reset value false")
+        Ok(self.powerclock.event(powerclock::EventId::POFWARN).on)
     }
     #[doc = "POWER INTENCLR POFWARN: Disable interrupt on POFWARN event."]
     #[inline]
@@ -6337,14 +6356,17 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write POWER INTENCLR POFWARN reset value false")
+        if _value {
+            self.powerclock.event_mut(powerclock::EventId::POFWARN).on = false
+        }
+        Ok(())
     }
     #[doc = "CLOCK INTENCLR HFCLKSTARTED: Disable interrupt on HFCLKSTARTED event."]
     #[inline]
     pub(crate) fn read_powerclock_intenclr_hfclkstarted(
         &self,
     ) -> MemResult<bool> {
-        todo!("read CLOCK INTENCLR HFCLKSTARTED reset value false")
+        Ok(self.powerclock.event(powerclock::EventId::HFCLKSTARTED).on)
     }
     #[doc = "CLOCK INTENCLR HFCLKSTARTED: Disable interrupt on HFCLKSTARTED event."]
     #[inline]
@@ -6352,14 +6374,17 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write CLOCK INTENCLR HFCLKSTARTED reset value false")
+        if _value {
+            self.powerclock.event_mut(powerclock::EventId::HFCLKSTARTED).on = false
+        }
+        Ok(())
     }
     #[doc = "CLOCK INTENCLR LFCLKSTARTED: Disable interrupt on LFCLKSTARTED event."]
     #[inline]
     pub(crate) fn read_powerclock_intenclr_lfclkstarted(
         &self,
     ) -> MemResult<bool> {
-        todo!("read CLOCK INTENCLR LFCLKSTARTED reset value false")
+        Ok(self.powerclock.event(powerclock::EventId::LFCLKSTARTED).on)
     }
     #[doc = "CLOCK INTENCLR LFCLKSTARTED: Disable interrupt on LFCLKSTARTED event."]
     #[inline]
@@ -6367,12 +6392,15 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write CLOCK INTENCLR LFCLKSTARTED reset value false")
+        if _value {
+            self.powerclock.event_mut(powerclock::EventId::LFCLKSTARTED).on = false
+        }
+        Ok(())
     }
     #[doc = "CLOCK INTENCLR DONE: Disable interrupt on DONE event."]
     #[inline]
     pub(crate) fn read_powerclock_intenclr_done(&self) -> MemResult<bool> {
-        todo!("read CLOCK INTENCLR DONE reset value false")
+        Ok(self.powerclock.event(powerclock::EventId::DONE).on)
     }
     #[doc = "CLOCK INTENCLR DONE: Disable interrupt on DONE event."]
     #[inline]
@@ -6380,12 +6408,15 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write CLOCK INTENCLR DONE reset value false")
+        if _value {
+            self.powerclock.event_mut(powerclock::EventId::DONE).on = false
+        }
+        Ok(())
     }
     #[doc = "CLOCK INTENCLR CTTO: Disable interrupt on CTTO event."]
     #[inline]
     pub(crate) fn read_powerclock_intenclr_ctto(&self) -> MemResult<bool> {
-        todo!("read CLOCK INTENCLR CTTO reset value false")
+        Ok(self.powerclock.event(powerclock::EventId::CTTO).on)
     }
     #[doc = "CLOCK INTENCLR CTTO: Disable interrupt on CTTO event."]
     #[inline]
@@ -6393,7 +6424,10 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write CLOCK INTENCLR CTTO reset value false")
+        if _value {
+            self.powerclock.event_mut(powerclock::EventId::CTTO).on = false
+        }
+        Ok(())
     }
     #[doc = "POWER RESETREAS RESETPIN: Reset from pin-reset detected."]
     #[inline]
@@ -6783,7 +6817,7 @@ impl Peripherals {
     #[doc = "CLOCK EVENTS_LFCLKSTARTED: LFCLK oscillator started."]
     #[inline]
     pub(crate) fn read_clock_events_lfclkstarted(&self) -> MemResult<u32> {
-        Ok(self.clock.lfclkstarted() as u32)
+        Ok(self.powerclock.event(powerclock::EventId::LFCLKSTARTED).triggered as u32)
     }
     #[doc = "CLOCK EVENTS_LFCLKSTARTED: LFCLK oscillator started."]
     #[inline]
@@ -6791,7 +6825,9 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        Ok(self.clock.set_lfclkstarted())
+        self.powerclock.event_mut(powerclock::EventId::LFCLKSTARTED).triggered =
+            _value != 0;
+        Ok(())
     }
     #[doc = "CLOCK EVENTS_DONE: Calibration of LFCLK RC oscillator completed."]
     #[inline]
@@ -6861,7 +6897,7 @@ impl Peripherals {
     #[doc = "CLOCK LFCLKSRC SRC: Clock source."]
     #[inline]
     pub(crate) fn read_clock_lfclksrc_src(&self) -> MemResult<u8> {
-        Ok(self.clock.source() as u8)
+        Ok(self.powerclock.source() as u8)
     }
     #[doc = "CLOCK LFCLKSRC SRC: Clock source."]
     #[inline]
@@ -6869,8 +6905,8 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        Ok(self.clock.set_source(
-            clock::Source::try_from(_value)
+        Ok(self.powerclock.set_source(
+            powerclock::Source::try_from(_value)
                 .map_err(|_| MemError::WriteViolation)?,
         ))
     }

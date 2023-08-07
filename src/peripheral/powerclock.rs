@@ -1,22 +1,36 @@
+pub const ID: usize = 0;
+
+use super::event::Event;
+
 #[derive(Default)]
-pub struct Clock {
+pub struct PowerClock {
     source: Source,
+    events: [Event; 5],
 }
 
-impl Clock {
+impl PowerClock {
     pub fn source(&self) -> Source {
         self.source
     }
     pub fn set_source(&mut self, source: Source) {
         self.source = source
     }
-    pub fn lfclkstarted(&self) -> bool {
-        // TODO handle the this event
-        true
+    pub fn event(&self, event: EventId) -> &Event {
+        &self.events[event as usize]
     }
-    pub fn set_lfclkstarted(&mut self) {
-        // TODO handle the this event
+    pub fn event_mut(&mut self, event: EventId) -> &mut Event {
+        &mut self.events[event as usize]
     }
+}
+
+#[derive(Clone, Copy, PartialEq, Eq)]
+#[repr(usize)]
+pub enum EventId {
+    HFCLKSTARTED = 0,
+    LFCLKSTARTED = 1,
+    POFWARN = 2,
+    DONE = 3,
+    CTTO = 4,
 }
 
 #[derive(Clone, Copy, Default)]
@@ -39,3 +53,4 @@ impl TryFrom<u8> for Source {
         }
     }
 }
+
