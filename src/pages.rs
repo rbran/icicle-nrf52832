@@ -129,64 +129,64 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10000000 {
                         _buf[(59 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 64 && _end > 60 {
+                if _start < 76 && _end > 72 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_ficr_sizeramblocks(1)?
                         .to_ne_bytes();
-                    if _start <= 60 && _end > 60 {
-                        _buf[(60 - _start) as usize] = _value[0];
+                    if _start <= 72 && _end > 72 {
+                        _buf[(72 - _start) as usize] = _value[0];
                     }
-                    if _start <= 61 && _end > 61 {
-                        _buf[(61 - _start) as usize] = _value[1];
+                    if _start <= 73 && _end > 73 {
+                        _buf[(73 - _start) as usize] = _value[1];
                     }
-                    if _start <= 62 && _end > 62 {
-                        _buf[(62 - _start) as usize] = _value[2];
+                    if _start <= 74 && _end > 74 {
+                        _buf[(74 - _start) as usize] = _value[2];
                     }
-                    if _start <= 63 && _end > 63 {
-                        _buf[(63 - _start) as usize] = _value[3];
+                    if _start <= 75 && _end > 75 {
+                        _buf[(75 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 68 && _end > 64 {
+                if _start < 92 && _end > 88 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_ficr_sizeramblocks(2)?
                         .to_ne_bytes();
-                    if _start <= 64 && _end > 64 {
-                        _buf[(64 - _start) as usize] = _value[0];
+                    if _start <= 88 && _end > 88 {
+                        _buf[(88 - _start) as usize] = _value[0];
                     }
-                    if _start <= 65 && _end > 65 {
-                        _buf[(65 - _start) as usize] = _value[1];
+                    if _start <= 89 && _end > 89 {
+                        _buf[(89 - _start) as usize] = _value[1];
                     }
-                    if _start <= 66 && _end > 66 {
-                        _buf[(66 - _start) as usize] = _value[2];
+                    if _start <= 90 && _end > 90 {
+                        _buf[(90 - _start) as usize] = _value[2];
                     }
-                    if _start <= 67 && _end > 67 {
-                        _buf[(67 - _start) as usize] = _value[3];
+                    if _start <= 91 && _end > 91 {
+                        _buf[(91 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 72 && _end > 68 {
+                if _start < 108 && _end > 104 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_ficr_sizeramblocks(3)?
                         .to_ne_bytes();
-                    if _start <= 68 && _end > 68 {
-                        _buf[(68 - _start) as usize] = _value[0];
+                    if _start <= 104 && _end > 104 {
+                        _buf[(104 - _start) as usize] = _value[0];
                     }
-                    if _start <= 69 && _end > 69 {
-                        _buf[(69 - _start) as usize] = _value[1];
+                    if _start <= 105 && _end > 105 {
+                        _buf[(105 - _start) as usize] = _value[1];
                     }
-                    if _start <= 70 && _end > 70 {
-                        _buf[(70 - _start) as usize] = _value[2];
+                    if _start <= 106 && _end > 106 {
+                        _buf[(106 - _start) as usize] = _value[2];
                     }
-                    if _start <= 71 && _end > 71 {
-                        _buf[(71 - _start) as usize] = _value[3];
+                    if _start <= 107 && _end > 107 {
+                        _buf[(107 - _start) as usize] = _value[3];
                     }
                 }
                 Ok(())
@@ -227,24 +227,24 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10000000 {
                         _buf[(99 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 104 && _end > 100 {
+                if _start < 116 && _end > 112 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_ficr_deviceidn(1)?
                         .to_ne_bytes();
-                    if _start <= 100 && _end > 100 {
-                        _buf[(100 - _start) as usize] = _value[0];
+                    if _start <= 112 && _end > 112 {
+                        _buf[(112 - _start) as usize] = _value[0];
                     }
-                    if _start <= 101 && _end > 101 {
-                        _buf[(101 - _start) as usize] = _value[1];
+                    if _start <= 113 && _end > 113 {
+                        _buf[(113 - _start) as usize] = _value[1];
                     }
-                    if _start <= 102 && _end > 102 {
-                        _buf[(102 - _start) as usize] = _value[2];
+                    if _start <= 114 && _end > 114 {
+                        _buf[(114 - _start) as usize] = _value[2];
                     }
-                    if _start <= 103 && _end > 103 {
-                        _buf[(103 - _start) as usize] = _value[3];
+                    if _start <= 115 && _end > 115 {
+                        _buf[(115 - _start) as usize] = _value[3];
                     }
                 }
                 Ok(())
@@ -266,52 +266,52 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10000000 {
                         _buf[(131 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 136 && _end > 132 {
+                if _start < 148 && _end > 144 {
                     let _value =
                         self.0.lock().unwrap().read_ficr_ern(1)?.to_ne_bytes();
-                    if _start <= 132 && _end > 132 {
-                        _buf[(132 - _start) as usize] = _value[0];
+                    if _start <= 144 && _end > 144 {
+                        _buf[(144 - _start) as usize] = _value[0];
                     }
-                    if _start <= 133 && _end > 133 {
-                        _buf[(133 - _start) as usize] = _value[1];
+                    if _start <= 145 && _end > 145 {
+                        _buf[(145 - _start) as usize] = _value[1];
                     }
-                    if _start <= 134 && _end > 134 {
-                        _buf[(134 - _start) as usize] = _value[2];
+                    if _start <= 146 && _end > 146 {
+                        _buf[(146 - _start) as usize] = _value[2];
                     }
-                    if _start <= 135 && _end > 135 {
-                        _buf[(135 - _start) as usize] = _value[3];
+                    if _start <= 147 && _end > 147 {
+                        _buf[(147 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 140 && _end > 136 {
+                if _start < 164 && _end > 160 {
                     let _value =
                         self.0.lock().unwrap().read_ficr_ern(2)?.to_ne_bytes();
-                    if _start <= 136 && _end > 136 {
-                        _buf[(136 - _start) as usize] = _value[0];
+                    if _start <= 160 && _end > 160 {
+                        _buf[(160 - _start) as usize] = _value[0];
                     }
-                    if _start <= 137 && _end > 137 {
-                        _buf[(137 - _start) as usize] = _value[1];
+                    if _start <= 161 && _end > 161 {
+                        _buf[(161 - _start) as usize] = _value[1];
                     }
-                    if _start <= 138 && _end > 138 {
-                        _buf[(138 - _start) as usize] = _value[2];
+                    if _start <= 162 && _end > 162 {
+                        _buf[(162 - _start) as usize] = _value[2];
                     }
-                    if _start <= 139 && _end > 139 {
-                        _buf[(139 - _start) as usize] = _value[3];
+                    if _start <= 163 && _end > 163 {
+                        _buf[(163 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 144 && _end > 140 {
+                if _start < 180 && _end > 176 {
                     let _value =
                         self.0.lock().unwrap().read_ficr_ern(3)?.to_ne_bytes();
-                    if _start <= 140 && _end > 140 {
-                        _buf[(140 - _start) as usize] = _value[0];
+                    if _start <= 176 && _end > 176 {
+                        _buf[(176 - _start) as usize] = _value[0];
                     }
-                    if _start <= 141 && _end > 141 {
-                        _buf[(141 - _start) as usize] = _value[1];
+                    if _start <= 177 && _end > 177 {
+                        _buf[(177 - _start) as usize] = _value[1];
                     }
-                    if _start <= 142 && _end > 142 {
-                        _buf[(142 - _start) as usize] = _value[2];
+                    if _start <= 178 && _end > 178 {
+                        _buf[(178 - _start) as usize] = _value[2];
                     }
-                    if _start <= 143 && _end > 143 {
-                        _buf[(143 - _start) as usize] = _value[3];
+                    if _start <= 179 && _end > 179 {
+                        _buf[(179 - _start) as usize] = _value[3];
                     }
                 }
                 if _start < 148 && _end > 144 {
@@ -330,52 +330,52 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10000000 {
                         _buf[(147 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 152 && _end > 148 {
+                if _start < 164 && _end > 160 {
                     let _value =
                         self.0.lock().unwrap().read_ficr_irn(1)?.to_ne_bytes();
-                    if _start <= 148 && _end > 148 {
-                        _buf[(148 - _start) as usize] = _value[0];
+                    if _start <= 160 && _end > 160 {
+                        _buf[(160 - _start) as usize] = _value[0];
                     }
-                    if _start <= 149 && _end > 149 {
-                        _buf[(149 - _start) as usize] = _value[1];
+                    if _start <= 161 && _end > 161 {
+                        _buf[(161 - _start) as usize] = _value[1];
                     }
-                    if _start <= 150 && _end > 150 {
-                        _buf[(150 - _start) as usize] = _value[2];
+                    if _start <= 162 && _end > 162 {
+                        _buf[(162 - _start) as usize] = _value[2];
                     }
-                    if _start <= 151 && _end > 151 {
-                        _buf[(151 - _start) as usize] = _value[3];
+                    if _start <= 163 && _end > 163 {
+                        _buf[(163 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 156 && _end > 152 {
+                if _start < 180 && _end > 176 {
                     let _value =
                         self.0.lock().unwrap().read_ficr_irn(2)?.to_ne_bytes();
-                    if _start <= 152 && _end > 152 {
-                        _buf[(152 - _start) as usize] = _value[0];
+                    if _start <= 176 && _end > 176 {
+                        _buf[(176 - _start) as usize] = _value[0];
                     }
-                    if _start <= 153 && _end > 153 {
-                        _buf[(153 - _start) as usize] = _value[1];
+                    if _start <= 177 && _end > 177 {
+                        _buf[(177 - _start) as usize] = _value[1];
                     }
-                    if _start <= 154 && _end > 154 {
-                        _buf[(154 - _start) as usize] = _value[2];
+                    if _start <= 178 && _end > 178 {
+                        _buf[(178 - _start) as usize] = _value[2];
                     }
-                    if _start <= 155 && _end > 155 {
-                        _buf[(155 - _start) as usize] = _value[3];
+                    if _start <= 179 && _end > 179 {
+                        _buf[(179 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 160 && _end > 156 {
+                if _start < 196 && _end > 192 {
                     let _value =
                         self.0.lock().unwrap().read_ficr_irn(3)?.to_ne_bytes();
-                    if _start <= 156 && _end > 156 {
-                        _buf[(156 - _start) as usize] = _value[0];
+                    if _start <= 192 && _end > 192 {
+                        _buf[(192 - _start) as usize] = _value[0];
                     }
-                    if _start <= 157 && _end > 157 {
-                        _buf[(157 - _start) as usize] = _value[1];
+                    if _start <= 193 && _end > 193 {
+                        _buf[(193 - _start) as usize] = _value[1];
                     }
-                    if _start <= 158 && _end > 158 {
-                        _buf[(158 - _start) as usize] = _value[2];
+                    if _start <= 194 && _end > 194 {
+                        _buf[(194 - _start) as usize] = _value[2];
                     }
-                    if _start <= 159 && _end > 159 {
-                        _buf[(159 - _start) as usize] = _value[3];
+                    if _start <= 195 && _end > 195 {
+                        _buf[(195 - _start) as usize] = _value[3];
                     }
                 }
                 if _start < 164 && _end > 160 {
@@ -413,24 +413,24 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10000000 {
                         _buf[(167 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 172 && _end > 168 {
+                if _start < 184 && _end > 180 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_ficr_deviceaddrn(1)?
                         .to_ne_bytes();
-                    if _start <= 168 && _end > 168 {
-                        _buf[(168 - _start) as usize] = _value[0];
+                    if _start <= 180 && _end > 180 {
+                        _buf[(180 - _start) as usize] = _value[0];
                     }
-                    if _start <= 169 && _end > 169 {
-                        _buf[(169 - _start) as usize] = _value[1];
+                    if _start <= 181 && _end > 181 {
+                        _buf[(181 - _start) as usize] = _value[1];
                     }
-                    if _start <= 170 && _end > 170 {
-                        _buf[(170 - _start) as usize] = _value[2];
+                    if _start <= 182 && _end > 182 {
+                        _buf[(182 - _start) as usize] = _value[2];
                     }
-                    if _start <= 171 && _end > 171 {
-                        _buf[(171 - _start) as usize] = _value[3];
+                    if _start <= 183 && _end > 183 {
+                        _buf[(183 - _start) as usize] = _value[3];
                     }
                 }
                 if _start < 176 && _end > 172 {
@@ -468,72 +468,12 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10000000 {
                         _buf[(179 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 184 && _end > 180 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_ficr_nrf_1mbitn(1)?
-                        .to_ne_bytes();
-                    if _start <= 180 && _end > 180 {
-                        _buf[(180 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 181 && _end > 181 {
-                        _buf[(181 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 182 && _end > 182 {
-                        _buf[(182 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 183 && _end > 183 {
-                        _buf[(183 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 188 && _end > 184 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_ficr_nrf_1mbitn(2)?
-                        .to_ne_bytes();
-                    if _start <= 184 && _end > 184 {
-                        _buf[(184 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 185 && _end > 185 {
-                        _buf[(185 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 186 && _end > 186 {
-                        _buf[(186 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 187 && _end > 187 {
-                        _buf[(187 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 192 && _end > 188 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_ficr_nrf_1mbitn(3)?
-                        .to_ne_bytes();
-                    if _start <= 188 && _end > 188 {
-                        _buf[(188 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 189 && _end > 189 {
-                        _buf[(189 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 190 && _end > 190 {
-                        _buf[(190 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 191 && _end > 191 {
-                        _buf[(191 - _start) as usize] = _value[3];
-                    }
-                }
                 if _start < 196 && _end > 192 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
-                        .read_ficr_nrf_1mbitn(4)?
+                        .read_ficr_nrf_1mbitn(1)?
                         .to_ne_bytes();
                     if _start <= 192 && _end > 192 {
                         _buf[(192 - _start) as usize] = _value[0];
@@ -546,6 +486,66 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10000000 {
                     }
                     if _start <= 195 && _end > 195 {
                         _buf[(195 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 212 && _end > 208 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_ficr_nrf_1mbitn(2)?
+                        .to_ne_bytes();
+                    if _start <= 208 && _end > 208 {
+                        _buf[(208 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 209 && _end > 209 {
+                        _buf[(209 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 210 && _end > 210 {
+                        _buf[(210 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 211 && _end > 211 {
+                        _buf[(211 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 228 && _end > 224 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_ficr_nrf_1mbitn(3)?
+                        .to_ne_bytes();
+                    if _start <= 224 && _end > 224 {
+                        _buf[(224 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 225 && _end > 225 {
+                        _buf[(225 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 226 && _end > 226 {
+                        _buf[(226 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 227 && _end > 227 {
+                        _buf[(227 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 244 && _end > 240 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_ficr_nrf_1mbitn(4)?
+                        .to_ne_bytes();
+                    if _start <= 240 && _end > 240 {
+                        _buf[(240 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 241 && _end > 241 {
+                        _buf[(241 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 242 && _end > 242 {
+                        _buf[(242 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 243 && _end > 243 {
+                        _buf[(243 - _start) as usize] = _value[3];
                     }
                 }
                 Ok(())
@@ -571,72 +571,12 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10000000 {
                         _buf[(239 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 244 && _end > 240 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_ficr_ble_1mbitn(1)?
-                        .to_ne_bytes();
-                    if _start <= 240 && _end > 240 {
-                        _buf[(240 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 241 && _end > 241 {
-                        _buf[(241 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 242 && _end > 242 {
-                        _buf[(242 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 243 && _end > 243 {
-                        _buf[(243 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 248 && _end > 244 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_ficr_ble_1mbitn(2)?
-                        .to_ne_bytes();
-                    if _start <= 244 && _end > 244 {
-                        _buf[(244 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 245 && _end > 245 {
-                        _buf[(245 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 246 && _end > 246 {
-                        _buf[(246 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 247 && _end > 247 {
-                        _buf[(247 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 252 && _end > 248 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_ficr_ble_1mbitn(3)?
-                        .to_ne_bytes();
-                    if _start <= 248 && _end > 248 {
-                        _buf[(248 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 249 && _end > 249 {
-                        _buf[(249 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 250 && _end > 250 {
-                        _buf[(250 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 251 && _end > 251 {
-                        _buf[(251 - _start) as usize] = _value[3];
-                    }
-                }
                 if _start < 256 && _end > 252 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
-                        .read_ficr_ble_1mbitn(4)?
+                        .read_ficr_ble_1mbitn(1)?
                         .to_ne_bytes();
                     if _start <= 252 && _end > 252 {
                         _buf[(252 - _start) as usize] = _value[0];
@@ -649,6 +589,66 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10000000 {
                     }
                     if _start <= 255 && _end > 255 {
                         _buf[(255 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 272 && _end > 268 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_ficr_ble_1mbitn(2)?
+                        .to_ne_bytes();
+                    if _start <= 268 && _end > 268 {
+                        _buf[(268 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 269 && _end > 269 {
+                        _buf[(269 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 270 && _end > 270 {
+                        _buf[(270 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 271 && _end > 271 {
+                        _buf[(271 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 288 && _end > 284 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_ficr_ble_1mbitn(3)?
+                        .to_ne_bytes();
+                    if _start <= 284 && _end > 284 {
+                        _buf[(284 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 285 && _end > 285 {
+                        _buf[(285 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 286 && _end > 286 {
+                        _buf[(286 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 287 && _end > 287 {
+                        _buf[(287 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 304 && _end > 300 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_ficr_ble_1mbitn(4)?
+                        .to_ne_bytes();
+                    if _start <= 300 && _end > 300 {
+                        _buf[(300 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 301 && _end > 301 {
+                        _buf[(301 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 302 && _end > 302 {
+                        _buf[(302 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 303 && _end > 303 {
+                        _buf[(303 - _start) as usize] = _value[3];
                     }
                 }
                 Ok(())
@@ -803,72 +803,12 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                         _buf[(23 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 28 && _end > 24 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_bootloaderaddr(1)?
-                        .to_ne_bytes();
-                    if _start <= 24 && _end > 24 {
-                        _buf[(24 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 25 && _end > 25 {
-                        _buf[(25 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 26 && _end > 26 {
-                        _buf[(26 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 27 && _end > 27 {
-                        _buf[(27 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 32 && _end > 28 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_bootloaderaddr(2)?
-                        .to_ne_bytes();
-                    if _start <= 28 && _end > 28 {
-                        _buf[(28 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 29 && _end > 29 {
-                        _buf[(29 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 30 && _end > 30 {
-                        _buf[(30 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 31 && _end > 31 {
-                        _buf[(31 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 36 && _end > 32 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_bootloaderaddr(3)?
-                        .to_ne_bytes();
-                    if _start <= 32 && _end > 32 {
-                        _buf[(32 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 33 && _end > 33 {
-                        _buf[(33 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 34 && _end > 34 {
-                        _buf[(34 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 35 && _end > 35 {
-                        _buf[(35 - _start) as usize] = _value[3];
-                    }
-                }
                 if _start < 40 && _end > 36 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
-                        .read_uicr_bootloaderaddr(4)?
+                        .read_uicr_bootloaderaddr(1)?
                         .to_ne_bytes();
                     if _start <= 36 && _end > 36 {
                         _buf[(36 - _start) as usize] = _value[0];
@@ -883,72 +823,12 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                         _buf[(39 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 44 && _end > 40 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_bootloaderaddr(5)?
-                        .to_ne_bytes();
-                    if _start <= 40 && _end > 40 {
-                        _buf[(40 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 41 && _end > 41 {
-                        _buf[(41 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 42 && _end > 42 {
-                        _buf[(42 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 43 && _end > 43 {
-                        _buf[(43 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 48 && _end > 44 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_bootloaderaddr(6)?
-                        .to_ne_bytes();
-                    if _start <= 44 && _end > 44 {
-                        _buf[(44 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 45 && _end > 45 {
-                        _buf[(45 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 46 && _end > 46 {
-                        _buf[(46 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 47 && _end > 47 {
-                        _buf[(47 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 52 && _end > 48 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_bootloaderaddr(7)?
-                        .to_ne_bytes();
-                    if _start <= 48 && _end > 48 {
-                        _buf[(48 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 49 && _end > 49 {
-                        _buf[(49 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 50 && _end > 50 {
-                        _buf[(50 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 51 && _end > 51 {
-                        _buf[(51 - _start) as usize] = _value[3];
-                    }
-                }
                 if _start < 56 && _end > 52 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
-                        .read_uicr_bootloaderaddr(8)?
+                        .read_uicr_bootloaderaddr(2)?
                         .to_ne_bytes();
                     if _start <= 52 && _end > 52 {
                         _buf[(52 - _start) as usize] = _value[0];
@@ -963,72 +843,12 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                         _buf[(55 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 60 && _end > 56 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_bootloaderaddr(9)?
-                        .to_ne_bytes();
-                    if _start <= 56 && _end > 56 {
-                        _buf[(56 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 57 && _end > 57 {
-                        _buf[(57 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 58 && _end > 58 {
-                        _buf[(58 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 59 && _end > 59 {
-                        _buf[(59 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 64 && _end > 60 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_bootloaderaddr(10)?
-                        .to_ne_bytes();
-                    if _start <= 60 && _end > 60 {
-                        _buf[(60 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 61 && _end > 61 {
-                        _buf[(61 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 62 && _end > 62 {
-                        _buf[(62 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 63 && _end > 63 {
-                        _buf[(63 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 68 && _end > 64 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_bootloaderaddr(11)?
-                        .to_ne_bytes();
-                    if _start <= 64 && _end > 64 {
-                        _buf[(64 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 65 && _end > 65 {
-                        _buf[(65 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 66 && _end > 66 {
-                        _buf[(66 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 67 && _end > 67 {
-                        _buf[(67 - _start) as usize] = _value[3];
-                    }
-                }
                 if _start < 72 && _end > 68 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
-                        .read_uicr_bootloaderaddr(12)?
+                        .read_uicr_bootloaderaddr(3)?
                         .to_ne_bytes();
                     if _start <= 68 && _end > 68 {
                         _buf[(68 - _start) as usize] = _value[0];
@@ -1043,44 +863,224 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                         _buf[(71 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 76 && _end > 72 {
+                if _start < 88 && _end > 84 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_bootloaderaddr(4)?
+                        .to_ne_bytes();
+                    if _start <= 84 && _end > 84 {
+                        _buf[(84 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 85 && _end > 85 {
+                        _buf[(85 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 86 && _end > 86 {
+                        _buf[(86 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 87 && _end > 87 {
+                        _buf[(87 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 104 && _end > 100 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_bootloaderaddr(5)?
+                        .to_ne_bytes();
+                    if _start <= 100 && _end > 100 {
+                        _buf[(100 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 101 && _end > 101 {
+                        _buf[(101 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 102 && _end > 102 {
+                        _buf[(102 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 103 && _end > 103 {
+                        _buf[(103 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 120 && _end > 116 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_bootloaderaddr(6)?
+                        .to_ne_bytes();
+                    if _start <= 116 && _end > 116 {
+                        _buf[(116 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 117 && _end > 117 {
+                        _buf[(117 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 118 && _end > 118 {
+                        _buf[(118 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 119 && _end > 119 {
+                        _buf[(119 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 136 && _end > 132 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_bootloaderaddr(7)?
+                        .to_ne_bytes();
+                    if _start <= 132 && _end > 132 {
+                        _buf[(132 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 133 && _end > 133 {
+                        _buf[(133 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 134 && _end > 134 {
+                        _buf[(134 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 135 && _end > 135 {
+                        _buf[(135 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 152 && _end > 148 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_bootloaderaddr(8)?
+                        .to_ne_bytes();
+                    if _start <= 148 && _end > 148 {
+                        _buf[(148 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 149 && _end > 149 {
+                        _buf[(149 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 150 && _end > 150 {
+                        _buf[(150 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 151 && _end > 151 {
+                        _buf[(151 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 168 && _end > 164 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_bootloaderaddr(9)?
+                        .to_ne_bytes();
+                    if _start <= 164 && _end > 164 {
+                        _buf[(164 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 165 && _end > 165 {
+                        _buf[(165 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 166 && _end > 166 {
+                        _buf[(166 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 167 && _end > 167 {
+                        _buf[(167 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 184 && _end > 180 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_bootloaderaddr(10)?
+                        .to_ne_bytes();
+                    if _start <= 180 && _end > 180 {
+                        _buf[(180 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 181 && _end > 181 {
+                        _buf[(181 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 182 && _end > 182 {
+                        _buf[(182 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 183 && _end > 183 {
+                        _buf[(183 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 200 && _end > 196 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_bootloaderaddr(11)?
+                        .to_ne_bytes();
+                    if _start <= 196 && _end > 196 {
+                        _buf[(196 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 197 && _end > 197 {
+                        _buf[(197 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 198 && _end > 198 {
+                        _buf[(198 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 199 && _end > 199 {
+                        _buf[(199 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 216 && _end > 212 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_bootloaderaddr(12)?
+                        .to_ne_bytes();
+                    if _start <= 212 && _end > 212 {
+                        _buf[(212 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 213 && _end > 213 {
+                        _buf[(213 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 214 && _end > 214 {
+                        _buf[(214 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 215 && _end > 215 {
+                        _buf[(215 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 232 && _end > 228 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_uicr_bootloaderaddr(13)?
                         .to_ne_bytes();
-                    if _start <= 72 && _end > 72 {
-                        _buf[(72 - _start) as usize] = _value[0];
+                    if _start <= 228 && _end > 228 {
+                        _buf[(228 - _start) as usize] = _value[0];
                     }
-                    if _start <= 73 && _end > 73 {
-                        _buf[(73 - _start) as usize] = _value[1];
+                    if _start <= 229 && _end > 229 {
+                        _buf[(229 - _start) as usize] = _value[1];
                     }
-                    if _start <= 74 && _end > 74 {
-                        _buf[(74 - _start) as usize] = _value[2];
+                    if _start <= 230 && _end > 230 {
+                        _buf[(230 - _start) as usize] = _value[2];
                     }
-                    if _start <= 75 && _end > 75 {
-                        _buf[(75 - _start) as usize] = _value[3];
+                    if _start <= 231 && _end > 231 {
+                        _buf[(231 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 80 && _end > 76 {
+                if _start < 248 && _end > 244 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_uicr_bootloaderaddr(14)?
                         .to_ne_bytes();
-                    if _start <= 76 && _end > 76 {
-                        _buf[(76 - _start) as usize] = _value[0];
+                    if _start <= 244 && _end > 244 {
+                        _buf[(244 - _start) as usize] = _value[0];
                     }
-                    if _start <= 77 && _end > 77 {
-                        _buf[(77 - _start) as usize] = _value[1];
+                    if _start <= 245 && _end > 245 {
+                        _buf[(245 - _start) as usize] = _value[1];
                     }
-                    if _start <= 78 && _end > 78 {
-                        _buf[(78 - _start) as usize] = _value[2];
+                    if _start <= 246 && _end > 246 {
+                        _buf[(246 - _start) as usize] = _value[2];
                     }
-                    if _start <= 79 && _end > 79 {
-                        _buf[(79 - _start) as usize] = _value[3];
+                    if _start <= 247 && _end > 247 {
+                        _buf[(247 - _start) as usize] = _value[3];
                     }
                 }
                 if _start < 84 && _end > 80 {
@@ -1103,72 +1103,12 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                         _buf[(83 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 88 && _end > 84 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_nrfhwn(1)?
-                        .to_ne_bytes();
-                    if _start <= 84 && _end > 84 {
-                        _buf[(84 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 85 && _end > 85 {
-                        _buf[(85 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 86 && _end > 86 {
-                        _buf[(86 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 87 && _end > 87 {
-                        _buf[(87 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 92 && _end > 88 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_nrfhwn(2)?
-                        .to_ne_bytes();
-                    if _start <= 88 && _end > 88 {
-                        _buf[(88 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 89 && _end > 89 {
-                        _buf[(89 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 90 && _end > 90 {
-                        _buf[(90 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 91 && _end > 91 {
-                        _buf[(91 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 96 && _end > 92 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_nrfhwn(3)?
-                        .to_ne_bytes();
-                    if _start <= 92 && _end > 92 {
-                        _buf[(92 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 93 && _end > 93 {
-                        _buf[(93 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 94 && _end > 94 {
-                        _buf[(94 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 95 && _end > 95 {
-                        _buf[(95 - _start) as usize] = _value[3];
-                    }
-                }
                 if _start < 100 && _end > 96 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
-                        .read_uicr_nrfhwn(4)?
+                        .read_uicr_nrfhwn(1)?
                         .to_ne_bytes();
                     if _start <= 96 && _end > 96 {
                         _buf[(96 - _start) as usize] = _value[0];
@@ -1183,72 +1123,12 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                         _buf[(99 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 104 && _end > 100 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_nrfhwn(5)?
-                        .to_ne_bytes();
-                    if _start <= 100 && _end > 100 {
-                        _buf[(100 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 101 && _end > 101 {
-                        _buf[(101 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 102 && _end > 102 {
-                        _buf[(102 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 103 && _end > 103 {
-                        _buf[(103 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 108 && _end > 104 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_nrfhwn(6)?
-                        .to_ne_bytes();
-                    if _start <= 104 && _end > 104 {
-                        _buf[(104 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 105 && _end > 105 {
-                        _buf[(105 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 106 && _end > 106 {
-                        _buf[(106 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 107 && _end > 107 {
-                        _buf[(107 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 112 && _end > 108 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_nrfhwn(7)?
-                        .to_ne_bytes();
-                    if _start <= 108 && _end > 108 {
-                        _buf[(108 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 109 && _end > 109 {
-                        _buf[(109 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 110 && _end > 110 {
-                        _buf[(110 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 111 && _end > 111 {
-                        _buf[(111 - _start) as usize] = _value[3];
-                    }
-                }
                 if _start < 116 && _end > 112 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
-                        .read_uicr_nrfhwn(8)?
+                        .read_uicr_nrfhwn(2)?
                         .to_ne_bytes();
                     if _start <= 112 && _end > 112 {
                         _buf[(112 - _start) as usize] = _value[0];
@@ -1263,64 +1143,184 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                         _buf[(115 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 120 && _end > 116 {
+                if _start < 132 && _end > 128 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_nrfhwn(3)?
+                        .to_ne_bytes();
+                    if _start <= 128 && _end > 128 {
+                        _buf[(128 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 129 && _end > 129 {
+                        _buf[(129 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 130 && _end > 130 {
+                        _buf[(130 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 131 && _end > 131 {
+                        _buf[(131 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 148 && _end > 144 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_nrfhwn(4)?
+                        .to_ne_bytes();
+                    if _start <= 144 && _end > 144 {
+                        _buf[(144 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 145 && _end > 145 {
+                        _buf[(145 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 146 && _end > 146 {
+                        _buf[(146 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 147 && _end > 147 {
+                        _buf[(147 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 164 && _end > 160 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_nrfhwn(5)?
+                        .to_ne_bytes();
+                    if _start <= 160 && _end > 160 {
+                        _buf[(160 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 161 && _end > 161 {
+                        _buf[(161 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 162 && _end > 162 {
+                        _buf[(162 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 163 && _end > 163 {
+                        _buf[(163 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 180 && _end > 176 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_nrfhwn(6)?
+                        .to_ne_bytes();
+                    if _start <= 176 && _end > 176 {
+                        _buf[(176 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 177 && _end > 177 {
+                        _buf[(177 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 178 && _end > 178 {
+                        _buf[(178 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 179 && _end > 179 {
+                        _buf[(179 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 196 && _end > 192 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_nrfhwn(7)?
+                        .to_ne_bytes();
+                    if _start <= 192 && _end > 192 {
+                        _buf[(192 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 193 && _end > 193 {
+                        _buf[(193 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 194 && _end > 194 {
+                        _buf[(194 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 195 && _end > 195 {
+                        _buf[(195 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 212 && _end > 208 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_nrfhwn(8)?
+                        .to_ne_bytes();
+                    if _start <= 208 && _end > 208 {
+                        _buf[(208 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 209 && _end > 209 {
+                        _buf[(209 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 210 && _end > 210 {
+                        _buf[(210 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 211 && _end > 211 {
+                        _buf[(211 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 228 && _end > 224 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_uicr_nrfhwn(9)?
                         .to_ne_bytes();
-                    if _start <= 116 && _end > 116 {
-                        _buf[(116 - _start) as usize] = _value[0];
+                    if _start <= 224 && _end > 224 {
+                        _buf[(224 - _start) as usize] = _value[0];
                     }
-                    if _start <= 117 && _end > 117 {
-                        _buf[(117 - _start) as usize] = _value[1];
+                    if _start <= 225 && _end > 225 {
+                        _buf[(225 - _start) as usize] = _value[1];
                     }
-                    if _start <= 118 && _end > 118 {
-                        _buf[(118 - _start) as usize] = _value[2];
+                    if _start <= 226 && _end > 226 {
+                        _buf[(226 - _start) as usize] = _value[2];
                     }
-                    if _start <= 119 && _end > 119 {
-                        _buf[(119 - _start) as usize] = _value[3];
+                    if _start <= 227 && _end > 227 {
+                        _buf[(227 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 124 && _end > 120 {
+                if _start < 244 && _end > 240 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_uicr_nrfhwn(10)?
                         .to_ne_bytes();
-                    if _start <= 120 && _end > 120 {
-                        _buf[(120 - _start) as usize] = _value[0];
+                    if _start <= 240 && _end > 240 {
+                        _buf[(240 - _start) as usize] = _value[0];
                     }
-                    if _start <= 121 && _end > 121 {
-                        _buf[(121 - _start) as usize] = _value[1];
+                    if _start <= 241 && _end > 241 {
+                        _buf[(241 - _start) as usize] = _value[1];
                     }
-                    if _start <= 122 && _end > 122 {
-                        _buf[(122 - _start) as usize] = _value[2];
+                    if _start <= 242 && _end > 242 {
+                        _buf[(242 - _start) as usize] = _value[2];
                     }
-                    if _start <= 123 && _end > 123 {
-                        _buf[(123 - _start) as usize] = _value[3];
+                    if _start <= 243 && _end > 243 {
+                        _buf[(243 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 128 && _end > 124 {
+                if _start < 260 && _end > 256 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_uicr_nrfhwn(11)?
                         .to_ne_bytes();
-                    if _start <= 124 && _end > 124 {
-                        _buf[(124 - _start) as usize] = _value[0];
+                    if _start <= 256 && _end > 256 {
+                        _buf[(256 - _start) as usize] = _value[0];
                     }
-                    if _start <= 125 && _end > 125 {
-                        _buf[(125 - _start) as usize] = _value[1];
+                    if _start <= 257 && _end > 257 {
+                        _buf[(257 - _start) as usize] = _value[1];
                     }
-                    if _start <= 126 && _end > 126 {
-                        _buf[(126 - _start) as usize] = _value[2];
+                    if _start <= 258 && _end > 258 {
+                        _buf[(258 - _start) as usize] = _value[2];
                     }
-                    if _start <= 127 && _end > 127 {
-                        _buf[(127 - _start) as usize] = _value[3];
+                    if _start <= 259 && _end > 259 {
+                        _buf[(259 - _start) as usize] = _value[3];
                     }
                 }
                 if _start < 132 && _end > 128 {
@@ -1343,72 +1343,12 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                         _buf[(131 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 136 && _end > 132 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_customern(1)?
-                        .to_ne_bytes();
-                    if _start <= 132 && _end > 132 {
-                        _buf[(132 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 133 && _end > 133 {
-                        _buf[(133 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 134 && _end > 134 {
-                        _buf[(134 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 135 && _end > 135 {
-                        _buf[(135 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 140 && _end > 136 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_customern(2)?
-                        .to_ne_bytes();
-                    if _start <= 136 && _end > 136 {
-                        _buf[(136 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 137 && _end > 137 {
-                        _buf[(137 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 138 && _end > 138 {
-                        _buf[(138 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 139 && _end > 139 {
-                        _buf[(139 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 144 && _end > 140 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_customern(3)?
-                        .to_ne_bytes();
-                    if _start <= 140 && _end > 140 {
-                        _buf[(140 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 141 && _end > 141 {
-                        _buf[(141 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 142 && _end > 142 {
-                        _buf[(142 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 143 && _end > 143 {
-                        _buf[(143 - _start) as usize] = _value[3];
-                    }
-                }
                 if _start < 148 && _end > 144 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
-                        .read_uicr_customern(4)?
+                        .read_uicr_customern(1)?
                         .to_ne_bytes();
                     if _start <= 144 && _end > 144 {
                         _buf[(144 - _start) as usize] = _value[0];
@@ -1423,72 +1363,12 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                         _buf[(147 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 152 && _end > 148 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_customern(5)?
-                        .to_ne_bytes();
-                    if _start <= 148 && _end > 148 {
-                        _buf[(148 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 149 && _end > 149 {
-                        _buf[(149 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 150 && _end > 150 {
-                        _buf[(150 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 151 && _end > 151 {
-                        _buf[(151 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 156 && _end > 152 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_customern(6)?
-                        .to_ne_bytes();
-                    if _start <= 152 && _end > 152 {
-                        _buf[(152 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 153 && _end > 153 {
-                        _buf[(153 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 154 && _end > 154 {
-                        _buf[(154 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 155 && _end > 155 {
-                        _buf[(155 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 160 && _end > 156 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_customern(7)?
-                        .to_ne_bytes();
-                    if _start <= 156 && _end > 156 {
-                        _buf[(156 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 157 && _end > 157 {
-                        _buf[(157 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 158 && _end > 158 {
-                        _buf[(158 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 159 && _end > 159 {
-                        _buf[(159 - _start) as usize] = _value[3];
-                    }
-                }
                 if _start < 164 && _end > 160 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
-                        .read_uicr_customern(8)?
+                        .read_uicr_customern(2)?
                         .to_ne_bytes();
                     if _start <= 160 && _end > 160 {
                         _buf[(160 - _start) as usize] = _value[0];
@@ -1503,72 +1383,12 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                         _buf[(163 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 168 && _end > 164 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_customern(9)?
-                        .to_ne_bytes();
-                    if _start <= 164 && _end > 164 {
-                        _buf[(164 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 165 && _end > 165 {
-                        _buf[(165 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 166 && _end > 166 {
-                        _buf[(166 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 167 && _end > 167 {
-                        _buf[(167 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 172 && _end > 168 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_customern(10)?
-                        .to_ne_bytes();
-                    if _start <= 168 && _end > 168 {
-                        _buf[(168 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 169 && _end > 169 {
-                        _buf[(169 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 170 && _end > 170 {
-                        _buf[(170 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 171 && _end > 171 {
-                        _buf[(171 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 176 && _end > 172 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_customern(11)?
-                        .to_ne_bytes();
-                    if _start <= 172 && _end > 172 {
-                        _buf[(172 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 173 && _end > 173 {
-                        _buf[(173 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 174 && _end > 174 {
-                        _buf[(174 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 175 && _end > 175 {
-                        _buf[(175 - _start) as usize] = _value[3];
-                    }
-                }
                 if _start < 180 && _end > 176 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
-                        .read_uicr_customern(12)?
+                        .read_uicr_customern(3)?
                         .to_ne_bytes();
                     if _start <= 176 && _end > 176 {
                         _buf[(176 - _start) as usize] = _value[0];
@@ -1583,72 +1403,12 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                         _buf[(179 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 184 && _end > 180 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_customern(13)?
-                        .to_ne_bytes();
-                    if _start <= 180 && _end > 180 {
-                        _buf[(180 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 181 && _end > 181 {
-                        _buf[(181 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 182 && _end > 182 {
-                        _buf[(182 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 183 && _end > 183 {
-                        _buf[(183 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 188 && _end > 184 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_customern(14)?
-                        .to_ne_bytes();
-                    if _start <= 184 && _end > 184 {
-                        _buf[(184 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 185 && _end > 185 {
-                        _buf[(185 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 186 && _end > 186 {
-                        _buf[(186 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 187 && _end > 187 {
-                        _buf[(187 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 192 && _end > 188 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_customern(15)?
-                        .to_ne_bytes();
-                    if _start <= 188 && _end > 188 {
-                        _buf[(188 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 189 && _end > 189 {
-                        _buf[(189 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 190 && _end > 190 {
-                        _buf[(190 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 191 && _end > 191 {
-                        _buf[(191 - _start) as usize] = _value[3];
-                    }
-                }
                 if _start < 196 && _end > 192 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
-                        .read_uicr_customern(16)?
+                        .read_uicr_customern(4)?
                         .to_ne_bytes();
                     if _start <= 192 && _end > 192 {
                         _buf[(192 - _start) as usize] = _value[0];
@@ -1663,72 +1423,12 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                         _buf[(195 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 200 && _end > 196 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_customern(17)?
-                        .to_ne_bytes();
-                    if _start <= 196 && _end > 196 {
-                        _buf[(196 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 197 && _end > 197 {
-                        _buf[(197 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 198 && _end > 198 {
-                        _buf[(198 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 199 && _end > 199 {
-                        _buf[(199 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 204 && _end > 200 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_customern(18)?
-                        .to_ne_bytes();
-                    if _start <= 200 && _end > 200 {
-                        _buf[(200 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 201 && _end > 201 {
-                        _buf[(201 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 202 && _end > 202 {
-                        _buf[(202 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 203 && _end > 203 {
-                        _buf[(203 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 208 && _end > 204 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_customern(19)?
-                        .to_ne_bytes();
-                    if _start <= 204 && _end > 204 {
-                        _buf[(204 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 205 && _end > 205 {
-                        _buf[(205 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 206 && _end > 206 {
-                        _buf[(206 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 207 && _end > 207 {
-                        _buf[(207 - _start) as usize] = _value[3];
-                    }
-                }
                 if _start < 212 && _end > 208 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
-                        .read_uicr_customern(20)?
+                        .read_uicr_customern(5)?
                         .to_ne_bytes();
                     if _start <= 208 && _end > 208 {
                         _buf[(208 - _start) as usize] = _value[0];
@@ -1743,72 +1443,12 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                         _buf[(211 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 216 && _end > 212 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_customern(21)?
-                        .to_ne_bytes();
-                    if _start <= 212 && _end > 212 {
-                        _buf[(212 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 213 && _end > 213 {
-                        _buf[(213 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 214 && _end > 214 {
-                        _buf[(214 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 215 && _end > 215 {
-                        _buf[(215 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 220 && _end > 216 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_customern(22)?
-                        .to_ne_bytes();
-                    if _start <= 216 && _end > 216 {
-                        _buf[(216 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 217 && _end > 217 {
-                        _buf[(217 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 218 && _end > 218 {
-                        _buf[(218 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 219 && _end > 219 {
-                        _buf[(219 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 224 && _end > 220 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_customern(23)?
-                        .to_ne_bytes();
-                    if _start <= 220 && _end > 220 {
-                        _buf[(220 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 221 && _end > 221 {
-                        _buf[(221 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 222 && _end > 222 {
-                        _buf[(222 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 223 && _end > 223 {
-                        _buf[(223 - _start) as usize] = _value[3];
-                    }
-                }
                 if _start < 228 && _end > 224 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
-                        .read_uicr_customern(24)?
+                        .read_uicr_customern(6)?
                         .to_ne_bytes();
                     if _start <= 224 && _end > 224 {
                         _buf[(224 - _start) as usize] = _value[0];
@@ -1823,72 +1463,12 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                         _buf[(227 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 232 && _end > 228 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_customern(25)?
-                        .to_ne_bytes();
-                    if _start <= 228 && _end > 228 {
-                        _buf[(228 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 229 && _end > 229 {
-                        _buf[(229 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 230 && _end > 230 {
-                        _buf[(230 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 231 && _end > 231 {
-                        _buf[(231 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 236 && _end > 232 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_customern(26)?
-                        .to_ne_bytes();
-                    if _start <= 232 && _end > 232 {
-                        _buf[(232 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 233 && _end > 233 {
-                        _buf[(233 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 234 && _end > 234 {
-                        _buf[(234 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 235 && _end > 235 {
-                        _buf[(235 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 240 && _end > 236 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_uicr_customern(27)?
-                        .to_ne_bytes();
-                    if _start <= 236 && _end > 236 {
-                        _buf[(236 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 237 && _end > 237 {
-                        _buf[(237 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 238 && _end > 238 {
-                        _buf[(238 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 239 && _end > 239 {
-                        _buf[(239 - _start) as usize] = _value[3];
-                    }
-                }
                 if _start < 244 && _end > 240 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
-                        .read_uicr_customern(28)?
+                        .read_uicr_customern(7)?
                         .to_ne_bytes();
                     if _start <= 240 && _end > 240 {
                         _buf[(240 - _start) as usize] = _value[0];
@@ -1903,64 +1483,484 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                         _buf[(243 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 248 && _end > 244 {
+                if _start < 260 && _end > 256 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_customern(8)?
+                        .to_ne_bytes();
+                    if _start <= 256 && _end > 256 {
+                        _buf[(256 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 257 && _end > 257 {
+                        _buf[(257 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 258 && _end > 258 {
+                        _buf[(258 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 259 && _end > 259 {
+                        _buf[(259 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 276 && _end > 272 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_customern(9)?
+                        .to_ne_bytes();
+                    if _start <= 272 && _end > 272 {
+                        _buf[(272 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 273 && _end > 273 {
+                        _buf[(273 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 274 && _end > 274 {
+                        _buf[(274 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 275 && _end > 275 {
+                        _buf[(275 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 292 && _end > 288 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_customern(10)?
+                        .to_ne_bytes();
+                    if _start <= 288 && _end > 288 {
+                        _buf[(288 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 289 && _end > 289 {
+                        _buf[(289 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 290 && _end > 290 {
+                        _buf[(290 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 291 && _end > 291 {
+                        _buf[(291 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 308 && _end > 304 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_customern(11)?
+                        .to_ne_bytes();
+                    if _start <= 304 && _end > 304 {
+                        _buf[(304 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 305 && _end > 305 {
+                        _buf[(305 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 306 && _end > 306 {
+                        _buf[(306 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 307 && _end > 307 {
+                        _buf[(307 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 324 && _end > 320 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_customern(12)?
+                        .to_ne_bytes();
+                    if _start <= 320 && _end > 320 {
+                        _buf[(320 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 321 && _end > 321 {
+                        _buf[(321 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 322 && _end > 322 {
+                        _buf[(322 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 323 && _end > 323 {
+                        _buf[(323 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 340 && _end > 336 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_customern(13)?
+                        .to_ne_bytes();
+                    if _start <= 336 && _end > 336 {
+                        _buf[(336 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 337 && _end > 337 {
+                        _buf[(337 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 338 && _end > 338 {
+                        _buf[(338 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 339 && _end > 339 {
+                        _buf[(339 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 356 && _end > 352 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_customern(14)?
+                        .to_ne_bytes();
+                    if _start <= 352 && _end > 352 {
+                        _buf[(352 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 353 && _end > 353 {
+                        _buf[(353 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 354 && _end > 354 {
+                        _buf[(354 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 355 && _end > 355 {
+                        _buf[(355 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 372 && _end > 368 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_customern(15)?
+                        .to_ne_bytes();
+                    if _start <= 368 && _end > 368 {
+                        _buf[(368 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 369 && _end > 369 {
+                        _buf[(369 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 370 && _end > 370 {
+                        _buf[(370 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 371 && _end > 371 {
+                        _buf[(371 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 388 && _end > 384 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_customern(16)?
+                        .to_ne_bytes();
+                    if _start <= 384 && _end > 384 {
+                        _buf[(384 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 385 && _end > 385 {
+                        _buf[(385 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 386 && _end > 386 {
+                        _buf[(386 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 387 && _end > 387 {
+                        _buf[(387 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 404 && _end > 400 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_customern(17)?
+                        .to_ne_bytes();
+                    if _start <= 400 && _end > 400 {
+                        _buf[(400 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 401 && _end > 401 {
+                        _buf[(401 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 402 && _end > 402 {
+                        _buf[(402 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 403 && _end > 403 {
+                        _buf[(403 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 420 && _end > 416 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_customern(18)?
+                        .to_ne_bytes();
+                    if _start <= 416 && _end > 416 {
+                        _buf[(416 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 417 && _end > 417 {
+                        _buf[(417 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 418 && _end > 418 {
+                        _buf[(418 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 419 && _end > 419 {
+                        _buf[(419 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 436 && _end > 432 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_customern(19)?
+                        .to_ne_bytes();
+                    if _start <= 432 && _end > 432 {
+                        _buf[(432 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 433 && _end > 433 {
+                        _buf[(433 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 434 && _end > 434 {
+                        _buf[(434 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 435 && _end > 435 {
+                        _buf[(435 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 452 && _end > 448 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_customern(20)?
+                        .to_ne_bytes();
+                    if _start <= 448 && _end > 448 {
+                        _buf[(448 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 449 && _end > 449 {
+                        _buf[(449 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 450 && _end > 450 {
+                        _buf[(450 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 451 && _end > 451 {
+                        _buf[(451 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 468 && _end > 464 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_customern(21)?
+                        .to_ne_bytes();
+                    if _start <= 464 && _end > 464 {
+                        _buf[(464 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 465 && _end > 465 {
+                        _buf[(465 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 466 && _end > 466 {
+                        _buf[(466 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 467 && _end > 467 {
+                        _buf[(467 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 484 && _end > 480 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_customern(22)?
+                        .to_ne_bytes();
+                    if _start <= 480 && _end > 480 {
+                        _buf[(480 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 481 && _end > 481 {
+                        _buf[(481 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 482 && _end > 482 {
+                        _buf[(482 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 483 && _end > 483 {
+                        _buf[(483 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 500 && _end > 496 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_customern(23)?
+                        .to_ne_bytes();
+                    if _start <= 496 && _end > 496 {
+                        _buf[(496 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 497 && _end > 497 {
+                        _buf[(497 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 498 && _end > 498 {
+                        _buf[(498 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 499 && _end > 499 {
+                        _buf[(499 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 516 && _end > 512 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_customern(24)?
+                        .to_ne_bytes();
+                    if _start <= 512 && _end > 512 {
+                        _buf[(512 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 513 && _end > 513 {
+                        _buf[(513 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 514 && _end > 514 {
+                        _buf[(514 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 515 && _end > 515 {
+                        _buf[(515 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 532 && _end > 528 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_customern(25)?
+                        .to_ne_bytes();
+                    if _start <= 528 && _end > 528 {
+                        _buf[(528 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 529 && _end > 529 {
+                        _buf[(529 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 530 && _end > 530 {
+                        _buf[(530 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 531 && _end > 531 {
+                        _buf[(531 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 548 && _end > 544 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_customern(26)?
+                        .to_ne_bytes();
+                    if _start <= 544 && _end > 544 {
+                        _buf[(544 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 545 && _end > 545 {
+                        _buf[(545 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 546 && _end > 546 {
+                        _buf[(546 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 547 && _end > 547 {
+                        _buf[(547 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 564 && _end > 560 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_customern(27)?
+                        .to_ne_bytes();
+                    if _start <= 560 && _end > 560 {
+                        _buf[(560 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 561 && _end > 561 {
+                        _buf[(561 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 562 && _end > 562 {
+                        _buf[(562 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 563 && _end > 563 {
+                        _buf[(563 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 580 && _end > 576 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_uicr_customern(28)?
+                        .to_ne_bytes();
+                    if _start <= 576 && _end > 576 {
+                        _buf[(576 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 577 && _end > 577 {
+                        _buf[(577 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 578 && _end > 578 {
+                        _buf[(578 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 579 && _end > 579 {
+                        _buf[(579 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 596 && _end > 592 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_uicr_customern(29)?
                         .to_ne_bytes();
-                    if _start <= 244 && _end > 244 {
-                        _buf[(244 - _start) as usize] = _value[0];
+                    if _start <= 592 && _end > 592 {
+                        _buf[(592 - _start) as usize] = _value[0];
                     }
-                    if _start <= 245 && _end > 245 {
-                        _buf[(245 - _start) as usize] = _value[1];
+                    if _start <= 593 && _end > 593 {
+                        _buf[(593 - _start) as usize] = _value[1];
                     }
-                    if _start <= 246 && _end > 246 {
-                        _buf[(246 - _start) as usize] = _value[2];
+                    if _start <= 594 && _end > 594 {
+                        _buf[(594 - _start) as usize] = _value[2];
                     }
-                    if _start <= 247 && _end > 247 {
-                        _buf[(247 - _start) as usize] = _value[3];
+                    if _start <= 595 && _end > 595 {
+                        _buf[(595 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 252 && _end > 248 {
+                if _start < 612 && _end > 608 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_uicr_customern(30)?
                         .to_ne_bytes();
-                    if _start <= 248 && _end > 248 {
-                        _buf[(248 - _start) as usize] = _value[0];
+                    if _start <= 608 && _end > 608 {
+                        _buf[(608 - _start) as usize] = _value[0];
                     }
-                    if _start <= 249 && _end > 249 {
-                        _buf[(249 - _start) as usize] = _value[1];
+                    if _start <= 609 && _end > 609 {
+                        _buf[(609 - _start) as usize] = _value[1];
                     }
-                    if _start <= 250 && _end > 250 {
-                        _buf[(250 - _start) as usize] = _value[2];
+                    if _start <= 610 && _end > 610 {
+                        _buf[(610 - _start) as usize] = _value[2];
                     }
-                    if _start <= 251 && _end > 251 {
-                        _buf[(251 - _start) as usize] = _value[3];
+                    if _start <= 611 && _end > 611 {
+                        _buf[(611 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 256 && _end > 252 {
+                if _start < 628 && _end > 624 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_uicr_customern(31)?
                         .to_ne_bytes();
-                    if _start <= 252 && _end > 252 {
-                        _buf[(252 - _start) as usize] = _value[0];
+                    if _start <= 624 && _end > 624 {
+                        _buf[(624 - _start) as usize] = _value[0];
                     }
-                    if _start <= 253 && _end > 253 {
-                        _buf[(253 - _start) as usize] = _value[1];
+                    if _start <= 625 && _end > 625 {
+                        _buf[(625 - _start) as usize] = _value[1];
                     }
-                    if _start <= 254 && _end > 254 {
-                        _buf[(254 - _start) as usize] = _value[2];
+                    if _start <= 626 && _end > 626 {
+                        _buf[(626 - _start) as usize] = _value[2];
                     }
-                    if _start <= 255 && _end > 255 {
-                        _buf[(255 - _start) as usize] = _value[3];
+                    if _start <= 627 && _end > 627 {
+                        _buf[(627 - _start) as usize] = _value[3];
                     }
                 }
                 Ok(())
@@ -2022,51 +2022,6 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                         ),
                     )?;
                 }
-                if _start < 28 && _end > 24 {
-                    assert!(
-                        _start <= 24u64 && _end >= 28u64,
-                        "partial write for UICR BOOTLOADERADDR not implemented",
-                    );
-                    let start = _start.saturating_sub(24u64) as usize;
-                    let end =
-                        (_end.saturating_sub(24u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_bootloaderaddr(
-                        1,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 32 && _end > 28 {
-                    assert!(
-                        _start <= 28u64 && _end >= 32u64,
-                        "partial write for UICR BOOTLOADERADDR not implemented",
-                    );
-                    let start = _start.saturating_sub(28u64) as usize;
-                    let end =
-                        (_end.saturating_sub(28u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_bootloaderaddr(
-                        2,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 36 && _end > 32 {
-                    assert!(
-                        _start <= 32u64 && _end >= 36u64,
-                        "partial write for UICR BOOTLOADERADDR not implemented",
-                    );
-                    let start = _start.saturating_sub(32u64) as usize;
-                    let end =
-                        (_end.saturating_sub(32u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_bootloaderaddr(
-                        3,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
                 if _start < 40 && _end > 36 {
                     assert!(
                         _start <= 36u64 && _end >= 40u64,
@@ -2076,52 +2031,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                     let end =
                         (_end.saturating_sub(36u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_uicr_bootloaderaddr(
-                        4,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 44 && _end > 40 {
-                    assert!(
-                        _start <= 40u64 && _end >= 44u64,
-                        "partial write for UICR BOOTLOADERADDR not implemented",
-                    );
-                    let start = _start.saturating_sub(40u64) as usize;
-                    let end =
-                        (_end.saturating_sub(40u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_bootloaderaddr(
-                        5,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 48 && _end > 44 {
-                    assert!(
-                        _start <= 44u64 && _end >= 48u64,
-                        "partial write for UICR BOOTLOADERADDR not implemented",
-                    );
-                    let start = _start.saturating_sub(44u64) as usize;
-                    let end =
-                        (_end.saturating_sub(44u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_bootloaderaddr(
-                        6,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 52 && _end > 48 {
-                    assert!(
-                        _start <= 48u64 && _end >= 52u64,
-                        "partial write for UICR BOOTLOADERADDR not implemented",
-                    );
-                    let start = _start.saturating_sub(48u64) as usize;
-                    let end =
-                        (_end.saturating_sub(48u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_bootloaderaddr(
-                        7,
+                        1,
                         u32::from_ne_bytes(
                             _buf[start..end].try_into().unwrap(),
                         ),
@@ -2136,52 +2046,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                     let end =
                         (_end.saturating_sub(52u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_uicr_bootloaderaddr(
-                        8,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 60 && _end > 56 {
-                    assert!(
-                        _start <= 56u64 && _end >= 60u64,
-                        "partial write for UICR BOOTLOADERADDR not implemented",
-                    );
-                    let start = _start.saturating_sub(56u64) as usize;
-                    let end =
-                        (_end.saturating_sub(56u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_bootloaderaddr(
-                        9,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 64 && _end > 60 {
-                    assert!(
-                        _start <= 60u64 && _end >= 64u64,
-                        "partial write for UICR BOOTLOADERADDR not implemented",
-                    );
-                    let start = _start.saturating_sub(60u64) as usize;
-                    let end =
-                        (_end.saturating_sub(60u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_bootloaderaddr(
-                        10,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 68 && _end > 64 {
-                    assert!(
-                        _start <= 64u64 && _end >= 68u64,
-                        "partial write for UICR BOOTLOADERADDR not implemented",
-                    );
-                    let start = _start.saturating_sub(64u64) as usize;
-                    let end =
-                        (_end.saturating_sub(64u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_bootloaderaddr(
-                        11,
+                        2,
                         u32::from_ne_bytes(
                             _buf[start..end].try_into().unwrap(),
                         ),
@@ -2196,20 +2061,155 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                     let end =
                         (_end.saturating_sub(68u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_uicr_bootloaderaddr(
+                        3,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 88 && _end > 84 {
+                    assert!(
+                        _start <= 84u64 && _end >= 88u64,
+                        "partial write for UICR BOOTLOADERADDR not implemented",
+                    );
+                    let start = _start.saturating_sub(84u64) as usize;
+                    let end =
+                        (_end.saturating_sub(84u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_bootloaderaddr(
+                        4,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 104 && _end > 100 {
+                    assert!(
+                        _start <= 100u64 && _end >= 104u64,
+                        "partial write for UICR BOOTLOADERADDR not implemented",
+                    );
+                    let start = _start.saturating_sub(100u64) as usize;
+                    let end =
+                        (_end.saturating_sub(100u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_bootloaderaddr(
+                        5,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 120 && _end > 116 {
+                    assert!(
+                        _start <= 116u64 && _end >= 120u64,
+                        "partial write for UICR BOOTLOADERADDR not implemented",
+                    );
+                    let start = _start.saturating_sub(116u64) as usize;
+                    let end =
+                        (_end.saturating_sub(116u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_bootloaderaddr(
+                        6,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 136 && _end > 132 {
+                    assert!(
+                        _start <= 132u64 && _end >= 136u64,
+                        "partial write for UICR BOOTLOADERADDR not implemented",
+                    );
+                    let start = _start.saturating_sub(132u64) as usize;
+                    let end =
+                        (_end.saturating_sub(132u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_bootloaderaddr(
+                        7,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 152 && _end > 148 {
+                    assert!(
+                        _start <= 148u64 && _end >= 152u64,
+                        "partial write for UICR BOOTLOADERADDR not implemented",
+                    );
+                    let start = _start.saturating_sub(148u64) as usize;
+                    let end =
+                        (_end.saturating_sub(148u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_bootloaderaddr(
+                        8,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 168 && _end > 164 {
+                    assert!(
+                        _start <= 164u64 && _end >= 168u64,
+                        "partial write for UICR BOOTLOADERADDR not implemented",
+                    );
+                    let start = _start.saturating_sub(164u64) as usize;
+                    let end =
+                        (_end.saturating_sub(164u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_bootloaderaddr(
+                        9,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 184 && _end > 180 {
+                    assert!(
+                        _start <= 180u64 && _end >= 184u64,
+                        "partial write for UICR BOOTLOADERADDR not implemented",
+                    );
+                    let start = _start.saturating_sub(180u64) as usize;
+                    let end =
+                        (_end.saturating_sub(180u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_bootloaderaddr(
+                        10,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 200 && _end > 196 {
+                    assert!(
+                        _start <= 196u64 && _end >= 200u64,
+                        "partial write for UICR BOOTLOADERADDR not implemented",
+                    );
+                    let start = _start.saturating_sub(196u64) as usize;
+                    let end =
+                        (_end.saturating_sub(196u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_bootloaderaddr(
+                        11,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 216 && _end > 212 {
+                    assert!(
+                        _start <= 212u64 && _end >= 216u64,
+                        "partial write for UICR BOOTLOADERADDR not implemented",
+                    );
+                    let start = _start.saturating_sub(212u64) as usize;
+                    let end =
+                        (_end.saturating_sub(212u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_bootloaderaddr(
                         12,
                         u32::from_ne_bytes(
                             _buf[start..end].try_into().unwrap(),
                         ),
                     )?;
                 }
-                if _start < 76 && _end > 72 {
+                if _start < 232 && _end > 228 {
                     assert!(
-                        _start <= 72u64 && _end >= 76u64,
+                        _start <= 228u64 && _end >= 232u64,
                         "partial write for UICR BOOTLOADERADDR not implemented",
                     );
-                    let start = _start.saturating_sub(72u64) as usize;
+                    let start = _start.saturating_sub(228u64) as usize;
                     let end =
-                        (_end.saturating_sub(72u64) as usize).min(start + 4);
+                        (_end.saturating_sub(228u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_uicr_bootloaderaddr(
                         13,
                         u32::from_ne_bytes(
@@ -2217,14 +2217,14 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                         ),
                     )?;
                 }
-                if _start < 80 && _end > 76 {
+                if _start < 248 && _end > 244 {
                     assert!(
-                        _start <= 76u64 && _end >= 80u64,
+                        _start <= 244u64 && _end >= 248u64,
                         "partial write for UICR BOOTLOADERADDR not implemented",
                     );
-                    let start = _start.saturating_sub(76u64) as usize;
+                    let start = _start.saturating_sub(244u64) as usize;
                     let end =
-                        (_end.saturating_sub(76u64) as usize).min(start + 4);
+                        (_end.saturating_sub(244u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_uicr_bootloaderaddr(
                         14,
                         u32::from_ne_bytes(
@@ -2247,51 +2247,6 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                         ),
                     )?;
                 }
-                if _start < 88 && _end > 84 {
-                    assert!(
-                        _start <= 84u64 && _end >= 88u64,
-                        "partial write for UICR NRFHW[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(84u64) as usize;
-                    let end =
-                        (_end.saturating_sub(84u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_nrfhwn(
-                        1,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 92 && _end > 88 {
-                    assert!(
-                        _start <= 88u64 && _end >= 92u64,
-                        "partial write for UICR NRFHW[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(88u64) as usize;
-                    let end =
-                        (_end.saturating_sub(88u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_nrfhwn(
-                        2,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 96 && _end > 92 {
-                    assert!(
-                        _start <= 92u64 && _end >= 96u64,
-                        "partial write for UICR NRFHW[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(92u64) as usize;
-                    let end =
-                        (_end.saturating_sub(92u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_nrfhwn(
-                        3,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
                 if _start < 100 && _end > 96 {
                     assert!(
                         _start <= 96u64 && _end >= 100u64,
@@ -2301,52 +2256,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                     let end =
                         (_end.saturating_sub(96u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_uicr_nrfhwn(
-                        4,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 104 && _end > 100 {
-                    assert!(
-                        _start <= 100u64 && _end >= 104u64,
-                        "partial write for UICR NRFHW[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(100u64) as usize;
-                    let end =
-                        (_end.saturating_sub(100u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_nrfhwn(
-                        5,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 108 && _end > 104 {
-                    assert!(
-                        _start <= 104u64 && _end >= 108u64,
-                        "partial write for UICR NRFHW[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(104u64) as usize;
-                    let end =
-                        (_end.saturating_sub(104u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_nrfhwn(
-                        6,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 112 && _end > 108 {
-                    assert!(
-                        _start <= 108u64 && _end >= 112u64,
-                        "partial write for UICR NRFHW[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(108u64) as usize;
-                    let end =
-                        (_end.saturating_sub(108u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_nrfhwn(
-                        7,
+                        1,
                         u32::from_ne_bytes(
                             _buf[start..end].try_into().unwrap(),
                         ),
@@ -2361,20 +2271,110 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                     let end =
                         (_end.saturating_sub(112u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_uicr_nrfhwn(
+                        2,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 132 && _end > 128 {
+                    assert!(
+                        _start <= 128u64 && _end >= 132u64,
+                        "partial write for UICR NRFHW[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(128u64) as usize;
+                    let end =
+                        (_end.saturating_sub(128u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_nrfhwn(
+                        3,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 148 && _end > 144 {
+                    assert!(
+                        _start <= 144u64 && _end >= 148u64,
+                        "partial write for UICR NRFHW[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(144u64) as usize;
+                    let end =
+                        (_end.saturating_sub(144u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_nrfhwn(
+                        4,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 164 && _end > 160 {
+                    assert!(
+                        _start <= 160u64 && _end >= 164u64,
+                        "partial write for UICR NRFHW[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(160u64) as usize;
+                    let end =
+                        (_end.saturating_sub(160u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_nrfhwn(
+                        5,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 180 && _end > 176 {
+                    assert!(
+                        _start <= 176u64 && _end >= 180u64,
+                        "partial write for UICR NRFHW[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(176u64) as usize;
+                    let end =
+                        (_end.saturating_sub(176u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_nrfhwn(
+                        6,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 196 && _end > 192 {
+                    assert!(
+                        _start <= 192u64 && _end >= 196u64,
+                        "partial write for UICR NRFHW[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(192u64) as usize;
+                    let end =
+                        (_end.saturating_sub(192u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_nrfhwn(
+                        7,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 212 && _end > 208 {
+                    assert!(
+                        _start <= 208u64 && _end >= 212u64,
+                        "partial write for UICR NRFHW[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(208u64) as usize;
+                    let end =
+                        (_end.saturating_sub(208u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_nrfhwn(
                         8,
                         u32::from_ne_bytes(
                             _buf[start..end].try_into().unwrap(),
                         ),
                     )?;
                 }
-                if _start < 120 && _end > 116 {
+                if _start < 228 && _end > 224 {
                     assert!(
-                        _start <= 116u64 && _end >= 120u64,
+                        _start <= 224u64 && _end >= 228u64,
                         "partial write for UICR NRFHW[%s] not implemented",
                     );
-                    let start = _start.saturating_sub(116u64) as usize;
+                    let start = _start.saturating_sub(224u64) as usize;
                     let end =
-                        (_end.saturating_sub(116u64) as usize).min(start + 4);
+                        (_end.saturating_sub(224u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_uicr_nrfhwn(
                         9,
                         u32::from_ne_bytes(
@@ -2382,14 +2382,14 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                         ),
                     )?;
                 }
-                if _start < 124 && _end > 120 {
+                if _start < 244 && _end > 240 {
                     assert!(
-                        _start <= 120u64 && _end >= 124u64,
+                        _start <= 240u64 && _end >= 244u64,
                         "partial write for UICR NRFHW[%s] not implemented",
                     );
-                    let start = _start.saturating_sub(120u64) as usize;
+                    let start = _start.saturating_sub(240u64) as usize;
                     let end =
-                        (_end.saturating_sub(120u64) as usize).min(start + 4);
+                        (_end.saturating_sub(240u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_uicr_nrfhwn(
                         10,
                         u32::from_ne_bytes(
@@ -2397,14 +2397,14 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                         ),
                     )?;
                 }
-                if _start < 128 && _end > 124 {
+                if _start < 260 && _end > 256 {
                     assert!(
-                        _start <= 124u64 && _end >= 128u64,
+                        _start <= 256u64 && _end >= 260u64,
                         "partial write for UICR NRFHW[%s] not implemented",
                     );
-                    let start = _start.saturating_sub(124u64) as usize;
+                    let start = _start.saturating_sub(256u64) as usize;
                     let end =
-                        (_end.saturating_sub(124u64) as usize).min(start + 4);
+                        (_end.saturating_sub(256u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_uicr_nrfhwn(
                         11,
                         u32::from_ne_bytes(
@@ -2427,51 +2427,6 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                         ),
                     )?;
                 }
-                if _start < 136 && _end > 132 {
-                    assert!(
-                        _start <= 132u64 && _end >= 136u64,
-                        "partial write for UICR CUSTOMER[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(132u64) as usize;
-                    let end =
-                        (_end.saturating_sub(132u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_customern(
-                        1,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 140 && _end > 136 {
-                    assert!(
-                        _start <= 136u64 && _end >= 140u64,
-                        "partial write for UICR CUSTOMER[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(136u64) as usize;
-                    let end =
-                        (_end.saturating_sub(136u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_customern(
-                        2,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 144 && _end > 140 {
-                    assert!(
-                        _start <= 140u64 && _end >= 144u64,
-                        "partial write for UICR CUSTOMER[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(140u64) as usize;
-                    let end =
-                        (_end.saturating_sub(140u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_customern(
-                        3,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
                 if _start < 148 && _end > 144 {
                     assert!(
                         _start <= 144u64 && _end >= 148u64,
@@ -2481,52 +2436,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                     let end =
                         (_end.saturating_sub(144u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_uicr_customern(
-                        4,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 152 && _end > 148 {
-                    assert!(
-                        _start <= 148u64 && _end >= 152u64,
-                        "partial write for UICR CUSTOMER[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(148u64) as usize;
-                    let end =
-                        (_end.saturating_sub(148u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_customern(
-                        5,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 156 && _end > 152 {
-                    assert!(
-                        _start <= 152u64 && _end >= 156u64,
-                        "partial write for UICR CUSTOMER[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(152u64) as usize;
-                    let end =
-                        (_end.saturating_sub(152u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_customern(
-                        6,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 160 && _end > 156 {
-                    assert!(
-                        _start <= 156u64 && _end >= 160u64,
-                        "partial write for UICR CUSTOMER[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(156u64) as usize;
-                    let end =
-                        (_end.saturating_sub(156u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_customern(
-                        7,
+                        1,
                         u32::from_ne_bytes(
                             _buf[start..end].try_into().unwrap(),
                         ),
@@ -2541,52 +2451,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                     let end =
                         (_end.saturating_sub(160u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_uicr_customern(
-                        8,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 168 && _end > 164 {
-                    assert!(
-                        _start <= 164u64 && _end >= 168u64,
-                        "partial write for UICR CUSTOMER[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(164u64) as usize;
-                    let end =
-                        (_end.saturating_sub(164u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_customern(
-                        9,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 172 && _end > 168 {
-                    assert!(
-                        _start <= 168u64 && _end >= 172u64,
-                        "partial write for UICR CUSTOMER[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(168u64) as usize;
-                    let end =
-                        (_end.saturating_sub(168u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_customern(
-                        10,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 176 && _end > 172 {
-                    assert!(
-                        _start <= 172u64 && _end >= 176u64,
-                        "partial write for UICR CUSTOMER[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(172u64) as usize;
-                    let end =
-                        (_end.saturating_sub(172u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_customern(
-                        11,
+                        2,
                         u32::from_ne_bytes(
                             _buf[start..end].try_into().unwrap(),
                         ),
@@ -2601,52 +2466,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                     let end =
                         (_end.saturating_sub(176u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_uicr_customern(
-                        12,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 184 && _end > 180 {
-                    assert!(
-                        _start <= 180u64 && _end >= 184u64,
-                        "partial write for UICR CUSTOMER[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(180u64) as usize;
-                    let end =
-                        (_end.saturating_sub(180u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_customern(
-                        13,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 188 && _end > 184 {
-                    assert!(
-                        _start <= 184u64 && _end >= 188u64,
-                        "partial write for UICR CUSTOMER[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(184u64) as usize;
-                    let end =
-                        (_end.saturating_sub(184u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_customern(
-                        14,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 192 && _end > 188 {
-                    assert!(
-                        _start <= 188u64 && _end >= 192u64,
-                        "partial write for UICR CUSTOMER[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(188u64) as usize;
-                    let end =
-                        (_end.saturating_sub(188u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_customern(
-                        15,
+                        3,
                         u32::from_ne_bytes(
                             _buf[start..end].try_into().unwrap(),
                         ),
@@ -2661,52 +2481,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                     let end =
                         (_end.saturating_sub(192u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_uicr_customern(
-                        16,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 200 && _end > 196 {
-                    assert!(
-                        _start <= 196u64 && _end >= 200u64,
-                        "partial write for UICR CUSTOMER[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(196u64) as usize;
-                    let end =
-                        (_end.saturating_sub(196u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_customern(
-                        17,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 204 && _end > 200 {
-                    assert!(
-                        _start <= 200u64 && _end >= 204u64,
-                        "partial write for UICR CUSTOMER[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(200u64) as usize;
-                    let end =
-                        (_end.saturating_sub(200u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_customern(
-                        18,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 208 && _end > 204 {
-                    assert!(
-                        _start <= 204u64 && _end >= 208u64,
-                        "partial write for UICR CUSTOMER[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(204u64) as usize;
-                    let end =
-                        (_end.saturating_sub(204u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_customern(
-                        19,
+                        4,
                         u32::from_ne_bytes(
                             _buf[start..end].try_into().unwrap(),
                         ),
@@ -2721,52 +2496,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                     let end =
                         (_end.saturating_sub(208u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_uicr_customern(
-                        20,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 216 && _end > 212 {
-                    assert!(
-                        _start <= 212u64 && _end >= 216u64,
-                        "partial write for UICR CUSTOMER[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(212u64) as usize;
-                    let end =
-                        (_end.saturating_sub(212u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_customern(
-                        21,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 220 && _end > 216 {
-                    assert!(
-                        _start <= 216u64 && _end >= 220u64,
-                        "partial write for UICR CUSTOMER[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(216u64) as usize;
-                    let end =
-                        (_end.saturating_sub(216u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_customern(
-                        22,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 224 && _end > 220 {
-                    assert!(
-                        _start <= 220u64 && _end >= 224u64,
-                        "partial write for UICR CUSTOMER[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(220u64) as usize;
-                    let end =
-                        (_end.saturating_sub(220u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_customern(
-                        23,
+                        5,
                         u32::from_ne_bytes(
                             _buf[start..end].try_into().unwrap(),
                         ),
@@ -2781,52 +2511,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                     let end =
                         (_end.saturating_sub(224u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_uicr_customern(
-                        24,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 232 && _end > 228 {
-                    assert!(
-                        _start <= 228u64 && _end >= 232u64,
-                        "partial write for UICR CUSTOMER[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(228u64) as usize;
-                    let end =
-                        (_end.saturating_sub(228u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_customern(
-                        25,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 236 && _end > 232 {
-                    assert!(
-                        _start <= 232u64 && _end >= 236u64,
-                        "partial write for UICR CUSTOMER[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(232u64) as usize;
-                    let end =
-                        (_end.saturating_sub(232u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_customern(
-                        26,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 240 && _end > 236 {
-                    assert!(
-                        _start <= 236u64 && _end >= 240u64,
-                        "partial write for UICR CUSTOMER[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(236u64) as usize;
-                    let end =
-                        (_end.saturating_sub(236u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_uicr_customern(
-                        27,
+                        6,
                         u32::from_ne_bytes(
                             _buf[start..end].try_into().unwrap(),
                         ),
@@ -2841,20 +2526,335 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                     let end =
                         (_end.saturating_sub(240u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_uicr_customern(
+                        7,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 260 && _end > 256 {
+                    assert!(
+                        _start <= 256u64 && _end >= 260u64,
+                        "partial write for UICR CUSTOMER[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(256u64) as usize;
+                    let end =
+                        (_end.saturating_sub(256u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_customern(
+                        8,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 276 && _end > 272 {
+                    assert!(
+                        _start <= 272u64 && _end >= 276u64,
+                        "partial write for UICR CUSTOMER[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(272u64) as usize;
+                    let end =
+                        (_end.saturating_sub(272u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_customern(
+                        9,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 292 && _end > 288 {
+                    assert!(
+                        _start <= 288u64 && _end >= 292u64,
+                        "partial write for UICR CUSTOMER[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(288u64) as usize;
+                    let end =
+                        (_end.saturating_sub(288u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_customern(
+                        10,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 308 && _end > 304 {
+                    assert!(
+                        _start <= 304u64 && _end >= 308u64,
+                        "partial write for UICR CUSTOMER[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(304u64) as usize;
+                    let end =
+                        (_end.saturating_sub(304u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_customern(
+                        11,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 324 && _end > 320 {
+                    assert!(
+                        _start <= 320u64 && _end >= 324u64,
+                        "partial write for UICR CUSTOMER[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(320u64) as usize;
+                    let end =
+                        (_end.saturating_sub(320u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_customern(
+                        12,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 340 && _end > 336 {
+                    assert!(
+                        _start <= 336u64 && _end >= 340u64,
+                        "partial write for UICR CUSTOMER[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(336u64) as usize;
+                    let end =
+                        (_end.saturating_sub(336u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_customern(
+                        13,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 356 && _end > 352 {
+                    assert!(
+                        _start <= 352u64 && _end >= 356u64,
+                        "partial write for UICR CUSTOMER[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(352u64) as usize;
+                    let end =
+                        (_end.saturating_sub(352u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_customern(
+                        14,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 372 && _end > 368 {
+                    assert!(
+                        _start <= 368u64 && _end >= 372u64,
+                        "partial write for UICR CUSTOMER[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(368u64) as usize;
+                    let end =
+                        (_end.saturating_sub(368u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_customern(
+                        15,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 388 && _end > 384 {
+                    assert!(
+                        _start <= 384u64 && _end >= 388u64,
+                        "partial write for UICR CUSTOMER[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(384u64) as usize;
+                    let end =
+                        (_end.saturating_sub(384u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_customern(
+                        16,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 404 && _end > 400 {
+                    assert!(
+                        _start <= 400u64 && _end >= 404u64,
+                        "partial write for UICR CUSTOMER[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(400u64) as usize;
+                    let end =
+                        (_end.saturating_sub(400u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_customern(
+                        17,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 420 && _end > 416 {
+                    assert!(
+                        _start <= 416u64 && _end >= 420u64,
+                        "partial write for UICR CUSTOMER[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(416u64) as usize;
+                    let end =
+                        (_end.saturating_sub(416u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_customern(
+                        18,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 436 && _end > 432 {
+                    assert!(
+                        _start <= 432u64 && _end >= 436u64,
+                        "partial write for UICR CUSTOMER[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(432u64) as usize;
+                    let end =
+                        (_end.saturating_sub(432u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_customern(
+                        19,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 452 && _end > 448 {
+                    assert!(
+                        _start <= 448u64 && _end >= 452u64,
+                        "partial write for UICR CUSTOMER[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(448u64) as usize;
+                    let end =
+                        (_end.saturating_sub(448u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_customern(
+                        20,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 468 && _end > 464 {
+                    assert!(
+                        _start <= 464u64 && _end >= 468u64,
+                        "partial write for UICR CUSTOMER[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(464u64) as usize;
+                    let end =
+                        (_end.saturating_sub(464u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_customern(
+                        21,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 484 && _end > 480 {
+                    assert!(
+                        _start <= 480u64 && _end >= 484u64,
+                        "partial write for UICR CUSTOMER[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(480u64) as usize;
+                    let end =
+                        (_end.saturating_sub(480u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_customern(
+                        22,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 500 && _end > 496 {
+                    assert!(
+                        _start <= 496u64 && _end >= 500u64,
+                        "partial write for UICR CUSTOMER[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(496u64) as usize;
+                    let end =
+                        (_end.saturating_sub(496u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_customern(
+                        23,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 516 && _end > 512 {
+                    assert!(
+                        _start <= 512u64 && _end >= 516u64,
+                        "partial write for UICR CUSTOMER[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(512u64) as usize;
+                    let end =
+                        (_end.saturating_sub(512u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_customern(
+                        24,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 532 && _end > 528 {
+                    assert!(
+                        _start <= 528u64 && _end >= 532u64,
+                        "partial write for UICR CUSTOMER[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(528u64) as usize;
+                    let end =
+                        (_end.saturating_sub(528u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_customern(
+                        25,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 548 && _end > 544 {
+                    assert!(
+                        _start <= 544u64 && _end >= 548u64,
+                        "partial write for UICR CUSTOMER[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(544u64) as usize;
+                    let end =
+                        (_end.saturating_sub(544u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_customern(
+                        26,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 564 && _end > 560 {
+                    assert!(
+                        _start <= 560u64 && _end >= 564u64,
+                        "partial write for UICR CUSTOMER[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(560u64) as usize;
+                    let end =
+                        (_end.saturating_sub(560u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_customern(
+                        27,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 580 && _end > 576 {
+                    assert!(
+                        _start <= 576u64 && _end >= 580u64,
+                        "partial write for UICR CUSTOMER[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(576u64) as usize;
+                    let end =
+                        (_end.saturating_sub(576u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_uicr_customern(
                         28,
                         u32::from_ne_bytes(
                             _buf[start..end].try_into().unwrap(),
                         ),
                     )?;
                 }
-                if _start < 248 && _end > 244 {
+                if _start < 596 && _end > 592 {
                     assert!(
-                        _start <= 244u64 && _end >= 248u64,
+                        _start <= 592u64 && _end >= 596u64,
                         "partial write for UICR CUSTOMER[%s] not implemented",
                     );
-                    let start = _start.saturating_sub(244u64) as usize;
+                    let start = _start.saturating_sub(592u64) as usize;
                     let end =
-                        (_end.saturating_sub(244u64) as usize).min(start + 4);
+                        (_end.saturating_sub(592u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_uicr_customern(
                         29,
                         u32::from_ne_bytes(
@@ -2862,14 +2862,14 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                         ),
                     )?;
                 }
-                if _start < 252 && _end > 248 {
+                if _start < 612 && _end > 608 {
                     assert!(
-                        _start <= 248u64 && _end >= 252u64,
+                        _start <= 608u64 && _end >= 612u64,
                         "partial write for UICR CUSTOMER[%s] not implemented",
                     );
-                    let start = _start.saturating_sub(248u64) as usize;
+                    let start = _start.saturating_sub(608u64) as usize;
                     let end =
-                        (_end.saturating_sub(248u64) as usize).min(start + 4);
+                        (_end.saturating_sub(608u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_uicr_customern(
                         30,
                         u32::from_ne_bytes(
@@ -2877,14 +2877,14 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                         ),
                     )?;
                 }
-                if _start < 256 && _end > 252 {
+                if _start < 628 && _end > 624 {
                     assert!(
-                        _start <= 252u64 && _end >= 256u64,
+                        _start <= 624u64 && _end >= 628u64,
                         "partial write for UICR CUSTOMER[%s] not implemented",
                     );
-                    let start = _start.saturating_sub(252u64) as usize;
+                    let start = _start.saturating_sub(624u64) as usize;
                     let end =
-                        (_end.saturating_sub(252u64) as usize).min(start + 4);
+                        (_end.saturating_sub(624u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_uicr_customern(
                         31,
                         u32::from_ne_bytes(
@@ -6060,72 +6060,12 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40001000 {
                         _buf[(1539 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1544 && _end > 1540 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_radio_dabn(1)?
-                        .to_ne_bytes();
-                    if _start <= 1540 && _end > 1540 {
-                        _buf[(1540 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1541 && _end > 1541 {
-                        _buf[(1541 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1542 && _end > 1542 {
-                        _buf[(1542 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1543 && _end > 1543 {
-                        _buf[(1543 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 1548 && _end > 1544 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_radio_dabn(2)?
-                        .to_ne_bytes();
-                    if _start <= 1544 && _end > 1544 {
-                        _buf[(1544 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1545 && _end > 1545 {
-                        _buf[(1545 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1546 && _end > 1546 {
-                        _buf[(1546 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1547 && _end > 1547 {
-                        _buf[(1547 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 1552 && _end > 1548 {
-                    let _value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .read_radio_dabn(3)?
-                        .to_ne_bytes();
-                    if _start <= 1548 && _end > 1548 {
-                        _buf[(1548 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1549 && _end > 1549 {
-                        _buf[(1549 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1550 && _end > 1550 {
-                        _buf[(1550 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1551 && _end > 1551 {
-                        _buf[(1551 - _start) as usize] = _value[3];
-                    }
-                }
                 if _start < 1556 && _end > 1552 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
-                        .read_radio_dabn(4)?
+                        .read_radio_dabn(1)?
                         .to_ne_bytes();
                     if _start <= 1552 && _end > 1552 {
                         _buf[(1552 - _start) as usize] = _value[0];
@@ -6140,64 +6080,124 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40001000 {
                         _buf[(1555 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1560 && _end > 1556 {
+                if _start < 1572 && _end > 1568 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_radio_dabn(2)?
+                        .to_ne_bytes();
+                    if _start <= 1568 && _end > 1568 {
+                        _buf[(1568 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1569 && _end > 1569 {
+                        _buf[(1569 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1570 && _end > 1570 {
+                        _buf[(1570 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1571 && _end > 1571 {
+                        _buf[(1571 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1588 && _end > 1584 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_radio_dabn(3)?
+                        .to_ne_bytes();
+                    if _start <= 1584 && _end > 1584 {
+                        _buf[(1584 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1585 && _end > 1585 {
+                        _buf[(1585 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1586 && _end > 1586 {
+                        _buf[(1586 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1587 && _end > 1587 {
+                        _buf[(1587 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1604 && _end > 1600 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_radio_dabn(4)?
+                        .to_ne_bytes();
+                    if _start <= 1600 && _end > 1600 {
+                        _buf[(1600 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1601 && _end > 1601 {
+                        _buf[(1601 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1602 && _end > 1602 {
+                        _buf[(1602 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1603 && _end > 1603 {
+                        _buf[(1603 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1620 && _end > 1616 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_radio_dabn(5)?
                         .to_ne_bytes();
-                    if _start <= 1556 && _end > 1556 {
-                        _buf[(1556 - _start) as usize] = _value[0];
+                    if _start <= 1616 && _end > 1616 {
+                        _buf[(1616 - _start) as usize] = _value[0];
                     }
-                    if _start <= 1557 && _end > 1557 {
-                        _buf[(1557 - _start) as usize] = _value[1];
+                    if _start <= 1617 && _end > 1617 {
+                        _buf[(1617 - _start) as usize] = _value[1];
                     }
-                    if _start <= 1558 && _end > 1558 {
-                        _buf[(1558 - _start) as usize] = _value[2];
+                    if _start <= 1618 && _end > 1618 {
+                        _buf[(1618 - _start) as usize] = _value[2];
                     }
-                    if _start <= 1559 && _end > 1559 {
-                        _buf[(1559 - _start) as usize] = _value[3];
+                    if _start <= 1619 && _end > 1619 {
+                        _buf[(1619 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1564 && _end > 1560 {
+                if _start < 1636 && _end > 1632 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_radio_dabn(6)?
                         .to_ne_bytes();
-                    if _start <= 1560 && _end > 1560 {
-                        _buf[(1560 - _start) as usize] = _value[0];
+                    if _start <= 1632 && _end > 1632 {
+                        _buf[(1632 - _start) as usize] = _value[0];
                     }
-                    if _start <= 1561 && _end > 1561 {
-                        _buf[(1561 - _start) as usize] = _value[1];
+                    if _start <= 1633 && _end > 1633 {
+                        _buf[(1633 - _start) as usize] = _value[1];
                     }
-                    if _start <= 1562 && _end > 1562 {
-                        _buf[(1562 - _start) as usize] = _value[2];
+                    if _start <= 1634 && _end > 1634 {
+                        _buf[(1634 - _start) as usize] = _value[2];
                     }
-                    if _start <= 1563 && _end > 1563 {
-                        _buf[(1563 - _start) as usize] = _value[3];
+                    if _start <= 1635 && _end > 1635 {
+                        _buf[(1635 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1568 && _end > 1564 {
+                if _start < 1652 && _end > 1648 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_radio_dabn(7)?
                         .to_ne_bytes();
-                    if _start <= 1564 && _end > 1564 {
-                        _buf[(1564 - _start) as usize] = _value[0];
+                    if _start <= 1648 && _end > 1648 {
+                        _buf[(1648 - _start) as usize] = _value[0];
                     }
-                    if _start <= 1565 && _end > 1565 {
-                        _buf[(1565 - _start) as usize] = _value[1];
+                    if _start <= 1649 && _end > 1649 {
+                        _buf[(1649 - _start) as usize] = _value[1];
                     }
-                    if _start <= 1566 && _end > 1566 {
-                        _buf[(1566 - _start) as usize] = _value[2];
+                    if _start <= 1650 && _end > 1650 {
+                        _buf[(1650 - _start) as usize] = _value[2];
                     }
-                    if _start <= 1567 && _end > 1567 {
-                        _buf[(1567 - _start) as usize] = _value[3];
+                    if _start <= 1651 && _end > 1651 {
+                        _buf[(1651 - _start) as usize] = _value[3];
                     }
                 }
                 if _start < 1572 && _end > 1568 {
@@ -6215,53 +6215,8 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40001000 {
                         _buf[(1571 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1576 && _end > 1572 {
-                    let _value = self.read_radio_dapn(1)?.to_ne_bytes();
-                    if _start <= 1572 && _end > 1572 {
-                        _buf[(1572 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1573 && _end > 1573 {
-                        _buf[(1573 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1574 && _end > 1574 {
-                        _buf[(1574 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1575 && _end > 1575 {
-                        _buf[(1575 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 1580 && _end > 1576 {
-                    let _value = self.read_radio_dapn(2)?.to_ne_bytes();
-                    if _start <= 1576 && _end > 1576 {
-                        _buf[(1576 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1577 && _end > 1577 {
-                        _buf[(1577 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1578 && _end > 1578 {
-                        _buf[(1578 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1579 && _end > 1579 {
-                        _buf[(1579 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 1584 && _end > 1580 {
-                    let _value = self.read_radio_dapn(3)?.to_ne_bytes();
-                    if _start <= 1580 && _end > 1580 {
-                        _buf[(1580 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1581 && _end > 1581 {
-                        _buf[(1581 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1582 && _end > 1582 {
-                        _buf[(1582 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1583 && _end > 1583 {
-                        _buf[(1583 - _start) as usize] = _value[3];
-                    }
-                }
                 if _start < 1588 && _end > 1584 {
-                    let _value = self.read_radio_dapn(4)?.to_ne_bytes();
+                    let _value = self.read_radio_dapn(1)?.to_ne_bytes();
                     if _start <= 1584 && _end > 1584 {
                         _buf[(1584 - _start) as usize] = _value[0];
                     }
@@ -6275,49 +6230,94 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40001000 {
                         _buf[(1587 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1592 && _end > 1588 {
+                if _start < 1604 && _end > 1600 {
+                    let _value = self.read_radio_dapn(2)?.to_ne_bytes();
+                    if _start <= 1600 && _end > 1600 {
+                        _buf[(1600 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1601 && _end > 1601 {
+                        _buf[(1601 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1602 && _end > 1602 {
+                        _buf[(1602 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1603 && _end > 1603 {
+                        _buf[(1603 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1620 && _end > 1616 {
+                    let _value = self.read_radio_dapn(3)?.to_ne_bytes();
+                    if _start <= 1616 && _end > 1616 {
+                        _buf[(1616 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1617 && _end > 1617 {
+                        _buf[(1617 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1618 && _end > 1618 {
+                        _buf[(1618 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1619 && _end > 1619 {
+                        _buf[(1619 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1636 && _end > 1632 {
+                    let _value = self.read_radio_dapn(4)?.to_ne_bytes();
+                    if _start <= 1632 && _end > 1632 {
+                        _buf[(1632 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1633 && _end > 1633 {
+                        _buf[(1633 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1634 && _end > 1634 {
+                        _buf[(1634 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1635 && _end > 1635 {
+                        _buf[(1635 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1652 && _end > 1648 {
                     let _value = self.read_radio_dapn(5)?.to_ne_bytes();
-                    if _start <= 1588 && _end > 1588 {
-                        _buf[(1588 - _start) as usize] = _value[0];
+                    if _start <= 1648 && _end > 1648 {
+                        _buf[(1648 - _start) as usize] = _value[0];
                     }
-                    if _start <= 1589 && _end > 1589 {
-                        _buf[(1589 - _start) as usize] = _value[1];
+                    if _start <= 1649 && _end > 1649 {
+                        _buf[(1649 - _start) as usize] = _value[1];
                     }
-                    if _start <= 1590 && _end > 1590 {
-                        _buf[(1590 - _start) as usize] = _value[2];
+                    if _start <= 1650 && _end > 1650 {
+                        _buf[(1650 - _start) as usize] = _value[2];
                     }
-                    if _start <= 1591 && _end > 1591 {
-                        _buf[(1591 - _start) as usize] = _value[3];
+                    if _start <= 1651 && _end > 1651 {
+                        _buf[(1651 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1596 && _end > 1592 {
+                if _start < 1668 && _end > 1664 {
                     let _value = self.read_radio_dapn(6)?.to_ne_bytes();
-                    if _start <= 1592 && _end > 1592 {
-                        _buf[(1592 - _start) as usize] = _value[0];
+                    if _start <= 1664 && _end > 1664 {
+                        _buf[(1664 - _start) as usize] = _value[0];
                     }
-                    if _start <= 1593 && _end > 1593 {
-                        _buf[(1593 - _start) as usize] = _value[1];
+                    if _start <= 1665 && _end > 1665 {
+                        _buf[(1665 - _start) as usize] = _value[1];
                     }
-                    if _start <= 1594 && _end > 1594 {
-                        _buf[(1594 - _start) as usize] = _value[2];
+                    if _start <= 1666 && _end > 1666 {
+                        _buf[(1666 - _start) as usize] = _value[2];
                     }
-                    if _start <= 1595 && _end > 1595 {
-                        _buf[(1595 - _start) as usize] = _value[3];
+                    if _start <= 1667 && _end > 1667 {
+                        _buf[(1667 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1600 && _end > 1596 {
+                if _start < 1684 && _end > 1680 {
                     let _value = self.read_radio_dapn(7)?.to_ne_bytes();
-                    if _start <= 1596 && _end > 1596 {
-                        _buf[(1596 - _start) as usize] = _value[0];
+                    if _start <= 1680 && _end > 1680 {
+                        _buf[(1680 - _start) as usize] = _value[0];
                     }
-                    if _start <= 1597 && _end > 1597 {
-                        _buf[(1597 - _start) as usize] = _value[1];
+                    if _start <= 1681 && _end > 1681 {
+                        _buf[(1681 - _start) as usize] = _value[1];
                     }
-                    if _start <= 1598 && _end > 1598 {
-                        _buf[(1598 - _start) as usize] = _value[2];
+                    if _start <= 1682 && _end > 1682 {
+                        _buf[(1682 - _start) as usize] = _value[2];
                     }
-                    if _start <= 1599 && _end > 1599 {
-                        _buf[(1599 - _start) as usize] = _value[3];
+                    if _start <= 1683 && _end > 1683 {
+                        _buf[(1683 - _start) as usize] = _value[3];
                     }
                 }
                 if _start < 1604 && _end > 1600 {
@@ -6915,51 +6915,6 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40001000 {
                         ),
                     )?;
                 }
-                if _start < 1544 && _end > 1540 {
-                    assert!(
-                        _start <= 1540u64 && _end >= 1544u64,
-                        "partial write for RADIO DAB[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(1540u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1540u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_radio_dabn(
-                        1,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 1548 && _end > 1544 {
-                    assert!(
-                        _start <= 1544u64 && _end >= 1548u64,
-                        "partial write for RADIO DAB[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(1544u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1544u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_radio_dabn(
-                        2,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 1552 && _end > 1548 {
-                    assert!(
-                        _start <= 1548u64 && _end >= 1552u64,
-                        "partial write for RADIO DAB[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(1548u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1548u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_radio_dabn(
-                        3,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
                 if _start < 1556 && _end > 1552 {
                     assert!(
                         _start <= 1552u64 && _end >= 1556u64,
@@ -6969,20 +6924,65 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40001000 {
                     let end =
                         (_end.saturating_sub(1552u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_radio_dabn(
+                        1,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1572 && _end > 1568 {
+                    assert!(
+                        _start <= 1568u64 && _end >= 1572u64,
+                        "partial write for RADIO DAB[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(1568u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1568u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_radio_dabn(
+                        2,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1588 && _end > 1584 {
+                    assert!(
+                        _start <= 1584u64 && _end >= 1588u64,
+                        "partial write for RADIO DAB[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(1584u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1584u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_radio_dabn(
+                        3,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1604 && _end > 1600 {
+                    assert!(
+                        _start <= 1600u64 && _end >= 1604u64,
+                        "partial write for RADIO DAB[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(1600u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1600u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_radio_dabn(
                         4,
                         u32::from_ne_bytes(
                             _buf[start..end].try_into().unwrap(),
                         ),
                     )?;
                 }
-                if _start < 1560 && _end > 1556 {
+                if _start < 1620 && _end > 1616 {
                     assert!(
-                        _start <= 1556u64 && _end >= 1560u64,
+                        _start <= 1616u64 && _end >= 1620u64,
                         "partial write for RADIO DAB[%s] not implemented",
                     );
-                    let start = _start.saturating_sub(1556u64) as usize;
+                    let start = _start.saturating_sub(1616u64) as usize;
                     let end =
-                        (_end.saturating_sub(1556u64) as usize).min(start + 4);
+                        (_end.saturating_sub(1616u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_radio_dabn(
                         5,
                         u32::from_ne_bytes(
@@ -6990,14 +6990,14 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40001000 {
                         ),
                     )?;
                 }
-                if _start < 1564 && _end > 1560 {
+                if _start < 1636 && _end > 1632 {
                     assert!(
-                        _start <= 1560u64 && _end >= 1564u64,
+                        _start <= 1632u64 && _end >= 1636u64,
                         "partial write for RADIO DAB[%s] not implemented",
                     );
-                    let start = _start.saturating_sub(1560u64) as usize;
+                    let start = _start.saturating_sub(1632u64) as usize;
                     let end =
-                        (_end.saturating_sub(1560u64) as usize).min(start + 4);
+                        (_end.saturating_sub(1632u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_radio_dabn(
                         6,
                         u32::from_ne_bytes(
@@ -7005,14 +7005,14 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40001000 {
                         ),
                     )?;
                 }
-                if _start < 1568 && _end > 1564 {
+                if _start < 1652 && _end > 1648 {
                     assert!(
-                        _start <= 1564u64 && _end >= 1568u64,
+                        _start <= 1648u64 && _end >= 1652u64,
                         "partial write for RADIO DAB[%s] not implemented",
                     );
-                    let start = _start.saturating_sub(1564u64) as usize;
+                    let start = _start.saturating_sub(1648u64) as usize;
                     let end =
-                        (_end.saturating_sub(1564u64) as usize).min(start + 4);
+                        (_end.saturating_sub(1648u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_radio_dabn(
                         7,
                         u32::from_ne_bytes(
@@ -7027,53 +7027,53 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40001000 {
                         (_end.saturating_sub(1568u64) as usize).min(start + 4);
                     self.write_radio_dapn(0, offset, &_buf[start..end])?;
                 }
-                if _start < 1576 && _end > 1572 {
-                    let offset = 1572u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1572u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1572u64) as usize).min(start + 4);
-                    self.write_radio_dapn(1, offset, &_buf[start..end])?;
-                }
-                if _start < 1580 && _end > 1576 {
-                    let offset = 1576u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1576u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1576u64) as usize).min(start + 4);
-                    self.write_radio_dapn(2, offset, &_buf[start..end])?;
-                }
-                if _start < 1584 && _end > 1580 {
-                    let offset = 1580u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1580u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1580u64) as usize).min(start + 4);
-                    self.write_radio_dapn(3, offset, &_buf[start..end])?;
-                }
                 if _start < 1588 && _end > 1584 {
                     let offset = 1584u64.saturating_sub(_start);
                     let start = _start.saturating_sub(1584u64) as usize;
                     let end =
                         (_end.saturating_sub(1584u64) as usize).min(start + 4);
+                    self.write_radio_dapn(1, offset, &_buf[start..end])?;
+                }
+                if _start < 1604 && _end > 1600 {
+                    let offset = 1600u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(1600u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1600u64) as usize).min(start + 4);
+                    self.write_radio_dapn(2, offset, &_buf[start..end])?;
+                }
+                if _start < 1620 && _end > 1616 {
+                    let offset = 1616u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(1616u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1616u64) as usize).min(start + 4);
+                    self.write_radio_dapn(3, offset, &_buf[start..end])?;
+                }
+                if _start < 1636 && _end > 1632 {
+                    let offset = 1632u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(1632u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1632u64) as usize).min(start + 4);
                     self.write_radio_dapn(4, offset, &_buf[start..end])?;
                 }
-                if _start < 1592 && _end > 1588 {
-                    let offset = 1588u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1588u64) as usize;
+                if _start < 1652 && _end > 1648 {
+                    let offset = 1648u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(1648u64) as usize;
                     let end =
-                        (_end.saturating_sub(1588u64) as usize).min(start + 4);
+                        (_end.saturating_sub(1648u64) as usize).min(start + 4);
                     self.write_radio_dapn(5, offset, &_buf[start..end])?;
                 }
-                if _start < 1596 && _end > 1592 {
-                    let offset = 1592u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1592u64) as usize;
+                if _start < 1668 && _end > 1664 {
+                    let offset = 1664u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(1664u64) as usize;
                     let end =
-                        (_end.saturating_sub(1592u64) as usize).min(start + 4);
+                        (_end.saturating_sub(1664u64) as usize).min(start + 4);
                     self.write_radio_dapn(6, offset, &_buf[start..end])?;
                 }
-                if _start < 1600 && _end > 1596 {
-                    let offset = 1596u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1596u64) as usize;
+                if _start < 1684 && _end > 1680 {
+                    let offset = 1680u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(1680u64) as usize;
                     let end =
-                        (_end.saturating_sub(1596u64) as usize).min(start + 4);
+                        (_end.saturating_sub(1680u64) as usize).min(start + 4);
                     self.write_radio_dapn(7, offset, &_buf[start..end])?;
                 }
                 if _start < 1604 && _end > 1600 {
@@ -11545,64 +11545,64 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40006000 {
                         _buf[(259 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 264 && _end > 260 {
+                if _start < 276 && _end > 272 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_gpiote_events_inn(1)?
                         .to_ne_bytes();
-                    if _start <= 260 && _end > 260 {
-                        _buf[(260 - _start) as usize] = _value[0];
+                    if _start <= 272 && _end > 272 {
+                        _buf[(272 - _start) as usize] = _value[0];
                     }
-                    if _start <= 261 && _end > 261 {
-                        _buf[(261 - _start) as usize] = _value[1];
+                    if _start <= 273 && _end > 273 {
+                        _buf[(273 - _start) as usize] = _value[1];
                     }
-                    if _start <= 262 && _end > 262 {
-                        _buf[(262 - _start) as usize] = _value[2];
+                    if _start <= 274 && _end > 274 {
+                        _buf[(274 - _start) as usize] = _value[2];
                     }
-                    if _start <= 263 && _end > 263 {
-                        _buf[(263 - _start) as usize] = _value[3];
+                    if _start <= 275 && _end > 275 {
+                        _buf[(275 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 268 && _end > 264 {
+                if _start < 292 && _end > 288 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_gpiote_events_inn(2)?
                         .to_ne_bytes();
-                    if _start <= 264 && _end > 264 {
-                        _buf[(264 - _start) as usize] = _value[0];
+                    if _start <= 288 && _end > 288 {
+                        _buf[(288 - _start) as usize] = _value[0];
                     }
-                    if _start <= 265 && _end > 265 {
-                        _buf[(265 - _start) as usize] = _value[1];
+                    if _start <= 289 && _end > 289 {
+                        _buf[(289 - _start) as usize] = _value[1];
                     }
-                    if _start <= 266 && _end > 266 {
-                        _buf[(266 - _start) as usize] = _value[2];
+                    if _start <= 290 && _end > 290 {
+                        _buf[(290 - _start) as usize] = _value[2];
                     }
-                    if _start <= 267 && _end > 267 {
-                        _buf[(267 - _start) as usize] = _value[3];
+                    if _start <= 291 && _end > 291 {
+                        _buf[(291 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 272 && _end > 268 {
+                if _start < 308 && _end > 304 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_gpiote_events_inn(3)?
                         .to_ne_bytes();
-                    if _start <= 268 && _end > 268 {
-                        _buf[(268 - _start) as usize] = _value[0];
+                    if _start <= 304 && _end > 304 {
+                        _buf[(304 - _start) as usize] = _value[0];
                     }
-                    if _start <= 269 && _end > 269 {
-                        _buf[(269 - _start) as usize] = _value[1];
+                    if _start <= 305 && _end > 305 {
+                        _buf[(305 - _start) as usize] = _value[1];
                     }
-                    if _start <= 270 && _end > 270 {
-                        _buf[(270 - _start) as usize] = _value[2];
+                    if _start <= 306 && _end > 306 {
+                        _buf[(306 - _start) as usize] = _value[2];
                     }
-                    if _start <= 271 && _end > 271 {
-                        _buf[(271 - _start) as usize] = _value[3];
+                    if _start <= 307 && _end > 307 {
+                        _buf[(307 - _start) as usize] = _value[3];
                     }
                 }
                 Ok(())
@@ -11679,49 +11679,49 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40006000 {
                         _buf[(1299 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1304 && _end > 1300 {
+                if _start < 1316 && _end > 1312 {
                     let _value = self.read_gpiote_confign(1)?.to_ne_bytes();
-                    if _start <= 1300 && _end > 1300 {
-                        _buf[(1300 - _start) as usize] = _value[0];
+                    if _start <= 1312 && _end > 1312 {
+                        _buf[(1312 - _start) as usize] = _value[0];
                     }
-                    if _start <= 1301 && _end > 1301 {
-                        _buf[(1301 - _start) as usize] = _value[1];
+                    if _start <= 1313 && _end > 1313 {
+                        _buf[(1313 - _start) as usize] = _value[1];
                     }
-                    if _start <= 1302 && _end > 1302 {
-                        _buf[(1302 - _start) as usize] = _value[2];
+                    if _start <= 1314 && _end > 1314 {
+                        _buf[(1314 - _start) as usize] = _value[2];
                     }
-                    if _start <= 1303 && _end > 1303 {
-                        _buf[(1303 - _start) as usize] = _value[3];
+                    if _start <= 1315 && _end > 1315 {
+                        _buf[(1315 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1308 && _end > 1304 {
+                if _start < 1332 && _end > 1328 {
                     let _value = self.read_gpiote_confign(2)?.to_ne_bytes();
-                    if _start <= 1304 && _end > 1304 {
-                        _buf[(1304 - _start) as usize] = _value[0];
+                    if _start <= 1328 && _end > 1328 {
+                        _buf[(1328 - _start) as usize] = _value[0];
                     }
-                    if _start <= 1305 && _end > 1305 {
-                        _buf[(1305 - _start) as usize] = _value[1];
+                    if _start <= 1329 && _end > 1329 {
+                        _buf[(1329 - _start) as usize] = _value[1];
                     }
-                    if _start <= 1306 && _end > 1306 {
-                        _buf[(1306 - _start) as usize] = _value[2];
+                    if _start <= 1330 && _end > 1330 {
+                        _buf[(1330 - _start) as usize] = _value[2];
                     }
-                    if _start <= 1307 && _end > 1307 {
-                        _buf[(1307 - _start) as usize] = _value[3];
+                    if _start <= 1331 && _end > 1331 {
+                        _buf[(1331 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1312 && _end > 1308 {
+                if _start < 1348 && _end > 1344 {
                     let _value = self.read_gpiote_confign(3)?.to_ne_bytes();
-                    if _start <= 1308 && _end > 1308 {
-                        _buf[(1308 - _start) as usize] = _value[0];
+                    if _start <= 1344 && _end > 1344 {
+                        _buf[(1344 - _start) as usize] = _value[0];
                     }
-                    if _start <= 1309 && _end > 1309 {
-                        _buf[(1309 - _start) as usize] = _value[1];
+                    if _start <= 1345 && _end > 1345 {
+                        _buf[(1345 - _start) as usize] = _value[1];
                     }
-                    if _start <= 1310 && _end > 1310 {
-                        _buf[(1310 - _start) as usize] = _value[2];
+                    if _start <= 1346 && _end > 1346 {
+                        _buf[(1346 - _start) as usize] = _value[2];
                     }
-                    if _start <= 1311 && _end > 1311 {
-                        _buf[(1311 - _start) as usize] = _value[3];
+                    if _start <= 1347 && _end > 1347 {
+                        _buf[(1347 - _start) as usize] = _value[3];
                     }
                 }
                 Ok(())
@@ -11764,11 +11764,11 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40006000 {
                         ),
                     )?;
                 }
-                if _start < 8 && _end > 4 {
-                    assert ! (_start <= 4u64 && _end >= 8u64 , "partial write for GPIOTE TASKS_OUT[%s] not implemented" ,);
-                    let start = _start.saturating_sub(4u64) as usize;
+                if _start < 20 && _end > 16 {
+                    assert ! (_start <= 16u64 && _end >= 20u64 , "partial write for GPIOTE TASKS_OUT[%s] not implemented" ,);
+                    let start = _start.saturating_sub(16u64) as usize;
                     let end =
-                        (_end.saturating_sub(4u64) as usize).min(start + 4);
+                        (_end.saturating_sub(16u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_gpiote_tasks_outn(
                         1,
                         u32::from_ne_bytes(
@@ -11776,11 +11776,11 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40006000 {
                         ),
                     )?;
                 }
-                if _start < 12 && _end > 8 {
-                    assert ! (_start <= 8u64 && _end >= 12u64 , "partial write for GPIOTE TASKS_OUT[%s] not implemented" ,);
-                    let start = _start.saturating_sub(8u64) as usize;
+                if _start < 36 && _end > 32 {
+                    assert ! (_start <= 32u64 && _end >= 36u64 , "partial write for GPIOTE TASKS_OUT[%s] not implemented" ,);
+                    let start = _start.saturating_sub(32u64) as usize;
                     let end =
-                        (_end.saturating_sub(8u64) as usize).min(start + 4);
+                        (_end.saturating_sub(32u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_gpiote_tasks_outn(
                         2,
                         u32::from_ne_bytes(
@@ -11788,11 +11788,11 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40006000 {
                         ),
                     )?;
                 }
-                if _start < 16 && _end > 12 {
-                    assert ! (_start <= 12u64 && _end >= 16u64 , "partial write for GPIOTE TASKS_OUT[%s] not implemented" ,);
-                    let start = _start.saturating_sub(12u64) as usize;
+                if _start < 52 && _end > 48 {
+                    assert ! (_start <= 48u64 && _end >= 52u64 , "partial write for GPIOTE TASKS_OUT[%s] not implemented" ,);
+                    let start = _start.saturating_sub(48u64) as usize;
                     let end =
-                        (_end.saturating_sub(12u64) as usize).min(start + 4);
+                        (_end.saturating_sub(48u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_gpiote_tasks_outn(
                         3,
                         u32::from_ne_bytes(
@@ -11815,11 +11815,11 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40006000 {
                         ),
                     )?;
                 }
-                if _start < 264 && _end > 260 {
-                    assert ! (_start <= 260u64 && _end >= 264u64 , "partial write for GPIOTE EVENTS_IN[%s] not implemented" ,);
-                    let start = _start.saturating_sub(260u64) as usize;
+                if _start < 276 && _end > 272 {
+                    assert ! (_start <= 272u64 && _end >= 276u64 , "partial write for GPIOTE EVENTS_IN[%s] not implemented" ,);
+                    let start = _start.saturating_sub(272u64) as usize;
                     let end =
-                        (_end.saturating_sub(260u64) as usize).min(start + 4);
+                        (_end.saturating_sub(272u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_gpiote_events_inn(
                         1,
                         u32::from_ne_bytes(
@@ -11827,11 +11827,11 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40006000 {
                         ),
                     )?;
                 }
-                if _start < 268 && _end > 264 {
-                    assert ! (_start <= 264u64 && _end >= 268u64 , "partial write for GPIOTE EVENTS_IN[%s] not implemented" ,);
-                    let start = _start.saturating_sub(264u64) as usize;
+                if _start < 292 && _end > 288 {
+                    assert ! (_start <= 288u64 && _end >= 292u64 , "partial write for GPIOTE EVENTS_IN[%s] not implemented" ,);
+                    let start = _start.saturating_sub(288u64) as usize;
                     let end =
-                        (_end.saturating_sub(264u64) as usize).min(start + 4);
+                        (_end.saturating_sub(288u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_gpiote_events_inn(
                         2,
                         u32::from_ne_bytes(
@@ -11839,11 +11839,11 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40006000 {
                         ),
                     )?;
                 }
-                if _start < 272 && _end > 268 {
-                    assert ! (_start <= 268u64 && _end >= 272u64 , "partial write for GPIOTE EVENTS_IN[%s] not implemented" ,);
-                    let start = _start.saturating_sub(268u64) as usize;
+                if _start < 308 && _end > 304 {
+                    assert ! (_start <= 304u64 && _end >= 308u64 , "partial write for GPIOTE EVENTS_IN[%s] not implemented" ,);
+                    let start = _start.saturating_sub(304u64) as usize;
                     let end =
-                        (_end.saturating_sub(268u64) as usize).min(start + 4);
+                        (_end.saturating_sub(304u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_gpiote_events_inn(
                         3,
                         u32::from_ne_bytes(
@@ -11895,25 +11895,25 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40006000 {
                         (_end.saturating_sub(1296u64) as usize).min(start + 4);
                     self.write_gpiote_confign(0, offset, &_buf[start..end])?;
                 }
-                if _start < 1304 && _end > 1300 {
-                    let offset = 1300u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1300u64) as usize;
+                if _start < 1316 && _end > 1312 {
+                    let offset = 1312u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(1312u64) as usize;
                     let end =
-                        (_end.saturating_sub(1300u64) as usize).min(start + 4);
+                        (_end.saturating_sub(1312u64) as usize).min(start + 4);
                     self.write_gpiote_confign(1, offset, &_buf[start..end])?;
                 }
-                if _start < 1308 && _end > 1304 {
-                    let offset = 1304u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1304u64) as usize;
+                if _start < 1332 && _end > 1328 {
+                    let offset = 1328u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(1328u64) as usize;
                     let end =
-                        (_end.saturating_sub(1304u64) as usize).min(start + 4);
+                        (_end.saturating_sub(1328u64) as usize).min(start + 4);
                     self.write_gpiote_confign(2, offset, &_buf[start..end])?;
                 }
-                if _start < 1312 && _end > 1308 {
-                    let offset = 1308u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1308u64) as usize;
+                if _start < 1348 && _end > 1344 {
+                    let offset = 1344u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(1344u64) as usize;
                     let end =
-                        (_end.saturating_sub(1308u64) as usize).min(start + 4);
+                        (_end.saturating_sub(1344u64) as usize).min(start + 4);
                     self.write_gpiote_confign(3, offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -12572,64 +12572,64 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40008000 {
                         _buf[(323 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 328 && _end > 324 {
+                if _start < 340 && _end > 336 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_timer0_events_comparen(1)?
                         .to_ne_bytes();
-                    if _start <= 324 && _end > 324 {
-                        _buf[(324 - _start) as usize] = _value[0];
+                    if _start <= 336 && _end > 336 {
+                        _buf[(336 - _start) as usize] = _value[0];
                     }
-                    if _start <= 325 && _end > 325 {
-                        _buf[(325 - _start) as usize] = _value[1];
+                    if _start <= 337 && _end > 337 {
+                        _buf[(337 - _start) as usize] = _value[1];
                     }
-                    if _start <= 326 && _end > 326 {
-                        _buf[(326 - _start) as usize] = _value[2];
+                    if _start <= 338 && _end > 338 {
+                        _buf[(338 - _start) as usize] = _value[2];
                     }
-                    if _start <= 327 && _end > 327 {
-                        _buf[(327 - _start) as usize] = _value[3];
+                    if _start <= 339 && _end > 339 {
+                        _buf[(339 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 332 && _end > 328 {
+                if _start < 356 && _end > 352 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_timer0_events_comparen(2)?
                         .to_ne_bytes();
-                    if _start <= 328 && _end > 328 {
-                        _buf[(328 - _start) as usize] = _value[0];
+                    if _start <= 352 && _end > 352 {
+                        _buf[(352 - _start) as usize] = _value[0];
                     }
-                    if _start <= 329 && _end > 329 {
-                        _buf[(329 - _start) as usize] = _value[1];
+                    if _start <= 353 && _end > 353 {
+                        _buf[(353 - _start) as usize] = _value[1];
                     }
-                    if _start <= 330 && _end > 330 {
-                        _buf[(330 - _start) as usize] = _value[2];
+                    if _start <= 354 && _end > 354 {
+                        _buf[(354 - _start) as usize] = _value[2];
                     }
-                    if _start <= 331 && _end > 331 {
-                        _buf[(331 - _start) as usize] = _value[3];
+                    if _start <= 355 && _end > 355 {
+                        _buf[(355 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 336 && _end > 332 {
+                if _start < 372 && _end > 368 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_timer0_events_comparen(3)?
                         .to_ne_bytes();
-                    if _start <= 332 && _end > 332 {
-                        _buf[(332 - _start) as usize] = _value[0];
+                    if _start <= 368 && _end > 368 {
+                        _buf[(368 - _start) as usize] = _value[0];
                     }
-                    if _start <= 333 && _end > 333 {
-                        _buf[(333 - _start) as usize] = _value[1];
+                    if _start <= 369 && _end > 369 {
+                        _buf[(369 - _start) as usize] = _value[1];
                     }
-                    if _start <= 334 && _end > 334 {
-                        _buf[(334 - _start) as usize] = _value[2];
+                    if _start <= 370 && _end > 370 {
+                        _buf[(370 - _start) as usize] = _value[2];
                     }
-                    if _start <= 335 && _end > 335 {
-                        _buf[(335 - _start) as usize] = _value[3];
+                    if _start <= 371 && _end > 371 {
+                        _buf[(371 - _start) as usize] = _value[3];
                     }
                 }
                 Ok(())
@@ -12757,64 +12757,64 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40008000 {
                         _buf[(1347 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1352 && _end > 1348 {
+                if _start < 1364 && _end > 1360 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_timer0_ccn(1)?
                         .to_ne_bytes();
-                    if _start <= 1348 && _end > 1348 {
-                        _buf[(1348 - _start) as usize] = _value[0];
+                    if _start <= 1360 && _end > 1360 {
+                        _buf[(1360 - _start) as usize] = _value[0];
                     }
-                    if _start <= 1349 && _end > 1349 {
-                        _buf[(1349 - _start) as usize] = _value[1];
+                    if _start <= 1361 && _end > 1361 {
+                        _buf[(1361 - _start) as usize] = _value[1];
                     }
-                    if _start <= 1350 && _end > 1350 {
-                        _buf[(1350 - _start) as usize] = _value[2];
+                    if _start <= 1362 && _end > 1362 {
+                        _buf[(1362 - _start) as usize] = _value[2];
                     }
-                    if _start <= 1351 && _end > 1351 {
-                        _buf[(1351 - _start) as usize] = _value[3];
+                    if _start <= 1363 && _end > 1363 {
+                        _buf[(1363 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1356 && _end > 1352 {
+                if _start < 1380 && _end > 1376 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_timer0_ccn(2)?
                         .to_ne_bytes();
-                    if _start <= 1352 && _end > 1352 {
-                        _buf[(1352 - _start) as usize] = _value[0];
+                    if _start <= 1376 && _end > 1376 {
+                        _buf[(1376 - _start) as usize] = _value[0];
                     }
-                    if _start <= 1353 && _end > 1353 {
-                        _buf[(1353 - _start) as usize] = _value[1];
+                    if _start <= 1377 && _end > 1377 {
+                        _buf[(1377 - _start) as usize] = _value[1];
                     }
-                    if _start <= 1354 && _end > 1354 {
-                        _buf[(1354 - _start) as usize] = _value[2];
+                    if _start <= 1378 && _end > 1378 {
+                        _buf[(1378 - _start) as usize] = _value[2];
                     }
-                    if _start <= 1355 && _end > 1355 {
-                        _buf[(1355 - _start) as usize] = _value[3];
+                    if _start <= 1379 && _end > 1379 {
+                        _buf[(1379 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1360 && _end > 1356 {
+                if _start < 1396 && _end > 1392 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_timer0_ccn(3)?
                         .to_ne_bytes();
-                    if _start <= 1356 && _end > 1356 {
-                        _buf[(1356 - _start) as usize] = _value[0];
+                    if _start <= 1392 && _end > 1392 {
+                        _buf[(1392 - _start) as usize] = _value[0];
                     }
-                    if _start <= 1357 && _end > 1357 {
-                        _buf[(1357 - _start) as usize] = _value[1];
+                    if _start <= 1393 && _end > 1393 {
+                        _buf[(1393 - _start) as usize] = _value[1];
                     }
-                    if _start <= 1358 && _end > 1358 {
-                        _buf[(1358 - _start) as usize] = _value[2];
+                    if _start <= 1394 && _end > 1394 {
+                        _buf[(1394 - _start) as usize] = _value[2];
                     }
-                    if _start <= 1359 && _end > 1359 {
-                        _buf[(1359 - _start) as usize] = _value[3];
+                    if _start <= 1395 && _end > 1395 {
+                        _buf[(1395 - _start) as usize] = _value[3];
                     }
                 }
                 Ok(())
@@ -12927,11 +12927,11 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40008000 {
                         ),
                     )?;
                 }
-                if _start < 72 && _end > 68 {
-                    assert ! (_start <= 68u64 && _end >= 72u64 , "partial write for TIMER0 TASKS_CAPTURE[%s] not implemented" ,);
-                    let start = _start.saturating_sub(68u64) as usize;
+                if _start < 84 && _end > 80 {
+                    assert ! (_start <= 80u64 && _end >= 84u64 , "partial write for TIMER0 TASKS_CAPTURE[%s] not implemented" ,);
+                    let start = _start.saturating_sub(80u64) as usize;
                     let end =
-                        (_end.saturating_sub(68u64) as usize).min(start + 4);
+                        (_end.saturating_sub(80u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_timer0_tasks_capturen(
                         1,
                         u32::from_ne_bytes(
@@ -12939,11 +12939,11 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40008000 {
                         ),
                     )?;
                 }
-                if _start < 76 && _end > 72 {
-                    assert ! (_start <= 72u64 && _end >= 76u64 , "partial write for TIMER0 TASKS_CAPTURE[%s] not implemented" ,);
-                    let start = _start.saturating_sub(72u64) as usize;
+                if _start < 100 && _end > 96 {
+                    assert ! (_start <= 96u64 && _end >= 100u64 , "partial write for TIMER0 TASKS_CAPTURE[%s] not implemented" ,);
+                    let start = _start.saturating_sub(96u64) as usize;
                     let end =
-                        (_end.saturating_sub(72u64) as usize).min(start + 4);
+                        (_end.saturating_sub(96u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_timer0_tasks_capturen(
                         2,
                         u32::from_ne_bytes(
@@ -12951,11 +12951,11 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40008000 {
                         ),
                     )?;
                 }
-                if _start < 80 && _end > 76 {
-                    assert ! (_start <= 76u64 && _end >= 80u64 , "partial write for TIMER0 TASKS_CAPTURE[%s] not implemented" ,);
-                    let start = _start.saturating_sub(76u64) as usize;
+                if _start < 116 && _end > 112 {
+                    assert ! (_start <= 112u64 && _end >= 116u64 , "partial write for TIMER0 TASKS_CAPTURE[%s] not implemented" ,);
+                    let start = _start.saturating_sub(112u64) as usize;
                     let end =
-                        (_end.saturating_sub(76u64) as usize).min(start + 4);
+                        (_end.saturating_sub(112u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_timer0_tasks_capturen(
                         3,
                         u32::from_ne_bytes(
@@ -12978,11 +12978,11 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40008000 {
                         ),
                     )?;
                 }
-                if _start < 328 && _end > 324 {
-                    assert ! (_start <= 324u64 && _end >= 328u64 , "partial write for TIMER0 EVENTS_COMPARE[%s] not implemented" ,);
-                    let start = _start.saturating_sub(324u64) as usize;
+                if _start < 340 && _end > 336 {
+                    assert ! (_start <= 336u64 && _end >= 340u64 , "partial write for TIMER0 EVENTS_COMPARE[%s] not implemented" ,);
+                    let start = _start.saturating_sub(336u64) as usize;
                     let end =
-                        (_end.saturating_sub(324u64) as usize).min(start + 4);
+                        (_end.saturating_sub(336u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_timer0_events_comparen(
                         1,
                         u32::from_ne_bytes(
@@ -12990,11 +12990,11 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40008000 {
                         ),
                     )?;
                 }
-                if _start < 332 && _end > 328 {
-                    assert ! (_start <= 328u64 && _end >= 332u64 , "partial write for TIMER0 EVENTS_COMPARE[%s] not implemented" ,);
-                    let start = _start.saturating_sub(328u64) as usize;
+                if _start < 356 && _end > 352 {
+                    assert ! (_start <= 352u64 && _end >= 356u64 , "partial write for TIMER0 EVENTS_COMPARE[%s] not implemented" ,);
+                    let start = _start.saturating_sub(352u64) as usize;
                     let end =
-                        (_end.saturating_sub(328u64) as usize).min(start + 4);
+                        (_end.saturating_sub(352u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_timer0_events_comparen(
                         2,
                         u32::from_ne_bytes(
@@ -13002,11 +13002,11 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40008000 {
                         ),
                     )?;
                 }
-                if _start < 336 && _end > 332 {
-                    assert ! (_start <= 332u64 && _end >= 336u64 , "partial write for TIMER0 EVENTS_COMPARE[%s] not implemented" ,);
-                    let start = _start.saturating_sub(332u64) as usize;
+                if _start < 372 && _end > 368 {
+                    assert ! (_start <= 368u64 && _end >= 372u64 , "partial write for TIMER0 EVENTS_COMPARE[%s] not implemented" ,);
+                    let start = _start.saturating_sub(368u64) as usize;
                     let end =
-                        (_end.saturating_sub(332u64) as usize).min(start + 4);
+                        (_end.saturating_sub(368u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_timer0_events_comparen(
                         3,
                         u32::from_ne_bytes(
@@ -13086,14 +13086,14 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40008000 {
                         ),
                     )?;
                 }
-                if _start < 1352 && _end > 1348 {
+                if _start < 1364 && _end > 1360 {
                     assert!(
-                        _start <= 1348u64 && _end >= 1352u64,
+                        _start <= 1360u64 && _end >= 1364u64,
                         "partial write for TIMER0 CC[%s] not implemented",
                     );
-                    let start = _start.saturating_sub(1348u64) as usize;
+                    let start = _start.saturating_sub(1360u64) as usize;
                     let end =
-                        (_end.saturating_sub(1348u64) as usize).min(start + 4);
+                        (_end.saturating_sub(1360u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_timer0_ccn(
                         1,
                         u32::from_ne_bytes(
@@ -13101,14 +13101,14 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40008000 {
                         ),
                     )?;
                 }
-                if _start < 1356 && _end > 1352 {
+                if _start < 1380 && _end > 1376 {
                     assert!(
-                        _start <= 1352u64 && _end >= 1356u64,
+                        _start <= 1376u64 && _end >= 1380u64,
                         "partial write for TIMER0 CC[%s] not implemented",
                     );
-                    let start = _start.saturating_sub(1352u64) as usize;
+                    let start = _start.saturating_sub(1376u64) as usize;
                     let end =
-                        (_end.saturating_sub(1352u64) as usize).min(start + 4);
+                        (_end.saturating_sub(1376u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_timer0_ccn(
                         2,
                         u32::from_ne_bytes(
@@ -13116,14 +13116,14 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40008000 {
                         ),
                     )?;
                 }
-                if _start < 1360 && _end > 1356 {
+                if _start < 1396 && _end > 1392 {
                     assert!(
-                        _start <= 1356u64 && _end >= 1360u64,
+                        _start <= 1392u64 && _end >= 1396u64,
                         "partial write for TIMER0 CC[%s] not implemented",
                     );
-                    let start = _start.saturating_sub(1356u64) as usize;
+                    let start = _start.saturating_sub(1392u64) as usize;
                     let end =
-                        (_end.saturating_sub(1356u64) as usize).min(start + 4);
+                        (_end.saturating_sub(1392u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_timer0_ccn(
                         3,
                         u32::from_ne_bytes(
@@ -13503,64 +13503,64 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000B000 {
                         _buf[(323 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 328 && _end > 324 {
+                if _start < 340 && _end > 336 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_rtc0_events_comparen(1)?
                         .to_ne_bytes();
-                    if _start <= 324 && _end > 324 {
-                        _buf[(324 - _start) as usize] = _value[0];
+                    if _start <= 336 && _end > 336 {
+                        _buf[(336 - _start) as usize] = _value[0];
                     }
-                    if _start <= 325 && _end > 325 {
-                        _buf[(325 - _start) as usize] = _value[1];
+                    if _start <= 337 && _end > 337 {
+                        _buf[(337 - _start) as usize] = _value[1];
                     }
-                    if _start <= 326 && _end > 326 {
-                        _buf[(326 - _start) as usize] = _value[2];
+                    if _start <= 338 && _end > 338 {
+                        _buf[(338 - _start) as usize] = _value[2];
                     }
-                    if _start <= 327 && _end > 327 {
-                        _buf[(327 - _start) as usize] = _value[3];
+                    if _start <= 339 && _end > 339 {
+                        _buf[(339 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 332 && _end > 328 {
+                if _start < 356 && _end > 352 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_rtc0_events_comparen(2)?
                         .to_ne_bytes();
-                    if _start <= 328 && _end > 328 {
-                        _buf[(328 - _start) as usize] = _value[0];
+                    if _start <= 352 && _end > 352 {
+                        _buf[(352 - _start) as usize] = _value[0];
                     }
-                    if _start <= 329 && _end > 329 {
-                        _buf[(329 - _start) as usize] = _value[1];
+                    if _start <= 353 && _end > 353 {
+                        _buf[(353 - _start) as usize] = _value[1];
                     }
-                    if _start <= 330 && _end > 330 {
-                        _buf[(330 - _start) as usize] = _value[2];
+                    if _start <= 354 && _end > 354 {
+                        _buf[(354 - _start) as usize] = _value[2];
                     }
-                    if _start <= 331 && _end > 331 {
-                        _buf[(331 - _start) as usize] = _value[3];
+                    if _start <= 355 && _end > 355 {
+                        _buf[(355 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 336 && _end > 332 {
+                if _start < 372 && _end > 368 {
                     let _value = self
                         .0
                         .lock()
                         .unwrap()
                         .read_rtc0_events_comparen(3)?
                         .to_ne_bytes();
-                    if _start <= 332 && _end > 332 {
-                        _buf[(332 - _start) as usize] = _value[0];
+                    if _start <= 368 && _end > 368 {
+                        _buf[(368 - _start) as usize] = _value[0];
                     }
-                    if _start <= 333 && _end > 333 {
-                        _buf[(333 - _start) as usize] = _value[1];
+                    if _start <= 369 && _end > 369 {
+                        _buf[(369 - _start) as usize] = _value[1];
                     }
-                    if _start <= 334 && _end > 334 {
-                        _buf[(334 - _start) as usize] = _value[2];
+                    if _start <= 370 && _end > 370 {
+                        _buf[(370 - _start) as usize] = _value[2];
                     }
-                    if _start <= 335 && _end > 335 {
-                        _buf[(335 - _start) as usize] = _value[3];
+                    if _start <= 371 && _end > 371 {
+                        _buf[(371 - _start) as usize] = _value[3];
                     }
                 }
                 Ok(())
@@ -13695,49 +13695,49 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000B000 {
                         _buf[(1347 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1352 && _end > 1348 {
+                if _start < 1364 && _end > 1360 {
                     let _value = self.read_rtc0_ccn(1)?.to_ne_bytes();
-                    if _start <= 1348 && _end > 1348 {
-                        _buf[(1348 - _start) as usize] = _value[0];
+                    if _start <= 1360 && _end > 1360 {
+                        _buf[(1360 - _start) as usize] = _value[0];
                     }
-                    if _start <= 1349 && _end > 1349 {
-                        _buf[(1349 - _start) as usize] = _value[1];
+                    if _start <= 1361 && _end > 1361 {
+                        _buf[(1361 - _start) as usize] = _value[1];
                     }
-                    if _start <= 1350 && _end > 1350 {
-                        _buf[(1350 - _start) as usize] = _value[2];
+                    if _start <= 1362 && _end > 1362 {
+                        _buf[(1362 - _start) as usize] = _value[2];
                     }
-                    if _start <= 1351 && _end > 1351 {
-                        _buf[(1351 - _start) as usize] = _value[3];
+                    if _start <= 1363 && _end > 1363 {
+                        _buf[(1363 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1356 && _end > 1352 {
+                if _start < 1380 && _end > 1376 {
                     let _value = self.read_rtc0_ccn(2)?.to_ne_bytes();
-                    if _start <= 1352 && _end > 1352 {
-                        _buf[(1352 - _start) as usize] = _value[0];
+                    if _start <= 1376 && _end > 1376 {
+                        _buf[(1376 - _start) as usize] = _value[0];
                     }
-                    if _start <= 1353 && _end > 1353 {
-                        _buf[(1353 - _start) as usize] = _value[1];
+                    if _start <= 1377 && _end > 1377 {
+                        _buf[(1377 - _start) as usize] = _value[1];
                     }
-                    if _start <= 1354 && _end > 1354 {
-                        _buf[(1354 - _start) as usize] = _value[2];
+                    if _start <= 1378 && _end > 1378 {
+                        _buf[(1378 - _start) as usize] = _value[2];
                     }
-                    if _start <= 1355 && _end > 1355 {
-                        _buf[(1355 - _start) as usize] = _value[3];
+                    if _start <= 1379 && _end > 1379 {
+                        _buf[(1379 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1360 && _end > 1356 {
+                if _start < 1396 && _end > 1392 {
                     let _value = self.read_rtc0_ccn(3)?.to_ne_bytes();
-                    if _start <= 1356 && _end > 1356 {
-                        _buf[(1356 - _start) as usize] = _value[0];
+                    if _start <= 1392 && _end > 1392 {
+                        _buf[(1392 - _start) as usize] = _value[0];
                     }
-                    if _start <= 1357 && _end > 1357 {
-                        _buf[(1357 - _start) as usize] = _value[1];
+                    if _start <= 1393 && _end > 1393 {
+                        _buf[(1393 - _start) as usize] = _value[1];
                     }
-                    if _start <= 1358 && _end > 1358 {
-                        _buf[(1358 - _start) as usize] = _value[2];
+                    if _start <= 1394 && _end > 1394 {
+                        _buf[(1394 - _start) as usize] = _value[2];
                     }
-                    if _start <= 1359 && _end > 1359 {
-                        _buf[(1359 - _start) as usize] = _value[3];
+                    if _start <= 1395 && _end > 1395 {
+                        _buf[(1395 - _start) as usize] = _value[3];
                     }
                 }
                 Ok(())
@@ -13867,11 +13867,11 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000B000 {
                         ),
                     )?;
                 }
-                if _start < 328 && _end > 324 {
-                    assert ! (_start <= 324u64 && _end >= 328u64 , "partial write for RTC0 EVENTS_COMPARE[%s] not implemented" ,);
-                    let start = _start.saturating_sub(324u64) as usize;
+                if _start < 340 && _end > 336 {
+                    assert ! (_start <= 336u64 && _end >= 340u64 , "partial write for RTC0 EVENTS_COMPARE[%s] not implemented" ,);
+                    let start = _start.saturating_sub(336u64) as usize;
                     let end =
-                        (_end.saturating_sub(324u64) as usize).min(start + 4);
+                        (_end.saturating_sub(336u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_rtc0_events_comparen(
                         1,
                         u32::from_ne_bytes(
@@ -13879,11 +13879,11 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000B000 {
                         ),
                     )?;
                 }
-                if _start < 332 && _end > 328 {
-                    assert ! (_start <= 328u64 && _end >= 332u64 , "partial write for RTC0 EVENTS_COMPARE[%s] not implemented" ,);
-                    let start = _start.saturating_sub(328u64) as usize;
+                if _start < 356 && _end > 352 {
+                    assert ! (_start <= 352u64 && _end >= 356u64 , "partial write for RTC0 EVENTS_COMPARE[%s] not implemented" ,);
+                    let start = _start.saturating_sub(352u64) as usize;
                     let end =
-                        (_end.saturating_sub(328u64) as usize).min(start + 4);
+                        (_end.saturating_sub(352u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_rtc0_events_comparen(
                         2,
                         u32::from_ne_bytes(
@@ -13891,11 +13891,11 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000B000 {
                         ),
                     )?;
                 }
-                if _start < 336 && _end > 332 {
-                    assert ! (_start <= 332u64 && _end >= 336u64 , "partial write for RTC0 EVENTS_COMPARE[%s] not implemented" ,);
-                    let start = _start.saturating_sub(332u64) as usize;
+                if _start < 372 && _end > 368 {
+                    assert ! (_start <= 368u64 && _end >= 372u64 , "partial write for RTC0 EVENTS_COMPARE[%s] not implemented" ,);
+                    let start = _start.saturating_sub(368u64) as usize;
                     let end =
-                        (_end.saturating_sub(332u64) as usize).min(start + 4);
+                        (_end.saturating_sub(368u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_rtc0_events_comparen(
                         3,
                         u32::from_ne_bytes(
@@ -13967,25 +13967,25 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000B000 {
                         (_end.saturating_sub(1344u64) as usize).min(start + 4);
                     self.write_rtc0_ccn(0, offset, &_buf[start..end])?;
                 }
-                if _start < 1352 && _end > 1348 {
-                    let offset = 1348u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1348u64) as usize;
+                if _start < 1364 && _end > 1360 {
+                    let offset = 1360u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(1360u64) as usize;
                     let end =
-                        (_end.saturating_sub(1348u64) as usize).min(start + 4);
+                        (_end.saturating_sub(1360u64) as usize).min(start + 4);
                     self.write_rtc0_ccn(1, offset, &_buf[start..end])?;
                 }
-                if _start < 1356 && _end > 1352 {
-                    let offset = 1352u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1352u64) as usize;
+                if _start < 1380 && _end > 1376 {
+                    let offset = 1376u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(1376u64) as usize;
                     let end =
-                        (_end.saturating_sub(1352u64) as usize).min(start + 4);
+                        (_end.saturating_sub(1376u64) as usize).min(start + 4);
                     self.write_rtc0_ccn(2, offset, &_buf[start..end])?;
                 }
-                if _start < 1360 && _end > 1356 {
-                    let offset = 1356u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1356u64) as usize;
+                if _start < 1396 && _end > 1392 {
+                    let offset = 1392u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(1392u64) as usize;
                     let end =
-                        (_end.saturating_sub(1356u64) as usize).min(start + 4);
+                        (_end.saturating_sub(1392u64) as usize).min(start + 4);
                     self.write_rtc0_ccn(3, offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -16327,51 +16327,6 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40010000 {
                         ),
                     )?;
                 }
-                if _start < 1544 && _end > 1540 {
-                    assert!(
-                        _start <= 1540u64 && _end >= 1544u64,
-                        "partial write for WDT RR[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(1540u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1540u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_wdt_rrn(
-                        1,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 1548 && _end > 1544 {
-                    assert!(
-                        _start <= 1544u64 && _end >= 1548u64,
-                        "partial write for WDT RR[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(1544u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1544u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_wdt_rrn(
-                        2,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
-                if _start < 1552 && _end > 1548 {
-                    assert!(
-                        _start <= 1548u64 && _end >= 1552u64,
-                        "partial write for WDT RR[%s] not implemented",
-                    );
-                    let start = _start.saturating_sub(1548u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1548u64) as usize).min(start + 4);
-                    self.0.lock().unwrap().write_wdt_rrn(
-                        3,
-                        u32::from_ne_bytes(
-                            _buf[start..end].try_into().unwrap(),
-                        ),
-                    )?;
-                }
                 if _start < 1556 && _end > 1552 {
                     assert!(
                         _start <= 1552u64 && _end >= 1556u64,
@@ -16381,20 +16336,65 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40010000 {
                     let end =
                         (_end.saturating_sub(1552u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_wdt_rrn(
+                        1,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1572 && _end > 1568 {
+                    assert!(
+                        _start <= 1568u64 && _end >= 1572u64,
+                        "partial write for WDT RR[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(1568u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1568u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_wdt_rrn(
+                        2,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1588 && _end > 1584 {
+                    assert!(
+                        _start <= 1584u64 && _end >= 1588u64,
+                        "partial write for WDT RR[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(1584u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1584u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_wdt_rrn(
+                        3,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1604 && _end > 1600 {
+                    assert!(
+                        _start <= 1600u64 && _end >= 1604u64,
+                        "partial write for WDT RR[%s] not implemented",
+                    );
+                    let start = _start.saturating_sub(1600u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1600u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_wdt_rrn(
                         4,
                         u32::from_ne_bytes(
                             _buf[start..end].try_into().unwrap(),
                         ),
                     )?;
                 }
-                if _start < 1560 && _end > 1556 {
+                if _start < 1620 && _end > 1616 {
                     assert!(
-                        _start <= 1556u64 && _end >= 1560u64,
+                        _start <= 1616u64 && _end >= 1620u64,
                         "partial write for WDT RR[%s] not implemented",
                     );
-                    let start = _start.saturating_sub(1556u64) as usize;
+                    let start = _start.saturating_sub(1616u64) as usize;
                     let end =
-                        (_end.saturating_sub(1556u64) as usize).min(start + 4);
+                        (_end.saturating_sub(1616u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_wdt_rrn(
                         5,
                         u32::from_ne_bytes(
@@ -16402,14 +16402,14 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40010000 {
                         ),
                     )?;
                 }
-                if _start < 1564 && _end > 1560 {
+                if _start < 1636 && _end > 1632 {
                     assert!(
-                        _start <= 1560u64 && _end >= 1564u64,
+                        _start <= 1632u64 && _end >= 1636u64,
                         "partial write for WDT RR[%s] not implemented",
                     );
-                    let start = _start.saturating_sub(1560u64) as usize;
+                    let start = _start.saturating_sub(1632u64) as usize;
                     let end =
-                        (_end.saturating_sub(1560u64) as usize).min(start + 4);
+                        (_end.saturating_sub(1632u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_wdt_rrn(
                         6,
                         u32::from_ne_bytes(
@@ -16417,14 +16417,14 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40010000 {
                         ),
                     )?;
                 }
-                if _start < 1568 && _end > 1564 {
+                if _start < 1652 && _end > 1648 {
                     assert!(
-                        _start <= 1564u64 && _end >= 1568u64,
+                        _start <= 1648u64 && _end >= 1652u64,
                         "partial write for WDT RR[%s] not implemented",
                     );
-                    let start = _start.saturating_sub(1564u64) as usize;
+                    let start = _start.saturating_sub(1648u64) as usize;
                     let end =
-                        (_end.saturating_sub(1564u64) as usize).min(start + 4);
+                        (_end.saturating_sub(1648u64) as usize).min(start + 4);
                     self.0.lock().unwrap().write_wdt_rrn(
                         7,
                         u32::from_ne_bytes(
@@ -18633,7 +18633,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4001F000 {
         let _start = _addr - 1073868800;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
-            (..=7, 1..=8) => return Err(MemError::ReadViolation),
+            (..=31, 1..=32) => return Err(MemError::ReadViolation),
             (1280..=1291, 1281..=1292) => {
                 if _start < 1284 && _end > 1280 {
                     let _value = self.read_ppi_chen()?.to_ne_bytes();
@@ -18682,6 +18682,521 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4001F000 {
                 }
                 Ok(())
             }
+            (1296..=1423, 1297..=1424) => {
+                if _start < 1300 && _end > 1296 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_eep(0)?.to_ne_bytes();
+                    if _start <= 1296 && _end > 1296 {
+                        _buf[(1296 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1297 && _end > 1297 {
+                        _buf[(1297 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1298 && _end > 1298 {
+                        _buf[(1298 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1299 && _end > 1299 {
+                        _buf[(1299 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1332 && _end > 1328 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_eep(1)?.to_ne_bytes();
+                    if _start <= 1328 && _end > 1328 {
+                        _buf[(1328 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1329 && _end > 1329 {
+                        _buf[(1329 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1330 && _end > 1330 {
+                        _buf[(1330 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1331 && _end > 1331 {
+                        _buf[(1331 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1364 && _end > 1360 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_eep(2)?.to_ne_bytes();
+                    if _start <= 1360 && _end > 1360 {
+                        _buf[(1360 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1361 && _end > 1361 {
+                        _buf[(1361 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1362 && _end > 1362 {
+                        _buf[(1362 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1363 && _end > 1363 {
+                        _buf[(1363 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1396 && _end > 1392 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_eep(3)?.to_ne_bytes();
+                    if _start <= 1392 && _end > 1392 {
+                        _buf[(1392 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1393 && _end > 1393 {
+                        _buf[(1393 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1394 && _end > 1394 {
+                        _buf[(1394 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1395 && _end > 1395 {
+                        _buf[(1395 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1428 && _end > 1424 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_eep(4)?.to_ne_bytes();
+                    if _start <= 1424 && _end > 1424 {
+                        _buf[(1424 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1425 && _end > 1425 {
+                        _buf[(1425 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1426 && _end > 1426 {
+                        _buf[(1426 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1427 && _end > 1427 {
+                        _buf[(1427 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1460 && _end > 1456 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_eep(5)?.to_ne_bytes();
+                    if _start <= 1456 && _end > 1456 {
+                        _buf[(1456 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1457 && _end > 1457 {
+                        _buf[(1457 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1458 && _end > 1458 {
+                        _buf[(1458 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1459 && _end > 1459 {
+                        _buf[(1459 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1492 && _end > 1488 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_eep(6)?.to_ne_bytes();
+                    if _start <= 1488 && _end > 1488 {
+                        _buf[(1488 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1489 && _end > 1489 {
+                        _buf[(1489 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1490 && _end > 1490 {
+                        _buf[(1490 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1491 && _end > 1491 {
+                        _buf[(1491 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1524 && _end > 1520 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_eep(7)?.to_ne_bytes();
+                    if _start <= 1520 && _end > 1520 {
+                        _buf[(1520 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1521 && _end > 1521 {
+                        _buf[(1521 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1522 && _end > 1522 {
+                        _buf[(1522 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1523 && _end > 1523 {
+                        _buf[(1523 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1556 && _end > 1552 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_eep(8)?.to_ne_bytes();
+                    if _start <= 1552 && _end > 1552 {
+                        _buf[(1552 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1553 && _end > 1553 {
+                        _buf[(1553 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1554 && _end > 1554 {
+                        _buf[(1554 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1555 && _end > 1555 {
+                        _buf[(1555 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1588 && _end > 1584 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_eep(9)?.to_ne_bytes();
+                    if _start <= 1584 && _end > 1584 {
+                        _buf[(1584 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1585 && _end > 1585 {
+                        _buf[(1585 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1586 && _end > 1586 {
+                        _buf[(1586 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1587 && _end > 1587 {
+                        _buf[(1587 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1620 && _end > 1616 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_eep(10)?.to_ne_bytes();
+                    if _start <= 1616 && _end > 1616 {
+                        _buf[(1616 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1617 && _end > 1617 {
+                        _buf[(1617 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1618 && _end > 1618 {
+                        _buf[(1618 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1619 && _end > 1619 {
+                        _buf[(1619 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1652 && _end > 1648 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_eep(11)?.to_ne_bytes();
+                    if _start <= 1648 && _end > 1648 {
+                        _buf[(1648 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1649 && _end > 1649 {
+                        _buf[(1649 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1650 && _end > 1650 {
+                        _buf[(1650 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1651 && _end > 1651 {
+                        _buf[(1651 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1684 && _end > 1680 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_eep(12)?.to_ne_bytes();
+                    if _start <= 1680 && _end > 1680 {
+                        _buf[(1680 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1681 && _end > 1681 {
+                        _buf[(1681 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1682 && _end > 1682 {
+                        _buf[(1682 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1683 && _end > 1683 {
+                        _buf[(1683 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1716 && _end > 1712 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_eep(13)?.to_ne_bytes();
+                    if _start <= 1712 && _end > 1712 {
+                        _buf[(1712 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1713 && _end > 1713 {
+                        _buf[(1713 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1714 && _end > 1714 {
+                        _buf[(1714 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1715 && _end > 1715 {
+                        _buf[(1715 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1748 && _end > 1744 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_eep(14)?.to_ne_bytes();
+                    if _start <= 1744 && _end > 1744 {
+                        _buf[(1744 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1745 && _end > 1745 {
+                        _buf[(1745 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1746 && _end > 1746 {
+                        _buf[(1746 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1747 && _end > 1747 {
+                        _buf[(1747 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1780 && _end > 1776 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_eep(15)?.to_ne_bytes();
+                    if _start <= 1776 && _end > 1776 {
+                        _buf[(1776 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1777 && _end > 1777 {
+                        _buf[(1777 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1778 && _end > 1778 {
+                        _buf[(1778 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1779 && _end > 1779 {
+                        _buf[(1779 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1304 && _end > 1300 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_tep(0)?.to_ne_bytes();
+                    if _start <= 1300 && _end > 1300 {
+                        _buf[(1300 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1301 && _end > 1301 {
+                        _buf[(1301 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1302 && _end > 1302 {
+                        _buf[(1302 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1303 && _end > 1303 {
+                        _buf[(1303 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1336 && _end > 1332 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_tep(1)?.to_ne_bytes();
+                    if _start <= 1332 && _end > 1332 {
+                        _buf[(1332 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1333 && _end > 1333 {
+                        _buf[(1333 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1334 && _end > 1334 {
+                        _buf[(1334 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1335 && _end > 1335 {
+                        _buf[(1335 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1368 && _end > 1364 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_tep(2)?.to_ne_bytes();
+                    if _start <= 1364 && _end > 1364 {
+                        _buf[(1364 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1365 && _end > 1365 {
+                        _buf[(1365 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1366 && _end > 1366 {
+                        _buf[(1366 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1367 && _end > 1367 {
+                        _buf[(1367 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1400 && _end > 1396 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_tep(3)?.to_ne_bytes();
+                    if _start <= 1396 && _end > 1396 {
+                        _buf[(1396 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1397 && _end > 1397 {
+                        _buf[(1397 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1398 && _end > 1398 {
+                        _buf[(1398 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1399 && _end > 1399 {
+                        _buf[(1399 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1432 && _end > 1428 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_tep(4)?.to_ne_bytes();
+                    if _start <= 1428 && _end > 1428 {
+                        _buf[(1428 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1429 && _end > 1429 {
+                        _buf[(1429 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1430 && _end > 1430 {
+                        _buf[(1430 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1431 && _end > 1431 {
+                        _buf[(1431 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1464 && _end > 1460 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_tep(5)?.to_ne_bytes();
+                    if _start <= 1460 && _end > 1460 {
+                        _buf[(1460 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1461 && _end > 1461 {
+                        _buf[(1461 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1462 && _end > 1462 {
+                        _buf[(1462 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1463 && _end > 1463 {
+                        _buf[(1463 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1496 && _end > 1492 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_tep(6)?.to_ne_bytes();
+                    if _start <= 1492 && _end > 1492 {
+                        _buf[(1492 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1493 && _end > 1493 {
+                        _buf[(1493 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1494 && _end > 1494 {
+                        _buf[(1494 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1495 && _end > 1495 {
+                        _buf[(1495 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1528 && _end > 1524 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_tep(7)?.to_ne_bytes();
+                    if _start <= 1524 && _end > 1524 {
+                        _buf[(1524 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1525 && _end > 1525 {
+                        _buf[(1525 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1526 && _end > 1526 {
+                        _buf[(1526 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1527 && _end > 1527 {
+                        _buf[(1527 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1560 && _end > 1556 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_tep(8)?.to_ne_bytes();
+                    if _start <= 1556 && _end > 1556 {
+                        _buf[(1556 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1557 && _end > 1557 {
+                        _buf[(1557 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1558 && _end > 1558 {
+                        _buf[(1558 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1559 && _end > 1559 {
+                        _buf[(1559 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1592 && _end > 1588 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_tep(9)?.to_ne_bytes();
+                    if _start <= 1588 && _end > 1588 {
+                        _buf[(1588 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1589 && _end > 1589 {
+                        _buf[(1589 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1590 && _end > 1590 {
+                        _buf[(1590 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1591 && _end > 1591 {
+                        _buf[(1591 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1624 && _end > 1620 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_tep(10)?.to_ne_bytes();
+                    if _start <= 1620 && _end > 1620 {
+                        _buf[(1620 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1621 && _end > 1621 {
+                        _buf[(1621 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1622 && _end > 1622 {
+                        _buf[(1622 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1623 && _end > 1623 {
+                        _buf[(1623 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1656 && _end > 1652 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_tep(11)?.to_ne_bytes();
+                    if _start <= 1652 && _end > 1652 {
+                        _buf[(1652 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1653 && _end > 1653 {
+                        _buf[(1653 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1654 && _end > 1654 {
+                        _buf[(1654 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1655 && _end > 1655 {
+                        _buf[(1655 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1688 && _end > 1684 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_tep(12)?.to_ne_bytes();
+                    if _start <= 1684 && _end > 1684 {
+                        _buf[(1684 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1685 && _end > 1685 {
+                        _buf[(1685 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1686 && _end > 1686 {
+                        _buf[(1686 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1687 && _end > 1687 {
+                        _buf[(1687 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1720 && _end > 1716 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_tep(13)?.to_ne_bytes();
+                    if _start <= 1716 && _end > 1716 {
+                        _buf[(1716 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1717 && _end > 1717 {
+                        _buf[(1717 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1718 && _end > 1718 {
+                        _buf[(1718 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1719 && _end > 1719 {
+                        _buf[(1719 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1752 && _end > 1748 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_tep(14)?.to_ne_bytes();
+                    if _start <= 1748 && _end > 1748 {
+                        _buf[(1748 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1749 && _end > 1749 {
+                        _buf[(1749 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1750 && _end > 1750 {
+                        _buf[(1750 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1751 && _end > 1751 {
+                        _buf[(1751 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1784 && _end > 1780 {
+                    let _value =
+                        self.0.lock().unwrap().read_ppi_tep(15)?.to_ne_bytes();
+                    if _start <= 1780 && _end > 1780 {
+                        _buf[(1780 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1781 && _end > 1781 {
+                        _buf[(1781 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1782 && _end > 1782 {
+                        _buf[(1782 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1783 && _end > 1783 {
+                        _buf[(1783 - _start) as usize] = _value[3];
+                    }
+                }
+                Ok(())
+            }
             (2048..=2063, 2049..=2064) => {
                 if _start < 2052 && _end > 2048 {
                     let _value = self.read_ppi_chgn(0)?.to_ne_bytes();
@@ -18698,49 +19213,49 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4001F000 {
                         _buf[(2051 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 2056 && _end > 2052 {
+                if _start < 2068 && _end > 2064 {
                     let _value = self.read_ppi_chgn(1)?.to_ne_bytes();
-                    if _start <= 2052 && _end > 2052 {
-                        _buf[(2052 - _start) as usize] = _value[0];
+                    if _start <= 2064 && _end > 2064 {
+                        _buf[(2064 - _start) as usize] = _value[0];
                     }
-                    if _start <= 2053 && _end > 2053 {
-                        _buf[(2053 - _start) as usize] = _value[1];
+                    if _start <= 2065 && _end > 2065 {
+                        _buf[(2065 - _start) as usize] = _value[1];
                     }
-                    if _start <= 2054 && _end > 2054 {
-                        _buf[(2054 - _start) as usize] = _value[2];
+                    if _start <= 2066 && _end > 2066 {
+                        _buf[(2066 - _start) as usize] = _value[2];
                     }
-                    if _start <= 2055 && _end > 2055 {
-                        _buf[(2055 - _start) as usize] = _value[3];
+                    if _start <= 2067 && _end > 2067 {
+                        _buf[(2067 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 2060 && _end > 2056 {
+                if _start < 2084 && _end > 2080 {
                     let _value = self.read_ppi_chgn(2)?.to_ne_bytes();
-                    if _start <= 2056 && _end > 2056 {
-                        _buf[(2056 - _start) as usize] = _value[0];
+                    if _start <= 2080 && _end > 2080 {
+                        _buf[(2080 - _start) as usize] = _value[0];
                     }
-                    if _start <= 2057 && _end > 2057 {
-                        _buf[(2057 - _start) as usize] = _value[1];
+                    if _start <= 2081 && _end > 2081 {
+                        _buf[(2081 - _start) as usize] = _value[1];
                     }
-                    if _start <= 2058 && _end > 2058 {
-                        _buf[(2058 - _start) as usize] = _value[2];
+                    if _start <= 2082 && _end > 2082 {
+                        _buf[(2082 - _start) as usize] = _value[2];
                     }
-                    if _start <= 2059 && _end > 2059 {
-                        _buf[(2059 - _start) as usize] = _value[3];
+                    if _start <= 2083 && _end > 2083 {
+                        _buf[(2083 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 2064 && _end > 2060 {
+                if _start < 2100 && _end > 2096 {
                     let _value = self.read_ppi_chgn(3)?.to_ne_bytes();
-                    if _start <= 2060 && _end > 2060 {
-                        _buf[(2060 - _start) as usize] = _value[0];
+                    if _start <= 2096 && _end > 2096 {
+                        _buf[(2096 - _start) as usize] = _value[0];
                     }
-                    if _start <= 2061 && _end > 2061 {
-                        _buf[(2061 - _start) as usize] = _value[1];
+                    if _start <= 2097 && _end > 2097 {
+                        _buf[(2097 - _start) as usize] = _value[1];
                     }
-                    if _start <= 2062 && _end > 2062 {
-                        _buf[(2062 - _start) as usize] = _value[2];
+                    if _start <= 2098 && _end > 2098 {
+                        _buf[(2098 - _start) as usize] = _value[2];
                     }
-                    if _start <= 2063 && _end > 2063 {
-                        _buf[(2063 - _start) as usize] = _value[3];
+                    if _start <= 2099 && _end > 2099 {
+                        _buf[(2099 - _start) as usize] = _value[3];
                     }
                 }
                 Ok(())
@@ -18752,7 +19267,129 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4001F000 {
         let _start = _addr - 1073868800;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
-            (..=7, 1..=8) => return Err(MemError::WriteViolation),
+            (..=31, 1..=32) => {
+                if _start < 4 && _end > 0 {
+                    assert!(
+                        _start <= 0u64 && _end >= 4u64,
+                        "partial write for PPI EN not implemented",
+                    );
+                    let start = _start.saturating_sub(0u64) as usize;
+                    let end =
+                        (_end.saturating_sub(0u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_en(
+                        0,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 36 && _end > 32 {
+                    assert!(
+                        _start <= 32u64 && _end >= 36u64,
+                        "partial write for PPI EN not implemented",
+                    );
+                    let start = _start.saturating_sub(32u64) as usize;
+                    let end =
+                        (_end.saturating_sub(32u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_en(
+                        1,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 68 && _end > 64 {
+                    assert!(
+                        _start <= 64u64 && _end >= 68u64,
+                        "partial write for PPI EN not implemented",
+                    );
+                    let start = _start.saturating_sub(64u64) as usize;
+                    let end =
+                        (_end.saturating_sub(64u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_en(
+                        2,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 100 && _end > 96 {
+                    assert!(
+                        _start <= 96u64 && _end >= 100u64,
+                        "partial write for PPI EN not implemented",
+                    );
+                    let start = _start.saturating_sub(96u64) as usize;
+                    let end =
+                        (_end.saturating_sub(96u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_en(
+                        3,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 8 && _end > 4 {
+                    assert!(
+                        _start <= 4u64 && _end >= 8u64,
+                        "partial write for PPI DIS not implemented",
+                    );
+                    let start = _start.saturating_sub(4u64) as usize;
+                    let end =
+                        (_end.saturating_sub(4u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_dis(
+                        0,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 40 && _end > 36 {
+                    assert!(
+                        _start <= 36u64 && _end >= 40u64,
+                        "partial write for PPI DIS not implemented",
+                    );
+                    let start = _start.saturating_sub(36u64) as usize;
+                    let end =
+                        (_end.saturating_sub(36u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_dis(
+                        1,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 72 && _end > 68 {
+                    assert!(
+                        _start <= 68u64 && _end >= 72u64,
+                        "partial write for PPI DIS not implemented",
+                    );
+                    let start = _start.saturating_sub(68u64) as usize;
+                    let end =
+                        (_end.saturating_sub(68u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_dis(
+                        2,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 104 && _end > 100 {
+                    assert!(
+                        _start <= 100u64 && _end >= 104u64,
+                        "partial write for PPI DIS not implemented",
+                    );
+                    let start = _start.saturating_sub(100u64) as usize;
+                    let end =
+                        (_end.saturating_sub(100u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_dis(
+                        3,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                Ok(())
+            }
             (1280..=1291, 1281..=1292) => {
                 if _start < 1284 && _end > 1280 {
                     let offset = 1280u64.saturating_sub(_start);
@@ -18777,6 +19414,489 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4001F000 {
                 }
                 Ok(())
             }
+            (1296..=1423, 1297..=1424) => {
+                if _start < 1300 && _end > 1296 {
+                    assert!(
+                        _start <= 1296u64 && _end >= 1300u64,
+                        "partial write for PPI EEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1296u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1296u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_eep(
+                        0,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1332 && _end > 1328 {
+                    assert!(
+                        _start <= 1328u64 && _end >= 1332u64,
+                        "partial write for PPI EEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1328u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1328u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_eep(
+                        1,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1364 && _end > 1360 {
+                    assert!(
+                        _start <= 1360u64 && _end >= 1364u64,
+                        "partial write for PPI EEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1360u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1360u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_eep(
+                        2,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1396 && _end > 1392 {
+                    assert!(
+                        _start <= 1392u64 && _end >= 1396u64,
+                        "partial write for PPI EEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1392u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1392u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_eep(
+                        3,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1428 && _end > 1424 {
+                    assert!(
+                        _start <= 1424u64 && _end >= 1428u64,
+                        "partial write for PPI EEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1424u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1424u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_eep(
+                        4,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1460 && _end > 1456 {
+                    assert!(
+                        _start <= 1456u64 && _end >= 1460u64,
+                        "partial write for PPI EEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1456u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1456u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_eep(
+                        5,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1492 && _end > 1488 {
+                    assert!(
+                        _start <= 1488u64 && _end >= 1492u64,
+                        "partial write for PPI EEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1488u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1488u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_eep(
+                        6,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1524 && _end > 1520 {
+                    assert!(
+                        _start <= 1520u64 && _end >= 1524u64,
+                        "partial write for PPI EEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1520u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1520u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_eep(
+                        7,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1556 && _end > 1552 {
+                    assert!(
+                        _start <= 1552u64 && _end >= 1556u64,
+                        "partial write for PPI EEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1552u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1552u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_eep(
+                        8,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1588 && _end > 1584 {
+                    assert!(
+                        _start <= 1584u64 && _end >= 1588u64,
+                        "partial write for PPI EEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1584u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1584u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_eep(
+                        9,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1620 && _end > 1616 {
+                    assert!(
+                        _start <= 1616u64 && _end >= 1620u64,
+                        "partial write for PPI EEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1616u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1616u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_eep(
+                        10,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1652 && _end > 1648 {
+                    assert!(
+                        _start <= 1648u64 && _end >= 1652u64,
+                        "partial write for PPI EEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1648u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1648u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_eep(
+                        11,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1684 && _end > 1680 {
+                    assert!(
+                        _start <= 1680u64 && _end >= 1684u64,
+                        "partial write for PPI EEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1680u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1680u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_eep(
+                        12,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1716 && _end > 1712 {
+                    assert!(
+                        _start <= 1712u64 && _end >= 1716u64,
+                        "partial write for PPI EEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1712u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1712u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_eep(
+                        13,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1748 && _end > 1744 {
+                    assert!(
+                        _start <= 1744u64 && _end >= 1748u64,
+                        "partial write for PPI EEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1744u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1744u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_eep(
+                        14,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1780 && _end > 1776 {
+                    assert!(
+                        _start <= 1776u64 && _end >= 1780u64,
+                        "partial write for PPI EEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1776u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1776u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_eep(
+                        15,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1304 && _end > 1300 {
+                    assert!(
+                        _start <= 1300u64 && _end >= 1304u64,
+                        "partial write for PPI TEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1300u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1300u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_tep(
+                        0,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1336 && _end > 1332 {
+                    assert!(
+                        _start <= 1332u64 && _end >= 1336u64,
+                        "partial write for PPI TEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1332u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1332u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_tep(
+                        1,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1368 && _end > 1364 {
+                    assert!(
+                        _start <= 1364u64 && _end >= 1368u64,
+                        "partial write for PPI TEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1364u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1364u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_tep(
+                        2,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1400 && _end > 1396 {
+                    assert!(
+                        _start <= 1396u64 && _end >= 1400u64,
+                        "partial write for PPI TEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1396u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1396u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_tep(
+                        3,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1432 && _end > 1428 {
+                    assert!(
+                        _start <= 1428u64 && _end >= 1432u64,
+                        "partial write for PPI TEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1428u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1428u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_tep(
+                        4,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1464 && _end > 1460 {
+                    assert!(
+                        _start <= 1460u64 && _end >= 1464u64,
+                        "partial write for PPI TEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1460u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1460u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_tep(
+                        5,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1496 && _end > 1492 {
+                    assert!(
+                        _start <= 1492u64 && _end >= 1496u64,
+                        "partial write for PPI TEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1492u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1492u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_tep(
+                        6,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1528 && _end > 1524 {
+                    assert!(
+                        _start <= 1524u64 && _end >= 1528u64,
+                        "partial write for PPI TEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1524u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1524u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_tep(
+                        7,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1560 && _end > 1556 {
+                    assert!(
+                        _start <= 1556u64 && _end >= 1560u64,
+                        "partial write for PPI TEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1556u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1556u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_tep(
+                        8,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1592 && _end > 1588 {
+                    assert!(
+                        _start <= 1588u64 && _end >= 1592u64,
+                        "partial write for PPI TEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1588u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1588u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_tep(
+                        9,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1624 && _end > 1620 {
+                    assert!(
+                        _start <= 1620u64 && _end >= 1624u64,
+                        "partial write for PPI TEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1620u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1620u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_tep(
+                        10,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1656 && _end > 1652 {
+                    assert!(
+                        _start <= 1652u64 && _end >= 1656u64,
+                        "partial write for PPI TEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1652u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1652u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_tep(
+                        11,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1688 && _end > 1684 {
+                    assert!(
+                        _start <= 1684u64 && _end >= 1688u64,
+                        "partial write for PPI TEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1684u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1684u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_tep(
+                        12,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1720 && _end > 1716 {
+                    assert!(
+                        _start <= 1716u64 && _end >= 1720u64,
+                        "partial write for PPI TEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1716u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1716u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_tep(
+                        13,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1752 && _end > 1748 {
+                    assert!(
+                        _start <= 1748u64 && _end >= 1752u64,
+                        "partial write for PPI TEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1748u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1748u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_tep(
+                        14,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 1784 && _end > 1780 {
+                    assert!(
+                        _start <= 1780u64 && _end >= 1784u64,
+                        "partial write for PPI TEP not implemented",
+                    );
+                    let start = _start.saturating_sub(1780u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1780u64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_ppi_tep(
+                        15,
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                Ok(())
+            }
             (2048..=2063, 2049..=2064) => {
                 if _start < 2052 && _end > 2048 {
                     let offset = 2048u64.saturating_sub(_start);
@@ -18785,25 +19905,25 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4001F000 {
                         (_end.saturating_sub(2048u64) as usize).min(start + 4);
                     self.write_ppi_chgn(0, offset, &_buf[start..end])?;
                 }
-                if _start < 2056 && _end > 2052 {
-                    let offset = 2052u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(2052u64) as usize;
+                if _start < 2068 && _end > 2064 {
+                    let offset = 2064u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(2064u64) as usize;
                     let end =
-                        (_end.saturating_sub(2052u64) as usize).min(start + 4);
+                        (_end.saturating_sub(2064u64) as usize).min(start + 4);
                     self.write_ppi_chgn(1, offset, &_buf[start..end])?;
                 }
-                if _start < 2060 && _end > 2056 {
-                    let offset = 2056u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(2056u64) as usize;
+                if _start < 2084 && _end > 2080 {
+                    let offset = 2080u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(2080u64) as usize;
                     let end =
-                        (_end.saturating_sub(2056u64) as usize).min(start + 4);
+                        (_end.saturating_sub(2080u64) as usize).min(start + 4);
                     self.write_ppi_chgn(2, offset, &_buf[start..end])?;
                 }
-                if _start < 2064 && _end > 2060 {
-                    let offset = 2060u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(2060u64) as usize;
+                if _start < 2100 && _end > 2096 {
+                    let offset = 2096u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(2096u64) as usize;
                     let end =
-                        (_end.saturating_sub(2060u64) as usize).min(start + 4);
+                        (_end.saturating_sub(2096u64) as usize).min(start + 4);
                     self.write_ppi_chgn(3, offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -20003,53 +21123,8 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x50000000 {
                         _buf[(1795 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1800 && _end > 1796 {
-                    let _value = self.read_gpio_pin_cnfn(1)?.to_ne_bytes();
-                    if _start <= 1796 && _end > 1796 {
-                        _buf[(1796 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1797 && _end > 1797 {
-                        _buf[(1797 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1798 && _end > 1798 {
-                        _buf[(1798 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1799 && _end > 1799 {
-                        _buf[(1799 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 1804 && _end > 1800 {
-                    let _value = self.read_gpio_pin_cnfn(2)?.to_ne_bytes();
-                    if _start <= 1800 && _end > 1800 {
-                        _buf[(1800 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1801 && _end > 1801 {
-                        _buf[(1801 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1802 && _end > 1802 {
-                        _buf[(1802 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1803 && _end > 1803 {
-                        _buf[(1803 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 1808 && _end > 1804 {
-                    let _value = self.read_gpio_pin_cnfn(3)?.to_ne_bytes();
-                    if _start <= 1804 && _end > 1804 {
-                        _buf[(1804 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1805 && _end > 1805 {
-                        _buf[(1805 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1806 && _end > 1806 {
-                        _buf[(1806 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1807 && _end > 1807 {
-                        _buf[(1807 - _start) as usize] = _value[3];
-                    }
-                }
                 if _start < 1812 && _end > 1808 {
-                    let _value = self.read_gpio_pin_cnfn(4)?.to_ne_bytes();
+                    let _value = self.read_gpio_pin_cnfn(1)?.to_ne_bytes();
                     if _start <= 1808 && _end > 1808 {
                         _buf[(1808 - _start) as usize] = _value[0];
                     }
@@ -20063,53 +21138,8 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x50000000 {
                         _buf[(1811 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1816 && _end > 1812 {
-                    let _value = self.read_gpio_pin_cnfn(5)?.to_ne_bytes();
-                    if _start <= 1812 && _end > 1812 {
-                        _buf[(1812 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1813 && _end > 1813 {
-                        _buf[(1813 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1814 && _end > 1814 {
-                        _buf[(1814 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1815 && _end > 1815 {
-                        _buf[(1815 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 1820 && _end > 1816 {
-                    let _value = self.read_gpio_pin_cnfn(6)?.to_ne_bytes();
-                    if _start <= 1816 && _end > 1816 {
-                        _buf[(1816 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1817 && _end > 1817 {
-                        _buf[(1817 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1818 && _end > 1818 {
-                        _buf[(1818 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1819 && _end > 1819 {
-                        _buf[(1819 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 1824 && _end > 1820 {
-                    let _value = self.read_gpio_pin_cnfn(7)?.to_ne_bytes();
-                    if _start <= 1820 && _end > 1820 {
-                        _buf[(1820 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1821 && _end > 1821 {
-                        _buf[(1821 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1822 && _end > 1822 {
-                        _buf[(1822 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1823 && _end > 1823 {
-                        _buf[(1823 - _start) as usize] = _value[3];
-                    }
-                }
                 if _start < 1828 && _end > 1824 {
-                    let _value = self.read_gpio_pin_cnfn(8)?.to_ne_bytes();
+                    let _value = self.read_gpio_pin_cnfn(2)?.to_ne_bytes();
                     if _start <= 1824 && _end > 1824 {
                         _buf[(1824 - _start) as usize] = _value[0];
                     }
@@ -20123,53 +21153,8 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x50000000 {
                         _buf[(1827 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1832 && _end > 1828 {
-                    let _value = self.read_gpio_pin_cnfn(9)?.to_ne_bytes();
-                    if _start <= 1828 && _end > 1828 {
-                        _buf[(1828 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1829 && _end > 1829 {
-                        _buf[(1829 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1830 && _end > 1830 {
-                        _buf[(1830 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1831 && _end > 1831 {
-                        _buf[(1831 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 1836 && _end > 1832 {
-                    let _value = self.read_gpio_pin_cnfn(10)?.to_ne_bytes();
-                    if _start <= 1832 && _end > 1832 {
-                        _buf[(1832 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1833 && _end > 1833 {
-                        _buf[(1833 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1834 && _end > 1834 {
-                        _buf[(1834 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1835 && _end > 1835 {
-                        _buf[(1835 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 1840 && _end > 1836 {
-                    let _value = self.read_gpio_pin_cnfn(11)?.to_ne_bytes();
-                    if _start <= 1836 && _end > 1836 {
-                        _buf[(1836 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1837 && _end > 1837 {
-                        _buf[(1837 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1838 && _end > 1838 {
-                        _buf[(1838 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1839 && _end > 1839 {
-                        _buf[(1839 - _start) as usize] = _value[3];
-                    }
-                }
                 if _start < 1844 && _end > 1840 {
-                    let _value = self.read_gpio_pin_cnfn(12)?.to_ne_bytes();
+                    let _value = self.read_gpio_pin_cnfn(3)?.to_ne_bytes();
                     if _start <= 1840 && _end > 1840 {
                         _buf[(1840 - _start) as usize] = _value[0];
                     }
@@ -20183,53 +21168,8 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x50000000 {
                         _buf[(1843 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1848 && _end > 1844 {
-                    let _value = self.read_gpio_pin_cnfn(13)?.to_ne_bytes();
-                    if _start <= 1844 && _end > 1844 {
-                        _buf[(1844 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1845 && _end > 1845 {
-                        _buf[(1845 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1846 && _end > 1846 {
-                        _buf[(1846 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1847 && _end > 1847 {
-                        _buf[(1847 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 1852 && _end > 1848 {
-                    let _value = self.read_gpio_pin_cnfn(14)?.to_ne_bytes();
-                    if _start <= 1848 && _end > 1848 {
-                        _buf[(1848 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1849 && _end > 1849 {
-                        _buf[(1849 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1850 && _end > 1850 {
-                        _buf[(1850 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1851 && _end > 1851 {
-                        _buf[(1851 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 1856 && _end > 1852 {
-                    let _value = self.read_gpio_pin_cnfn(15)?.to_ne_bytes();
-                    if _start <= 1852 && _end > 1852 {
-                        _buf[(1852 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1853 && _end > 1853 {
-                        _buf[(1853 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1854 && _end > 1854 {
-                        _buf[(1854 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1855 && _end > 1855 {
-                        _buf[(1855 - _start) as usize] = _value[3];
-                    }
-                }
                 if _start < 1860 && _end > 1856 {
-                    let _value = self.read_gpio_pin_cnfn(16)?.to_ne_bytes();
+                    let _value = self.read_gpio_pin_cnfn(4)?.to_ne_bytes();
                     if _start <= 1856 && _end > 1856 {
                         _buf[(1856 - _start) as usize] = _value[0];
                     }
@@ -20243,53 +21183,8 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x50000000 {
                         _buf[(1859 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1864 && _end > 1860 {
-                    let _value = self.read_gpio_pin_cnfn(17)?.to_ne_bytes();
-                    if _start <= 1860 && _end > 1860 {
-                        _buf[(1860 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1861 && _end > 1861 {
-                        _buf[(1861 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1862 && _end > 1862 {
-                        _buf[(1862 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1863 && _end > 1863 {
-                        _buf[(1863 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 1868 && _end > 1864 {
-                    let _value = self.read_gpio_pin_cnfn(18)?.to_ne_bytes();
-                    if _start <= 1864 && _end > 1864 {
-                        _buf[(1864 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1865 && _end > 1865 {
-                        _buf[(1865 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1866 && _end > 1866 {
-                        _buf[(1866 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1867 && _end > 1867 {
-                        _buf[(1867 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 1872 && _end > 1868 {
-                    let _value = self.read_gpio_pin_cnfn(19)?.to_ne_bytes();
-                    if _start <= 1868 && _end > 1868 {
-                        _buf[(1868 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1869 && _end > 1869 {
-                        _buf[(1869 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1870 && _end > 1870 {
-                        _buf[(1870 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1871 && _end > 1871 {
-                        _buf[(1871 - _start) as usize] = _value[3];
-                    }
-                }
                 if _start < 1876 && _end > 1872 {
-                    let _value = self.read_gpio_pin_cnfn(20)?.to_ne_bytes();
+                    let _value = self.read_gpio_pin_cnfn(5)?.to_ne_bytes();
                     if _start <= 1872 && _end > 1872 {
                         _buf[(1872 - _start) as usize] = _value[0];
                     }
@@ -20303,53 +21198,8 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x50000000 {
                         _buf[(1875 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1880 && _end > 1876 {
-                    let _value = self.read_gpio_pin_cnfn(21)?.to_ne_bytes();
-                    if _start <= 1876 && _end > 1876 {
-                        _buf[(1876 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1877 && _end > 1877 {
-                        _buf[(1877 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1878 && _end > 1878 {
-                        _buf[(1878 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1879 && _end > 1879 {
-                        _buf[(1879 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 1884 && _end > 1880 {
-                    let _value = self.read_gpio_pin_cnfn(22)?.to_ne_bytes();
-                    if _start <= 1880 && _end > 1880 {
-                        _buf[(1880 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1881 && _end > 1881 {
-                        _buf[(1881 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1882 && _end > 1882 {
-                        _buf[(1882 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1883 && _end > 1883 {
-                        _buf[(1883 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 1888 && _end > 1884 {
-                    let _value = self.read_gpio_pin_cnfn(23)?.to_ne_bytes();
-                    if _start <= 1884 && _end > 1884 {
-                        _buf[(1884 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1885 && _end > 1885 {
-                        _buf[(1885 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1886 && _end > 1886 {
-                        _buf[(1886 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1887 && _end > 1887 {
-                        _buf[(1887 - _start) as usize] = _value[3];
-                    }
-                }
                 if _start < 1892 && _end > 1888 {
-                    let _value = self.read_gpio_pin_cnfn(24)?.to_ne_bytes();
+                    let _value = self.read_gpio_pin_cnfn(6)?.to_ne_bytes();
                     if _start <= 1888 && _end > 1888 {
                         _buf[(1888 - _start) as usize] = _value[0];
                     }
@@ -20363,53 +21213,8 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x50000000 {
                         _buf[(1891 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1896 && _end > 1892 {
-                    let _value = self.read_gpio_pin_cnfn(25)?.to_ne_bytes();
-                    if _start <= 1892 && _end > 1892 {
-                        _buf[(1892 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1893 && _end > 1893 {
-                        _buf[(1893 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1894 && _end > 1894 {
-                        _buf[(1894 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1895 && _end > 1895 {
-                        _buf[(1895 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 1900 && _end > 1896 {
-                    let _value = self.read_gpio_pin_cnfn(26)?.to_ne_bytes();
-                    if _start <= 1896 && _end > 1896 {
-                        _buf[(1896 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1897 && _end > 1897 {
-                        _buf[(1897 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1898 && _end > 1898 {
-                        _buf[(1898 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1899 && _end > 1899 {
-                        _buf[(1899 - _start) as usize] = _value[3];
-                    }
-                }
-                if _start < 1904 && _end > 1900 {
-                    let _value = self.read_gpio_pin_cnfn(27)?.to_ne_bytes();
-                    if _start <= 1900 && _end > 1900 {
-                        _buf[(1900 - _start) as usize] = _value[0];
-                    }
-                    if _start <= 1901 && _end > 1901 {
-                        _buf[(1901 - _start) as usize] = _value[1];
-                    }
-                    if _start <= 1902 && _end > 1902 {
-                        _buf[(1902 - _start) as usize] = _value[2];
-                    }
-                    if _start <= 1903 && _end > 1903 {
-                        _buf[(1903 - _start) as usize] = _value[3];
-                    }
-                }
                 if _start < 1908 && _end > 1904 {
-                    let _value = self.read_gpio_pin_cnfn(28)?.to_ne_bytes();
+                    let _value = self.read_gpio_pin_cnfn(7)?.to_ne_bytes();
                     if _start <= 1904 && _end > 1904 {
                         _buf[(1904 - _start) as usize] = _value[0];
                     }
@@ -20423,49 +21228,364 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x50000000 {
                         _buf[(1907 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1912 && _end > 1908 {
+                if _start < 1924 && _end > 1920 {
+                    let _value = self.read_gpio_pin_cnfn(8)?.to_ne_bytes();
+                    if _start <= 1920 && _end > 1920 {
+                        _buf[(1920 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1921 && _end > 1921 {
+                        _buf[(1921 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1922 && _end > 1922 {
+                        _buf[(1922 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1923 && _end > 1923 {
+                        _buf[(1923 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1940 && _end > 1936 {
+                    let _value = self.read_gpio_pin_cnfn(9)?.to_ne_bytes();
+                    if _start <= 1936 && _end > 1936 {
+                        _buf[(1936 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1937 && _end > 1937 {
+                        _buf[(1937 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1938 && _end > 1938 {
+                        _buf[(1938 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1939 && _end > 1939 {
+                        _buf[(1939 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1956 && _end > 1952 {
+                    let _value = self.read_gpio_pin_cnfn(10)?.to_ne_bytes();
+                    if _start <= 1952 && _end > 1952 {
+                        _buf[(1952 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1953 && _end > 1953 {
+                        _buf[(1953 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1954 && _end > 1954 {
+                        _buf[(1954 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1955 && _end > 1955 {
+                        _buf[(1955 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1972 && _end > 1968 {
+                    let _value = self.read_gpio_pin_cnfn(11)?.to_ne_bytes();
+                    if _start <= 1968 && _end > 1968 {
+                        _buf[(1968 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1969 && _end > 1969 {
+                        _buf[(1969 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1970 && _end > 1970 {
+                        _buf[(1970 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1971 && _end > 1971 {
+                        _buf[(1971 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 1988 && _end > 1984 {
+                    let _value = self.read_gpio_pin_cnfn(12)?.to_ne_bytes();
+                    if _start <= 1984 && _end > 1984 {
+                        _buf[(1984 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1985 && _end > 1985 {
+                        _buf[(1985 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 1986 && _end > 1986 {
+                        _buf[(1986 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 1987 && _end > 1987 {
+                        _buf[(1987 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 2004 && _end > 2000 {
+                    let _value = self.read_gpio_pin_cnfn(13)?.to_ne_bytes();
+                    if _start <= 2000 && _end > 2000 {
+                        _buf[(2000 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 2001 && _end > 2001 {
+                        _buf[(2001 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 2002 && _end > 2002 {
+                        _buf[(2002 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 2003 && _end > 2003 {
+                        _buf[(2003 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 2020 && _end > 2016 {
+                    let _value = self.read_gpio_pin_cnfn(14)?.to_ne_bytes();
+                    if _start <= 2016 && _end > 2016 {
+                        _buf[(2016 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 2017 && _end > 2017 {
+                        _buf[(2017 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 2018 && _end > 2018 {
+                        _buf[(2018 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 2019 && _end > 2019 {
+                        _buf[(2019 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 2036 && _end > 2032 {
+                    let _value = self.read_gpio_pin_cnfn(15)?.to_ne_bytes();
+                    if _start <= 2032 && _end > 2032 {
+                        _buf[(2032 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 2033 && _end > 2033 {
+                        _buf[(2033 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 2034 && _end > 2034 {
+                        _buf[(2034 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 2035 && _end > 2035 {
+                        _buf[(2035 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 2052 && _end > 2048 {
+                    let _value = self.read_gpio_pin_cnfn(16)?.to_ne_bytes();
+                    if _start <= 2048 && _end > 2048 {
+                        _buf[(2048 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 2049 && _end > 2049 {
+                        _buf[(2049 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 2050 && _end > 2050 {
+                        _buf[(2050 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 2051 && _end > 2051 {
+                        _buf[(2051 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 2068 && _end > 2064 {
+                    let _value = self.read_gpio_pin_cnfn(17)?.to_ne_bytes();
+                    if _start <= 2064 && _end > 2064 {
+                        _buf[(2064 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 2065 && _end > 2065 {
+                        _buf[(2065 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 2066 && _end > 2066 {
+                        _buf[(2066 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 2067 && _end > 2067 {
+                        _buf[(2067 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 2084 && _end > 2080 {
+                    let _value = self.read_gpio_pin_cnfn(18)?.to_ne_bytes();
+                    if _start <= 2080 && _end > 2080 {
+                        _buf[(2080 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 2081 && _end > 2081 {
+                        _buf[(2081 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 2082 && _end > 2082 {
+                        _buf[(2082 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 2083 && _end > 2083 {
+                        _buf[(2083 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 2100 && _end > 2096 {
+                    let _value = self.read_gpio_pin_cnfn(19)?.to_ne_bytes();
+                    if _start <= 2096 && _end > 2096 {
+                        _buf[(2096 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 2097 && _end > 2097 {
+                        _buf[(2097 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 2098 && _end > 2098 {
+                        _buf[(2098 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 2099 && _end > 2099 {
+                        _buf[(2099 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 2116 && _end > 2112 {
+                    let _value = self.read_gpio_pin_cnfn(20)?.to_ne_bytes();
+                    if _start <= 2112 && _end > 2112 {
+                        _buf[(2112 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 2113 && _end > 2113 {
+                        _buf[(2113 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 2114 && _end > 2114 {
+                        _buf[(2114 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 2115 && _end > 2115 {
+                        _buf[(2115 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 2132 && _end > 2128 {
+                    let _value = self.read_gpio_pin_cnfn(21)?.to_ne_bytes();
+                    if _start <= 2128 && _end > 2128 {
+                        _buf[(2128 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 2129 && _end > 2129 {
+                        _buf[(2129 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 2130 && _end > 2130 {
+                        _buf[(2130 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 2131 && _end > 2131 {
+                        _buf[(2131 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 2148 && _end > 2144 {
+                    let _value = self.read_gpio_pin_cnfn(22)?.to_ne_bytes();
+                    if _start <= 2144 && _end > 2144 {
+                        _buf[(2144 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 2145 && _end > 2145 {
+                        _buf[(2145 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 2146 && _end > 2146 {
+                        _buf[(2146 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 2147 && _end > 2147 {
+                        _buf[(2147 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 2164 && _end > 2160 {
+                    let _value = self.read_gpio_pin_cnfn(23)?.to_ne_bytes();
+                    if _start <= 2160 && _end > 2160 {
+                        _buf[(2160 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 2161 && _end > 2161 {
+                        _buf[(2161 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 2162 && _end > 2162 {
+                        _buf[(2162 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 2163 && _end > 2163 {
+                        _buf[(2163 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 2180 && _end > 2176 {
+                    let _value = self.read_gpio_pin_cnfn(24)?.to_ne_bytes();
+                    if _start <= 2176 && _end > 2176 {
+                        _buf[(2176 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 2177 && _end > 2177 {
+                        _buf[(2177 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 2178 && _end > 2178 {
+                        _buf[(2178 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 2179 && _end > 2179 {
+                        _buf[(2179 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 2196 && _end > 2192 {
+                    let _value = self.read_gpio_pin_cnfn(25)?.to_ne_bytes();
+                    if _start <= 2192 && _end > 2192 {
+                        _buf[(2192 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 2193 && _end > 2193 {
+                        _buf[(2193 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 2194 && _end > 2194 {
+                        _buf[(2194 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 2195 && _end > 2195 {
+                        _buf[(2195 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 2212 && _end > 2208 {
+                    let _value = self.read_gpio_pin_cnfn(26)?.to_ne_bytes();
+                    if _start <= 2208 && _end > 2208 {
+                        _buf[(2208 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 2209 && _end > 2209 {
+                        _buf[(2209 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 2210 && _end > 2210 {
+                        _buf[(2210 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 2211 && _end > 2211 {
+                        _buf[(2211 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 2228 && _end > 2224 {
+                    let _value = self.read_gpio_pin_cnfn(27)?.to_ne_bytes();
+                    if _start <= 2224 && _end > 2224 {
+                        _buf[(2224 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 2225 && _end > 2225 {
+                        _buf[(2225 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 2226 && _end > 2226 {
+                        _buf[(2226 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 2227 && _end > 2227 {
+                        _buf[(2227 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 2244 && _end > 2240 {
+                    let _value = self.read_gpio_pin_cnfn(28)?.to_ne_bytes();
+                    if _start <= 2240 && _end > 2240 {
+                        _buf[(2240 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 2241 && _end > 2241 {
+                        _buf[(2241 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 2242 && _end > 2242 {
+                        _buf[(2242 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 2243 && _end > 2243 {
+                        _buf[(2243 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 2260 && _end > 2256 {
                     let _value = self.read_gpio_pin_cnfn(29)?.to_ne_bytes();
-                    if _start <= 1908 && _end > 1908 {
-                        _buf[(1908 - _start) as usize] = _value[0];
+                    if _start <= 2256 && _end > 2256 {
+                        _buf[(2256 - _start) as usize] = _value[0];
                     }
-                    if _start <= 1909 && _end > 1909 {
-                        _buf[(1909 - _start) as usize] = _value[1];
+                    if _start <= 2257 && _end > 2257 {
+                        _buf[(2257 - _start) as usize] = _value[1];
                     }
-                    if _start <= 1910 && _end > 1910 {
-                        _buf[(1910 - _start) as usize] = _value[2];
+                    if _start <= 2258 && _end > 2258 {
+                        _buf[(2258 - _start) as usize] = _value[2];
                     }
-                    if _start <= 1911 && _end > 1911 {
-                        _buf[(1911 - _start) as usize] = _value[3];
+                    if _start <= 2259 && _end > 2259 {
+                        _buf[(2259 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1916 && _end > 1912 {
+                if _start < 2276 && _end > 2272 {
                     let _value = self.read_gpio_pin_cnfn(30)?.to_ne_bytes();
-                    if _start <= 1912 && _end > 1912 {
-                        _buf[(1912 - _start) as usize] = _value[0];
+                    if _start <= 2272 && _end > 2272 {
+                        _buf[(2272 - _start) as usize] = _value[0];
                     }
-                    if _start <= 1913 && _end > 1913 {
-                        _buf[(1913 - _start) as usize] = _value[1];
+                    if _start <= 2273 && _end > 2273 {
+                        _buf[(2273 - _start) as usize] = _value[1];
                     }
-                    if _start <= 1914 && _end > 1914 {
-                        _buf[(1914 - _start) as usize] = _value[2];
+                    if _start <= 2274 && _end > 2274 {
+                        _buf[(2274 - _start) as usize] = _value[2];
                     }
-                    if _start <= 1915 && _end > 1915 {
-                        _buf[(1915 - _start) as usize] = _value[3];
+                    if _start <= 2275 && _end > 2275 {
+                        _buf[(2275 - _start) as usize] = _value[3];
                     }
                 }
-                if _start < 1920 && _end > 1916 {
+                if _start < 2292 && _end > 2288 {
                     let _value = self.read_gpio_pin_cnfn(31)?.to_ne_bytes();
-                    if _start <= 1916 && _end > 1916 {
-                        _buf[(1916 - _start) as usize] = _value[0];
+                    if _start <= 2288 && _end > 2288 {
+                        _buf[(2288 - _start) as usize] = _value[0];
                     }
-                    if _start <= 1917 && _end > 1917 {
-                        _buf[(1917 - _start) as usize] = _value[1];
+                    if _start <= 2289 && _end > 2289 {
+                        _buf[(2289 - _start) as usize] = _value[1];
                     }
-                    if _start <= 1918 && _end > 1918 {
-                        _buf[(1918 - _start) as usize] = _value[2];
+                    if _start <= 2290 && _end > 2290 {
+                        _buf[(2290 - _start) as usize] = _value[2];
                     }
-                    if _start <= 1919 && _end > 1919 {
-                        _buf[(1919 - _start) as usize] = _value[3];
+                    if _start <= 2291 && _end > 2291 {
+                        _buf[(2291 - _start) as usize] = _value[3];
                     }
                 }
                 Ok(())
@@ -20533,221 +21653,221 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x50000000 {
                         (_end.saturating_sub(1792u64) as usize).min(start + 4);
                     self.write_gpio_pin_cnfn(0, offset, &_buf[start..end])?;
                 }
-                if _start < 1800 && _end > 1796 {
-                    let offset = 1796u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1796u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1796u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(1, offset, &_buf[start..end])?;
-                }
-                if _start < 1804 && _end > 1800 {
-                    let offset = 1800u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1800u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1800u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(2, offset, &_buf[start..end])?;
-                }
-                if _start < 1808 && _end > 1804 {
-                    let offset = 1804u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1804u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1804u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(3, offset, &_buf[start..end])?;
-                }
                 if _start < 1812 && _end > 1808 {
                     let offset = 1808u64.saturating_sub(_start);
                     let start = _start.saturating_sub(1808u64) as usize;
                     let end =
                         (_end.saturating_sub(1808u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(4, offset, &_buf[start..end])?;
-                }
-                if _start < 1816 && _end > 1812 {
-                    let offset = 1812u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1812u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1812u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(5, offset, &_buf[start..end])?;
-                }
-                if _start < 1820 && _end > 1816 {
-                    let offset = 1816u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1816u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1816u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(6, offset, &_buf[start..end])?;
-                }
-                if _start < 1824 && _end > 1820 {
-                    let offset = 1820u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1820u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1820u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(7, offset, &_buf[start..end])?;
+                    self.write_gpio_pin_cnfn(1, offset, &_buf[start..end])?;
                 }
                 if _start < 1828 && _end > 1824 {
                     let offset = 1824u64.saturating_sub(_start);
                     let start = _start.saturating_sub(1824u64) as usize;
                     let end =
                         (_end.saturating_sub(1824u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(8, offset, &_buf[start..end])?;
-                }
-                if _start < 1832 && _end > 1828 {
-                    let offset = 1828u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1828u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1828u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(9, offset, &_buf[start..end])?;
-                }
-                if _start < 1836 && _end > 1832 {
-                    let offset = 1832u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1832u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1832u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(10, offset, &_buf[start..end])?;
-                }
-                if _start < 1840 && _end > 1836 {
-                    let offset = 1836u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1836u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1836u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(11, offset, &_buf[start..end])?;
+                    self.write_gpio_pin_cnfn(2, offset, &_buf[start..end])?;
                 }
                 if _start < 1844 && _end > 1840 {
                     let offset = 1840u64.saturating_sub(_start);
                     let start = _start.saturating_sub(1840u64) as usize;
                     let end =
                         (_end.saturating_sub(1840u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(12, offset, &_buf[start..end])?;
-                }
-                if _start < 1848 && _end > 1844 {
-                    let offset = 1844u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1844u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1844u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(13, offset, &_buf[start..end])?;
-                }
-                if _start < 1852 && _end > 1848 {
-                    let offset = 1848u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1848u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1848u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(14, offset, &_buf[start..end])?;
-                }
-                if _start < 1856 && _end > 1852 {
-                    let offset = 1852u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1852u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1852u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(15, offset, &_buf[start..end])?;
+                    self.write_gpio_pin_cnfn(3, offset, &_buf[start..end])?;
                 }
                 if _start < 1860 && _end > 1856 {
                     let offset = 1856u64.saturating_sub(_start);
                     let start = _start.saturating_sub(1856u64) as usize;
                     let end =
                         (_end.saturating_sub(1856u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(16, offset, &_buf[start..end])?;
-                }
-                if _start < 1864 && _end > 1860 {
-                    let offset = 1860u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1860u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1860u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(17, offset, &_buf[start..end])?;
-                }
-                if _start < 1868 && _end > 1864 {
-                    let offset = 1864u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1864u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1864u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(18, offset, &_buf[start..end])?;
-                }
-                if _start < 1872 && _end > 1868 {
-                    let offset = 1868u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1868u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1868u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(19, offset, &_buf[start..end])?;
+                    self.write_gpio_pin_cnfn(4, offset, &_buf[start..end])?;
                 }
                 if _start < 1876 && _end > 1872 {
                     let offset = 1872u64.saturating_sub(_start);
                     let start = _start.saturating_sub(1872u64) as usize;
                     let end =
                         (_end.saturating_sub(1872u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(20, offset, &_buf[start..end])?;
-                }
-                if _start < 1880 && _end > 1876 {
-                    let offset = 1876u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1876u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1876u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(21, offset, &_buf[start..end])?;
-                }
-                if _start < 1884 && _end > 1880 {
-                    let offset = 1880u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1880u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1880u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(22, offset, &_buf[start..end])?;
-                }
-                if _start < 1888 && _end > 1884 {
-                    let offset = 1884u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1884u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1884u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(23, offset, &_buf[start..end])?;
+                    self.write_gpio_pin_cnfn(5, offset, &_buf[start..end])?;
                 }
                 if _start < 1892 && _end > 1888 {
                     let offset = 1888u64.saturating_sub(_start);
                     let start = _start.saturating_sub(1888u64) as usize;
                     let end =
                         (_end.saturating_sub(1888u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(24, offset, &_buf[start..end])?;
-                }
-                if _start < 1896 && _end > 1892 {
-                    let offset = 1892u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1892u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1892u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(25, offset, &_buf[start..end])?;
-                }
-                if _start < 1900 && _end > 1896 {
-                    let offset = 1896u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1896u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1896u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(26, offset, &_buf[start..end])?;
-                }
-                if _start < 1904 && _end > 1900 {
-                    let offset = 1900u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1900u64) as usize;
-                    let end =
-                        (_end.saturating_sub(1900u64) as usize).min(start + 4);
-                    self.write_gpio_pin_cnfn(27, offset, &_buf[start..end])?;
+                    self.write_gpio_pin_cnfn(6, offset, &_buf[start..end])?;
                 }
                 if _start < 1908 && _end > 1904 {
                     let offset = 1904u64.saturating_sub(_start);
                     let start = _start.saturating_sub(1904u64) as usize;
                     let end =
                         (_end.saturating_sub(1904u64) as usize).min(start + 4);
+                    self.write_gpio_pin_cnfn(7, offset, &_buf[start..end])?;
+                }
+                if _start < 1924 && _end > 1920 {
+                    let offset = 1920u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(1920u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1920u64) as usize).min(start + 4);
+                    self.write_gpio_pin_cnfn(8, offset, &_buf[start..end])?;
+                }
+                if _start < 1940 && _end > 1936 {
+                    let offset = 1936u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(1936u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1936u64) as usize).min(start + 4);
+                    self.write_gpio_pin_cnfn(9, offset, &_buf[start..end])?;
+                }
+                if _start < 1956 && _end > 1952 {
+                    let offset = 1952u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(1952u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1952u64) as usize).min(start + 4);
+                    self.write_gpio_pin_cnfn(10, offset, &_buf[start..end])?;
+                }
+                if _start < 1972 && _end > 1968 {
+                    let offset = 1968u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(1968u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1968u64) as usize).min(start + 4);
+                    self.write_gpio_pin_cnfn(11, offset, &_buf[start..end])?;
+                }
+                if _start < 1988 && _end > 1984 {
+                    let offset = 1984u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(1984u64) as usize;
+                    let end =
+                        (_end.saturating_sub(1984u64) as usize).min(start + 4);
+                    self.write_gpio_pin_cnfn(12, offset, &_buf[start..end])?;
+                }
+                if _start < 2004 && _end > 2000 {
+                    let offset = 2000u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(2000u64) as usize;
+                    let end =
+                        (_end.saturating_sub(2000u64) as usize).min(start + 4);
+                    self.write_gpio_pin_cnfn(13, offset, &_buf[start..end])?;
+                }
+                if _start < 2020 && _end > 2016 {
+                    let offset = 2016u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(2016u64) as usize;
+                    let end =
+                        (_end.saturating_sub(2016u64) as usize).min(start + 4);
+                    self.write_gpio_pin_cnfn(14, offset, &_buf[start..end])?;
+                }
+                if _start < 2036 && _end > 2032 {
+                    let offset = 2032u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(2032u64) as usize;
+                    let end =
+                        (_end.saturating_sub(2032u64) as usize).min(start + 4);
+                    self.write_gpio_pin_cnfn(15, offset, &_buf[start..end])?;
+                }
+                if _start < 2052 && _end > 2048 {
+                    let offset = 2048u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(2048u64) as usize;
+                    let end =
+                        (_end.saturating_sub(2048u64) as usize).min(start + 4);
+                    self.write_gpio_pin_cnfn(16, offset, &_buf[start..end])?;
+                }
+                if _start < 2068 && _end > 2064 {
+                    let offset = 2064u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(2064u64) as usize;
+                    let end =
+                        (_end.saturating_sub(2064u64) as usize).min(start + 4);
+                    self.write_gpio_pin_cnfn(17, offset, &_buf[start..end])?;
+                }
+                if _start < 2084 && _end > 2080 {
+                    let offset = 2080u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(2080u64) as usize;
+                    let end =
+                        (_end.saturating_sub(2080u64) as usize).min(start + 4);
+                    self.write_gpio_pin_cnfn(18, offset, &_buf[start..end])?;
+                }
+                if _start < 2100 && _end > 2096 {
+                    let offset = 2096u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(2096u64) as usize;
+                    let end =
+                        (_end.saturating_sub(2096u64) as usize).min(start + 4);
+                    self.write_gpio_pin_cnfn(19, offset, &_buf[start..end])?;
+                }
+                if _start < 2116 && _end > 2112 {
+                    let offset = 2112u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(2112u64) as usize;
+                    let end =
+                        (_end.saturating_sub(2112u64) as usize).min(start + 4);
+                    self.write_gpio_pin_cnfn(20, offset, &_buf[start..end])?;
+                }
+                if _start < 2132 && _end > 2128 {
+                    let offset = 2128u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(2128u64) as usize;
+                    let end =
+                        (_end.saturating_sub(2128u64) as usize).min(start + 4);
+                    self.write_gpio_pin_cnfn(21, offset, &_buf[start..end])?;
+                }
+                if _start < 2148 && _end > 2144 {
+                    let offset = 2144u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(2144u64) as usize;
+                    let end =
+                        (_end.saturating_sub(2144u64) as usize).min(start + 4);
+                    self.write_gpio_pin_cnfn(22, offset, &_buf[start..end])?;
+                }
+                if _start < 2164 && _end > 2160 {
+                    let offset = 2160u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(2160u64) as usize;
+                    let end =
+                        (_end.saturating_sub(2160u64) as usize).min(start + 4);
+                    self.write_gpio_pin_cnfn(23, offset, &_buf[start..end])?;
+                }
+                if _start < 2180 && _end > 2176 {
+                    let offset = 2176u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(2176u64) as usize;
+                    let end =
+                        (_end.saturating_sub(2176u64) as usize).min(start + 4);
+                    self.write_gpio_pin_cnfn(24, offset, &_buf[start..end])?;
+                }
+                if _start < 2196 && _end > 2192 {
+                    let offset = 2192u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(2192u64) as usize;
+                    let end =
+                        (_end.saturating_sub(2192u64) as usize).min(start + 4);
+                    self.write_gpio_pin_cnfn(25, offset, &_buf[start..end])?;
+                }
+                if _start < 2212 && _end > 2208 {
+                    let offset = 2208u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(2208u64) as usize;
+                    let end =
+                        (_end.saturating_sub(2208u64) as usize).min(start + 4);
+                    self.write_gpio_pin_cnfn(26, offset, &_buf[start..end])?;
+                }
+                if _start < 2228 && _end > 2224 {
+                    let offset = 2224u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(2224u64) as usize;
+                    let end =
+                        (_end.saturating_sub(2224u64) as usize).min(start + 4);
+                    self.write_gpio_pin_cnfn(27, offset, &_buf[start..end])?;
+                }
+                if _start < 2244 && _end > 2240 {
+                    let offset = 2240u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(2240u64) as usize;
+                    let end =
+                        (_end.saturating_sub(2240u64) as usize).min(start + 4);
                     self.write_gpio_pin_cnfn(28, offset, &_buf[start..end])?;
                 }
-                if _start < 1912 && _end > 1908 {
-                    let offset = 1908u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1908u64) as usize;
+                if _start < 2260 && _end > 2256 {
+                    let offset = 2256u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(2256u64) as usize;
                     let end =
-                        (_end.saturating_sub(1908u64) as usize).min(start + 4);
+                        (_end.saturating_sub(2256u64) as usize).min(start + 4);
                     self.write_gpio_pin_cnfn(29, offset, &_buf[start..end])?;
                 }
-                if _start < 1916 && _end > 1912 {
-                    let offset = 1912u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1912u64) as usize;
+                if _start < 2276 && _end > 2272 {
+                    let offset = 2272u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(2272u64) as usize;
                     let end =
-                        (_end.saturating_sub(1912u64) as usize).min(start + 4);
+                        (_end.saturating_sub(2272u64) as usize).min(start + 4);
                     self.write_gpio_pin_cnfn(30, offset, &_buf[start..end])?;
                 }
-                if _start < 1920 && _end > 1916 {
-                    let offset = 1916u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1916u64) as usize;
+                if _start < 2292 && _end > 2288 {
+                    let offset = 2288u64.saturating_sub(_start);
+                    let start = _start.saturating_sub(2288u64) as usize;
                     let end =
-                        (_end.saturating_sub(1916u64) as usize).min(start + 4);
+                        (_end.saturating_sub(2288u64) as usize).min(start + 4);
                     self.write_gpio_pin_cnfn(31, offset, &_buf[start..end])?;
                 }
                 Ok(())

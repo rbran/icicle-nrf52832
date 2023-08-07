@@ -1,6 +1,5 @@
 #[derive(Default)]
-pub struct Wdt {
-}
+pub struct Wdt {}
 
 impl Wdt {
     /// Indicates whether or not the watchdog is running

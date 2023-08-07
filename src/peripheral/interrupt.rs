@@ -18,22 +18,14 @@ impl Interrupts {
             .map(|bit| (self.is_on(_nvic * 32 + bit) as u32) << bit)
             .fold(0, |acc, x| acc | x)
     }
-    pub fn nvic_set_enable(
-        &mut self,
-        _nvic: usize,
-        _value: u32,
-    ) {
+    pub fn nvic_set_enable(&mut self, _nvic: usize, _value: u32) {
         for bit in 0..32 {
             if ((_value >> bit) & 1) != 0 {
                 self.set_on(_nvic * 32 + bit, true);
             }
         }
     }
-    pub fn nvic_clr_enable(
-        &mut self,
-        _nvic: usize,
-        _value: u32,
-    ) {
+    pub fn nvic_clr_enable(&mut self, _nvic: usize, _value: u32) {
         for bit in 0..32 {
             if ((_value >> bit) & 1) == 0 {
                 self.set_on(_nvic * 32 + bit, false);
@@ -54,22 +46,14 @@ impl Interrupts {
             .map(|bit| (self.is_pending(_nvic * 32 + bit) as u32) << bit)
             .fold(0, |acc, x| acc | x)
     }
-    pub fn nvic_set_pending(
-        &mut self,
-        _nvic: usize,
-        _value: u32,
-    ) {
+    pub fn nvic_set_pending(&mut self, _nvic: usize, _value: u32) {
         for bit in 0..32 {
             if ((_value >> bit) & 1) != 0 {
                 self.set_pending(_nvic * 32 + bit, true);
             }
         }
     }
-    pub fn nvic_clr_pending(
-        &mut self,
-        _nvic: usize,
-        _value: u32,
-    ) {
+    pub fn nvic_clr_pending(&mut self, _nvic: usize, _value: u32) {
         for bit in 0..32 {
             if ((_value >> bit) & 1) == 0 {
                 self.set_pending(_nvic * 32 + bit, false);
