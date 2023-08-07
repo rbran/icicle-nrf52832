@@ -1,6 +1,6 @@
 #[derive(Default)]
 pub struct Wdt {
-    on: bool
+    on: bool,
 }
 
 impl Wdt {

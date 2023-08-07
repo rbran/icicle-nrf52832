@@ -1987,15 +1987,15 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10001000 {
                     )?;
                 }
                 if _start < 8 && _end > 4 {
-                    let offset = 4u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(4) as usize;
-                    let end = (_end.saturating_sub(4) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(4);
+                    let start = 4u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 4) - offset) as usize;
                     self.write_uicr_rbpconf(offset, &_buf[start..end])?;
                 }
                 if _start < 12 && _end > 8 {
-                    let offset = 8u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(8) as usize;
-                    let end = (_end.saturating_sub(8) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(8);
+                    let start = 8u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 8) - offset) as usize;
                     self.write_uicr_xtalfreq(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -2892,14 +2892,14 @@ impl PeripheralPage0x10001000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_uicr_rbpconf_pr0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -2922,7 +2922,7 @@ impl PeripheralPage0x10001000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -3688,27 +3688,24 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40000000 {
             }
             (772..=779, 773..=780) => {
                 if _start < 776 && _end > 772 {
-                    let offset = 772u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(772) as usize;
-                    let end =
-                        (_end.saturating_sub(772) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(772);
+                    let start = 772u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 772) - offset) as usize;
                     self.write_powerclock_intenset(offset, &_buf[start..end])?;
                 }
                 if _start < 780 && _end > 776 {
-                    let offset = 776u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(776) as usize;
-                    let end =
-                        (_end.saturating_sub(776) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(776);
+                    let start = 776u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 776) - offset) as usize;
                     self.write_powerclock_intenclr(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1024..=1027, 1025..=1028) => {
                 if _start < 1028 && _end > 1024 {
-                    let offset = 1024u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1024) as usize;
-                    let end =
-                        (_end.saturating_sub(1024) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1024);
+                    let start = 1024u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1024) - offset) as usize;
                     self.write_power_resetreas(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -3742,54 +3739,48 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40000000 {
             }
             (1280..=1283, 1281..=1284) => {
                 if _start < 1284 && _end > 1280 {
-                    let offset = 1280u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1280) as usize;
-                    let end =
-                        (_end.saturating_sub(1280) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1280);
+                    let start = 1280u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1280) - offset) as usize;
                     self.write_power_systemoff(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1296..=1299, 1297..=1300) => {
                 if _start < 1300 && _end > 1296 {
-                    let offset = 1296u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1296) as usize;
-                    let end =
-                        (_end.saturating_sub(1296) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1296);
+                    let start = 1296u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1296) - offset) as usize;
                     self.write_power_pofcon(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1304..=1311, 1305..=1312) => {
                 if _start < 1308 && _end > 1304 {
-                    let offset = 1304u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1304) as usize;
-                    let end =
-                        (_end.saturating_sub(1304) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1304);
+                    let start = 1304u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1304) - offset) as usize;
                     self.write_clock_lfclksrc(offset, &_buf[start..end])?;
                 }
                 if _start < 1312 && _end > 1308 {
-                    let offset = 1308u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1308) as usize;
-                    let end =
-                        (_end.saturating_sub(1308) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1308);
+                    let start = 1308u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1308) - offset) as usize;
                     self.write_power_gpregret(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1316..=1327, 1317..=1328) => {
                 if _start < 1320 && _end > 1316 {
-                    let offset = 1316u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1316) as usize;
-                    let end =
-                        (_end.saturating_sub(1316) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1316);
+                    let start = 1316u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1316) - offset) as usize;
                     self.write_power_ramon(offset, &_buf[start..end])?;
                 }
                 if _start < 1324 && _end > 1320 {
-                    let offset = 1320u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1320) as usize;
-                    let end =
-                        (_end.saturating_sub(1320) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1320);
+                    let start = 1320u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1320) - offset) as usize;
                     self.write_mpu_perr0(offset, &_buf[start..end])?;
                 }
                 if _start < 1328 && _end > 1324 {
@@ -3810,88 +3801,78 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40000000 {
             }
             (1336..=1339, 1337..=1340) => {
                 if _start < 1340 && _end > 1336 {
-                    let offset = 1336u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1336) as usize;
-                    let end =
-                        (_end.saturating_sub(1336) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1336);
+                    let start = 1336u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1336) - offset) as usize;
                     self.write_clock_ctiv(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1348..=1351, 1349..=1352) => {
                 if _start < 1352 && _end > 1348 {
-                    let offset = 1348u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1348) as usize;
-                    let end =
-                        (_end.saturating_sub(1348) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1348);
+                    let start = 1348u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1348) - offset) as usize;
                     self.write_power_reset(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1360..=1367, 1361..=1368) => {
                 if _start < 1364 && _end > 1360 {
-                    let offset = 1360u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1360) as usize;
-                    let end =
-                        (_end.saturating_sub(1360) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1360);
+                    let start = 1360u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1360) - offset) as usize;
                     self.write_clock_xtalfreq(offset, &_buf[start..end])?;
                 }
                 if _start < 1368 && _end > 1364 {
-                    let offset = 1364u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1364) as usize;
-                    let end =
-                        (_end.saturating_sub(1364) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1364);
+                    let start = 1364u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1364) - offset) as usize;
                     self.write_power_ramonb(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1400..=1403, 1401..=1404) => {
                 if _start < 1404 && _end > 1400 {
-                    let offset = 1400u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1400) as usize;
-                    let end =
-                        (_end.saturating_sub(1400) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1400);
+                    let start = 1400u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1400) - offset) as usize;
                     self.write_power_dcdcen(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1536..=1551, 1537..=1552) => {
                 if _start < 1540 && _end > 1536 {
-                    let offset = 1536u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1536) as usize;
-                    let end =
-                        (_end.saturating_sub(1536) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1536);
+                    let start = 1536u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1536) - offset) as usize;
                     self.write_mpu_protenset0(offset, &_buf[start..end])?;
                 }
                 if _start < 1544 && _end > 1540 {
-                    let offset = 1540u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1540) as usize;
-                    let end =
-                        (_end.saturating_sub(1540) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1540);
+                    let start = 1540u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1540) - offset) as usize;
                     self.write_mpu_protenset1(offset, &_buf[start..end])?;
                 }
                 if _start < 1548 && _end > 1544 {
-                    let offset = 1544u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1544) as usize;
-                    let end =
-                        (_end.saturating_sub(1544) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1544);
+                    let start = 1544u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1544) - offset) as usize;
                     self.write_mpu_disableindebug(offset, &_buf[start..end])?;
                 }
                 if _start < 1552 && _end > 1548 {
-                    let offset = 1548u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1548) as usize;
-                    let end =
-                        (_end.saturating_sub(1548) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1548);
+                    let start = 1548u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1548) - offset) as usize;
                     self.write_mpu_protblocksize(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (2568..=2571, 2569..=2572) => {
                 if _start < 2572 && _end > 2568 {
-                    let offset = 2568u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(2568) as usize;
-                    let end =
-                        (_end.saturating_sub(2568) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(2568);
+                    let start = 2568u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 2568) - offset) as usize;
                     self.write_power_dcdcforce(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -3934,7 +3915,7 @@ impl PeripheralPage0x40000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -3943,7 +3924,7 @@ impl PeripheralPage0x40000000 {
                 )?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -3952,20 +3933,20 @@ impl PeripheralPage0x40000000 {
                 )?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0.lock().unwrap().write_powerclock_intenset_pofwarn(
                 (_value[_i] >> 2) & 1 != 0,
             )?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_powerclock_intenset_done((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -4006,7 +3987,7 @@ impl PeripheralPage0x40000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -4015,7 +3996,7 @@ impl PeripheralPage0x40000000 {
                 )?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -4024,20 +4005,20 @@ impl PeripheralPage0x40000000 {
                 )?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0.lock().unwrap().write_powerclock_intenclr_pofwarn(
                 (_value[_i] >> 2) & 1 != 0,
             )?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_powerclock_intenclr_done((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -4075,49 +4056,49 @@ impl PeripheralPage0x40000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_power_resetreas_resetpin((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_power_resetreas_dog((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_power_resetreas_sreq((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_power_resetreas_lockup((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_power_resetreas_off((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_power_resetreas_lpcomp((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -4188,7 +4169,7 @@ impl PeripheralPage0x40000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -4213,14 +4194,14 @@ impl PeripheralPage0x40000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_power_pofcon_pof((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -4242,7 +4223,7 @@ impl PeripheralPage0x40000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -4265,7 +4246,7 @@ impl PeripheralPage0x40000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -4293,28 +4274,28 @@ impl PeripheralPage0x40000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_power_ramon_onram0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_power_ramon_onram1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_power_ramon_offram0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -4373,147 +4354,147 @@ impl PeripheralPage0x40000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_perr0_power_clock((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_perr0_radio((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_perr0_uart0((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_perr0_spi0_twi0((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_perr0_spi1_twi1((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_perr0_gpiote((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_perr0_adc((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_perr0_timer0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_perr0_timer1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_perr0_timer2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_perr0_rtc0((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_perr0_temp((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_perr0_rng((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_perr0_ecb((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_perr0_ccm_aar((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_perr0_wdt((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_perr0_rtc1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_perr0_qdec((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_perr0_lpcomp((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_perr0_nvmc((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -4535,7 +4516,7 @@ impl PeripheralPage0x40000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -4557,7 +4538,7 @@ impl PeripheralPage0x40000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -4580,7 +4561,7 @@ impl PeripheralPage0x40000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -4610,28 +4591,28 @@ impl PeripheralPage0x40000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_power_ramonb_onram2((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_power_ramonb_onram3((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_power_ramonb_offram2((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -4653,7 +4634,7 @@ impl PeripheralPage0x40000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -4769,224 +4750,224 @@ impl PeripheralPage0x40000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg3((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg4((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg5((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg6((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg7((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg8((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg9((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg10((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg11((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg12((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg13((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg14((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg15((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg16((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg17((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg18((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg19((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg20((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg21((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg22((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg23((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg24((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg25((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg26((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg27((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg28((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg29((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset0_protreg30((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -5102,224 +5083,224 @@ impl PeripheralPage0x40000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg32((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg33((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg34((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg35((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg36((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg37((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg38((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg39((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg40((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg41((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg42((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg43((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg44((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg45((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg46((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg47((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg48((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg49((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg50((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg51((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg52((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg53((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg54((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg55((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg56((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg57((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg58((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg59((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg60((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg61((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_protenset1_protreg62((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -5345,7 +5326,7 @@ impl PeripheralPage0x40000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -5373,7 +5354,7 @@ impl PeripheralPage0x40000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -5401,14 +5382,14 @@ impl PeripheralPage0x40000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_power_dcdcforce_forceoff((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -6746,27 +6727,24 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40001000 {
             }
             (512..=515, 513..=516) => {
                 if _start < 516 && _end > 512 {
-                    let offset = 512u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(512) as usize;
-                    let end =
-                        (_end.saturating_sub(512) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(512);
+                    let start = 512u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 512) - offset) as usize;
                     self.write_radio_shorts(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (772..=779, 773..=780) => {
                 if _start < 776 && _end > 772 {
-                    let offset = 772u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(772) as usize;
-                    let end =
-                        (_end.saturating_sub(772) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(772);
+                    let start = 772u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 772) - offset) as usize;
                     self.write_radio_intenset(offset, &_buf[start..end])?;
                 }
                 if _start < 780 && _end > 776 {
-                    let offset = 776u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(776) as usize;
-                    let end =
-                        (_end.saturating_sub(776) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(776);
+                    let start = 776u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 776) - offset) as usize;
                     self.write_radio_intenclr(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -6805,38 +6783,33 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40001000 {
                     )?;
                 }
                 if _start < 1292 && _end > 1288 {
-                    let offset = 1288u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1288) as usize;
-                    let end =
-                        (_end.saturating_sub(1288) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1288);
+                    let start = 1288u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1288) - offset) as usize;
                     self.write_radio_frequency(offset, &_buf[start..end])?;
                 }
                 if _start < 1296 && _end > 1292 {
-                    let offset = 1292u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1292) as usize;
-                    let end =
-                        (_end.saturating_sub(1292) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1292);
+                    let start = 1292u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1292) - offset) as usize;
                     self.write_radio_txpower(offset, &_buf[start..end])?;
                 }
                 if _start < 1300 && _end > 1296 {
-                    let offset = 1296u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1296) as usize;
-                    let end =
-                        (_end.saturating_sub(1296) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1296);
+                    let start = 1296u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1296) - offset) as usize;
                     self.write_radio_mode(offset, &_buf[start..end])?;
                 }
                 if _start < 1304 && _end > 1300 {
-                    let offset = 1300u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1300) as usize;
-                    let end =
-                        (_end.saturating_sub(1300) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1300);
+                    let start = 1300u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1300) - offset) as usize;
                     self.write_radio_pcnf0(offset, &_buf[start..end])?;
                 }
                 if _start < 1308 && _end > 1304 {
-                    let offset = 1304u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1304) as usize;
-                    let end =
-                        (_end.saturating_sub(1304) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1304);
+                    let start = 1304u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1304) - offset) as usize;
                     self.write_radio_pcnf1(offset, &_buf[start..end])?;
                 }
                 if _start < 1312 && _end > 1308 {
@@ -6868,66 +6841,57 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40001000 {
                     )?;
                 }
                 if _start < 1320 && _end > 1316 {
-                    let offset = 1316u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1316) as usize;
-                    let end =
-                        (_end.saturating_sub(1316) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1316);
+                    let start = 1316u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1316) - offset) as usize;
                     self.write_radio_prefix0(offset, &_buf[start..end])?;
                 }
                 if _start < 1324 && _end > 1320 {
-                    let offset = 1320u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1320) as usize;
-                    let end =
-                        (_end.saturating_sub(1320) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1320);
+                    let start = 1320u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1320) - offset) as usize;
                     self.write_radio_prefix1(offset, &_buf[start..end])?;
                 }
                 if _start < 1328 && _end > 1324 {
-                    let offset = 1324u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1324) as usize;
-                    let end =
-                        (_end.saturating_sub(1324) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1324);
+                    let start = 1324u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1324) - offset) as usize;
                     self.write_radio_txaddress(offset, &_buf[start..end])?;
                 }
                 if _start < 1332 && _end > 1328 {
-                    let offset = 1328u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1328) as usize;
-                    let end =
-                        (_end.saturating_sub(1328) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1328);
+                    let start = 1328u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1328) - offset) as usize;
                     self.write_radio_rxaddresses(offset, &_buf[start..end])?;
                 }
                 if _start < 1336 && _end > 1332 {
-                    let offset = 1332u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1332) as usize;
-                    let end =
-                        (_end.saturating_sub(1332) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1332);
+                    let start = 1332u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1332) - offset) as usize;
                     self.write_radio_crccnf(offset, &_buf[start..end])?;
                 }
                 if _start < 1340 && _end > 1336 {
-                    let offset = 1336u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1336) as usize;
-                    let end =
-                        (_end.saturating_sub(1336) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1336);
+                    let start = 1336u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1336) - offset) as usize;
                     self.write_radio_crcpoly(offset, &_buf[start..end])?;
                 }
                 if _start < 1344 && _end > 1340 {
-                    let offset = 1340u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1340) as usize;
-                    let end =
-                        (_end.saturating_sub(1340) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1340);
+                    let start = 1340u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1340) - offset) as usize;
                     self.write_radio_crcinit(offset, &_buf[start..end])?;
                 }
                 if _start < 1348 && _end > 1344 {
-                    let offset = 1344u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1344) as usize;
-                    let end =
-                        (_end.saturating_sub(1344) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1344);
+                    let start = 1344u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1344) - offset) as usize;
                     self.write_radio_test(offset, &_buf[start..end])?;
                 }
                 if _start < 1352 && _end > 1348 {
-                    let offset = 1348u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1348) as usize;
-                    let end =
-                        (_end.saturating_sub(1348) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1348);
+                    let start = 1348u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1348) - offset) as usize;
                     self.write_radio_tifs(offset, &_buf[start..end])?;
                 }
                 if _start < 1356 && _end > 1352 {
@@ -6940,10 +6904,9 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40001000 {
                     return Err(MemError::ReadViolation);
                 }
                 if _start < 1368 && _end > 1364 {
-                    let offset = 1364u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1364) as usize;
-                    let end =
-                        (_end.saturating_sub(1364) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1364);
+                    let start = 1364u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1364) - offset) as usize;
                     self.write_radio_datawhiteiv(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -7087,66 +7050,57 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40001000 {
                     )?;
                 }
                 if _start < 1572 && _end > 1568 {
-                    let offset = 1568u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1568) as usize;
-                    let end =
-                        (_end.saturating_sub(1568) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1568);
+                    let start = 1568u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1568) - offset) as usize;
                     self.write_radio_dapn(0, offset, &_buf[start..end])?;
                 }
                 if _start < 1576 && _end > 1572 {
-                    let offset = 1572u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1572) as usize;
-                    let end =
-                        (_end.saturating_sub(1572) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1572);
+                    let start = 1572u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1572) - offset) as usize;
                     self.write_radio_dapn(1, offset, &_buf[start..end])?;
                 }
                 if _start < 1580 && _end > 1576 {
-                    let offset = 1576u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1576) as usize;
-                    let end =
-                        (_end.saturating_sub(1576) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1576);
+                    let start = 1576u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1576) - offset) as usize;
                     self.write_radio_dapn(2, offset, &_buf[start..end])?;
                 }
                 if _start < 1584 && _end > 1580 {
-                    let offset = 1580u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1580) as usize;
-                    let end =
-                        (_end.saturating_sub(1580) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1580);
+                    let start = 1580u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1580) - offset) as usize;
                     self.write_radio_dapn(3, offset, &_buf[start..end])?;
                 }
                 if _start < 1588 && _end > 1584 {
-                    let offset = 1584u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1584) as usize;
-                    let end =
-                        (_end.saturating_sub(1584) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1584);
+                    let start = 1584u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1584) - offset) as usize;
                     self.write_radio_dapn(4, offset, &_buf[start..end])?;
                 }
                 if _start < 1592 && _end > 1588 {
-                    let offset = 1588u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1588) as usize;
-                    let end =
-                        (_end.saturating_sub(1588) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1588);
+                    let start = 1588u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1588) - offset) as usize;
                     self.write_radio_dapn(5, offset, &_buf[start..end])?;
                 }
                 if _start < 1596 && _end > 1592 {
-                    let offset = 1592u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1592) as usize;
-                    let end =
-                        (_end.saturating_sub(1592) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1592);
+                    let start = 1592u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1592) - offset) as usize;
                     self.write_radio_dapn(6, offset, &_buf[start..end])?;
                 }
                 if _start < 1600 && _end > 1596 {
-                    let offset = 1596u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1596) as usize;
-                    let end =
-                        (_end.saturating_sub(1596) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1596);
+                    let start = 1596u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1596) - offset) as usize;
                     self.write_radio_dapn(7, offset, &_buf[start..end])?;
                 }
                 if _start < 1604 && _end > 1600 {
-                    let offset = 1600u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1600) as usize;
-                    let end =
-                        (_end.saturating_sub(1600) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1600);
+                    let start = 1600u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1600) - offset) as usize;
                     self.write_radio_dacnf(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -7209,20 +7163,18 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40001000 {
                     )?;
                 }
                 if _start < 1848 && _end > 1844 {
-                    let offset = 1844u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1844) as usize;
-                    let end =
-                        (_end.saturating_sub(1844) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1844);
+                    let start = 1844u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1844) - offset) as usize;
                     self.write_radio_override4(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (4092..=4095, 4093..=4096) => {
                 if _start < 4096 && _end > 4092 {
-                    let offset = 4092u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(4092) as usize;
-                    let end =
-                        (_end.saturating_sub(4092) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(4092);
+                    let start = 4092u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 4092) - offset) as usize;
                     self.write_radio_power(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -7274,35 +7226,35 @@ impl PeripheralPage0x40001000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_shorts_ready_start((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_shorts_end_disable((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_shorts_disabled_txen((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_shorts_disabled_rxen((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -7311,20 +7263,20 @@ impl PeripheralPage0x40001000 {
                 )?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_shorts_end_start((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0.lock().unwrap().write_radio_shorts_address_bcstart(
                 (_value[_i] >> 6) & 1 != 0,
             )?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -7372,63 +7324,63 @@ impl PeripheralPage0x40001000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_intenset_ready((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_intenset_address((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_intenset_payload((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_intenset_end((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_intenset_disabled((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_intenset_devmatch((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_intenset_devmiss((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_intenset_rssiend((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -7474,63 +7426,63 @@ impl PeripheralPage0x40001000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_intenclr_ready((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_intenclr_address((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_intenclr_payload((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_intenclr_end((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_intenclr_disabled((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_intenclr_devmatch((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_intenclr_devmiss((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_intenclr_rssiend((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -7579,7 +7531,7 @@ impl PeripheralPage0x40001000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -7602,7 +7554,7 @@ impl PeripheralPage0x40001000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -7624,7 +7576,7 @@ impl PeripheralPage0x40001000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -7650,21 +7602,21 @@ impl PeripheralPage0x40001000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_pcnf0_lflen((_value[_i] >> 0) & 15u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_pcnf0_s0len((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -7694,35 +7646,35 @@ impl PeripheralPage0x40001000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_pcnf1_maxlen((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_pcnf1_statlen((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_pcnf1_balen((_value[_i] >> 0) & 7u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_pcnf1_endian((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -7750,28 +7702,28 @@ impl PeripheralPage0x40001000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_prefix0_ap0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_prefix0_ap1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_prefix0_ap2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -7799,28 +7751,28 @@ impl PeripheralPage0x40001000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_prefix1_ap4((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_prefix1_ap5((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_prefix1_ap6((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -7843,7 +7795,7 @@ impl PeripheralPage0x40001000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -7887,56 +7839,56 @@ impl PeripheralPage0x40001000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_rxaddresses_addr0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_rxaddresses_addr1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_rxaddresses_addr2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_rxaddresses_addr3((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_rxaddresses_addr4((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_rxaddresses_addr5((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_rxaddresses_addr6((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -7961,14 +7913,14 @@ impl PeripheralPage0x40001000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_crccnf_len((_value[_i] >> 0) & 3u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -8045,14 +7997,14 @@ impl PeripheralPage0x40001000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_test_constcarrier((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -8074,7 +8026,7 @@ impl PeripheralPage0x40001000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -8113,7 +8065,7 @@ impl PeripheralPage0x40001000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0.lock().unwrap().write_radio_datawhiteiv_datawhiteiv(
                 (_value[_i] >> 0) & 127u8,
             )?;
@@ -8190,112 +8142,112 @@ impl PeripheralPage0x40001000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_dacnf_ena0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_dacnf_ena1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_dacnf_ena2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_dacnf_ena3((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_dacnf_ena4((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_dacnf_ena5((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_dacnf_ena6((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_dacnf_ena7((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_dacnf_txadd0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_dacnf_txadd1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_dacnf_txadd2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_dacnf_txadd3((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_dacnf_txadd4((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_dacnf_txadd5((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_radio_dacnf_txadd6((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -8338,7 +8290,7 @@ impl PeripheralPage0x40001000 {
             return Err(MemError::WriteViolation);
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -8360,7 +8312,7 @@ impl PeripheralPage0x40001000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -8953,47 +8905,42 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40002000 {
             }
             (512..=515, 513..=516) => {
                 if _start < 516 && _end > 512 {
-                    let offset = 512u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(512) as usize;
-                    let end =
-                        (_end.saturating_sub(512) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(512);
+                    let start = 512u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 512) - offset) as usize;
                     self.write_uart0_shorts(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (772..=779, 773..=780) => {
                 if _start < 776 && _end > 772 {
-                    let offset = 772u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(772) as usize;
-                    let end =
-                        (_end.saturating_sub(772) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(772);
+                    let start = 772u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 772) - offset) as usize;
                     self.write_uart0_intenset(offset, &_buf[start..end])?;
                 }
                 if _start < 780 && _end > 776 {
-                    let offset = 776u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(776) as usize;
-                    let end =
-                        (_end.saturating_sub(776) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(776);
+                    let start = 776u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 776) - offset) as usize;
                     self.write_uart0_intenclr(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1152..=1155, 1153..=1156) => {
                 if _start < 1156 && _end > 1152 {
-                    let offset = 1152u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1152) as usize;
-                    let end =
-                        (_end.saturating_sub(1152) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1152);
+                    let start = 1152u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1152) - offset) as usize;
                     self.write_uart0_errorsrc(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1280..=1283, 1281..=1284) => {
                 if _start < 1284 && _end > 1280 {
-                    let offset = 1280u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1280) as usize;
-                    let end =
-                        (_end.saturating_sub(1280) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1280);
+                    let start = 1280u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1280) - offset) as usize;
                     self.write_uart0_enable(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -9059,10 +9006,9 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40002000 {
                     return Err(MemError::ReadViolation);
                 }
                 if _start < 1312 && _end > 1308 {
-                    let offset = 1308u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1308) as usize;
-                    let end =
-                        (_end.saturating_sub(1308) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1308);
+                    let start = 1308u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1308) - offset) as usize;
                     self.write_uart0_txd(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -9086,20 +9032,18 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40002000 {
             }
             (1388..=1391, 1389..=1392) => {
                 if _start < 1392 && _end > 1388 {
-                    let offset = 1388u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1388) as usize;
-                    let end =
-                        (_end.saturating_sub(1388) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1388);
+                    let start = 1388u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1388) - offset) as usize;
                     self.write_uart0_config(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (4092..=4095, 4093..=4096) => {
                 if _start < 4096 && _end > 4092 {
-                    let offset = 4092u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(4092) as usize;
-                    let end =
-                        (_end.saturating_sub(4092) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(4092);
+                    let start = 4092u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 4092) - offset) as usize;
                     self.write_uart0_power(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -9127,14 +9071,14 @@ impl PeripheralPage0x40002000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_uart0_shorts_cts_startrx((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -9169,42 +9113,42 @@ impl PeripheralPage0x40002000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_uart0_intenset_cts((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_uart0_intenset_ncts((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_uart0_intenset_rxdrdy((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_uart0_intenset_txdrdy((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_uart0_intenset_error((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -9239,42 +9183,42 @@ impl PeripheralPage0x40002000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_uart0_intenclr_cts((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_uart0_intenclr_ncts((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_uart0_intenclr_rxdrdy((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_uart0_intenclr_txdrdy((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_uart0_intenclr_error((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -9306,28 +9250,28 @@ impl PeripheralPage0x40002000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_uart0_errorsrc_overrun((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_uart0_errorsrc_parity((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_uart0_errorsrc_framing((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -9349,7 +9293,7 @@ impl PeripheralPage0x40002000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -9367,7 +9311,7 @@ impl PeripheralPage0x40002000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -9391,14 +9335,14 @@ impl PeripheralPage0x40002000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_uart0_config_hwfc((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -9420,7 +9364,7 @@ impl PeripheralPage0x40002000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -10041,47 +9985,42 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40003000 {
             }
             (512..=515, 513..=516) => {
                 if _start < 516 && _end > 512 {
-                    let offset = 512u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(512) as usize;
-                    let end =
-                        (_end.saturating_sub(512) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(512);
+                    let start = 512u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 512) - offset) as usize;
                     self.write_twi0_shorts(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (772..=779, 773..=780) => {
                 if _start < 776 && _end > 772 {
-                    let offset = 772u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(772) as usize;
-                    let end =
-                        (_end.saturating_sub(772) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(772);
+                    let start = 772u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 772) - offset) as usize;
                     self.write_spi0twi0_intenset(offset, &_buf[start..end])?;
                 }
                 if _start < 780 && _end > 776 {
-                    let offset = 776u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(776) as usize;
-                    let end =
-                        (_end.saturating_sub(776) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(776);
+                    let start = 776u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 776) - offset) as usize;
                     self.write_spi0twi0_intenclr(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1220..=1223, 1221..=1224) => {
                 if _start < 1224 && _end > 1220 {
-                    let offset = 1220u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1220) as usize;
-                    let end =
-                        (_end.saturating_sub(1220) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1220);
+                    let start = 1220u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1220) - offset) as usize;
                     self.write_twi0_errorsrc(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1280..=1283, 1281..=1284) => {
                 if _start < 1284 && _end > 1280 {
-                    let offset = 1280u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1280) as usize;
-                    let end =
-                        (_end.saturating_sub(1280) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1280);
+                    let start = 1280u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1280) - offset) as usize;
                     self.write_spi0twi0_enable(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -10136,10 +10075,9 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40003000 {
                     return Err(MemError::ReadViolation);
                 }
                 if _start < 1312 && _end > 1308 {
-                    let offset = 1308u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1308) as usize;
-                    let end =
-                        (_end.saturating_sub(1308) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1308);
+                    let start = 1308u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1308) - offset) as usize;
                     self.write_spi0twi0_txd(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -10163,30 +10101,27 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40003000 {
             }
             (1364..=1367, 1365..=1368) => {
                 if _start < 1368 && _end > 1364 {
-                    let offset = 1364u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1364) as usize;
-                    let end =
-                        (_end.saturating_sub(1364) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1364);
+                    let start = 1364u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1364) - offset) as usize;
                     self.write_spi0_config(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1416..=1419, 1417..=1420) => {
                 if _start < 1420 && _end > 1416 {
-                    let offset = 1416u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1416) as usize;
-                    let end =
-                        (_end.saturating_sub(1416) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1416);
+                    let start = 1416u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1416) - offset) as usize;
                     self.write_twi0_address(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (4092..=4095, 4093..=4096) => {
                 if _start < 4096 && _end > 4092 {
-                    let offset = 4092u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(4092) as usize;
-                    let end =
-                        (_end.saturating_sub(4092) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(4092);
+                    let start = 4092u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 4092) - offset) as usize;
                     self.write_spi0twi0_power(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -10213,14 +10148,14 @@ impl PeripheralPage0x40003000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_twi0_shorts_bb_suspend((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -10258,42 +10193,42 @@ impl PeripheralPage0x40003000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_spi0twi0_intenset_stopped((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_spi0twi0_intenset_ready((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_spi0twi0_intenset_txdsent((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_spi0twi0_intenset_error((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_spi0twi0_intenset_bb((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0.lock().unwrap().write_spi0twi0_intenset_suspended(
                 (_value[_i] >> 2) & 1 != 0,
             )?;
@@ -10330,42 +10265,42 @@ impl PeripheralPage0x40003000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_spi0twi0_intenclr_stopped((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_spi0twi0_intenclr_ready((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_spi0twi0_intenclr_txdsent((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_spi0twi0_intenclr_error((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_spi0twi0_intenclr_bb((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0.lock().unwrap().write_spi0twi0_intenclr_suspended(
                 (_value[_i] >> 2) & 1 != 0,
             )?;
@@ -10391,21 +10326,21 @@ impl PeripheralPage0x40003000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_twi0_errorsrc_overrun((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_twi0_errorsrc_anack((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -10428,7 +10363,7 @@ impl PeripheralPage0x40003000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -10456,7 +10391,7 @@ impl PeripheralPage0x40003000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -10482,21 +10417,21 @@ impl PeripheralPage0x40003000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_spi0_config_order((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_spi0_config_cpha((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -10519,7 +10454,7 @@ impl PeripheralPage0x40003000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -10542,7 +10477,7 @@ impl PeripheralPage0x40003000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -11089,27 +11024,24 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40004000 {
             }
             (512..=515, 513..=516) => {
                 if _start < 516 && _end > 512 {
-                    let offset = 512u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(512) as usize;
-                    let end =
-                        (_end.saturating_sub(512) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(512);
+                    let start = 512u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 512) - offset) as usize;
                     self.write_spis1_shorts(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (772..=779, 773..=780) => {
                 if _start < 776 && _end > 772 {
-                    let offset = 772u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(772) as usize;
-                    let end =
-                        (_end.saturating_sub(772) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(772);
+                    let start = 772u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 772) - offset) as usize;
                     self.write_spis1_intenset(offset, &_buf[start..end])?;
                 }
                 if _start < 780 && _end > 776 {
-                    let offset = 776u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(776) as usize;
-                    let end =
-                        (_end.saturating_sub(776) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(776);
+                    let start = 776u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 776) - offset) as usize;
                     self.write_spis1_intenclr(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -11122,20 +11054,18 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40004000 {
             }
             (1088..=1091, 1089..=1092) => {
                 if _start < 1092 && _end > 1088 {
-                    let offset = 1088u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1088) as usize;
-                    let end =
-                        (_end.saturating_sub(1088) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1088);
+                    let start = 1088u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1088) - offset) as usize;
                     self.write_spis1_status(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1280..=1283, 1281..=1284) => {
                 if _start < 1284 && _end > 1280 {
-                    let offset = 1280u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1280) as usize;
-                    let end =
-                        (_end.saturating_sub(1280) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1280);
+                    let start = 1280u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1280) - offset) as usize;
                     self.write_spis1_enable(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -11215,10 +11145,9 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40004000 {
                     )?;
                 }
                 if _start < 1340 && _end > 1336 {
-                    let offset = 1336u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1336) as usize;
-                    let end =
-                        (_end.saturating_sub(1336) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1336);
+                    let start = 1336u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1336) - offset) as usize;
                     self.write_spis1_maxrx(offset, &_buf[start..end])?;
                 }
                 if _start < 1344 && _end > 1340 {
@@ -11242,10 +11171,9 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40004000 {
                     )?;
                 }
                 if _start < 1356 && _end > 1352 {
-                    let offset = 1352u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1352) as usize;
-                    let end =
-                        (_end.saturating_sub(1352) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1352);
+                    let start = 1352u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1352) - offset) as usize;
                     self.write_spis1_maxtx(offset, &_buf[start..end])?;
                 }
                 if _start < 1360 && _end > 1356 {
@@ -11255,40 +11183,36 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40004000 {
             }
             (1364..=1367, 1365..=1368) => {
                 if _start < 1368 && _end > 1364 {
-                    let offset = 1364u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1364) as usize;
-                    let end =
-                        (_end.saturating_sub(1364) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1364);
+                    let start = 1364u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1364) - offset) as usize;
                     self.write_spis1_config(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1372..=1375, 1373..=1376) => {
                 if _start < 1376 && _end > 1372 {
-                    let offset = 1372u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1372) as usize;
-                    let end =
-                        (_end.saturating_sub(1372) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1372);
+                    let start = 1372u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1372) - offset) as usize;
                     self.write_spis1_def(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1472..=1475, 1473..=1476) => {
                 if _start < 1476 && _end > 1472 {
-                    let offset = 1472u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1472) as usize;
-                    let end =
-                        (_end.saturating_sub(1472) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1472);
+                    let start = 1472u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1472) - offset) as usize;
                     self.write_spis1_orc(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (4092..=4095, 4093..=4096) => {
                 if _start < 4096 && _end > 4092 {
-                    let offset = 4092u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(4092) as usize;
-                    let end =
-                        (_end.saturating_sub(4092) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(4092);
+                    let start = 4092u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 4092) - offset) as usize;
                     self.write_spis1_power(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -11313,7 +11237,7 @@ impl PeripheralPage0x40004000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -11341,21 +11265,21 @@ impl PeripheralPage0x40004000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_spis1_intenset_end((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_spis1_intenset_endrx((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -11383,21 +11307,21 @@ impl PeripheralPage0x40004000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_spis1_intenclr_end((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_spis1_intenclr_endrx((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -11430,14 +11354,14 @@ impl PeripheralPage0x40004000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_spis1_status_overread((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -11459,7 +11383,7 @@ impl PeripheralPage0x40004000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -11481,7 +11405,7 @@ impl PeripheralPage0x40004000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -11510,7 +11434,7 @@ impl PeripheralPage0x40004000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -11543,21 +11467,21 @@ impl PeripheralPage0x40004000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_spis1_config_order((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_spis1_config_cpha((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -11575,7 +11499,7 @@ impl PeripheralPage0x40004000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -11593,7 +11517,7 @@ impl PeripheralPage0x40004000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -11615,7 +11539,7 @@ impl PeripheralPage0x40004000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -11991,58 +11915,51 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40006000 {
             }
             (772..=779, 773..=780) => {
                 if _start < 776 && _end > 772 {
-                    let offset = 772u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(772) as usize;
-                    let end =
-                        (_end.saturating_sub(772) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(772);
+                    let start = 772u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 772) - offset) as usize;
                     self.write_gpiote_intenset(offset, &_buf[start..end])?;
                 }
                 if _start < 780 && _end > 776 {
-                    let offset = 776u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(776) as usize;
-                    let end =
-                        (_end.saturating_sub(776) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(776);
+                    let start = 776u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 776) - offset) as usize;
                     self.write_gpiote_intenclr(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1296..=1311, 1297..=1312) => {
                 if _start < 1300 && _end > 1296 {
-                    let offset = 1296u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1296) as usize;
-                    let end =
-                        (_end.saturating_sub(1296) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1296);
+                    let start = 1296u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1296) - offset) as usize;
                     self.write_gpiote_confign(0, offset, &_buf[start..end])?;
                 }
                 if _start < 1304 && _end > 1300 {
-                    let offset = 1300u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1300) as usize;
-                    let end =
-                        (_end.saturating_sub(1300) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1300);
+                    let start = 1300u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1300) - offset) as usize;
                     self.write_gpiote_confign(1, offset, &_buf[start..end])?;
                 }
                 if _start < 1308 && _end > 1304 {
-                    let offset = 1304u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1304) as usize;
-                    let end =
-                        (_end.saturating_sub(1304) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1304);
+                    let start = 1304u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1304) - offset) as usize;
                     self.write_gpiote_confign(2, offset, &_buf[start..end])?;
                 }
                 if _start < 1312 && _end > 1308 {
-                    let offset = 1308u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1308) as usize;
-                    let end =
-                        (_end.saturating_sub(1308) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1308);
+                    let start = 1308u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1308) - offset) as usize;
                     self.write_gpiote_confign(3, offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (4092..=4095, 4093..=4096) => {
                 if _start < 4096 && _end > 4092 {
-                    let offset = 4092u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(4092) as usize;
-                    let end =
-                        (_end.saturating_sub(4092) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(4092);
+                    let start = 4092u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 4092) - offset) as usize;
                     self.write_gpiote_power(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -12075,35 +11992,35 @@ impl PeripheralPage0x40006000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpiote_intenset_in0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpiote_intenset_in1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpiote_intenset_in2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpiote_intenset_in3((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -12134,35 +12051,35 @@ impl PeripheralPage0x40006000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpiote_intenclr_in0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpiote_intenclr_in1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpiote_intenclr_in2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpiote_intenclr_in3((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -12195,28 +12112,28 @@ impl PeripheralPage0x40006000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpiote_confign_mode(_dim, (_value[_i] >> 0) & 3u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpiote_confign_psel(_dim, (_value[_i] >> 0) & 31u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpiote_confign_polarity(_dim, (_value[_i] >> 0) & 3u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0.lock().unwrap().write_gpiote_confign_outinit(
                 _dim,
                 (_value[_i] >> 4) & 1 != 0,
@@ -12238,7 +12155,7 @@ impl PeripheralPage0x40006000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -12459,17 +12376,15 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40007000 {
             }
             (772..=779, 773..=780) => {
                 if _start < 776 && _end > 772 {
-                    let offset = 772u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(772) as usize;
-                    let end =
-                        (_end.saturating_sub(772) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(772);
+                    let start = 772u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 772) - offset) as usize;
                     self.write_adc_intenset(offset, &_buf[start..end])?;
                 }
                 if _start < 780 && _end > 776 {
-                    let offset = 776u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(776) as usize;
-                    let end =
-                        (_end.saturating_sub(776) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(776);
+                    let start = 776u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 776) - offset) as usize;
                     self.write_adc_intenclr(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -12482,17 +12397,15 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40007000 {
             }
             (1280..=1291, 1281..=1292) => {
                 if _start < 1284 && _end > 1280 {
-                    let offset = 1280u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1280) as usize;
-                    let end =
-                        (_end.saturating_sub(1280) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1280);
+                    let start = 1280u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1280) - offset) as usize;
                     self.write_adc_enable(offset, &_buf[start..end])?;
                 }
                 if _start < 1288 && _end > 1284 {
-                    let offset = 1284u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1284) as usize;
-                    let end =
-                        (_end.saturating_sub(1284) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1284);
+                    let start = 1284u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1284) - offset) as usize;
                     self.write_adc_config(offset, &_buf[start..end])?;
                 }
                 if _start < 1292 && _end > 1288 {
@@ -12502,10 +12415,9 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40007000 {
             }
             (4092..=4095, 4093..=4096) => {
                 if _start < 4096 && _end > 4092 {
-                    let offset = 4092u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(4092) as usize;
-                    let end =
-                        (_end.saturating_sub(4092) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(4092);
+                    let start = 4092u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 4092) - offset) as usize;
                     self.write_adc_power(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -12529,7 +12441,7 @@ impl PeripheralPage0x40007000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -12551,7 +12463,7 @@ impl PeripheralPage0x40007000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -12579,7 +12491,7 @@ impl PeripheralPage0x40007000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -12610,35 +12522,35 @@ impl PeripheralPage0x40007000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_adc_config_res((_value[_i] >> 0) & 3u8)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_adc_config_inpsel((_value[_i] >> 2) & 7u8)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_adc_config_refsel((_value[_i] >> 5) & 3u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_adc_config_psel((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -12662,7 +12574,7 @@ impl PeripheralPage0x40007000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -13170,54 +13082,48 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40008000 {
             }
             (512..=515, 513..=516) => {
                 if _start < 516 && _end > 512 {
-                    let offset = 512u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(512) as usize;
-                    let end =
-                        (_end.saturating_sub(512) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(512);
+                    let start = 512u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 512) - offset) as usize;
                     self.write_timer0_shorts(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (772..=779, 773..=780) => {
                 if _start < 776 && _end > 772 {
-                    let offset = 772u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(772) as usize;
-                    let end =
-                        (_end.saturating_sub(772) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(772);
+                    let start = 772u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 772) - offset) as usize;
                     self.write_timer0_intenset(offset, &_buf[start..end])?;
                 }
                 if _start < 780 && _end > 776 {
-                    let offset = 776u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(776) as usize;
-                    let end =
-                        (_end.saturating_sub(776) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(776);
+                    let start = 776u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 776) - offset) as usize;
                     self.write_timer0_intenclr(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1284..=1291, 1285..=1292) => {
                 if _start < 1288 && _end > 1284 {
-                    let offset = 1284u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1284) as usize;
-                    let end =
-                        (_end.saturating_sub(1284) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1284);
+                    let start = 1284u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1284) - offset) as usize;
                     self.write_timer0_mode(offset, &_buf[start..end])?;
                 }
                 if _start < 1292 && _end > 1288 {
-                    let offset = 1288u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1288) as usize;
-                    let end =
-                        (_end.saturating_sub(1288) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1288);
+                    let start = 1288u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1288) - offset) as usize;
                     self.write_timer0_bitmode(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1296..=1299, 1297..=1300) => {
                 if _start < 1300 && _end > 1296 {
-                    let offset = 1296u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1296) as usize;
-                    let end =
-                        (_end.saturating_sub(1296) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1296);
+                    let start = 1296u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1296) - offset) as usize;
                     self.write_timer0_prescaler(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -13287,10 +13193,9 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40008000 {
             }
             (4092..=4095, 4093..=4096) => {
                 if _start < 4096 && _end > 4092 {
-                    let offset = 4092u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(4092) as usize;
-                    let end =
-                        (_end.saturating_sub(4092) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(4092);
+                    let start = 4092u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 4092) - offset) as usize;
                     self.write_timer0_power(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -13336,49 +13241,49 @@ impl PeripheralPage0x40008000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0.lock().unwrap().write_timer0_shorts_compare0_clear(
                 (_value[_i] >> 0) & 1 != 0,
             )?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0.lock().unwrap().write_timer0_shorts_compare1_clear(
                 (_value[_i] >> 1) & 1 != 0,
             )?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0.lock().unwrap().write_timer0_shorts_compare2_clear(
                 (_value[_i] >> 2) & 1 != 0,
             )?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0.lock().unwrap().write_timer0_shorts_compare3_clear(
                 (_value[_i] >> 3) & 1 != 0,
             )?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0.lock().unwrap().write_timer0_shorts_compare0_stop(
                 (_value[_i] >> 0) & 1 != 0,
             )?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0.lock().unwrap().write_timer0_shorts_compare1_stop(
                 (_value[_i] >> 1) & 1 != 0,
             )?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0.lock().unwrap().write_timer0_shorts_compare2_stop(
                 (_value[_i] >> 2) & 1 != 0,
             )?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0.lock().unwrap().write_timer0_shorts_compare3_stop(
                 (_value[_i] >> 3) & 1 != 0,
             )?;
@@ -13409,28 +13314,28 @@ impl PeripheralPage0x40008000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_timer0_intenset_compare0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_timer0_intenset_compare1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_timer0_intenset_compare2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -13462,28 +13367,28 @@ impl PeripheralPage0x40008000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_timer0_intenclr_compare0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_timer0_intenclr_compare1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_timer0_intenclr_compare2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -13505,7 +13410,7 @@ impl PeripheralPage0x40008000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -13528,7 +13433,7 @@ impl PeripheralPage0x40008000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -13551,7 +13456,7 @@ impl PeripheralPage0x40008000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -13573,7 +13478,7 @@ impl PeripheralPage0x40008000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -14069,41 +13974,36 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000B000 {
             }
             (772..=779, 773..=780) => {
                 if _start < 776 && _end > 772 {
-                    let offset = 772u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(772) as usize;
-                    let end =
-                        (_end.saturating_sub(772) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(772);
+                    let start = 772u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 772) - offset) as usize;
                     self.write_rtc0_intenset(offset, &_buf[start..end])?;
                 }
                 if _start < 780 && _end > 776 {
-                    let offset = 776u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(776) as usize;
-                    let end =
-                        (_end.saturating_sub(776) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(776);
+                    let start = 776u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 776) - offset) as usize;
                     self.write_rtc0_intenclr(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (832..=843, 833..=844) => {
                 if _start < 836 && _end > 832 {
-                    let offset = 832u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(832) as usize;
-                    let end =
-                        (_end.saturating_sub(832) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(832);
+                    let start = 832u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 832) - offset) as usize;
                     self.write_rtc0_evten(offset, &_buf[start..end])?;
                 }
                 if _start < 840 && _end > 836 {
-                    let offset = 836u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(836) as usize;
-                    let end =
-                        (_end.saturating_sub(836) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(836);
+                    let start = 836u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 836) - offset) as usize;
                     self.write_rtc0_evtenset(offset, &_buf[start..end])?;
                 }
                 if _start < 844 && _end > 840 {
-                    let offset = 840u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(840) as usize;
-                    let end =
-                        (_end.saturating_sub(840) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(840);
+                    let start = 840u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 840) - offset) as usize;
                     self.write_rtc0_evtenclr(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -14113,51 +14013,45 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000B000 {
                     return Err(MemError::ReadViolation);
                 }
                 if _start < 1292 && _end > 1288 {
-                    let offset = 1288u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1288) as usize;
-                    let end =
-                        (_end.saturating_sub(1288) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1288);
+                    let start = 1288u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1288) - offset) as usize;
                     self.write_rtc0_prescaler(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1344..=1359, 1345..=1360) => {
                 if _start < 1348 && _end > 1344 {
-                    let offset = 1344u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1344) as usize;
-                    let end =
-                        (_end.saturating_sub(1344) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1344);
+                    let start = 1344u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1344) - offset) as usize;
                     self.write_rtc0_ccn(0, offset, &_buf[start..end])?;
                 }
                 if _start < 1352 && _end > 1348 {
-                    let offset = 1348u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1348) as usize;
-                    let end =
-                        (_end.saturating_sub(1348) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1348);
+                    let start = 1348u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1348) - offset) as usize;
                     self.write_rtc0_ccn(1, offset, &_buf[start..end])?;
                 }
                 if _start < 1356 && _end > 1352 {
-                    let offset = 1352u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1352) as usize;
-                    let end =
-                        (_end.saturating_sub(1352) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1352);
+                    let start = 1352u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1352) - offset) as usize;
                     self.write_rtc0_ccn(2, offset, &_buf[start..end])?;
                 }
                 if _start < 1360 && _end > 1356 {
-                    let offset = 1356u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1356) as usize;
-                    let end =
-                        (_end.saturating_sub(1356) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1356);
+                    let start = 1356u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1356) - offset) as usize;
                     self.write_rtc0_ccn(3, offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (4092..=4095, 4093..=4096) => {
                 if _start < 4096 && _end > 4092 {
-                    let offset = 4092u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(4092) as usize;
-                    let end =
-                        (_end.saturating_sub(4092) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(4092);
+                    let start = 4092u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 4092) - offset) as usize;
                     self.write_rtc0_power(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -14196,42 +14090,42 @@ impl PeripheralPage0x4000B000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_intenset_tick((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_intenset_ovrflw((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_intenset_compare0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_intenset_compare1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_intenset_compare2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -14268,42 +14162,42 @@ impl PeripheralPage0x4000B000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_intenclr_tick((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_intenclr_ovrflw((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_intenclr_compare0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_intenclr_compare1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_intenclr_compare2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -14335,42 +14229,42 @@ impl PeripheralPage0x4000B000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_evten_tick((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_evten_ovrflw((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_evten_compare0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_evten_compare1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_evten_compare2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -14407,42 +14301,42 @@ impl PeripheralPage0x4000B000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_evtenset_tick((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_evtenset_ovrflw((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_evtenset_compare0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_evtenset_compare1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_evtenset_compare2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -14479,42 +14373,42 @@ impl PeripheralPage0x4000B000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_evtenclr_tick((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_evtenclr_ovrflw((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_evtenclr_compare0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_evtenclr_compare1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_rtc0_evtenclr_compare2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -14606,7 +14500,7 @@ impl PeripheralPage0x4000B000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -14780,17 +14674,15 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000C000 {
             }
             (772..=779, 773..=780) => {
                 if _start < 776 && _end > 772 {
-                    let offset = 772u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(772) as usize;
-                    let end =
-                        (_end.saturating_sub(772) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(772);
+                    let start = 772u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 772) - offset) as usize;
                     self.write_temp_intenset(offset, &_buf[start..end])?;
                 }
                 if _start < 780 && _end > 776 {
-                    let offset = 776u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(776) as usize;
-                    let end =
-                        (_end.saturating_sub(776) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(776);
+                    let start = 776u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 776) - offset) as usize;
                     self.write_temp_intenclr(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -14803,10 +14695,9 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000C000 {
             }
             (4092..=4095, 4093..=4096) => {
                 if _start < 4096 && _end > 4092 {
-                    let offset = 4092u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(4092) as usize;
-                    let end =
-                        (_end.saturating_sub(4092) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(4092);
+                    let start = 4092u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 4092) - offset) as usize;
                     self.write_temp_power(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -14831,7 +14722,7 @@ impl PeripheralPage0x4000C000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -14854,7 +14745,7 @@ impl PeripheralPage0x4000C000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -14876,7 +14767,7 @@ impl PeripheralPage0x4000C000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -15082,37 +14973,33 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000D000 {
             }
             (512..=515, 513..=516) => {
                 if _start < 516 && _end > 512 {
-                    let offset = 512u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(512) as usize;
-                    let end =
-                        (_end.saturating_sub(512) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(512);
+                    let start = 512u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 512) - offset) as usize;
                     self.write_rng_shorts(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (772..=779, 773..=780) => {
                 if _start < 776 && _end > 772 {
-                    let offset = 772u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(772) as usize;
-                    let end =
-                        (_end.saturating_sub(772) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(772);
+                    let start = 772u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 772) - offset) as usize;
                     self.write_rng_intenset(offset, &_buf[start..end])?;
                 }
                 if _start < 780 && _end > 776 {
-                    let offset = 776u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(776) as usize;
-                    let end =
-                        (_end.saturating_sub(776) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(776);
+                    let start = 776u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 776) - offset) as usize;
                     self.write_rng_intenclr(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1284..=1291, 1285..=1292) => {
                 if _start < 1288 && _end > 1284 {
-                    let offset = 1284u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1284) as usize;
-                    let end =
-                        (_end.saturating_sub(1284) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1284);
+                    let start = 1284u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1284) - offset) as usize;
                     self.write_rng_config(offset, &_buf[start..end])?;
                 }
                 if _start < 1292 && _end > 1288 {
@@ -15122,10 +15009,9 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000D000 {
             }
             (4092..=4095, 4093..=4096) => {
                 if _start < 4096 && _end > 4092 {
-                    let offset = 4092u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(4092) as usize;
-                    let end =
-                        (_end.saturating_sub(4092) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(4092);
+                    let start = 4092u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 4092) - offset) as usize;
                     self.write_rng_power(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -15150,7 +15036,7 @@ impl PeripheralPage0x4000D000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -15172,7 +15058,7 @@ impl PeripheralPage0x4000D000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -15194,7 +15080,7 @@ impl PeripheralPage0x4000D000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -15216,7 +15102,7 @@ impl PeripheralPage0x4000D000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -15240,7 +15126,7 @@ impl PeripheralPage0x4000D000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -15452,17 +15338,15 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000E000 {
             }
             (772..=779, 773..=780) => {
                 if _start < 776 && _end > 772 {
-                    let offset = 772u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(772) as usize;
-                    let end =
-                        (_end.saturating_sub(772) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(772);
+                    let start = 772u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 772) - offset) as usize;
                     self.write_ecb_intenset(offset, &_buf[start..end])?;
                 }
                 if _start < 780 && _end > 776 {
-                    let offset = 776u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(776) as usize;
-                    let end =
-                        (_end.saturating_sub(776) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(776);
+                    let start = 776u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 776) - offset) as usize;
                     self.write_ecb_intenclr(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -15486,10 +15370,9 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000E000 {
             }
             (4092..=4095, 4093..=4096) => {
                 if _start < 4096 && _end > 4092 {
-                    let offset = 4092u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(4092) as usize;
-                    let end =
-                        (_end.saturating_sub(4092) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(4092);
+                    let start = 4092u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 4092) - offset) as usize;
                     self.write_ecb_power(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -15516,14 +15399,14 @@ impl PeripheralPage0x4000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ecb_intenset_endecb((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -15548,14 +15431,14 @@ impl PeripheralPage0x4000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ecb_intenclr_endecb((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -15573,7 +15456,7 @@ impl PeripheralPage0x4000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -15954,27 +15837,24 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000F000 {
             }
             (512..=515, 513..=516) => {
                 if _start < 516 && _end > 512 {
-                    let offset = 512u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(512) as usize;
-                    let end =
-                        (_end.saturating_sub(512) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(512);
+                    let start = 512u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 512) - offset) as usize;
                     self.write_ccm_shorts(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (772..=779, 773..=780) => {
                 if _start < 776 && _end > 772 {
-                    let offset = 772u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(772) as usize;
-                    let end =
-                        (_end.saturating_sub(772) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(772);
+                    let start = 772u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 772) - offset) as usize;
                     self.write_aarccm_intenset(offset, &_buf[start..end])?;
                 }
                 if _start < 780 && _end > 776 {
-                    let offset = 776u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(776) as usize;
-                    let end =
-                        (_end.saturating_sub(776) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(776);
+                    let start = 776u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 776) - offset) as usize;
                     self.write_aarccm_intenclr(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -15987,17 +15867,15 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000F000 {
             }
             (1280..=1303, 1281..=1304) => {
                 if _start < 1284 && _end > 1280 {
-                    let offset = 1280u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1280) as usize;
-                    let end =
-                        (_end.saturating_sub(1280) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1280);
+                    let start = 1280u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1280) - offset) as usize;
                     self.write_aarccm_enable(offset, &_buf[start..end])?;
                 }
                 if _start < 1288 && _end > 1284 {
-                    let offset = 1284u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1284) as usize;
-                    let end =
-                        (_end.saturating_sub(1284) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1284);
+                    let start = 1284u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1284) - offset) as usize;
                     self.write_aarccm_nirk(offset, &_buf[start..end])?;
                 }
                 if _start < 1292 && _end > 1288 {
@@ -16060,10 +15938,9 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000F000 {
             }
             (4092..=4095, 4093..=4096) => {
                 if _start < 4096 && _end > 4092 {
-                    let offset = 4092u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(4092) as usize;
-                    let end =
-                        (_end.saturating_sub(4092) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(4092);
+                    let start = 4092u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 4092) - offset) as usize;
                     self.write_aarccm_power(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -16088,7 +15965,7 @@ impl PeripheralPage0x4000F000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -16116,21 +15993,21 @@ impl PeripheralPage0x4000F000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_aarccm_intenset_end((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_aarccm_intenset_resolved((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0.lock().unwrap().write_aarccm_intenset_notresolved(
                 (_value[_i] >> 2) & 1 != 0,
             )?;
@@ -16157,21 +16034,21 @@ impl PeripheralPage0x4000F000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_aarccm_intenclr_end((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_aarccm_intenclr_resolved((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0.lock().unwrap().write_aarccm_intenclr_notresolved(
                 (_value[_i] >> 2) & 1 != 0,
             )?;
@@ -16200,7 +16077,7 @@ impl PeripheralPage0x4000F000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -16222,7 +16099,7 @@ impl PeripheralPage0x4000F000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -16244,7 +16121,7 @@ impl PeripheralPage0x4000F000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -16492,17 +16369,15 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40010000 {
             }
             (772..=779, 773..=780) => {
                 if _start < 776 && _end > 772 {
-                    let offset = 772u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(772) as usize;
-                    let end =
-                        (_end.saturating_sub(772) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(772);
+                    let start = 772u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 772) - offset) as usize;
                     self.write_wdt_intenset(offset, &_buf[start..end])?;
                 }
                 if _start < 780 && _end > 776 {
-                    let offset = 776u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(776) as usize;
-                    let end =
-                        (_end.saturating_sub(776) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(776);
+                    let start = 776u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 776) - offset) as usize;
                     self.write_wdt_intenclr(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -16532,17 +16407,15 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40010000 {
                     )?;
                 }
                 if _start < 1292 && _end > 1288 {
-                    let offset = 1288u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1288) as usize;
-                    let end =
-                        (_end.saturating_sub(1288) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1288);
+                    let start = 1288u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1288) - offset) as usize;
                     self.write_wdt_rren(offset, &_buf[start..end])?;
                 }
                 if _start < 1296 && _end > 1292 {
-                    let offset = 1292u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1292) as usize;
-                    let end =
-                        (_end.saturating_sub(1292) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1292);
+                    let start = 1292u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1292) - offset) as usize;
                     self.write_wdt_config(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -16672,10 +16545,9 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40010000 {
             }
             (4092..=4095, 4093..=4096) => {
                 if _start < 4096 && _end > 4092 {
-                    let offset = 4092u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(4092) as usize;
-                    let end =
-                        (_end.saturating_sub(4092) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(4092);
+                    let start = 4092u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 4092) - offset) as usize;
                     self.write_wdt_power(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -16700,7 +16572,7 @@ impl PeripheralPage0x40010000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -16723,7 +16595,7 @@ impl PeripheralPage0x40010000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -16782,56 +16654,56 @@ impl PeripheralPage0x40010000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_wdt_rren_rr0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_wdt_rren_rr1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_wdt_rren_rr2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_wdt_rren_rr3((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_wdt_rren_rr4((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_wdt_rren_rr5((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_wdt_rren_rr6((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -16855,14 +16727,14 @@ impl PeripheralPage0x40010000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_wdt_config_sleep((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -16880,7 +16752,7 @@ impl PeripheralPage0x40010000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -17362,61 +17234,54 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40012000 {
             }
             (512..=515, 513..=516) => {
                 if _start < 516 && _end > 512 {
-                    let offset = 512u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(512) as usize;
-                    let end =
-                        (_end.saturating_sub(512) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(512);
+                    let start = 512u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 512) - offset) as usize;
                     self.write_qdec_shorts(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (772..=779, 773..=780) => {
                 if _start < 776 && _end > 772 {
-                    let offset = 772u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(772) as usize;
-                    let end =
-                        (_end.saturating_sub(772) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(772);
+                    let start = 772u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 772) - offset) as usize;
                     self.write_qdec_intenset(offset, &_buf[start..end])?;
                 }
                 if _start < 780 && _end > 776 {
-                    let offset = 776u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(776) as usize;
-                    let end =
-                        (_end.saturating_sub(776) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(776);
+                    let start = 776u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 776) - offset) as usize;
                     self.write_qdec_intenclr(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1280..=1323, 1281..=1324) => {
                 if _start < 1284 && _end > 1280 {
-                    let offset = 1280u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1280) as usize;
-                    let end =
-                        (_end.saturating_sub(1280) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1280);
+                    let start = 1280u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1280) - offset) as usize;
                     self.write_qdec_enable(offset, &_buf[start..end])?;
                 }
                 if _start < 1288 && _end > 1284 {
-                    let offset = 1284u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1284) as usize;
-                    let end =
-                        (_end.saturating_sub(1284) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1284);
+                    let start = 1284u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1284) - offset) as usize;
                     self.write_qdec_ledpol(offset, &_buf[start..end])?;
                 }
                 if _start < 1292 && _end > 1288 {
-                    let offset = 1288u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1288) as usize;
-                    let end =
-                        (_end.saturating_sub(1288) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1288);
+                    let start = 1288u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1288) - offset) as usize;
                     self.write_qdec_sampleper(offset, &_buf[start..end])?;
                 }
                 if _start < 1296 && _end > 1292 {
                     return Err(MemError::ReadViolation);
                 }
                 if _start < 1300 && _end > 1296 {
-                    let offset = 1296u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1296) as usize;
-                    let end =
-                        (_end.saturating_sub(1296) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1296);
+                    let start = 1296u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1296) - offset) as usize;
                     self.write_qdec_reportper(offset, &_buf[start..end])?;
                 }
                 if _start < 1304 && _end > 1300 {
@@ -17468,20 +17333,18 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40012000 {
                     )?;
                 }
                 if _start < 1324 && _end > 1320 {
-                    let offset = 1320u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1320) as usize;
-                    let end =
-                        (_end.saturating_sub(1320) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1320);
+                    let start = 1320u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1320) - offset) as usize;
                     self.write_qdec_dbfen(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1344..=1355, 1345..=1356) => {
                 if _start < 1348 && _end > 1344 {
-                    let offset = 1344u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1344) as usize;
-                    let end =
-                        (_end.saturating_sub(1344) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1344);
+                    let start = 1344u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1344) - offset) as usize;
                     self.write_qdec_ledpre(offset, &_buf[start..end])?;
                 }
                 if _start < 1352 && _end > 1348 {
@@ -17494,10 +17357,9 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40012000 {
             }
             (4092..=4095, 4093..=4096) => {
                 if _start < 4096 && _end > 4092 {
-                    let offset = 4092u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(4092) as usize;
-                    let end =
-                        (_end.saturating_sub(4092) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(4092);
+                    let start = 4092u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 4092) - offset) as usize;
                     self.write_qdec_power(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -17528,7 +17390,7 @@ impl PeripheralPage0x40012000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -17537,7 +17399,7 @@ impl PeripheralPage0x40012000 {
                 )?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -17565,21 +17427,21 @@ impl PeripheralPage0x40012000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_qdec_intenset_samplerdy((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_qdec_intenset_reportrdy((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -17607,21 +17469,21 @@ impl PeripheralPage0x40012000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_qdec_intenclr_samplerdy((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_qdec_intenclr_reportrdy((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -17643,7 +17505,7 @@ impl PeripheralPage0x40012000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -17665,7 +17527,7 @@ impl PeripheralPage0x40012000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -17688,7 +17550,7 @@ impl PeripheralPage0x40012000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -17711,7 +17573,7 @@ impl PeripheralPage0x40012000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -17733,7 +17595,7 @@ impl PeripheralPage0x40012000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -17800,7 +17662,7 @@ impl PeripheralPage0x40012000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -18190,27 +18052,24 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40013000 {
             }
             (512..=515, 513..=516) => {
                 if _start < 516 && _end > 512 {
-                    let offset = 512u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(512) as usize;
-                    let end =
-                        (_end.saturating_sub(512) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(512);
+                    let start = 512u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 512) - offset) as usize;
                     self.write_lpcomp_shorts(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (772..=779, 773..=780) => {
                 if _start < 776 && _end > 772 {
-                    let offset = 772u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(772) as usize;
-                    let end =
-                        (_end.saturating_sub(772) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(772);
+                    let start = 772u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 772) - offset) as usize;
                     self.write_lpcomp_intenset(offset, &_buf[start..end])?;
                 }
                 if _start < 780 && _end > 776 {
-                    let offset = 776u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(776) as usize;
-                    let end =
-                        (_end.saturating_sub(776) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(776);
+                    let start = 776u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 776) - offset) as usize;
                     self.write_lpcomp_intenclr(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -18223,51 +18082,45 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40013000 {
             }
             (1280..=1295, 1281..=1296) => {
                 if _start < 1284 && _end > 1280 {
-                    let offset = 1280u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1280) as usize;
-                    let end =
-                        (_end.saturating_sub(1280) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1280);
+                    let start = 1280u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1280) - offset) as usize;
                     self.write_lpcomp_enable(offset, &_buf[start..end])?;
                 }
                 if _start < 1288 && _end > 1284 {
-                    let offset = 1284u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1284) as usize;
-                    let end =
-                        (_end.saturating_sub(1284) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1284);
+                    let start = 1284u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1284) - offset) as usize;
                     self.write_lpcomp_psel(offset, &_buf[start..end])?;
                 }
                 if _start < 1292 && _end > 1288 {
-                    let offset = 1288u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1288) as usize;
-                    let end =
-                        (_end.saturating_sub(1288) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1288);
+                    let start = 1288u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1288) - offset) as usize;
                     self.write_lpcomp_refsel(offset, &_buf[start..end])?;
                 }
                 if _start < 1296 && _end > 1292 {
-                    let offset = 1292u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1292) as usize;
-                    let end =
-                        (_end.saturating_sub(1292) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1292);
+                    let start = 1292u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1292) - offset) as usize;
                     self.write_lpcomp_extrefsel(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1312..=1315, 1313..=1316) => {
                 if _start < 1316 && _end > 1312 {
-                    let offset = 1312u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1312) as usize;
-                    let end =
-                        (_end.saturating_sub(1312) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1312);
+                    let start = 1312u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1312) - offset) as usize;
                     self.write_lpcomp_anadetect(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (4092..=4095, 4093..=4096) => {
                 if _start < 4096 && _end > 4092 {
-                    let offset = 4092u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(4092) as usize;
-                    let end =
-                        (_end.saturating_sub(4092) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(4092);
+                    let start = 4092u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 4092) - offset) as usize;
                     self.write_lpcomp_power(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -18304,35 +18157,35 @@ impl PeripheralPage0x40013000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_lpcomp_shorts_ready_sample((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_lpcomp_shorts_ready_stop((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_lpcomp_shorts_down_stop((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_lpcomp_shorts_up_stop((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -18363,28 +18216,28 @@ impl PeripheralPage0x40013000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_lpcomp_intenset_ready((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_lpcomp_intenset_down((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_lpcomp_intenset_up((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -18415,28 +18268,28 @@ impl PeripheralPage0x40013000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_lpcomp_intenclr_ready((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_lpcomp_intenclr_down((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_lpcomp_intenclr_up((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -18466,7 +18319,7 @@ impl PeripheralPage0x40013000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -18488,7 +18341,7 @@ impl PeripheralPage0x40013000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -18511,7 +18364,7 @@ impl PeripheralPage0x40013000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -18534,7 +18387,7 @@ impl PeripheralPage0x40013000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -18557,7 +18410,7 @@ impl PeripheralPage0x40013000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -18579,7 +18432,7 @@ impl PeripheralPage0x40013000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -18757,10 +18610,9 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4001E000 {
             }
             (1284..=1303, 1285..=1304) => {
                 if _start < 1288 && _end > 1284 {
-                    let offset = 1284u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1284) as usize;
-                    let end =
-                        (_end.saturating_sub(1284) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1284);
+                    let start = 1284u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1284) - offset) as usize;
                     self.write_nvmc_config(offset, &_buf[start..end])?;
                 }
                 if _start < 1292 && _end > 1288 {
@@ -18778,10 +18630,9 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4001E000 {
                     )?;
                 }
                 if _start < 1296 && _end > 1292 {
-                    let offset = 1292u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1292) as usize;
-                    let end =
-                        (_end.saturating_sub(1292) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1292);
+                    let start = 1292u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1292) - offset) as usize;
                     self.write_nvmc_eraseall(offset, &_buf[start..end])?;
                 }
                 if _start < 1300 && _end > 1296 {
@@ -18799,10 +18650,9 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4001E000 {
                     )?;
                 }
                 if _start < 1304 && _end > 1300 {
-                    let offset = 1300u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1300) as usize;
-                    let end =
-                        (_end.saturating_sub(1300) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1300);
+                    let start = 1300u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1300) - offset) as usize;
                     self.write_nvmc_eraseuicr(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -18832,7 +18682,7 @@ impl PeripheralPage0x4001E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -18855,7 +18705,7 @@ impl PeripheralPage0x4001E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -18878,7 +18728,7 @@ impl PeripheralPage0x4001E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -19672,24 +19522,21 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4001F000 {
             }
             (1280..=1291, 1281..=1292) => {
                 if _start < 1284 && _end > 1280 {
-                    let offset = 1280u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1280) as usize;
-                    let end =
-                        (_end.saturating_sub(1280) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1280);
+                    let start = 1280u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1280) - offset) as usize;
                     self.write_ppi_chen(offset, &_buf[start..end])?;
                 }
                 if _start < 1288 && _end > 1284 {
-                    let offset = 1284u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1284) as usize;
-                    let end =
-                        (_end.saturating_sub(1284) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1284);
+                    let start = 1284u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1284) - offset) as usize;
                     self.write_ppi_chenset(offset, &_buf[start..end])?;
                 }
                 if _start < 1292 && _end > 1288 {
-                    let offset = 1288u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1288) as usize;
-                    let end =
-                        (_end.saturating_sub(1288) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1288);
+                    let start = 1288u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1288) - offset) as usize;
                     self.write_ppi_chenclr(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -20179,31 +20026,27 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4001F000 {
             }
             (2048..=2063, 2049..=2064) => {
                 if _start < 2052 && _end > 2048 {
-                    let offset = 2048u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(2048) as usize;
-                    let end =
-                        (_end.saturating_sub(2048) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(2048);
+                    let start = 2048u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 2048) - offset) as usize;
                     self.write_ppi_chgn(0, offset, &_buf[start..end])?;
                 }
                 if _start < 2056 && _end > 2052 {
-                    let offset = 2052u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(2052) as usize;
-                    let end =
-                        (_end.saturating_sub(2052) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(2052);
+                    let start = 2052u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 2052) - offset) as usize;
                     self.write_ppi_chgn(1, offset, &_buf[start..end])?;
                 }
                 if _start < 2060 && _end > 2056 {
-                    let offset = 2056u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(2056) as usize;
-                    let end =
-                        (_end.saturating_sub(2056) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(2056);
+                    let start = 2056u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 2056) - offset) as usize;
                     self.write_ppi_chgn(2, offset, &_buf[start..end])?;
                 }
                 if _start < 2064 && _end > 2060 {
-                    let offset = 2060u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(2060) as usize;
-                    let end =
-                        (_end.saturating_sub(2060) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(2060);
+                    let start = 2060u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 2060) - offset) as usize;
                     self.write_ppi_chgn(3, offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -20277,196 +20120,196 @@ impl PeripheralPage0x4001F000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch3((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch4((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch5((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch6((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch7((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch8((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch9((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch10((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch11((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch12((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch13((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch14((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch15((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch20((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch21((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch22((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch23((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch24((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch25((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch26((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch27((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch28((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch29((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chen_ch30((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -20542,196 +20385,196 @@ impl PeripheralPage0x4001F000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch3((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch4((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch5((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch6((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch7((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch8((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch9((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch10((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch11((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch12((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch13((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch14((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch15((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch20((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch21((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch22((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch23((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch24((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch25((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch26((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch27((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch28((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch29((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenset_ch30((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -20807,196 +20650,196 @@ impl PeripheralPage0x4001F000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch3((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch4((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch5((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch6((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch7((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch8((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch9((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch10((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch11((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch12((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch13((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch14((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch15((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch20((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch21((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch22((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch23((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch24((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch25((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch26((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch27((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch28((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch29((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chenclr_ch30((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -21073,196 +20916,196 @@ impl PeripheralPage0x4001F000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch0(_dim, (_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch1(_dim, (_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch2(_dim, (_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch3(_dim, (_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch4(_dim, (_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch5(_dim, (_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch6(_dim, (_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch7(_dim, (_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch8(_dim, (_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch9(_dim, (_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch10(_dim, (_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch11(_dim, (_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch12(_dim, (_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch13(_dim, (_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch14(_dim, (_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch15(_dim, (_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch20(_dim, (_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch21(_dim, (_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch22(_dim, (_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch23(_dim, (_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch24(_dim, (_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch25(_dim, (_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch26(_dim, (_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch27(_dim, (_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch28(_dim, (_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch29(_dim, (_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_ppi_chgn_ch30(_dim, (_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -21879,275 +21722,237 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x50000000 {
         match (_start, _end) {
             (1284..=1311, 1285..=1312) => {
                 if _start < 1288 && _end > 1284 {
-                    let offset = 1284u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1284) as usize;
-                    let end =
-                        (_end.saturating_sub(1284) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1284);
+                    let start = 1284u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1284) - offset) as usize;
                     self.write_gpio_out(offset, &_buf[start..end])?;
                 }
                 if _start < 1292 && _end > 1288 {
-                    let offset = 1288u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1288) as usize;
-                    let end =
-                        (_end.saturating_sub(1288) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1288);
+                    let start = 1288u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1288) - offset) as usize;
                     self.write_gpio_outset(offset, &_buf[start..end])?;
                 }
                 if _start < 1296 && _end > 1292 {
-                    let offset = 1292u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1292) as usize;
-                    let end =
-                        (_end.saturating_sub(1292) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1292);
+                    let start = 1292u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1292) - offset) as usize;
                     self.write_gpio_outclr(offset, &_buf[start..end])?;
                 }
                 if _start < 1300 && _end > 1296 {
                     return Err(MemError::ReadViolation);
                 }
                 if _start < 1304 && _end > 1300 {
-                    let offset = 1300u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1300) as usize;
-                    let end =
-                        (_end.saturating_sub(1300) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1300);
+                    let start = 1300u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1300) - offset) as usize;
                     self.write_gpio_dir(offset, &_buf[start..end])?;
                 }
                 if _start < 1308 && _end > 1304 {
-                    let offset = 1304u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1304) as usize;
-                    let end =
-                        (_end.saturating_sub(1304) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1304);
+                    let start = 1304u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1304) - offset) as usize;
                     self.write_gpio_dirset(offset, &_buf[start..end])?;
                 }
                 if _start < 1312 && _end > 1308 {
-                    let offset = 1308u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1308) as usize;
-                    let end =
-                        (_end.saturating_sub(1308) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1308);
+                    let start = 1308u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1308) - offset) as usize;
                     self.write_gpio_dirclr(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (1792..=1919, 1793..=1920) => {
                 if _start < 1796 && _end > 1792 {
-                    let offset = 1792u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1792) as usize;
-                    let end =
-                        (_end.saturating_sub(1792) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1792);
+                    let start = 1792u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1792) - offset) as usize;
                     self.write_gpio_pin_cnfn(0, offset, &_buf[start..end])?;
                 }
                 if _start < 1800 && _end > 1796 {
-                    let offset = 1796u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1796) as usize;
-                    let end =
-                        (_end.saturating_sub(1796) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1796);
+                    let start = 1796u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1796) - offset) as usize;
                     self.write_gpio_pin_cnfn(1, offset, &_buf[start..end])?;
                 }
                 if _start < 1804 && _end > 1800 {
-                    let offset = 1800u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1800) as usize;
-                    let end =
-                        (_end.saturating_sub(1800) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1800);
+                    let start = 1800u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1800) - offset) as usize;
                     self.write_gpio_pin_cnfn(2, offset, &_buf[start..end])?;
                 }
                 if _start < 1808 && _end > 1804 {
-                    let offset = 1804u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1804) as usize;
-                    let end =
-                        (_end.saturating_sub(1804) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1804);
+                    let start = 1804u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1804) - offset) as usize;
                     self.write_gpio_pin_cnfn(3, offset, &_buf[start..end])?;
                 }
                 if _start < 1812 && _end > 1808 {
-                    let offset = 1808u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1808) as usize;
-                    let end =
-                        (_end.saturating_sub(1808) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1808);
+                    let start = 1808u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1808) - offset) as usize;
                     self.write_gpio_pin_cnfn(4, offset, &_buf[start..end])?;
                 }
                 if _start < 1816 && _end > 1812 {
-                    let offset = 1812u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1812) as usize;
-                    let end =
-                        (_end.saturating_sub(1812) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1812);
+                    let start = 1812u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1812) - offset) as usize;
                     self.write_gpio_pin_cnfn(5, offset, &_buf[start..end])?;
                 }
                 if _start < 1820 && _end > 1816 {
-                    let offset = 1816u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1816) as usize;
-                    let end =
-                        (_end.saturating_sub(1816) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1816);
+                    let start = 1816u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1816) - offset) as usize;
                     self.write_gpio_pin_cnfn(6, offset, &_buf[start..end])?;
                 }
                 if _start < 1824 && _end > 1820 {
-                    let offset = 1820u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1820) as usize;
-                    let end =
-                        (_end.saturating_sub(1820) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1820);
+                    let start = 1820u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1820) - offset) as usize;
                     self.write_gpio_pin_cnfn(7, offset, &_buf[start..end])?;
                 }
                 if _start < 1828 && _end > 1824 {
-                    let offset = 1824u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1824) as usize;
-                    let end =
-                        (_end.saturating_sub(1824) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1824);
+                    let start = 1824u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1824) - offset) as usize;
                     self.write_gpio_pin_cnfn(8, offset, &_buf[start..end])?;
                 }
                 if _start < 1832 && _end > 1828 {
-                    let offset = 1828u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1828) as usize;
-                    let end =
-                        (_end.saturating_sub(1828) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1828);
+                    let start = 1828u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1828) - offset) as usize;
                     self.write_gpio_pin_cnfn(9, offset, &_buf[start..end])?;
                 }
                 if _start < 1836 && _end > 1832 {
-                    let offset = 1832u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1832) as usize;
-                    let end =
-                        (_end.saturating_sub(1832) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1832);
+                    let start = 1832u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1832) - offset) as usize;
                     self.write_gpio_pin_cnfn(10, offset, &_buf[start..end])?;
                 }
                 if _start < 1840 && _end > 1836 {
-                    let offset = 1836u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1836) as usize;
-                    let end =
-                        (_end.saturating_sub(1836) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1836);
+                    let start = 1836u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1836) - offset) as usize;
                     self.write_gpio_pin_cnfn(11, offset, &_buf[start..end])?;
                 }
                 if _start < 1844 && _end > 1840 {
-                    let offset = 1840u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1840) as usize;
-                    let end =
-                        (_end.saturating_sub(1840) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1840);
+                    let start = 1840u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1840) - offset) as usize;
                     self.write_gpio_pin_cnfn(12, offset, &_buf[start..end])?;
                 }
                 if _start < 1848 && _end > 1844 {
-                    let offset = 1844u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1844) as usize;
-                    let end =
-                        (_end.saturating_sub(1844) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1844);
+                    let start = 1844u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1844) - offset) as usize;
                     self.write_gpio_pin_cnfn(13, offset, &_buf[start..end])?;
                 }
                 if _start < 1852 && _end > 1848 {
-                    let offset = 1848u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1848) as usize;
-                    let end =
-                        (_end.saturating_sub(1848) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1848);
+                    let start = 1848u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1848) - offset) as usize;
                     self.write_gpio_pin_cnfn(14, offset, &_buf[start..end])?;
                 }
                 if _start < 1856 && _end > 1852 {
-                    let offset = 1852u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1852) as usize;
-                    let end =
-                        (_end.saturating_sub(1852) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1852);
+                    let start = 1852u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1852) - offset) as usize;
                     self.write_gpio_pin_cnfn(15, offset, &_buf[start..end])?;
                 }
                 if _start < 1860 && _end > 1856 {
-                    let offset = 1856u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1856) as usize;
-                    let end =
-                        (_end.saturating_sub(1856) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1856);
+                    let start = 1856u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1856) - offset) as usize;
                     self.write_gpio_pin_cnfn(16, offset, &_buf[start..end])?;
                 }
                 if _start < 1864 && _end > 1860 {
-                    let offset = 1860u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1860) as usize;
-                    let end =
-                        (_end.saturating_sub(1860) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1860);
+                    let start = 1860u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1860) - offset) as usize;
                     self.write_gpio_pin_cnfn(17, offset, &_buf[start..end])?;
                 }
                 if _start < 1868 && _end > 1864 {
-                    let offset = 1864u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1864) as usize;
-                    let end =
-                        (_end.saturating_sub(1864) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1864);
+                    let start = 1864u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1864) - offset) as usize;
                     self.write_gpio_pin_cnfn(18, offset, &_buf[start..end])?;
                 }
                 if _start < 1872 && _end > 1868 {
-                    let offset = 1868u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1868) as usize;
-                    let end =
-                        (_end.saturating_sub(1868) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1868);
+                    let start = 1868u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1868) - offset) as usize;
                     self.write_gpio_pin_cnfn(19, offset, &_buf[start..end])?;
                 }
                 if _start < 1876 && _end > 1872 {
-                    let offset = 1872u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1872) as usize;
-                    let end =
-                        (_end.saturating_sub(1872) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1872);
+                    let start = 1872u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1872) - offset) as usize;
                     self.write_gpio_pin_cnfn(20, offset, &_buf[start..end])?;
                 }
                 if _start < 1880 && _end > 1876 {
-                    let offset = 1876u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1876) as usize;
-                    let end =
-                        (_end.saturating_sub(1876) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1876);
+                    let start = 1876u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1876) - offset) as usize;
                     self.write_gpio_pin_cnfn(21, offset, &_buf[start..end])?;
                 }
                 if _start < 1884 && _end > 1880 {
-                    let offset = 1880u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1880) as usize;
-                    let end =
-                        (_end.saturating_sub(1880) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1880);
+                    let start = 1880u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1880) - offset) as usize;
                     self.write_gpio_pin_cnfn(22, offset, &_buf[start..end])?;
                 }
                 if _start < 1888 && _end > 1884 {
-                    let offset = 1884u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1884) as usize;
-                    let end =
-                        (_end.saturating_sub(1884) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1884);
+                    let start = 1884u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1884) - offset) as usize;
                     self.write_gpio_pin_cnfn(23, offset, &_buf[start..end])?;
                 }
                 if _start < 1892 && _end > 1888 {
-                    let offset = 1888u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1888) as usize;
-                    let end =
-                        (_end.saturating_sub(1888) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1888);
+                    let start = 1888u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1888) - offset) as usize;
                     self.write_gpio_pin_cnfn(24, offset, &_buf[start..end])?;
                 }
                 if _start < 1896 && _end > 1892 {
-                    let offset = 1892u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1892) as usize;
-                    let end =
-                        (_end.saturating_sub(1892) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1892);
+                    let start = 1892u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1892) - offset) as usize;
                     self.write_gpio_pin_cnfn(25, offset, &_buf[start..end])?;
                 }
                 if _start < 1900 && _end > 1896 {
-                    let offset = 1896u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1896) as usize;
-                    let end =
-                        (_end.saturating_sub(1896) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1896);
+                    let start = 1896u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1896) - offset) as usize;
                     self.write_gpio_pin_cnfn(26, offset, &_buf[start..end])?;
                 }
                 if _start < 1904 && _end > 1900 {
-                    let offset = 1900u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1900) as usize;
-                    let end =
-                        (_end.saturating_sub(1900) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1900);
+                    let start = 1900u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1900) - offset) as usize;
                     self.write_gpio_pin_cnfn(27, offset, &_buf[start..end])?;
                 }
                 if _start < 1908 && _end > 1904 {
-                    let offset = 1904u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1904) as usize;
-                    let end =
-                        (_end.saturating_sub(1904) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1904);
+                    let start = 1904u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1904) - offset) as usize;
                     self.write_gpio_pin_cnfn(28, offset, &_buf[start..end])?;
                 }
                 if _start < 1912 && _end > 1908 {
-                    let offset = 1908u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1908) as usize;
-                    let end =
-                        (_end.saturating_sub(1908) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1908);
+                    let start = 1908u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1908) - offset) as usize;
                     self.write_gpio_pin_cnfn(29, offset, &_buf[start..end])?;
                 }
                 if _start < 1916 && _end > 1912 {
-                    let offset = 1912u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1912) as usize;
-                    let end =
-                        (_end.saturating_sub(1912) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1912);
+                    let start = 1912u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1912) - offset) as usize;
                     self.write_gpio_pin_cnfn(30, offset, &_buf[start..end])?;
                 }
                 if _start < 1920 && _end > 1916 {
-                    let offset = 1916u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1916) as usize;
-                    let end =
-                        (_end.saturating_sub(1916) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1916);
+                    let start = 1916u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1916) - offset) as usize;
                     self.write_gpio_pin_cnfn(31, offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -22229,224 +22034,224 @@ impl PeripheralPage0x50000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin3((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin4((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin5((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin6((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin7((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin8((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin9((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin10((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin11((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin12((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin13((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin14((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin15((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin16((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin17((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin18((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin19((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin20((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin21((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin22((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin23((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin24((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin25((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin26((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin27((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin28((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin29((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_out_pin30((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -22530,224 +22335,224 @@ impl PeripheralPage0x50000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin3((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin4((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin5((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin6((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin7((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin8((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin9((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin10((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin11((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin12((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin13((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin14((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin15((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin16((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin17((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin18((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin19((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin20((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin21((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin22((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin23((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin24((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin25((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin26((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin27((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin28((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin29((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outset_pin30((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -22831,224 +22636,224 @@ impl PeripheralPage0x50000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin3((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin4((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin5((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin6((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin7((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin8((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin9((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin10((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin11((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin12((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin13((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin14((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin15((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin16((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin17((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin18((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin19((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin20((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin21((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin22((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin23((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin24((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin25((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin26((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin27((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin28((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin29((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_outclr_pin30((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -23196,224 +23001,224 @@ impl PeripheralPage0x50000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin3((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin4((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin5((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin6((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin7((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin8((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin9((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin10((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin11((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin12((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin13((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin14((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin15((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin16((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin17((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin18((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin19((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin20((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin21((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin22((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin23((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin24((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin25((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin26((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin27((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin28((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin29((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dir_pin30((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -23497,224 +23302,224 @@ impl PeripheralPage0x50000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin3((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin4((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin5((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin6((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin7((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin8((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin9((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin10((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin11((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin12((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin13((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin14((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin15((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin16((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin17((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin18((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin19((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin20((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin21((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin22((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin23((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin24((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin25((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin26((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin27((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin28((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin29((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirset_pin30((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -23798,224 +23603,224 @@ impl PeripheralPage0x50000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin0((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin1((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin2((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin3((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin4((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin5((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin6((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin7((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin8((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin9((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin10((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin11((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin12((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin13((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin14((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin15((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin16((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin17((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin18((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin19((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin20((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin21((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin22((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin23((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin24((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin25((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin26((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin27((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin28((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin29((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_dirclr_pin30((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -24051,35 +23856,35 @@ impl PeripheralPage0x50000000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_pin_cnfn_dir(_dim, (_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_pin_cnfn_input(_dim, (_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_pin_cnfn_pull(_dim, (_value[_i] >> 2) & 3u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_gpio_pin_cnfn_drive(_dim, (_value[_i] >> 0) & 7u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -26675,30 +26480,30 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0xE000E000 {
                     return Err(MemError::ReadViolation);
                 }
                 if _start < 12 && _end > 8 {
-                    let offset = 8u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(8) as usize;
-                    let end = (_end.saturating_sub(8) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(8);
+                    let start = 8u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 8) - offset) as usize;
                     self.write_control_actlr(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (16..=31, 17..=32) => {
                 if _start < 20 && _end > 16 {
-                    let offset = 16u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(16) as usize;
-                    let end = (_end.saturating_sub(16) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(16);
+                    let start = 16u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 16) - offset) as usize;
                     self.write_systick_stcsr(offset, &_buf[start..end])?;
                 }
                 if _start < 24 && _end > 20 {
-                    let offset = 20u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(20) as usize;
-                    let end = (_end.saturating_sub(20) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(20);
+                    let start = 20u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 20) - offset) as usize;
                     self.write_systick_strvr(offset, &_buf[start..end])?;
                 }
                 if _start < 28 && _end > 24 {
-                    let offset = 24u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(24) as usize;
-                    let end = (_end.saturating_sub(24) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(24);
+                    let start = 24u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 24) - offset) as usize;
                     self.write_systick_stcvr(offset, &_buf[start..end])?;
                 }
                 if _start < 32 && _end > 28 {
@@ -27283,423 +27088,363 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0xE000E000 {
             }
             (1024..=1263, 1025..=1264) => {
                 if _start < 1028 && _end > 1024 {
-                    let offset = 1024u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1024) as usize;
-                    let end =
-                        (_end.saturating_sub(1024) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1024);
+                    let start = 1024u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1024) - offset) as usize;
                     self.write_nvic_nvic_ipr0(offset, &_buf[start..end])?;
                 }
                 if _start < 1032 && _end > 1028 {
-                    let offset = 1028u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1028) as usize;
-                    let end =
-                        (_end.saturating_sub(1028) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1028);
+                    let start = 1028u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1028) - offset) as usize;
                     self.write_nvic_nvic_ipr1(offset, &_buf[start..end])?;
                 }
                 if _start < 1036 && _end > 1032 {
-                    let offset = 1032u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1032) as usize;
-                    let end =
-                        (_end.saturating_sub(1032) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1032);
+                    let start = 1032u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1032) - offset) as usize;
                     self.write_nvic_nvic_ipr2(offset, &_buf[start..end])?;
                 }
                 if _start < 1040 && _end > 1036 {
-                    let offset = 1036u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1036) as usize;
-                    let end =
-                        (_end.saturating_sub(1036) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1036);
+                    let start = 1036u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1036) - offset) as usize;
                     self.write_nvic_nvic_ipr3(offset, &_buf[start..end])?;
                 }
                 if _start < 1044 && _end > 1040 {
-                    let offset = 1040u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1040) as usize;
-                    let end =
-                        (_end.saturating_sub(1040) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1040);
+                    let start = 1040u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1040) - offset) as usize;
                     self.write_nvic_nvic_ipr4(offset, &_buf[start..end])?;
                 }
                 if _start < 1048 && _end > 1044 {
-                    let offset = 1044u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1044) as usize;
-                    let end =
-                        (_end.saturating_sub(1044) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1044);
+                    let start = 1044u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1044) - offset) as usize;
                     self.write_nvic_nvic_ipr5(offset, &_buf[start..end])?;
                 }
                 if _start < 1052 && _end > 1048 {
-                    let offset = 1048u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1048) as usize;
-                    let end =
-                        (_end.saturating_sub(1048) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1048);
+                    let start = 1048u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1048) - offset) as usize;
                     self.write_nvic_nvic_ipr6(offset, &_buf[start..end])?;
                 }
                 if _start < 1056 && _end > 1052 {
-                    let offset = 1052u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1052) as usize;
-                    let end =
-                        (_end.saturating_sub(1052) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1052);
+                    let start = 1052u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1052) - offset) as usize;
                     self.write_nvic_nvic_ipr7(offset, &_buf[start..end])?;
                 }
                 if _start < 1060 && _end > 1056 {
-                    let offset = 1056u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1056) as usize;
-                    let end =
-                        (_end.saturating_sub(1056) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1056);
+                    let start = 1056u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1056) - offset) as usize;
                     self.write_nvic_nvic_ipr8(offset, &_buf[start..end])?;
                 }
                 if _start < 1064 && _end > 1060 {
-                    let offset = 1060u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1060) as usize;
-                    let end =
-                        (_end.saturating_sub(1060) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1060);
+                    let start = 1060u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1060) - offset) as usize;
                     self.write_nvic_nvic_ipr9(offset, &_buf[start..end])?;
                 }
                 if _start < 1068 && _end > 1064 {
-                    let offset = 1064u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1064) as usize;
-                    let end =
-                        (_end.saturating_sub(1064) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1064);
+                    let start = 1064u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1064) - offset) as usize;
                     self.write_nvic_nvic_ipr10(offset, &_buf[start..end])?;
                 }
                 if _start < 1072 && _end > 1068 {
-                    let offset = 1068u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1068) as usize;
-                    let end =
-                        (_end.saturating_sub(1068) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1068);
+                    let start = 1068u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1068) - offset) as usize;
                     self.write_nvic_nvic_ipr11(offset, &_buf[start..end])?;
                 }
                 if _start < 1076 && _end > 1072 {
-                    let offset = 1072u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1072) as usize;
-                    let end =
-                        (_end.saturating_sub(1072) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1072);
+                    let start = 1072u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1072) - offset) as usize;
                     self.write_nvic_nvic_ipr12(offset, &_buf[start..end])?;
                 }
                 if _start < 1080 && _end > 1076 {
-                    let offset = 1076u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1076) as usize;
-                    let end =
-                        (_end.saturating_sub(1076) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1076);
+                    let start = 1076u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1076) - offset) as usize;
                     self.write_nvic_nvic_ipr13(offset, &_buf[start..end])?;
                 }
                 if _start < 1084 && _end > 1080 {
-                    let offset = 1080u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1080) as usize;
-                    let end =
-                        (_end.saturating_sub(1080) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1080);
+                    let start = 1080u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1080) - offset) as usize;
                     self.write_nvic_nvic_ipr14(offset, &_buf[start..end])?;
                 }
                 if _start < 1088 && _end > 1084 {
-                    let offset = 1084u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1084) as usize;
-                    let end =
-                        (_end.saturating_sub(1084) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1084);
+                    let start = 1084u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1084) - offset) as usize;
                     self.write_nvic_nvic_ipr15(offset, &_buf[start..end])?;
                 }
                 if _start < 1092 && _end > 1088 {
-                    let offset = 1088u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1088) as usize;
-                    let end =
-                        (_end.saturating_sub(1088) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1088);
+                    let start = 1088u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1088) - offset) as usize;
                     self.write_nvic_nvic_ipr16(offset, &_buf[start..end])?;
                 }
                 if _start < 1096 && _end > 1092 {
-                    let offset = 1092u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1092) as usize;
-                    let end =
-                        (_end.saturating_sub(1092) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1092);
+                    let start = 1092u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1092) - offset) as usize;
                     self.write_nvic_nvic_ipr17(offset, &_buf[start..end])?;
                 }
                 if _start < 1100 && _end > 1096 {
-                    let offset = 1096u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1096) as usize;
-                    let end =
-                        (_end.saturating_sub(1096) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1096);
+                    let start = 1096u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1096) - offset) as usize;
                     self.write_nvic_nvic_ipr18(offset, &_buf[start..end])?;
                 }
                 if _start < 1104 && _end > 1100 {
-                    let offset = 1100u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1100) as usize;
-                    let end =
-                        (_end.saturating_sub(1100) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1100);
+                    let start = 1100u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1100) - offset) as usize;
                     self.write_nvic_nvic_ipr19(offset, &_buf[start..end])?;
                 }
                 if _start < 1108 && _end > 1104 {
-                    let offset = 1104u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1104) as usize;
-                    let end =
-                        (_end.saturating_sub(1104) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1104);
+                    let start = 1104u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1104) - offset) as usize;
                     self.write_nvic_nvic_ipr20(offset, &_buf[start..end])?;
                 }
                 if _start < 1112 && _end > 1108 {
-                    let offset = 1108u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1108) as usize;
-                    let end =
-                        (_end.saturating_sub(1108) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1108);
+                    let start = 1108u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1108) - offset) as usize;
                     self.write_nvic_nvic_ipr21(offset, &_buf[start..end])?;
                 }
                 if _start < 1116 && _end > 1112 {
-                    let offset = 1112u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1112) as usize;
-                    let end =
-                        (_end.saturating_sub(1112) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1112);
+                    let start = 1112u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1112) - offset) as usize;
                     self.write_nvic_nvic_ipr22(offset, &_buf[start..end])?;
                 }
                 if _start < 1120 && _end > 1116 {
-                    let offset = 1116u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1116) as usize;
-                    let end =
-                        (_end.saturating_sub(1116) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1116);
+                    let start = 1116u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1116) - offset) as usize;
                     self.write_nvic_nvic_ipr23(offset, &_buf[start..end])?;
                 }
                 if _start < 1124 && _end > 1120 {
-                    let offset = 1120u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1120) as usize;
-                    let end =
-                        (_end.saturating_sub(1120) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1120);
+                    let start = 1120u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1120) - offset) as usize;
                     self.write_nvic_nvic_ipr24(offset, &_buf[start..end])?;
                 }
                 if _start < 1128 && _end > 1124 {
-                    let offset = 1124u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1124) as usize;
-                    let end =
-                        (_end.saturating_sub(1124) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1124);
+                    let start = 1124u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1124) - offset) as usize;
                     self.write_nvic_nvic_ipr25(offset, &_buf[start..end])?;
                 }
                 if _start < 1132 && _end > 1128 {
-                    let offset = 1128u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1128) as usize;
-                    let end =
-                        (_end.saturating_sub(1128) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1128);
+                    let start = 1128u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1128) - offset) as usize;
                     self.write_nvic_nvic_ipr26(offset, &_buf[start..end])?;
                 }
                 if _start < 1136 && _end > 1132 {
-                    let offset = 1132u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1132) as usize;
-                    let end =
-                        (_end.saturating_sub(1132) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1132);
+                    let start = 1132u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1132) - offset) as usize;
                     self.write_nvic_nvic_ipr27(offset, &_buf[start..end])?;
                 }
                 if _start < 1140 && _end > 1136 {
-                    let offset = 1136u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1136) as usize;
-                    let end =
-                        (_end.saturating_sub(1136) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1136);
+                    let start = 1136u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1136) - offset) as usize;
                     self.write_nvic_nvic_ipr28(offset, &_buf[start..end])?;
                 }
                 if _start < 1144 && _end > 1140 {
-                    let offset = 1140u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1140) as usize;
-                    let end =
-                        (_end.saturating_sub(1140) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1140);
+                    let start = 1140u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1140) - offset) as usize;
                     self.write_nvic_nvic_ipr29(offset, &_buf[start..end])?;
                 }
                 if _start < 1148 && _end > 1144 {
-                    let offset = 1144u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1144) as usize;
-                    let end =
-                        (_end.saturating_sub(1144) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1144);
+                    let start = 1144u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1144) - offset) as usize;
                     self.write_nvic_nvic_ipr30(offset, &_buf[start..end])?;
                 }
                 if _start < 1152 && _end > 1148 {
-                    let offset = 1148u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1148) as usize;
-                    let end =
-                        (_end.saturating_sub(1148) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1148);
+                    let start = 1148u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1148) - offset) as usize;
                     self.write_nvic_nvic_ipr31(offset, &_buf[start..end])?;
                 }
                 if _start < 1156 && _end > 1152 {
-                    let offset = 1152u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1152) as usize;
-                    let end =
-                        (_end.saturating_sub(1152) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1152);
+                    let start = 1152u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1152) - offset) as usize;
                     self.write_nvic_nvic_ipr32(offset, &_buf[start..end])?;
                 }
                 if _start < 1160 && _end > 1156 {
-                    let offset = 1156u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1156) as usize;
-                    let end =
-                        (_end.saturating_sub(1156) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1156);
+                    let start = 1156u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1156) - offset) as usize;
                     self.write_nvic_nvic_ipr33(offset, &_buf[start..end])?;
                 }
                 if _start < 1164 && _end > 1160 {
-                    let offset = 1160u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1160) as usize;
-                    let end =
-                        (_end.saturating_sub(1160) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1160);
+                    let start = 1160u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1160) - offset) as usize;
                     self.write_nvic_nvic_ipr34(offset, &_buf[start..end])?;
                 }
                 if _start < 1168 && _end > 1164 {
-                    let offset = 1164u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1164) as usize;
-                    let end =
-                        (_end.saturating_sub(1164) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1164);
+                    let start = 1164u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1164) - offset) as usize;
                     self.write_nvic_nvic_ipr35(offset, &_buf[start..end])?;
                 }
                 if _start < 1172 && _end > 1168 {
-                    let offset = 1168u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1168) as usize;
-                    let end =
-                        (_end.saturating_sub(1168) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1168);
+                    let start = 1168u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1168) - offset) as usize;
                     self.write_nvic_nvic_ipr36(offset, &_buf[start..end])?;
                 }
                 if _start < 1176 && _end > 1172 {
-                    let offset = 1172u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1172) as usize;
-                    let end =
-                        (_end.saturating_sub(1172) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1172);
+                    let start = 1172u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1172) - offset) as usize;
                     self.write_nvic_nvic_ipr37(offset, &_buf[start..end])?;
                 }
                 if _start < 1180 && _end > 1176 {
-                    let offset = 1176u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1176) as usize;
-                    let end =
-                        (_end.saturating_sub(1176) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1176);
+                    let start = 1176u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1176) - offset) as usize;
                     self.write_nvic_nvic_ipr38(offset, &_buf[start..end])?;
                 }
                 if _start < 1184 && _end > 1180 {
-                    let offset = 1180u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1180) as usize;
-                    let end =
-                        (_end.saturating_sub(1180) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1180);
+                    let start = 1180u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1180) - offset) as usize;
                     self.write_nvic_nvic_ipr39(offset, &_buf[start..end])?;
                 }
                 if _start < 1188 && _end > 1184 {
-                    let offset = 1184u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1184) as usize;
-                    let end =
-                        (_end.saturating_sub(1184) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1184);
+                    let start = 1184u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1184) - offset) as usize;
                     self.write_nvic_nvic_ipr40(offset, &_buf[start..end])?;
                 }
                 if _start < 1192 && _end > 1188 {
-                    let offset = 1188u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1188) as usize;
-                    let end =
-                        (_end.saturating_sub(1188) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1188);
+                    let start = 1188u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1188) - offset) as usize;
                     self.write_nvic_nvic_ipr41(offset, &_buf[start..end])?;
                 }
                 if _start < 1196 && _end > 1192 {
-                    let offset = 1192u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1192) as usize;
-                    let end =
-                        (_end.saturating_sub(1192) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1192);
+                    let start = 1192u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1192) - offset) as usize;
                     self.write_nvic_nvic_ipr42(offset, &_buf[start..end])?;
                 }
                 if _start < 1200 && _end > 1196 {
-                    let offset = 1196u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1196) as usize;
-                    let end =
-                        (_end.saturating_sub(1196) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1196);
+                    let start = 1196u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1196) - offset) as usize;
                     self.write_nvic_nvic_ipr43(offset, &_buf[start..end])?;
                 }
                 if _start < 1204 && _end > 1200 {
-                    let offset = 1200u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1200) as usize;
-                    let end =
-                        (_end.saturating_sub(1200) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1200);
+                    let start = 1200u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1200) - offset) as usize;
                     self.write_nvic_nvic_ipr44(offset, &_buf[start..end])?;
                 }
                 if _start < 1208 && _end > 1204 {
-                    let offset = 1204u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1204) as usize;
-                    let end =
-                        (_end.saturating_sub(1204) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1204);
+                    let start = 1204u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1204) - offset) as usize;
                     self.write_nvic_nvic_ipr45(offset, &_buf[start..end])?;
                 }
                 if _start < 1212 && _end > 1208 {
-                    let offset = 1208u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1208) as usize;
-                    let end =
-                        (_end.saturating_sub(1208) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1208);
+                    let start = 1208u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1208) - offset) as usize;
                     self.write_nvic_nvic_ipr46(offset, &_buf[start..end])?;
                 }
                 if _start < 1216 && _end > 1212 {
-                    let offset = 1212u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1212) as usize;
-                    let end =
-                        (_end.saturating_sub(1212) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1212);
+                    let start = 1212u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1212) - offset) as usize;
                     self.write_nvic_nvic_ipr47(offset, &_buf[start..end])?;
                 }
                 if _start < 1220 && _end > 1216 {
-                    let offset = 1216u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1216) as usize;
-                    let end =
-                        (_end.saturating_sub(1216) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1216);
+                    let start = 1216u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1216) - offset) as usize;
                     self.write_nvic_nvic_ipr48(offset, &_buf[start..end])?;
                 }
                 if _start < 1224 && _end > 1220 {
-                    let offset = 1220u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1220) as usize;
-                    let end =
-                        (_end.saturating_sub(1220) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1220);
+                    let start = 1220u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1220) - offset) as usize;
                     self.write_nvic_nvic_ipr49(offset, &_buf[start..end])?;
                 }
                 if _start < 1228 && _end > 1224 {
-                    let offset = 1224u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1224) as usize;
-                    let end =
-                        (_end.saturating_sub(1224) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1224);
+                    let start = 1224u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1224) - offset) as usize;
                     self.write_nvic_nvic_ipr50(offset, &_buf[start..end])?;
                 }
                 if _start < 1232 && _end > 1228 {
-                    let offset = 1228u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1228) as usize;
-                    let end =
-                        (_end.saturating_sub(1228) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1228);
+                    let start = 1228u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1228) - offset) as usize;
                     self.write_nvic_nvic_ipr51(offset, &_buf[start..end])?;
                 }
                 if _start < 1236 && _end > 1232 {
-                    let offset = 1232u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1232) as usize;
-                    let end =
-                        (_end.saturating_sub(1232) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1232);
+                    let start = 1232u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1232) - offset) as usize;
                     self.write_nvic_nvic_ipr52(offset, &_buf[start..end])?;
                 }
                 if _start < 1240 && _end > 1236 {
-                    let offset = 1236u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1236) as usize;
-                    let end =
-                        (_end.saturating_sub(1236) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1236);
+                    let start = 1236u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1236) - offset) as usize;
                     self.write_nvic_nvic_ipr53(offset, &_buf[start..end])?;
                 }
                 if _start < 1244 && _end > 1240 {
-                    let offset = 1240u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1240) as usize;
-                    let end =
-                        (_end.saturating_sub(1240) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1240);
+                    let start = 1240u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1240) - offset) as usize;
                     self.write_nvic_nvic_ipr54(offset, &_buf[start..end])?;
                 }
                 if _start < 1248 && _end > 1244 {
-                    let offset = 1244u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1244) as usize;
-                    let end =
-                        (_end.saturating_sub(1244) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1244);
+                    let start = 1244u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1244) - offset) as usize;
                     self.write_nvic_nvic_ipr55(offset, &_buf[start..end])?;
                 }
                 if _start < 1252 && _end > 1248 {
-                    let offset = 1248u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1248) as usize;
-                    let end =
-                        (_end.saturating_sub(1248) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1248);
+                    let start = 1248u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1248) - offset) as usize;
                     self.write_nvic_nvic_ipr56(offset, &_buf[start..end])?;
                 }
                 if _start < 1256 && _end > 1252 {
-                    let offset = 1252u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1252) as usize;
-                    let end =
-                        (_end.saturating_sub(1252) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1252);
+                    let start = 1252u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1252) - offset) as usize;
                     self.write_nvic_nvic_ipr57(offset, &_buf[start..end])?;
                 }
                 if _start < 1260 && _end > 1256 {
-                    let offset = 1256u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1256) as usize;
-                    let end =
-                        (_end.saturating_sub(1256) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1256);
+                    let start = 1256u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1256) - offset) as usize;
                     self.write_nvic_nvic_ipr58(offset, &_buf[start..end])?;
                 }
                 if _start < 1264 && _end > 1260 {
-                    let offset = 1260u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(1260) as usize;
-                    let end =
-                        (_end.saturating_sub(1260) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(1260);
+                    let start = 1260u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1260) - offset) as usize;
                     self.write_nvic_nvic_ipr59(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -27709,87 +27454,75 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0xE000E000 {
                     return Err(MemError::ReadViolation);
                 }
                 if _start < 3336 && _end > 3332 {
-                    let offset = 3332u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3332) as usize;
-                    let end =
-                        (_end.saturating_sub(3332) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3332);
+                    let start = 3332u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3332) - offset) as usize;
                     self.write_control_icsr(offset, &_buf[start..end])?;
                 }
                 if _start < 3340 && _end > 3336 {
-                    let offset = 3336u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3336) as usize;
-                    let end =
-                        (_end.saturating_sub(3336) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3336);
+                    let start = 3336u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3336) - offset) as usize;
                     self.write_control_vtor(offset, &_buf[start..end])?;
                 }
                 if _start < 3344 && _end > 3340 {
-                    let offset = 3340u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3340) as usize;
-                    let end =
-                        (_end.saturating_sub(3340) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3340);
+                    let start = 3340u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3340) - offset) as usize;
                     self.write_control_aircr(offset, &_buf[start..end])?;
                 }
                 if _start < 3348 && _end > 3344 {
-                    let offset = 3344u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3344) as usize;
-                    let end =
-                        (_end.saturating_sub(3344) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3344);
+                    let start = 3344u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3344) - offset) as usize;
                     self.write_control_scr(offset, &_buf[start..end])?;
                 }
                 if _start < 3352 && _end > 3348 {
-                    let offset = 3348u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3348) as usize;
-                    let end =
-                        (_end.saturating_sub(3348) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3348);
+                    let start = 3348u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3348) - offset) as usize;
                     self.write_control_ccr(offset, &_buf[start..end])?;
                 }
                 if _start < 3356 && _end > 3352 {
-                    let offset = 3352u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3352) as usize;
-                    let end =
-                        (_end.saturating_sub(3352) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3352);
+                    let start = 3352u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3352) - offset) as usize;
                     self.write_control_shpr1(offset, &_buf[start..end])?;
                 }
                 if _start < 3360 && _end > 3356 {
-                    let offset = 3356u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3356) as usize;
-                    let end =
-                        (_end.saturating_sub(3356) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3356);
+                    let start = 3356u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3356) - offset) as usize;
                     self.write_control_shpr2(offset, &_buf[start..end])?;
                 }
                 if _start < 3364 && _end > 3360 {
-                    let offset = 3360u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3360) as usize;
-                    let end =
-                        (_end.saturating_sub(3360) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3360);
+                    let start = 3360u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3360) - offset) as usize;
                     self.write_control_shpr3(offset, &_buf[start..end])?;
                 }
                 if _start < 3368 && _end > 3364 {
-                    let offset = 3364u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3364) as usize;
-                    let end =
-                        (_end.saturating_sub(3364) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3364);
+                    let start = 3364u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3364) - offset) as usize;
                     self.write_control_shcsr(offset, &_buf[start..end])?;
                 }
                 if _start < 3372 && _end > 3368 {
-                    let offset = 3368u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3368) as usize;
-                    let end =
-                        (_end.saturating_sub(3368) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3368);
+                    let start = 3368u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3368) - offset) as usize;
                     self.write_control_cfsr(offset, &_buf[start..end])?;
                 }
                 if _start < 3376 && _end > 3372 {
-                    let offset = 3372u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3372) as usize;
-                    let end =
-                        (_end.saturating_sub(3372) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3372);
+                    let start = 3372u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3372) - offset) as usize;
                     self.write_control_hfsr(offset, &_buf[start..end])?;
                 }
                 if _start < 3380 && _end > 3376 {
-                    let offset = 3376u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3376) as usize;
-                    let end =
-                        (_end.saturating_sub(3376) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3376);
+                    let start = 3376u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3376) - offset) as usize;
                     self.write_control_dfsr(offset, &_buf[start..end])?;
                 }
                 if _start < 3384 && _end > 3380 {
@@ -27877,10 +27610,9 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0xE000E000 {
             }
             (3464..=3467, 3465..=3468) => {
                 if _start < 3468 && _end > 3464 {
-                    let offset = 3464u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3464) as usize;
-                    let end =
-                        (_end.saturating_sub(3464) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3464);
+                    let start = 3464u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3464) - offset) as usize;
                     self.write_control_cpacr(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -27890,73 +27622,63 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0xE000E000 {
                     return Err(MemError::ReadViolation);
                 }
                 if _start < 3480 && _end > 3476 {
-                    let offset = 3476u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3476) as usize;
-                    let end =
-                        (_end.saturating_sub(3476) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3476);
+                    let start = 3476u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3476) - offset) as usize;
                     self.write_mpu_mpu_ctrl(offset, &_buf[start..end])?;
                 }
                 if _start < 3484 && _end > 3480 {
-                    let offset = 3480u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3480) as usize;
-                    let end =
-                        (_end.saturating_sub(3480) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3480);
+                    let start = 3480u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3480) - offset) as usize;
                     self.write_mpu_mpu_rnr(offset, &_buf[start..end])?;
                 }
                 if _start < 3488 && _end > 3484 {
-                    let offset = 3484u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3484) as usize;
-                    let end =
-                        (_end.saturating_sub(3484) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3484);
+                    let start = 3484u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3484) - offset) as usize;
                     self.write_mpu_mpu_rbar(offset, &_buf[start..end])?;
                 }
                 if _start < 3492 && _end > 3488 {
-                    let offset = 3488u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3488) as usize;
-                    let end =
-                        (_end.saturating_sub(3488) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3488);
+                    let start = 3488u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3488) - offset) as usize;
                     self.write_mpu_mpu_rasr(offset, &_buf[start..end])?;
                 }
                 if _start < 3496 && _end > 3492 {
-                    let offset = 3492u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3492) as usize;
-                    let end =
-                        (_end.saturating_sub(3492) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3492);
+                    let start = 3492u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3492) - offset) as usize;
                     self.write_mpu_mpu_rbar_a1(offset, &_buf[start..end])?;
                 }
                 if _start < 3500 && _end > 3496 {
-                    let offset = 3496u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3496) as usize;
-                    let end =
-                        (_end.saturating_sub(3496) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3496);
+                    let start = 3496u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3496) - offset) as usize;
                     self.write_mpu_mpu_rasr_a1(offset, &_buf[start..end])?;
                 }
                 if _start < 3504 && _end > 3500 {
-                    let offset = 3500u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3500) as usize;
-                    let end =
-                        (_end.saturating_sub(3500) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3500);
+                    let start = 3500u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3500) - offset) as usize;
                     self.write_mpu_mpu_rbar_a2(offset, &_buf[start..end])?;
                 }
                 if _start < 3508 && _end > 3504 {
-                    let offset = 3504u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3504) as usize;
-                    let end =
-                        (_end.saturating_sub(3504) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3504);
+                    let start = 3504u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3504) - offset) as usize;
                     self.write_mpu_mpu_rasr_a2(offset, &_buf[start..end])?;
                 }
                 if _start < 3512 && _end > 3508 {
-                    let offset = 3508u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3508) as usize;
-                    let end =
-                        (_end.saturating_sub(3508) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3508);
+                    let start = 3508u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3508) - offset) as usize;
                     self.write_mpu_mpu_rbar_a3(offset, &_buf[start..end])?;
                 }
                 if _start < 3516 && _end > 3512 {
-                    let offset = 3512u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3512) as usize;
-                    let end =
-                        (_end.saturating_sub(3512) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3512);
+                    let start = 3512u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3512) - offset) as usize;
                     self.write_mpu_mpu_rasr_a3(offset, &_buf[start..end])?;
                 }
                 Ok(())
@@ -27969,20 +27691,18 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0xE000E000 {
             }
             (3840..=3843, 3841..=3844) => {
                 if _start < 3844 && _end > 3840 {
-                    let offset = 3840u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3840) as usize;
-                    let end =
-                        (_end.saturating_sub(3840) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3840);
+                    let start = 3840u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3840) - offset) as usize;
                     self.write_control_stir(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
             (3892..=3911, 3893..=3912) => {
                 if _start < 3896 && _end > 3892 {
-                    let offset = 3892u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3892) as usize;
-                    let end =
-                        (_end.saturating_sub(3892) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3892);
+                    let start = 3892u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3892) - offset) as usize;
                     self.write_fpe_fpccr(offset, &_buf[start..end])?;
                 }
                 if _start < 3900 && _end > 3896 {
@@ -28000,10 +27720,9 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0xE000E000 {
                     )?;
                 }
                 if _start < 3904 && _end > 3900 {
-                    let offset = 3900u64.saturating_sub(_start);
-                    let start = _start.saturating_sub(3900) as usize;
-                    let end =
-                        (_end.saturating_sub(3900) as usize).min(start + 4);
+                    let offset = _start.saturating_sub(3900);
+                    let start = 3900u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3900) - offset) as usize;
                     self.write_fpe_fpdscr(offset, &_buf[start..end])?;
                 }
                 if _start < 3908 && _end > 3904 {
@@ -28053,35 +27772,35 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_actlr_dismcycint((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_actlr_disdefwbuf((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_actlr_disfold((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_actlr_disfpca((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -28113,28 +27832,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_systick_stcsr_enable((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_systick_stcsr_tickint((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_systick_stcsr_clksource((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -28228,28 +27947,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr0_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr0_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr0_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -28281,28 +28000,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr1_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr1_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr1_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -28334,28 +28053,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr2_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr2_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr2_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -28387,28 +28106,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr3_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr3_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr3_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -28440,28 +28159,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr4_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr4_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr4_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -28493,28 +28212,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr5_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr5_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr5_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -28546,28 +28265,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr6_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr6_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr6_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -28599,28 +28318,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr7_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr7_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr7_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -28652,28 +28371,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr8_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr8_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr8_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -28705,28 +28424,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr9_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr9_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr9_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -28758,28 +28477,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr10_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr10_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr10_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -28811,28 +28530,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr11_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr11_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr11_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -28864,28 +28583,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr12_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr12_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr12_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -28917,28 +28636,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr13_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr13_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr13_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -28970,28 +28689,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr14_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr14_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr14_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -29023,28 +28742,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr15_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr15_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr15_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -29076,28 +28795,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr16_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr16_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr16_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -29129,28 +28848,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr17_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr17_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr17_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -29182,28 +28901,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr18_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr18_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr18_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -29235,28 +28954,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr19_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr19_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr19_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -29288,28 +29007,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr20_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr20_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr20_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -29341,28 +29060,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr21_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr21_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr21_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -29394,28 +29113,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr22_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr22_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr22_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -29447,28 +29166,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr23_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr23_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr23_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -29500,28 +29219,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr24_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr24_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr24_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -29553,28 +29272,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr25_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr25_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr25_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -29606,28 +29325,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr26_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr26_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr26_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -29659,28 +29378,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr27_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr27_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr27_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -29712,28 +29431,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr28_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr28_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr28_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -29765,28 +29484,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr29_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr29_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr29_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -29818,28 +29537,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr30_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr30_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr30_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -29871,28 +29590,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr31_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr31_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr31_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -29924,28 +29643,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr32_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr32_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr32_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -29977,28 +29696,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr33_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr33_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr33_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -30030,28 +29749,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr34_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr34_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr34_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -30083,28 +29802,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr35_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr35_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr35_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -30136,28 +29855,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr36_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr36_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr36_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -30189,28 +29908,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr37_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr37_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr37_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -30242,28 +29961,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr38_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr38_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr38_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -30295,28 +30014,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr39_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr39_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr39_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -30348,28 +30067,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr40_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr40_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr40_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -30401,28 +30120,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr41_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr41_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr41_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -30454,28 +30173,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr42_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr42_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr42_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -30507,28 +30226,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr43_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr43_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr43_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -30560,28 +30279,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr44_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr44_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr44_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -30613,28 +30332,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr45_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr45_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr45_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -30666,28 +30385,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr46_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr46_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr46_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -30719,28 +30438,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr47_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr47_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr47_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -30772,28 +30491,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr48_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr48_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr48_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -30825,28 +30544,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr49_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr49_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr49_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -30878,28 +30597,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr50_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr50_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr50_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -30931,28 +30650,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr51_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr51_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr51_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -30984,28 +30703,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr52_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr52_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr52_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -31037,28 +30756,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr53_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr53_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr53_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -31090,28 +30809,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr54_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr54_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr54_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -31143,28 +30862,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr55_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr55_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr55_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -31196,28 +30915,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr56_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr56_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr56_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -31249,28 +30968,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr57_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr57_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr57_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -31302,28 +31021,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr58_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr58_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr58_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -31355,28 +31074,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr59_pri_n0((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr59_pri_n1((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_nvic_nvic_ipr59_pri_n2((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -31458,7 +31177,7 @@ impl PeripheralPage0xE000E000 {
             return Err(MemError::WriteViolation);
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -31478,49 +31197,49 @@ impl PeripheralPage0xE000E000 {
             return Err(MemError::WriteViolation);
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_icsr_isrpending((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_icsr_isrpreempt((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_icsr_pendstclr((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_icsr_pendstset((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_icsr_pendsvclr((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_icsr_pendsvset((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -31560,7 +31279,7 @@ impl PeripheralPage0xE000E000 {
             return Err(MemError::WriteViolation);
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -31595,27 +31314,27 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0.lock().unwrap().write_control_aircr_vectclractive(
                 (_value[_i] >> 1) & 1 != 0,
             )?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_aircr_sysresetreq((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_aircr_prigroup((_value[_i] >> 0) & 7u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -31654,21 +31373,21 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_scr_sleeponexit((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_scr_sleepdeep((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -31706,42 +31425,42 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_ccr_nonbasethrdena((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_ccr_usersetmpend((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_ccr_unalign_trp((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_ccr_div_0_trp((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_ccr_bfhfnmign((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -31769,28 +31488,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_shpr1_pri_4((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_shpr1_pri_5((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_shpr1_pri_6((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -31820,28 +31539,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_shpr2_pri_8((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_shpr2_pri_9((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_shpr2_pri_10((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -31873,28 +31592,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_shpr3_pri_12((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_shpr3_pri_13((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_shpr3_pri_14((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -31956,95 +31675,95 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_shcsr_memfaultact((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_shcsr_busfaultact((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_shcsr_usgfaultact((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_shcsr_svcallact((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_shcsr_monitoract((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_shcsr_pendsvact((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_shcsr_systickact((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0.lock().unwrap().write_control_shcsr_usgfaultpended(
                 (_value[_i] >> 4) & 1 != 0,
             )?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0.lock().unwrap().write_control_shcsr_memfaultpended(
                 (_value[_i] >> 5) & 1 != 0,
             )?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0.lock().unwrap().write_control_shcsr_busfaultpended(
                 (_value[_i] >> 6) & 1 != 0,
             )?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_shcsr_svcallpended((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_shcsr_memfaultena((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_shcsr_busfaultena((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -32117,133 +31836,133 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cfsr_iaccviol((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cfsr_daccviol((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cfsr_munstkerr((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cfsr_mstkerr((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cfsr_mlsperr((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cfsr_mmarvalid((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cfsr_ibuserr((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cfsr_preciserr((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cfsr_impreciserr((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cfsr_unstkerr((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cfsr_stkerr((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cfsr_lsperr((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cfsr_bfarvalid((_value[_i] >> 7) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cfsr_undefinstr((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cfsr_invstate((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cfsr_invpc((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cfsr_nocp((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cfsr_unaligned((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -32271,21 +31990,21 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_hfsr_vecttbl((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_hfsr_forced((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -32317,35 +32036,35 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_dfsr_halted((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_dfsr_bkpt((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_dfsr_dwttrap((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_dfsr_vcatch((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -32554,70 +32273,70 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cpacr_cp0((_value[_i] >> 0) & 3u8)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cpacr_cp1((_value[_i] >> 2) & 3u8)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cpacr_cp2((_value[_i] >> 4) & 3u8)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cpacr_cp3((_value[_i] >> 6) & 3u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cpacr_cp4((_value[_i] >> 0) & 3u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cpacr_cp5((_value[_i] >> 2) & 3u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cpacr_cp6((_value[_i] >> 4) & 3u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cpacr_cp7((_value[_i] >> 6) & 3u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_control_cpacr_cp10((_value[_i] >> 4) & 3u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -32658,21 +32377,21 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_ctrl_enable((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_ctrl_hfnmiena((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -32694,7 +32413,7 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -32720,14 +32439,14 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rbar_region((_value[_i] >> 0) & 15u8)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -32777,63 +32496,63 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_enable((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_size((_value[_i] >> 1) & 31u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_srd((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_b((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_c((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_s((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_tex((_value[_i] >> 3) & 7u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_ap((_value[_i] >> 0) & 7u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -32862,14 +32581,14 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rbar_a1_region((_value[_i] >> 0) & 15u8)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -32924,63 +32643,63 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a1_enable((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a1_size((_value[_i] >> 1) & 31u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a1_srd((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a1_b((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a1_c((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a1_s((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a1_tex((_value[_i] >> 3) & 7u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a1_ap((_value[_i] >> 0) & 7u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -33009,14 +32728,14 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rbar_a2_region((_value[_i] >> 0) & 15u8)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -33071,63 +32790,63 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a2_enable((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a2_size((_value[_i] >> 1) & 31u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a2_srd((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a2_b((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a2_c((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a2_s((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a2_tex((_value[_i] >> 3) & 7u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a2_ap((_value[_i] >> 0) & 7u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -33156,14 +32875,14 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rbar_a3_region((_value[_i] >> 0) & 15u8)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -33218,63 +32937,63 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a3_enable((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a3_size((_value[_i] >> 1) & 31u8)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a3_srd((_value[_i] >> 0) & 255u8)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a3_b((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a3_c((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a3_s((_value[_i] >> 2) & 1 != 0)?;
         }
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a3_tex((_value[_i] >> 3) & 7u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_mpu_mpu_rasr_a3_ap((_value[_i] >> 0) & 7u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -33344,63 +33063,63 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_fpe_fpccr_lspact((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_fpe_fpccr_user((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_fpe_fpccr_thread((_value[_i] >> 3) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_fpe_fpccr_hfrdy((_value[_i] >> 4) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_fpe_fpccr_mmrdy((_value[_i] >> 5) & 1 != 0)?;
         }
         if (_start.._end).contains(&0) {
-            let _i = (_start - 0) as usize;
+            let _i = (0 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_fpe_fpccr_bfrdy((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&1) {
-            let _i = (_start - 1) as usize;
+            let _i = (1 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_fpe_fpccr_monrdy((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_fpe_fpccr_lspen((_value[_i] >> 6) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
@@ -33428,28 +33147,28 @@ impl PeripheralPage0xE000E000 {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&2) {
-            let _i = (_start - 2) as usize;
+            let _i = (2 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_fpe_fpdscr_rmode((_value[_i] >> 6) & 3u8)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_fpe_fpdscr_fz((_value[_i] >> 0) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
                 .write_fpe_fpdscr_dn((_value[_i] >> 1) & 1 != 0)?;
         }
         if (_start.._end).contains(&3) {
-            let _i = (_start - 3) as usize;
+            let _i = (3 - _start) as usize;
             self.0
                 .lock()
                 .unwrap()
