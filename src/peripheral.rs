@@ -6783,7 +6783,7 @@ impl Peripherals {
     #[doc = "CLOCK EVENTS_LFCLKSTARTED: LFCLK oscillator started."]
     #[inline]
     pub(crate) fn read_clock_events_lfclkstarted(&self) -> MemResult<u32> {
-        todo ! ("read CLOCK EVENTS_LFCLKSTARTED reset value 0x00 mask 0xffffffffffffffff")
+        Ok(self.clock.lfclkstarted() as u32)
     }
     #[doc = "CLOCK EVENTS_LFCLKSTARTED: LFCLK oscillator started."]
     #[inline]
@@ -6791,7 +6791,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write CLOCK EVENTS_LFCLKSTARTED reset value 0x00 mask 0xffffffffffffffff")
+        Ok(self.clock.set_lfclkstarted())
     }
     #[doc = "CLOCK EVENTS_DONE: Calibration of LFCLK RC oscillator completed."]
     #[inline]

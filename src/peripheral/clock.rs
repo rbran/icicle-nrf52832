@@ -1,6 +1,6 @@
 #[derive(Default)]
 pub struct Clock {
-    pub source: Source,
+    source: Source,
 }
 
 impl Clock {
@@ -9,6 +9,13 @@ impl Clock {
     }
     pub fn set_source(&mut self, source: Source) {
         self.source = source
+    }
+    pub fn lfclkstarted(&self) -> bool {
+        // TODO handle the this event
+        true
+    }
+    pub fn set_lfclkstarted(&mut self) {
+        // TODO handle the this event
     }
 }
 
