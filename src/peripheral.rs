@@ -710,7 +710,7 @@ impl Peripherals {
     pub(crate) fn read_powerclock_intenset_sleepenter(
         &self,
     ) -> MemResult<bool> {
-        todo!("read POWER INTENSET SLEEPENTER reset value false")
+        Ok(self.powerclock.event(powerclock::EventId::SLEEPENTER).on)
     }
     #[doc = "POWER INTENSET SLEEPENTER: Write '1' to Enable interrupt for SLEEPENTER event"]
     #[inline]
@@ -718,12 +718,15 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write POWER INTENSET SLEEPENTER reset value false")
+        if _value {
+            self.powerclock.event_mut(powerclock::EventId::SLEEPENTER).on = true
+        }
+        Ok(())
     }
     #[doc = "POWER INTENSET SLEEPEXIT: Write '1' to Enable interrupt for SLEEPEXIT event"]
     #[inline]
     pub(crate) fn read_powerclock_intenset_sleepexit(&self) -> MemResult<bool> {
-        todo!("read POWER INTENSET SLEEPEXIT reset value false")
+        Ok(self.powerclock.event(powerclock::EventId::SLEEPEXIT).on)
     }
     #[doc = "POWER INTENSET SLEEPEXIT: Write '1' to Enable interrupt for SLEEPEXIT event"]
     #[inline]
@@ -731,7 +734,10 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write POWER INTENSET SLEEPEXIT reset value false")
+        if _value {
+            self.powerclock.event_mut(powerclock::EventId::SLEEPEXIT).on = true
+        }
+        Ok(())
     }
     #[doc = "CLOCK INTENCLR HFCLKSTARTED: Write '1' to Disable interrupt for HFCLKSTARTED event"]
     #[inline]
@@ -826,7 +832,7 @@ impl Peripherals {
     pub(crate) fn read_powerclock_intenclr_sleepenter(
         &self,
     ) -> MemResult<bool> {
-        todo!("read POWER INTENCLR SLEEPENTER reset value false")
+        Ok(self.powerclock.event(powerclock::EventId::SLEEPENTER).on)
     }
     #[doc = "POWER INTENCLR SLEEPENTER: Write '1' to Disable interrupt for SLEEPENTER event"]
     #[inline]
@@ -834,12 +840,15 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write POWER INTENCLR SLEEPENTER reset value false")
+        if _value {
+            self.powerclock.event_mut(powerclock::EventId::SLEEPENTER).on = false
+        }
+        Ok(())
     }
     #[doc = "POWER INTENCLR SLEEPEXIT: Write '1' to Disable interrupt for SLEEPEXIT event"]
     #[inline]
     pub(crate) fn read_powerclock_intenclr_sleepexit(&self) -> MemResult<bool> {
-        todo!("read POWER INTENCLR SLEEPEXIT reset value false")
+        Ok(self.powerclock.event(powerclock::EventId::SLEEPEXIT).on)
     }
     #[doc = "POWER INTENCLR SLEEPEXIT: Write '1' to Disable interrupt for SLEEPEXIT event"]
     #[inline]
@@ -847,7 +856,10 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write POWER INTENCLR SLEEPEXIT reset value false")
+        if _value {
+            self.powerclock.event_mut(powerclock::EventId::SLEEPEXIT).on = false
+        }
+        Ok(())
     }
     #[doc = "POWER RESETREAS RESETPIN: Reset from pin-reset detected"]
     #[inline]
@@ -1061,7 +1073,7 @@ impl Peripherals {
     #[doc = "CLOCK LFCLKSRC BYPASS: Enable or disable bypass of LFCLK crystal oscillator with external clock source"]
     #[inline]
     pub(crate) fn read_clock_lfclksrc_bypass(&self) -> MemResult<bool> {
-        todo!("read CLOCK LFCLKSRC BYPASS reset value false")
+        Ok(self.powerclock.bypass())
     }
     #[doc = "CLOCK LFCLKSRC BYPASS: Enable or disable bypass of LFCLK crystal oscillator with external clock source"]
     #[inline]
@@ -1069,12 +1081,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write CLOCK LFCLKSRC BYPASS reset value false")
+        Ok(self.powerclock.set_bypass(_value))
     }
     #[doc = "CLOCK LFCLKSRC EXTERNAL: Enable or disable external source for LFCLK"]
     #[inline]
     pub(crate) fn read_clock_lfclksrc_external(&self) -> MemResult<bool> {
-        todo!("read CLOCK LFCLKSRC EXTERNAL reset value false")
+        Ok(self.powerclock.external())
     }
     #[doc = "CLOCK LFCLKSRC EXTERNAL: Enable or disable external source for LFCLK"]
     #[inline]
@@ -1082,7 +1094,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write CLOCK LFCLKSRC EXTERNAL reset value false")
+        Ok(self.powerclock.set_external(_value))
     }
     #[doc = "POWER GPREGRET GPREGRET: General purpose retention register"]
     #[inline]

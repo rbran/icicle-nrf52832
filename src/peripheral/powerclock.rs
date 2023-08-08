@@ -5,7 +5,10 @@ use super::event::Event;
 #[derive(Default)]
 pub struct PowerClock {
     source: Source,
-    events: [Event; 5],
+    // FUTURE: use the `core::mem::variant_count` to avoid using a number
+    events: [Event; 7],
+    bypass: bool,
+    external: bool,
 }
 
 impl PowerClock {
@@ -21,6 +24,18 @@ impl PowerClock {
     pub fn event_mut(&mut self, event: EventId) -> &mut Event {
         &mut self.events[event as usize]
     }
+    pub fn bypass(&self) -> bool {
+        self.bypass
+    }
+    pub fn set_bypass(&mut self, on: bool) {
+        self.bypass = on
+    }
+    pub fn external(&self) -> bool {
+        self.external
+    }
+    pub fn set_external(&mut self, on: bool) {
+        self.external = on
+    }
 }
 
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -31,6 +46,8 @@ pub enum EventId {
     POFWARN = 2,
     DONE = 3,
     CTTO = 4,
+    SLEEPENTER = 5,
+    SLEEPEXIT = 6,
 }
 
 #[derive(Clone, Copy, Default)]
