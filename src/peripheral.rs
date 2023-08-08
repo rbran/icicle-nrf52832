@@ -462,7 +462,10 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo!("write CLOCK TASKS_LFCLKSTART reset value 0x00 mask 0xffffffffffffffff")
+        if event::trigger_task(_value) {
+            self.powerclock.start_lfclk();
+        }
+        Ok(())
     }
     #[doc = "CLOCK TASKS_LFCLKSTOP: Stop LFCLK source"]
     #[inline]
@@ -15100,7 +15103,10 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        Ok(self.ppi.set_group_on(_dim, true))
+        if event::trigger_task(_value) {
+            self.ppi.set_group_on(_dim, true)
+        }
+        Ok(())
     }
     #[doc = "PPI DIS: Description cluster[0]:  Disable channel group 0"]
     #[inline]
@@ -15109,7 +15115,10 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        Ok(self.ppi.set_group_on(_dim, false))
+        if event::trigger_task(_value) {
+            self.ppi.set_group_on(_dim, false)
+        }
+        Ok(())
     }
     #[doc = "PPI CHEN CH0: Enable PPI channel 0."]
     #[inline]

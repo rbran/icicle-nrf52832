@@ -36,6 +36,9 @@ impl PowerClock {
     pub fn set_external(&mut self, on: bool) {
         self.external = on
     }
+    pub fn start_lfclk(&mut self) {
+        //TODO implement this task
+    }
 }
 
 #[derive(Clone, Copy, PartialEq, Eq)]
