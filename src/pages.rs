@@ -772,73 +772,73 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10000000 {
         match (_start, _end) {
             (16..=23, 17..=24) => {
                 if _start < 20 && _end > 16 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 24 && _end > 20 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
             (96..=103, 97..=104) => {
                 if _start < 100 && _end > 96 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 104 && _end > 100 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
             (128..=171, 129..=172) => {
                 if _start < 132 && _end > 128 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 136 && _end > 132 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 140 && _end > 136 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 144 && _end > 140 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 148 && _end > 144 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 152 && _end > 148 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 156 && _end > 152 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 160 && _end > 156 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 164 && _end > 160 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 168 && _end > 164 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 172 && _end > 168 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
             (256..=287, 257..=288) => {
                 if _start < 260 && _end > 256 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 264 && _end > 260 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 268 && _end > 264 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 272 && _end > 268 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 276 && _end > 272 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 280 && _end > 276 {
                     assert!(
@@ -889,70 +889,70 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x10000000 {
             }
             (1028..=1095, 1029..=1096) => {
                 if _start < 1032 && _end > 1028 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1036 && _end > 1032 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1040 && _end > 1036 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1044 && _end > 1040 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1048 && _end > 1044 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1052 && _end > 1048 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1056 && _end > 1052 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1060 && _end > 1056 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1064 && _end > 1060 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1068 && _end > 1064 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1072 && _end > 1068 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1076 && _end > 1072 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1080 && _end > 1076 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1084 && _end > 1080 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1088 && _end > 1084 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1092 && _end > 1088 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1096 && _end > 1092 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
             (1104..=1119, 1105..=1120) => {
                 if _start < 1108 && _end > 1104 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1112 && _end > 1108 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1116 && _end > 1112 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1120 && _end > 1116 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
@@ -4530,28 +4530,28 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40000000 {
             }
             (1032..=1039, 1033..=1040) => {
                 if _start < 1036 && _end > 1032 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1040 && _end > 1036 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
             (1044..=1055, 1045..=1056) => {
                 if _start < 1048 && _end > 1044 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1052 && _end > 1048 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1056 && _end > 1052 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
             (1064..=1067, 1065..=1068) => {
                 if _start < 1068 && _end > 1064 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
@@ -8438,19 +8438,19 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40001000 {
             }
             (1024..=1027, 1025..=1028) => {
                 if _start < 1028 && _end > 1024 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
             (1032..=1043, 1033..=1044) => {
                 if _start < 1036 && _end > 1032 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1040 && _end > 1036 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1044 && _end > 1040 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
@@ -8590,13 +8590,13 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40001000 {
                     self.write_radio_tifs(offset, &_buf[start..end])?;
                 }
                 if _start < 1356 && _end > 1352 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
             (1360..=1367, 1361..=1368) => {
                 if _start < 1364 && _end > 1360 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1368 && _end > 1364 {
                     let offset = _start.saturating_sub(1364);
@@ -10909,7 +10909,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40002000 {
                     self.write_uarte0uart0_psel_rxd(offset, &_buf[start..end])?;
                 }
                 if _start < 1308 && _end > 1304 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1312 && _end > 1308 {
                     let offset = _start.saturating_sub(1308);
@@ -10958,7 +10958,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40002000 {
                     self.write_uarte0_rxd_maxcnt(offset, &_buf[start..end])?;
                 }
                 if _start < 1344 && _end > 1340 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
@@ -10984,7 +10984,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40002000 {
                     self.write_uarte0_txd_maxcnt(offset, &_buf[start..end])?;
                 }
                 if _start < 1360 && _end > 1356 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
@@ -13141,7 +13141,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40003000 {
             }
             (1024..=1027, 1025..=1028) => {
                 if _start < 1028 && _end > 1024 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
@@ -13171,7 +13171,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40003000 {
                     self.write_twis0_errorsrc(offset, &_buf[start..end])?;
                 }
                 if _start < 1240 && _end > 1236 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
@@ -13222,7 +13222,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40003000 {
                     self.write_spis0_psel_csn(offset, &_buf[start..end])?;
                 }
                 if _start < 1308 && _end > 1304 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1312 && _end > 1308 {
                     let offset = _start.saturating_sub(1308);
@@ -13274,7 +13274,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40003000 {
                     )?;
                 }
                 if _start < 1344 && _end > 1340 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1348 && _end > 1344 {
                     let offset = _start.saturating_sub(1344);
@@ -13306,7 +13306,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40003000 {
                     )?;
                 }
                 if _start < 1360 && _end > 1356 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1364 && _end > 1360 {
                     let offset = _start.saturating_sub(1360);
@@ -15849,13 +15849,13 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40005000 {
             }
             (1072..=1075, 1073..=1076) => {
                 if _start < 1076 && _end > 1072 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
             (1084..=1087, 1085..=1088) => {
                 if _start < 1088 && _end > 1084 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
@@ -15917,7 +15917,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40005000 {
                     self.write_nfct_rxd_frameconfig(offset, &_buf[start..end])?;
                 }
                 if _start < 1320 && _end > 1316 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
@@ -19842,7 +19842,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40007000 {
             }
             (1024..=1027, 1025..=1028) => {
                 if _start < 1028 && _end > 1024 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
@@ -20093,7 +20093,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40007000 {
                     self.write_saadc_result_maxcnt(offset, &_buf[start..end])?;
                 }
                 if _start < 1592 && _end > 1588 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
@@ -22486,7 +22486,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000B000 {
             }
             (1284..=1291, 1285..=1292) => {
                 if _start < 1288 && _end > 1284 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1292 && _end > 1288 {
                     let offset = _start.saturating_sub(1288);
@@ -23380,7 +23380,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000C000 {
             }
             (1288..=1291, 1289..=1292) => {
                 if _start < 1292 && _end > 1288 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
@@ -24129,7 +24129,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000D000 {
                     self.write_rng_config(offset, &_buf[start..end])?;
                 }
                 if _start < 1292 && _end > 1288 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
@@ -24900,7 +24900,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4000F000 {
             }
             (1024..=1027, 1025..=1028) => {
                 if _start < 1028 && _end > 1024 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
@@ -25397,10 +25397,10 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40010000 {
             }
             (1024..=1031, 1025..=1032) => {
                 if _start < 1028 && _end > 1024 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1032 && _end > 1028 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
@@ -26337,7 +26337,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40012000 {
                     self.write_qdec_sampleper(offset, &_buf[start..end])?;
                 }
                 if _start < 1296 && _end > 1292 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1300 && _end > 1296 {
                     let offset = _start.saturating_sub(1296);
@@ -26346,10 +26346,10 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40012000 {
                     self.write_qdec_reportper(offset, &_buf[start..end])?;
                 }
                 if _start < 1304 && _end > 1300 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1308 && _end > 1304 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1312 && _end > 1308 {
                     let offset = _start.saturating_sub(1308);
@@ -26385,10 +26385,10 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40012000 {
                     self.write_qdec_ledpre(offset, &_buf[start..end])?;
                 }
                 if _start < 1352 && _end > 1348 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1356 && _end > 1352 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
@@ -27342,7 +27342,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40013000 {
             }
             (1024..=1027, 1025..=1028) => {
                 if _start < 1028 && _end > 1024 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
@@ -33031,7 +33031,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x4001E000 {
         match (_start, _end) {
             (1024..=1027, 1025..=1028) => {
                 if _start < 1028 && _end > 1024 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
@@ -38588,10 +38588,10 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40020000 {
             }
             (1728..=1739, 1729..=1740) => {
                 if _start < 1732 && _end > 1728 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1736 && _end > 1732 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1740 && _end > 1736 {
                     let offset = _start.saturating_sub(1736);
@@ -38603,10 +38603,10 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x40020000 {
             }
             (1744..=1755, 1745..=1756) => {
                 if _start < 1748 && _end > 1744 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1752 && _end > 1748 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1756 && _end > 1752 {
                     let offset = _start.saturating_sub(1752);
@@ -42931,7 +42931,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0x50000000 {
                     self.write_p0_outclr(offset, &_buf[start..end])?;
                 }
                 if _start < 1300 && _end > 1296 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 1304 && _end > 1300 {
                     let offset = _start.saturating_sub(1300);
@@ -47953,7 +47953,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0xE000E000 {
         match (_start, _end) {
             (4..=11, 5..=12) => {
                 if _start < 8 && _end > 4 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 12 && _end > 8 {
                     let offset = _start.saturating_sub(8);
@@ -47983,7 +47983,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0xE000E000 {
                     self.write_systick_stcvr(offset, &_buf[start..end])?;
                 }
                 if _start < 32 && _end > 28 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
@@ -48927,7 +48927,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0xE000E000 {
             }
             (3328..=3443, 3329..=3444) => {
                 if _start < 3332 && _end > 3328 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 3336 && _end > 3332 {
                     let offset = _start.saturating_sub(3332);
@@ -49044,43 +49044,43 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0xE000E000 {
                     )?;
                 }
                 if _start < 3396 && _end > 3392 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 3400 && _end > 3396 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 3404 && _end > 3400 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 3408 && _end > 3404 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 3412 && _end > 3408 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 3416 && _end > 3412 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 3420 && _end > 3416 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 3424 && _end > 3420 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 3428 && _end > 3424 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 3432 && _end > 3428 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 3436 && _end > 3432 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 3440 && _end > 3436 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 3444 && _end > 3440 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
@@ -49095,7 +49095,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0xE000E000 {
             }
             (3472..=3515, 3473..=3516) => {
                 if _start < 3476 && _end > 3472 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 3480 && _end > 3476 {
                     let offset = _start.saturating_sub(3476);
@@ -49161,7 +49161,7 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0xE000E000 {
             }
             (3580..=3583, 3581..=3584) => {
                 if _start < 3584 && _end > 3580 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
@@ -49202,10 +49202,10 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0xE000E000 {
                     self.write_fpe_fpdscr(offset, &_buf[start..end])?;
                 }
                 if _start < 3908 && _end > 3904 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 3912 && _end > 3908 {
-                    return Err(MemError::ReadViolation);
+                    return Err(MemError::WriteViolation);
                 }
                 Ok(())
             }
