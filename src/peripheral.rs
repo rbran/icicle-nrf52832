@@ -29495,11 +29495,29 @@ impl Peripherals {
         //TODO debug off by default
         Ok(false)
     }
+    #[doc = "Control DEMCR MON_EN: Enable the DebugMonitor exception"]
+    #[inline]
+    pub(crate) fn write_control_demcr_mon_en(&mut self, _value: bool) -> MemResult<()> {
+        //TODO debug off by default
+        if _value {
+            todo!("write Control DEMCR MON_EN reset value false")
+        }
+        Ok(())
+    }
     #[doc = "Control DEMCR MON_PEND: Sets or clears the pending state of the DebugMonitor exception"]
     #[inline]
     pub(crate) fn read_control_demcr_mon_pend(&self) -> MemResult<bool> {
         //TODO debug off by default
         Ok(false)
+    }
+    #[doc = "Control DEMCR MON_PEND: Sets or clears the pending state of the DebugMonitor exception"]
+    #[inline]
+    pub(crate) fn write_control_demcr_mon_pend(&mut self, _value: bool) -> MemResult<()> {
+        //TODO debug off by default
+        if _value {
+            todo!("write Control DEMCR MON_PEND reset value false")
+        }
+        Ok(())
     }
     #[doc = "Control STIR INTID: Indicates the interrupt to be triggered. The value written is (ExceptionNumber - 16)"]
     #[inline]

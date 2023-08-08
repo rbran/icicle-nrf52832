@@ -49161,7 +49161,10 @@ impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0xE000E000 {
             }
             (3580..=3583, 3581..=3584) => {
                 if _start < 3584 && _end > 3580 {
-                    return Err(MemError::WriteViolation);
+                    let offset = _start.saturating_sub(3580);
+                    let start = 3580u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3580) - offset) as usize;
+                    self.write_control_demcr(offset, &_buf[start..end])?;
                 }
                 Ok(())
             }
@@ -54486,6 +54489,29 @@ impl PeripheralPage0xE000E000 {
             u32::from(self.0.lock().unwrap().read_control_demcr_mon_pend()?)
                 << 17u32;
         Ok(_value)
+    }
+    fn write_control_demcr(
+        &mut self,
+        _start: u64,
+        _value: &[u8],
+    ) -> MemResult<()> {
+        debug_assert!(!_value.is_empty());
+        let _end = _start + _value.len() as u64;
+        if (_start.._end).contains(&2) {
+            let _i = (2 - _start) as usize;
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_demcr_mon_en((_value[_i] >> 0) & 1 != 0)?;
+        }
+        if (_start.._end).contains(&2) {
+            let _i = (2 - _start) as usize;
+            self.0
+                .lock()
+                .unwrap()
+                .write_control_demcr_mon_pend((_value[_i] >> 1) & 1 != 0)?;
+        }
+        Ok(())
     }
     fn write_control_stir(
         &mut self,
