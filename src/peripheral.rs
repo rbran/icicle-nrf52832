@@ -24019,9 +24019,17 @@ impl Peripherals {
     #[doc = "DWT DWT_CYCCNT: Cycle Count Register"]
     #[inline]
     pub(crate) fn read_dwt_dwt_cyccnt(&self) -> MemResult<u32> {
+        static mut LOL: bool = true;
         //TODO implement that?
         //todo!("read DWT DWT_CYCCNT reset value 0x00 mask 0xffffffffffffffff")
-        Ok(0)
+        unsafe {
+            LOL = !LOL;
+            if LOL {
+                Ok(u32::MAX)
+            } else {
+                Ok(0)
+            }
+        }
     }
     #[doc = "DWT DWT_CYCCNT: Cycle Count Register"]
     #[inline]
