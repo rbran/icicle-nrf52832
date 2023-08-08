@@ -23616,6 +23616,243 @@ impl Peripherals {
             _value.try_into().map_err(|_| MemError::WriteViolation)?,
         ))
     }
+    #[doc = "DWT DWT_CTRL: Control Register"]
+    #[inline]
+    pub(crate) fn read_dwt_dwt_ctrl(&self) -> MemResult<u32> {
+        //TODO implement that?
+        Ok(0)
+    }
+    #[doc = "DWT DWT_CTRL: Control Register"]
+    #[inline]
+    pub(crate) fn write_dwt_dwt_ctrl(&mut self, _value: u32) -> MemResult<()> {
+        //TODO implement that?
+        Ok(())
+    }
+    #[doc = "DWT DWT_CYCCNT: Cycle Count Register"]
+    #[inline]
+    pub(crate) fn read_dwt_dwt_cyccnt(&self) -> MemResult<u32> {
+        //TODO implement that?
+        //todo!("read DWT DWT_CYCCNT reset value 0x00 mask 0xffffffffffffffff")
+        Ok(0)
+    }
+    #[doc = "DWT DWT_CYCCNT: Cycle Count Register"]
+    #[inline]
+    pub(crate) fn write_dwt_dwt_cyccnt(
+        &mut self,
+        _value: u32,
+    ) -> MemResult<()> {
+        todo!("write DWT DWT_CYCCNT reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_CPICNT: CPI Count Register"]
+    #[inline]
+    pub(crate) fn read_dwt_dwt_cpicnt(&self) -> MemResult<u32> {
+        todo!("read DWT DWT_CPICNT reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_CPICNT: CPI Count Register"]
+    #[inline]
+    pub(crate) fn write_dwt_dwt_cpicnt(
+        &mut self,
+        _value: u32,
+    ) -> MemResult<()> {
+        todo!("write DWT DWT_CPICNT reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_EXCCNT: Exception Overhead Count Register"]
+    #[inline]
+    pub(crate) fn read_dwt_dwt_exccnt(&self) -> MemResult<u32> {
+        todo!("read DWT DWT_EXCCNT reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_EXCCNT: Exception Overhead Count Register"]
+    #[inline]
+    pub(crate) fn write_dwt_dwt_exccnt(
+        &mut self,
+        _value: u32,
+    ) -> MemResult<()> {
+        todo!("write DWT DWT_EXCCNT reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_SLEEPCNT: Sleep Count Register"]
+    #[inline]
+    pub(crate) fn read_dwt_dwt_sleepcnt(&self) -> MemResult<u32> {
+        todo!("read DWT DWT_SLEEPCNT reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_SLEEPCNT: Sleep Count Register"]
+    #[inline]
+    pub(crate) fn write_dwt_dwt_sleepcnt(
+        &mut self,
+        _value: u32,
+    ) -> MemResult<()> {
+        todo!("write DWT DWT_SLEEPCNT reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_LSUCNT: LSU Count Register"]
+    #[inline]
+    pub(crate) fn read_dwt_dwt_lsucnt(&self) -> MemResult<u32> {
+        todo!("read DWT DWT_LSUCNT reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_LSUCNT: LSU Count Register"]
+    #[inline]
+    pub(crate) fn write_dwt_dwt_lsucnt(
+        &mut self,
+        _value: u32,
+    ) -> MemResult<()> {
+        todo!("write DWT DWT_LSUCNT reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_FOLDCNT: Folded-instruction Count Register"]
+    #[inline]
+    pub(crate) fn read_dwt_dwt_foldcnt(&self) -> MemResult<u32> {
+        todo!("read DWT DWT_FOLDCNT reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_FOLDCNT: Folded-instruction Count Register"]
+    #[inline]
+    pub(crate) fn write_dwt_dwt_foldcnt(
+        &mut self,
+        _value: u32,
+    ) -> MemResult<()> {
+        todo!("write DWT DWT_FOLDCNT reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_PCSR: Program Counter Sample Register"]
+    #[inline]
+    pub(crate) fn read_dwt_dwt_pcsr(&self) -> MemResult<u32> {
+        todo!("read DWT DWT_PCSR reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_COMP0: Comparator Register0"]
+    #[inline]
+    pub(crate) fn read_dwt_dwt_comp0(&self) -> MemResult<u32> {
+        todo!("read DWT DWT_COMP0 reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_COMP0: Comparator Register0"]
+    #[inline]
+    pub(crate) fn write_dwt_dwt_comp0(&mut self, _value: u32) -> MemResult<()> {
+        todo!("write DWT DWT_COMP0 reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_MASK0: Mask Register0"]
+    #[inline]
+    pub(crate) fn read_dwt_dwt_mask0(&self) -> MemResult<u32> {
+        todo!("read DWT DWT_MASK0 reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_MASK0: Mask Register0"]
+    #[inline]
+    pub(crate) fn write_dwt_dwt_mask0(&mut self, _value: u32) -> MemResult<()> {
+        todo!("write DWT DWT_MASK0 reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_FUNCTION0: Function Register0"]
+    #[inline]
+    pub(crate) fn read_dwt_dwt_function0(&self) -> MemResult<u32> {
+        todo!("read DWT DWT_FUNCTION0 reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_FUNCTION0: Function Register0"]
+    #[inline]
+    pub(crate) fn write_dwt_dwt_function0(
+        &mut self,
+        _value: u32,
+    ) -> MemResult<()> {
+        todo!(
+            "write DWT DWT_FUNCTION0 reset value 0x00 mask 0xffffffffffffffff"
+        )
+    }
+    #[doc = "DWT DWT_COMP1: Comparator Register1"]
+    #[inline]
+    pub(crate) fn read_dwt_dwt_comp1(&self) -> MemResult<u32> {
+        todo!("read DWT DWT_COMP1 reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_COMP1: Comparator Register1"]
+    #[inline]
+    pub(crate) fn write_dwt_dwt_comp1(&mut self, _value: u32) -> MemResult<()> {
+        todo!("write DWT DWT_COMP1 reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_MASK1: Mask Register1"]
+    #[inline]
+    pub(crate) fn read_dwt_dwt_mask1(&self) -> MemResult<u32> {
+        todo!("read DWT DWT_MASK1 reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_MASK1: Mask Register1"]
+    #[inline]
+    pub(crate) fn write_dwt_dwt_mask1(&mut self, _value: u32) -> MemResult<()> {
+        todo!("write DWT DWT_MASK1 reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_FUNCTION1: Function Register1"]
+    #[inline]
+    pub(crate) fn read_dwt_dwt_function1(&self) -> MemResult<u32> {
+        todo!("read DWT DWT_FUNCTION1 reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_FUNCTION1: Function Register1"]
+    #[inline]
+    pub(crate) fn write_dwt_dwt_function1(
+        &mut self,
+        _value: u32,
+    ) -> MemResult<()> {
+        todo!(
+            "write DWT DWT_FUNCTION1 reset value 0x00 mask 0xffffffffffffffff"
+        )
+    }
+    #[doc = "DWT DWT_COMP2: Comparator Register2"]
+    #[inline]
+    pub(crate) fn read_dwt_dwt_comp2(&self) -> MemResult<u32> {
+        todo!("read DWT DWT_COMP2 reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_COMP2: Comparator Register2"]
+    #[inline]
+    pub(crate) fn write_dwt_dwt_comp2(&mut self, _value: u32) -> MemResult<()> {
+        todo!("write DWT DWT_COMP2 reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_MASK2: Mask Register2"]
+    #[inline]
+    pub(crate) fn read_dwt_dwt_mask2(&self) -> MemResult<u32> {
+        todo!("read DWT DWT_MASK2 reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_MASK2: Mask Register2"]
+    #[inline]
+    pub(crate) fn write_dwt_dwt_mask2(&mut self, _value: u32) -> MemResult<()> {
+        todo!("write DWT DWT_MASK2 reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_FUNCTION2: Function Register2"]
+    #[inline]
+    pub(crate) fn read_dwt_dwt_function2(&self) -> MemResult<u32> {
+        todo!("read DWT DWT_FUNCTION2 reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_FUNCTION2: Function Register2"]
+    #[inline]
+    pub(crate) fn write_dwt_dwt_function2(
+        &mut self,
+        _value: u32,
+    ) -> MemResult<()> {
+        todo!(
+            "write DWT DWT_FUNCTION2 reset value 0x00 mask 0xffffffffffffffff"
+        )
+    }
+    #[doc = "DWT DWT_COMP3: Comparator Register3"]
+    #[inline]
+    pub(crate) fn read_dwt_dwt_comp3(&self) -> MemResult<u32> {
+        todo!("read DWT DWT_COMP3 reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_COMP3: Comparator Register3"]
+    #[inline]
+    pub(crate) fn write_dwt_dwt_comp3(&mut self, _value: u32) -> MemResult<()> {
+        todo!("write DWT DWT_COMP3 reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_MASK3: Mask Register3"]
+    #[inline]
+    pub(crate) fn read_dwt_dwt_mask3(&self) -> MemResult<u32> {
+        todo!("read DWT DWT_MASK3 reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_MASK3: Mask Register3"]
+    #[inline]
+    pub(crate) fn write_dwt_dwt_mask3(&mut self, _value: u32) -> MemResult<()> {
+        todo!("write DWT DWT_MASK3 reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_FUNCTION3: Function Register3"]
+    #[inline]
+    pub(crate) fn read_dwt_dwt_function3(&self) -> MemResult<u32> {
+        todo!("read DWT DWT_FUNCTION3 reset value 0x00 mask 0xffffffffffffffff")
+    }
+    #[doc = "DWT DWT_FUNCTION3: Function Register3"]
+    #[inline]
+    pub(crate) fn write_dwt_dwt_function3(
+        &mut self,
+        _value: u32,
+    ) -> MemResult<()> {
+        todo!(
+            "write DWT DWT_FUNCTION3 reset value 0x00 mask 0xffffffffffffffff"
+        )
+    }
     #[doc = "NVIC ICTR INTLINESNUM: The total number of interrupt lines supported n, defined in groups of\n32. That is, the total number of interrupt lines is up to (32*(INTLINESNUM+1)). However,\nthe absolute maximum number of interrupts is 496, corresponding to the INTLINESNUM\nvalue 0b1111."]
     #[inline]
     pub(crate) fn read_nvic_ictr_intlinesnum(&self) -> MemResult<u8> {

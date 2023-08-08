@@ -45369,6 +45369,700 @@ impl PeripheralPage0x50000000 {
         Ok(())
     }
 }
+pub(crate) struct PeripheralPage0xE0001000(
+    pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
+);
+impl icicle_vm::cpu::mem::IoMemory for PeripheralPage0xE0001000 {
+    fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
+        let _start = _addr - 3758100480;
+        let _end = _start + u64::try_from(_buf.len()).unwrap();
+        match (_start, _end) {
+            (..=43, 1..=44) => {
+                if _start < 4 && _end > 0 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_dwt_dwt_ctrl()?
+                        .to_ne_bytes();
+                    if _start <= 0 && _end > 0 {
+                        _buf[(0 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 1 && _end > 1 {
+                        _buf[(1 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 2 && _end > 2 {
+                        _buf[(2 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 3 && _end > 3 {
+                        _buf[(3 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 8 && _end > 4 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_dwt_dwt_cyccnt()?
+                        .to_ne_bytes();
+                    if _start <= 4 && _end > 4 {
+                        _buf[(4 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 5 && _end > 5 {
+                        _buf[(5 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 6 && _end > 6 {
+                        _buf[(6 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 7 && _end > 7 {
+                        _buf[(7 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 12 && _end > 8 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_dwt_dwt_cpicnt()?
+                        .to_ne_bytes();
+                    if _start <= 8 && _end > 8 {
+                        _buf[(8 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 9 && _end > 9 {
+                        _buf[(9 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 10 && _end > 10 {
+                        _buf[(10 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 11 && _end > 11 {
+                        _buf[(11 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 16 && _end > 12 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_dwt_dwt_exccnt()?
+                        .to_ne_bytes();
+                    if _start <= 12 && _end > 12 {
+                        _buf[(12 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 13 && _end > 13 {
+                        _buf[(13 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 14 && _end > 14 {
+                        _buf[(14 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 15 && _end > 15 {
+                        _buf[(15 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 20 && _end > 16 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_dwt_dwt_sleepcnt()?
+                        .to_ne_bytes();
+                    if _start <= 16 && _end > 16 {
+                        _buf[(16 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 17 && _end > 17 {
+                        _buf[(17 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 18 && _end > 18 {
+                        _buf[(18 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 19 && _end > 19 {
+                        _buf[(19 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 24 && _end > 20 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_dwt_dwt_lsucnt()?
+                        .to_ne_bytes();
+                    if _start <= 20 && _end > 20 {
+                        _buf[(20 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 21 && _end > 21 {
+                        _buf[(21 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 22 && _end > 22 {
+                        _buf[(22 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 23 && _end > 23 {
+                        _buf[(23 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 28 && _end > 24 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_dwt_dwt_foldcnt()?
+                        .to_ne_bytes();
+                    if _start <= 24 && _end > 24 {
+                        _buf[(24 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 25 && _end > 25 {
+                        _buf[(25 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 26 && _end > 26 {
+                        _buf[(26 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 27 && _end > 27 {
+                        _buf[(27 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 32 && _end > 28 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_dwt_dwt_pcsr()?
+                        .to_ne_bytes();
+                    if _start <= 28 && _end > 28 {
+                        _buf[(28 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 29 && _end > 29 {
+                        _buf[(29 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 30 && _end > 30 {
+                        _buf[(30 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 31 && _end > 31 {
+                        _buf[(31 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 36 && _end > 32 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_dwt_dwt_comp0()?
+                        .to_ne_bytes();
+                    if _start <= 32 && _end > 32 {
+                        _buf[(32 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 33 && _end > 33 {
+                        _buf[(33 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 34 && _end > 34 {
+                        _buf[(34 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 35 && _end > 35 {
+                        _buf[(35 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 40 && _end > 36 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_dwt_dwt_mask0()?
+                        .to_ne_bytes();
+                    if _start <= 36 && _end > 36 {
+                        _buf[(36 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 37 && _end > 37 {
+                        _buf[(37 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 38 && _end > 38 {
+                        _buf[(38 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 39 && _end > 39 {
+                        _buf[(39 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 44 && _end > 40 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_dwt_dwt_function0()?
+                        .to_ne_bytes();
+                    if _start <= 40 && _end > 40 {
+                        _buf[(40 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 41 && _end > 41 {
+                        _buf[(41 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 42 && _end > 42 {
+                        _buf[(42 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 43 && _end > 43 {
+                        _buf[(43 - _start) as usize] = _value[3];
+                    }
+                }
+                Ok(())
+            }
+            (48..=59, 49..=60) => {
+                if _start < 52 && _end > 48 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_dwt_dwt_comp1()?
+                        .to_ne_bytes();
+                    if _start <= 48 && _end > 48 {
+                        _buf[(48 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 49 && _end > 49 {
+                        _buf[(49 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 50 && _end > 50 {
+                        _buf[(50 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 51 && _end > 51 {
+                        _buf[(51 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 56 && _end > 52 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_dwt_dwt_mask1()?
+                        .to_ne_bytes();
+                    if _start <= 52 && _end > 52 {
+                        _buf[(52 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 53 && _end > 53 {
+                        _buf[(53 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 54 && _end > 54 {
+                        _buf[(54 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 55 && _end > 55 {
+                        _buf[(55 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 60 && _end > 56 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_dwt_dwt_function1()?
+                        .to_ne_bytes();
+                    if _start <= 56 && _end > 56 {
+                        _buf[(56 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 57 && _end > 57 {
+                        _buf[(57 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 58 && _end > 58 {
+                        _buf[(58 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 59 && _end > 59 {
+                        _buf[(59 - _start) as usize] = _value[3];
+                    }
+                }
+                Ok(())
+            }
+            (64..=75, 65..=76) => {
+                if _start < 68 && _end > 64 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_dwt_dwt_comp2()?
+                        .to_ne_bytes();
+                    if _start <= 64 && _end > 64 {
+                        _buf[(64 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 65 && _end > 65 {
+                        _buf[(65 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 66 && _end > 66 {
+                        _buf[(66 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 67 && _end > 67 {
+                        _buf[(67 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 72 && _end > 68 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_dwt_dwt_mask2()?
+                        .to_ne_bytes();
+                    if _start <= 68 && _end > 68 {
+                        _buf[(68 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 69 && _end > 69 {
+                        _buf[(69 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 70 && _end > 70 {
+                        _buf[(70 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 71 && _end > 71 {
+                        _buf[(71 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 76 && _end > 72 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_dwt_dwt_function2()?
+                        .to_ne_bytes();
+                    if _start <= 72 && _end > 72 {
+                        _buf[(72 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 73 && _end > 73 {
+                        _buf[(73 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 74 && _end > 74 {
+                        _buf[(74 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 75 && _end > 75 {
+                        _buf[(75 - _start) as usize] = _value[3];
+                    }
+                }
+                Ok(())
+            }
+            (80..=91, 81..=92) => {
+                if _start < 84 && _end > 80 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_dwt_dwt_comp3()?
+                        .to_ne_bytes();
+                    if _start <= 80 && _end > 80 {
+                        _buf[(80 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 81 && _end > 81 {
+                        _buf[(81 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 82 && _end > 82 {
+                        _buf[(82 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 83 && _end > 83 {
+                        _buf[(83 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 88 && _end > 84 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_dwt_dwt_mask3()?
+                        .to_ne_bytes();
+                    if _start <= 84 && _end > 84 {
+                        _buf[(84 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 85 && _end > 85 {
+                        _buf[(85 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 86 && _end > 86 {
+                        _buf[(86 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 87 && _end > 87 {
+                        _buf[(87 - _start) as usize] = _value[3];
+                    }
+                }
+                if _start < 92 && _end > 88 {
+                    let _value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .read_dwt_dwt_function3()?
+                        .to_ne_bytes();
+                    if _start <= 88 && _end > 88 {
+                        _buf[(88 - _start) as usize] = _value[0];
+                    }
+                    if _start <= 89 && _end > 89 {
+                        _buf[(89 - _start) as usize] = _value[1];
+                    }
+                    if _start <= 90 && _end > 90 {
+                        _buf[(90 - _start) as usize] = _value[2];
+                    }
+                    if _start <= 91 && _end > 91 {
+                        _buf[(91 - _start) as usize] = _value[3];
+                    }
+                }
+                Ok(())
+            }
+            _ => return Err(MemError::Unmapped),
+        }
+    }
+    fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
+        let _start = _addr - 3758100480;
+        let _end = _start + u64::try_from(_buf.len()).unwrap();
+        match (_start, _end) {
+            (..=43, 1..=44) => {
+                if _start < 4 && _end > 0 {
+                    assert!(
+                        _start <= 0 && _end >= 4u64,
+                        "partial write for DWT DWT_CTRL not implemented",
+                    );
+                    let start = _start.saturating_sub(0) as usize;
+                    let end = (_end.saturating_sub(0) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_dwt_dwt_ctrl(
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 8 && _end > 4 {
+                    assert!(
+                        _start <= 4 && _end >= 8u64,
+                        "partial write for DWT DWT_CYCCNT not implemented",
+                    );
+                    let start = _start.saturating_sub(4) as usize;
+                    let end = (_end.saturating_sub(4) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_dwt_dwt_cyccnt(
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 12 && _end > 8 {
+                    assert!(
+                        _start <= 8 && _end >= 12u64,
+                        "partial write for DWT DWT_CPICNT not implemented",
+                    );
+                    let start = _start.saturating_sub(8) as usize;
+                    let end = (_end.saturating_sub(8) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_dwt_dwt_cpicnt(
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 16 && _end > 12 {
+                    assert!(
+                        _start <= 12 && _end >= 16u64,
+                        "partial write for DWT DWT_EXCCNT not implemented",
+                    );
+                    let start = _start.saturating_sub(12) as usize;
+                    let end = (_end.saturating_sub(12) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_dwt_dwt_exccnt(
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 20 && _end > 16 {
+                    assert!(
+                        _start <= 16 && _end >= 20u64,
+                        "partial write for DWT DWT_SLEEPCNT not implemented",
+                    );
+                    let start = _start.saturating_sub(16) as usize;
+                    let end = (_end.saturating_sub(16) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_dwt_dwt_sleepcnt(
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 24 && _end > 20 {
+                    assert!(
+                        _start <= 20 && _end >= 24u64,
+                        "partial write for DWT DWT_LSUCNT not implemented",
+                    );
+                    let start = _start.saturating_sub(20) as usize;
+                    let end = (_end.saturating_sub(20) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_dwt_dwt_lsucnt(
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 28 && _end > 24 {
+                    assert!(
+                        _start <= 24 && _end >= 28u64,
+                        "partial write for DWT DWT_FOLDCNT not implemented",
+                    );
+                    let start = _start.saturating_sub(24) as usize;
+                    let end = (_end.saturating_sub(24) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_dwt_dwt_foldcnt(
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 32 && _end > 28 {
+                    return Err(MemError::WriteViolation);
+                }
+                if _start < 36 && _end > 32 {
+                    assert!(
+                        _start <= 32 && _end >= 36u64,
+                        "partial write for DWT DWT_COMP0 not implemented",
+                    );
+                    let start = _start.saturating_sub(32) as usize;
+                    let end = (_end.saturating_sub(32) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_dwt_dwt_comp0(
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 40 && _end > 36 {
+                    assert!(
+                        _start <= 36 && _end >= 40u64,
+                        "partial write for DWT DWT_MASK0 not implemented",
+                    );
+                    let start = _start.saturating_sub(36) as usize;
+                    let end = (_end.saturating_sub(36) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_dwt_dwt_mask0(
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 44 && _end > 40 {
+                    assert!(
+                        _start <= 40 && _end >= 44u64,
+                        "partial write for DWT DWT_FUNCTION0 not implemented",
+                    );
+                    let start = _start.saturating_sub(40) as usize;
+                    let end = (_end.saturating_sub(40) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_dwt_dwt_function0(
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                Ok(())
+            }
+            (48..=59, 49..=60) => {
+                if _start < 52 && _end > 48 {
+                    assert!(
+                        _start <= 48 && _end >= 52u64,
+                        "partial write for DWT DWT_COMP1 not implemented",
+                    );
+                    let start = _start.saturating_sub(48) as usize;
+                    let end = (_end.saturating_sub(48) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_dwt_dwt_comp1(
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 56 && _end > 52 {
+                    assert!(
+                        _start <= 52 && _end >= 56u64,
+                        "partial write for DWT DWT_MASK1 not implemented",
+                    );
+                    let start = _start.saturating_sub(52) as usize;
+                    let end = (_end.saturating_sub(52) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_dwt_dwt_mask1(
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 60 && _end > 56 {
+                    assert!(
+                        _start <= 56 && _end >= 60u64,
+                        "partial write for DWT DWT_FUNCTION1 not implemented",
+                    );
+                    let start = _start.saturating_sub(56) as usize;
+                    let end = (_end.saturating_sub(56) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_dwt_dwt_function1(
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                Ok(())
+            }
+            (64..=75, 65..=76) => {
+                if _start < 68 && _end > 64 {
+                    assert!(
+                        _start <= 64 && _end >= 68u64,
+                        "partial write for DWT DWT_COMP2 not implemented",
+                    );
+                    let start = _start.saturating_sub(64) as usize;
+                    let end = (_end.saturating_sub(64) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_dwt_dwt_comp2(
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 72 && _end > 68 {
+                    assert!(
+                        _start <= 68 && _end >= 72u64,
+                        "partial write for DWT DWT_MASK2 not implemented",
+                    );
+                    let start = _start.saturating_sub(68) as usize;
+                    let end = (_end.saturating_sub(68) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_dwt_dwt_mask2(
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 76 && _end > 72 {
+                    assert!(
+                        _start <= 72 && _end >= 76u64,
+                        "partial write for DWT DWT_FUNCTION2 not implemented",
+                    );
+                    let start = _start.saturating_sub(72) as usize;
+                    let end = (_end.saturating_sub(72) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_dwt_dwt_function2(
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                Ok(())
+            }
+            (80..=91, 81..=92) => {
+                if _start < 84 && _end > 80 {
+                    assert!(
+                        _start <= 80 && _end >= 84u64,
+                        "partial write for DWT DWT_COMP3 not implemented",
+                    );
+                    let start = _start.saturating_sub(80) as usize;
+                    let end = (_end.saturating_sub(80) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_dwt_dwt_comp3(
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 88 && _end > 84 {
+                    assert!(
+                        _start <= 84 && _end >= 88u64,
+                        "partial write for DWT DWT_MASK3 not implemented",
+                    );
+                    let start = _start.saturating_sub(84) as usize;
+                    let end = (_end.saturating_sub(84) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_dwt_dwt_mask3(
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                if _start < 92 && _end > 88 {
+                    assert!(
+                        _start <= 88 && _end >= 92u64,
+                        "partial write for DWT DWT_FUNCTION3 not implemented",
+                    );
+                    let start = _start.saturating_sub(88) as usize;
+                    let end = (_end.saturating_sub(88) as usize).min(start + 4);
+                    self.0.lock().unwrap().write_dwt_dwt_function3(
+                        u32::from_ne_bytes(
+                            _buf[start..end].try_into().unwrap(),
+                        ),
+                    )?;
+                }
+                Ok(())
+            }
+            _ => return Err(MemError::Unmapped),
+        }
+    }
+}
+impl PeripheralPage0xE0001000 {}
 pub(crate) struct PeripheralPage0xE000E000(
     pub std::sync::Arc<std::sync::Mutex<super::peripheral::Peripherals>>,
 );
