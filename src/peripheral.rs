@@ -53,7 +53,7 @@ impl Peripherals {
     #[doc = "FICR CODEPAGESIZE: Code memory page size"]
     #[inline]
     pub(crate) fn read_ficr_codepagesize(&self) -> MemResult<u32> {
-        todo ! ("read FICR CODEPAGESIZE reset value 0xffffffff mask 0xffffffffffffffff")
+        todo!("read FICR CODEPAGESIZE reset value 0xffffffff mask 0xffffffffffffffff")
     }
     #[doc = "FICR CODESIZE: Code memory size"]
     #[inline]
@@ -65,7 +65,7 @@ impl Peripherals {
     #[doc = "FICR DEVICEID[%s]: Description collection[0]:  Device identifier"]
     #[inline]
     pub(crate) fn read_ficr_deviceidn(&self, _dim: usize) -> MemResult<u32> {
-        todo ! ("read FICR DEVICEID[%s] reset value 0xffffffff mask 0xffffffffffffffff")
+        todo!("read FICR DEVICEID[%s] reset value 0xffffffff mask 0xffffffffffffffff")
     }
     #[doc = "FICR ER[%s]: Description collection[0]:  Encryption Root, word 0"]
     #[inline]
@@ -87,7 +87,7 @@ impl Peripherals {
     #[doc = "FICR DEVICEADDR[%s]: Description collection[0]:  Device address 0"]
     #[inline]
     pub(crate) fn read_ficr_deviceaddrn(&self, _dim: usize) -> MemResult<u32> {
-        todo ! ("read FICR DEVICEADDR[%s] reset value 0xffffffff mask 0xffffffffffffffff")
+        todo!("read FICR DEVICEADDR[%s] reset value 0xffffffff mask 0xffffffffffffffff")
     }
     #[doc = "FICR PART: Part code"]
     #[inline]
@@ -341,7 +341,7 @@ impl Peripherals {
     #[doc = "UICR NRFFW[%s]: Description collection[0]:  Reserved for Nordic firmware design"]
     #[inline]
     pub(crate) fn read_uicr_nrffwn(&self, _dim: usize) -> MemResult<u32> {
-        todo ! ("read UICR NRFFW[%s] reset value 0xffffffff mask 0xffffffffffffffff")
+        todo!("read UICR NRFFW[%s] reset value 0xffffffff mask 0xffffffffffffffff")
     }
     #[doc = "UICR NRFFW[%s]: Description collection[0]:  Reserved for Nordic firmware design"]
     #[inline]
@@ -350,12 +350,12 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write UICR NRFFW[%s] reset value 0xffffffff mask 0xffffffffffffffff")
+        todo!("write UICR NRFFW[%s] reset value 0xffffffff mask 0xffffffffffffffff")
     }
     #[doc = "UICR NRFHW[%s]: Description collection[0]:  Reserved for Nordic hardware design"]
     #[inline]
     pub(crate) fn read_uicr_nrfhwn(&self, _dim: usize) -> MemResult<u32> {
-        todo ! ("read UICR NRFHW[%s] reset value 0xffffffff mask 0xffffffffffffffff")
+        todo!("read UICR NRFHW[%s] reset value 0xffffffff mask 0xffffffffffffffff")
     }
     #[doc = "UICR NRFHW[%s]: Description collection[0]:  Reserved for Nordic hardware design"]
     #[inline]
@@ -364,12 +364,12 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write UICR NRFHW[%s] reset value 0xffffffff mask 0xffffffffffffffff")
+        todo!("write UICR NRFHW[%s] reset value 0xffffffff mask 0xffffffffffffffff")
     }
     #[doc = "UICR CUSTOMER[%s]: Description collection[0]:  Reserved for customer"]
     #[inline]
     pub(crate) fn read_uicr_customern(&self, _dim: usize) -> MemResult<u32> {
-        todo ! ("read UICR CUSTOMER[%s] reset value 0xffffffff mask 0xffffffffffffffff")
+        todo!("read UICR CUSTOMER[%s] reset value 0xffffffff mask 0xffffffffffffffff")
     }
     #[doc = "UICR CUSTOMER[%s]: Description collection[0]:  Reserved for customer"]
     #[inline]
@@ -378,7 +378,7 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write UICR CUSTOMER[%s] reset value 0xffffffff mask 0xffffffffffffffff")
+        todo!("write UICR CUSTOMER[%s] reset value 0xffffffff mask 0xffffffffffffffff")
     }
     #[doc = "UICR PSELRESET[%s] PIN: GPIO number P0.n onto which Reset is exposed"]
     #[inline]
@@ -446,7 +446,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write CLOCK TASKS_HFCLKSTART reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write CLOCK TASKS_HFCLKSTART reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "CLOCK TASKS_HFCLKSTOP: Stop HFCLK crystal oscillator"]
     #[inline]
@@ -454,7 +454,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write CLOCK TASKS_HFCLKSTOP reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write CLOCK TASKS_HFCLKSTOP reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "CLOCK TASKS_LFCLKSTART: Start LFCLK source"]
     #[inline]
@@ -462,7 +462,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write CLOCK TASKS_LFCLKSTART reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write CLOCK TASKS_LFCLKSTART reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "CLOCK TASKS_LFCLKSTOP: Stop LFCLK source"]
     #[inline]
@@ -470,7 +470,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write CLOCK TASKS_LFCLKSTOP reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write CLOCK TASKS_LFCLKSTOP reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "CLOCK TASKS_CAL: Start calibration of LFRC oscillator"]
     #[inline]
@@ -486,7 +486,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write CLOCK TASKS_CTSTART reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write CLOCK TASKS_CTSTART reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "CLOCK TASKS_CTSTOP: Stop calibration timer"]
     #[inline]
@@ -504,7 +504,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write POWER TASKS_CONSTLAT reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write POWER TASKS_CONSTLAT reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "POWER TASKS_LOWPWR: Enable low power mode (variable latency)"]
     #[inline]
@@ -519,7 +519,7 @@ impl Peripherals {
     #[doc = "CLOCK EVENTS_HFCLKSTARTED: HFCLK oscillator started"]
     #[inline]
     pub(crate) fn read_clock_events_hfclkstarted(&self) -> MemResult<u32> {
-        todo ! ("read CLOCK EVENTS_HFCLKSTARTED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read CLOCK EVENTS_HFCLKSTARTED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "CLOCK EVENTS_HFCLKSTARTED: HFCLK oscillator started"]
     #[inline]
@@ -527,7 +527,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write CLOCK EVENTS_HFCLKSTARTED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write CLOCK EVENTS_HFCLKSTARTED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "CLOCK EVENTS_LFCLKSTARTED: LFCLK started"]
     #[inline]
@@ -551,7 +551,7 @@ impl Peripherals {
     #[doc = "POWER EVENTS_POFWARN: Power failure warning"]
     #[inline]
     pub(crate) fn read_power_events_pofwarn(&self) -> MemResult<u32> {
-        todo ! ("read POWER EVENTS_POFWARN reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read POWER EVENTS_POFWARN reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "POWER EVENTS_POFWARN: Power failure warning"]
     #[inline]
@@ -559,7 +559,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write POWER EVENTS_POFWARN reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write POWER EVENTS_POFWARN reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "CLOCK EVENTS_DONE: Calibration of LFCLK RC oscillator complete event"]
     #[inline]
@@ -594,7 +594,7 @@ impl Peripherals {
     #[doc = "POWER EVENTS_SLEEPENTER: CPU entered WFI/WFE sleep"]
     #[inline]
     pub(crate) fn read_power_events_sleepenter(&self) -> MemResult<u32> {
-        todo ! ("read POWER EVENTS_SLEEPENTER reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read POWER EVENTS_SLEEPENTER reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "POWER EVENTS_SLEEPENTER: CPU entered WFI/WFE sleep"]
     #[inline]
@@ -602,12 +602,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write POWER EVENTS_SLEEPENTER reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write POWER EVENTS_SLEEPENTER reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "POWER EVENTS_SLEEPEXIT: CPU exited WFI/WFE sleep"]
     #[inline]
     pub(crate) fn read_power_events_sleepexit(&self) -> MemResult<u32> {
-        todo ! ("read POWER EVENTS_SLEEPEXIT reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read POWER EVENTS_SLEEPEXIT reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "POWER EVENTS_SLEEPEXIT: CPU exited WFI/WFE sleep"]
     #[inline]
@@ -615,7 +615,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write POWER EVENTS_SLEEPEXIT reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write POWER EVENTS_SLEEPEXIT reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "CLOCK INTENSET HFCLKSTARTED: Write '1' to Enable interrupt for HFCLKSTARTED event"]
     #[inline]
@@ -719,7 +719,9 @@ impl Peripherals {
         _value: bool,
     ) -> MemResult<()> {
         if _value {
-            self.powerclock.event_mut(powerclock::EventId::SLEEPENTER).on = true
+            self.powerclock
+                .event_mut(powerclock::EventId::SLEEPENTER)
+                .on = true
         }
         Ok(())
     }
@@ -841,7 +843,9 @@ impl Peripherals {
         _value: bool,
     ) -> MemResult<()> {
         if _value {
-            self.powerclock.event_mut(powerclock::EventId::SLEEPENTER).on = false
+            self.powerclock
+                .event_mut(powerclock::EventId::SLEEPENTER)
+                .on = false
         }
         Ok(())
     }
@@ -3153,7 +3157,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write RADIO TASKS_DISABLE reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write RADIO TASKS_DISABLE reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RADIO TASKS_RSSISTART: Start the RSSI and take one single sample of the receive signal strength."]
     #[inline]
@@ -3161,7 +3165,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write RADIO TASKS_RSSISTART reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write RADIO TASKS_RSSISTART reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RADIO TASKS_RSSISTOP: Stop the RSSI measurement"]
     #[inline]
@@ -3169,7 +3173,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write RADIO TASKS_RSSISTOP reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write RADIO TASKS_RSSISTOP reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RADIO TASKS_BCSTART: Start the bit counter"]
     #[inline]
@@ -3177,7 +3181,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write RADIO TASKS_BCSTART reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write RADIO TASKS_BCSTART reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RADIO TASKS_BCSTOP: Stop the bit counter"]
     #[inline]
@@ -3209,7 +3213,7 @@ impl Peripherals {
     #[doc = "RADIO EVENTS_ADDRESS: Address sent or received"]
     #[inline]
     pub(crate) fn read_radio_events_address(&self) -> MemResult<u32> {
-        todo ! ("read RADIO EVENTS_ADDRESS reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read RADIO EVENTS_ADDRESS reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RADIO EVENTS_ADDRESS: Address sent or received"]
     #[inline]
@@ -3217,12 +3221,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write RADIO EVENTS_ADDRESS reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write RADIO EVENTS_ADDRESS reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RADIO EVENTS_PAYLOAD: Packet payload sent or received"]
     #[inline]
     pub(crate) fn read_radio_events_payload(&self) -> MemResult<u32> {
-        todo ! ("read RADIO EVENTS_PAYLOAD reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read RADIO EVENTS_PAYLOAD reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RADIO EVENTS_PAYLOAD: Packet payload sent or received"]
     #[inline]
@@ -3230,7 +3234,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write RADIO EVENTS_PAYLOAD reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write RADIO EVENTS_PAYLOAD reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RADIO EVENTS_END: Packet sent or received"]
     #[inline]
@@ -3248,7 +3252,7 @@ impl Peripherals {
     #[doc = "RADIO EVENTS_DISABLED: RADIO has been disabled"]
     #[inline]
     pub(crate) fn read_radio_events_disabled(&self) -> MemResult<u32> {
-        todo ! ("read RADIO EVENTS_DISABLED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read RADIO EVENTS_DISABLED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RADIO EVENTS_DISABLED: RADIO has been disabled"]
     #[inline]
@@ -3256,12 +3260,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write RADIO EVENTS_DISABLED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write RADIO EVENTS_DISABLED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RADIO EVENTS_DEVMATCH: A device address match occurred on the last received packet"]
     #[inline]
     pub(crate) fn read_radio_events_devmatch(&self) -> MemResult<u32> {
-        todo ! ("read RADIO EVENTS_DEVMATCH reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read RADIO EVENTS_DEVMATCH reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RADIO EVENTS_DEVMATCH: A device address match occurred on the last received packet"]
     #[inline]
@@ -3269,12 +3273,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write RADIO EVENTS_DEVMATCH reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write RADIO EVENTS_DEVMATCH reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RADIO EVENTS_DEVMISS: No device address match occurred on the last received packet"]
     #[inline]
     pub(crate) fn read_radio_events_devmiss(&self) -> MemResult<u32> {
-        todo ! ("read RADIO EVENTS_DEVMISS reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read RADIO EVENTS_DEVMISS reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RADIO EVENTS_DEVMISS: No device address match occurred on the last received packet"]
     #[inline]
@@ -3282,12 +3286,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write RADIO EVENTS_DEVMISS reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write RADIO EVENTS_DEVMISS reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RADIO EVENTS_RSSIEND: Sampling of receive signal strength complete."]
     #[inline]
     pub(crate) fn read_radio_events_rssiend(&self) -> MemResult<u32> {
-        todo ! ("read RADIO EVENTS_RSSIEND reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read RADIO EVENTS_RSSIEND reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RADIO EVENTS_RSSIEND: Sampling of receive signal strength complete."]
     #[inline]
@@ -3295,12 +3299,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write RADIO EVENTS_RSSIEND reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write RADIO EVENTS_RSSIEND reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RADIO EVENTS_BCMATCH: Bit counter reached bit count value."]
     #[inline]
     pub(crate) fn read_radio_events_bcmatch(&self) -> MemResult<u32> {
-        todo ! ("read RADIO EVENTS_BCMATCH reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read RADIO EVENTS_BCMATCH reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RADIO EVENTS_BCMATCH: Bit counter reached bit count value."]
     #[inline]
@@ -3308,7 +3312,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write RADIO EVENTS_BCMATCH reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write RADIO EVENTS_BCMATCH reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RADIO EVENTS_CRCOK: Packet received with CRC ok"]
     #[inline]
@@ -3330,7 +3334,7 @@ impl Peripherals {
     #[doc = "RADIO EVENTS_CRCERROR: Packet received with CRC error"]
     #[inline]
     pub(crate) fn read_radio_events_crcerror(&self) -> MemResult<u32> {
-        todo ! ("read RADIO EVENTS_CRCERROR reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read RADIO EVENTS_CRCERROR reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RADIO EVENTS_CRCERROR: Packet received with CRC error"]
     #[inline]
@@ -3338,7 +3342,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write RADIO EVENTS_CRCERROR reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write RADIO EVENTS_CRCERROR reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RADIO SHORTS READY_START: Shortcut between READY event and START task"]
     #[inline]
@@ -4577,7 +4581,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 TASKS_STARTRX, UART0 TASKS_STARTRX reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write UARTE0 TASKS_STARTRX, UART0 TASKS_STARTRX reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 TASKS_STOPRX: Stop UART receiver\n\nUART0 TASKS_STOPRX: Stop UART receiver"]
     #[inline]
@@ -4585,7 +4589,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 TASKS_STOPRX, UART0 TASKS_STOPRX reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write UARTE0 TASKS_STOPRX, UART0 TASKS_STOPRX reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 TASKS_STARTTX: Start UART transmitter\n\nUART0 TASKS_STARTTX: Start UART transmitter"]
     #[inline]
@@ -4593,7 +4597,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 TASKS_STARTTX, UART0 TASKS_STARTTX reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write UARTE0 TASKS_STARTTX, UART0 TASKS_STARTTX reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 TASKS_STOPTX: Stop UART transmitter\n\nUART0 TASKS_STOPTX: Stop UART transmitter"]
     #[inline]
@@ -4601,7 +4605,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 TASKS_STOPTX, UART0 TASKS_STOPTX reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write UARTE0 TASKS_STOPTX, UART0 TASKS_STOPTX reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UART0 TASKS_SUSPEND: Suspend UART"]
     #[inline]
@@ -4609,7 +4613,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write UART0 TASKS_SUSPEND reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write UART0 TASKS_SUSPEND reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 TASKS_FLUSHRX: Flush RX FIFO into RX buffer"]
     #[inline]
@@ -4617,12 +4621,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 TASKS_FLUSHRX reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write UARTE0 TASKS_FLUSHRX reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 EVENTS_CTS: CTS is activated (set low). Clear To Send.\n\nUART0 EVENTS_CTS: CTS is activated (set low). Clear To Send."]
     #[inline]
     pub(crate) fn read_uarte0uart0_events_cts(&self) -> MemResult<u32> {
-        todo ! ("read UARTE0 EVENTS_CTS, UART0 EVENTS_CTS reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read UARTE0 EVENTS_CTS, UART0 EVENTS_CTS reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 EVENTS_CTS: CTS is activated (set low). Clear To Send.\n\nUART0 EVENTS_CTS: CTS is activated (set low). Clear To Send."]
     #[inline]
@@ -4630,12 +4634,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 EVENTS_CTS, UART0 EVENTS_CTS reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write UARTE0 EVENTS_CTS, UART0 EVENTS_CTS reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 EVENTS_NCTS: CTS is deactivated (set high). Not Clear To Send.\n\nUART0 EVENTS_NCTS: CTS is deactivated (set high). Not Clear To Send."]
     #[inline]
     pub(crate) fn read_uarte0uart0_events_ncts(&self) -> MemResult<u32> {
-        todo ! ("read UARTE0 EVENTS_NCTS, UART0 EVENTS_NCTS reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read UARTE0 EVENTS_NCTS, UART0 EVENTS_NCTS reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 EVENTS_NCTS: CTS is deactivated (set high). Not Clear To Send.\n\nUART0 EVENTS_NCTS: CTS is deactivated (set high). Not Clear To Send."]
     #[inline]
@@ -4643,12 +4647,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 EVENTS_NCTS, UART0 EVENTS_NCTS reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write UARTE0 EVENTS_NCTS, UART0 EVENTS_NCTS reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 EVENTS_RXDRDY: Data received in RXD (but potentially not yet transferred to Data RAM)\n\nUART0 EVENTS_RXDRDY: Data received in RXD"]
     #[inline]
     pub(crate) fn read_uarte0uart0_events_rxdrdy(&self) -> MemResult<u32> {
-        todo ! ("read UARTE0 EVENTS_RXDRDY, UART0 EVENTS_RXDRDY reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read UARTE0 EVENTS_RXDRDY, UART0 EVENTS_RXDRDY reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 EVENTS_RXDRDY: Data received in RXD (but potentially not yet transferred to Data RAM)\n\nUART0 EVENTS_RXDRDY: Data received in RXD"]
     #[inline]
@@ -4656,7 +4660,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 EVENTS_RXDRDY, UART0 EVENTS_RXDRDY reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write UARTE0 EVENTS_RXDRDY, UART0 EVENTS_RXDRDY reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 EVENTS_ENDRX: Receive buffer is filled up"]
     #[inline]
@@ -4671,12 +4675,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 EVENTS_ENDRX reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write UARTE0 EVENTS_ENDRX reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 EVENTS_TXDRDY: Data sent from TXD\n\nUART0 EVENTS_TXDRDY: Data sent from TXD"]
     #[inline]
     pub(crate) fn read_uarte0uart0_events_txdrdy(&self) -> MemResult<u32> {
-        todo ! ("read UARTE0 EVENTS_TXDRDY, UART0 EVENTS_TXDRDY reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read UARTE0 EVENTS_TXDRDY, UART0 EVENTS_TXDRDY reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 EVENTS_TXDRDY: Data sent from TXD\n\nUART0 EVENTS_TXDRDY: Data sent from TXD"]
     #[inline]
@@ -4684,7 +4688,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 EVENTS_TXDRDY, UART0 EVENTS_TXDRDY reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write UARTE0 EVENTS_TXDRDY, UART0 EVENTS_TXDRDY reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 EVENTS_ENDTX: Last TX byte transmitted"]
     #[inline]
@@ -4699,12 +4703,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 EVENTS_ENDTX reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write UARTE0 EVENTS_ENDTX reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 EVENTS_ERROR: Error detected\n\nUART0 EVENTS_ERROR: Error detected"]
     #[inline]
     pub(crate) fn read_uarte0uart0_events_error(&self) -> MemResult<u32> {
-        todo ! ("read UARTE0 EVENTS_ERROR, UART0 EVENTS_ERROR reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read UARTE0 EVENTS_ERROR, UART0 EVENTS_ERROR reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 EVENTS_ERROR: Error detected\n\nUART0 EVENTS_ERROR: Error detected"]
     #[inline]
@@ -4712,12 +4716,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 EVENTS_ERROR, UART0 EVENTS_ERROR reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write UARTE0 EVENTS_ERROR, UART0 EVENTS_ERROR reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 EVENTS_RXTO: Receiver timeout\n\nUART0 EVENTS_RXTO: Receiver timeout"]
     #[inline]
     pub(crate) fn read_uarte0uart0_events_rxto(&self) -> MemResult<u32> {
-        todo ! ("read UARTE0 EVENTS_RXTO, UART0 EVENTS_RXTO reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read UARTE0 EVENTS_RXTO, UART0 EVENTS_RXTO reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 EVENTS_RXTO: Receiver timeout\n\nUART0 EVENTS_RXTO: Receiver timeout"]
     #[inline]
@@ -4725,12 +4729,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 EVENTS_RXTO, UART0 EVENTS_RXTO reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write UARTE0 EVENTS_RXTO, UART0 EVENTS_RXTO reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 EVENTS_RXSTARTED: UART receiver has started"]
     #[inline]
     pub(crate) fn read_uarte0_events_rxstarted(&self) -> MemResult<u32> {
-        todo ! ("read UARTE0 EVENTS_RXSTARTED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read UARTE0 EVENTS_RXSTARTED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 EVENTS_RXSTARTED: UART receiver has started"]
     #[inline]
@@ -4738,12 +4742,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 EVENTS_RXSTARTED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write UARTE0 EVENTS_RXSTARTED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 EVENTS_TXSTARTED: UART transmitter has started"]
     #[inline]
     pub(crate) fn read_uarte0_events_txstarted(&self) -> MemResult<u32> {
-        todo ! ("read UARTE0 EVENTS_TXSTARTED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read UARTE0 EVENTS_TXSTARTED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 EVENTS_TXSTARTED: UART transmitter has started"]
     #[inline]
@@ -4751,12 +4755,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 EVENTS_TXSTARTED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write UARTE0 EVENTS_TXSTARTED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 EVENTS_TXSTOPPED: Transmitter stopped"]
     #[inline]
     pub(crate) fn read_uarte0_events_txstopped(&self) -> MemResult<u32> {
-        todo ! ("read UARTE0 EVENTS_TXSTOPPED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read UARTE0 EVENTS_TXSTOPPED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 EVENTS_TXSTOPPED: Transmitter stopped"]
     #[inline]
@@ -4764,7 +4768,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 EVENTS_TXSTOPPED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write UARTE0 EVENTS_TXSTOPPED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "UART0 SHORTS CTS_STARTRX: Shortcut between CTS event and STARTRX task"]
     #[inline]
@@ -5002,7 +5006,7 @@ impl Peripherals {
     #[doc = "UARTE0 INTENSET RXDRDY: Write '1' to Enable interrupt for RXDRDY event\n\nUART0 INTENSET RXDRDY: Write '1' to Enable interrupt for RXDRDY event"]
     #[inline]
     pub(crate) fn read_uarte0uart0_intenset_rxdrdy(&self) -> MemResult<bool> {
-        todo ! ("read UARTE0 INTENSET RXDRDY, UART0 INTENSET RXDRDY reset value false")
+        todo!("read UARTE0 INTENSET RXDRDY, UART0 INTENSET RXDRDY reset value false")
     }
     #[doc = "UARTE0 INTENSET RXDRDY: Write '1' to Enable interrupt for RXDRDY event\n\nUART0 INTENSET RXDRDY: Write '1' to Enable interrupt for RXDRDY event"]
     #[inline]
@@ -5010,7 +5014,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 INTENSET RXDRDY, UART0 INTENSET RXDRDY reset value false")
+        todo!("write UARTE0 INTENSET RXDRDY, UART0 INTENSET RXDRDY reset value false")
     }
     #[doc = "UARTE0 INTENSET ENDRX: Write '1' to Enable interrupt for ENDRX event"]
     #[inline]
@@ -5028,7 +5032,7 @@ impl Peripherals {
     #[doc = "UARTE0 INTENSET TXDRDY: Write '1' to Enable interrupt for TXDRDY event\n\nUART0 INTENSET TXDRDY: Write '1' to Enable interrupt for TXDRDY event"]
     #[inline]
     pub(crate) fn read_uarte0uart0_intenset_txdrdy(&self) -> MemResult<bool> {
-        todo ! ("read UARTE0 INTENSET TXDRDY, UART0 INTENSET TXDRDY reset value false")
+        todo!("read UARTE0 INTENSET TXDRDY, UART0 INTENSET TXDRDY reset value false")
     }
     #[doc = "UARTE0 INTENSET TXDRDY: Write '1' to Enable interrupt for TXDRDY event\n\nUART0 INTENSET TXDRDY: Write '1' to Enable interrupt for TXDRDY event"]
     #[inline]
@@ -5036,7 +5040,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 INTENSET TXDRDY, UART0 INTENSET TXDRDY reset value false")
+        todo!("write UARTE0 INTENSET TXDRDY, UART0 INTENSET TXDRDY reset value false")
     }
     #[doc = "UARTE0 INTENSET ENDTX: Write '1' to Enable interrupt for ENDTX event"]
     #[inline]
@@ -5054,7 +5058,7 @@ impl Peripherals {
     #[doc = "UARTE0 INTENSET ERROR: Write '1' to Enable interrupt for ERROR event\n\nUART0 INTENSET ERROR: Write '1' to Enable interrupt for ERROR event"]
     #[inline]
     pub(crate) fn read_uarte0uart0_intenset_error(&self) -> MemResult<bool> {
-        todo ! ("read UARTE0 INTENSET ERROR, UART0 INTENSET ERROR reset value false")
+        todo!("read UARTE0 INTENSET ERROR, UART0 INTENSET ERROR reset value false")
     }
     #[doc = "UARTE0 INTENSET ERROR: Write '1' to Enable interrupt for ERROR event\n\nUART0 INTENSET ERROR: Write '1' to Enable interrupt for ERROR event"]
     #[inline]
@@ -5062,7 +5066,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 INTENSET ERROR, UART0 INTENSET ERROR reset value false")
+        todo!("write UARTE0 INTENSET ERROR, UART0 INTENSET ERROR reset value false")
     }
     #[doc = "UARTE0 INTENSET RXTO: Write '1' to Enable interrupt for RXTO event\n\nUART0 INTENSET RXTO: Write '1' to Enable interrupt for RXTO event"]
     #[inline]
@@ -5159,7 +5163,7 @@ impl Peripherals {
     #[doc = "UARTE0 INTENCLR RXDRDY: Write '1' to Disable interrupt for RXDRDY event\n\nUART0 INTENCLR RXDRDY: Write '1' to Disable interrupt for RXDRDY event"]
     #[inline]
     pub(crate) fn read_uarte0uart0_intenclr_rxdrdy(&self) -> MemResult<bool> {
-        todo ! ("read UARTE0 INTENCLR RXDRDY, UART0 INTENCLR RXDRDY reset value false")
+        todo!("read UARTE0 INTENCLR RXDRDY, UART0 INTENCLR RXDRDY reset value false")
     }
     #[doc = "UARTE0 INTENCLR RXDRDY: Write '1' to Disable interrupt for RXDRDY event\n\nUART0 INTENCLR RXDRDY: Write '1' to Disable interrupt for RXDRDY event"]
     #[inline]
@@ -5167,7 +5171,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 INTENCLR RXDRDY, UART0 INTENCLR RXDRDY reset value false")
+        todo!("write UARTE0 INTENCLR RXDRDY, UART0 INTENCLR RXDRDY reset value false")
     }
     #[doc = "UARTE0 INTENCLR ENDRX: Write '1' to Disable interrupt for ENDRX event"]
     #[inline]
@@ -5185,7 +5189,7 @@ impl Peripherals {
     #[doc = "UARTE0 INTENCLR TXDRDY: Write '1' to Disable interrupt for TXDRDY event\n\nUART0 INTENCLR TXDRDY: Write '1' to Disable interrupt for TXDRDY event"]
     #[inline]
     pub(crate) fn read_uarte0uart0_intenclr_txdrdy(&self) -> MemResult<bool> {
-        todo ! ("read UARTE0 INTENCLR TXDRDY, UART0 INTENCLR TXDRDY reset value false")
+        todo!("read UARTE0 INTENCLR TXDRDY, UART0 INTENCLR TXDRDY reset value false")
     }
     #[doc = "UARTE0 INTENCLR TXDRDY: Write '1' to Disable interrupt for TXDRDY event\n\nUART0 INTENCLR TXDRDY: Write '1' to Disable interrupt for TXDRDY event"]
     #[inline]
@@ -5193,7 +5197,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 INTENCLR TXDRDY, UART0 INTENCLR TXDRDY reset value false")
+        todo!("write UARTE0 INTENCLR TXDRDY, UART0 INTENCLR TXDRDY reset value false")
     }
     #[doc = "UARTE0 INTENCLR ENDTX: Write '1' to Disable interrupt for ENDTX event"]
     #[inline]
@@ -5211,7 +5215,7 @@ impl Peripherals {
     #[doc = "UARTE0 INTENCLR ERROR: Write '1' to Disable interrupt for ERROR event\n\nUART0 INTENCLR ERROR: Write '1' to Disable interrupt for ERROR event"]
     #[inline]
     pub(crate) fn read_uarte0uart0_intenclr_error(&self) -> MemResult<bool> {
-        todo ! ("read UARTE0 INTENCLR ERROR, UART0 INTENCLR ERROR reset value false")
+        todo!("read UARTE0 INTENCLR ERROR, UART0 INTENCLR ERROR reset value false")
     }
     #[doc = "UARTE0 INTENCLR ERROR: Write '1' to Disable interrupt for ERROR event\n\nUART0 INTENCLR ERROR: Write '1' to Disable interrupt for ERROR event"]
     #[inline]
@@ -5219,7 +5223,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 INTENCLR ERROR, UART0 INTENCLR ERROR reset value false")
+        todo!("write UARTE0 INTENCLR ERROR, UART0 INTENCLR ERROR reset value false")
     }
     #[doc = "UARTE0 INTENCLR RXTO: Write '1' to Disable interrupt for RXTO event\n\nUART0 INTENCLR RXTO: Write '1' to Disable interrupt for RXTO event"]
     #[inline]
@@ -5286,7 +5290,7 @@ impl Peripherals {
     #[doc = "UARTE0 ERRORSRC OVERRUN: Overrun error\n\nUART0 ERRORSRC OVERRUN: Overrun error"]
     #[inline]
     pub(crate) fn read_uarte0uart0_errorsrc_overrun(&self) -> MemResult<bool> {
-        todo ! ("read UARTE0 ERRORSRC OVERRUN, UART0 ERRORSRC OVERRUN reset value false")
+        todo!("read UARTE0 ERRORSRC OVERRUN, UART0 ERRORSRC OVERRUN reset value false")
     }
     #[doc = "UARTE0 ERRORSRC OVERRUN: Overrun error\n\nUART0 ERRORSRC OVERRUN: Overrun error"]
     #[inline]
@@ -5294,12 +5298,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 ERRORSRC OVERRUN, UART0 ERRORSRC OVERRUN reset value false")
+        todo!("write UARTE0 ERRORSRC OVERRUN, UART0 ERRORSRC OVERRUN reset value false")
     }
     #[doc = "UARTE0 ERRORSRC PARITY: Parity error\n\nUART0 ERRORSRC PARITY: Parity error"]
     #[inline]
     pub(crate) fn read_uarte0uart0_errorsrc_parity(&self) -> MemResult<bool> {
-        todo ! ("read UARTE0 ERRORSRC PARITY, UART0 ERRORSRC PARITY reset value false")
+        todo!("read UARTE0 ERRORSRC PARITY, UART0 ERRORSRC PARITY reset value false")
     }
     #[doc = "UARTE0 ERRORSRC PARITY: Parity error\n\nUART0 ERRORSRC PARITY: Parity error"]
     #[inline]
@@ -5307,12 +5311,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 ERRORSRC PARITY, UART0 ERRORSRC PARITY reset value false")
+        todo!("write UARTE0 ERRORSRC PARITY, UART0 ERRORSRC PARITY reset value false")
     }
     #[doc = "UARTE0 ERRORSRC FRAMING: Framing error occurred\n\nUART0 ERRORSRC FRAMING: Framing error occurred"]
     #[inline]
     pub(crate) fn read_uarte0uart0_errorsrc_framing(&self) -> MemResult<bool> {
-        todo ! ("read UARTE0 ERRORSRC FRAMING, UART0 ERRORSRC FRAMING reset value false")
+        todo!("read UARTE0 ERRORSRC FRAMING, UART0 ERRORSRC FRAMING reset value false")
     }
     #[doc = "UARTE0 ERRORSRC FRAMING: Framing error occurred\n\nUART0 ERRORSRC FRAMING: Framing error occurred"]
     #[inline]
@@ -5320,12 +5324,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 ERRORSRC FRAMING, UART0 ERRORSRC FRAMING reset value false")
+        todo!("write UARTE0 ERRORSRC FRAMING, UART0 ERRORSRC FRAMING reset value false")
     }
     #[doc = "UARTE0 ERRORSRC BREAK: Break condition\n\nUART0 ERRORSRC BREAK: Break condition"]
     #[inline]
     pub(crate) fn read_uarte0uart0_errorsrc_break(&self) -> MemResult<bool> {
-        todo ! ("read UARTE0 ERRORSRC BREAK, UART0 ERRORSRC BREAK reset value false")
+        todo!("read UARTE0 ERRORSRC BREAK, UART0 ERRORSRC BREAK reset value false")
     }
     #[doc = "UARTE0 ERRORSRC BREAK: Break condition\n\nUART0 ERRORSRC BREAK: Break condition"]
     #[inline]
@@ -5333,12 +5337,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 ERRORSRC BREAK, UART0 ERRORSRC BREAK reset value false")
+        todo!("write UARTE0 ERRORSRC BREAK, UART0 ERRORSRC BREAK reset value false")
     }
     #[doc = "UARTE0 ENABLE ENABLE: Enable or disable UARTE\n\nUART0 ENABLE ENABLE: Enable or disable UART"]
     #[inline]
     pub(crate) fn read_uarte0uart0_enable_enable(&self) -> MemResult<u8> {
-        todo ! ("read UARTE0 ENABLE ENABLE, UART0 ENABLE ENABLE reset value 0x00 mask 0x0f")
+        todo!("read UARTE0 ENABLE ENABLE, UART0 ENABLE ENABLE reset value 0x00 mask 0x0f")
     }
     #[doc = "UARTE0 ENABLE ENABLE: Enable or disable UARTE\n\nUART0 ENABLE ENABLE: Enable or disable UART"]
     #[inline]
@@ -5346,12 +5350,12 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 ENABLE ENABLE, UART0 ENABLE ENABLE reset value 0x00 mask 0x0f")
+        todo!("write UARTE0 ENABLE ENABLE, UART0 ENABLE ENABLE reset value 0x00 mask 0x0f")
     }
     #[doc = "UARTE0 RTS PIN: Pin number\n\nUART0 PSELRTS PSELRTS: Pin number configuration for UART RTS signal"]
     #[inline]
     pub(crate) fn read_uarte0uart0_psel_rts_pin(&self) -> MemResult<u8> {
-        todo ! ("read UARTE0 RTS PIN, UART0 PSELRTS PSELRTS reset value 0x1f mask 0x1f")
+        todo!("read UARTE0 RTS PIN, UART0 PSELRTS PSELRTS reset value 0x1f mask 0x1f")
     }
     #[doc = "UARTE0 RTS PIN: Pin number\n\nUART0 PSELRTS PSELRTS: Pin number configuration for UART RTS signal"]
     #[inline]
@@ -5359,7 +5363,7 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 RTS PIN, UART0 PSELRTS PSELRTS reset value 0x1f mask 0x1f")
+        todo!("write UARTE0 RTS PIN, UART0 PSELRTS PSELRTS reset value 0x1f mask 0x1f")
     }
     #[doc = "UARTE0 RTS CONNECT: Connection"]
     #[inline]
@@ -5377,7 +5381,7 @@ impl Peripherals {
     #[doc = "UARTE0 TXD PIN: Pin number\n\nUART0 PSELTXD PSELTXD: Pin number configuration for UART TXD signal"]
     #[inline]
     pub(crate) fn read_uarte0uart0_psel_txd_pin(&self) -> MemResult<u8> {
-        todo ! ("read UARTE0 TXD PIN, UART0 PSELTXD PSELTXD reset value 0x1f mask 0x1f")
+        todo!("read UARTE0 TXD PIN, UART0 PSELTXD PSELTXD reset value 0x1f mask 0x1f")
     }
     #[doc = "UARTE0 TXD PIN: Pin number\n\nUART0 PSELTXD PSELTXD: Pin number configuration for UART TXD signal"]
     #[inline]
@@ -5385,7 +5389,7 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 TXD PIN, UART0 PSELTXD PSELTXD reset value 0x1f mask 0x1f")
+        todo!("write UARTE0 TXD PIN, UART0 PSELTXD PSELTXD reset value 0x1f mask 0x1f")
     }
     #[doc = "UARTE0 TXD CONNECT: Connection"]
     #[inline]
@@ -5403,7 +5407,7 @@ impl Peripherals {
     #[doc = "UARTE0 CTS PIN: Pin number\n\nUART0 PSELCTS PSELCTS: Pin number configuration for UART CTS signal"]
     #[inline]
     pub(crate) fn read_uarte0uart0_psel_cts_pin(&self) -> MemResult<u8> {
-        todo ! ("read UARTE0 CTS PIN, UART0 PSELCTS PSELCTS reset value 0x1f mask 0x1f")
+        todo!("read UARTE0 CTS PIN, UART0 PSELCTS PSELCTS reset value 0x1f mask 0x1f")
     }
     #[doc = "UARTE0 CTS PIN: Pin number\n\nUART0 PSELCTS PSELCTS: Pin number configuration for UART CTS signal"]
     #[inline]
@@ -5411,7 +5415,7 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 CTS PIN, UART0 PSELCTS PSELCTS reset value 0x1f mask 0x1f")
+        todo!("write UARTE0 CTS PIN, UART0 PSELCTS PSELCTS reset value 0x1f mask 0x1f")
     }
     #[doc = "UARTE0 CTS CONNECT: Connection"]
     #[inline]
@@ -5429,7 +5433,7 @@ impl Peripherals {
     #[doc = "UARTE0 RXD PIN: Pin number\n\nUART0 PSELRXD PSELRXD: Pin number configuration for UART RXD signal"]
     #[inline]
     pub(crate) fn read_uarte0uart0_psel_rxd_pin(&self) -> MemResult<u8> {
-        todo ! ("read UARTE0 RXD PIN, UART0 PSELRXD PSELRXD reset value 0x1f mask 0x1f")
+        todo!("read UARTE0 RXD PIN, UART0 PSELRXD PSELRXD reset value 0x1f mask 0x1f")
     }
     #[doc = "UARTE0 RXD PIN: Pin number\n\nUART0 PSELRXD PSELRXD: Pin number configuration for UART RXD signal"]
     #[inline]
@@ -5437,7 +5441,7 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 RXD PIN, UART0 PSELRXD PSELRXD reset value 0x1f mask 0x1f")
+        todo!("write UARTE0 RXD PIN, UART0 PSELRXD PSELRXD reset value 0x1f mask 0x1f")
     }
     #[doc = "UARTE0 RXD CONNECT: Connection"]
     #[inline]
@@ -5465,7 +5469,7 @@ impl Peripherals {
     #[doc = "UARTE0 BAUDRATE: Baud rate. Accuracy depends on the HFCLK source selected.\n\nUART0 BAUDRATE: Baud rate"]
     #[inline]
     pub(crate) fn read_uarte0uart0_baudrate(&self) -> MemResult<u32> {
-        todo ! ("read UARTE0 BAUDRATE, UART0 BAUDRATE reset value 0x4000000 mask 0xffffffffffffffff")
+        todo!("read UARTE0 BAUDRATE, UART0 BAUDRATE reset value 0x4000000 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 BAUDRATE: Baud rate. Accuracy depends on the HFCLK source selected.\n\nUART0 BAUDRATE: Baud rate"]
     #[inline]
@@ -5473,7 +5477,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 BAUDRATE, UART0 BAUDRATE reset value 0x4000000 mask 0xffffffffffffffff")
+        todo!("write UARTE0 BAUDRATE, UART0 BAUDRATE reset value 0x4000000 mask 0xffffffffffffffff")
     }
     #[doc = "UARTE0 PTR: Data pointer"]
     #[inline]
@@ -5553,7 +5557,7 @@ impl Peripherals {
     #[doc = "UARTE0 CONFIG PARITY: Parity\n\nUART0 CONFIG PARITY: Parity"]
     #[inline]
     pub(crate) fn read_uarte0uart0_config_parity(&self) -> MemResult<u8> {
-        todo ! ("read UARTE0 CONFIG PARITY, UART0 CONFIG PARITY reset value 0x00 mask 0x07")
+        todo!("read UARTE0 CONFIG PARITY, UART0 CONFIG PARITY reset value 0x00 mask 0x07")
     }
     #[doc = "UARTE0 CONFIG PARITY: Parity\n\nUART0 CONFIG PARITY: Parity"]
     #[inline]
@@ -5561,7 +5565,7 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write UARTE0 CONFIG PARITY, UART0 CONFIG PARITY reset value 0x00 mask 0x07")
+        todo!("write UARTE0 CONFIG PARITY, UART0 CONFIG PARITY reset value 0x00 mask 0x07")
     }
     #[doc = "TWIM0 TASKS_STARTRX: Start TWI receive sequence\n\nTWI0 TASKS_STARTRX: Start TWI receive sequence\n\nTWIM0 TASKS_STARTRX: Start TWI receive sequence\n\nTWI0 TASKS_STARTRX: Start TWI receive sequence"]
     #[inline]
@@ -5569,7 +5573,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 TASKS_STARTRX, TWI0 TASKS_STARTRX, TWIM0 TASKS_STARTRX, TWI0 TASKS_STARTRX reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TWIM0 TASKS_STARTRX, TWI0 TASKS_STARTRX, TWIM0 TASKS_STARTRX, TWI0 TASKS_STARTRX reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TWIM0 TASKS_STARTTX: Start TWI transmit sequence\n\nTWI0 TASKS_STARTTX: Start TWI transmit sequence\n\nTWIM0 TASKS_STARTTX: Start TWI transmit sequence\n\nTWI0 TASKS_STARTTX: Start TWI transmit sequence"]
     #[inline]
@@ -5577,7 +5581,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 TASKS_STARTTX, TWI0 TASKS_STARTTX, TWIM0 TASKS_STARTTX, TWI0 TASKS_STARTTX reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TWIM0 TASKS_STARTTX, TWI0 TASKS_STARTTX, TWIM0 TASKS_STARTTX, TWI0 TASKS_STARTTX reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPIM0 TASKS_START: Start SPI transaction\n\nSPIM0 TASKS_START: Start SPI transaction\n\nSPIM0 TASKS_START: Start SPI transaction"]
     #[inline]
@@ -5585,7 +5589,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 TASKS_START, SPIM0 TASKS_START, SPIM0 TASKS_START reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write SPIM0 TASKS_START, SPIM0 TASKS_START, SPIM0 TASKS_START reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPIM0 TASKS_STOP: Stop SPI transaction\n\nTWIM0 TASKS_STOP: Stop TWI transaction. Must be issued while the TWI master is not suspended.\n\nTWIS0 TASKS_STOP: Stop TWI transaction\n\nTWI0 TASKS_STOP: Stop TWI transaction\n\nSPIM0 TASKS_STOP: Stop SPI transaction\n\nTWIM0 TASKS_STOP: Stop TWI transaction. Must be issued while the TWI master is not suspended.\n\nTWIS0 TASKS_STOP: Stop TWI transaction\n\nTWI0 TASKS_STOP: Stop TWI transaction\n\nSPIM0 TASKS_STOP: Stop SPI transaction"]
     #[inline]
@@ -5593,7 +5597,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 TASKS_STOP, TWIM0 TASKS_STOP, TWIS0 TASKS_STOP, TWI0 TASKS_STOP, SPIM0 TASKS_STOP, TWIM0 TASKS_STOP, TWIS0 TASKS_STOP, TWI0 TASKS_STOP, SPIM0 TASKS_STOP reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write SPIM0 TASKS_STOP, TWIM0 TASKS_STOP, TWIS0 TASKS_STOP, TWI0 TASKS_STOP, SPIM0 TASKS_STOP, TWIM0 TASKS_STOP, TWIS0 TASKS_STOP, TWI0 TASKS_STOP, SPIM0 TASKS_STOP reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPIM0 TASKS_SUSPEND: Suspend SPI transaction\n\nTWIM0 TASKS_SUSPEND: Suspend TWI transaction\n\nTWIS0 TASKS_SUSPEND: Suspend TWI transaction\n\nTWI0 TASKS_SUSPEND: Suspend TWI transaction\n\nSPIM0 TASKS_SUSPEND: Suspend SPI transaction\n\nTWIM0 TASKS_SUSPEND: Suspend TWI transaction\n\nTWIS0 TASKS_SUSPEND: Suspend TWI transaction\n\nTWI0 TASKS_SUSPEND: Suspend TWI transaction\n\nSPIM0 TASKS_SUSPEND: Suspend SPI transaction"]
     #[inline]
@@ -5601,7 +5605,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 TASKS_SUSPEND, TWIM0 TASKS_SUSPEND, TWIS0 TASKS_SUSPEND, TWI0 TASKS_SUSPEND, SPIM0 TASKS_SUSPEND, TWIM0 TASKS_SUSPEND, TWIS0 TASKS_SUSPEND, TWI0 TASKS_SUSPEND, SPIM0 TASKS_SUSPEND reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write SPIM0 TASKS_SUSPEND, TWIM0 TASKS_SUSPEND, TWIS0 TASKS_SUSPEND, TWI0 TASKS_SUSPEND, SPIM0 TASKS_SUSPEND, TWIM0 TASKS_SUSPEND, TWIS0 TASKS_SUSPEND, TWI0 TASKS_SUSPEND, SPIM0 TASKS_SUSPEND reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPIM0 TASKS_RESUME: Resume SPI transaction\n\nTWIM0 TASKS_RESUME: Resume TWI transaction\n\nTWIS0 TASKS_RESUME: Resume TWI transaction\n\nTWI0 TASKS_RESUME: Resume TWI transaction\n\nSPIM0 TASKS_RESUME: Resume SPI transaction\n\nTWIM0 TASKS_RESUME: Resume TWI transaction\n\nTWIS0 TASKS_RESUME: Resume TWI transaction\n\nTWI0 TASKS_RESUME: Resume TWI transaction\n\nSPIM0 TASKS_RESUME: Resume SPI transaction"]
     #[inline]
@@ -5609,7 +5613,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 TASKS_RESUME, TWIM0 TASKS_RESUME, TWIS0 TASKS_RESUME, TWI0 TASKS_RESUME, SPIM0 TASKS_RESUME, TWIM0 TASKS_RESUME, TWIS0 TASKS_RESUME, TWI0 TASKS_RESUME, SPIM0 TASKS_RESUME reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write SPIM0 TASKS_RESUME, TWIM0 TASKS_RESUME, TWIS0 TASKS_RESUME, TWI0 TASKS_RESUME, SPIM0 TASKS_RESUME, TWIM0 TASKS_RESUME, TWIS0 TASKS_RESUME, TWI0 TASKS_RESUME, SPIM0 TASKS_RESUME reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPIS0 TASKS_ACQUIRE: Acquire SPI semaphore\n\nSPIS0 TASKS_ACQUIRE: Acquire SPI semaphore\n\nSPIS0 TASKS_ACQUIRE: Acquire SPI semaphore"]
     #[inline]
@@ -5617,7 +5621,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write SPIS0 TASKS_ACQUIRE, SPIS0 TASKS_ACQUIRE, SPIS0 TASKS_ACQUIRE reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write SPIS0 TASKS_ACQUIRE, SPIS0 TASKS_ACQUIRE, SPIS0 TASKS_ACQUIRE reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPIS0 TASKS_RELEASE: Release SPI semaphore, enabling the SPI slave to acquire it\n\nSPIS0 TASKS_RELEASE: Release SPI semaphore, enabling the SPI slave to acquire it\n\nSPIS0 TASKS_RELEASE: Release SPI semaphore, enabling the SPI slave to acquire it"]
     #[inline]
@@ -5625,7 +5629,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write SPIS0 TASKS_RELEASE, SPIS0 TASKS_RELEASE, SPIS0 TASKS_RELEASE reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write SPIS0 TASKS_RELEASE, SPIS0 TASKS_RELEASE, SPIS0 TASKS_RELEASE reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TWIS0 TASKS_PREPARERX: Prepare the TWI slave to respond to a write command\n\nTWIS0 TASKS_PREPARERX: Prepare the TWI slave to respond to a write command"]
     #[inline]
@@ -5633,7 +5637,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TWIS0 TASKS_PREPARERX, TWIS0 TASKS_PREPARERX reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TWIS0 TASKS_PREPARERX, TWIS0 TASKS_PREPARERX reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TWIS0 TASKS_PREPARETX: Prepare the TWI slave to respond to a read command\n\nTWIS0 TASKS_PREPARETX: Prepare the TWI slave to respond to a read command"]
     #[inline]
@@ -5641,14 +5645,14 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TWIS0 TASKS_PREPARETX, TWIS0 TASKS_PREPARETX reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TWIS0 TASKS_PREPARETX, TWIS0 TASKS_PREPARETX reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPIM0 EVENTS_STOPPED: SPI transaction has stopped\n\nSPIS0 EVENTS_END: Granted transaction completed\n\nTWIM0 EVENTS_STOPPED: TWI stopped\n\nTWIS0 EVENTS_STOPPED: TWI stopped\n\nTWI0 EVENTS_STOPPED: TWI stopped\n\nSPIM0 EVENTS_STOPPED: SPI transaction has stopped\n\nSPIS0 EVENTS_END: Granted transaction completed\n\nTWIM0 EVENTS_STOPPED: TWI stopped\n\nTWIS0 EVENTS_STOPPED: TWI stopped\n\nTWI0 EVENTS_STOPPED: TWI stopped\n\nSPIM0 EVENTS_STOPPED: SPI transaction has stopped\n\nSPIS0 EVENTS_END: Granted transaction completed"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0twi0_events_stopped(
         &self,
     ) -> MemResult<u32> {
-        todo ! ("read SPIM0 EVENTS_STOPPED, SPIS0 EVENTS_END, TWIM0 EVENTS_STOPPED, TWIS0 EVENTS_STOPPED, TWI0 EVENTS_STOPPED, SPIM0 EVENTS_STOPPED, SPIS0 EVENTS_END, TWIM0 EVENTS_STOPPED, TWIS0 EVENTS_STOPPED, TWI0 EVENTS_STOPPED, SPIM0 EVENTS_STOPPED, SPIS0 EVENTS_END reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read SPIM0 EVENTS_STOPPED, SPIS0 EVENTS_END, TWIM0 EVENTS_STOPPED, TWIS0 EVENTS_STOPPED, TWI0 EVENTS_STOPPED, SPIM0 EVENTS_STOPPED, SPIS0 EVENTS_END, TWIM0 EVENTS_STOPPED, TWIS0 EVENTS_STOPPED, TWI0 EVENTS_STOPPED, SPIM0 EVENTS_STOPPED, SPIS0 EVENTS_END reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPIM0 EVENTS_STOPPED: SPI transaction has stopped\n\nSPIS0 EVENTS_END: Granted transaction completed\n\nTWIM0 EVENTS_STOPPED: TWI stopped\n\nTWIS0 EVENTS_STOPPED: TWI stopped\n\nTWI0 EVENTS_STOPPED: TWI stopped\n\nSPIM0 EVENTS_STOPPED: SPI transaction has stopped\n\nSPIS0 EVENTS_END: Granted transaction completed\n\nTWIM0 EVENTS_STOPPED: TWI stopped\n\nTWIS0 EVENTS_STOPPED: TWI stopped\n\nTWI0 EVENTS_STOPPED: TWI stopped\n\nSPIM0 EVENTS_STOPPED: SPI transaction has stopped\n\nSPIS0 EVENTS_END: Granted transaction completed"]
     #[inline]
@@ -5656,12 +5660,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 EVENTS_STOPPED, SPIS0 EVENTS_END, TWIM0 EVENTS_STOPPED, TWIS0 EVENTS_STOPPED, TWI0 EVENTS_STOPPED, SPIM0 EVENTS_STOPPED, SPIS0 EVENTS_END, TWIM0 EVENTS_STOPPED, TWIS0 EVENTS_STOPPED, TWI0 EVENTS_STOPPED, SPIM0 EVENTS_STOPPED, SPIS0 EVENTS_END reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write SPIM0 EVENTS_STOPPED, SPIS0 EVENTS_END, TWIM0 EVENTS_STOPPED, TWIS0 EVENTS_STOPPED, TWI0 EVENTS_STOPPED, SPIM0 EVENTS_STOPPED, SPIS0 EVENTS_END, TWIM0 EVENTS_STOPPED, TWIS0 EVENTS_STOPPED, TWI0 EVENTS_STOPPED, SPIM0 EVENTS_STOPPED, SPIS0 EVENTS_END reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPI0 EVENTS_READY: TXD byte sent and RXD byte received\n\nTWI0 EVENTS_RXDREADY: TWI RXD byte received\n\nSPI0 EVENTS_READY: TXD byte sent and RXD byte received\n\nTWI0 EVENTS_RXDREADY: TWI RXD byte received\n\nSPI0 EVENTS_READY: TXD byte sent and RXD byte received"]
     #[inline]
     pub(crate) fn read_spi0twi0_events_ready(&self) -> MemResult<u32> {
-        todo ! ("read SPI0 EVENTS_READY, TWI0 EVENTS_RXDREADY, SPI0 EVENTS_READY, TWI0 EVENTS_RXDREADY, SPI0 EVENTS_READY reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read SPI0 EVENTS_READY, TWI0 EVENTS_RXDREADY, SPI0 EVENTS_READY, TWI0 EVENTS_RXDREADY, SPI0 EVENTS_READY reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPI0 EVENTS_READY: TXD byte sent and RXD byte received\n\nTWI0 EVENTS_RXDREADY: TWI RXD byte received\n\nSPI0 EVENTS_READY: TXD byte sent and RXD byte received\n\nTWI0 EVENTS_RXDREADY: TWI RXD byte received\n\nSPI0 EVENTS_READY: TXD byte sent and RXD byte received"]
     #[inline]
@@ -5669,12 +5673,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write SPI0 EVENTS_READY, TWI0 EVENTS_RXDREADY, SPI0 EVENTS_READY, TWI0 EVENTS_RXDREADY, SPI0 EVENTS_READY reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write SPI0 EVENTS_READY, TWI0 EVENTS_RXDREADY, SPI0 EVENTS_READY, TWI0 EVENTS_RXDREADY, SPI0 EVENTS_READY reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPIM0 EVENTS_ENDRX: End of RXD buffer reached\n\nSPIS0 EVENTS_ENDRX: End of RXD buffer reached\n\nSPIM0 EVENTS_ENDRX: End of RXD buffer reached\n\nSPIS0 EVENTS_ENDRX: End of RXD buffer reached\n\nSPIM0 EVENTS_ENDRX: End of RXD buffer reached\n\nSPIS0 EVENTS_ENDRX: End of RXD buffer reached"]
     #[inline]
     pub(crate) fn read_spim0spis0_events_endrx(&self) -> MemResult<u32> {
-        todo ! ("read SPIM0 EVENTS_ENDRX, SPIS0 EVENTS_ENDRX, SPIM0 EVENTS_ENDRX, SPIS0 EVENTS_ENDRX, SPIM0 EVENTS_ENDRX, SPIS0 EVENTS_ENDRX reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read SPIM0 EVENTS_ENDRX, SPIS0 EVENTS_ENDRX, SPIM0 EVENTS_ENDRX, SPIS0 EVENTS_ENDRX, SPIM0 EVENTS_ENDRX, SPIS0 EVENTS_ENDRX reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPIM0 EVENTS_ENDRX: End of RXD buffer reached\n\nSPIS0 EVENTS_ENDRX: End of RXD buffer reached\n\nSPIM0 EVENTS_ENDRX: End of RXD buffer reached\n\nSPIS0 EVENTS_ENDRX: End of RXD buffer reached\n\nSPIM0 EVENTS_ENDRX: End of RXD buffer reached\n\nSPIS0 EVENTS_ENDRX: End of RXD buffer reached"]
     #[inline]
@@ -5682,12 +5686,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 EVENTS_ENDRX, SPIS0 EVENTS_ENDRX, SPIM0 EVENTS_ENDRX, SPIS0 EVENTS_ENDRX, SPIM0 EVENTS_ENDRX, SPIS0 EVENTS_ENDRX reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write SPIM0 EVENTS_ENDRX, SPIS0 EVENTS_ENDRX, SPIM0 EVENTS_ENDRX, SPIS0 EVENTS_ENDRX, SPIM0 EVENTS_ENDRX, SPIS0 EVENTS_ENDRX reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPIM0 EVENTS_END: End of RXD buffer and TXD buffer reached\n\nSPIM0 EVENTS_END: End of RXD buffer and TXD buffer reached\n\nSPIM0 EVENTS_END: End of RXD buffer and TXD buffer reached"]
     #[inline]
     pub(crate) fn read_spim0_events_end(&self) -> MemResult<u32> {
-        todo ! ("read SPIM0 EVENTS_END, SPIM0 EVENTS_END, SPIM0 EVENTS_END reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read SPIM0 EVENTS_END, SPIM0 EVENTS_END, SPIM0 EVENTS_END reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPIM0 EVENTS_END: End of RXD buffer and TXD buffer reached\n\nSPIM0 EVENTS_END: End of RXD buffer and TXD buffer reached\n\nSPIM0 EVENTS_END: End of RXD buffer and TXD buffer reached"]
     #[inline]
@@ -5695,12 +5699,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 EVENTS_END, SPIM0 EVENTS_END, SPIM0 EVENTS_END reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write SPIM0 EVENTS_END, SPIM0 EVENTS_END, SPIM0 EVENTS_END reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TWI0 EVENTS_TXDSENT: TWI TXD byte sent\n\nTWI0 EVENTS_TXDSENT: TWI TXD byte sent"]
     #[inline]
     pub(crate) fn read_twi0_events_txdsent(&self) -> MemResult<u32> {
-        todo ! ("read TWI0 EVENTS_TXDSENT, TWI0 EVENTS_TXDSENT reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read TWI0 EVENTS_TXDSENT, TWI0 EVENTS_TXDSENT reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TWI0 EVENTS_TXDSENT: TWI TXD byte sent\n\nTWI0 EVENTS_TXDSENT: TWI TXD byte sent"]
     #[inline]
@@ -5708,12 +5712,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TWI0 EVENTS_TXDSENT, TWI0 EVENTS_TXDSENT reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TWI0 EVENTS_TXDSENT, TWI0 EVENTS_TXDSENT reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPIM0 EVENTS_ENDTX: End of TXD buffer reached\n\nSPIM0 EVENTS_ENDTX: End of TXD buffer reached\n\nSPIM0 EVENTS_ENDTX: End of TXD buffer reached"]
     #[inline]
     pub(crate) fn read_spim0_events_endtx(&self) -> MemResult<u32> {
-        todo ! ("read SPIM0 EVENTS_ENDTX, SPIM0 EVENTS_ENDTX, SPIM0 EVENTS_ENDTX reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read SPIM0 EVENTS_ENDTX, SPIM0 EVENTS_ENDTX, SPIM0 EVENTS_ENDTX reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPIM0 EVENTS_ENDTX: End of TXD buffer reached\n\nSPIM0 EVENTS_ENDTX: End of TXD buffer reached\n\nSPIM0 EVENTS_ENDTX: End of TXD buffer reached"]
     #[inline]
@@ -5721,12 +5725,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 EVENTS_ENDTX, SPIM0 EVENTS_ENDTX, SPIM0 EVENTS_ENDTX reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write SPIM0 EVENTS_ENDTX, SPIM0 EVENTS_ENDTX, SPIM0 EVENTS_ENDTX reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TWIM0 EVENTS_ERROR: TWI error\n\nTWIS0 EVENTS_ERROR: TWI error\n\nTWI0 EVENTS_ERROR: TWI error\n\nTWIM0 EVENTS_ERROR: TWI error\n\nTWIS0 EVENTS_ERROR: TWI error\n\nTWI0 EVENTS_ERROR: TWI error"]
     #[inline]
     pub(crate) fn read_twim0twis0twi0_events_error(&self) -> MemResult<u32> {
-        todo ! ("read TWIM0 EVENTS_ERROR, TWIS0 EVENTS_ERROR, TWI0 EVENTS_ERROR, TWIM0 EVENTS_ERROR, TWIS0 EVENTS_ERROR, TWI0 EVENTS_ERROR reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read TWIM0 EVENTS_ERROR, TWIS0 EVENTS_ERROR, TWI0 EVENTS_ERROR, TWIM0 EVENTS_ERROR, TWIS0 EVENTS_ERROR, TWI0 EVENTS_ERROR reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TWIM0 EVENTS_ERROR: TWI error\n\nTWIS0 EVENTS_ERROR: TWI error\n\nTWI0 EVENTS_ERROR: TWI error\n\nTWIM0 EVENTS_ERROR: TWI error\n\nTWIS0 EVENTS_ERROR: TWI error\n\nTWI0 EVENTS_ERROR: TWI error"]
     #[inline]
@@ -5734,12 +5738,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 EVENTS_ERROR, TWIS0 EVENTS_ERROR, TWI0 EVENTS_ERROR, TWIM0 EVENTS_ERROR, TWIS0 EVENTS_ERROR, TWI0 EVENTS_ERROR reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TWIM0 EVENTS_ERROR, TWIS0 EVENTS_ERROR, TWI0 EVENTS_ERROR, TWIM0 EVENTS_ERROR, TWIS0 EVENTS_ERROR, TWI0 EVENTS_ERROR reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPIS0 EVENTS_ACQUIRED: Semaphore acquired\n\nSPIS0 EVENTS_ACQUIRED: Semaphore acquired\n\nSPIS0 EVENTS_ACQUIRED: Semaphore acquired"]
     #[inline]
     pub(crate) fn read_spis0_events_acquired(&self) -> MemResult<u32> {
-        todo ! ("read SPIS0 EVENTS_ACQUIRED, SPIS0 EVENTS_ACQUIRED, SPIS0 EVENTS_ACQUIRED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read SPIS0 EVENTS_ACQUIRED, SPIS0 EVENTS_ACQUIRED, SPIS0 EVENTS_ACQUIRED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPIS0 EVENTS_ACQUIRED: Semaphore acquired\n\nSPIS0 EVENTS_ACQUIRED: Semaphore acquired\n\nSPIS0 EVENTS_ACQUIRED: Semaphore acquired"]
     #[inline]
@@ -5747,12 +5751,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write SPIS0 EVENTS_ACQUIRED, SPIS0 EVENTS_ACQUIRED, SPIS0 EVENTS_ACQUIRED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write SPIS0 EVENTS_ACQUIRED, SPIS0 EVENTS_ACQUIRED, SPIS0 EVENTS_ACQUIRED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TWI0 EVENTS_BB: TWI byte boundary, generated before each byte that is sent or received\n\nTWI0 EVENTS_BB: TWI byte boundary, generated before each byte that is sent or received"]
     #[inline]
     pub(crate) fn read_twi0_events_bb(&self) -> MemResult<u32> {
-        todo ! ("read TWI0 EVENTS_BB, TWI0 EVENTS_BB reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read TWI0 EVENTS_BB, TWI0 EVENTS_BB reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TWI0 EVENTS_BB: TWI byte boundary, generated before each byte that is sent or received\n\nTWI0 EVENTS_BB: TWI byte boundary, generated before each byte that is sent or received"]
     #[inline]
@@ -5760,12 +5764,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TWI0 EVENTS_BB, TWI0 EVENTS_BB reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TWI0 EVENTS_BB, TWI0 EVENTS_BB reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TWIM0 EVENTS_SUSPENDED: Last byte has been sent out after the SUSPEND task has been issued, TWI traffic is now suspended.\n\nTWI0 EVENTS_SUSPENDED: TWI entered the suspended state\n\nTWIM0 EVENTS_SUSPENDED: Last byte has been sent out after the SUSPEND task has been issued, TWI traffic is now suspended.\n\nTWI0 EVENTS_SUSPENDED: TWI entered the suspended state"]
     #[inline]
     pub(crate) fn read_twim0twi0_events_suspended(&self) -> MemResult<u32> {
-        todo ! ("read TWIM0 EVENTS_SUSPENDED, TWI0 EVENTS_SUSPENDED, TWIM0 EVENTS_SUSPENDED, TWI0 EVENTS_SUSPENDED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read TWIM0 EVENTS_SUSPENDED, TWI0 EVENTS_SUSPENDED, TWIM0 EVENTS_SUSPENDED, TWI0 EVENTS_SUSPENDED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TWIM0 EVENTS_SUSPENDED: Last byte has been sent out after the SUSPEND task has been issued, TWI traffic is now suspended.\n\nTWI0 EVENTS_SUSPENDED: TWI entered the suspended state\n\nTWIM0 EVENTS_SUSPENDED: Last byte has been sent out after the SUSPEND task has been issued, TWI traffic is now suspended.\n\nTWI0 EVENTS_SUSPENDED: TWI entered the suspended state"]
     #[inline]
@@ -5773,12 +5777,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 EVENTS_SUSPENDED, TWI0 EVENTS_SUSPENDED, TWIM0 EVENTS_SUSPENDED, TWI0 EVENTS_SUSPENDED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TWIM0 EVENTS_SUSPENDED, TWI0 EVENTS_SUSPENDED, TWIM0 EVENTS_SUSPENDED, TWI0 EVENTS_SUSPENDED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPIM0 EVENTS_STARTED: Transaction started\n\nTWIM0 EVENTS_RXSTARTED: Receive sequence started\n\nTWIS0 EVENTS_RXSTARTED: Receive sequence started\n\nSPIM0 EVENTS_STARTED: Transaction started\n\nTWIM0 EVENTS_RXSTARTED: Receive sequence started\n\nTWIS0 EVENTS_RXSTARTED: Receive sequence started\n\nSPIM0 EVENTS_STARTED: Transaction started"]
     #[inline]
     pub(crate) fn read_spim0twim0twis0_events_started(&self) -> MemResult<u32> {
-        todo ! ("read SPIM0 EVENTS_STARTED, TWIM0 EVENTS_RXSTARTED, TWIS0 EVENTS_RXSTARTED, SPIM0 EVENTS_STARTED, TWIM0 EVENTS_RXSTARTED, TWIS0 EVENTS_RXSTARTED, SPIM0 EVENTS_STARTED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read SPIM0 EVENTS_STARTED, TWIM0 EVENTS_RXSTARTED, TWIS0 EVENTS_RXSTARTED, SPIM0 EVENTS_STARTED, TWIM0 EVENTS_RXSTARTED, TWIS0 EVENTS_RXSTARTED, SPIM0 EVENTS_STARTED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPIM0 EVENTS_STARTED: Transaction started\n\nTWIM0 EVENTS_RXSTARTED: Receive sequence started\n\nTWIS0 EVENTS_RXSTARTED: Receive sequence started\n\nSPIM0 EVENTS_STARTED: Transaction started\n\nTWIM0 EVENTS_RXSTARTED: Receive sequence started\n\nTWIS0 EVENTS_RXSTARTED: Receive sequence started\n\nSPIM0 EVENTS_STARTED: Transaction started"]
     #[inline]
@@ -5786,12 +5790,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 EVENTS_STARTED, TWIM0 EVENTS_RXSTARTED, TWIS0 EVENTS_RXSTARTED, SPIM0 EVENTS_STARTED, TWIM0 EVENTS_RXSTARTED, TWIS0 EVENTS_RXSTARTED, SPIM0 EVENTS_STARTED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write SPIM0 EVENTS_STARTED, TWIM0 EVENTS_RXSTARTED, TWIS0 EVENTS_RXSTARTED, SPIM0 EVENTS_STARTED, TWIM0 EVENTS_RXSTARTED, TWIS0 EVENTS_RXSTARTED, SPIM0 EVENTS_STARTED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TWIM0 EVENTS_TXSTARTED: Transmit sequence started\n\nTWIS0 EVENTS_TXSTARTED: Transmit sequence started\n\nTWIM0 EVENTS_TXSTARTED: Transmit sequence started\n\nTWIS0 EVENTS_TXSTARTED: Transmit sequence started"]
     #[inline]
     pub(crate) fn read_twim0twis0_events_txstarted(&self) -> MemResult<u32> {
-        todo ! ("read TWIM0 EVENTS_TXSTARTED, TWIS0 EVENTS_TXSTARTED, TWIM0 EVENTS_TXSTARTED, TWIS0 EVENTS_TXSTARTED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read TWIM0 EVENTS_TXSTARTED, TWIS0 EVENTS_TXSTARTED, TWIM0 EVENTS_TXSTARTED, TWIS0 EVENTS_TXSTARTED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TWIM0 EVENTS_TXSTARTED: Transmit sequence started\n\nTWIS0 EVENTS_TXSTARTED: Transmit sequence started\n\nTWIM0 EVENTS_TXSTARTED: Transmit sequence started\n\nTWIS0 EVENTS_TXSTARTED: Transmit sequence started"]
     #[inline]
@@ -5799,12 +5803,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 EVENTS_TXSTARTED, TWIS0 EVENTS_TXSTARTED, TWIM0 EVENTS_TXSTARTED, TWIS0 EVENTS_TXSTARTED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TWIM0 EVENTS_TXSTARTED, TWIS0 EVENTS_TXSTARTED, TWIM0 EVENTS_TXSTARTED, TWIS0 EVENTS_TXSTARTED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TWIM0 EVENTS_LASTRX: Byte boundary, starting to receive the last byte\n\nTWIM0 EVENTS_LASTRX: Byte boundary, starting to receive the last byte"]
     #[inline]
     pub(crate) fn read_twim0_events_lastrx(&self) -> MemResult<u32> {
-        todo ! ("read TWIM0 EVENTS_LASTRX, TWIM0 EVENTS_LASTRX reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read TWIM0 EVENTS_LASTRX, TWIM0 EVENTS_LASTRX reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TWIM0 EVENTS_LASTRX: Byte boundary, starting to receive the last byte\n\nTWIM0 EVENTS_LASTRX: Byte boundary, starting to receive the last byte"]
     #[inline]
@@ -5812,12 +5816,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 EVENTS_LASTRX, TWIM0 EVENTS_LASTRX reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TWIM0 EVENTS_LASTRX, TWIM0 EVENTS_LASTRX reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TWIM0 EVENTS_LASTTX: Byte boundary, starting to transmit the last byte\n\nTWIM0 EVENTS_LASTTX: Byte boundary, starting to transmit the last byte"]
     #[inline]
     pub(crate) fn read_twim0_events_lasttx(&self) -> MemResult<u32> {
-        todo ! ("read TWIM0 EVENTS_LASTTX, TWIM0 EVENTS_LASTTX reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read TWIM0 EVENTS_LASTTX, TWIM0 EVENTS_LASTTX reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TWIM0 EVENTS_LASTTX: Byte boundary, starting to transmit the last byte\n\nTWIM0 EVENTS_LASTTX: Byte boundary, starting to transmit the last byte"]
     #[inline]
@@ -5825,12 +5829,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 EVENTS_LASTTX, TWIM0 EVENTS_LASTTX reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TWIM0 EVENTS_LASTTX, TWIM0 EVENTS_LASTTX reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TWIS0 EVENTS_WRITE: Write command received\n\nTWIS0 EVENTS_WRITE: Write command received"]
     #[inline]
     pub(crate) fn read_twis0_events_write(&self) -> MemResult<u32> {
-        todo ! ("read TWIS0 EVENTS_WRITE, TWIS0 EVENTS_WRITE reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read TWIS0 EVENTS_WRITE, TWIS0 EVENTS_WRITE reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TWIS0 EVENTS_WRITE: Write command received\n\nTWIS0 EVENTS_WRITE: Write command received"]
     #[inline]
@@ -5838,12 +5842,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TWIS0 EVENTS_WRITE, TWIS0 EVENTS_WRITE reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TWIS0 EVENTS_WRITE, TWIS0 EVENTS_WRITE reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TWIS0 EVENTS_READ: Read command received\n\nTWIS0 EVENTS_READ: Read command received"]
     #[inline]
     pub(crate) fn read_twis0_events_read(&self) -> MemResult<u32> {
-        todo ! ("read TWIS0 EVENTS_READ, TWIS0 EVENTS_READ reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read TWIS0 EVENTS_READ, TWIS0 EVENTS_READ reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TWIS0 EVENTS_READ: Read command received\n\nTWIS0 EVENTS_READ: Read command received"]
     #[inline]
@@ -5851,14 +5855,14 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TWIS0 EVENTS_READ, TWIS0 EVENTS_READ reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TWIS0 EVENTS_READ, TWIS0 EVENTS_READ reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TWI0 SHORTS BB_SUSPEND: Shortcut between BB event and SUSPEND task\n\nTWI0 SHORTS BB_SUSPEND: Shortcut between BB event and SUSPEND task"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0twi0_shorts_bb_suspend(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read TWI0 SHORTS BB_SUSPEND, TWI0 SHORTS BB_SUSPEND reset value false")
+        todo!("read TWI0 SHORTS BB_SUSPEND, TWI0 SHORTS BB_SUSPEND reset value false")
     }
     #[doc = "TWI0 SHORTS BB_SUSPEND: Shortcut between BB event and SUSPEND task\n\nTWI0 SHORTS BB_SUSPEND: Shortcut between BB event and SUSPEND task"]
     #[inline]
@@ -5866,7 +5870,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWI0 SHORTS BB_SUSPEND, TWI0 SHORTS BB_SUSPEND reset value false")
+        todo!("write TWI0 SHORTS BB_SUSPEND, TWI0 SHORTS BB_SUSPEND reset value false")
     }
     #[doc = "TWI0 SHORTS BB_STOP: Shortcut between BB event and STOP task\n\nTWI0 SHORTS BB_STOP: Shortcut between BB event and STOP task"]
     #[inline]
@@ -5890,7 +5894,7 @@ impl Peripherals {
     pub(crate) fn read_spim0spis0twim0twis0twi0_shorts_end_acquire(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read SPIS0 SHORTS END_ACQUIRE, SPIS0 SHORTS END_ACQUIRE, SPIS0 SHORTS END_ACQUIRE reset value false")
+        todo!("read SPIS0 SHORTS END_ACQUIRE, SPIS0 SHORTS END_ACQUIRE, SPIS0 SHORTS END_ACQUIRE reset value false")
     }
     #[doc = "SPIS0 SHORTS END_ACQUIRE: Shortcut between END event and ACQUIRE task\n\nSPIS0 SHORTS END_ACQUIRE: Shortcut between END event and ACQUIRE task\n\nSPIS0 SHORTS END_ACQUIRE: Shortcut between END event and ACQUIRE task"]
     #[inline]
@@ -5898,14 +5902,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPIS0 SHORTS END_ACQUIRE, SPIS0 SHORTS END_ACQUIRE, SPIS0 SHORTS END_ACQUIRE reset value false")
+        todo!("write SPIS0 SHORTS END_ACQUIRE, SPIS0 SHORTS END_ACQUIRE, SPIS0 SHORTS END_ACQUIRE reset value false")
     }
     #[doc = "TWIM0 SHORTS LASTTX_STARTRX: Shortcut between LASTTX event and STARTRX task\n\nTWIM0 SHORTS LASTTX_STARTRX: Shortcut between LASTTX event and STARTRX task"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0twi0_shorts_lasttx_startrx(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read TWIM0 SHORTS LASTTX_STARTRX, TWIM0 SHORTS LASTTX_STARTRX reset value false")
+        todo!("read TWIM0 SHORTS LASTTX_STARTRX, TWIM0 SHORTS LASTTX_STARTRX reset value false")
     }
     #[doc = "TWIM0 SHORTS LASTTX_STARTRX: Shortcut between LASTTX event and STARTRX task\n\nTWIM0 SHORTS LASTTX_STARTRX: Shortcut between LASTTX event and STARTRX task"]
     #[inline]
@@ -5913,14 +5917,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 SHORTS LASTTX_STARTRX, TWIM0 SHORTS LASTTX_STARTRX reset value false")
+        todo!("write TWIM0 SHORTS LASTTX_STARTRX, TWIM0 SHORTS LASTTX_STARTRX reset value false")
     }
     #[doc = "TWIM0 SHORTS LASTTX_SUSPEND: Shortcut between LASTTX event and SUSPEND task\n\nTWIM0 SHORTS LASTTX_SUSPEND: Shortcut between LASTTX event and SUSPEND task"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0twi0_shorts_lasttx_suspend(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read TWIM0 SHORTS LASTTX_SUSPEND, TWIM0 SHORTS LASTTX_SUSPEND reset value false")
+        todo!("read TWIM0 SHORTS LASTTX_SUSPEND, TWIM0 SHORTS LASTTX_SUSPEND reset value false")
     }
     #[doc = "TWIM0 SHORTS LASTTX_SUSPEND: Shortcut between LASTTX event and SUSPEND task\n\nTWIM0 SHORTS LASTTX_SUSPEND: Shortcut between LASTTX event and SUSPEND task"]
     #[inline]
@@ -5928,14 +5932,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 SHORTS LASTTX_SUSPEND, TWIM0 SHORTS LASTTX_SUSPEND reset value false")
+        todo!("write TWIM0 SHORTS LASTTX_SUSPEND, TWIM0 SHORTS LASTTX_SUSPEND reset value false")
     }
     #[doc = "TWIM0 SHORTS LASTTX_STOP: Shortcut between LASTTX event and STOP task\n\nTWIM0 SHORTS LASTTX_STOP: Shortcut between LASTTX event and STOP task"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0twi0_shorts_lasttx_stop(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read TWIM0 SHORTS LASTTX_STOP, TWIM0 SHORTS LASTTX_STOP reset value false")
+        todo!("read TWIM0 SHORTS LASTTX_STOP, TWIM0 SHORTS LASTTX_STOP reset value false")
     }
     #[doc = "TWIM0 SHORTS LASTTX_STOP: Shortcut between LASTTX event and STOP task\n\nTWIM0 SHORTS LASTTX_STOP: Shortcut between LASTTX event and STOP task"]
     #[inline]
@@ -5943,14 +5947,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 SHORTS LASTTX_STOP, TWIM0 SHORTS LASTTX_STOP reset value false")
+        todo!("write TWIM0 SHORTS LASTTX_STOP, TWIM0 SHORTS LASTTX_STOP reset value false")
     }
     #[doc = "TWIM0 SHORTS LASTRX_STARTTX: Shortcut between LASTRX event and STARTTX task\n\nTWIM0 SHORTS LASTRX_STARTTX: Shortcut between LASTRX event and STARTTX task"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0twi0_shorts_lastrx_starttx(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read TWIM0 SHORTS LASTRX_STARTTX, TWIM0 SHORTS LASTRX_STARTTX reset value false")
+        todo!("read TWIM0 SHORTS LASTRX_STARTTX, TWIM0 SHORTS LASTRX_STARTTX reset value false")
     }
     #[doc = "TWIM0 SHORTS LASTRX_STARTTX: Shortcut between LASTRX event and STARTTX task\n\nTWIM0 SHORTS LASTRX_STARTTX: Shortcut between LASTRX event and STARTTX task"]
     #[inline]
@@ -5958,14 +5962,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 SHORTS LASTRX_STARTTX, TWIM0 SHORTS LASTRX_STARTTX reset value false")
+        todo!("write TWIM0 SHORTS LASTRX_STARTTX, TWIM0 SHORTS LASTRX_STARTTX reset value false")
     }
     #[doc = "TWIM0 SHORTS LASTRX_STOP: Shortcut between LASTRX event and STOP task\n\nTWIM0 SHORTS LASTRX_STOP: Shortcut between LASTRX event and STOP task"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0twi0_shorts_lastrx_stop(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read TWIM0 SHORTS LASTRX_STOP, TWIM0 SHORTS LASTRX_STOP reset value false")
+        todo!("read TWIM0 SHORTS LASTRX_STOP, TWIM0 SHORTS LASTRX_STOP reset value false")
     }
     #[doc = "TWIM0 SHORTS LASTRX_STOP: Shortcut between LASTRX event and STOP task\n\nTWIM0 SHORTS LASTRX_STOP: Shortcut between LASTRX event and STOP task"]
     #[inline]
@@ -5973,14 +5977,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 SHORTS LASTRX_STOP, TWIM0 SHORTS LASTRX_STOP reset value false")
+        todo!("write TWIM0 SHORTS LASTRX_STOP, TWIM0 SHORTS LASTRX_STOP reset value false")
     }
     #[doc = "TWIS0 SHORTS WRITE_SUSPEND: Shortcut between WRITE event and SUSPEND task\n\nTWIS0 SHORTS WRITE_SUSPEND: Shortcut between WRITE event and SUSPEND task"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0twi0_shorts_write_suspend(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read TWIS0 SHORTS WRITE_SUSPEND, TWIS0 SHORTS WRITE_SUSPEND reset value false")
+        todo!("read TWIS0 SHORTS WRITE_SUSPEND, TWIS0 SHORTS WRITE_SUSPEND reset value false")
     }
     #[doc = "TWIS0 SHORTS WRITE_SUSPEND: Shortcut between WRITE event and SUSPEND task\n\nTWIS0 SHORTS WRITE_SUSPEND: Shortcut between WRITE event and SUSPEND task"]
     #[inline]
@@ -5988,14 +5992,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIS0 SHORTS WRITE_SUSPEND, TWIS0 SHORTS WRITE_SUSPEND reset value false")
+        todo!("write TWIS0 SHORTS WRITE_SUSPEND, TWIS0 SHORTS WRITE_SUSPEND reset value false")
     }
     #[doc = "TWIS0 SHORTS READ_SUSPEND: Shortcut between READ event and SUSPEND task\n\nTWIS0 SHORTS READ_SUSPEND: Shortcut between READ event and SUSPEND task"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0twi0_shorts_read_suspend(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read TWIS0 SHORTS READ_SUSPEND, TWIS0 SHORTS READ_SUSPEND reset value false")
+        todo!("read TWIS0 SHORTS READ_SUSPEND, TWIS0 SHORTS READ_SUSPEND reset value false")
     }
     #[doc = "TWIS0 SHORTS READ_SUSPEND: Shortcut between READ event and SUSPEND task\n\nTWIS0 SHORTS READ_SUSPEND: Shortcut between READ event and SUSPEND task"]
     #[inline]
@@ -6003,14 +6007,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIS0 SHORTS READ_SUSPEND, TWIS0 SHORTS READ_SUSPEND reset value false")
+        todo!("write TWIS0 SHORTS READ_SUSPEND, TWIS0 SHORTS READ_SUSPEND reset value false")
     }
     #[doc = "SPIM0 SHORTS END_START: Shortcut between END event and START task\n\nSPIM0 SHORTS END_START: Shortcut between END event and START task\n\nSPIM0 SHORTS END_START: Shortcut between END event and START task"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0twi0_shorts_end_start(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read SPIM0 SHORTS END_START, SPIM0 SHORTS END_START, SPIM0 SHORTS END_START reset value false")
+        todo!("read SPIM0 SHORTS END_START, SPIM0 SHORTS END_START, SPIM0 SHORTS END_START reset value false")
     }
     #[doc = "SPIM0 SHORTS END_START: Shortcut between END event and START task\n\nSPIM0 SHORTS END_START: Shortcut between END event and START task\n\nSPIM0 SHORTS END_START: Shortcut between END event and START task"]
     #[inline]
@@ -6018,12 +6022,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 SHORTS END_START, SPIM0 SHORTS END_START, SPIM0 SHORTS END_START reset value false")
+        todo!("write SPIM0 SHORTS END_START, SPIM0 SHORTS END_START, SPIM0 SHORTS END_START reset value false")
     }
     #[doc = "TWIM0 INTEN STOPPED: Enable or disable interrupt for STOPPED event\n\nTWIS0 INTEN STOPPED: Enable or disable interrupt for STOPPED event\n\nTWIM0 INTEN STOPPED: Enable or disable interrupt for STOPPED event\n\nTWIS0 INTEN STOPPED: Enable or disable interrupt for STOPPED event"]
     #[inline]
     pub(crate) fn read_twim0twis0_inten_stopped(&self) -> MemResult<bool> {
-        todo ! ("read TWIM0 INTEN STOPPED, TWIS0 INTEN STOPPED, TWIM0 INTEN STOPPED, TWIS0 INTEN STOPPED reset value false")
+        todo!("read TWIM0 INTEN STOPPED, TWIS0 INTEN STOPPED, TWIM0 INTEN STOPPED, TWIS0 INTEN STOPPED reset value false")
     }
     #[doc = "TWIM0 INTEN STOPPED: Enable or disable interrupt for STOPPED event\n\nTWIS0 INTEN STOPPED: Enable or disable interrupt for STOPPED event\n\nTWIM0 INTEN STOPPED: Enable or disable interrupt for STOPPED event\n\nTWIS0 INTEN STOPPED: Enable or disable interrupt for STOPPED event"]
     #[inline]
@@ -6031,12 +6035,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 INTEN STOPPED, TWIS0 INTEN STOPPED, TWIM0 INTEN STOPPED, TWIS0 INTEN STOPPED reset value false")
+        todo!("write TWIM0 INTEN STOPPED, TWIS0 INTEN STOPPED, TWIM0 INTEN STOPPED, TWIS0 INTEN STOPPED reset value false")
     }
     #[doc = "TWIM0 INTEN ERROR: Enable or disable interrupt for ERROR event\n\nTWIS0 INTEN ERROR: Enable or disable interrupt for ERROR event\n\nTWIM0 INTEN ERROR: Enable or disable interrupt for ERROR event\n\nTWIS0 INTEN ERROR: Enable or disable interrupt for ERROR event"]
     #[inline]
     pub(crate) fn read_twim0twis0_inten_error(&self) -> MemResult<bool> {
-        todo ! ("read TWIM0 INTEN ERROR, TWIS0 INTEN ERROR, TWIM0 INTEN ERROR, TWIS0 INTEN ERROR reset value false")
+        todo!("read TWIM0 INTEN ERROR, TWIS0 INTEN ERROR, TWIM0 INTEN ERROR, TWIS0 INTEN ERROR reset value false")
     }
     #[doc = "TWIM0 INTEN ERROR: Enable or disable interrupt for ERROR event\n\nTWIS0 INTEN ERROR: Enable or disable interrupt for ERROR event\n\nTWIM0 INTEN ERROR: Enable or disable interrupt for ERROR event\n\nTWIS0 INTEN ERROR: Enable or disable interrupt for ERROR event"]
     #[inline]
@@ -6044,12 +6048,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 INTEN ERROR, TWIS0 INTEN ERROR, TWIM0 INTEN ERROR, TWIS0 INTEN ERROR reset value false")
+        todo!("write TWIM0 INTEN ERROR, TWIS0 INTEN ERROR, TWIM0 INTEN ERROR, TWIS0 INTEN ERROR reset value false")
     }
     #[doc = "TWIM0 INTEN SUSPENDED: Enable or disable interrupt for SUSPENDED event\n\nTWIM0 INTEN SUSPENDED: Enable or disable interrupt for SUSPENDED event"]
     #[inline]
     pub(crate) fn read_twim0twis0_inten_suspended(&self) -> MemResult<bool> {
-        todo ! ("read TWIM0 INTEN SUSPENDED, TWIM0 INTEN SUSPENDED reset value false")
+        todo!("read TWIM0 INTEN SUSPENDED, TWIM0 INTEN SUSPENDED reset value false")
     }
     #[doc = "TWIM0 INTEN SUSPENDED: Enable or disable interrupt for SUSPENDED event\n\nTWIM0 INTEN SUSPENDED: Enable or disable interrupt for SUSPENDED event"]
     #[inline]
@@ -6057,12 +6061,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 INTEN SUSPENDED, TWIM0 INTEN SUSPENDED reset value false")
+        todo!("write TWIM0 INTEN SUSPENDED, TWIM0 INTEN SUSPENDED reset value false")
     }
     #[doc = "TWIM0 INTEN RXSTARTED: Enable or disable interrupt for RXSTARTED event\n\nTWIS0 INTEN RXSTARTED: Enable or disable interrupt for RXSTARTED event\n\nTWIM0 INTEN RXSTARTED: Enable or disable interrupt for RXSTARTED event\n\nTWIS0 INTEN RXSTARTED: Enable or disable interrupt for RXSTARTED event"]
     #[inline]
     pub(crate) fn read_twim0twis0_inten_rxstarted(&self) -> MemResult<bool> {
-        todo ! ("read TWIM0 INTEN RXSTARTED, TWIS0 INTEN RXSTARTED, TWIM0 INTEN RXSTARTED, TWIS0 INTEN RXSTARTED reset value false")
+        todo!("read TWIM0 INTEN RXSTARTED, TWIS0 INTEN RXSTARTED, TWIM0 INTEN RXSTARTED, TWIS0 INTEN RXSTARTED reset value false")
     }
     #[doc = "TWIM0 INTEN RXSTARTED: Enable or disable interrupt for RXSTARTED event\n\nTWIS0 INTEN RXSTARTED: Enable or disable interrupt for RXSTARTED event\n\nTWIM0 INTEN RXSTARTED: Enable or disable interrupt for RXSTARTED event\n\nTWIS0 INTEN RXSTARTED: Enable or disable interrupt for RXSTARTED event"]
     #[inline]
@@ -6070,12 +6074,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 INTEN RXSTARTED, TWIS0 INTEN RXSTARTED, TWIM0 INTEN RXSTARTED, TWIS0 INTEN RXSTARTED reset value false")
+        todo!("write TWIM0 INTEN RXSTARTED, TWIS0 INTEN RXSTARTED, TWIM0 INTEN RXSTARTED, TWIS0 INTEN RXSTARTED reset value false")
     }
     #[doc = "TWIM0 INTEN TXSTARTED: Enable or disable interrupt for TXSTARTED event\n\nTWIS0 INTEN TXSTARTED: Enable or disable interrupt for TXSTARTED event\n\nTWIM0 INTEN TXSTARTED: Enable or disable interrupt for TXSTARTED event\n\nTWIS0 INTEN TXSTARTED: Enable or disable interrupt for TXSTARTED event"]
     #[inline]
     pub(crate) fn read_twim0twis0_inten_txstarted(&self) -> MemResult<bool> {
-        todo ! ("read TWIM0 INTEN TXSTARTED, TWIS0 INTEN TXSTARTED, TWIM0 INTEN TXSTARTED, TWIS0 INTEN TXSTARTED reset value false")
+        todo!("read TWIM0 INTEN TXSTARTED, TWIS0 INTEN TXSTARTED, TWIM0 INTEN TXSTARTED, TWIS0 INTEN TXSTARTED reset value false")
     }
     #[doc = "TWIM0 INTEN TXSTARTED: Enable or disable interrupt for TXSTARTED event\n\nTWIS0 INTEN TXSTARTED: Enable or disable interrupt for TXSTARTED event\n\nTWIM0 INTEN TXSTARTED: Enable or disable interrupt for TXSTARTED event\n\nTWIS0 INTEN TXSTARTED: Enable or disable interrupt for TXSTARTED event"]
     #[inline]
@@ -6083,7 +6087,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 INTEN TXSTARTED, TWIS0 INTEN TXSTARTED, TWIM0 INTEN TXSTARTED, TWIS0 INTEN TXSTARTED reset value false")
+        todo!("write TWIM0 INTEN TXSTARTED, TWIS0 INTEN TXSTARTED, TWIM0 INTEN TXSTARTED, TWIS0 INTEN TXSTARTED reset value false")
     }
     #[doc = "TWIM0 INTEN LASTRX: Enable or disable interrupt for LASTRX event\n\nTWIM0 INTEN LASTRX: Enable or disable interrupt for LASTRX event"]
     #[inline]
@@ -6142,7 +6146,7 @@ impl Peripherals {
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenset_stopped(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read SPIM0 INTENSET STOPPED, SPIS0 INTENSET END, TWIM0 INTENSET STOPPED, TWIS0 INTENSET STOPPED, TWI0 INTENSET STOPPED, SPIM0 INTENSET STOPPED, SPIS0 INTENSET END, TWIM0 INTENSET STOPPED, TWIS0 INTENSET STOPPED, TWI0 INTENSET STOPPED, SPIM0 INTENSET STOPPED, SPIS0 INTENSET END reset value false")
+        todo!("read SPIM0 INTENSET STOPPED, SPIS0 INTENSET END, TWIM0 INTENSET STOPPED, TWIS0 INTENSET STOPPED, TWI0 INTENSET STOPPED, SPIM0 INTENSET STOPPED, SPIS0 INTENSET END, TWIM0 INTENSET STOPPED, TWIS0 INTENSET STOPPED, TWI0 INTENSET STOPPED, SPIM0 INTENSET STOPPED, SPIS0 INTENSET END reset value false")
     }
     #[doc = "SPIM0 INTENSET STOPPED: Write '1' to Enable interrupt for STOPPED event\n\nSPIS0 INTENSET END: Write '1' to Enable interrupt for END event\n\nTWIM0 INTENSET STOPPED: Write '1' to Enable interrupt for STOPPED event\n\nTWIS0 INTENSET STOPPED: Write '1' to Enable interrupt for STOPPED event\n\nTWI0 INTENSET STOPPED: Write '1' to Enable interrupt for STOPPED event\n\nSPIM0 INTENSET STOPPED: Write '1' to Enable interrupt for STOPPED event\n\nSPIS0 INTENSET END: Write '1' to Enable interrupt for END event\n\nTWIM0 INTENSET STOPPED: Write '1' to Enable interrupt for STOPPED event\n\nTWIS0 INTENSET STOPPED: Write '1' to Enable interrupt for STOPPED event\n\nTWI0 INTENSET STOPPED: Write '1' to Enable interrupt for STOPPED event\n\nSPIM0 INTENSET STOPPED: Write '1' to Enable interrupt for STOPPED event\n\nSPIS0 INTENSET END: Write '1' to Enable interrupt for END event"]
     #[inline]
@@ -6150,14 +6154,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 INTENSET STOPPED, SPIS0 INTENSET END, TWIM0 INTENSET STOPPED, TWIS0 INTENSET STOPPED, TWI0 INTENSET STOPPED, SPIM0 INTENSET STOPPED, SPIS0 INTENSET END, TWIM0 INTENSET STOPPED, TWIS0 INTENSET STOPPED, TWI0 INTENSET STOPPED, SPIM0 INTENSET STOPPED, SPIS0 INTENSET END reset value false")
+        todo!("write SPIM0 INTENSET STOPPED, SPIS0 INTENSET END, TWIM0 INTENSET STOPPED, TWIS0 INTENSET STOPPED, TWI0 INTENSET STOPPED, SPIM0 INTENSET STOPPED, SPIS0 INTENSET END, TWIM0 INTENSET STOPPED, TWIS0 INTENSET STOPPED, TWI0 INTENSET STOPPED, SPIM0 INTENSET STOPPED, SPIS0 INTENSET END reset value false")
     }
     #[doc = "SPI0 INTENSET READY: Write '1' to Enable interrupt for READY event\n\nTWI0 INTENSET RXDREADY: Write '1' to Enable interrupt for RXDREADY event\n\nSPI0 INTENSET READY: Write '1' to Enable interrupt for READY event\n\nTWI0 INTENSET RXDREADY: Write '1' to Enable interrupt for RXDREADY event\n\nSPI0 INTENSET READY: Write '1' to Enable interrupt for READY event"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenset_ready(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read SPI0 INTENSET READY, TWI0 INTENSET RXDREADY, SPI0 INTENSET READY, TWI0 INTENSET RXDREADY, SPI0 INTENSET READY reset value false")
+        todo!("read SPI0 INTENSET READY, TWI0 INTENSET RXDREADY, SPI0 INTENSET READY, TWI0 INTENSET RXDREADY, SPI0 INTENSET READY reset value false")
     }
     #[doc = "SPI0 INTENSET READY: Write '1' to Enable interrupt for READY event\n\nTWI0 INTENSET RXDREADY: Write '1' to Enable interrupt for RXDREADY event\n\nSPI0 INTENSET READY: Write '1' to Enable interrupt for READY event\n\nTWI0 INTENSET RXDREADY: Write '1' to Enable interrupt for RXDREADY event\n\nSPI0 INTENSET READY: Write '1' to Enable interrupt for READY event"]
     #[inline]
@@ -6165,14 +6169,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPI0 INTENSET READY, TWI0 INTENSET RXDREADY, SPI0 INTENSET READY, TWI0 INTENSET RXDREADY, SPI0 INTENSET READY reset value false")
+        todo!("write SPI0 INTENSET READY, TWI0 INTENSET RXDREADY, SPI0 INTENSET READY, TWI0 INTENSET RXDREADY, SPI0 INTENSET READY reset value false")
     }
     #[doc = "SPIM0 INTENSET ENDRX: Write '1' to Enable interrupt for ENDRX event\n\nSPIS0 INTENSET ENDRX: Write '1' to Enable interrupt for ENDRX event\n\nSPIM0 INTENSET ENDRX: Write '1' to Enable interrupt for ENDRX event\n\nSPIS0 INTENSET ENDRX: Write '1' to Enable interrupt for ENDRX event\n\nSPIM0 INTENSET ENDRX: Write '1' to Enable interrupt for ENDRX event\n\nSPIS0 INTENSET ENDRX: Write '1' to Enable interrupt for ENDRX event"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenset_endrx(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read SPIM0 INTENSET ENDRX, SPIS0 INTENSET ENDRX, SPIM0 INTENSET ENDRX, SPIS0 INTENSET ENDRX, SPIM0 INTENSET ENDRX, SPIS0 INTENSET ENDRX reset value false")
+        todo!("read SPIM0 INTENSET ENDRX, SPIS0 INTENSET ENDRX, SPIM0 INTENSET ENDRX, SPIS0 INTENSET ENDRX, SPIM0 INTENSET ENDRX, SPIS0 INTENSET ENDRX reset value false")
     }
     #[doc = "SPIM0 INTENSET ENDRX: Write '1' to Enable interrupt for ENDRX event\n\nSPIS0 INTENSET ENDRX: Write '1' to Enable interrupt for ENDRX event\n\nSPIM0 INTENSET ENDRX: Write '1' to Enable interrupt for ENDRX event\n\nSPIS0 INTENSET ENDRX: Write '1' to Enable interrupt for ENDRX event\n\nSPIM0 INTENSET ENDRX: Write '1' to Enable interrupt for ENDRX event\n\nSPIS0 INTENSET ENDRX: Write '1' to Enable interrupt for ENDRX event"]
     #[inline]
@@ -6180,14 +6184,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 INTENSET ENDRX, SPIS0 INTENSET ENDRX, SPIM0 INTENSET ENDRX, SPIS0 INTENSET ENDRX, SPIM0 INTENSET ENDRX, SPIS0 INTENSET ENDRX reset value false")
+        todo!("write SPIM0 INTENSET ENDRX, SPIS0 INTENSET ENDRX, SPIM0 INTENSET ENDRX, SPIS0 INTENSET ENDRX, SPIM0 INTENSET ENDRX, SPIS0 INTENSET ENDRX reset value false")
     }
     #[doc = "SPIM0 INTENSET END: Write '1' to Enable interrupt for END event\n\nSPIM0 INTENSET END: Write '1' to Enable interrupt for END event\n\nSPIM0 INTENSET END: Write '1' to Enable interrupt for END event"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenset_end(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read SPIM0 INTENSET END, SPIM0 INTENSET END, SPIM0 INTENSET END reset value false")
+        todo!("read SPIM0 INTENSET END, SPIM0 INTENSET END, SPIM0 INTENSET END reset value false")
     }
     #[doc = "SPIM0 INTENSET END: Write '1' to Enable interrupt for END event\n\nSPIM0 INTENSET END: Write '1' to Enable interrupt for END event\n\nSPIM0 INTENSET END: Write '1' to Enable interrupt for END event"]
     #[inline]
@@ -6195,14 +6199,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 INTENSET END, SPIM0 INTENSET END, SPIM0 INTENSET END reset value false")
+        todo!("write SPIM0 INTENSET END, SPIM0 INTENSET END, SPIM0 INTENSET END reset value false")
     }
     #[doc = "TWI0 INTENSET TXDSENT: Write '1' to Enable interrupt for TXDSENT event\n\nTWI0 INTENSET TXDSENT: Write '1' to Enable interrupt for TXDSENT event"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenset_txdsent(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read TWI0 INTENSET TXDSENT, TWI0 INTENSET TXDSENT reset value false")
+        todo!("read TWI0 INTENSET TXDSENT, TWI0 INTENSET TXDSENT reset value false")
     }
     #[doc = "TWI0 INTENSET TXDSENT: Write '1' to Enable interrupt for TXDSENT event\n\nTWI0 INTENSET TXDSENT: Write '1' to Enable interrupt for TXDSENT event"]
     #[inline]
@@ -6210,14 +6214,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWI0 INTENSET TXDSENT, TWI0 INTENSET TXDSENT reset value false")
+        todo!("write TWI0 INTENSET TXDSENT, TWI0 INTENSET TXDSENT reset value false")
     }
     #[doc = "SPIM0 INTENSET ENDTX: Write '1' to Enable interrupt for ENDTX event\n\nSPIM0 INTENSET ENDTX: Write '1' to Enable interrupt for ENDTX event\n\nSPIM0 INTENSET ENDTX: Write '1' to Enable interrupt for ENDTX event"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenset_endtx(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read SPIM0 INTENSET ENDTX, SPIM0 INTENSET ENDTX, SPIM0 INTENSET ENDTX reset value false")
+        todo!("read SPIM0 INTENSET ENDTX, SPIM0 INTENSET ENDTX, SPIM0 INTENSET ENDTX reset value false")
     }
     #[doc = "SPIM0 INTENSET ENDTX: Write '1' to Enable interrupt for ENDTX event\n\nSPIM0 INTENSET ENDTX: Write '1' to Enable interrupt for ENDTX event\n\nSPIM0 INTENSET ENDTX: Write '1' to Enable interrupt for ENDTX event"]
     #[inline]
@@ -6225,14 +6229,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 INTENSET ENDTX, SPIM0 INTENSET ENDTX, SPIM0 INTENSET ENDTX reset value false")
+        todo!("write SPIM0 INTENSET ENDTX, SPIM0 INTENSET ENDTX, SPIM0 INTENSET ENDTX reset value false")
     }
     #[doc = "TWIM0 INTENSET ERROR: Write '1' to Enable interrupt for ERROR event\n\nTWIS0 INTENSET ERROR: Write '1' to Enable interrupt for ERROR event\n\nTWI0 INTENSET ERROR: Write '1' to Enable interrupt for ERROR event\n\nTWIM0 INTENSET ERROR: Write '1' to Enable interrupt for ERROR event\n\nTWIS0 INTENSET ERROR: Write '1' to Enable interrupt for ERROR event\n\nTWI0 INTENSET ERROR: Write '1' to Enable interrupt for ERROR event"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenset_error(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read TWIM0 INTENSET ERROR, TWIS0 INTENSET ERROR, TWI0 INTENSET ERROR, TWIM0 INTENSET ERROR, TWIS0 INTENSET ERROR, TWI0 INTENSET ERROR reset value false")
+        todo!("read TWIM0 INTENSET ERROR, TWIS0 INTENSET ERROR, TWI0 INTENSET ERROR, TWIM0 INTENSET ERROR, TWIS0 INTENSET ERROR, TWI0 INTENSET ERROR reset value false")
     }
     #[doc = "TWIM0 INTENSET ERROR: Write '1' to Enable interrupt for ERROR event\n\nTWIS0 INTENSET ERROR: Write '1' to Enable interrupt for ERROR event\n\nTWI0 INTENSET ERROR: Write '1' to Enable interrupt for ERROR event\n\nTWIM0 INTENSET ERROR: Write '1' to Enable interrupt for ERROR event\n\nTWIS0 INTENSET ERROR: Write '1' to Enable interrupt for ERROR event\n\nTWI0 INTENSET ERROR: Write '1' to Enable interrupt for ERROR event"]
     #[inline]
@@ -6240,14 +6244,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 INTENSET ERROR, TWIS0 INTENSET ERROR, TWI0 INTENSET ERROR, TWIM0 INTENSET ERROR, TWIS0 INTENSET ERROR, TWI0 INTENSET ERROR reset value false")
+        todo!("write TWIM0 INTENSET ERROR, TWIS0 INTENSET ERROR, TWI0 INTENSET ERROR, TWIM0 INTENSET ERROR, TWIS0 INTENSET ERROR, TWI0 INTENSET ERROR reset value false")
     }
     #[doc = "SPIS0 INTENSET ACQUIRED: Write '1' to Enable interrupt for ACQUIRED event\n\nSPIS0 INTENSET ACQUIRED: Write '1' to Enable interrupt for ACQUIRED event\n\nSPIS0 INTENSET ACQUIRED: Write '1' to Enable interrupt for ACQUIRED event"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenset_acquired(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read SPIS0 INTENSET ACQUIRED, SPIS0 INTENSET ACQUIRED, SPIS0 INTENSET ACQUIRED reset value false")
+        todo!("read SPIS0 INTENSET ACQUIRED, SPIS0 INTENSET ACQUIRED, SPIS0 INTENSET ACQUIRED reset value false")
     }
     #[doc = "SPIS0 INTENSET ACQUIRED: Write '1' to Enable interrupt for ACQUIRED event\n\nSPIS0 INTENSET ACQUIRED: Write '1' to Enable interrupt for ACQUIRED event\n\nSPIS0 INTENSET ACQUIRED: Write '1' to Enable interrupt for ACQUIRED event"]
     #[inline]
@@ -6255,7 +6259,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPIS0 INTENSET ACQUIRED, SPIS0 INTENSET ACQUIRED, SPIS0 INTENSET ACQUIRED reset value false")
+        todo!("write SPIS0 INTENSET ACQUIRED, SPIS0 INTENSET ACQUIRED, SPIS0 INTENSET ACQUIRED reset value false")
     }
     #[doc = "TWI0 INTENSET BB: Write '1' to Enable interrupt for BB event\n\nTWI0 INTENSET BB: Write '1' to Enable interrupt for BB event"]
     #[inline]
@@ -6277,7 +6281,7 @@ impl Peripherals {
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenset_suspended(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read TWIM0 INTENSET SUSPENDED, TWI0 INTENSET SUSPENDED, TWIM0 INTENSET SUSPENDED, TWI0 INTENSET SUSPENDED reset value false")
+        todo!("read TWIM0 INTENSET SUSPENDED, TWI0 INTENSET SUSPENDED, TWIM0 INTENSET SUSPENDED, TWI0 INTENSET SUSPENDED reset value false")
     }
     #[doc = "TWIM0 INTENSET SUSPENDED: Write '1' to Enable interrupt for SUSPENDED event\n\nTWI0 INTENSET SUSPENDED: Write '1' to Enable interrupt for SUSPENDED event\n\nTWIM0 INTENSET SUSPENDED: Write '1' to Enable interrupt for SUSPENDED event\n\nTWI0 INTENSET SUSPENDED: Write '1' to Enable interrupt for SUSPENDED event"]
     #[inline]
@@ -6285,14 +6289,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 INTENSET SUSPENDED, TWI0 INTENSET SUSPENDED, TWIM0 INTENSET SUSPENDED, TWI0 INTENSET SUSPENDED reset value false")
+        todo!("write TWIM0 INTENSET SUSPENDED, TWI0 INTENSET SUSPENDED, TWIM0 INTENSET SUSPENDED, TWI0 INTENSET SUSPENDED reset value false")
     }
     #[doc = "SPIM0 INTENSET STARTED: Write '1' to Enable interrupt for STARTED event\n\nTWIM0 INTENSET RXSTARTED: Write '1' to Enable interrupt for RXSTARTED event\n\nTWIS0 INTENSET RXSTARTED: Write '1' to Enable interrupt for RXSTARTED event\n\nSPIM0 INTENSET STARTED: Write '1' to Enable interrupt for STARTED event\n\nTWIM0 INTENSET RXSTARTED: Write '1' to Enable interrupt for RXSTARTED event\n\nTWIS0 INTENSET RXSTARTED: Write '1' to Enable interrupt for RXSTARTED event\n\nSPIM0 INTENSET STARTED: Write '1' to Enable interrupt for STARTED event"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenset_started(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read SPIM0 INTENSET STARTED, TWIM0 INTENSET RXSTARTED, TWIS0 INTENSET RXSTARTED, SPIM0 INTENSET STARTED, TWIM0 INTENSET RXSTARTED, TWIS0 INTENSET RXSTARTED, SPIM0 INTENSET STARTED reset value false")
+        todo!("read SPIM0 INTENSET STARTED, TWIM0 INTENSET RXSTARTED, TWIS0 INTENSET RXSTARTED, SPIM0 INTENSET STARTED, TWIM0 INTENSET RXSTARTED, TWIS0 INTENSET RXSTARTED, SPIM0 INTENSET STARTED reset value false")
     }
     #[doc = "SPIM0 INTENSET STARTED: Write '1' to Enable interrupt for STARTED event\n\nTWIM0 INTENSET RXSTARTED: Write '1' to Enable interrupt for RXSTARTED event\n\nTWIS0 INTENSET RXSTARTED: Write '1' to Enable interrupt for RXSTARTED event\n\nSPIM0 INTENSET STARTED: Write '1' to Enable interrupt for STARTED event\n\nTWIM0 INTENSET RXSTARTED: Write '1' to Enable interrupt for RXSTARTED event\n\nTWIS0 INTENSET RXSTARTED: Write '1' to Enable interrupt for RXSTARTED event\n\nSPIM0 INTENSET STARTED: Write '1' to Enable interrupt for STARTED event"]
     #[inline]
@@ -6300,14 +6304,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 INTENSET STARTED, TWIM0 INTENSET RXSTARTED, TWIS0 INTENSET RXSTARTED, SPIM0 INTENSET STARTED, TWIM0 INTENSET RXSTARTED, TWIS0 INTENSET RXSTARTED, SPIM0 INTENSET STARTED reset value false")
+        todo!("write SPIM0 INTENSET STARTED, TWIM0 INTENSET RXSTARTED, TWIS0 INTENSET RXSTARTED, SPIM0 INTENSET STARTED, TWIM0 INTENSET RXSTARTED, TWIS0 INTENSET RXSTARTED, SPIM0 INTENSET STARTED reset value false")
     }
     #[doc = "TWIM0 INTENSET TXSTARTED: Write '1' to Enable interrupt for TXSTARTED event\n\nTWIS0 INTENSET TXSTARTED: Write '1' to Enable interrupt for TXSTARTED event\n\nTWIM0 INTENSET TXSTARTED: Write '1' to Enable interrupt for TXSTARTED event\n\nTWIS0 INTENSET TXSTARTED: Write '1' to Enable interrupt for TXSTARTED event"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenset_txstarted(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read TWIM0 INTENSET TXSTARTED, TWIS0 INTENSET TXSTARTED, TWIM0 INTENSET TXSTARTED, TWIS0 INTENSET TXSTARTED reset value false")
+        todo!("read TWIM0 INTENSET TXSTARTED, TWIS0 INTENSET TXSTARTED, TWIM0 INTENSET TXSTARTED, TWIS0 INTENSET TXSTARTED reset value false")
     }
     #[doc = "TWIM0 INTENSET TXSTARTED: Write '1' to Enable interrupt for TXSTARTED event\n\nTWIS0 INTENSET TXSTARTED: Write '1' to Enable interrupt for TXSTARTED event\n\nTWIM0 INTENSET TXSTARTED: Write '1' to Enable interrupt for TXSTARTED event\n\nTWIS0 INTENSET TXSTARTED: Write '1' to Enable interrupt for TXSTARTED event"]
     #[inline]
@@ -6315,14 +6319,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 INTENSET TXSTARTED, TWIS0 INTENSET TXSTARTED, TWIM0 INTENSET TXSTARTED, TWIS0 INTENSET TXSTARTED reset value false")
+        todo!("write TWIM0 INTENSET TXSTARTED, TWIS0 INTENSET TXSTARTED, TWIM0 INTENSET TXSTARTED, TWIS0 INTENSET TXSTARTED reset value false")
     }
     #[doc = "TWIM0 INTENSET LASTRX: Write '1' to Enable interrupt for LASTRX event\n\nTWIM0 INTENSET LASTRX: Write '1' to Enable interrupt for LASTRX event"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenset_lastrx(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read TWIM0 INTENSET LASTRX, TWIM0 INTENSET LASTRX reset value false")
+        todo!("read TWIM0 INTENSET LASTRX, TWIM0 INTENSET LASTRX reset value false")
     }
     #[doc = "TWIM0 INTENSET LASTRX: Write '1' to Enable interrupt for LASTRX event\n\nTWIM0 INTENSET LASTRX: Write '1' to Enable interrupt for LASTRX event"]
     #[inline]
@@ -6330,14 +6334,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 INTENSET LASTRX, TWIM0 INTENSET LASTRX reset value false")
+        todo!("write TWIM0 INTENSET LASTRX, TWIM0 INTENSET LASTRX reset value false")
     }
     #[doc = "TWIM0 INTENSET LASTTX: Write '1' to Enable interrupt for LASTTX event\n\nTWIM0 INTENSET LASTTX: Write '1' to Enable interrupt for LASTTX event"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenset_lasttx(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read TWIM0 INTENSET LASTTX, TWIM0 INTENSET LASTTX reset value false")
+        todo!("read TWIM0 INTENSET LASTTX, TWIM0 INTENSET LASTTX reset value false")
     }
     #[doc = "TWIM0 INTENSET LASTTX: Write '1' to Enable interrupt for LASTTX event\n\nTWIM0 INTENSET LASTTX: Write '1' to Enable interrupt for LASTTX event"]
     #[inline]
@@ -6345,7 +6349,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 INTENSET LASTTX, TWIM0 INTENSET LASTTX reset value false")
+        todo!("write TWIM0 INTENSET LASTTX, TWIM0 INTENSET LASTTX reset value false")
     }
     #[doc = "TWIS0 INTENSET WRITE: Write '1' to Enable interrupt for WRITE event\n\nTWIS0 INTENSET WRITE: Write '1' to Enable interrupt for WRITE event"]
     #[inline]
@@ -6362,7 +6366,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIS0 INTENSET WRITE, TWIS0 INTENSET WRITE reset value false")
+        todo!("write TWIS0 INTENSET WRITE, TWIS0 INTENSET WRITE reset value false")
     }
     #[doc = "TWIS0 INTENSET READ: Write '1' to Enable interrupt for READ event\n\nTWIS0 INTENSET READ: Write '1' to Enable interrupt for READ event"]
     #[inline]
@@ -6386,7 +6390,7 @@ impl Peripherals {
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenclr_stopped(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read SPIM0 INTENCLR STOPPED, SPIS0 INTENCLR END, TWIM0 INTENCLR STOPPED, TWIS0 INTENCLR STOPPED, TWI0 INTENCLR STOPPED, SPIM0 INTENCLR STOPPED, SPIS0 INTENCLR END, TWIM0 INTENCLR STOPPED, TWIS0 INTENCLR STOPPED, TWI0 INTENCLR STOPPED, SPIM0 INTENCLR STOPPED, SPIS0 INTENCLR END reset value false")
+        todo!("read SPIM0 INTENCLR STOPPED, SPIS0 INTENCLR END, TWIM0 INTENCLR STOPPED, TWIS0 INTENCLR STOPPED, TWI0 INTENCLR STOPPED, SPIM0 INTENCLR STOPPED, SPIS0 INTENCLR END, TWIM0 INTENCLR STOPPED, TWIS0 INTENCLR STOPPED, TWI0 INTENCLR STOPPED, SPIM0 INTENCLR STOPPED, SPIS0 INTENCLR END reset value false")
     }
     #[doc = "SPIM0 INTENCLR STOPPED: Write '1' to Disable interrupt for STOPPED event\n\nSPIS0 INTENCLR END: Write '1' to Disable interrupt for END event\n\nTWIM0 INTENCLR STOPPED: Write '1' to Disable interrupt for STOPPED event\n\nTWIS0 INTENCLR STOPPED: Write '1' to Disable interrupt for STOPPED event\n\nTWI0 INTENCLR STOPPED: Write '1' to Disable interrupt for STOPPED event\n\nSPIM0 INTENCLR STOPPED: Write '1' to Disable interrupt for STOPPED event\n\nSPIS0 INTENCLR END: Write '1' to Disable interrupt for END event\n\nTWIM0 INTENCLR STOPPED: Write '1' to Disable interrupt for STOPPED event\n\nTWIS0 INTENCLR STOPPED: Write '1' to Disable interrupt for STOPPED event\n\nTWI0 INTENCLR STOPPED: Write '1' to Disable interrupt for STOPPED event\n\nSPIM0 INTENCLR STOPPED: Write '1' to Disable interrupt for STOPPED event\n\nSPIS0 INTENCLR END: Write '1' to Disable interrupt for END event"]
     #[inline]
@@ -6394,14 +6398,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 INTENCLR STOPPED, SPIS0 INTENCLR END, TWIM0 INTENCLR STOPPED, TWIS0 INTENCLR STOPPED, TWI0 INTENCLR STOPPED, SPIM0 INTENCLR STOPPED, SPIS0 INTENCLR END, TWIM0 INTENCLR STOPPED, TWIS0 INTENCLR STOPPED, TWI0 INTENCLR STOPPED, SPIM0 INTENCLR STOPPED, SPIS0 INTENCLR END reset value false")
+        todo!("write SPIM0 INTENCLR STOPPED, SPIS0 INTENCLR END, TWIM0 INTENCLR STOPPED, TWIS0 INTENCLR STOPPED, TWI0 INTENCLR STOPPED, SPIM0 INTENCLR STOPPED, SPIS0 INTENCLR END, TWIM0 INTENCLR STOPPED, TWIS0 INTENCLR STOPPED, TWI0 INTENCLR STOPPED, SPIM0 INTENCLR STOPPED, SPIS0 INTENCLR END reset value false")
     }
     #[doc = "SPI0 INTENCLR READY: Write '1' to Disable interrupt for READY event\n\nTWI0 INTENCLR RXDREADY: Write '1' to Disable interrupt for RXDREADY event\n\nSPI0 INTENCLR READY: Write '1' to Disable interrupt for READY event\n\nTWI0 INTENCLR RXDREADY: Write '1' to Disable interrupt for RXDREADY event\n\nSPI0 INTENCLR READY: Write '1' to Disable interrupt for READY event"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenclr_ready(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read SPI0 INTENCLR READY, TWI0 INTENCLR RXDREADY, SPI0 INTENCLR READY, TWI0 INTENCLR RXDREADY, SPI0 INTENCLR READY reset value false")
+        todo!("read SPI0 INTENCLR READY, TWI0 INTENCLR RXDREADY, SPI0 INTENCLR READY, TWI0 INTENCLR RXDREADY, SPI0 INTENCLR READY reset value false")
     }
     #[doc = "SPI0 INTENCLR READY: Write '1' to Disable interrupt for READY event\n\nTWI0 INTENCLR RXDREADY: Write '1' to Disable interrupt for RXDREADY event\n\nSPI0 INTENCLR READY: Write '1' to Disable interrupt for READY event\n\nTWI0 INTENCLR RXDREADY: Write '1' to Disable interrupt for RXDREADY event\n\nSPI0 INTENCLR READY: Write '1' to Disable interrupt for READY event"]
     #[inline]
@@ -6409,14 +6413,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPI0 INTENCLR READY, TWI0 INTENCLR RXDREADY, SPI0 INTENCLR READY, TWI0 INTENCLR RXDREADY, SPI0 INTENCLR READY reset value false")
+        todo!("write SPI0 INTENCLR READY, TWI0 INTENCLR RXDREADY, SPI0 INTENCLR READY, TWI0 INTENCLR RXDREADY, SPI0 INTENCLR READY reset value false")
     }
     #[doc = "SPIM0 INTENCLR ENDRX: Write '1' to Disable interrupt for ENDRX event\n\nSPIS0 INTENCLR ENDRX: Write '1' to Disable interrupt for ENDRX event\n\nSPIM0 INTENCLR ENDRX: Write '1' to Disable interrupt for ENDRX event\n\nSPIS0 INTENCLR ENDRX: Write '1' to Disable interrupt for ENDRX event\n\nSPIM0 INTENCLR ENDRX: Write '1' to Disable interrupt for ENDRX event\n\nSPIS0 INTENCLR ENDRX: Write '1' to Disable interrupt for ENDRX event"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenclr_endrx(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read SPIM0 INTENCLR ENDRX, SPIS0 INTENCLR ENDRX, SPIM0 INTENCLR ENDRX, SPIS0 INTENCLR ENDRX, SPIM0 INTENCLR ENDRX, SPIS0 INTENCLR ENDRX reset value false")
+        todo!("read SPIM0 INTENCLR ENDRX, SPIS0 INTENCLR ENDRX, SPIM0 INTENCLR ENDRX, SPIS0 INTENCLR ENDRX, SPIM0 INTENCLR ENDRX, SPIS0 INTENCLR ENDRX reset value false")
     }
     #[doc = "SPIM0 INTENCLR ENDRX: Write '1' to Disable interrupt for ENDRX event\n\nSPIS0 INTENCLR ENDRX: Write '1' to Disable interrupt for ENDRX event\n\nSPIM0 INTENCLR ENDRX: Write '1' to Disable interrupt for ENDRX event\n\nSPIS0 INTENCLR ENDRX: Write '1' to Disable interrupt for ENDRX event\n\nSPIM0 INTENCLR ENDRX: Write '1' to Disable interrupt for ENDRX event\n\nSPIS0 INTENCLR ENDRX: Write '1' to Disable interrupt for ENDRX event"]
     #[inline]
@@ -6424,14 +6428,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 INTENCLR ENDRX, SPIS0 INTENCLR ENDRX, SPIM0 INTENCLR ENDRX, SPIS0 INTENCLR ENDRX, SPIM0 INTENCLR ENDRX, SPIS0 INTENCLR ENDRX reset value false")
+        todo!("write SPIM0 INTENCLR ENDRX, SPIS0 INTENCLR ENDRX, SPIM0 INTENCLR ENDRX, SPIS0 INTENCLR ENDRX, SPIM0 INTENCLR ENDRX, SPIS0 INTENCLR ENDRX reset value false")
     }
     #[doc = "SPIM0 INTENCLR END: Write '1' to Disable interrupt for END event\n\nSPIM0 INTENCLR END: Write '1' to Disable interrupt for END event\n\nSPIM0 INTENCLR END: Write '1' to Disable interrupt for END event"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenclr_end(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read SPIM0 INTENCLR END, SPIM0 INTENCLR END, SPIM0 INTENCLR END reset value false")
+        todo!("read SPIM0 INTENCLR END, SPIM0 INTENCLR END, SPIM0 INTENCLR END reset value false")
     }
     #[doc = "SPIM0 INTENCLR END: Write '1' to Disable interrupt for END event\n\nSPIM0 INTENCLR END: Write '1' to Disable interrupt for END event\n\nSPIM0 INTENCLR END: Write '1' to Disable interrupt for END event"]
     #[inline]
@@ -6439,14 +6443,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 INTENCLR END, SPIM0 INTENCLR END, SPIM0 INTENCLR END reset value false")
+        todo!("write SPIM0 INTENCLR END, SPIM0 INTENCLR END, SPIM0 INTENCLR END reset value false")
     }
     #[doc = "TWI0 INTENCLR TXDSENT: Write '1' to Disable interrupt for TXDSENT event\n\nTWI0 INTENCLR TXDSENT: Write '1' to Disable interrupt for TXDSENT event"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenclr_txdsent(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read TWI0 INTENCLR TXDSENT, TWI0 INTENCLR TXDSENT reset value false")
+        todo!("read TWI0 INTENCLR TXDSENT, TWI0 INTENCLR TXDSENT reset value false")
     }
     #[doc = "TWI0 INTENCLR TXDSENT: Write '1' to Disable interrupt for TXDSENT event\n\nTWI0 INTENCLR TXDSENT: Write '1' to Disable interrupt for TXDSENT event"]
     #[inline]
@@ -6454,14 +6458,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWI0 INTENCLR TXDSENT, TWI0 INTENCLR TXDSENT reset value false")
+        todo!("write TWI0 INTENCLR TXDSENT, TWI0 INTENCLR TXDSENT reset value false")
     }
     #[doc = "SPIM0 INTENCLR ENDTX: Write '1' to Disable interrupt for ENDTX event\n\nSPIM0 INTENCLR ENDTX: Write '1' to Disable interrupt for ENDTX event\n\nSPIM0 INTENCLR ENDTX: Write '1' to Disable interrupt for ENDTX event"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenclr_endtx(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read SPIM0 INTENCLR ENDTX, SPIM0 INTENCLR ENDTX, SPIM0 INTENCLR ENDTX reset value false")
+        todo!("read SPIM0 INTENCLR ENDTX, SPIM0 INTENCLR ENDTX, SPIM0 INTENCLR ENDTX reset value false")
     }
     #[doc = "SPIM0 INTENCLR ENDTX: Write '1' to Disable interrupt for ENDTX event\n\nSPIM0 INTENCLR ENDTX: Write '1' to Disable interrupt for ENDTX event\n\nSPIM0 INTENCLR ENDTX: Write '1' to Disable interrupt for ENDTX event"]
     #[inline]
@@ -6469,14 +6473,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 INTENCLR ENDTX, SPIM0 INTENCLR ENDTX, SPIM0 INTENCLR ENDTX reset value false")
+        todo!("write SPIM0 INTENCLR ENDTX, SPIM0 INTENCLR ENDTX, SPIM0 INTENCLR ENDTX reset value false")
     }
     #[doc = "TWIM0 INTENCLR ERROR: Write '1' to Disable interrupt for ERROR event\n\nTWIS0 INTENCLR ERROR: Write '1' to Disable interrupt for ERROR event\n\nTWI0 INTENCLR ERROR: Write '1' to Disable interrupt for ERROR event\n\nTWIM0 INTENCLR ERROR: Write '1' to Disable interrupt for ERROR event\n\nTWIS0 INTENCLR ERROR: Write '1' to Disable interrupt for ERROR event\n\nTWI0 INTENCLR ERROR: Write '1' to Disable interrupt for ERROR event"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenclr_error(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read TWIM0 INTENCLR ERROR, TWIS0 INTENCLR ERROR, TWI0 INTENCLR ERROR, TWIM0 INTENCLR ERROR, TWIS0 INTENCLR ERROR, TWI0 INTENCLR ERROR reset value false")
+        todo!("read TWIM0 INTENCLR ERROR, TWIS0 INTENCLR ERROR, TWI0 INTENCLR ERROR, TWIM0 INTENCLR ERROR, TWIS0 INTENCLR ERROR, TWI0 INTENCLR ERROR reset value false")
     }
     #[doc = "TWIM0 INTENCLR ERROR: Write '1' to Disable interrupt for ERROR event\n\nTWIS0 INTENCLR ERROR: Write '1' to Disable interrupt for ERROR event\n\nTWI0 INTENCLR ERROR: Write '1' to Disable interrupt for ERROR event\n\nTWIM0 INTENCLR ERROR: Write '1' to Disable interrupt for ERROR event\n\nTWIS0 INTENCLR ERROR: Write '1' to Disable interrupt for ERROR event\n\nTWI0 INTENCLR ERROR: Write '1' to Disable interrupt for ERROR event"]
     #[inline]
@@ -6484,14 +6488,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 INTENCLR ERROR, TWIS0 INTENCLR ERROR, TWI0 INTENCLR ERROR, TWIM0 INTENCLR ERROR, TWIS0 INTENCLR ERROR, TWI0 INTENCLR ERROR reset value false")
+        todo!("write TWIM0 INTENCLR ERROR, TWIS0 INTENCLR ERROR, TWI0 INTENCLR ERROR, TWIM0 INTENCLR ERROR, TWIS0 INTENCLR ERROR, TWI0 INTENCLR ERROR reset value false")
     }
     #[doc = "SPIS0 INTENCLR ACQUIRED: Write '1' to Disable interrupt for ACQUIRED event\n\nSPIS0 INTENCLR ACQUIRED: Write '1' to Disable interrupt for ACQUIRED event\n\nSPIS0 INTENCLR ACQUIRED: Write '1' to Disable interrupt for ACQUIRED event"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenclr_acquired(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read SPIS0 INTENCLR ACQUIRED, SPIS0 INTENCLR ACQUIRED, SPIS0 INTENCLR ACQUIRED reset value false")
+        todo!("read SPIS0 INTENCLR ACQUIRED, SPIS0 INTENCLR ACQUIRED, SPIS0 INTENCLR ACQUIRED reset value false")
     }
     #[doc = "SPIS0 INTENCLR ACQUIRED: Write '1' to Disable interrupt for ACQUIRED event\n\nSPIS0 INTENCLR ACQUIRED: Write '1' to Disable interrupt for ACQUIRED event\n\nSPIS0 INTENCLR ACQUIRED: Write '1' to Disable interrupt for ACQUIRED event"]
     #[inline]
@@ -6499,7 +6503,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPIS0 INTENCLR ACQUIRED, SPIS0 INTENCLR ACQUIRED, SPIS0 INTENCLR ACQUIRED reset value false")
+        todo!("write SPIS0 INTENCLR ACQUIRED, SPIS0 INTENCLR ACQUIRED, SPIS0 INTENCLR ACQUIRED reset value false")
     }
     #[doc = "TWI0 INTENCLR BB: Write '1' to Disable interrupt for BB event\n\nTWI0 INTENCLR BB: Write '1' to Disable interrupt for BB event"]
     #[inline]
@@ -6521,7 +6525,7 @@ impl Peripherals {
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenclr_suspended(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read TWIM0 INTENCLR SUSPENDED, TWI0 INTENCLR SUSPENDED, TWIM0 INTENCLR SUSPENDED, TWI0 INTENCLR SUSPENDED reset value false")
+        todo!("read TWIM0 INTENCLR SUSPENDED, TWI0 INTENCLR SUSPENDED, TWIM0 INTENCLR SUSPENDED, TWI0 INTENCLR SUSPENDED reset value false")
     }
     #[doc = "TWIM0 INTENCLR SUSPENDED: Write '1' to Disable interrupt for SUSPENDED event\n\nTWI0 INTENCLR SUSPENDED: Write '1' to Disable interrupt for SUSPENDED event\n\nTWIM0 INTENCLR SUSPENDED: Write '1' to Disable interrupt for SUSPENDED event\n\nTWI0 INTENCLR SUSPENDED: Write '1' to Disable interrupt for SUSPENDED event"]
     #[inline]
@@ -6529,14 +6533,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 INTENCLR SUSPENDED, TWI0 INTENCLR SUSPENDED, TWIM0 INTENCLR SUSPENDED, TWI0 INTENCLR SUSPENDED reset value false")
+        todo!("write TWIM0 INTENCLR SUSPENDED, TWI0 INTENCLR SUSPENDED, TWIM0 INTENCLR SUSPENDED, TWI0 INTENCLR SUSPENDED reset value false")
     }
     #[doc = "SPIM0 INTENCLR STARTED: Write '1' to Disable interrupt for STARTED event\n\nTWIM0 INTENCLR RXSTARTED: Write '1' to Disable interrupt for RXSTARTED event\n\nTWIS0 INTENCLR RXSTARTED: Write '1' to Disable interrupt for RXSTARTED event\n\nSPIM0 INTENCLR STARTED: Write '1' to Disable interrupt for STARTED event\n\nTWIM0 INTENCLR RXSTARTED: Write '1' to Disable interrupt for RXSTARTED event\n\nTWIS0 INTENCLR RXSTARTED: Write '1' to Disable interrupt for RXSTARTED event\n\nSPIM0 INTENCLR STARTED: Write '1' to Disable interrupt for STARTED event"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenclr_started(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read SPIM0 INTENCLR STARTED, TWIM0 INTENCLR RXSTARTED, TWIS0 INTENCLR RXSTARTED, SPIM0 INTENCLR STARTED, TWIM0 INTENCLR RXSTARTED, TWIS0 INTENCLR RXSTARTED, SPIM0 INTENCLR STARTED reset value false")
+        todo!("read SPIM0 INTENCLR STARTED, TWIM0 INTENCLR RXSTARTED, TWIS0 INTENCLR RXSTARTED, SPIM0 INTENCLR STARTED, TWIM0 INTENCLR RXSTARTED, TWIS0 INTENCLR RXSTARTED, SPIM0 INTENCLR STARTED reset value false")
     }
     #[doc = "SPIM0 INTENCLR STARTED: Write '1' to Disable interrupt for STARTED event\n\nTWIM0 INTENCLR RXSTARTED: Write '1' to Disable interrupt for RXSTARTED event\n\nTWIS0 INTENCLR RXSTARTED: Write '1' to Disable interrupt for RXSTARTED event\n\nSPIM0 INTENCLR STARTED: Write '1' to Disable interrupt for STARTED event\n\nTWIM0 INTENCLR RXSTARTED: Write '1' to Disable interrupt for RXSTARTED event\n\nTWIS0 INTENCLR RXSTARTED: Write '1' to Disable interrupt for RXSTARTED event\n\nSPIM0 INTENCLR STARTED: Write '1' to Disable interrupt for STARTED event"]
     #[inline]
@@ -6544,14 +6548,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 INTENCLR STARTED, TWIM0 INTENCLR RXSTARTED, TWIS0 INTENCLR RXSTARTED, SPIM0 INTENCLR STARTED, TWIM0 INTENCLR RXSTARTED, TWIS0 INTENCLR RXSTARTED, SPIM0 INTENCLR STARTED reset value false")
+        todo!("write SPIM0 INTENCLR STARTED, TWIM0 INTENCLR RXSTARTED, TWIS0 INTENCLR RXSTARTED, SPIM0 INTENCLR STARTED, TWIM0 INTENCLR RXSTARTED, TWIS0 INTENCLR RXSTARTED, SPIM0 INTENCLR STARTED reset value false")
     }
     #[doc = "TWIM0 INTENCLR TXSTARTED: Write '1' to Disable interrupt for TXSTARTED event\n\nTWIS0 INTENCLR TXSTARTED: Write '1' to Disable interrupt for TXSTARTED event\n\nTWIM0 INTENCLR TXSTARTED: Write '1' to Disable interrupt for TXSTARTED event\n\nTWIS0 INTENCLR TXSTARTED: Write '1' to Disable interrupt for TXSTARTED event"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenclr_txstarted(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read TWIM0 INTENCLR TXSTARTED, TWIS0 INTENCLR TXSTARTED, TWIM0 INTENCLR TXSTARTED, TWIS0 INTENCLR TXSTARTED reset value false")
+        todo!("read TWIM0 INTENCLR TXSTARTED, TWIS0 INTENCLR TXSTARTED, TWIM0 INTENCLR TXSTARTED, TWIS0 INTENCLR TXSTARTED reset value false")
     }
     #[doc = "TWIM0 INTENCLR TXSTARTED: Write '1' to Disable interrupt for TXSTARTED event\n\nTWIS0 INTENCLR TXSTARTED: Write '1' to Disable interrupt for TXSTARTED event\n\nTWIM0 INTENCLR TXSTARTED: Write '1' to Disable interrupt for TXSTARTED event\n\nTWIS0 INTENCLR TXSTARTED: Write '1' to Disable interrupt for TXSTARTED event"]
     #[inline]
@@ -6559,14 +6563,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 INTENCLR TXSTARTED, TWIS0 INTENCLR TXSTARTED, TWIM0 INTENCLR TXSTARTED, TWIS0 INTENCLR TXSTARTED reset value false")
+        todo!("write TWIM0 INTENCLR TXSTARTED, TWIS0 INTENCLR TXSTARTED, TWIM0 INTENCLR TXSTARTED, TWIS0 INTENCLR TXSTARTED reset value false")
     }
     #[doc = "TWIM0 INTENCLR LASTRX: Write '1' to Disable interrupt for LASTRX event\n\nTWIM0 INTENCLR LASTRX: Write '1' to Disable interrupt for LASTRX event"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenclr_lastrx(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read TWIM0 INTENCLR LASTRX, TWIM0 INTENCLR LASTRX reset value false")
+        todo!("read TWIM0 INTENCLR LASTRX, TWIM0 INTENCLR LASTRX reset value false")
     }
     #[doc = "TWIM0 INTENCLR LASTRX: Write '1' to Disable interrupt for LASTRX event\n\nTWIM0 INTENCLR LASTRX: Write '1' to Disable interrupt for LASTRX event"]
     #[inline]
@@ -6574,14 +6578,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 INTENCLR LASTRX, TWIM0 INTENCLR LASTRX reset value false")
+        todo!("write TWIM0 INTENCLR LASTRX, TWIM0 INTENCLR LASTRX reset value false")
     }
     #[doc = "TWIM0 INTENCLR LASTTX: Write '1' to Disable interrupt for LASTTX event\n\nTWIM0 INTENCLR LASTTX: Write '1' to Disable interrupt for LASTTX event"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_intenclr_lasttx(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read TWIM0 INTENCLR LASTTX, TWIM0 INTENCLR LASTTX reset value false")
+        todo!("read TWIM0 INTENCLR LASTTX, TWIM0 INTENCLR LASTTX reset value false")
     }
     #[doc = "TWIM0 INTENCLR LASTTX: Write '1' to Disable interrupt for LASTTX event\n\nTWIM0 INTENCLR LASTTX: Write '1' to Disable interrupt for LASTTX event"]
     #[inline]
@@ -6589,7 +6593,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 INTENCLR LASTTX, TWIM0 INTENCLR LASTTX reset value false")
+        todo!("write TWIM0 INTENCLR LASTTX, TWIM0 INTENCLR LASTTX reset value false")
     }
     #[doc = "TWIS0 INTENCLR WRITE: Write '1' to Disable interrupt for WRITE event\n\nTWIS0 INTENCLR WRITE: Write '1' to Disable interrupt for WRITE event"]
     #[inline]
@@ -6606,7 +6610,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIS0 INTENCLR WRITE, TWIS0 INTENCLR WRITE reset value false")
+        todo!("write TWIS0 INTENCLR WRITE, TWIS0 INTENCLR WRITE reset value false")
     }
     #[doc = "TWIS0 INTENCLR READ: Write '1' to Disable interrupt for READ event\n\nTWIS0 INTENCLR READ: Write '1' to Disable interrupt for READ event"]
     #[inline]
@@ -6628,12 +6632,12 @@ impl Peripherals {
     #[doc = "SPIS0 SEMSTAT SEMSTAT: Semaphore status\n\nSPIS0 SEMSTAT SEMSTAT: Semaphore status\n\nSPIS0 SEMSTAT SEMSTAT: Semaphore status"]
     #[inline]
     pub(crate) fn read_spis0_semstat_semstat(&self) -> MemResult<u8> {
-        todo ! ("read SPIS0 SEMSTAT SEMSTAT, SPIS0 SEMSTAT SEMSTAT, SPIS0 SEMSTAT SEMSTAT reset value 0x01 mask 0x03")
+        todo!("read SPIS0 SEMSTAT SEMSTAT, SPIS0 SEMSTAT SEMSTAT, SPIS0 SEMSTAT SEMSTAT reset value 0x01 mask 0x03")
     }
     #[doc = "SPIS0 STATUS OVERREAD: TX buffer over-read detected, and prevented\n\nSPIS0 STATUS OVERREAD: TX buffer over-read detected, and prevented\n\nSPIS0 STATUS OVERREAD: TX buffer over-read detected, and prevented"]
     #[inline]
     pub(crate) fn read_spis0_status_overread(&self) -> MemResult<bool> {
-        todo ! ("read SPIS0 STATUS OVERREAD, SPIS0 STATUS OVERREAD, SPIS0 STATUS OVERREAD reset value false")
+        todo!("read SPIS0 STATUS OVERREAD, SPIS0 STATUS OVERREAD, SPIS0 STATUS OVERREAD reset value false")
     }
     #[doc = "SPIS0 STATUS OVERREAD: TX buffer over-read detected, and prevented\n\nSPIS0 STATUS OVERREAD: TX buffer over-read detected, and prevented\n\nSPIS0 STATUS OVERREAD: TX buffer over-read detected, and prevented"]
     #[inline]
@@ -6641,12 +6645,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPIS0 STATUS OVERREAD, SPIS0 STATUS OVERREAD, SPIS0 STATUS OVERREAD reset value false")
+        todo!("write SPIS0 STATUS OVERREAD, SPIS0 STATUS OVERREAD, SPIS0 STATUS OVERREAD reset value false")
     }
     #[doc = "SPIS0 STATUS OVERFLOW: RX buffer overflow detected, and prevented\n\nSPIS0 STATUS OVERFLOW: RX buffer overflow detected, and prevented\n\nSPIS0 STATUS OVERFLOW: RX buffer overflow detected, and prevented"]
     #[inline]
     pub(crate) fn read_spis0_status_overflow(&self) -> MemResult<bool> {
-        todo ! ("read SPIS0 STATUS OVERFLOW, SPIS0 STATUS OVERFLOW, SPIS0 STATUS OVERFLOW reset value false")
+        todo!("read SPIS0 STATUS OVERFLOW, SPIS0 STATUS OVERFLOW, SPIS0 STATUS OVERFLOW reset value false")
     }
     #[doc = "SPIS0 STATUS OVERFLOW: RX buffer overflow detected, and prevented\n\nSPIS0 STATUS OVERFLOW: RX buffer overflow detected, and prevented\n\nSPIS0 STATUS OVERFLOW: RX buffer overflow detected, and prevented"]
     #[inline]
@@ -6654,12 +6658,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPIS0 STATUS OVERFLOW, SPIS0 STATUS OVERFLOW, SPIS0 STATUS OVERFLOW reset value false")
+        todo!("write SPIS0 STATUS OVERFLOW, SPIS0 STATUS OVERFLOW, SPIS0 STATUS OVERFLOW reset value false")
     }
     #[doc = "TWIM0 ERRORSRC OVERRUN: Overrun error\n\nTWI0 ERRORSRC OVERRUN: Overrun error\n\nTWIM0 ERRORSRC OVERRUN: Overrun error\n\nTWI0 ERRORSRC OVERRUN: Overrun error"]
     #[inline]
     pub(crate) fn read_twim0twi0_errorsrc_overrun(&self) -> MemResult<bool> {
-        todo ! ("read TWIM0 ERRORSRC OVERRUN, TWI0 ERRORSRC OVERRUN, TWIM0 ERRORSRC OVERRUN, TWI0 ERRORSRC OVERRUN reset value false")
+        todo!("read TWIM0 ERRORSRC OVERRUN, TWI0 ERRORSRC OVERRUN, TWIM0 ERRORSRC OVERRUN, TWI0 ERRORSRC OVERRUN reset value false")
     }
     #[doc = "TWIM0 ERRORSRC OVERRUN: Overrun error\n\nTWI0 ERRORSRC OVERRUN: Overrun error\n\nTWIM0 ERRORSRC OVERRUN: Overrun error\n\nTWI0 ERRORSRC OVERRUN: Overrun error"]
     #[inline]
@@ -6667,12 +6671,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 ERRORSRC OVERRUN, TWI0 ERRORSRC OVERRUN, TWIM0 ERRORSRC OVERRUN, TWI0 ERRORSRC OVERRUN reset value false")
+        todo!("write TWIM0 ERRORSRC OVERRUN, TWI0 ERRORSRC OVERRUN, TWIM0 ERRORSRC OVERRUN, TWI0 ERRORSRC OVERRUN reset value false")
     }
     #[doc = "TWIM0 ERRORSRC ANACK: NACK received after sending the address (write '1' to clear)\n\nTWI0 ERRORSRC ANACK: NACK received after sending the address (write '1' to clear)\n\nTWIM0 ERRORSRC ANACK: NACK received after sending the address (write '1' to clear)\n\nTWI0 ERRORSRC ANACK: NACK received after sending the address (write '1' to clear)"]
     #[inline]
     pub(crate) fn read_twim0twi0_errorsrc_anack(&self) -> MemResult<bool> {
-        todo ! ("read TWIM0 ERRORSRC ANACK, TWI0 ERRORSRC ANACK, TWIM0 ERRORSRC ANACK, TWI0 ERRORSRC ANACK reset value false")
+        todo!("read TWIM0 ERRORSRC ANACK, TWI0 ERRORSRC ANACK, TWIM0 ERRORSRC ANACK, TWI0 ERRORSRC ANACK reset value false")
     }
     #[doc = "TWIM0 ERRORSRC ANACK: NACK received after sending the address (write '1' to clear)\n\nTWI0 ERRORSRC ANACK: NACK received after sending the address (write '1' to clear)\n\nTWIM0 ERRORSRC ANACK: NACK received after sending the address (write '1' to clear)\n\nTWI0 ERRORSRC ANACK: NACK received after sending the address (write '1' to clear)"]
     #[inline]
@@ -6680,12 +6684,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 ERRORSRC ANACK, TWI0 ERRORSRC ANACK, TWIM0 ERRORSRC ANACK, TWI0 ERRORSRC ANACK reset value false")
+        todo!("write TWIM0 ERRORSRC ANACK, TWI0 ERRORSRC ANACK, TWIM0 ERRORSRC ANACK, TWI0 ERRORSRC ANACK reset value false")
     }
     #[doc = "TWIM0 ERRORSRC DNACK: NACK received after sending a data byte (write '1' to clear)\n\nTWI0 ERRORSRC DNACK: NACK received after sending a data byte (write '1' to clear)\n\nTWIM0 ERRORSRC DNACK: NACK received after sending a data byte (write '1' to clear)\n\nTWI0 ERRORSRC DNACK: NACK received after sending a data byte (write '1' to clear)"]
     #[inline]
     pub(crate) fn read_twim0twi0_errorsrc_dnack(&self) -> MemResult<bool> {
-        todo ! ("read TWIM0 ERRORSRC DNACK, TWI0 ERRORSRC DNACK, TWIM0 ERRORSRC DNACK, TWI0 ERRORSRC DNACK reset value false")
+        todo!("read TWIM0 ERRORSRC DNACK, TWI0 ERRORSRC DNACK, TWIM0 ERRORSRC DNACK, TWI0 ERRORSRC DNACK reset value false")
     }
     #[doc = "TWIM0 ERRORSRC DNACK: NACK received after sending a data byte (write '1' to clear)\n\nTWI0 ERRORSRC DNACK: NACK received after sending a data byte (write '1' to clear)\n\nTWIM0 ERRORSRC DNACK: NACK received after sending a data byte (write '1' to clear)\n\nTWI0 ERRORSRC DNACK: NACK received after sending a data byte (write '1' to clear)"]
     #[inline]
@@ -6693,12 +6697,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 ERRORSRC DNACK, TWI0 ERRORSRC DNACK, TWIM0 ERRORSRC DNACK, TWI0 ERRORSRC DNACK reset value false")
+        todo!("write TWIM0 ERRORSRC DNACK, TWI0 ERRORSRC DNACK, TWIM0 ERRORSRC DNACK, TWI0 ERRORSRC DNACK reset value false")
     }
     #[doc = "TWIS0 ERRORSRC OVERFLOW: RX buffer overflow detected, and prevented\n\nTWIS0 ERRORSRC OVERFLOW: RX buffer overflow detected, and prevented"]
     #[inline]
     pub(crate) fn read_twis0_errorsrc_overflow(&self) -> MemResult<bool> {
-        todo ! ("read TWIS0 ERRORSRC OVERFLOW, TWIS0 ERRORSRC OVERFLOW reset value false")
+        todo!("read TWIS0 ERRORSRC OVERFLOW, TWIS0 ERRORSRC OVERFLOW reset value false")
     }
     #[doc = "TWIS0 ERRORSRC OVERFLOW: RX buffer overflow detected, and prevented\n\nTWIS0 ERRORSRC OVERFLOW: RX buffer overflow detected, and prevented"]
     #[inline]
@@ -6706,7 +6710,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIS0 ERRORSRC OVERFLOW, TWIS0 ERRORSRC OVERFLOW reset value false")
+        todo!("write TWIS0 ERRORSRC OVERFLOW, TWIS0 ERRORSRC OVERFLOW reset value false")
     }
     #[doc = "TWIS0 ERRORSRC DNACK: NACK sent after receiving a data byte\n\nTWIS0 ERRORSRC DNACK: NACK sent after receiving a data byte"]
     #[inline]
@@ -6721,12 +6725,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIS0 ERRORSRC DNACK, TWIS0 ERRORSRC DNACK reset value false")
+        todo!("write TWIS0 ERRORSRC DNACK, TWIS0 ERRORSRC DNACK reset value false")
     }
     #[doc = "TWIS0 ERRORSRC OVERREAD: TX buffer over-read detected, and prevented\n\nTWIS0 ERRORSRC OVERREAD: TX buffer over-read detected, and prevented"]
     #[inline]
     pub(crate) fn read_twis0_errorsrc_overread(&self) -> MemResult<bool> {
-        todo ! ("read TWIS0 ERRORSRC OVERREAD, TWIS0 ERRORSRC OVERREAD reset value false")
+        todo!("read TWIS0 ERRORSRC OVERREAD, TWIS0 ERRORSRC OVERREAD reset value false")
     }
     #[doc = "TWIS0 ERRORSRC OVERREAD: TX buffer over-read detected, and prevented\n\nTWIS0 ERRORSRC OVERREAD: TX buffer over-read detected, and prevented"]
     #[inline]
@@ -6734,7 +6738,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIS0 ERRORSRC OVERREAD, TWIS0 ERRORSRC OVERREAD reset value false")
+        todo!("write TWIS0 ERRORSRC OVERREAD, TWIS0 ERRORSRC OVERREAD reset value false")
     }
     #[doc = "TWIS0 MATCH MATCH: Which of the addresses in {ADDRESS} matched the incoming address\n\nTWIS0 MATCH MATCH: Which of the addresses in {ADDRESS} matched the incoming address"]
     #[inline]
@@ -6746,7 +6750,7 @@ impl Peripherals {
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_enable_enable(
         &self,
     ) -> MemResult<u8> {
-        todo ! ("read SPIM0 ENABLE ENABLE, SPIS0 ENABLE ENABLE, TWIM0 ENABLE ENABLE, TWIS0 ENABLE ENABLE, SPI0 ENABLE ENABLE, TWI0 ENABLE ENABLE, SPIM0 ENABLE ENABLE, SPIS0 ENABLE ENABLE, TWIM0 ENABLE ENABLE, TWIS0 ENABLE ENABLE, SPI0 ENABLE ENABLE, TWI0 ENABLE ENABLE, SPIM0 ENABLE ENABLE, SPIS0 ENABLE ENABLE, SPI0 ENABLE ENABLE reset value 0x00 mask 0x0f")
+        todo!("read SPIM0 ENABLE ENABLE, SPIS0 ENABLE ENABLE, TWIM0 ENABLE ENABLE, TWIS0 ENABLE ENABLE, SPI0 ENABLE ENABLE, TWI0 ENABLE ENABLE, SPIM0 ENABLE ENABLE, SPIS0 ENABLE ENABLE, TWIM0 ENABLE ENABLE, TWIS0 ENABLE ENABLE, SPI0 ENABLE ENABLE, TWI0 ENABLE ENABLE, SPIM0 ENABLE ENABLE, SPIS0 ENABLE ENABLE, SPI0 ENABLE ENABLE reset value 0x00 mask 0x0f")
     }
     #[doc = "SPIM0 ENABLE ENABLE: Enable or disable SPIM\n\nSPIS0 ENABLE ENABLE: Enable or disable SPI slave\n\nTWIM0 ENABLE ENABLE: Enable or disable TWIM\n\nTWIS0 ENABLE ENABLE: Enable or disable TWIS\n\nSPI0 ENABLE ENABLE: Enable or disable SPI\n\nTWI0 ENABLE ENABLE: Enable or disable TWI\n\nSPIM0 ENABLE ENABLE: Enable or disable SPIM\n\nSPIS0 ENABLE ENABLE: Enable or disable SPI slave\n\nTWIM0 ENABLE ENABLE: Enable or disable TWIM\n\nTWIS0 ENABLE ENABLE: Enable or disable TWIS\n\nSPI0 ENABLE ENABLE: Enable or disable SPI\n\nTWI0 ENABLE ENABLE: Enable or disable TWI\n\nSPIM0 ENABLE ENABLE: Enable or disable SPIM\n\nSPIS0 ENABLE ENABLE: Enable or disable SPI slave\n\nSPI0 ENABLE ENABLE: Enable or disable SPI"]
     #[inline]
@@ -6754,14 +6758,14 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 ENABLE ENABLE, SPIS0 ENABLE ENABLE, TWIM0 ENABLE ENABLE, TWIS0 ENABLE ENABLE, SPI0 ENABLE ENABLE, TWI0 ENABLE ENABLE, SPIM0 ENABLE ENABLE, SPIS0 ENABLE ENABLE, TWIM0 ENABLE ENABLE, TWIS0 ENABLE ENABLE, SPI0 ENABLE ENABLE, TWI0 ENABLE ENABLE, SPIM0 ENABLE ENABLE, SPIS0 ENABLE ENABLE, SPI0 ENABLE ENABLE reset value 0x00 mask 0x0f")
+        todo!("write SPIM0 ENABLE ENABLE, SPIS0 ENABLE ENABLE, TWIM0 ENABLE ENABLE, TWIS0 ENABLE ENABLE, SPI0 ENABLE ENABLE, TWI0 ENABLE ENABLE, SPIM0 ENABLE ENABLE, SPIS0 ENABLE ENABLE, TWIM0 ENABLE ENABLE, TWIS0 ENABLE ENABLE, SPI0 ENABLE ENABLE, TWI0 ENABLE ENABLE, SPIM0 ENABLE ENABLE, SPIS0 ENABLE ENABLE, SPI0 ENABLE ENABLE reset value 0x00 mask 0x0f")
     }
     #[doc = "SPIM0 SCK PIN: Pin number\n\nSPIS0 SCK PIN: Pin number\n\nTWIM0 SCL PIN: Pin number\n\nTWIS0 SCL PIN: Pin number\n\nSPI0 SCK PSELSCK: Pin number configuration for SPI SCK signal\n\nTWI0 PSELSCL PSELSCL: Pin number configuration for TWI SCL signal\n\nSPIM0 SCK PIN: Pin number\n\nSPIS0 SCK PIN: Pin number\n\nTWIM0 SCL PIN: Pin number\n\nTWIS0 SCL PIN: Pin number\n\nSPI0 SCK PSELSCK: Pin number configuration for SPI SCK signal\n\nTWI0 PSELSCL PSELSCL: Pin number configuration for TWI SCL signal\n\nSPIM0 SCK PIN: Pin number\n\nSPIS0 SCK PIN: Pin number\n\nSPI0 SCK PSELSCK: Pin number configuration for SPI SCK signal"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_psel_sck_pin(
         &self,
     ) -> MemResult<u8> {
-        todo ! ("read SPIM0 SCK PIN, SPIS0 SCK PIN, TWIM0 SCL PIN, TWIS0 SCL PIN, SPI0 SCK PSELSCK, TWI0 PSELSCL PSELSCL, SPIM0 SCK PIN, SPIS0 SCK PIN, TWIM0 SCL PIN, TWIS0 SCL PIN, SPI0 SCK PSELSCK, TWI0 PSELSCL PSELSCL, SPIM0 SCK PIN, SPIS0 SCK PIN, SPI0 SCK PSELSCK reset value 0x1f mask 0x1f")
+        todo!("read SPIM0 SCK PIN, SPIS0 SCK PIN, TWIM0 SCL PIN, TWIS0 SCL PIN, SPI0 SCK PSELSCK, TWI0 PSELSCL PSELSCL, SPIM0 SCK PIN, SPIS0 SCK PIN, TWIM0 SCL PIN, TWIS0 SCL PIN, SPI0 SCK PSELSCK, TWI0 PSELSCL PSELSCL, SPIM0 SCK PIN, SPIS0 SCK PIN, SPI0 SCK PSELSCK reset value 0x1f mask 0x1f")
     }
     #[doc = "SPIM0 SCK PIN: Pin number\n\nSPIS0 SCK PIN: Pin number\n\nTWIM0 SCL PIN: Pin number\n\nTWIS0 SCL PIN: Pin number\n\nSPI0 SCK PSELSCK: Pin number configuration for SPI SCK signal\n\nTWI0 PSELSCL PSELSCL: Pin number configuration for TWI SCL signal\n\nSPIM0 SCK PIN: Pin number\n\nSPIS0 SCK PIN: Pin number\n\nTWIM0 SCL PIN: Pin number\n\nTWIS0 SCL PIN: Pin number\n\nSPI0 SCK PSELSCK: Pin number configuration for SPI SCK signal\n\nTWI0 PSELSCL PSELSCL: Pin number configuration for TWI SCL signal\n\nSPIM0 SCK PIN: Pin number\n\nSPIS0 SCK PIN: Pin number\n\nSPI0 SCK PSELSCK: Pin number configuration for SPI SCK signal"]
     #[inline]
@@ -6769,14 +6773,14 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 SCK PIN, SPIS0 SCK PIN, TWIM0 SCL PIN, TWIS0 SCL PIN, SPI0 SCK PSELSCK, TWI0 PSELSCL PSELSCL, SPIM0 SCK PIN, SPIS0 SCK PIN, TWIM0 SCL PIN, TWIS0 SCL PIN, SPI0 SCK PSELSCK, TWI0 PSELSCL PSELSCL, SPIM0 SCK PIN, SPIS0 SCK PIN, SPI0 SCK PSELSCK reset value 0x1f mask 0x1f")
+        todo!("write SPIM0 SCK PIN, SPIS0 SCK PIN, TWIM0 SCL PIN, TWIS0 SCL PIN, SPI0 SCK PSELSCK, TWI0 PSELSCL PSELSCL, SPIM0 SCK PIN, SPIS0 SCK PIN, TWIM0 SCL PIN, TWIS0 SCL PIN, SPI0 SCK PSELSCK, TWI0 PSELSCL PSELSCL, SPIM0 SCK PIN, SPIS0 SCK PIN, SPI0 SCK PSELSCK reset value 0x1f mask 0x1f")
     }
     #[doc = "SPIM0 SCK CONNECT: Connection\n\nSPIS0 SCK CONNECT: Connection\n\nTWIM0 SCL CONNECT: Connection\n\nTWIS0 SCL CONNECT: Connection\n\nSPIM0 SCK CONNECT: Connection\n\nSPIS0 SCK CONNECT: Connection\n\nTWIM0 SCL CONNECT: Connection\n\nTWIS0 SCL CONNECT: Connection\n\nSPIM0 SCK CONNECT: Connection\n\nSPIS0 SCK CONNECT: Connection"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_psel_sck_connect(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read SPIM0 SCK CONNECT, SPIS0 SCK CONNECT, TWIM0 SCL CONNECT, TWIS0 SCL CONNECT, SPIM0 SCK CONNECT, SPIS0 SCK CONNECT, TWIM0 SCL CONNECT, TWIS0 SCL CONNECT, SPIM0 SCK CONNECT, SPIS0 SCK CONNECT reset value true")
+        todo!("read SPIM0 SCK CONNECT, SPIS0 SCK CONNECT, TWIM0 SCL CONNECT, TWIS0 SCL CONNECT, SPIM0 SCK CONNECT, SPIS0 SCK CONNECT, TWIM0 SCL CONNECT, TWIS0 SCL CONNECT, SPIM0 SCK CONNECT, SPIS0 SCK CONNECT reset value true")
     }
     #[doc = "SPIM0 SCK CONNECT: Connection\n\nSPIS0 SCK CONNECT: Connection\n\nTWIM0 SCL CONNECT: Connection\n\nTWIS0 SCL CONNECT: Connection\n\nSPIM0 SCK CONNECT: Connection\n\nSPIS0 SCK CONNECT: Connection\n\nTWIM0 SCL CONNECT: Connection\n\nTWIS0 SCL CONNECT: Connection\n\nSPIM0 SCK CONNECT: Connection\n\nSPIS0 SCK CONNECT: Connection"]
     #[inline]
@@ -6784,14 +6788,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 SCK CONNECT, SPIS0 SCK CONNECT, TWIM0 SCL CONNECT, TWIS0 SCL CONNECT, SPIM0 SCK CONNECT, SPIS0 SCK CONNECT, TWIM0 SCL CONNECT, TWIS0 SCL CONNECT, SPIM0 SCK CONNECT, SPIS0 SCK CONNECT reset value true")
+        todo!("write SPIM0 SCK CONNECT, SPIS0 SCK CONNECT, TWIM0 SCL CONNECT, TWIS0 SCL CONNECT, SPIM0 SCK CONNECT, SPIS0 SCK CONNECT, TWIM0 SCL CONNECT, TWIS0 SCL CONNECT, SPIM0 SCK CONNECT, SPIS0 SCK CONNECT reset value true")
     }
     #[doc = "SPIM0 MOSI PIN: Pin number\n\nSPIS0 MISO PIN: Pin number\n\nTWIM0 SDA PIN: Pin number\n\nTWIS0 SDA PIN: Pin number\n\nSPI0 MOSI PSELMOSI: Pin number configuration for SPI MOSI signal\n\nTWI0 PSELSDA PSELSDA: Pin number configuration for TWI SDA signal\n\nSPIM0 MOSI PIN: Pin number\n\nSPIS0 MISO PIN: Pin number\n\nTWIM0 SDA PIN: Pin number\n\nTWIS0 SDA PIN: Pin number\n\nSPI0 MOSI PSELMOSI: Pin number configuration for SPI MOSI signal\n\nTWI0 PSELSDA PSELSDA: Pin number configuration for TWI SDA signal\n\nSPIM0 MOSI PIN: Pin number\n\nSPIS0 MISO PIN: Pin number\n\nSPI0 MOSI PSELMOSI: Pin number configuration for SPI MOSI signal"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_psel_mosi_pin(
         &self,
     ) -> MemResult<u8> {
-        todo ! ("read SPIM0 MOSI PIN, SPIS0 MISO PIN, TWIM0 SDA PIN, TWIS0 SDA PIN, SPI0 MOSI PSELMOSI, TWI0 PSELSDA PSELSDA, SPIM0 MOSI PIN, SPIS0 MISO PIN, TWIM0 SDA PIN, TWIS0 SDA PIN, SPI0 MOSI PSELMOSI, TWI0 PSELSDA PSELSDA, SPIM0 MOSI PIN, SPIS0 MISO PIN, SPI0 MOSI PSELMOSI reset value 0x1f mask 0x1f")
+        todo!("read SPIM0 MOSI PIN, SPIS0 MISO PIN, TWIM0 SDA PIN, TWIS0 SDA PIN, SPI0 MOSI PSELMOSI, TWI0 PSELSDA PSELSDA, SPIM0 MOSI PIN, SPIS0 MISO PIN, TWIM0 SDA PIN, TWIS0 SDA PIN, SPI0 MOSI PSELMOSI, TWI0 PSELSDA PSELSDA, SPIM0 MOSI PIN, SPIS0 MISO PIN, SPI0 MOSI PSELMOSI reset value 0x1f mask 0x1f")
     }
     #[doc = "SPIM0 MOSI PIN: Pin number\n\nSPIS0 MISO PIN: Pin number\n\nTWIM0 SDA PIN: Pin number\n\nTWIS0 SDA PIN: Pin number\n\nSPI0 MOSI PSELMOSI: Pin number configuration for SPI MOSI signal\n\nTWI0 PSELSDA PSELSDA: Pin number configuration for TWI SDA signal\n\nSPIM0 MOSI PIN: Pin number\n\nSPIS0 MISO PIN: Pin number\n\nTWIM0 SDA PIN: Pin number\n\nTWIS0 SDA PIN: Pin number\n\nSPI0 MOSI PSELMOSI: Pin number configuration for SPI MOSI signal\n\nTWI0 PSELSDA PSELSDA: Pin number configuration for TWI SDA signal\n\nSPIM0 MOSI PIN: Pin number\n\nSPIS0 MISO PIN: Pin number\n\nSPI0 MOSI PSELMOSI: Pin number configuration for SPI MOSI signal"]
     #[inline]
@@ -6799,14 +6803,14 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 MOSI PIN, SPIS0 MISO PIN, TWIM0 SDA PIN, TWIS0 SDA PIN, SPI0 MOSI PSELMOSI, TWI0 PSELSDA PSELSDA, SPIM0 MOSI PIN, SPIS0 MISO PIN, TWIM0 SDA PIN, TWIS0 SDA PIN, SPI0 MOSI PSELMOSI, TWI0 PSELSDA PSELSDA, SPIM0 MOSI PIN, SPIS0 MISO PIN, SPI0 MOSI PSELMOSI reset value 0x1f mask 0x1f")
+        todo!("write SPIM0 MOSI PIN, SPIS0 MISO PIN, TWIM0 SDA PIN, TWIS0 SDA PIN, SPI0 MOSI PSELMOSI, TWI0 PSELSDA PSELSDA, SPIM0 MOSI PIN, SPIS0 MISO PIN, TWIM0 SDA PIN, TWIS0 SDA PIN, SPI0 MOSI PSELMOSI, TWI0 PSELSDA PSELSDA, SPIM0 MOSI PIN, SPIS0 MISO PIN, SPI0 MOSI PSELMOSI reset value 0x1f mask 0x1f")
     }
     #[doc = "SPIM0 MOSI CONNECT: Connection\n\nSPIS0 MISO CONNECT: Connection\n\nTWIM0 SDA CONNECT: Connection\n\nTWIS0 SDA CONNECT: Connection\n\nSPIM0 MOSI CONNECT: Connection\n\nSPIS0 MISO CONNECT: Connection\n\nTWIM0 SDA CONNECT: Connection\n\nTWIS0 SDA CONNECT: Connection\n\nSPIM0 MOSI CONNECT: Connection\n\nSPIS0 MISO CONNECT: Connection"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0spi0twi0_psel_mosi_connect(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read SPIM0 MOSI CONNECT, SPIS0 MISO CONNECT, TWIM0 SDA CONNECT, TWIS0 SDA CONNECT, SPIM0 MOSI CONNECT, SPIS0 MISO CONNECT, TWIM0 SDA CONNECT, TWIS0 SDA CONNECT, SPIM0 MOSI CONNECT, SPIS0 MISO CONNECT reset value true")
+        todo!("read SPIM0 MOSI CONNECT, SPIS0 MISO CONNECT, TWIM0 SDA CONNECT, TWIS0 SDA CONNECT, SPIM0 MOSI CONNECT, SPIS0 MISO CONNECT, TWIM0 SDA CONNECT, TWIS0 SDA CONNECT, SPIM0 MOSI CONNECT, SPIS0 MISO CONNECT reset value true")
     }
     #[doc = "SPIM0 MOSI CONNECT: Connection\n\nSPIS0 MISO CONNECT: Connection\n\nTWIM0 SDA CONNECT: Connection\n\nTWIS0 SDA CONNECT: Connection\n\nSPIM0 MOSI CONNECT: Connection\n\nSPIS0 MISO CONNECT: Connection\n\nTWIM0 SDA CONNECT: Connection\n\nTWIS0 SDA CONNECT: Connection\n\nSPIM0 MOSI CONNECT: Connection\n\nSPIS0 MISO CONNECT: Connection"]
     #[inline]
@@ -6814,12 +6818,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 MOSI CONNECT, SPIS0 MISO CONNECT, TWIM0 SDA CONNECT, TWIS0 SDA CONNECT, SPIM0 MOSI CONNECT, SPIS0 MISO CONNECT, TWIM0 SDA CONNECT, TWIS0 SDA CONNECT, SPIM0 MOSI CONNECT, SPIS0 MISO CONNECT reset value true")
+        todo!("write SPIM0 MOSI CONNECT, SPIS0 MISO CONNECT, TWIM0 SDA CONNECT, TWIS0 SDA CONNECT, SPIM0 MOSI CONNECT, SPIS0 MISO CONNECT, TWIM0 SDA CONNECT, TWIS0 SDA CONNECT, SPIM0 MOSI CONNECT, SPIS0 MISO CONNECT reset value true")
     }
     #[doc = "SPIM0 MISO PIN: Pin number\n\nSPIS0 MOSI PIN: Pin number\n\nSPI0 MISO PSELMISO: Pin number configuration for SPI MISO signal\n\nSPIM0 MISO PIN: Pin number\n\nSPIS0 MOSI PIN: Pin number\n\nSPI0 MISO PSELMISO: Pin number configuration for SPI MISO signal\n\nSPIM0 MISO PIN: Pin number\n\nSPIS0 MOSI PIN: Pin number\n\nSPI0 MISO PSELMISO: Pin number configuration for SPI MISO signal"]
     #[inline]
     pub(crate) fn read_spim0spis0spi0_psel_miso_pin(&self) -> MemResult<u8> {
-        todo ! ("read SPIM0 MISO PIN, SPIS0 MOSI PIN, SPI0 MISO PSELMISO, SPIM0 MISO PIN, SPIS0 MOSI PIN, SPI0 MISO PSELMISO, SPIM0 MISO PIN, SPIS0 MOSI PIN, SPI0 MISO PSELMISO reset value 0x1f mask 0x1f")
+        todo!("read SPIM0 MISO PIN, SPIS0 MOSI PIN, SPI0 MISO PSELMISO, SPIM0 MISO PIN, SPIS0 MOSI PIN, SPI0 MISO PSELMISO, SPIM0 MISO PIN, SPIS0 MOSI PIN, SPI0 MISO PSELMISO reset value 0x1f mask 0x1f")
     }
     #[doc = "SPIM0 MISO PIN: Pin number\n\nSPIS0 MOSI PIN: Pin number\n\nSPI0 MISO PSELMISO: Pin number configuration for SPI MISO signal\n\nSPIM0 MISO PIN: Pin number\n\nSPIS0 MOSI PIN: Pin number\n\nSPI0 MISO PSELMISO: Pin number configuration for SPI MISO signal\n\nSPIM0 MISO PIN: Pin number\n\nSPIS0 MOSI PIN: Pin number\n\nSPI0 MISO PSELMISO: Pin number configuration for SPI MISO signal"]
     #[inline]
@@ -6827,14 +6831,14 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 MISO PIN, SPIS0 MOSI PIN, SPI0 MISO PSELMISO, SPIM0 MISO PIN, SPIS0 MOSI PIN, SPI0 MISO PSELMISO, SPIM0 MISO PIN, SPIS0 MOSI PIN, SPI0 MISO PSELMISO reset value 0x1f mask 0x1f")
+        todo!("write SPIM0 MISO PIN, SPIS0 MOSI PIN, SPI0 MISO PSELMISO, SPIM0 MISO PIN, SPIS0 MOSI PIN, SPI0 MISO PSELMISO, SPIM0 MISO PIN, SPIS0 MOSI PIN, SPI0 MISO PSELMISO reset value 0x1f mask 0x1f")
     }
     #[doc = "SPIM0 MISO CONNECT: Connection\n\nSPIS0 MOSI CONNECT: Connection\n\nSPIM0 MISO CONNECT: Connection\n\nSPIS0 MOSI CONNECT: Connection\n\nSPIM0 MISO CONNECT: Connection\n\nSPIS0 MOSI CONNECT: Connection"]
     #[inline]
     pub(crate) fn read_spim0spis0spi0_psel_miso_connect(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read SPIM0 MISO CONNECT, SPIS0 MOSI CONNECT, SPIM0 MISO CONNECT, SPIS0 MOSI CONNECT, SPIM0 MISO CONNECT, SPIS0 MOSI CONNECT reset value true")
+        todo!("read SPIM0 MISO CONNECT, SPIS0 MOSI CONNECT, SPIM0 MISO CONNECT, SPIS0 MOSI CONNECT, SPIM0 MISO CONNECT, SPIS0 MOSI CONNECT reset value true")
     }
     #[doc = "SPIM0 MISO CONNECT: Connection\n\nSPIS0 MOSI CONNECT: Connection\n\nSPIM0 MISO CONNECT: Connection\n\nSPIS0 MOSI CONNECT: Connection\n\nSPIM0 MISO CONNECT: Connection\n\nSPIS0 MOSI CONNECT: Connection"]
     #[inline]
@@ -6842,12 +6846,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 MISO CONNECT, SPIS0 MOSI CONNECT, SPIM0 MISO CONNECT, SPIS0 MOSI CONNECT, SPIM0 MISO CONNECT, SPIS0 MOSI CONNECT reset value true")
+        todo!("write SPIM0 MISO CONNECT, SPIS0 MOSI CONNECT, SPIM0 MISO CONNECT, SPIS0 MOSI CONNECT, SPIM0 MISO CONNECT, SPIS0 MOSI CONNECT reset value true")
     }
     #[doc = "SPIS0 CSN PIN: Pin number\n\nSPIS0 CSN PIN: Pin number\n\nSPIS0 CSN PIN: Pin number"]
     #[inline]
     pub(crate) fn read_spis0_psel_csn_pin(&self) -> MemResult<u8> {
-        todo ! ("read SPIS0 CSN PIN, SPIS0 CSN PIN, SPIS0 CSN PIN reset value 0x1f mask 0x1f")
+        todo!("read SPIS0 CSN PIN, SPIS0 CSN PIN, SPIS0 CSN PIN reset value 0x1f mask 0x1f")
     }
     #[doc = "SPIS0 CSN PIN: Pin number\n\nSPIS0 CSN PIN: Pin number\n\nSPIS0 CSN PIN: Pin number"]
     #[inline]
@@ -6855,12 +6859,12 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write SPIS0 CSN PIN, SPIS0 CSN PIN, SPIS0 CSN PIN reset value 0x1f mask 0x1f")
+        todo!("write SPIS0 CSN PIN, SPIS0 CSN PIN, SPIS0 CSN PIN reset value 0x1f mask 0x1f")
     }
     #[doc = "SPIS0 CSN CONNECT: Connection\n\nSPIS0 CSN CONNECT: Connection\n\nSPIS0 CSN CONNECT: Connection"]
     #[inline]
     pub(crate) fn read_spis0_psel_csn_connect(&self) -> MemResult<bool> {
-        todo ! ("read SPIS0 CSN CONNECT, SPIS0 CSN CONNECT, SPIS0 CSN CONNECT reset value true")
+        todo!("read SPIS0 CSN CONNECT, SPIS0 CSN CONNECT, SPIS0 CSN CONNECT reset value true")
     }
     #[doc = "SPIS0 CSN CONNECT: Connection\n\nSPIS0 CSN CONNECT: Connection\n\nSPIS0 CSN CONNECT: Connection"]
     #[inline]
@@ -6868,17 +6872,17 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPIS0 CSN CONNECT, SPIS0 CSN CONNECT, SPIS0 CSN CONNECT reset value true")
+        todo!("write SPIS0 CSN CONNECT, SPIS0 CSN CONNECT, SPIS0 CSN CONNECT reset value true")
     }
     #[doc = "SPI0 RXD RXD: RX data received. Double buffered\n\nTWI0 RXD RXD: RXD register\n\nSPI0 RXD RXD: RX data received. Double buffered\n\nTWI0 RXD RXD: RXD register\n\nSPI0 RXD RXD: RX data received. Double buffered"]
     #[inline]
     pub(crate) fn read_spi0twi0_rxd_rxd(&self) -> MemResult<u8> {
-        todo ! ("read SPI0 RXD RXD, TWI0 RXD RXD, SPI0 RXD RXD, TWI0 RXD RXD, SPI0 RXD RXD reset value 0x00 mask 0xff")
+        todo!("read SPI0 RXD RXD, TWI0 RXD RXD, SPI0 RXD RXD, TWI0 RXD RXD, SPI0 RXD RXD reset value 0x00 mask 0xff")
     }
     #[doc = "SPI0 TXD TXD: TX data to send. Double buffered\n\nTWI0 TXD TXD: TXD register\n\nSPI0 TXD TXD: TX data to send. Double buffered\n\nTWI0 TXD TXD: TXD register\n\nSPI0 TXD TXD: TX data to send. Double buffered"]
     #[inline]
     pub(crate) fn read_spi0twi0_txd_txd(&self) -> MemResult<u8> {
-        todo ! ("read SPI0 TXD TXD, TWI0 TXD TXD, SPI0 TXD TXD, TWI0 TXD TXD, SPI0 TXD TXD reset value 0x00 mask 0xff")
+        todo!("read SPI0 TXD TXD, TWI0 TXD TXD, SPI0 TXD TXD, TWI0 TXD TXD, SPI0 TXD TXD reset value 0x00 mask 0xff")
     }
     #[doc = "SPI0 TXD TXD: TX data to send. Double buffered\n\nTWI0 TXD TXD: TXD register\n\nSPI0 TXD TXD: TX data to send. Double buffered\n\nTWI0 TXD TXD: TXD register\n\nSPI0 TXD TXD: TX data to send. Double buffered"]
     #[inline]
@@ -6886,12 +6890,12 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write SPI0 TXD TXD, TWI0 TXD TXD, SPI0 TXD TXD, TWI0 TXD TXD, SPI0 TXD TXD reset value 0x00 mask 0xff")
+        todo!("write SPI0 TXD TXD, TWI0 TXD TXD, SPI0 TXD TXD, TWI0 TXD TXD, SPI0 TXD TXD reset value 0x00 mask 0xff")
     }
     #[doc = "SPIM0 FREQUENCY: SPI frequency. Accuracy depends on the HFCLK source selected.\n\nTWIM0 FREQUENCY: TWI frequency\n\nSPI0 FREQUENCY: SPI frequency\n\nTWI0 FREQUENCY: TWI frequency\n\nSPIM0 FREQUENCY: SPI frequency. Accuracy depends on the HFCLK source selected.\n\nTWIM0 FREQUENCY: TWI frequency\n\nSPI0 FREQUENCY: SPI frequency\n\nTWI0 FREQUENCY: TWI frequency\n\nSPIM0 FREQUENCY: SPI frequency. Accuracy depends on the HFCLK source selected.\n\nSPI0 FREQUENCY: SPI frequency"]
     #[inline]
     pub(crate) fn read_spim0twim0spi0twi0_frequency(&self) -> MemResult<u32> {
-        todo ! ("read SPIM0 FREQUENCY, TWIM0 FREQUENCY, SPI0 FREQUENCY, TWI0 FREQUENCY, SPIM0 FREQUENCY, TWIM0 FREQUENCY, SPI0 FREQUENCY, TWI0 FREQUENCY, SPIM0 FREQUENCY, SPI0 FREQUENCY reset value 0x4000000 mask 0xffffffffffffffff")
+        todo!("read SPIM0 FREQUENCY, TWIM0 FREQUENCY, SPI0 FREQUENCY, TWI0 FREQUENCY, SPIM0 FREQUENCY, TWIM0 FREQUENCY, SPI0 FREQUENCY, TWI0 FREQUENCY, SPIM0 FREQUENCY, SPI0 FREQUENCY reset value 0x4000000 mask 0xffffffffffffffff")
     }
     #[doc = "SPIM0 FREQUENCY: SPI frequency. Accuracy depends on the HFCLK source selected.\n\nTWIM0 FREQUENCY: TWI frequency\n\nSPI0 FREQUENCY: SPI frequency\n\nTWI0 FREQUENCY: TWI frequency\n\nSPIM0 FREQUENCY: SPI frequency. Accuracy depends on the HFCLK source selected.\n\nTWIM0 FREQUENCY: TWI frequency\n\nSPI0 FREQUENCY: SPI frequency\n\nTWI0 FREQUENCY: TWI frequency\n\nSPIM0 FREQUENCY: SPI frequency. Accuracy depends on the HFCLK source selected.\n\nSPI0 FREQUENCY: SPI frequency"]
     #[inline]
@@ -6899,12 +6903,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 FREQUENCY, TWIM0 FREQUENCY, SPI0 FREQUENCY, TWI0 FREQUENCY, SPIM0 FREQUENCY, TWIM0 FREQUENCY, SPI0 FREQUENCY, TWI0 FREQUENCY, SPIM0 FREQUENCY, SPI0 FREQUENCY reset value 0x4000000 mask 0xffffffffffffffff")
+        todo!("write SPIM0 FREQUENCY, TWIM0 FREQUENCY, SPI0 FREQUENCY, TWI0 FREQUENCY, SPIM0 FREQUENCY, TWIM0 FREQUENCY, SPI0 FREQUENCY, TWI0 FREQUENCY, SPIM0 FREQUENCY, SPI0 FREQUENCY reset value 0x4000000 mask 0xffffffffffffffff")
     }
     #[doc = "SPIM0 PTR: Data pointer\n\nSPIS0 PTR: RXD data pointer\n\nTWIM0 PTR: Data pointer\n\nTWIS0 PTR: RXD Data pointer\n\nSPIM0 PTR: Data pointer\n\nSPIS0 PTR: RXD data pointer\n\nTWIM0 PTR: Data pointer\n\nTWIS0 PTR: RXD Data pointer\n\nSPIM0 PTR: Data pointer\n\nSPIS0 PTR: RXD data pointer"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0_rxd_ptr(&self) -> MemResult<u32> {
-        todo ! ("read SPIM0 PTR, SPIS0 PTR, TWIM0 PTR, TWIS0 PTR, SPIM0 PTR, SPIS0 PTR, TWIM0 PTR, TWIS0 PTR, SPIM0 PTR, SPIS0 PTR reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read SPIM0 PTR, SPIS0 PTR, TWIM0 PTR, TWIS0 PTR, SPIM0 PTR, SPIS0 PTR, TWIM0 PTR, TWIS0 PTR, SPIM0 PTR, SPIS0 PTR reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPIM0 PTR: Data pointer\n\nSPIS0 PTR: RXD data pointer\n\nTWIM0 PTR: Data pointer\n\nTWIS0 PTR: RXD Data pointer\n\nSPIM0 PTR: Data pointer\n\nSPIS0 PTR: RXD data pointer\n\nTWIM0 PTR: Data pointer\n\nTWIS0 PTR: RXD Data pointer\n\nSPIM0 PTR: Data pointer\n\nSPIS0 PTR: RXD data pointer"]
     #[inline]
@@ -6912,14 +6916,14 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 PTR, SPIS0 PTR, TWIM0 PTR, TWIS0 PTR, SPIM0 PTR, SPIS0 PTR, TWIM0 PTR, TWIS0 PTR, SPIM0 PTR, SPIS0 PTR reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write SPIM0 PTR, SPIS0 PTR, TWIM0 PTR, TWIS0 PTR, SPIM0 PTR, SPIS0 PTR, TWIM0 PTR, TWIS0 PTR, SPIM0 PTR, SPIS0 PTR reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPIM0 MAXCNT MAXCNT: Maximum number of bytes in receive buffer\n\nSPIS0 MAXCNT MAXCNT: Maximum number of bytes in receive buffer\n\nTWIM0 MAXCNT MAXCNT: Maximum number of bytes in receive buffer\n\nTWIS0 MAXCNT MAXCNT: Maximum number of bytes in RXD buffer\n\nSPIM0 MAXCNT MAXCNT: Maximum number of bytes in receive buffer\n\nSPIS0 MAXCNT MAXCNT: Maximum number of bytes in receive buffer\n\nTWIM0 MAXCNT MAXCNT: Maximum number of bytes in receive buffer\n\nTWIS0 MAXCNT MAXCNT: Maximum number of bytes in RXD buffer\n\nSPIM0 MAXCNT MAXCNT: Maximum number of bytes in receive buffer\n\nSPIS0 MAXCNT MAXCNT: Maximum number of bytes in receive buffer"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0_rxd_maxcnt_maxcnt(
         &self,
     ) -> MemResult<u8> {
-        todo ! ("read SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT, TWIM0 MAXCNT MAXCNT, TWIS0 MAXCNT MAXCNT, SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT, TWIM0 MAXCNT MAXCNT, TWIS0 MAXCNT MAXCNT, SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT reset value 0x00 mask 0xff")
+        todo!("read SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT, TWIM0 MAXCNT MAXCNT, TWIS0 MAXCNT MAXCNT, SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT, TWIM0 MAXCNT MAXCNT, TWIS0 MAXCNT MAXCNT, SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT reset value 0x00 mask 0xff")
     }
     #[doc = "SPIM0 MAXCNT MAXCNT: Maximum number of bytes in receive buffer\n\nSPIS0 MAXCNT MAXCNT: Maximum number of bytes in receive buffer\n\nTWIM0 MAXCNT MAXCNT: Maximum number of bytes in receive buffer\n\nTWIS0 MAXCNT MAXCNT: Maximum number of bytes in RXD buffer\n\nSPIM0 MAXCNT MAXCNT: Maximum number of bytes in receive buffer\n\nSPIS0 MAXCNT MAXCNT: Maximum number of bytes in receive buffer\n\nTWIM0 MAXCNT MAXCNT: Maximum number of bytes in receive buffer\n\nTWIS0 MAXCNT MAXCNT: Maximum number of bytes in RXD buffer\n\nSPIM0 MAXCNT MAXCNT: Maximum number of bytes in receive buffer\n\nSPIS0 MAXCNT MAXCNT: Maximum number of bytes in receive buffer"]
     #[inline]
@@ -6927,19 +6931,19 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT, TWIM0 MAXCNT MAXCNT, TWIS0 MAXCNT MAXCNT, SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT, TWIM0 MAXCNT MAXCNT, TWIS0 MAXCNT MAXCNT, SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT reset value 0x00 mask 0xff")
+        todo!("write SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT, TWIM0 MAXCNT MAXCNT, TWIS0 MAXCNT MAXCNT, SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT, TWIM0 MAXCNT MAXCNT, TWIS0 MAXCNT MAXCNT, SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT reset value 0x00 mask 0xff")
     }
     #[doc = "SPIM0 AMOUNT AMOUNT: Number of bytes transferred in the last transaction\n\nSPIS0 AMOUNT AMOUNT: Number of bytes received in the last granted transaction\n\nTWIM0 AMOUNT AMOUNT: Number of bytes transferred in the last transaction. In case of NACK error, includes the NACK'ed byte.\n\nTWIS0 AMOUNT AMOUNT: Number of bytes transferred in the last RXD transaction\n\nSPIM0 AMOUNT AMOUNT: Number of bytes transferred in the last transaction\n\nSPIS0 AMOUNT AMOUNT: Number of bytes received in the last granted transaction\n\nTWIM0 AMOUNT AMOUNT: Number of bytes transferred in the last transaction. In case of NACK error, includes the NACK'ed byte.\n\nTWIS0 AMOUNT AMOUNT: Number of bytes transferred in the last RXD transaction\n\nSPIM0 AMOUNT AMOUNT: Number of bytes transferred in the last transaction\n\nSPIS0 AMOUNT AMOUNT: Number of bytes received in the last granted transaction"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0_rxd_amount_amount(
         &self,
     ) -> MemResult<u8> {
-        todo ! ("read SPIM0 AMOUNT AMOUNT, SPIS0 AMOUNT AMOUNT, TWIM0 AMOUNT AMOUNT, TWIS0 AMOUNT AMOUNT, SPIM0 AMOUNT AMOUNT, SPIS0 AMOUNT AMOUNT, TWIM0 AMOUNT AMOUNT, TWIS0 AMOUNT AMOUNT, SPIM0 AMOUNT AMOUNT, SPIS0 AMOUNT AMOUNT reset value 0x00 mask 0xff")
+        todo!("read SPIM0 AMOUNT AMOUNT, SPIS0 AMOUNT AMOUNT, TWIM0 AMOUNT AMOUNT, TWIS0 AMOUNT AMOUNT, SPIM0 AMOUNT AMOUNT, SPIS0 AMOUNT AMOUNT, TWIM0 AMOUNT AMOUNT, TWIS0 AMOUNT AMOUNT, SPIM0 AMOUNT AMOUNT, SPIS0 AMOUNT AMOUNT reset value 0x00 mask 0xff")
     }
     #[doc = "SPIM0 LIST LIST: List type\n\nTWIM0 LIST LIST: List type\n\nSPIM0 LIST LIST: List type\n\nTWIM0 LIST LIST: List type\n\nSPIM0 LIST LIST: List type"]
     #[inline]
     pub(crate) fn read_spim0twim0_rxd_list_list(&self) -> MemResult<u8> {
-        todo ! ("read SPIM0 LIST LIST, TWIM0 LIST LIST, SPIM0 LIST LIST, TWIM0 LIST LIST, SPIM0 LIST LIST reset value 0x00 mask 0x07")
+        todo!("read SPIM0 LIST LIST, TWIM0 LIST LIST, SPIM0 LIST LIST, TWIM0 LIST LIST, SPIM0 LIST LIST reset value 0x00 mask 0x07")
     }
     #[doc = "SPIM0 LIST LIST: List type\n\nTWIM0 LIST LIST: List type\n\nSPIM0 LIST LIST: List type\n\nTWIM0 LIST LIST: List type\n\nSPIM0 LIST LIST: List type"]
     #[inline]
@@ -6947,12 +6951,12 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 LIST LIST, TWIM0 LIST LIST, SPIM0 LIST LIST, TWIM0 LIST LIST, SPIM0 LIST LIST reset value 0x00 mask 0x07")
+        todo!("write SPIM0 LIST LIST, TWIM0 LIST LIST, SPIM0 LIST LIST, TWIM0 LIST LIST, SPIM0 LIST LIST reset value 0x00 mask 0x07")
     }
     #[doc = "SPIM0 PTR: Data pointer\n\nSPIS0 PTR: TXD data pointer\n\nTWIM0 PTR: Data pointer\n\nTWIS0 PTR: TXD Data pointer\n\nSPIM0 PTR: Data pointer\n\nSPIS0 PTR: TXD data pointer\n\nTWIM0 PTR: Data pointer\n\nTWIS0 PTR: TXD Data pointer\n\nSPIM0 PTR: Data pointer\n\nSPIS0 PTR: TXD data pointer"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0_txd_ptr(&self) -> MemResult<u32> {
-        todo ! ("read SPIM0 PTR, SPIS0 PTR, TWIM0 PTR, TWIS0 PTR, SPIM0 PTR, SPIS0 PTR, TWIM0 PTR, TWIS0 PTR, SPIM0 PTR, SPIS0 PTR reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read SPIM0 PTR, SPIS0 PTR, TWIM0 PTR, TWIS0 PTR, SPIM0 PTR, SPIS0 PTR, TWIM0 PTR, TWIS0 PTR, SPIM0 PTR, SPIS0 PTR reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPIM0 PTR: Data pointer\n\nSPIS0 PTR: TXD data pointer\n\nTWIM0 PTR: Data pointer\n\nTWIS0 PTR: TXD Data pointer\n\nSPIM0 PTR: Data pointer\n\nSPIS0 PTR: TXD data pointer\n\nTWIM0 PTR: Data pointer\n\nTWIS0 PTR: TXD Data pointer\n\nSPIM0 PTR: Data pointer\n\nSPIS0 PTR: TXD data pointer"]
     #[inline]
@@ -6960,14 +6964,14 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 PTR, SPIS0 PTR, TWIM0 PTR, TWIS0 PTR, SPIM0 PTR, SPIS0 PTR, TWIM0 PTR, TWIS0 PTR, SPIM0 PTR, SPIS0 PTR reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write SPIM0 PTR, SPIS0 PTR, TWIM0 PTR, TWIS0 PTR, SPIM0 PTR, SPIS0 PTR, TWIM0 PTR, TWIS0 PTR, SPIM0 PTR, SPIS0 PTR reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SPIM0 MAXCNT MAXCNT: Maximum number of bytes in transmit buffer\n\nSPIS0 MAXCNT MAXCNT: Maximum number of bytes in transmit buffer\n\nTWIM0 MAXCNT MAXCNT: Maximum number of bytes in transmit buffer\n\nTWIS0 MAXCNT MAXCNT: Maximum number of bytes in TXD buffer\n\nSPIM0 MAXCNT MAXCNT: Maximum number of bytes in transmit buffer\n\nSPIS0 MAXCNT MAXCNT: Maximum number of bytes in transmit buffer\n\nTWIM0 MAXCNT MAXCNT: Maximum number of bytes in transmit buffer\n\nTWIS0 MAXCNT MAXCNT: Maximum number of bytes in TXD buffer\n\nSPIM0 MAXCNT MAXCNT: Maximum number of bytes in transmit buffer\n\nSPIS0 MAXCNT MAXCNT: Maximum number of bytes in transmit buffer"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0_txd_maxcnt_maxcnt(
         &self,
     ) -> MemResult<u8> {
-        todo ! ("read SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT, TWIM0 MAXCNT MAXCNT, TWIS0 MAXCNT MAXCNT, SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT, TWIM0 MAXCNT MAXCNT, TWIS0 MAXCNT MAXCNT, SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT reset value 0x00 mask 0xff")
+        todo!("read SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT, TWIM0 MAXCNT MAXCNT, TWIS0 MAXCNT MAXCNT, SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT, TWIM0 MAXCNT MAXCNT, TWIS0 MAXCNT MAXCNT, SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT reset value 0x00 mask 0xff")
     }
     #[doc = "SPIM0 MAXCNT MAXCNT: Maximum number of bytes in transmit buffer\n\nSPIS0 MAXCNT MAXCNT: Maximum number of bytes in transmit buffer\n\nTWIM0 MAXCNT MAXCNT: Maximum number of bytes in transmit buffer\n\nTWIS0 MAXCNT MAXCNT: Maximum number of bytes in TXD buffer\n\nSPIM0 MAXCNT MAXCNT: Maximum number of bytes in transmit buffer\n\nSPIS0 MAXCNT MAXCNT: Maximum number of bytes in transmit buffer\n\nTWIM0 MAXCNT MAXCNT: Maximum number of bytes in transmit buffer\n\nTWIS0 MAXCNT MAXCNT: Maximum number of bytes in TXD buffer\n\nSPIM0 MAXCNT MAXCNT: Maximum number of bytes in transmit buffer\n\nSPIS0 MAXCNT MAXCNT: Maximum number of bytes in transmit buffer"]
     #[inline]
@@ -6975,19 +6979,19 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT, TWIM0 MAXCNT MAXCNT, TWIS0 MAXCNT MAXCNT, SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT, TWIM0 MAXCNT MAXCNT, TWIS0 MAXCNT MAXCNT, SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT reset value 0x00 mask 0xff")
+        todo!("write SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT, TWIM0 MAXCNT MAXCNT, TWIS0 MAXCNT MAXCNT, SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT, TWIM0 MAXCNT MAXCNT, TWIS0 MAXCNT MAXCNT, SPIM0 MAXCNT MAXCNT, SPIS0 MAXCNT MAXCNT reset value 0x00 mask 0xff")
     }
     #[doc = "SPIM0 AMOUNT AMOUNT: Number of bytes transferred in the last transaction\n\nSPIS0 AMOUNT AMOUNT: Number of bytes transmitted in last granted transaction\n\nTWIM0 AMOUNT AMOUNT: Number of bytes transferred in the last transaction. In case of NACK error, includes the NACK'ed byte.\n\nTWIS0 AMOUNT AMOUNT: Number of bytes transferred in the last TXD transaction\n\nSPIM0 AMOUNT AMOUNT: Number of bytes transferred in the last transaction\n\nSPIS0 AMOUNT AMOUNT: Number of bytes transmitted in last granted transaction\n\nTWIM0 AMOUNT AMOUNT: Number of bytes transferred in the last transaction. In case of NACK error, includes the NACK'ed byte.\n\nTWIS0 AMOUNT AMOUNT: Number of bytes transferred in the last TXD transaction\n\nSPIM0 AMOUNT AMOUNT: Number of bytes transferred in the last transaction\n\nSPIS0 AMOUNT AMOUNT: Number of bytes transmitted in last granted transaction"]
     #[inline]
     pub(crate) fn read_spim0spis0twim0twis0_txd_amount_amount(
         &self,
     ) -> MemResult<u8> {
-        todo ! ("read SPIM0 AMOUNT AMOUNT, SPIS0 AMOUNT AMOUNT, TWIM0 AMOUNT AMOUNT, TWIS0 AMOUNT AMOUNT, SPIM0 AMOUNT AMOUNT, SPIS0 AMOUNT AMOUNT, TWIM0 AMOUNT AMOUNT, TWIS0 AMOUNT AMOUNT, SPIM0 AMOUNT AMOUNT, SPIS0 AMOUNT AMOUNT reset value 0x00 mask 0xff")
+        todo!("read SPIM0 AMOUNT AMOUNT, SPIS0 AMOUNT AMOUNT, TWIM0 AMOUNT AMOUNT, TWIS0 AMOUNT AMOUNT, SPIM0 AMOUNT AMOUNT, SPIS0 AMOUNT AMOUNT, TWIM0 AMOUNT AMOUNT, TWIS0 AMOUNT AMOUNT, SPIM0 AMOUNT AMOUNT, SPIS0 AMOUNT AMOUNT reset value 0x00 mask 0xff")
     }
     #[doc = "SPIM0 LIST LIST: List type\n\nTWIM0 LIST LIST: List type\n\nSPIM0 LIST LIST: List type\n\nTWIM0 LIST LIST: List type\n\nSPIM0 LIST LIST: List type"]
     #[inline]
     pub(crate) fn read_spim0twim0_txd_list_list(&self) -> MemResult<u8> {
-        todo ! ("read SPIM0 LIST LIST, TWIM0 LIST LIST, SPIM0 LIST LIST, TWIM0 LIST LIST, SPIM0 LIST LIST reset value 0x00 mask 0x07")
+        todo!("read SPIM0 LIST LIST, TWIM0 LIST LIST, SPIM0 LIST LIST, TWIM0 LIST LIST, SPIM0 LIST LIST reset value 0x00 mask 0x07")
     }
     #[doc = "SPIM0 LIST LIST: List type\n\nTWIM0 LIST LIST: List type\n\nSPIM0 LIST LIST: List type\n\nTWIM0 LIST LIST: List type\n\nSPIM0 LIST LIST: List type"]
     #[inline]
@@ -6995,12 +6999,12 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 LIST LIST, TWIM0 LIST LIST, SPIM0 LIST LIST, TWIM0 LIST LIST, SPIM0 LIST LIST reset value 0x00 mask 0x07")
+        todo!("write SPIM0 LIST LIST, TWIM0 LIST LIST, SPIM0 LIST LIST, TWIM0 LIST LIST, SPIM0 LIST LIST reset value 0x00 mask 0x07")
     }
     #[doc = "SPIM0 CONFIG ORDER: Bit order\n\nSPIS0 CONFIG ORDER: Bit order\n\nSPI0 CONFIG ORDER: Bit order\n\nSPIM0 CONFIG ORDER: Bit order\n\nSPIS0 CONFIG ORDER: Bit order\n\nSPI0 CONFIG ORDER: Bit order\n\nSPIM0 CONFIG ORDER: Bit order\n\nSPIS0 CONFIG ORDER: Bit order\n\nSPI0 CONFIG ORDER: Bit order"]
     #[inline]
     pub(crate) fn read_spim0spis0spi0_config_order(&self) -> MemResult<bool> {
-        todo ! ("read SPIM0 CONFIG ORDER, SPIS0 CONFIG ORDER, SPI0 CONFIG ORDER, SPIM0 CONFIG ORDER, SPIS0 CONFIG ORDER, SPI0 CONFIG ORDER, SPIM0 CONFIG ORDER, SPIS0 CONFIG ORDER, SPI0 CONFIG ORDER reset value false")
+        todo!("read SPIM0 CONFIG ORDER, SPIS0 CONFIG ORDER, SPI0 CONFIG ORDER, SPIM0 CONFIG ORDER, SPIS0 CONFIG ORDER, SPI0 CONFIG ORDER, SPIM0 CONFIG ORDER, SPIS0 CONFIG ORDER, SPI0 CONFIG ORDER reset value false")
     }
     #[doc = "SPIM0 CONFIG ORDER: Bit order\n\nSPIS0 CONFIG ORDER: Bit order\n\nSPI0 CONFIG ORDER: Bit order\n\nSPIM0 CONFIG ORDER: Bit order\n\nSPIS0 CONFIG ORDER: Bit order\n\nSPI0 CONFIG ORDER: Bit order\n\nSPIM0 CONFIG ORDER: Bit order\n\nSPIS0 CONFIG ORDER: Bit order\n\nSPI0 CONFIG ORDER: Bit order"]
     #[inline]
@@ -7008,12 +7012,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 CONFIG ORDER, SPIS0 CONFIG ORDER, SPI0 CONFIG ORDER, SPIM0 CONFIG ORDER, SPIS0 CONFIG ORDER, SPI0 CONFIG ORDER, SPIM0 CONFIG ORDER, SPIS0 CONFIG ORDER, SPI0 CONFIG ORDER reset value false")
+        todo!("write SPIM0 CONFIG ORDER, SPIS0 CONFIG ORDER, SPI0 CONFIG ORDER, SPIM0 CONFIG ORDER, SPIS0 CONFIG ORDER, SPI0 CONFIG ORDER, SPIM0 CONFIG ORDER, SPIS0 CONFIG ORDER, SPI0 CONFIG ORDER reset value false")
     }
     #[doc = "SPIM0 CONFIG CPHA: Serial clock (SCK) phase\n\nSPIS0 CONFIG CPHA: Serial clock (SCK) phase\n\nSPI0 CONFIG CPHA: Serial clock (SCK) phase\n\nSPIM0 CONFIG CPHA: Serial clock (SCK) phase\n\nSPIS0 CONFIG CPHA: Serial clock (SCK) phase\n\nSPI0 CONFIG CPHA: Serial clock (SCK) phase\n\nSPIM0 CONFIG CPHA: Serial clock (SCK) phase\n\nSPIS0 CONFIG CPHA: Serial clock (SCK) phase\n\nSPI0 CONFIG CPHA: Serial clock (SCK) phase"]
     #[inline]
     pub(crate) fn read_spim0spis0spi0_config_cpha(&self) -> MemResult<bool> {
-        todo ! ("read SPIM0 CONFIG CPHA, SPIS0 CONFIG CPHA, SPI0 CONFIG CPHA, SPIM0 CONFIG CPHA, SPIS0 CONFIG CPHA, SPI0 CONFIG CPHA, SPIM0 CONFIG CPHA, SPIS0 CONFIG CPHA, SPI0 CONFIG CPHA reset value false")
+        todo!("read SPIM0 CONFIG CPHA, SPIS0 CONFIG CPHA, SPI0 CONFIG CPHA, SPIM0 CONFIG CPHA, SPIS0 CONFIG CPHA, SPI0 CONFIG CPHA, SPIM0 CONFIG CPHA, SPIS0 CONFIG CPHA, SPI0 CONFIG CPHA reset value false")
     }
     #[doc = "SPIM0 CONFIG CPHA: Serial clock (SCK) phase\n\nSPIS0 CONFIG CPHA: Serial clock (SCK) phase\n\nSPI0 CONFIG CPHA: Serial clock (SCK) phase\n\nSPIM0 CONFIG CPHA: Serial clock (SCK) phase\n\nSPIS0 CONFIG CPHA: Serial clock (SCK) phase\n\nSPI0 CONFIG CPHA: Serial clock (SCK) phase\n\nSPIM0 CONFIG CPHA: Serial clock (SCK) phase\n\nSPIS0 CONFIG CPHA: Serial clock (SCK) phase\n\nSPI0 CONFIG CPHA: Serial clock (SCK) phase"]
     #[inline]
@@ -7021,12 +7025,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 CONFIG CPHA, SPIS0 CONFIG CPHA, SPI0 CONFIG CPHA, SPIM0 CONFIG CPHA, SPIS0 CONFIG CPHA, SPI0 CONFIG CPHA, SPIM0 CONFIG CPHA, SPIS0 CONFIG CPHA, SPI0 CONFIG CPHA reset value false")
+        todo!("write SPIM0 CONFIG CPHA, SPIS0 CONFIG CPHA, SPI0 CONFIG CPHA, SPIM0 CONFIG CPHA, SPIS0 CONFIG CPHA, SPI0 CONFIG CPHA, SPIM0 CONFIG CPHA, SPIS0 CONFIG CPHA, SPI0 CONFIG CPHA reset value false")
     }
     #[doc = "SPIM0 CONFIG CPOL: Serial clock (SCK) polarity\n\nSPIS0 CONFIG CPOL: Serial clock (SCK) polarity\n\nSPI0 CONFIG CPOL: Serial clock (SCK) polarity\n\nSPIM0 CONFIG CPOL: Serial clock (SCK) polarity\n\nSPIS0 CONFIG CPOL: Serial clock (SCK) polarity\n\nSPI0 CONFIG CPOL: Serial clock (SCK) polarity\n\nSPIM0 CONFIG CPOL: Serial clock (SCK) polarity\n\nSPIS0 CONFIG CPOL: Serial clock (SCK) polarity\n\nSPI0 CONFIG CPOL: Serial clock (SCK) polarity"]
     #[inline]
     pub(crate) fn read_spim0spis0spi0_config_cpol(&self) -> MemResult<bool> {
-        todo ! ("read SPIM0 CONFIG CPOL, SPIS0 CONFIG CPOL, SPI0 CONFIG CPOL, SPIM0 CONFIG CPOL, SPIS0 CONFIG CPOL, SPI0 CONFIG CPOL, SPIM0 CONFIG CPOL, SPIS0 CONFIG CPOL, SPI0 CONFIG CPOL reset value false")
+        todo!("read SPIM0 CONFIG CPOL, SPIS0 CONFIG CPOL, SPI0 CONFIG CPOL, SPIM0 CONFIG CPOL, SPIS0 CONFIG CPOL, SPI0 CONFIG CPOL, SPIM0 CONFIG CPOL, SPIS0 CONFIG CPOL, SPI0 CONFIG CPOL reset value false")
     }
     #[doc = "SPIM0 CONFIG CPOL: Serial clock (SCK) polarity\n\nSPIS0 CONFIG CPOL: Serial clock (SCK) polarity\n\nSPI0 CONFIG CPOL: Serial clock (SCK) polarity\n\nSPIM0 CONFIG CPOL: Serial clock (SCK) polarity\n\nSPIS0 CONFIG CPOL: Serial clock (SCK) polarity\n\nSPI0 CONFIG CPOL: Serial clock (SCK) polarity\n\nSPIM0 CONFIG CPOL: Serial clock (SCK) polarity\n\nSPIS0 CONFIG CPOL: Serial clock (SCK) polarity\n\nSPI0 CONFIG CPOL: Serial clock (SCK) polarity"]
     #[inline]
@@ -7034,17 +7038,17 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 CONFIG CPOL, SPIS0 CONFIG CPOL, SPI0 CONFIG CPOL, SPIM0 CONFIG CPOL, SPIS0 CONFIG CPOL, SPI0 CONFIG CPOL, SPIM0 CONFIG CPOL, SPIS0 CONFIG CPOL, SPI0 CONFIG CPOL reset value false")
+        todo!("write SPIM0 CONFIG CPOL, SPIS0 CONFIG CPOL, SPI0 CONFIG CPOL, SPIM0 CONFIG CPOL, SPIS0 CONFIG CPOL, SPI0 CONFIG CPOL, SPIM0 CONFIG CPOL, SPIS0 CONFIG CPOL, SPI0 CONFIG CPOL reset value false")
     }
     #[doc = "SPIS0 DEF DEF: Default character. Character clocked out in case of an ignored transaction.\n\nSPIS0 DEF DEF: Default character. Character clocked out in case of an ignored transaction.\n\nSPIS0 DEF DEF: Default character. Character clocked out in case of an ignored transaction."]
     #[inline]
     pub(crate) fn read_spis0_def_def(&self) -> MemResult<u8> {
-        todo ! ("read SPIS0 DEF DEF, SPIS0 DEF DEF, SPIS0 DEF DEF reset value 0x00 mask 0xff")
+        todo!("read SPIS0 DEF DEF, SPIS0 DEF DEF, SPIS0 DEF DEF reset value 0x00 mask 0xff")
     }
     #[doc = "SPIS0 DEF DEF: Default character. Character clocked out in case of an ignored transaction.\n\nSPIS0 DEF DEF: Default character. Character clocked out in case of an ignored transaction.\n\nSPIS0 DEF DEF: Default character. Character clocked out in case of an ignored transaction."]
     #[inline]
     pub(crate) fn write_spis0_def_def(&mut self, _value: u8) -> MemResult<()> {
-        todo ! ("write SPIS0 DEF DEF, SPIS0 DEF DEF, SPIS0 DEF DEF reset value 0x00 mask 0xff")
+        todo!("write SPIS0 DEF DEF, SPIS0 DEF DEF, SPIS0 DEF DEF reset value 0x00 mask 0xff")
     }
     #[doc = "TWIM0 ADDRESS ADDRESS: Address used in the TWI transfer\n\nTWIS0 ADDRESS[%s] ADDRESS: TWI slave address\n\nTWI0 ADDRESS ADDRESS: Address used in the TWI transfer\n\nTWIM0 ADDRESS ADDRESS: Address used in the TWI transfer\n\nTWIS0 ADDRESS[%s] ADDRESS: TWI slave address\n\nTWI0 ADDRESS ADDRESS: Address used in the TWI transfer"]
     #[inline]
@@ -7052,7 +7056,7 @@ impl Peripherals {
         &self,
         _dim: usize,
     ) -> MemResult<u8> {
-        todo ! ("read TWIM0 ADDRESS ADDRESS, TWIS0 ADDRESS[%s] ADDRESS, TWI0 ADDRESS ADDRESS, TWIM0 ADDRESS ADDRESS, TWIS0 ADDRESS[%s] ADDRESS, TWI0 ADDRESS ADDRESS reset value 0x00 mask 0x7f")
+        todo!("read TWIM0 ADDRESS ADDRESS, TWIS0 ADDRESS[%s] ADDRESS, TWI0 ADDRESS ADDRESS, TWIM0 ADDRESS ADDRESS, TWIS0 ADDRESS[%s] ADDRESS, TWI0 ADDRESS ADDRESS reset value 0x00 mask 0x7f")
     }
     #[doc = "TWIM0 ADDRESS ADDRESS: Address used in the TWI transfer\n\nTWIS0 ADDRESS[%s] ADDRESS: TWI slave address\n\nTWI0 ADDRESS ADDRESS: Address used in the TWI transfer\n\nTWIM0 ADDRESS ADDRESS: Address used in the TWI transfer\n\nTWIS0 ADDRESS[%s] ADDRESS: TWI slave address\n\nTWI0 ADDRESS ADDRESS: Address used in the TWI transfer"]
     #[inline]
@@ -7061,12 +7065,12 @@ impl Peripherals {
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write TWIM0 ADDRESS ADDRESS, TWIS0 ADDRESS[%s] ADDRESS, TWI0 ADDRESS ADDRESS, TWIM0 ADDRESS ADDRESS, TWIS0 ADDRESS[%s] ADDRESS, TWI0 ADDRESS ADDRESS reset value 0x00 mask 0x7f")
+        todo!("write TWIM0 ADDRESS ADDRESS, TWIS0 ADDRESS[%s] ADDRESS, TWI0 ADDRESS ADDRESS, TWIM0 ADDRESS ADDRESS, TWIS0 ADDRESS[%s] ADDRESS, TWI0 ADDRESS ADDRESS reset value 0x00 mask 0x7f")
     }
     #[doc = "TWIS0 CONFIG ADDRESS0: Enable or disable address matching on ADDRESS[0]\n\nTWIS0 CONFIG ADDRESS0: Enable or disable address matching on ADDRESS[0]"]
     #[inline]
     pub(crate) fn read_twis0_config_address0(&self) -> MemResult<bool> {
-        todo ! ("read TWIS0 CONFIG ADDRESS0, TWIS0 CONFIG ADDRESS0 reset value true")
+        todo!("read TWIS0 CONFIG ADDRESS0, TWIS0 CONFIG ADDRESS0 reset value true")
     }
     #[doc = "TWIS0 CONFIG ADDRESS0: Enable or disable address matching on ADDRESS[0]\n\nTWIS0 CONFIG ADDRESS0: Enable or disable address matching on ADDRESS[0]"]
     #[inline]
@@ -7074,12 +7078,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIS0 CONFIG ADDRESS0, TWIS0 CONFIG ADDRESS0 reset value true")
+        todo!("write TWIS0 CONFIG ADDRESS0, TWIS0 CONFIG ADDRESS0 reset value true")
     }
     #[doc = "TWIS0 CONFIG ADDRESS1: Enable or disable address matching on ADDRESS[1]\n\nTWIS0 CONFIG ADDRESS1: Enable or disable address matching on ADDRESS[1]"]
     #[inline]
     pub(crate) fn read_twis0_config_address1(&self) -> MemResult<bool> {
-        todo ! ("read TWIS0 CONFIG ADDRESS1, TWIS0 CONFIG ADDRESS1 reset value false")
+        todo!("read TWIS0 CONFIG ADDRESS1, TWIS0 CONFIG ADDRESS1 reset value false")
     }
     #[doc = "TWIS0 CONFIG ADDRESS1: Enable or disable address matching on ADDRESS[1]\n\nTWIS0 CONFIG ADDRESS1: Enable or disable address matching on ADDRESS[1]"]
     #[inline]
@@ -7087,12 +7091,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TWIS0 CONFIG ADDRESS1, TWIS0 CONFIG ADDRESS1 reset value false")
+        todo!("write TWIS0 CONFIG ADDRESS1, TWIS0 CONFIG ADDRESS1 reset value false")
     }
     #[doc = "SPIM0 ORC ORC: Over-read character. Character clocked out in case and over-read of the TXD buffer.\n\nSPIS0 ORC ORC: Over-read character. Character clocked out after an over-read of the transmit buffer.\n\nTWIS0 ORC ORC: Over-read character. Character sent out in case of an over-read of the transmit buffer.\n\nSPIM0 ORC ORC: Over-read character. Character clocked out in case and over-read of the TXD buffer.\n\nSPIS0 ORC ORC: Over-read character. Character clocked out after an over-read of the transmit buffer.\n\nTWIS0 ORC ORC: Over-read character. Character sent out in case of an over-read of the transmit buffer.\n\nSPIM0 ORC ORC: Over-read character. Character clocked out in case and over-read of the TXD buffer.\n\nSPIS0 ORC ORC: Over-read character. Character clocked out after an over-read of the transmit buffer."]
     #[inline]
     pub(crate) fn read_spim0spis0twis0_orc_orc(&self) -> MemResult<u8> {
-        todo ! ("read SPIM0 ORC ORC, SPIS0 ORC ORC, TWIS0 ORC ORC, SPIM0 ORC ORC, SPIS0 ORC ORC, TWIS0 ORC ORC, SPIM0 ORC ORC, SPIS0 ORC ORC reset value 0x00 mask 0xff")
+        todo!("read SPIM0 ORC ORC, SPIS0 ORC ORC, TWIS0 ORC ORC, SPIM0 ORC ORC, SPIS0 ORC ORC, TWIS0 ORC ORC, SPIM0 ORC ORC, SPIS0 ORC ORC reset value 0x00 mask 0xff")
     }
     #[doc = "SPIM0 ORC ORC: Over-read character. Character clocked out in case and over-read of the TXD buffer.\n\nSPIS0 ORC ORC: Over-read character. Character clocked out after an over-read of the transmit buffer.\n\nTWIS0 ORC ORC: Over-read character. Character sent out in case of an over-read of the transmit buffer.\n\nSPIM0 ORC ORC: Over-read character. Character clocked out in case and over-read of the TXD buffer.\n\nSPIS0 ORC ORC: Over-read character. Character clocked out after an over-read of the transmit buffer.\n\nTWIS0 ORC ORC: Over-read character. Character sent out in case of an over-read of the transmit buffer.\n\nSPIM0 ORC ORC: Over-read character. Character clocked out in case and over-read of the TXD buffer.\n\nSPIS0 ORC ORC: Over-read character. Character clocked out after an over-read of the transmit buffer."]
     #[inline]
@@ -7100,7 +7104,7 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write SPIM0 ORC ORC, SPIS0 ORC ORC, TWIS0 ORC ORC, SPIM0 ORC ORC, SPIS0 ORC ORC, TWIS0 ORC ORC, SPIM0 ORC ORC, SPIS0 ORC ORC reset value 0x00 mask 0xff")
+        todo!("write SPIM0 ORC ORC, SPIS0 ORC ORC, TWIS0 ORC ORC, SPIM0 ORC ORC, SPIS0 ORC ORC, TWIS0 ORC ORC, SPIM0 ORC ORC, SPIS0 ORC ORC reset value 0x00 mask 0xff")
     }
     #[doc = "NFCT TASKS_ACTIVATE: Activate NFC peripheral for incoming and outgoing frames, change state to activated"]
     #[inline]
@@ -7108,7 +7112,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write NFCT TASKS_ACTIVATE reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write NFCT TASKS_ACTIVATE reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NFCT TASKS_DISABLE: Disable NFC peripheral"]
     #[inline]
@@ -7144,7 +7148,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write NFCT TASKS_ENABLERXDATA reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write NFCT TASKS_ENABLERXDATA reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NFCT TASKS_GOIDLE: Force state machine to IDLE state"]
     #[inline]
@@ -7184,7 +7188,7 @@ impl Peripherals {
     #[doc = "NFCT EVENTS_FIELDDETECTED: Remote NFC field detected"]
     #[inline]
     pub(crate) fn read_nfct_events_fielddetected(&self) -> MemResult<u32> {
-        todo ! ("read NFCT EVENTS_FIELDDETECTED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read NFCT EVENTS_FIELDDETECTED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NFCT EVENTS_FIELDDETECTED: Remote NFC field detected"]
     #[inline]
@@ -7192,12 +7196,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write NFCT EVENTS_FIELDDETECTED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write NFCT EVENTS_FIELDDETECTED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NFCT EVENTS_FIELDLOST: Remote NFC field lost"]
     #[inline]
     pub(crate) fn read_nfct_events_fieldlost(&self) -> MemResult<u32> {
-        todo ! ("read NFCT EVENTS_FIELDLOST reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read NFCT EVENTS_FIELDLOST reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NFCT EVENTS_FIELDLOST: Remote NFC field lost"]
     #[inline]
@@ -7205,12 +7209,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write NFCT EVENTS_FIELDLOST reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write NFCT EVENTS_FIELDLOST reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NFCT EVENTS_TXFRAMESTART: Marks the start of the first symbol of a transmitted frame"]
     #[inline]
     pub(crate) fn read_nfct_events_txframestart(&self) -> MemResult<u32> {
-        todo ! ("read NFCT EVENTS_TXFRAMESTART reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read NFCT EVENTS_TXFRAMESTART reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NFCT EVENTS_TXFRAMESTART: Marks the start of the first symbol of a transmitted frame"]
     #[inline]
@@ -7218,12 +7222,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write NFCT EVENTS_TXFRAMESTART reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write NFCT EVENTS_TXFRAMESTART reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NFCT EVENTS_TXFRAMEEND: Marks the end of the last transmitted on-air symbol of a frame"]
     #[inline]
     pub(crate) fn read_nfct_events_txframeend(&self) -> MemResult<u32> {
-        todo ! ("read NFCT EVENTS_TXFRAMEEND reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read NFCT EVENTS_TXFRAMEEND reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NFCT EVENTS_TXFRAMEEND: Marks the end of the last transmitted on-air symbol of a frame"]
     #[inline]
@@ -7231,12 +7235,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write NFCT EVENTS_TXFRAMEEND reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write NFCT EVENTS_TXFRAMEEND reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NFCT EVENTS_RXFRAMESTART: Marks the end of the first symbol of a received frame"]
     #[inline]
     pub(crate) fn read_nfct_events_rxframestart(&self) -> MemResult<u32> {
-        todo ! ("read NFCT EVENTS_RXFRAMESTART reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read NFCT EVENTS_RXFRAMESTART reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NFCT EVENTS_RXFRAMESTART: Marks the end of the first symbol of a received frame"]
     #[inline]
@@ -7244,12 +7248,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write NFCT EVENTS_RXFRAMESTART reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write NFCT EVENTS_RXFRAMESTART reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NFCT EVENTS_RXFRAMEEND: Received data have been checked (CRC, parity) and transferred to RAM, and EasyDMA has ended accessing the RX buffer"]
     #[inline]
     pub(crate) fn read_nfct_events_rxframeend(&self) -> MemResult<u32> {
-        todo ! ("read NFCT EVENTS_RXFRAMEEND reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read NFCT EVENTS_RXFRAMEEND reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NFCT EVENTS_RXFRAMEEND: Received data have been checked (CRC, parity) and transferred to RAM, and EasyDMA has ended accessing the RX buffer"]
     #[inline]
@@ -7257,7 +7261,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write NFCT EVENTS_RXFRAMEEND reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write NFCT EVENTS_RXFRAMEEND reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NFCT EVENTS_ERROR: NFC error reported. The ERRORSTATUS register contains details on the source of the error."]
     #[inline]
@@ -7287,7 +7291,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write NFCT EVENTS_RXERROR reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write NFCT EVENTS_RXERROR reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NFCT EVENTS_ENDRX: RX buffer (as defined by PACKETPTR and MAXLEN) in Data RAM full."]
     #[inline]
@@ -7322,7 +7326,7 @@ impl Peripherals {
     #[doc = "NFCT EVENTS_AUTOCOLRESSTARTED: Auto collision resolution process has started"]
     #[inline]
     pub(crate) fn read_nfct_events_autocolresstarted(&self) -> MemResult<u32> {
-        todo ! ("read NFCT EVENTS_AUTOCOLRESSTARTED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read NFCT EVENTS_AUTOCOLRESSTARTED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NFCT EVENTS_AUTOCOLRESSTARTED: Auto collision resolution process has started"]
     #[inline]
@@ -7330,12 +7334,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write NFCT EVENTS_AUTOCOLRESSTARTED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write NFCT EVENTS_AUTOCOLRESSTARTED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NFCT EVENTS_COLLISION: NFC Auto collision resolution error reported."]
     #[inline]
     pub(crate) fn read_nfct_events_collision(&self) -> MemResult<u32> {
-        todo ! ("read NFCT EVENTS_COLLISION reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read NFCT EVENTS_COLLISION reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NFCT EVENTS_COLLISION: NFC Auto collision resolution error reported."]
     #[inline]
@@ -7343,12 +7347,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write NFCT EVENTS_COLLISION reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write NFCT EVENTS_COLLISION reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NFCT EVENTS_SELECTED: NFC Auto collision resolution successfully completed"]
     #[inline]
     pub(crate) fn read_nfct_events_selected(&self) -> MemResult<u32> {
-        todo ! ("read NFCT EVENTS_SELECTED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read NFCT EVENTS_SELECTED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NFCT EVENTS_SELECTED: NFC Auto collision resolution successfully completed"]
     #[inline]
@@ -7356,7 +7360,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write NFCT EVENTS_SELECTED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write NFCT EVENTS_SELECTED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NFCT EVENTS_STARTED: EasyDMA is ready to receive or send frames."]
     #[inline]
@@ -7371,7 +7375,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write NFCT EVENTS_STARTED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write NFCT EVENTS_STARTED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NFCT SHORTS FIELDDETECTED_ACTIVATE: Shortcut between FIELDDETECTED event and ACTIVATE task"]
     #[inline]
@@ -8081,7 +8085,7 @@ impl Peripherals {
     pub(crate) fn read_nfct_currentloadctrl_currentloadctrl(
         &self,
     ) -> MemResult<u8> {
-        todo ! ("read NFCT CURRENTLOADCTRL CURRENTLOADCTRL reset value 0x00 mask 0x3f")
+        todo!("read NFCT CURRENTLOADCTRL CURRENTLOADCTRL reset value 0x00 mask 0x3f")
     }
     #[doc = "NFCT FIELDPRESENT FIELDPRESENT: Indicates the presence or not of a valid field. Available only in the activated state."]
     #[inline]
@@ -8100,7 +8104,7 @@ impl Peripherals {
     pub(crate) fn read_nfct_framedelaymin_framedelaymin(
         &self,
     ) -> MemResult<u16> {
-        todo ! ("read NFCT FRAMEDELAYMIN FRAMEDELAYMIN reset value 0x480 mask 0xffff")
+        todo!("read NFCT FRAMEDELAYMIN FRAMEDELAYMIN reset value 0x480 mask 0xffff")
     }
     #[doc = "NFCT FRAMEDELAYMIN FRAMEDELAYMIN: Minimum frame delay in number of 13.56 MHz clocks"]
     #[inline]
@@ -8108,14 +8112,14 @@ impl Peripherals {
         &mut self,
         _value: u16,
     ) -> MemResult<()> {
-        todo ! ("write NFCT FRAMEDELAYMIN FRAMEDELAYMIN reset value 0x480 mask 0xffff")
+        todo!("write NFCT FRAMEDELAYMIN FRAMEDELAYMIN reset value 0x480 mask 0xffff")
     }
     #[doc = "NFCT FRAMEDELAYMAX FRAMEDELAYMAX: Maximum frame delay in number of 13.56 MHz clocks"]
     #[inline]
     pub(crate) fn read_nfct_framedelaymax_framedelaymax(
         &self,
     ) -> MemResult<u16> {
-        todo ! ("read NFCT FRAMEDELAYMAX FRAMEDELAYMAX reset value 0x1000 mask 0xffff")
+        todo!("read NFCT FRAMEDELAYMAX FRAMEDELAYMAX reset value 0x1000 mask 0xffff")
     }
     #[doc = "NFCT FRAMEDELAYMAX FRAMEDELAYMAX: Maximum frame delay in number of 13.56 MHz clocks"]
     #[inline]
@@ -8123,14 +8127,14 @@ impl Peripherals {
         &mut self,
         _value: u16,
     ) -> MemResult<()> {
-        todo ! ("write NFCT FRAMEDELAYMAX FRAMEDELAYMAX reset value 0x1000 mask 0xffff")
+        todo!("write NFCT FRAMEDELAYMAX FRAMEDELAYMAX reset value 0x1000 mask 0xffff")
     }
     #[doc = "NFCT FRAMEDELAYMODE FRAMEDELAYMODE: Configuration register for the Frame Delay Timer"]
     #[inline]
     pub(crate) fn read_nfct_framedelaymode_framedelaymode(
         &self,
     ) -> MemResult<u8> {
-        todo ! ("read NFCT FRAMEDELAYMODE FRAMEDELAYMODE reset value 0x01 mask 0x03")
+        todo!("read NFCT FRAMEDELAYMODE FRAMEDELAYMODE reset value 0x01 mask 0x03")
     }
     #[doc = "NFCT FRAMEDELAYMODE FRAMEDELAYMODE: Configuration register for the Frame Delay Timer"]
     #[inline]
@@ -8138,7 +8142,7 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write NFCT FRAMEDELAYMODE FRAMEDELAYMODE reset value 0x01 mask 0x03")
+        todo!("write NFCT FRAMEDELAYMODE FRAMEDELAYMODE reset value 0x01 mask 0x03")
     }
     #[doc = "NFCT PACKETPTR: Packet pointer for TXD and RXD data storage in Data RAM"]
     #[inline]
@@ -8566,7 +8570,7 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write GPIOTE TASKS_OUT[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write GPIOTE TASKS_OUT[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "GPIOTE TASKS_SET[%s]: Description collection[0]:  Task for writing to pin specified in CONFIG[0].PSEL. Action on pin is to set it high."]
     #[inline]
@@ -8575,7 +8579,7 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write GPIOTE TASKS_SET[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write GPIOTE TASKS_SET[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "GPIOTE TASKS_CLR[%s]: Description collection[0]:  Task for writing to pin specified in CONFIG[0].PSEL. Action on pin is to set it low."]
     #[inline]
@@ -8584,12 +8588,12 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write GPIOTE TASKS_CLR[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write GPIOTE TASKS_CLR[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "GPIOTE EVENTS_IN[%s]: Description collection[0]:  Event generated from pin specified in CONFIG[0].PSEL"]
     #[inline]
     pub(crate) fn read_gpiote_events_inn(&self, _dim: usize) -> MemResult<u32> {
-        todo ! ("read GPIOTE EVENTS_IN[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read GPIOTE EVENTS_IN[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "GPIOTE EVENTS_IN[%s]: Description collection[0]:  Event generated from pin specified in CONFIG[0].PSEL"]
     #[inline]
@@ -8598,7 +8602,7 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write GPIOTE EVENTS_IN[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write GPIOTE EVENTS_IN[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "GPIOTE EVENTS_PORT: Event generated from multiple input GPIO pins with SENSE mechanism enabled"]
     #[inline]
@@ -8953,12 +8957,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write SAADC TASKS_CALIBRATEOFFSET reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write SAADC TASKS_CALIBRATEOFFSET reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SAADC EVENTS_STARTED: The ADC has started"]
     #[inline]
     pub(crate) fn read_saadc_events_started(&self) -> MemResult<u32> {
-        todo ! ("read SAADC EVENTS_STARTED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read SAADC EVENTS_STARTED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SAADC EVENTS_STARTED: The ADC has started"]
     #[inline]
@@ -8966,7 +8970,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write SAADC EVENTS_STARTED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write SAADC EVENTS_STARTED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SAADC EVENTS_END: The ADC has filled up the Result buffer"]
     #[inline]
@@ -8999,7 +9003,7 @@ impl Peripherals {
     #[doc = "SAADC EVENTS_RESULTDONE: A result is ready to get transferred to RAM."]
     #[inline]
     pub(crate) fn read_saadc_events_resultdone(&self) -> MemResult<u32> {
-        todo ! ("read SAADC EVENTS_RESULTDONE reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read SAADC EVENTS_RESULTDONE reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SAADC EVENTS_RESULTDONE: A result is ready to get transferred to RAM."]
     #[inline]
@@ -9007,12 +9011,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write SAADC EVENTS_RESULTDONE reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write SAADC EVENTS_RESULTDONE reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SAADC EVENTS_CALIBRATEDONE: Calibration is complete"]
     #[inline]
     pub(crate) fn read_saadc_events_calibratedone(&self) -> MemResult<u32> {
-        todo ! ("read SAADC EVENTS_CALIBRATEDONE reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read SAADC EVENTS_CALIBRATEDONE reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SAADC EVENTS_CALIBRATEDONE: Calibration is complete"]
     #[inline]
@@ -9020,12 +9024,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write SAADC EVENTS_CALIBRATEDONE reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write SAADC EVENTS_CALIBRATEDONE reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SAADC EVENTS_STOPPED: The ADC has stopped"]
     #[inline]
     pub(crate) fn read_saadc_events_stopped(&self) -> MemResult<u32> {
-        todo ! ("read SAADC EVENTS_STOPPED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read SAADC EVENTS_STOPPED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SAADC EVENTS_STOPPED: The ADC has stopped"]
     #[inline]
@@ -9033,7 +9037,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write SAADC EVENTS_STOPPED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write SAADC EVENTS_STOPPED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SAADC LIMITH: Description cluster[0]:  Last results is equal or above CH[0].LIMIT.HIGH"]
     #[inline]
@@ -10221,7 +10225,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 TASKS_START, TIMER0 TASKS_START, TIMER0 TASKS_START reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TIMER0 TASKS_START, TIMER0 TASKS_START, TIMER0 TASKS_START reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TIMER0 TASKS_STOP: Stop Timer\n\nTIMER0 TASKS_STOP: Stop Timer\n\nTIMER0 TASKS_STOP: Stop Timer"]
     #[inline]
@@ -10229,7 +10233,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 TASKS_STOP, TIMER0 TASKS_STOP, TIMER0 TASKS_STOP reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TIMER0 TASKS_STOP, TIMER0 TASKS_STOP, TIMER0 TASKS_STOP reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TIMER0 TASKS_COUNT: Increment Timer (Counter mode only)\n\nTIMER0 TASKS_COUNT: Increment Timer (Counter mode only)\n\nTIMER0 TASKS_COUNT: Increment Timer (Counter mode only)"]
     #[inline]
@@ -10237,7 +10241,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 TASKS_COUNT, TIMER0 TASKS_COUNT, TIMER0 TASKS_COUNT reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TIMER0 TASKS_COUNT, TIMER0 TASKS_COUNT, TIMER0 TASKS_COUNT reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TIMER0 TASKS_CLEAR: Clear time\n\nTIMER0 TASKS_CLEAR: Clear time\n\nTIMER0 TASKS_CLEAR: Clear time"]
     #[inline]
@@ -10245,7 +10249,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 TASKS_CLEAR, TIMER0 TASKS_CLEAR, TIMER0 TASKS_CLEAR reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TIMER0 TASKS_CLEAR, TIMER0 TASKS_CLEAR, TIMER0 TASKS_CLEAR reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TIMER0 TASKS_SHUTDOWN: Deprecated register -  Shut down timer\n\nTIMER0 TASKS_SHUTDOWN: Deprecated register -  Shut down timer\n\nTIMER0 TASKS_SHUTDOWN: Deprecated register -  Shut down timer"]
     #[inline]
@@ -10253,7 +10257,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 TASKS_SHUTDOWN, TIMER0 TASKS_SHUTDOWN, TIMER0 TASKS_SHUTDOWN reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TIMER0 TASKS_SHUTDOWN, TIMER0 TASKS_SHUTDOWN, TIMER0 TASKS_SHUTDOWN reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TIMER0 TASKS_CAPTURE[%s]: Description collection[0]:  Capture Timer value to CC[0] register\n\nTIMER0 TASKS_CAPTURE[%s]: Description collection[0]:  Capture Timer value to CC[0] register\n\nTIMER0 TASKS_CAPTURE[%s]: Description collection[0]:  Capture Timer value to CC[0] register"]
     #[inline]
@@ -10262,7 +10266,7 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 TASKS_CAPTURE[%s], TIMER0 TASKS_CAPTURE[%s], TIMER0 TASKS_CAPTURE[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TIMER0 TASKS_CAPTURE[%s], TIMER0 TASKS_CAPTURE[%s], TIMER0 TASKS_CAPTURE[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TIMER0 EVENTS_COMPARE[%s]: Description collection[0]:  Compare event on CC[0] match\n\nTIMER0 EVENTS_COMPARE[%s]: Description collection[0]:  Compare event on CC[0] match\n\nTIMER0 EVENTS_COMPARE[%s]: Description collection[0]:  Compare event on CC[0] match"]
     #[inline]
@@ -10270,7 +10274,7 @@ impl Peripherals {
         &self,
         _dim: usize,
     ) -> MemResult<u32> {
-        todo ! ("read TIMER0 EVENTS_COMPARE[%s], TIMER0 EVENTS_COMPARE[%s], TIMER0 EVENTS_COMPARE[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read TIMER0 EVENTS_COMPARE[%s], TIMER0 EVENTS_COMPARE[%s], TIMER0 EVENTS_COMPARE[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TIMER0 EVENTS_COMPARE[%s]: Description collection[0]:  Compare event on CC[0] match\n\nTIMER0 EVENTS_COMPARE[%s]: Description collection[0]:  Compare event on CC[0] match\n\nTIMER0 EVENTS_COMPARE[%s]: Description collection[0]:  Compare event on CC[0] match"]
     #[inline]
@@ -10279,12 +10283,12 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 EVENTS_COMPARE[%s], TIMER0 EVENTS_COMPARE[%s], TIMER0 EVENTS_COMPARE[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TIMER0 EVENTS_COMPARE[%s], TIMER0 EVENTS_COMPARE[%s], TIMER0 EVENTS_COMPARE[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TIMER0 SHORTS COMPARE0_CLEAR: Shortcut between COMPARE[0] event and CLEAR task\n\nTIMER0 SHORTS COMPARE0_CLEAR: Shortcut between COMPARE[0] event and CLEAR task\n\nTIMER0 SHORTS COMPARE0_CLEAR: Shortcut between COMPARE[0] event and CLEAR task"]
     #[inline]
     pub(crate) fn read_timer0_shorts_compare0_clear(&self) -> MemResult<bool> {
-        todo ! ("read TIMER0 SHORTS COMPARE0_CLEAR, TIMER0 SHORTS COMPARE0_CLEAR, TIMER0 SHORTS COMPARE0_CLEAR reset value false")
+        todo!("read TIMER0 SHORTS COMPARE0_CLEAR, TIMER0 SHORTS COMPARE0_CLEAR, TIMER0 SHORTS COMPARE0_CLEAR reset value false")
     }
     #[doc = "TIMER0 SHORTS COMPARE0_CLEAR: Shortcut between COMPARE[0] event and CLEAR task\n\nTIMER0 SHORTS COMPARE0_CLEAR: Shortcut between COMPARE[0] event and CLEAR task\n\nTIMER0 SHORTS COMPARE0_CLEAR: Shortcut between COMPARE[0] event and CLEAR task"]
     #[inline]
@@ -10292,12 +10296,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 SHORTS COMPARE0_CLEAR, TIMER0 SHORTS COMPARE0_CLEAR, TIMER0 SHORTS COMPARE0_CLEAR reset value false")
+        todo!("write TIMER0 SHORTS COMPARE0_CLEAR, TIMER0 SHORTS COMPARE0_CLEAR, TIMER0 SHORTS COMPARE0_CLEAR reset value false")
     }
     #[doc = "TIMER0 SHORTS COMPARE1_CLEAR: Shortcut between COMPARE[1] event and CLEAR task\n\nTIMER0 SHORTS COMPARE1_CLEAR: Shortcut between COMPARE[1] event and CLEAR task\n\nTIMER0 SHORTS COMPARE1_CLEAR: Shortcut between COMPARE[1] event and CLEAR task"]
     #[inline]
     pub(crate) fn read_timer0_shorts_compare1_clear(&self) -> MemResult<bool> {
-        todo ! ("read TIMER0 SHORTS COMPARE1_CLEAR, TIMER0 SHORTS COMPARE1_CLEAR, TIMER0 SHORTS COMPARE1_CLEAR reset value false")
+        todo!("read TIMER0 SHORTS COMPARE1_CLEAR, TIMER0 SHORTS COMPARE1_CLEAR, TIMER0 SHORTS COMPARE1_CLEAR reset value false")
     }
     #[doc = "TIMER0 SHORTS COMPARE1_CLEAR: Shortcut between COMPARE[1] event and CLEAR task\n\nTIMER0 SHORTS COMPARE1_CLEAR: Shortcut between COMPARE[1] event and CLEAR task\n\nTIMER0 SHORTS COMPARE1_CLEAR: Shortcut between COMPARE[1] event and CLEAR task"]
     #[inline]
@@ -10305,12 +10309,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 SHORTS COMPARE1_CLEAR, TIMER0 SHORTS COMPARE1_CLEAR, TIMER0 SHORTS COMPARE1_CLEAR reset value false")
+        todo!("write TIMER0 SHORTS COMPARE1_CLEAR, TIMER0 SHORTS COMPARE1_CLEAR, TIMER0 SHORTS COMPARE1_CLEAR reset value false")
     }
     #[doc = "TIMER0 SHORTS COMPARE2_CLEAR: Shortcut between COMPARE[2] event and CLEAR task\n\nTIMER0 SHORTS COMPARE2_CLEAR: Shortcut between COMPARE[2] event and CLEAR task\n\nTIMER0 SHORTS COMPARE2_CLEAR: Shortcut between COMPARE[2] event and CLEAR task"]
     #[inline]
     pub(crate) fn read_timer0_shorts_compare2_clear(&self) -> MemResult<bool> {
-        todo ! ("read TIMER0 SHORTS COMPARE2_CLEAR, TIMER0 SHORTS COMPARE2_CLEAR, TIMER0 SHORTS COMPARE2_CLEAR reset value false")
+        todo!("read TIMER0 SHORTS COMPARE2_CLEAR, TIMER0 SHORTS COMPARE2_CLEAR, TIMER0 SHORTS COMPARE2_CLEAR reset value false")
     }
     #[doc = "TIMER0 SHORTS COMPARE2_CLEAR: Shortcut between COMPARE[2] event and CLEAR task\n\nTIMER0 SHORTS COMPARE2_CLEAR: Shortcut between COMPARE[2] event and CLEAR task\n\nTIMER0 SHORTS COMPARE2_CLEAR: Shortcut between COMPARE[2] event and CLEAR task"]
     #[inline]
@@ -10318,12 +10322,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 SHORTS COMPARE2_CLEAR, TIMER0 SHORTS COMPARE2_CLEAR, TIMER0 SHORTS COMPARE2_CLEAR reset value false")
+        todo!("write TIMER0 SHORTS COMPARE2_CLEAR, TIMER0 SHORTS COMPARE2_CLEAR, TIMER0 SHORTS COMPARE2_CLEAR reset value false")
     }
     #[doc = "TIMER0 SHORTS COMPARE3_CLEAR: Shortcut between COMPARE[3] event and CLEAR task\n\nTIMER0 SHORTS COMPARE3_CLEAR: Shortcut between COMPARE[3] event and CLEAR task\n\nTIMER0 SHORTS COMPARE3_CLEAR: Shortcut between COMPARE[3] event and CLEAR task"]
     #[inline]
     pub(crate) fn read_timer0_shorts_compare3_clear(&self) -> MemResult<bool> {
-        todo ! ("read TIMER0 SHORTS COMPARE3_CLEAR, TIMER0 SHORTS COMPARE3_CLEAR, TIMER0 SHORTS COMPARE3_CLEAR reset value false")
+        todo!("read TIMER0 SHORTS COMPARE3_CLEAR, TIMER0 SHORTS COMPARE3_CLEAR, TIMER0 SHORTS COMPARE3_CLEAR reset value false")
     }
     #[doc = "TIMER0 SHORTS COMPARE3_CLEAR: Shortcut between COMPARE[3] event and CLEAR task\n\nTIMER0 SHORTS COMPARE3_CLEAR: Shortcut between COMPARE[3] event and CLEAR task\n\nTIMER0 SHORTS COMPARE3_CLEAR: Shortcut between COMPARE[3] event and CLEAR task"]
     #[inline]
@@ -10331,12 +10335,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 SHORTS COMPARE3_CLEAR, TIMER0 SHORTS COMPARE3_CLEAR, TIMER0 SHORTS COMPARE3_CLEAR reset value false")
+        todo!("write TIMER0 SHORTS COMPARE3_CLEAR, TIMER0 SHORTS COMPARE3_CLEAR, TIMER0 SHORTS COMPARE3_CLEAR reset value false")
     }
     #[doc = "TIMER0 SHORTS COMPARE0_STOP: Shortcut between COMPARE[0] event and STOP task\n\nTIMER0 SHORTS COMPARE0_STOP: Shortcut between COMPARE[0] event and STOP task\n\nTIMER0 SHORTS COMPARE0_STOP: Shortcut between COMPARE[0] event and STOP task"]
     #[inline]
     pub(crate) fn read_timer0_shorts_compare0_stop(&self) -> MemResult<bool> {
-        todo ! ("read TIMER0 SHORTS COMPARE0_STOP, TIMER0 SHORTS COMPARE0_STOP, TIMER0 SHORTS COMPARE0_STOP reset value false")
+        todo!("read TIMER0 SHORTS COMPARE0_STOP, TIMER0 SHORTS COMPARE0_STOP, TIMER0 SHORTS COMPARE0_STOP reset value false")
     }
     #[doc = "TIMER0 SHORTS COMPARE0_STOP: Shortcut between COMPARE[0] event and STOP task\n\nTIMER0 SHORTS COMPARE0_STOP: Shortcut between COMPARE[0] event and STOP task\n\nTIMER0 SHORTS COMPARE0_STOP: Shortcut between COMPARE[0] event and STOP task"]
     #[inline]
@@ -10344,12 +10348,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 SHORTS COMPARE0_STOP, TIMER0 SHORTS COMPARE0_STOP, TIMER0 SHORTS COMPARE0_STOP reset value false")
+        todo!("write TIMER0 SHORTS COMPARE0_STOP, TIMER0 SHORTS COMPARE0_STOP, TIMER0 SHORTS COMPARE0_STOP reset value false")
     }
     #[doc = "TIMER0 SHORTS COMPARE1_STOP: Shortcut between COMPARE[1] event and STOP task\n\nTIMER0 SHORTS COMPARE1_STOP: Shortcut between COMPARE[1] event and STOP task\n\nTIMER0 SHORTS COMPARE1_STOP: Shortcut between COMPARE[1] event and STOP task"]
     #[inline]
     pub(crate) fn read_timer0_shorts_compare1_stop(&self) -> MemResult<bool> {
-        todo ! ("read TIMER0 SHORTS COMPARE1_STOP, TIMER0 SHORTS COMPARE1_STOP, TIMER0 SHORTS COMPARE1_STOP reset value false")
+        todo!("read TIMER0 SHORTS COMPARE1_STOP, TIMER0 SHORTS COMPARE1_STOP, TIMER0 SHORTS COMPARE1_STOP reset value false")
     }
     #[doc = "TIMER0 SHORTS COMPARE1_STOP: Shortcut between COMPARE[1] event and STOP task\n\nTIMER0 SHORTS COMPARE1_STOP: Shortcut between COMPARE[1] event and STOP task\n\nTIMER0 SHORTS COMPARE1_STOP: Shortcut between COMPARE[1] event and STOP task"]
     #[inline]
@@ -10357,12 +10361,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 SHORTS COMPARE1_STOP, TIMER0 SHORTS COMPARE1_STOP, TIMER0 SHORTS COMPARE1_STOP reset value false")
+        todo!("write TIMER0 SHORTS COMPARE1_STOP, TIMER0 SHORTS COMPARE1_STOP, TIMER0 SHORTS COMPARE1_STOP reset value false")
     }
     #[doc = "TIMER0 SHORTS COMPARE2_STOP: Shortcut between COMPARE[2] event and STOP task\n\nTIMER0 SHORTS COMPARE2_STOP: Shortcut between COMPARE[2] event and STOP task\n\nTIMER0 SHORTS COMPARE2_STOP: Shortcut between COMPARE[2] event and STOP task"]
     #[inline]
     pub(crate) fn read_timer0_shorts_compare2_stop(&self) -> MemResult<bool> {
-        todo ! ("read TIMER0 SHORTS COMPARE2_STOP, TIMER0 SHORTS COMPARE2_STOP, TIMER0 SHORTS COMPARE2_STOP reset value false")
+        todo!("read TIMER0 SHORTS COMPARE2_STOP, TIMER0 SHORTS COMPARE2_STOP, TIMER0 SHORTS COMPARE2_STOP reset value false")
     }
     #[doc = "TIMER0 SHORTS COMPARE2_STOP: Shortcut between COMPARE[2] event and STOP task\n\nTIMER0 SHORTS COMPARE2_STOP: Shortcut between COMPARE[2] event and STOP task\n\nTIMER0 SHORTS COMPARE2_STOP: Shortcut between COMPARE[2] event and STOP task"]
     #[inline]
@@ -10370,12 +10374,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 SHORTS COMPARE2_STOP, TIMER0 SHORTS COMPARE2_STOP, TIMER0 SHORTS COMPARE2_STOP reset value false")
+        todo!("write TIMER0 SHORTS COMPARE2_STOP, TIMER0 SHORTS COMPARE2_STOP, TIMER0 SHORTS COMPARE2_STOP reset value false")
     }
     #[doc = "TIMER0 SHORTS COMPARE3_STOP: Shortcut between COMPARE[3] event and STOP task\n\nTIMER0 SHORTS COMPARE3_STOP: Shortcut between COMPARE[3] event and STOP task\n\nTIMER0 SHORTS COMPARE3_STOP: Shortcut between COMPARE[3] event and STOP task"]
     #[inline]
     pub(crate) fn read_timer0_shorts_compare3_stop(&self) -> MemResult<bool> {
-        todo ! ("read TIMER0 SHORTS COMPARE3_STOP, TIMER0 SHORTS COMPARE3_STOP, TIMER0 SHORTS COMPARE3_STOP reset value false")
+        todo!("read TIMER0 SHORTS COMPARE3_STOP, TIMER0 SHORTS COMPARE3_STOP, TIMER0 SHORTS COMPARE3_STOP reset value false")
     }
     #[doc = "TIMER0 SHORTS COMPARE3_STOP: Shortcut between COMPARE[3] event and STOP task\n\nTIMER0 SHORTS COMPARE3_STOP: Shortcut between COMPARE[3] event and STOP task\n\nTIMER0 SHORTS COMPARE3_STOP: Shortcut between COMPARE[3] event and STOP task"]
     #[inline]
@@ -10383,12 +10387,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 SHORTS COMPARE3_STOP, TIMER0 SHORTS COMPARE3_STOP, TIMER0 SHORTS COMPARE3_STOP reset value false")
+        todo!("write TIMER0 SHORTS COMPARE3_STOP, TIMER0 SHORTS COMPARE3_STOP, TIMER0 SHORTS COMPARE3_STOP reset value false")
     }
     #[doc = "TIMER0 INTENSET COMPARE0: Write '1' to Enable interrupt for COMPARE[0] event\n\nTIMER0 INTENSET COMPARE0: Write '1' to Enable interrupt for COMPARE[0] event\n\nTIMER0 INTENSET COMPARE0: Write '1' to Enable interrupt for COMPARE[0] event"]
     #[inline]
     pub(crate) fn read_timer0_intenset_compare0(&self) -> MemResult<bool> {
-        todo ! ("read TIMER0 INTENSET COMPARE0, TIMER0 INTENSET COMPARE0, TIMER0 INTENSET COMPARE0 reset value false")
+        todo!("read TIMER0 INTENSET COMPARE0, TIMER0 INTENSET COMPARE0, TIMER0 INTENSET COMPARE0 reset value false")
     }
     #[doc = "TIMER0 INTENSET COMPARE0: Write '1' to Enable interrupt for COMPARE[0] event\n\nTIMER0 INTENSET COMPARE0: Write '1' to Enable interrupt for COMPARE[0] event\n\nTIMER0 INTENSET COMPARE0: Write '1' to Enable interrupt for COMPARE[0] event"]
     #[inline]
@@ -10396,12 +10400,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 INTENSET COMPARE0, TIMER0 INTENSET COMPARE0, TIMER0 INTENSET COMPARE0 reset value false")
+        todo!("write TIMER0 INTENSET COMPARE0, TIMER0 INTENSET COMPARE0, TIMER0 INTENSET COMPARE0 reset value false")
     }
     #[doc = "TIMER0 INTENSET COMPARE1: Write '1' to Enable interrupt for COMPARE[1] event\n\nTIMER0 INTENSET COMPARE1: Write '1' to Enable interrupt for COMPARE[1] event\n\nTIMER0 INTENSET COMPARE1: Write '1' to Enable interrupt for COMPARE[1] event"]
     #[inline]
     pub(crate) fn read_timer0_intenset_compare1(&self) -> MemResult<bool> {
-        todo ! ("read TIMER0 INTENSET COMPARE1, TIMER0 INTENSET COMPARE1, TIMER0 INTENSET COMPARE1 reset value false")
+        todo!("read TIMER0 INTENSET COMPARE1, TIMER0 INTENSET COMPARE1, TIMER0 INTENSET COMPARE1 reset value false")
     }
     #[doc = "TIMER0 INTENSET COMPARE1: Write '1' to Enable interrupt for COMPARE[1] event\n\nTIMER0 INTENSET COMPARE1: Write '1' to Enable interrupt for COMPARE[1] event\n\nTIMER0 INTENSET COMPARE1: Write '1' to Enable interrupt for COMPARE[1] event"]
     #[inline]
@@ -10409,12 +10413,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 INTENSET COMPARE1, TIMER0 INTENSET COMPARE1, TIMER0 INTENSET COMPARE1 reset value false")
+        todo!("write TIMER0 INTENSET COMPARE1, TIMER0 INTENSET COMPARE1, TIMER0 INTENSET COMPARE1 reset value false")
     }
     #[doc = "TIMER0 INTENSET COMPARE2: Write '1' to Enable interrupt for COMPARE[2] event\n\nTIMER0 INTENSET COMPARE2: Write '1' to Enable interrupt for COMPARE[2] event\n\nTIMER0 INTENSET COMPARE2: Write '1' to Enable interrupt for COMPARE[2] event"]
     #[inline]
     pub(crate) fn read_timer0_intenset_compare2(&self) -> MemResult<bool> {
-        todo ! ("read TIMER0 INTENSET COMPARE2, TIMER0 INTENSET COMPARE2, TIMER0 INTENSET COMPARE2 reset value false")
+        todo!("read TIMER0 INTENSET COMPARE2, TIMER0 INTENSET COMPARE2, TIMER0 INTENSET COMPARE2 reset value false")
     }
     #[doc = "TIMER0 INTENSET COMPARE2: Write '1' to Enable interrupt for COMPARE[2] event\n\nTIMER0 INTENSET COMPARE2: Write '1' to Enable interrupt for COMPARE[2] event\n\nTIMER0 INTENSET COMPARE2: Write '1' to Enable interrupt for COMPARE[2] event"]
     #[inline]
@@ -10422,12 +10426,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 INTENSET COMPARE2, TIMER0 INTENSET COMPARE2, TIMER0 INTENSET COMPARE2 reset value false")
+        todo!("write TIMER0 INTENSET COMPARE2, TIMER0 INTENSET COMPARE2, TIMER0 INTENSET COMPARE2 reset value false")
     }
     #[doc = "TIMER0 INTENSET COMPARE3: Write '1' to Enable interrupt for COMPARE[3] event\n\nTIMER0 INTENSET COMPARE3: Write '1' to Enable interrupt for COMPARE[3] event\n\nTIMER0 INTENSET COMPARE3: Write '1' to Enable interrupt for COMPARE[3] event"]
     #[inline]
     pub(crate) fn read_timer0_intenset_compare3(&self) -> MemResult<bool> {
-        todo ! ("read TIMER0 INTENSET COMPARE3, TIMER0 INTENSET COMPARE3, TIMER0 INTENSET COMPARE3 reset value false")
+        todo!("read TIMER0 INTENSET COMPARE3, TIMER0 INTENSET COMPARE3, TIMER0 INTENSET COMPARE3 reset value false")
     }
     #[doc = "TIMER0 INTENSET COMPARE3: Write '1' to Enable interrupt for COMPARE[3] event\n\nTIMER0 INTENSET COMPARE3: Write '1' to Enable interrupt for COMPARE[3] event\n\nTIMER0 INTENSET COMPARE3: Write '1' to Enable interrupt for COMPARE[3] event"]
     #[inline]
@@ -10435,12 +10439,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 INTENSET COMPARE3, TIMER0 INTENSET COMPARE3, TIMER0 INTENSET COMPARE3 reset value false")
+        todo!("write TIMER0 INTENSET COMPARE3, TIMER0 INTENSET COMPARE3, TIMER0 INTENSET COMPARE3 reset value false")
     }
     #[doc = "TIMER0 INTENCLR COMPARE0: Write '1' to Disable interrupt for COMPARE[0] event\n\nTIMER0 INTENCLR COMPARE0: Write '1' to Disable interrupt for COMPARE[0] event\n\nTIMER0 INTENCLR COMPARE0: Write '1' to Disable interrupt for COMPARE[0] event"]
     #[inline]
     pub(crate) fn read_timer0_intenclr_compare0(&self) -> MemResult<bool> {
-        todo ! ("read TIMER0 INTENCLR COMPARE0, TIMER0 INTENCLR COMPARE0, TIMER0 INTENCLR COMPARE0 reset value false")
+        todo!("read TIMER0 INTENCLR COMPARE0, TIMER0 INTENCLR COMPARE0, TIMER0 INTENCLR COMPARE0 reset value false")
     }
     #[doc = "TIMER0 INTENCLR COMPARE0: Write '1' to Disable interrupt for COMPARE[0] event\n\nTIMER0 INTENCLR COMPARE0: Write '1' to Disable interrupt for COMPARE[0] event\n\nTIMER0 INTENCLR COMPARE0: Write '1' to Disable interrupt for COMPARE[0] event"]
     #[inline]
@@ -10448,12 +10452,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 INTENCLR COMPARE0, TIMER0 INTENCLR COMPARE0, TIMER0 INTENCLR COMPARE0 reset value false")
+        todo!("write TIMER0 INTENCLR COMPARE0, TIMER0 INTENCLR COMPARE0, TIMER0 INTENCLR COMPARE0 reset value false")
     }
     #[doc = "TIMER0 INTENCLR COMPARE1: Write '1' to Disable interrupt for COMPARE[1] event\n\nTIMER0 INTENCLR COMPARE1: Write '1' to Disable interrupt for COMPARE[1] event\n\nTIMER0 INTENCLR COMPARE1: Write '1' to Disable interrupt for COMPARE[1] event"]
     #[inline]
     pub(crate) fn read_timer0_intenclr_compare1(&self) -> MemResult<bool> {
-        todo ! ("read TIMER0 INTENCLR COMPARE1, TIMER0 INTENCLR COMPARE1, TIMER0 INTENCLR COMPARE1 reset value false")
+        todo!("read TIMER0 INTENCLR COMPARE1, TIMER0 INTENCLR COMPARE1, TIMER0 INTENCLR COMPARE1 reset value false")
     }
     #[doc = "TIMER0 INTENCLR COMPARE1: Write '1' to Disable interrupt for COMPARE[1] event\n\nTIMER0 INTENCLR COMPARE1: Write '1' to Disable interrupt for COMPARE[1] event\n\nTIMER0 INTENCLR COMPARE1: Write '1' to Disable interrupt for COMPARE[1] event"]
     #[inline]
@@ -10461,12 +10465,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 INTENCLR COMPARE1, TIMER0 INTENCLR COMPARE1, TIMER0 INTENCLR COMPARE1 reset value false")
+        todo!("write TIMER0 INTENCLR COMPARE1, TIMER0 INTENCLR COMPARE1, TIMER0 INTENCLR COMPARE1 reset value false")
     }
     #[doc = "TIMER0 INTENCLR COMPARE2: Write '1' to Disable interrupt for COMPARE[2] event\n\nTIMER0 INTENCLR COMPARE2: Write '1' to Disable interrupt for COMPARE[2] event\n\nTIMER0 INTENCLR COMPARE2: Write '1' to Disable interrupt for COMPARE[2] event"]
     #[inline]
     pub(crate) fn read_timer0_intenclr_compare2(&self) -> MemResult<bool> {
-        todo ! ("read TIMER0 INTENCLR COMPARE2, TIMER0 INTENCLR COMPARE2, TIMER0 INTENCLR COMPARE2 reset value false")
+        todo!("read TIMER0 INTENCLR COMPARE2, TIMER0 INTENCLR COMPARE2, TIMER0 INTENCLR COMPARE2 reset value false")
     }
     #[doc = "TIMER0 INTENCLR COMPARE2: Write '1' to Disable interrupt for COMPARE[2] event\n\nTIMER0 INTENCLR COMPARE2: Write '1' to Disable interrupt for COMPARE[2] event\n\nTIMER0 INTENCLR COMPARE2: Write '1' to Disable interrupt for COMPARE[2] event"]
     #[inline]
@@ -10474,12 +10478,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 INTENCLR COMPARE2, TIMER0 INTENCLR COMPARE2, TIMER0 INTENCLR COMPARE2 reset value false")
+        todo!("write TIMER0 INTENCLR COMPARE2, TIMER0 INTENCLR COMPARE2, TIMER0 INTENCLR COMPARE2 reset value false")
     }
     #[doc = "TIMER0 INTENCLR COMPARE3: Write '1' to Disable interrupt for COMPARE[3] event\n\nTIMER0 INTENCLR COMPARE3: Write '1' to Disable interrupt for COMPARE[3] event\n\nTIMER0 INTENCLR COMPARE3: Write '1' to Disable interrupt for COMPARE[3] event"]
     #[inline]
     pub(crate) fn read_timer0_intenclr_compare3(&self) -> MemResult<bool> {
-        todo ! ("read TIMER0 INTENCLR COMPARE3, TIMER0 INTENCLR COMPARE3, TIMER0 INTENCLR COMPARE3 reset value false")
+        todo!("read TIMER0 INTENCLR COMPARE3, TIMER0 INTENCLR COMPARE3, TIMER0 INTENCLR COMPARE3 reset value false")
     }
     #[doc = "TIMER0 INTENCLR COMPARE3: Write '1' to Disable interrupt for COMPARE[3] event\n\nTIMER0 INTENCLR COMPARE3: Write '1' to Disable interrupt for COMPARE[3] event\n\nTIMER0 INTENCLR COMPARE3: Write '1' to Disable interrupt for COMPARE[3] event"]
     #[inline]
@@ -10487,12 +10491,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 INTENCLR COMPARE3, TIMER0 INTENCLR COMPARE3, TIMER0 INTENCLR COMPARE3 reset value false")
+        todo!("write TIMER0 INTENCLR COMPARE3, TIMER0 INTENCLR COMPARE3, TIMER0 INTENCLR COMPARE3 reset value false")
     }
     #[doc = "TIMER0 MODE MODE: Timer mode\n\nTIMER0 MODE MODE: Timer mode\n\nTIMER0 MODE MODE: Timer mode"]
     #[inline]
     pub(crate) fn read_timer0_mode_mode(&self) -> MemResult<u8> {
-        todo ! ("read TIMER0 MODE MODE, TIMER0 MODE MODE, TIMER0 MODE MODE reset value 0x00 mask 0x03")
+        todo!("read TIMER0 MODE MODE, TIMER0 MODE MODE, TIMER0 MODE MODE reset value 0x00 mask 0x03")
     }
     #[doc = "TIMER0 MODE MODE: Timer mode\n\nTIMER0 MODE MODE: Timer mode\n\nTIMER0 MODE MODE: Timer mode"]
     #[inline]
@@ -10500,12 +10504,12 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 MODE MODE, TIMER0 MODE MODE, TIMER0 MODE MODE reset value 0x00 mask 0x03")
+        todo!("write TIMER0 MODE MODE, TIMER0 MODE MODE, TIMER0 MODE MODE reset value 0x00 mask 0x03")
     }
     #[doc = "TIMER0 BITMODE BITMODE: Timer bit width\n\nTIMER0 BITMODE BITMODE: Timer bit width\n\nTIMER0 BITMODE BITMODE: Timer bit width"]
     #[inline]
     pub(crate) fn read_timer0_bitmode_bitmode(&self) -> MemResult<u8> {
-        todo ! ("read TIMER0 BITMODE BITMODE, TIMER0 BITMODE BITMODE, TIMER0 BITMODE BITMODE reset value 0x00 mask 0x03")
+        todo!("read TIMER0 BITMODE BITMODE, TIMER0 BITMODE BITMODE, TIMER0 BITMODE BITMODE reset value 0x00 mask 0x03")
     }
     #[doc = "TIMER0 BITMODE BITMODE: Timer bit width\n\nTIMER0 BITMODE BITMODE: Timer bit width\n\nTIMER0 BITMODE BITMODE: Timer bit width"]
     #[inline]
@@ -10513,12 +10517,12 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 BITMODE BITMODE, TIMER0 BITMODE BITMODE, TIMER0 BITMODE BITMODE reset value 0x00 mask 0x03")
+        todo!("write TIMER0 BITMODE BITMODE, TIMER0 BITMODE BITMODE, TIMER0 BITMODE BITMODE reset value 0x00 mask 0x03")
     }
     #[doc = "TIMER0 PRESCALER PRESCALER: Prescaler value\n\nTIMER0 PRESCALER PRESCALER: Prescaler value\n\nTIMER0 PRESCALER PRESCALER: Prescaler value"]
     #[inline]
     pub(crate) fn read_timer0_prescaler_prescaler(&self) -> MemResult<u8> {
-        todo ! ("read TIMER0 PRESCALER PRESCALER, TIMER0 PRESCALER PRESCALER, TIMER0 PRESCALER PRESCALER reset value 0x04 mask 0x0f")
+        todo!("read TIMER0 PRESCALER PRESCALER, TIMER0 PRESCALER PRESCALER, TIMER0 PRESCALER PRESCALER reset value 0x04 mask 0x0f")
     }
     #[doc = "TIMER0 PRESCALER PRESCALER: Prescaler value\n\nTIMER0 PRESCALER PRESCALER: Prescaler value\n\nTIMER0 PRESCALER PRESCALER: Prescaler value"]
     #[inline]
@@ -10526,12 +10530,12 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 PRESCALER PRESCALER, TIMER0 PRESCALER PRESCALER, TIMER0 PRESCALER PRESCALER reset value 0x04 mask 0x0f")
+        todo!("write TIMER0 PRESCALER PRESCALER, TIMER0 PRESCALER PRESCALER, TIMER0 PRESCALER PRESCALER reset value 0x04 mask 0x0f")
     }
     #[doc = "TIMER0 CC[%s]: Description collection[0]:  Capture/Compare register 0\n\nTIMER0 CC[%s]: Description collection[0]:  Capture/Compare register 0\n\nTIMER0 CC[%s]: Description collection[0]:  Capture/Compare register 0"]
     #[inline]
     pub(crate) fn read_timer0_ccn(&self, _dim: usize) -> MemResult<u32> {
-        todo ! ("read TIMER0 CC[%s], TIMER0 CC[%s], TIMER0 CC[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read TIMER0 CC[%s], TIMER0 CC[%s], TIMER0 CC[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TIMER0 CC[%s]: Description collection[0]:  Capture/Compare register 0\n\nTIMER0 CC[%s]: Description collection[0]:  Capture/Compare register 0\n\nTIMER0 CC[%s]: Description collection[0]:  Capture/Compare register 0"]
     #[inline]
@@ -10540,7 +10544,7 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TIMER0 CC[%s], TIMER0 CC[%s], TIMER0 CC[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TIMER0 CC[%s], TIMER0 CC[%s], TIMER0 CC[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RTC0 TASKS_START: Start RTC COUNTER\n\nRTC0 TASKS_START: Start RTC COUNTER\n\nRTC0 TASKS_START: Start RTC COUNTER"]
     #[inline]
@@ -10548,7 +10552,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 TASKS_START, RTC0 TASKS_START, RTC0 TASKS_START reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write RTC0 TASKS_START, RTC0 TASKS_START, RTC0 TASKS_START reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RTC0 TASKS_STOP: Stop RTC COUNTER\n\nRTC0 TASKS_STOP: Stop RTC COUNTER\n\nRTC0 TASKS_STOP: Stop RTC COUNTER"]
     #[inline]
@@ -10556,7 +10560,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 TASKS_STOP, RTC0 TASKS_STOP, RTC0 TASKS_STOP reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write RTC0 TASKS_STOP, RTC0 TASKS_STOP, RTC0 TASKS_STOP reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RTC0 TASKS_CLEAR: Clear RTC COUNTER\n\nRTC0 TASKS_CLEAR: Clear RTC COUNTER\n\nRTC0 TASKS_CLEAR: Clear RTC COUNTER"]
     #[inline]
@@ -10564,7 +10568,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 TASKS_CLEAR, RTC0 TASKS_CLEAR, RTC0 TASKS_CLEAR reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write RTC0 TASKS_CLEAR, RTC0 TASKS_CLEAR, RTC0 TASKS_CLEAR reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RTC0 TASKS_TRIGOVRFLW: Set COUNTER to 0xFFFFF0\n\nRTC0 TASKS_TRIGOVRFLW: Set COUNTER to 0xFFFFF0\n\nRTC0 TASKS_TRIGOVRFLW: Set COUNTER to 0xFFFFF0"]
     #[inline]
@@ -10572,12 +10576,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 TASKS_TRIGOVRFLW, RTC0 TASKS_TRIGOVRFLW, RTC0 TASKS_TRIGOVRFLW reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write RTC0 TASKS_TRIGOVRFLW, RTC0 TASKS_TRIGOVRFLW, RTC0 TASKS_TRIGOVRFLW reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RTC0 EVENTS_TICK: Event on COUNTER increment\n\nRTC0 EVENTS_TICK: Event on COUNTER increment\n\nRTC0 EVENTS_TICK: Event on COUNTER increment"]
     #[inline]
     pub(crate) fn read_rtc0_events_tick(&self) -> MemResult<u32> {
-        todo ! ("read RTC0 EVENTS_TICK, RTC0 EVENTS_TICK, RTC0 EVENTS_TICK reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read RTC0 EVENTS_TICK, RTC0 EVENTS_TICK, RTC0 EVENTS_TICK reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RTC0 EVENTS_TICK: Event on COUNTER increment\n\nRTC0 EVENTS_TICK: Event on COUNTER increment\n\nRTC0 EVENTS_TICK: Event on COUNTER increment"]
     #[inline]
@@ -10585,12 +10589,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 EVENTS_TICK, RTC0 EVENTS_TICK, RTC0 EVENTS_TICK reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write RTC0 EVENTS_TICK, RTC0 EVENTS_TICK, RTC0 EVENTS_TICK reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RTC0 EVENTS_OVRFLW: Event on COUNTER overflow\n\nRTC0 EVENTS_OVRFLW: Event on COUNTER overflow\n\nRTC0 EVENTS_OVRFLW: Event on COUNTER overflow"]
     #[inline]
     pub(crate) fn read_rtc0_events_ovrflw(&self) -> MemResult<u32> {
-        todo ! ("read RTC0 EVENTS_OVRFLW, RTC0 EVENTS_OVRFLW, RTC0 EVENTS_OVRFLW reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read RTC0 EVENTS_OVRFLW, RTC0 EVENTS_OVRFLW, RTC0 EVENTS_OVRFLW reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RTC0 EVENTS_OVRFLW: Event on COUNTER overflow\n\nRTC0 EVENTS_OVRFLW: Event on COUNTER overflow\n\nRTC0 EVENTS_OVRFLW: Event on COUNTER overflow"]
     #[inline]
@@ -10598,7 +10602,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 EVENTS_OVRFLW, RTC0 EVENTS_OVRFLW, RTC0 EVENTS_OVRFLW reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write RTC0 EVENTS_OVRFLW, RTC0 EVENTS_OVRFLW, RTC0 EVENTS_OVRFLW reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RTC0 EVENTS_COMPARE[%s]: Description collection[0]:  Compare event on CC[0] match\n\nRTC0 EVENTS_COMPARE[%s]: Description collection[0]:  Compare event on CC[0] match\n\nRTC0 EVENTS_COMPARE[%s]: Description collection[0]:  Compare event on CC[0] match"]
     #[inline]
@@ -10606,7 +10610,7 @@ impl Peripherals {
         &self,
         _dim: usize,
     ) -> MemResult<u32> {
-        todo ! ("read RTC0 EVENTS_COMPARE[%s], RTC0 EVENTS_COMPARE[%s], RTC0 EVENTS_COMPARE[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read RTC0 EVENTS_COMPARE[%s], RTC0 EVENTS_COMPARE[%s], RTC0 EVENTS_COMPARE[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RTC0 EVENTS_COMPARE[%s]: Description collection[0]:  Compare event on CC[0] match\n\nRTC0 EVENTS_COMPARE[%s]: Description collection[0]:  Compare event on CC[0] match\n\nRTC0 EVENTS_COMPARE[%s]: Description collection[0]:  Compare event on CC[0] match"]
     #[inline]
@@ -10615,12 +10619,12 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 EVENTS_COMPARE[%s], RTC0 EVENTS_COMPARE[%s], RTC0 EVENTS_COMPARE[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write RTC0 EVENTS_COMPARE[%s], RTC0 EVENTS_COMPARE[%s], RTC0 EVENTS_COMPARE[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "RTC0 INTENSET TICK: Write '1' to Enable interrupt for TICK event\n\nRTC0 INTENSET TICK: Write '1' to Enable interrupt for TICK event\n\nRTC0 INTENSET TICK: Write '1' to Enable interrupt for TICK event"]
     #[inline]
     pub(crate) fn read_rtc0_intenset_tick(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 INTENSET TICK, RTC0 INTENSET TICK, RTC0 INTENSET TICK reset value false")
+        todo!("read RTC0 INTENSET TICK, RTC0 INTENSET TICK, RTC0 INTENSET TICK reset value false")
     }
     #[doc = "RTC0 INTENSET TICK: Write '1' to Enable interrupt for TICK event\n\nRTC0 INTENSET TICK: Write '1' to Enable interrupt for TICK event\n\nRTC0 INTENSET TICK: Write '1' to Enable interrupt for TICK event"]
     #[inline]
@@ -10628,12 +10632,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 INTENSET TICK, RTC0 INTENSET TICK, RTC0 INTENSET TICK reset value false")
+        todo!("write RTC0 INTENSET TICK, RTC0 INTENSET TICK, RTC0 INTENSET TICK reset value false")
     }
     #[doc = "RTC0 INTENSET OVRFLW: Write '1' to Enable interrupt for OVRFLW event\n\nRTC0 INTENSET OVRFLW: Write '1' to Enable interrupt for OVRFLW event\n\nRTC0 INTENSET OVRFLW: Write '1' to Enable interrupt for OVRFLW event"]
     #[inline]
     pub(crate) fn read_rtc0_intenset_ovrflw(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 INTENSET OVRFLW, RTC0 INTENSET OVRFLW, RTC0 INTENSET OVRFLW reset value false")
+        todo!("read RTC0 INTENSET OVRFLW, RTC0 INTENSET OVRFLW, RTC0 INTENSET OVRFLW reset value false")
     }
     #[doc = "RTC0 INTENSET OVRFLW: Write '1' to Enable interrupt for OVRFLW event\n\nRTC0 INTENSET OVRFLW: Write '1' to Enable interrupt for OVRFLW event\n\nRTC0 INTENSET OVRFLW: Write '1' to Enable interrupt for OVRFLW event"]
     #[inline]
@@ -10641,12 +10645,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 INTENSET OVRFLW, RTC0 INTENSET OVRFLW, RTC0 INTENSET OVRFLW reset value false")
+        todo!("write RTC0 INTENSET OVRFLW, RTC0 INTENSET OVRFLW, RTC0 INTENSET OVRFLW reset value false")
     }
     #[doc = "RTC0 INTENSET COMPARE0: Write '1' to Enable interrupt for COMPARE[0] event\n\nRTC0 INTENSET COMPARE0: Write '1' to Enable interrupt for COMPARE[0] event\n\nRTC0 INTENSET COMPARE0: Write '1' to Enable interrupt for COMPARE[0] event"]
     #[inline]
     pub(crate) fn read_rtc0_intenset_compare0(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 INTENSET COMPARE0, RTC0 INTENSET COMPARE0, RTC0 INTENSET COMPARE0 reset value false")
+        todo!("read RTC0 INTENSET COMPARE0, RTC0 INTENSET COMPARE0, RTC0 INTENSET COMPARE0 reset value false")
     }
     #[doc = "RTC0 INTENSET COMPARE0: Write '1' to Enable interrupt for COMPARE[0] event\n\nRTC0 INTENSET COMPARE0: Write '1' to Enable interrupt for COMPARE[0] event\n\nRTC0 INTENSET COMPARE0: Write '1' to Enable interrupt for COMPARE[0] event"]
     #[inline]
@@ -10654,12 +10658,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 INTENSET COMPARE0, RTC0 INTENSET COMPARE0, RTC0 INTENSET COMPARE0 reset value false")
+        todo!("write RTC0 INTENSET COMPARE0, RTC0 INTENSET COMPARE0, RTC0 INTENSET COMPARE0 reset value false")
     }
     #[doc = "RTC0 INTENSET COMPARE1: Write '1' to Enable interrupt for COMPARE[1] event\n\nRTC0 INTENSET COMPARE1: Write '1' to Enable interrupt for COMPARE[1] event\n\nRTC0 INTENSET COMPARE1: Write '1' to Enable interrupt for COMPARE[1] event"]
     #[inline]
     pub(crate) fn read_rtc0_intenset_compare1(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 INTENSET COMPARE1, RTC0 INTENSET COMPARE1, RTC0 INTENSET COMPARE1 reset value false")
+        todo!("read RTC0 INTENSET COMPARE1, RTC0 INTENSET COMPARE1, RTC0 INTENSET COMPARE1 reset value false")
     }
     #[doc = "RTC0 INTENSET COMPARE1: Write '1' to Enable interrupt for COMPARE[1] event\n\nRTC0 INTENSET COMPARE1: Write '1' to Enable interrupt for COMPARE[1] event\n\nRTC0 INTENSET COMPARE1: Write '1' to Enable interrupt for COMPARE[1] event"]
     #[inline]
@@ -10667,12 +10671,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 INTENSET COMPARE1, RTC0 INTENSET COMPARE1, RTC0 INTENSET COMPARE1 reset value false")
+        todo!("write RTC0 INTENSET COMPARE1, RTC0 INTENSET COMPARE1, RTC0 INTENSET COMPARE1 reset value false")
     }
     #[doc = "RTC0 INTENSET COMPARE2: Write '1' to Enable interrupt for COMPARE[2] event\n\nRTC0 INTENSET COMPARE2: Write '1' to Enable interrupt for COMPARE[2] event\n\nRTC0 INTENSET COMPARE2: Write '1' to Enable interrupt for COMPARE[2] event"]
     #[inline]
     pub(crate) fn read_rtc0_intenset_compare2(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 INTENSET COMPARE2, RTC0 INTENSET COMPARE2, RTC0 INTENSET COMPARE2 reset value false")
+        todo!("read RTC0 INTENSET COMPARE2, RTC0 INTENSET COMPARE2, RTC0 INTENSET COMPARE2 reset value false")
     }
     #[doc = "RTC0 INTENSET COMPARE2: Write '1' to Enable interrupt for COMPARE[2] event\n\nRTC0 INTENSET COMPARE2: Write '1' to Enable interrupt for COMPARE[2] event\n\nRTC0 INTENSET COMPARE2: Write '1' to Enable interrupt for COMPARE[2] event"]
     #[inline]
@@ -10680,12 +10684,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 INTENSET COMPARE2, RTC0 INTENSET COMPARE2, RTC0 INTENSET COMPARE2 reset value false")
+        todo!("write RTC0 INTENSET COMPARE2, RTC0 INTENSET COMPARE2, RTC0 INTENSET COMPARE2 reset value false")
     }
     #[doc = "RTC0 INTENSET COMPARE3: Write '1' to Enable interrupt for COMPARE[3] event\n\nRTC0 INTENSET COMPARE3: Write '1' to Enable interrupt for COMPARE[3] event\n\nRTC0 INTENSET COMPARE3: Write '1' to Enable interrupt for COMPARE[3] event"]
     #[inline]
     pub(crate) fn read_rtc0_intenset_compare3(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 INTENSET COMPARE3, RTC0 INTENSET COMPARE3, RTC0 INTENSET COMPARE3 reset value false")
+        todo!("read RTC0 INTENSET COMPARE3, RTC0 INTENSET COMPARE3, RTC0 INTENSET COMPARE3 reset value false")
     }
     #[doc = "RTC0 INTENSET COMPARE3: Write '1' to Enable interrupt for COMPARE[3] event\n\nRTC0 INTENSET COMPARE3: Write '1' to Enable interrupt for COMPARE[3] event\n\nRTC0 INTENSET COMPARE3: Write '1' to Enable interrupt for COMPARE[3] event"]
     #[inline]
@@ -10693,12 +10697,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 INTENSET COMPARE3, RTC0 INTENSET COMPARE3, RTC0 INTENSET COMPARE3 reset value false")
+        todo!("write RTC0 INTENSET COMPARE3, RTC0 INTENSET COMPARE3, RTC0 INTENSET COMPARE3 reset value false")
     }
     #[doc = "RTC0 INTENCLR TICK: Write '1' to Disable interrupt for TICK event\n\nRTC0 INTENCLR TICK: Write '1' to Disable interrupt for TICK event\n\nRTC0 INTENCLR TICK: Write '1' to Disable interrupt for TICK event"]
     #[inline]
     pub(crate) fn read_rtc0_intenclr_tick(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 INTENCLR TICK, RTC0 INTENCLR TICK, RTC0 INTENCLR TICK reset value false")
+        todo!("read RTC0 INTENCLR TICK, RTC0 INTENCLR TICK, RTC0 INTENCLR TICK reset value false")
     }
     #[doc = "RTC0 INTENCLR TICK: Write '1' to Disable interrupt for TICK event\n\nRTC0 INTENCLR TICK: Write '1' to Disable interrupt for TICK event\n\nRTC0 INTENCLR TICK: Write '1' to Disable interrupt for TICK event"]
     #[inline]
@@ -10706,12 +10710,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 INTENCLR TICK, RTC0 INTENCLR TICK, RTC0 INTENCLR TICK reset value false")
+        todo!("write RTC0 INTENCLR TICK, RTC0 INTENCLR TICK, RTC0 INTENCLR TICK reset value false")
     }
     #[doc = "RTC0 INTENCLR OVRFLW: Write '1' to Disable interrupt for OVRFLW event\n\nRTC0 INTENCLR OVRFLW: Write '1' to Disable interrupt for OVRFLW event\n\nRTC0 INTENCLR OVRFLW: Write '1' to Disable interrupt for OVRFLW event"]
     #[inline]
     pub(crate) fn read_rtc0_intenclr_ovrflw(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 INTENCLR OVRFLW, RTC0 INTENCLR OVRFLW, RTC0 INTENCLR OVRFLW reset value false")
+        todo!("read RTC0 INTENCLR OVRFLW, RTC0 INTENCLR OVRFLW, RTC0 INTENCLR OVRFLW reset value false")
     }
     #[doc = "RTC0 INTENCLR OVRFLW: Write '1' to Disable interrupt for OVRFLW event\n\nRTC0 INTENCLR OVRFLW: Write '1' to Disable interrupt for OVRFLW event\n\nRTC0 INTENCLR OVRFLW: Write '1' to Disable interrupt for OVRFLW event"]
     #[inline]
@@ -10719,12 +10723,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 INTENCLR OVRFLW, RTC0 INTENCLR OVRFLW, RTC0 INTENCLR OVRFLW reset value false")
+        todo!("write RTC0 INTENCLR OVRFLW, RTC0 INTENCLR OVRFLW, RTC0 INTENCLR OVRFLW reset value false")
     }
     #[doc = "RTC0 INTENCLR COMPARE0: Write '1' to Disable interrupt for COMPARE[0] event\n\nRTC0 INTENCLR COMPARE0: Write '1' to Disable interrupt for COMPARE[0] event\n\nRTC0 INTENCLR COMPARE0: Write '1' to Disable interrupt for COMPARE[0] event"]
     #[inline]
     pub(crate) fn read_rtc0_intenclr_compare0(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 INTENCLR COMPARE0, RTC0 INTENCLR COMPARE0, RTC0 INTENCLR COMPARE0 reset value false")
+        todo!("read RTC0 INTENCLR COMPARE0, RTC0 INTENCLR COMPARE0, RTC0 INTENCLR COMPARE0 reset value false")
     }
     #[doc = "RTC0 INTENCLR COMPARE0: Write '1' to Disable interrupt for COMPARE[0] event\n\nRTC0 INTENCLR COMPARE0: Write '1' to Disable interrupt for COMPARE[0] event\n\nRTC0 INTENCLR COMPARE0: Write '1' to Disable interrupt for COMPARE[0] event"]
     #[inline]
@@ -10732,12 +10736,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 INTENCLR COMPARE0, RTC0 INTENCLR COMPARE0, RTC0 INTENCLR COMPARE0 reset value false")
+        todo!("write RTC0 INTENCLR COMPARE0, RTC0 INTENCLR COMPARE0, RTC0 INTENCLR COMPARE0 reset value false")
     }
     #[doc = "RTC0 INTENCLR COMPARE1: Write '1' to Disable interrupt for COMPARE[1] event\n\nRTC0 INTENCLR COMPARE1: Write '1' to Disable interrupt for COMPARE[1] event\n\nRTC0 INTENCLR COMPARE1: Write '1' to Disable interrupt for COMPARE[1] event"]
     #[inline]
     pub(crate) fn read_rtc0_intenclr_compare1(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 INTENCLR COMPARE1, RTC0 INTENCLR COMPARE1, RTC0 INTENCLR COMPARE1 reset value false")
+        todo!("read RTC0 INTENCLR COMPARE1, RTC0 INTENCLR COMPARE1, RTC0 INTENCLR COMPARE1 reset value false")
     }
     #[doc = "RTC0 INTENCLR COMPARE1: Write '1' to Disable interrupt for COMPARE[1] event\n\nRTC0 INTENCLR COMPARE1: Write '1' to Disable interrupt for COMPARE[1] event\n\nRTC0 INTENCLR COMPARE1: Write '1' to Disable interrupt for COMPARE[1] event"]
     #[inline]
@@ -10745,12 +10749,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 INTENCLR COMPARE1, RTC0 INTENCLR COMPARE1, RTC0 INTENCLR COMPARE1 reset value false")
+        todo!("write RTC0 INTENCLR COMPARE1, RTC0 INTENCLR COMPARE1, RTC0 INTENCLR COMPARE1 reset value false")
     }
     #[doc = "RTC0 INTENCLR COMPARE2: Write '1' to Disable interrupt for COMPARE[2] event\n\nRTC0 INTENCLR COMPARE2: Write '1' to Disable interrupt for COMPARE[2] event\n\nRTC0 INTENCLR COMPARE2: Write '1' to Disable interrupt for COMPARE[2] event"]
     #[inline]
     pub(crate) fn read_rtc0_intenclr_compare2(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 INTENCLR COMPARE2, RTC0 INTENCLR COMPARE2, RTC0 INTENCLR COMPARE2 reset value false")
+        todo!("read RTC0 INTENCLR COMPARE2, RTC0 INTENCLR COMPARE2, RTC0 INTENCLR COMPARE2 reset value false")
     }
     #[doc = "RTC0 INTENCLR COMPARE2: Write '1' to Disable interrupt for COMPARE[2] event\n\nRTC0 INTENCLR COMPARE2: Write '1' to Disable interrupt for COMPARE[2] event\n\nRTC0 INTENCLR COMPARE2: Write '1' to Disable interrupt for COMPARE[2] event"]
     #[inline]
@@ -10758,12 +10762,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 INTENCLR COMPARE2, RTC0 INTENCLR COMPARE2, RTC0 INTENCLR COMPARE2 reset value false")
+        todo!("write RTC0 INTENCLR COMPARE2, RTC0 INTENCLR COMPARE2, RTC0 INTENCLR COMPARE2 reset value false")
     }
     #[doc = "RTC0 INTENCLR COMPARE3: Write '1' to Disable interrupt for COMPARE[3] event\n\nRTC0 INTENCLR COMPARE3: Write '1' to Disable interrupt for COMPARE[3] event\n\nRTC0 INTENCLR COMPARE3: Write '1' to Disable interrupt for COMPARE[3] event"]
     #[inline]
     pub(crate) fn read_rtc0_intenclr_compare3(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 INTENCLR COMPARE3, RTC0 INTENCLR COMPARE3, RTC0 INTENCLR COMPARE3 reset value false")
+        todo!("read RTC0 INTENCLR COMPARE3, RTC0 INTENCLR COMPARE3, RTC0 INTENCLR COMPARE3 reset value false")
     }
     #[doc = "RTC0 INTENCLR COMPARE3: Write '1' to Disable interrupt for COMPARE[3] event\n\nRTC0 INTENCLR COMPARE3: Write '1' to Disable interrupt for COMPARE[3] event\n\nRTC0 INTENCLR COMPARE3: Write '1' to Disable interrupt for COMPARE[3] event"]
     #[inline]
@@ -10771,12 +10775,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 INTENCLR COMPARE3, RTC0 INTENCLR COMPARE3, RTC0 INTENCLR COMPARE3 reset value false")
+        todo!("write RTC0 INTENCLR COMPARE3, RTC0 INTENCLR COMPARE3, RTC0 INTENCLR COMPARE3 reset value false")
     }
     #[doc = "RTC0 EVTEN TICK: Enable or disable event routing for TICK event\n\nRTC0 EVTEN TICK: Enable or disable event routing for TICK event\n\nRTC0 EVTEN TICK: Enable or disable event routing for TICK event"]
     #[inline]
     pub(crate) fn read_rtc0_evten_tick(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 EVTEN TICK, RTC0 EVTEN TICK, RTC0 EVTEN TICK reset value false")
+        todo!("read RTC0 EVTEN TICK, RTC0 EVTEN TICK, RTC0 EVTEN TICK reset value false")
     }
     #[doc = "RTC0 EVTEN TICK: Enable or disable event routing for TICK event\n\nRTC0 EVTEN TICK: Enable or disable event routing for TICK event\n\nRTC0 EVTEN TICK: Enable or disable event routing for TICK event"]
     #[inline]
@@ -10784,12 +10788,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 EVTEN TICK, RTC0 EVTEN TICK, RTC0 EVTEN TICK reset value false")
+        todo!("write RTC0 EVTEN TICK, RTC0 EVTEN TICK, RTC0 EVTEN TICK reset value false")
     }
     #[doc = "RTC0 EVTEN OVRFLW: Enable or disable event routing for OVRFLW event\n\nRTC0 EVTEN OVRFLW: Enable or disable event routing for OVRFLW event\n\nRTC0 EVTEN OVRFLW: Enable or disable event routing for OVRFLW event"]
     #[inline]
     pub(crate) fn read_rtc0_evten_ovrflw(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 EVTEN OVRFLW, RTC0 EVTEN OVRFLW, RTC0 EVTEN OVRFLW reset value false")
+        todo!("read RTC0 EVTEN OVRFLW, RTC0 EVTEN OVRFLW, RTC0 EVTEN OVRFLW reset value false")
     }
     #[doc = "RTC0 EVTEN OVRFLW: Enable or disable event routing for OVRFLW event\n\nRTC0 EVTEN OVRFLW: Enable or disable event routing for OVRFLW event\n\nRTC0 EVTEN OVRFLW: Enable or disable event routing for OVRFLW event"]
     #[inline]
@@ -10797,12 +10801,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 EVTEN OVRFLW, RTC0 EVTEN OVRFLW, RTC0 EVTEN OVRFLW reset value false")
+        todo!("write RTC0 EVTEN OVRFLW, RTC0 EVTEN OVRFLW, RTC0 EVTEN OVRFLW reset value false")
     }
     #[doc = "RTC0 EVTEN COMPARE0: Enable or disable event routing for COMPARE[0] event\n\nRTC0 EVTEN COMPARE0: Enable or disable event routing for COMPARE[0] event\n\nRTC0 EVTEN COMPARE0: Enable or disable event routing for COMPARE[0] event"]
     #[inline]
     pub(crate) fn read_rtc0_evten_compare0(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 EVTEN COMPARE0, RTC0 EVTEN COMPARE0, RTC0 EVTEN COMPARE0 reset value false")
+        todo!("read RTC0 EVTEN COMPARE0, RTC0 EVTEN COMPARE0, RTC0 EVTEN COMPARE0 reset value false")
     }
     #[doc = "RTC0 EVTEN COMPARE0: Enable or disable event routing for COMPARE[0] event\n\nRTC0 EVTEN COMPARE0: Enable or disable event routing for COMPARE[0] event\n\nRTC0 EVTEN COMPARE0: Enable or disable event routing for COMPARE[0] event"]
     #[inline]
@@ -10810,12 +10814,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 EVTEN COMPARE0, RTC0 EVTEN COMPARE0, RTC0 EVTEN COMPARE0 reset value false")
+        todo!("write RTC0 EVTEN COMPARE0, RTC0 EVTEN COMPARE0, RTC0 EVTEN COMPARE0 reset value false")
     }
     #[doc = "RTC0 EVTEN COMPARE1: Enable or disable event routing for COMPARE[1] event\n\nRTC0 EVTEN COMPARE1: Enable or disable event routing for COMPARE[1] event\n\nRTC0 EVTEN COMPARE1: Enable or disable event routing for COMPARE[1] event"]
     #[inline]
     pub(crate) fn read_rtc0_evten_compare1(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 EVTEN COMPARE1, RTC0 EVTEN COMPARE1, RTC0 EVTEN COMPARE1 reset value false")
+        todo!("read RTC0 EVTEN COMPARE1, RTC0 EVTEN COMPARE1, RTC0 EVTEN COMPARE1 reset value false")
     }
     #[doc = "RTC0 EVTEN COMPARE1: Enable or disable event routing for COMPARE[1] event\n\nRTC0 EVTEN COMPARE1: Enable or disable event routing for COMPARE[1] event\n\nRTC0 EVTEN COMPARE1: Enable or disable event routing for COMPARE[1] event"]
     #[inline]
@@ -10823,12 +10827,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 EVTEN COMPARE1, RTC0 EVTEN COMPARE1, RTC0 EVTEN COMPARE1 reset value false")
+        todo!("write RTC0 EVTEN COMPARE1, RTC0 EVTEN COMPARE1, RTC0 EVTEN COMPARE1 reset value false")
     }
     #[doc = "RTC0 EVTEN COMPARE2: Enable or disable event routing for COMPARE[2] event\n\nRTC0 EVTEN COMPARE2: Enable or disable event routing for COMPARE[2] event\n\nRTC0 EVTEN COMPARE2: Enable or disable event routing for COMPARE[2] event"]
     #[inline]
     pub(crate) fn read_rtc0_evten_compare2(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 EVTEN COMPARE2, RTC0 EVTEN COMPARE2, RTC0 EVTEN COMPARE2 reset value false")
+        todo!("read RTC0 EVTEN COMPARE2, RTC0 EVTEN COMPARE2, RTC0 EVTEN COMPARE2 reset value false")
     }
     #[doc = "RTC0 EVTEN COMPARE2: Enable or disable event routing for COMPARE[2] event\n\nRTC0 EVTEN COMPARE2: Enable or disable event routing for COMPARE[2] event\n\nRTC0 EVTEN COMPARE2: Enable or disable event routing for COMPARE[2] event"]
     #[inline]
@@ -10836,12 +10840,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 EVTEN COMPARE2, RTC0 EVTEN COMPARE2, RTC0 EVTEN COMPARE2 reset value false")
+        todo!("write RTC0 EVTEN COMPARE2, RTC0 EVTEN COMPARE2, RTC0 EVTEN COMPARE2 reset value false")
     }
     #[doc = "RTC0 EVTEN COMPARE3: Enable or disable event routing for COMPARE[3] event\n\nRTC0 EVTEN COMPARE3: Enable or disable event routing for COMPARE[3] event\n\nRTC0 EVTEN COMPARE3: Enable or disable event routing for COMPARE[3] event"]
     #[inline]
     pub(crate) fn read_rtc0_evten_compare3(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 EVTEN COMPARE3, RTC0 EVTEN COMPARE3, RTC0 EVTEN COMPARE3 reset value false")
+        todo!("read RTC0 EVTEN COMPARE3, RTC0 EVTEN COMPARE3, RTC0 EVTEN COMPARE3 reset value false")
     }
     #[doc = "RTC0 EVTEN COMPARE3: Enable or disable event routing for COMPARE[3] event\n\nRTC0 EVTEN COMPARE3: Enable or disable event routing for COMPARE[3] event\n\nRTC0 EVTEN COMPARE3: Enable or disable event routing for COMPARE[3] event"]
     #[inline]
@@ -10849,12 +10853,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 EVTEN COMPARE3, RTC0 EVTEN COMPARE3, RTC0 EVTEN COMPARE3 reset value false")
+        todo!("write RTC0 EVTEN COMPARE3, RTC0 EVTEN COMPARE3, RTC0 EVTEN COMPARE3 reset value false")
     }
     #[doc = "RTC0 EVTENSET TICK: Write '1' to Enable event routing for TICK event\n\nRTC0 EVTENSET TICK: Write '1' to Enable event routing for TICK event\n\nRTC0 EVTENSET TICK: Write '1' to Enable event routing for TICK event"]
     #[inline]
     pub(crate) fn read_rtc0_evtenset_tick(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 EVTENSET TICK, RTC0 EVTENSET TICK, RTC0 EVTENSET TICK reset value false")
+        todo!("read RTC0 EVTENSET TICK, RTC0 EVTENSET TICK, RTC0 EVTENSET TICK reset value false")
     }
     #[doc = "RTC0 EVTENSET TICK: Write '1' to Enable event routing for TICK event\n\nRTC0 EVTENSET TICK: Write '1' to Enable event routing for TICK event\n\nRTC0 EVTENSET TICK: Write '1' to Enable event routing for TICK event"]
     #[inline]
@@ -10862,12 +10866,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 EVTENSET TICK, RTC0 EVTENSET TICK, RTC0 EVTENSET TICK reset value false")
+        todo!("write RTC0 EVTENSET TICK, RTC0 EVTENSET TICK, RTC0 EVTENSET TICK reset value false")
     }
     #[doc = "RTC0 EVTENSET OVRFLW: Write '1' to Enable event routing for OVRFLW event\n\nRTC0 EVTENSET OVRFLW: Write '1' to Enable event routing for OVRFLW event\n\nRTC0 EVTENSET OVRFLW: Write '1' to Enable event routing for OVRFLW event"]
     #[inline]
     pub(crate) fn read_rtc0_evtenset_ovrflw(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 EVTENSET OVRFLW, RTC0 EVTENSET OVRFLW, RTC0 EVTENSET OVRFLW reset value false")
+        todo!("read RTC0 EVTENSET OVRFLW, RTC0 EVTENSET OVRFLW, RTC0 EVTENSET OVRFLW reset value false")
     }
     #[doc = "RTC0 EVTENSET OVRFLW: Write '1' to Enable event routing for OVRFLW event\n\nRTC0 EVTENSET OVRFLW: Write '1' to Enable event routing for OVRFLW event\n\nRTC0 EVTENSET OVRFLW: Write '1' to Enable event routing for OVRFLW event"]
     #[inline]
@@ -10875,12 +10879,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 EVTENSET OVRFLW, RTC0 EVTENSET OVRFLW, RTC0 EVTENSET OVRFLW reset value false")
+        todo!("write RTC0 EVTENSET OVRFLW, RTC0 EVTENSET OVRFLW, RTC0 EVTENSET OVRFLW reset value false")
     }
     #[doc = "RTC0 EVTENSET COMPARE0: Write '1' to Enable event routing for COMPARE[0] event\n\nRTC0 EVTENSET COMPARE0: Write '1' to Enable event routing for COMPARE[0] event\n\nRTC0 EVTENSET COMPARE0: Write '1' to Enable event routing for COMPARE[0] event"]
     #[inline]
     pub(crate) fn read_rtc0_evtenset_compare0(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 EVTENSET COMPARE0, RTC0 EVTENSET COMPARE0, RTC0 EVTENSET COMPARE0 reset value false")
+        todo!("read RTC0 EVTENSET COMPARE0, RTC0 EVTENSET COMPARE0, RTC0 EVTENSET COMPARE0 reset value false")
     }
     #[doc = "RTC0 EVTENSET COMPARE0: Write '1' to Enable event routing for COMPARE[0] event\n\nRTC0 EVTENSET COMPARE0: Write '1' to Enable event routing for COMPARE[0] event\n\nRTC0 EVTENSET COMPARE0: Write '1' to Enable event routing for COMPARE[0] event"]
     #[inline]
@@ -10888,12 +10892,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 EVTENSET COMPARE0, RTC0 EVTENSET COMPARE0, RTC0 EVTENSET COMPARE0 reset value false")
+        todo!("write RTC0 EVTENSET COMPARE0, RTC0 EVTENSET COMPARE0, RTC0 EVTENSET COMPARE0 reset value false")
     }
     #[doc = "RTC0 EVTENSET COMPARE1: Write '1' to Enable event routing for COMPARE[1] event\n\nRTC0 EVTENSET COMPARE1: Write '1' to Enable event routing for COMPARE[1] event\n\nRTC0 EVTENSET COMPARE1: Write '1' to Enable event routing for COMPARE[1] event"]
     #[inline]
     pub(crate) fn read_rtc0_evtenset_compare1(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 EVTENSET COMPARE1, RTC0 EVTENSET COMPARE1, RTC0 EVTENSET COMPARE1 reset value false")
+        todo!("read RTC0 EVTENSET COMPARE1, RTC0 EVTENSET COMPARE1, RTC0 EVTENSET COMPARE1 reset value false")
     }
     #[doc = "RTC0 EVTENSET COMPARE1: Write '1' to Enable event routing for COMPARE[1] event\n\nRTC0 EVTENSET COMPARE1: Write '1' to Enable event routing for COMPARE[1] event\n\nRTC0 EVTENSET COMPARE1: Write '1' to Enable event routing for COMPARE[1] event"]
     #[inline]
@@ -10901,12 +10905,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 EVTENSET COMPARE1, RTC0 EVTENSET COMPARE1, RTC0 EVTENSET COMPARE1 reset value false")
+        todo!("write RTC0 EVTENSET COMPARE1, RTC0 EVTENSET COMPARE1, RTC0 EVTENSET COMPARE1 reset value false")
     }
     #[doc = "RTC0 EVTENSET COMPARE2: Write '1' to Enable event routing for COMPARE[2] event\n\nRTC0 EVTENSET COMPARE2: Write '1' to Enable event routing for COMPARE[2] event\n\nRTC0 EVTENSET COMPARE2: Write '1' to Enable event routing for COMPARE[2] event"]
     #[inline]
     pub(crate) fn read_rtc0_evtenset_compare2(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 EVTENSET COMPARE2, RTC0 EVTENSET COMPARE2, RTC0 EVTENSET COMPARE2 reset value false")
+        todo!("read RTC0 EVTENSET COMPARE2, RTC0 EVTENSET COMPARE2, RTC0 EVTENSET COMPARE2 reset value false")
     }
     #[doc = "RTC0 EVTENSET COMPARE2: Write '1' to Enable event routing for COMPARE[2] event\n\nRTC0 EVTENSET COMPARE2: Write '1' to Enable event routing for COMPARE[2] event\n\nRTC0 EVTENSET COMPARE2: Write '1' to Enable event routing for COMPARE[2] event"]
     #[inline]
@@ -10914,12 +10918,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 EVTENSET COMPARE2, RTC0 EVTENSET COMPARE2, RTC0 EVTENSET COMPARE2 reset value false")
+        todo!("write RTC0 EVTENSET COMPARE2, RTC0 EVTENSET COMPARE2, RTC0 EVTENSET COMPARE2 reset value false")
     }
     #[doc = "RTC0 EVTENSET COMPARE3: Write '1' to Enable event routing for COMPARE[3] event\n\nRTC0 EVTENSET COMPARE3: Write '1' to Enable event routing for COMPARE[3] event\n\nRTC0 EVTENSET COMPARE3: Write '1' to Enable event routing for COMPARE[3] event"]
     #[inline]
     pub(crate) fn read_rtc0_evtenset_compare3(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 EVTENSET COMPARE3, RTC0 EVTENSET COMPARE3, RTC0 EVTENSET COMPARE3 reset value false")
+        todo!("read RTC0 EVTENSET COMPARE3, RTC0 EVTENSET COMPARE3, RTC0 EVTENSET COMPARE3 reset value false")
     }
     #[doc = "RTC0 EVTENSET COMPARE3: Write '1' to Enable event routing for COMPARE[3] event\n\nRTC0 EVTENSET COMPARE3: Write '1' to Enable event routing for COMPARE[3] event\n\nRTC0 EVTENSET COMPARE3: Write '1' to Enable event routing for COMPARE[3] event"]
     #[inline]
@@ -10927,12 +10931,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 EVTENSET COMPARE3, RTC0 EVTENSET COMPARE3, RTC0 EVTENSET COMPARE3 reset value false")
+        todo!("write RTC0 EVTENSET COMPARE3, RTC0 EVTENSET COMPARE3, RTC0 EVTENSET COMPARE3 reset value false")
     }
     #[doc = "RTC0 EVTENCLR TICK: Write '1' to Disable event routing for TICK event\n\nRTC0 EVTENCLR TICK: Write '1' to Disable event routing for TICK event\n\nRTC0 EVTENCLR TICK: Write '1' to Disable event routing for TICK event"]
     #[inline]
     pub(crate) fn read_rtc0_evtenclr_tick(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 EVTENCLR TICK, RTC0 EVTENCLR TICK, RTC0 EVTENCLR TICK reset value false")
+        todo!("read RTC0 EVTENCLR TICK, RTC0 EVTENCLR TICK, RTC0 EVTENCLR TICK reset value false")
     }
     #[doc = "RTC0 EVTENCLR TICK: Write '1' to Disable event routing for TICK event\n\nRTC0 EVTENCLR TICK: Write '1' to Disable event routing for TICK event\n\nRTC0 EVTENCLR TICK: Write '1' to Disable event routing for TICK event"]
     #[inline]
@@ -10940,12 +10944,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 EVTENCLR TICK, RTC0 EVTENCLR TICK, RTC0 EVTENCLR TICK reset value false")
+        todo!("write RTC0 EVTENCLR TICK, RTC0 EVTENCLR TICK, RTC0 EVTENCLR TICK reset value false")
     }
     #[doc = "RTC0 EVTENCLR OVRFLW: Write '1' to Disable event routing for OVRFLW event\n\nRTC0 EVTENCLR OVRFLW: Write '1' to Disable event routing for OVRFLW event\n\nRTC0 EVTENCLR OVRFLW: Write '1' to Disable event routing for OVRFLW event"]
     #[inline]
     pub(crate) fn read_rtc0_evtenclr_ovrflw(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 EVTENCLR OVRFLW, RTC0 EVTENCLR OVRFLW, RTC0 EVTENCLR OVRFLW reset value false")
+        todo!("read RTC0 EVTENCLR OVRFLW, RTC0 EVTENCLR OVRFLW, RTC0 EVTENCLR OVRFLW reset value false")
     }
     #[doc = "RTC0 EVTENCLR OVRFLW: Write '1' to Disable event routing for OVRFLW event\n\nRTC0 EVTENCLR OVRFLW: Write '1' to Disable event routing for OVRFLW event\n\nRTC0 EVTENCLR OVRFLW: Write '1' to Disable event routing for OVRFLW event"]
     #[inline]
@@ -10953,12 +10957,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 EVTENCLR OVRFLW, RTC0 EVTENCLR OVRFLW, RTC0 EVTENCLR OVRFLW reset value false")
+        todo!("write RTC0 EVTENCLR OVRFLW, RTC0 EVTENCLR OVRFLW, RTC0 EVTENCLR OVRFLW reset value false")
     }
     #[doc = "RTC0 EVTENCLR COMPARE0: Write '1' to Disable event routing for COMPARE[0] event\n\nRTC0 EVTENCLR COMPARE0: Write '1' to Disable event routing for COMPARE[0] event\n\nRTC0 EVTENCLR COMPARE0: Write '1' to Disable event routing for COMPARE[0] event"]
     #[inline]
     pub(crate) fn read_rtc0_evtenclr_compare0(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 EVTENCLR COMPARE0, RTC0 EVTENCLR COMPARE0, RTC0 EVTENCLR COMPARE0 reset value false")
+        todo!("read RTC0 EVTENCLR COMPARE0, RTC0 EVTENCLR COMPARE0, RTC0 EVTENCLR COMPARE0 reset value false")
     }
     #[doc = "RTC0 EVTENCLR COMPARE0: Write '1' to Disable event routing for COMPARE[0] event\n\nRTC0 EVTENCLR COMPARE0: Write '1' to Disable event routing for COMPARE[0] event\n\nRTC0 EVTENCLR COMPARE0: Write '1' to Disable event routing for COMPARE[0] event"]
     #[inline]
@@ -10966,12 +10970,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 EVTENCLR COMPARE0, RTC0 EVTENCLR COMPARE0, RTC0 EVTENCLR COMPARE0 reset value false")
+        todo!("write RTC0 EVTENCLR COMPARE0, RTC0 EVTENCLR COMPARE0, RTC0 EVTENCLR COMPARE0 reset value false")
     }
     #[doc = "RTC0 EVTENCLR COMPARE1: Write '1' to Disable event routing for COMPARE[1] event\n\nRTC0 EVTENCLR COMPARE1: Write '1' to Disable event routing for COMPARE[1] event\n\nRTC0 EVTENCLR COMPARE1: Write '1' to Disable event routing for COMPARE[1] event"]
     #[inline]
     pub(crate) fn read_rtc0_evtenclr_compare1(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 EVTENCLR COMPARE1, RTC0 EVTENCLR COMPARE1, RTC0 EVTENCLR COMPARE1 reset value false")
+        todo!("read RTC0 EVTENCLR COMPARE1, RTC0 EVTENCLR COMPARE1, RTC0 EVTENCLR COMPARE1 reset value false")
     }
     #[doc = "RTC0 EVTENCLR COMPARE1: Write '1' to Disable event routing for COMPARE[1] event\n\nRTC0 EVTENCLR COMPARE1: Write '1' to Disable event routing for COMPARE[1] event\n\nRTC0 EVTENCLR COMPARE1: Write '1' to Disable event routing for COMPARE[1] event"]
     #[inline]
@@ -10979,12 +10983,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 EVTENCLR COMPARE1, RTC0 EVTENCLR COMPARE1, RTC0 EVTENCLR COMPARE1 reset value false")
+        todo!("write RTC0 EVTENCLR COMPARE1, RTC0 EVTENCLR COMPARE1, RTC0 EVTENCLR COMPARE1 reset value false")
     }
     #[doc = "RTC0 EVTENCLR COMPARE2: Write '1' to Disable event routing for COMPARE[2] event\n\nRTC0 EVTENCLR COMPARE2: Write '1' to Disable event routing for COMPARE[2] event\n\nRTC0 EVTENCLR COMPARE2: Write '1' to Disable event routing for COMPARE[2] event"]
     #[inline]
     pub(crate) fn read_rtc0_evtenclr_compare2(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 EVTENCLR COMPARE2, RTC0 EVTENCLR COMPARE2, RTC0 EVTENCLR COMPARE2 reset value false")
+        todo!("read RTC0 EVTENCLR COMPARE2, RTC0 EVTENCLR COMPARE2, RTC0 EVTENCLR COMPARE2 reset value false")
     }
     #[doc = "RTC0 EVTENCLR COMPARE2: Write '1' to Disable event routing for COMPARE[2] event\n\nRTC0 EVTENCLR COMPARE2: Write '1' to Disable event routing for COMPARE[2] event\n\nRTC0 EVTENCLR COMPARE2: Write '1' to Disable event routing for COMPARE[2] event"]
     #[inline]
@@ -10992,12 +10996,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 EVTENCLR COMPARE2, RTC0 EVTENCLR COMPARE2, RTC0 EVTENCLR COMPARE2 reset value false")
+        todo!("write RTC0 EVTENCLR COMPARE2, RTC0 EVTENCLR COMPARE2, RTC0 EVTENCLR COMPARE2 reset value false")
     }
     #[doc = "RTC0 EVTENCLR COMPARE3: Write '1' to Disable event routing for COMPARE[3] event\n\nRTC0 EVTENCLR COMPARE3: Write '1' to Disable event routing for COMPARE[3] event\n\nRTC0 EVTENCLR COMPARE3: Write '1' to Disable event routing for COMPARE[3] event"]
     #[inline]
     pub(crate) fn read_rtc0_evtenclr_compare3(&self) -> MemResult<bool> {
-        todo ! ("read RTC0 EVTENCLR COMPARE3, RTC0 EVTENCLR COMPARE3, RTC0 EVTENCLR COMPARE3 reset value false")
+        todo!("read RTC0 EVTENCLR COMPARE3, RTC0 EVTENCLR COMPARE3, RTC0 EVTENCLR COMPARE3 reset value false")
     }
     #[doc = "RTC0 EVTENCLR COMPARE3: Write '1' to Disable event routing for COMPARE[3] event\n\nRTC0 EVTENCLR COMPARE3: Write '1' to Disable event routing for COMPARE[3] event\n\nRTC0 EVTENCLR COMPARE3: Write '1' to Disable event routing for COMPARE[3] event"]
     #[inline]
@@ -11005,17 +11009,17 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 EVTENCLR COMPARE3, RTC0 EVTENCLR COMPARE3, RTC0 EVTENCLR COMPARE3 reset value false")
+        todo!("write RTC0 EVTENCLR COMPARE3, RTC0 EVTENCLR COMPARE3, RTC0 EVTENCLR COMPARE3 reset value false")
     }
     #[doc = "RTC0 COUNTER COUNTER: Counter value\n\nRTC0 COUNTER COUNTER: Counter value\n\nRTC0 COUNTER COUNTER: Counter value"]
     #[inline]
     pub(crate) fn read_rtc0_counter_counter(&self) -> MemResult<u32> {
-        todo ! ("read RTC0 COUNTER COUNTER, RTC0 COUNTER COUNTER, RTC0 COUNTER COUNTER reset value 0x00 mask 0xffffff")
+        todo!("read RTC0 COUNTER COUNTER, RTC0 COUNTER COUNTER, RTC0 COUNTER COUNTER reset value 0x00 mask 0xffffff")
     }
     #[doc = "RTC0 PRESCALER PRESCALER: Prescaler value\n\nRTC0 PRESCALER PRESCALER: Prescaler value\n\nRTC0 PRESCALER PRESCALER: Prescaler value"]
     #[inline]
     pub(crate) fn read_rtc0_prescaler_prescaler(&self) -> MemResult<u16> {
-        todo ! ("read RTC0 PRESCALER PRESCALER, RTC0 PRESCALER PRESCALER, RTC0 PRESCALER PRESCALER reset value 0x00 mask 0xfff")
+        todo!("read RTC0 PRESCALER PRESCALER, RTC0 PRESCALER PRESCALER, RTC0 PRESCALER PRESCALER reset value 0x00 mask 0xfff")
     }
     #[doc = "RTC0 PRESCALER PRESCALER: Prescaler value\n\nRTC0 PRESCALER PRESCALER: Prescaler value\n\nRTC0 PRESCALER PRESCALER: Prescaler value"]
     #[inline]
@@ -11023,12 +11027,12 @@ impl Peripherals {
         &mut self,
         _value: u16,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 PRESCALER PRESCALER, RTC0 PRESCALER PRESCALER, RTC0 PRESCALER PRESCALER reset value 0x00 mask 0xfff")
+        todo!("write RTC0 PRESCALER PRESCALER, RTC0 PRESCALER PRESCALER, RTC0 PRESCALER PRESCALER reset value 0x00 mask 0xfff")
     }
     #[doc = "RTC0 CC[%s] COMPARE: Compare value\n\nRTC0 CC[%s] COMPARE: Compare value\n\nRTC0 CC[%s] COMPARE: Compare value"]
     #[inline]
     pub(crate) fn read_rtc0_ccn_compare(&self, _dim: usize) -> MemResult<u32> {
-        todo ! ("read RTC0 CC[%s] COMPARE, RTC0 CC[%s] COMPARE, RTC0 CC[%s] COMPARE reset value 0x00 mask 0xffffff")
+        todo!("read RTC0 CC[%s] COMPARE, RTC0 CC[%s] COMPARE, RTC0 CC[%s] COMPARE reset value 0x00 mask 0xffffff")
     }
     #[doc = "RTC0 CC[%s] COMPARE: Compare value\n\nRTC0 CC[%s] COMPARE: Compare value\n\nRTC0 CC[%s] COMPARE: Compare value"]
     #[inline]
@@ -11037,7 +11041,7 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write RTC0 CC[%s] COMPARE, RTC0 CC[%s] COMPARE, RTC0 CC[%s] COMPARE reset value 0x00 mask 0xffffff")
+        todo!("write RTC0 CC[%s] COMPARE, RTC0 CC[%s] COMPARE, RTC0 CC[%s] COMPARE reset value 0x00 mask 0xffffff")
     }
     #[doc = "TEMP TASKS_START: Start temperature measurement"]
     #[inline]
@@ -11068,7 +11072,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TEMP EVENTS_DATARDY reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TEMP EVENTS_DATARDY reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TEMP INTENSET DATARDY: Write '1' to Enable interrupt for DATARDY event"]
     #[inline]
@@ -11407,7 +11411,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write ECB EVENTS_ERRORECB reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write ECB EVENTS_ERRORECB reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "ECB INTENSET ENDECB: Write '1' to Enable interrupt for ENDECB event"]
     #[inline]
@@ -11480,7 +11484,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write CCM TASKS_KSGEN, AAR TASKS_START reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write CCM TASKS_KSGEN, AAR TASKS_START reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "CCM TASKS_CRYPT: Start encryption/decryption. This operation will stop by itself when completed."]
     #[inline]
@@ -11496,12 +11500,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write CCM TASKS_STOP, AAR TASKS_STOP reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write CCM TASKS_STOP, AAR TASKS_STOP reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "CCM EVENTS_ENDKSGEN: Key-stream generation complete\n\nAAR EVENTS_END: Address resolution procedure complete"]
     #[inline]
     pub(crate) fn read_ccmaar_events_endksgen(&self) -> MemResult<u32> {
-        todo ! ("read CCM EVENTS_ENDKSGEN, AAR EVENTS_END reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read CCM EVENTS_ENDKSGEN, AAR EVENTS_END reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "CCM EVENTS_ENDKSGEN: Key-stream generation complete\n\nAAR EVENTS_END: Address resolution procedure complete"]
     #[inline]
@@ -11509,12 +11513,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write CCM EVENTS_ENDKSGEN, AAR EVENTS_END reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write CCM EVENTS_ENDKSGEN, AAR EVENTS_END reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "CCM EVENTS_ENDCRYPT: Encrypt/decrypt complete\n\nAAR EVENTS_RESOLVED: Address resolved"]
     #[inline]
     pub(crate) fn read_ccmaar_events_endcrypt(&self) -> MemResult<u32> {
-        todo ! ("read CCM EVENTS_ENDCRYPT, AAR EVENTS_RESOLVED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read CCM EVENTS_ENDCRYPT, AAR EVENTS_RESOLVED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "CCM EVENTS_ENDCRYPT: Encrypt/decrypt complete\n\nAAR EVENTS_RESOLVED: Address resolved"]
     #[inline]
@@ -11522,12 +11526,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write CCM EVENTS_ENDCRYPT, AAR EVENTS_RESOLVED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write CCM EVENTS_ENDCRYPT, AAR EVENTS_RESOLVED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "CCM EVENTS_ERROR: CCM error event\n\nAAR EVENTS_NOTRESOLVED: Address not resolved"]
     #[inline]
     pub(crate) fn read_ccmaar_events_error(&self) -> MemResult<u32> {
-        todo ! ("read CCM EVENTS_ERROR, AAR EVENTS_NOTRESOLVED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read CCM EVENTS_ERROR, AAR EVENTS_NOTRESOLVED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "CCM EVENTS_ERROR: CCM error event\n\nAAR EVENTS_NOTRESOLVED: Address not resolved"]
     #[inline]
@@ -11535,7 +11539,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write CCM EVENTS_ERROR, AAR EVENTS_NOTRESOLVED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write CCM EVENTS_ERROR, AAR EVENTS_NOTRESOLVED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "CCM SHORTS ENDKSGEN_CRYPT: Shortcut between ENDKSGEN event and CRYPT task"]
     #[inline]
@@ -11566,7 +11570,7 @@ impl Peripherals {
     #[doc = "CCM INTENSET ENDCRYPT: Write '1' to Enable interrupt for ENDCRYPT event\n\nAAR INTENSET RESOLVED: Write '1' to Enable interrupt for RESOLVED event"]
     #[inline]
     pub(crate) fn read_ccmaar_intenset_endcrypt(&self) -> MemResult<bool> {
-        todo ! ("read CCM INTENSET ENDCRYPT, AAR INTENSET RESOLVED reset value false")
+        todo!("read CCM INTENSET ENDCRYPT, AAR INTENSET RESOLVED reset value false")
     }
     #[doc = "CCM INTENSET ENDCRYPT: Write '1' to Enable interrupt for ENDCRYPT event\n\nAAR INTENSET RESOLVED: Write '1' to Enable interrupt for RESOLVED event"]
     #[inline]
@@ -11574,12 +11578,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write CCM INTENSET ENDCRYPT, AAR INTENSET RESOLVED reset value false")
+        todo!("write CCM INTENSET ENDCRYPT, AAR INTENSET RESOLVED reset value false")
     }
     #[doc = "CCM INTENSET ERROR: Write '1' to Enable interrupt for ERROR event\n\nAAR INTENSET NOTRESOLVED: Write '1' to Enable interrupt for NOTRESOLVED event"]
     #[inline]
     pub(crate) fn read_ccmaar_intenset_error(&self) -> MemResult<bool> {
-        todo ! ("read CCM INTENSET ERROR, AAR INTENSET NOTRESOLVED reset value false")
+        todo!("read CCM INTENSET ERROR, AAR INTENSET NOTRESOLVED reset value false")
     }
     #[doc = "CCM INTENSET ERROR: Write '1' to Enable interrupt for ERROR event\n\nAAR INTENSET NOTRESOLVED: Write '1' to Enable interrupt for NOTRESOLVED event"]
     #[inline]
@@ -11587,7 +11591,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write CCM INTENSET ERROR, AAR INTENSET NOTRESOLVED reset value false")
+        todo!("write CCM INTENSET ERROR, AAR INTENSET NOTRESOLVED reset value false")
     }
     #[doc = "CCM INTENCLR ENDKSGEN: Write '1' to Disable interrupt for ENDKSGEN event\n\nAAR INTENCLR END: Write '1' to Disable interrupt for END event"]
     #[inline]
@@ -11605,7 +11609,7 @@ impl Peripherals {
     #[doc = "CCM INTENCLR ENDCRYPT: Write '1' to Disable interrupt for ENDCRYPT event\n\nAAR INTENCLR RESOLVED: Write '1' to Disable interrupt for RESOLVED event"]
     #[inline]
     pub(crate) fn read_ccmaar_intenclr_endcrypt(&self) -> MemResult<bool> {
-        todo ! ("read CCM INTENCLR ENDCRYPT, AAR INTENCLR RESOLVED reset value false")
+        todo!("read CCM INTENCLR ENDCRYPT, AAR INTENCLR RESOLVED reset value false")
     }
     #[doc = "CCM INTENCLR ENDCRYPT: Write '1' to Disable interrupt for ENDCRYPT event\n\nAAR INTENCLR RESOLVED: Write '1' to Disable interrupt for RESOLVED event"]
     #[inline]
@@ -11613,12 +11617,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write CCM INTENCLR ENDCRYPT, AAR INTENCLR RESOLVED reset value false")
+        todo!("write CCM INTENCLR ENDCRYPT, AAR INTENCLR RESOLVED reset value false")
     }
     #[doc = "CCM INTENCLR ERROR: Write '1' to Disable interrupt for ERROR event\n\nAAR INTENCLR NOTRESOLVED: Write '1' to Disable interrupt for NOTRESOLVED event"]
     #[inline]
     pub(crate) fn read_ccmaar_intenclr_error(&self) -> MemResult<bool> {
-        todo ! ("read CCM INTENCLR ERROR, AAR INTENCLR NOTRESOLVED reset value false")
+        todo!("read CCM INTENCLR ERROR, AAR INTENCLR NOTRESOLVED reset value false")
     }
     #[doc = "CCM INTENCLR ERROR: Write '1' to Disable interrupt for ERROR event\n\nAAR INTENCLR NOTRESOLVED: Write '1' to Disable interrupt for NOTRESOLVED event"]
     #[inline]
@@ -11626,7 +11630,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write CCM INTENCLR ERROR, AAR INTENCLR NOTRESOLVED reset value false")
+        todo!("write CCM INTENCLR ERROR, AAR INTENCLR NOTRESOLVED reset value false")
     }
     #[doc = "CCM MICSTATUS MICSTATUS: The result of the MIC check performed during the previous decryption operation\n\nAAR STATUS STATUS: The IRK that was used last time an address was resolved"]
     #[inline]
@@ -11638,7 +11642,7 @@ impl Peripherals {
     #[doc = "CCM ENABLE ENABLE: Enable or disable CCM\n\nAAR ENABLE ENABLE: Enable or disable AAR"]
     #[inline]
     pub(crate) fn read_ccmaar_enable_enable(&self) -> MemResult<u8> {
-        todo ! ("read CCM ENABLE ENABLE, AAR ENABLE ENABLE reset value 0x00 mask 0x03")
+        todo!("read CCM ENABLE ENABLE, AAR ENABLE ENABLE reset value 0x00 mask 0x03")
     }
     #[doc = "CCM ENABLE ENABLE: Enable or disable CCM\n\nAAR ENABLE ENABLE: Enable or disable AAR"]
     #[inline]
@@ -11646,7 +11650,7 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write CCM ENABLE ENABLE, AAR ENABLE ENABLE reset value 0x00 mask 0x03")
+        todo!("write CCM ENABLE ENABLE, AAR ENABLE ENABLE reset value 0x00 mask 0x03")
     }
     #[doc = "CCM MODE MODE: The mode of operation to be used\n\nAAR NIRK NIRK: Number of Identity root keys available in the IRK data structure"]
     #[inline]
@@ -11690,12 +11694,12 @@ impl Peripherals {
     #[doc = "CCM CNFPTR: Pointer to data structure holding AES key and NONCE vector\n\nAAR IRKPTR: Pointer to IRK data structure"]
     #[inline]
     pub(crate) fn read_ccmaar_cnfptr(&self) -> MemResult<u32> {
-        todo ! ("read CCM CNFPTR, AAR IRKPTR reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read CCM CNFPTR, AAR IRKPTR reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "CCM CNFPTR: Pointer to data structure holding AES key and NONCE vector\n\nAAR IRKPTR: Pointer to IRK data structure"]
     #[inline]
     pub(crate) fn write_ccmaar_cnfptr(&mut self, _value: u32) -> MemResult<()> {
-        todo ! ("write CCM CNFPTR, AAR IRKPTR reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write CCM CNFPTR, AAR IRKPTR reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "CCM INPTR: Input pointer"]
     #[inline]
@@ -11710,17 +11714,17 @@ impl Peripherals {
     #[doc = "CCM OUTPTR: Output pointer\n\nAAR ADDRPTR: Pointer to the resolvable address"]
     #[inline]
     pub(crate) fn read_ccmaar_outptr(&self) -> MemResult<u32> {
-        todo ! ("read CCM OUTPTR, AAR ADDRPTR reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read CCM OUTPTR, AAR ADDRPTR reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "CCM OUTPTR: Output pointer\n\nAAR ADDRPTR: Pointer to the resolvable address"]
     #[inline]
     pub(crate) fn write_ccmaar_outptr(&mut self, _value: u32) -> MemResult<()> {
-        todo ! ("write CCM OUTPTR, AAR ADDRPTR reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write CCM OUTPTR, AAR ADDRPTR reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "CCM SCRATCHPTR: Pointer to data area used for temporary storage\n\nAAR SCRATCHPTR: Pointer to data area used for temporary storage"]
     #[inline]
     pub(crate) fn read_ccmaar_scratchptr(&self) -> MemResult<u32> {
-        todo ! ("read CCM SCRATCHPTR, AAR SCRATCHPTR reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read CCM SCRATCHPTR, AAR SCRATCHPTR reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "CCM SCRATCHPTR: Pointer to data area used for temporary storage\n\nAAR SCRATCHPTR: Pointer to data area used for temporary storage"]
     #[inline]
@@ -11728,7 +11732,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write CCM SCRATCHPTR, AAR SCRATCHPTR reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write CCM SCRATCHPTR, AAR SCRATCHPTR reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "WDT TASKS_START: Start the watchdog"]
     #[inline]
@@ -11973,7 +11977,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write QDEC TASKS_READCLRACC reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write QDEC TASKS_READCLRACC reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "QDEC TASKS_RDCLRACC: Read and clear ACC"]
     #[inline]
@@ -11981,7 +11985,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write QDEC TASKS_RDCLRACC reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write QDEC TASKS_RDCLRACC reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "QDEC TASKS_RDCLRDBL: Read and clear ACCDBL"]
     #[inline]
@@ -11989,12 +11993,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write QDEC TASKS_RDCLRDBL reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write QDEC TASKS_RDCLRDBL reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "QDEC EVENTS_SAMPLERDY: Event being generated for every new sample value written to the SAMPLE register"]
     #[inline]
     pub(crate) fn read_qdec_events_samplerdy(&self) -> MemResult<u32> {
-        todo ! ("read QDEC EVENTS_SAMPLERDY reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read QDEC EVENTS_SAMPLERDY reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "QDEC EVENTS_SAMPLERDY: Event being generated for every new sample value written to the SAMPLE register"]
     #[inline]
@@ -12002,12 +12006,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write QDEC EVENTS_SAMPLERDY reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write QDEC EVENTS_SAMPLERDY reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "QDEC EVENTS_REPORTRDY: Non-null report ready"]
     #[inline]
     pub(crate) fn read_qdec_events_reportrdy(&self) -> MemResult<u32> {
-        todo ! ("read QDEC EVENTS_REPORTRDY reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read QDEC EVENTS_REPORTRDY reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "QDEC EVENTS_REPORTRDY: Non-null report ready"]
     #[inline]
@@ -12015,7 +12019,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write QDEC EVENTS_REPORTRDY reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write QDEC EVENTS_REPORTRDY reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "QDEC EVENTS_ACCOF: ACC or ACCDBL register overflow"]
     #[inline]
@@ -12062,7 +12066,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write QDEC EVENTS_STOPPED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write QDEC EVENTS_STOPPED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "QDEC SHORTS REPORTRDY_READCLRACC: Shortcut between REPORTRDY event and READCLRACC task"]
     #[inline]
@@ -12478,7 +12482,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write COMP TASKS_START, LPCOMP TASKS_START reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write COMP TASKS_START, LPCOMP TASKS_START reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "COMP TASKS_STOP: Stop comparator\n\nLPCOMP TASKS_STOP: Stop comparator"]
     #[inline]
@@ -12486,7 +12490,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write COMP TASKS_STOP, LPCOMP TASKS_STOP reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write COMP TASKS_STOP, LPCOMP TASKS_STOP reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "COMP TASKS_SAMPLE: Sample comparator value\n\nLPCOMP TASKS_SAMPLE: Sample comparator value"]
     #[inline]
@@ -12494,12 +12498,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write COMP TASKS_SAMPLE, LPCOMP TASKS_SAMPLE reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write COMP TASKS_SAMPLE, LPCOMP TASKS_SAMPLE reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "COMP EVENTS_READY: COMP is ready and output is valid\n\nLPCOMP EVENTS_READY: LPCOMP is ready and output is valid"]
     #[inline]
     pub(crate) fn read_complpcomp_events_ready(&self) -> MemResult<u32> {
-        todo ! ("read COMP EVENTS_READY, LPCOMP EVENTS_READY reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read COMP EVENTS_READY, LPCOMP EVENTS_READY reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "COMP EVENTS_READY: COMP is ready and output is valid\n\nLPCOMP EVENTS_READY: LPCOMP is ready and output is valid"]
     #[inline]
@@ -12507,12 +12511,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write COMP EVENTS_READY, LPCOMP EVENTS_READY reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write COMP EVENTS_READY, LPCOMP EVENTS_READY reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "COMP EVENTS_DOWN: Downward crossing\n\nLPCOMP EVENTS_DOWN: Downward crossing"]
     #[inline]
     pub(crate) fn read_complpcomp_events_down(&self) -> MemResult<u32> {
-        todo ! ("read COMP EVENTS_DOWN, LPCOMP EVENTS_DOWN reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read COMP EVENTS_DOWN, LPCOMP EVENTS_DOWN reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "COMP EVENTS_DOWN: Downward crossing\n\nLPCOMP EVENTS_DOWN: Downward crossing"]
     #[inline]
@@ -12520,12 +12524,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write COMP EVENTS_DOWN, LPCOMP EVENTS_DOWN reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write COMP EVENTS_DOWN, LPCOMP EVENTS_DOWN reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "COMP EVENTS_UP: Upward crossing\n\nLPCOMP EVENTS_UP: Upward crossing"]
     #[inline]
     pub(crate) fn read_complpcomp_events_up(&self) -> MemResult<u32> {
-        todo ! ("read COMP EVENTS_UP, LPCOMP EVENTS_UP reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read COMP EVENTS_UP, LPCOMP EVENTS_UP reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "COMP EVENTS_UP: Upward crossing\n\nLPCOMP EVENTS_UP: Upward crossing"]
     #[inline]
@@ -12533,12 +12537,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write COMP EVENTS_UP, LPCOMP EVENTS_UP reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write COMP EVENTS_UP, LPCOMP EVENTS_UP reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "COMP EVENTS_CROSS: Downward or upward crossing\n\nLPCOMP EVENTS_CROSS: Downward or upward crossing"]
     #[inline]
     pub(crate) fn read_complpcomp_events_cross(&self) -> MemResult<u32> {
-        todo ! ("read COMP EVENTS_CROSS, LPCOMP EVENTS_CROSS reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read COMP EVENTS_CROSS, LPCOMP EVENTS_CROSS reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "COMP EVENTS_CROSS: Downward or upward crossing\n\nLPCOMP EVENTS_CROSS: Downward or upward crossing"]
     #[inline]
@@ -12546,14 +12550,14 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write COMP EVENTS_CROSS, LPCOMP EVENTS_CROSS reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write COMP EVENTS_CROSS, LPCOMP EVENTS_CROSS reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "COMP SHORTS READY_SAMPLE: Shortcut between READY event and SAMPLE task\n\nLPCOMP SHORTS READY_SAMPLE: Shortcut between READY event and SAMPLE task"]
     #[inline]
     pub(crate) fn read_complpcomp_shorts_ready_sample(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read COMP SHORTS READY_SAMPLE, LPCOMP SHORTS READY_SAMPLE reset value false")
+        todo!("read COMP SHORTS READY_SAMPLE, LPCOMP SHORTS READY_SAMPLE reset value false")
     }
     #[doc = "COMP SHORTS READY_SAMPLE: Shortcut between READY event and SAMPLE task\n\nLPCOMP SHORTS READY_SAMPLE: Shortcut between READY event and SAMPLE task"]
     #[inline]
@@ -12561,12 +12565,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write COMP SHORTS READY_SAMPLE, LPCOMP SHORTS READY_SAMPLE reset value false")
+        todo!("write COMP SHORTS READY_SAMPLE, LPCOMP SHORTS READY_SAMPLE reset value false")
     }
     #[doc = "COMP SHORTS READY_STOP: Shortcut between READY event and STOP task\n\nLPCOMP SHORTS READY_STOP: Shortcut between READY event and STOP task"]
     #[inline]
     pub(crate) fn read_complpcomp_shorts_ready_stop(&self) -> MemResult<bool> {
-        todo ! ("read COMP SHORTS READY_STOP, LPCOMP SHORTS READY_STOP reset value false")
+        todo!("read COMP SHORTS READY_STOP, LPCOMP SHORTS READY_STOP reset value false")
     }
     #[doc = "COMP SHORTS READY_STOP: Shortcut between READY event and STOP task\n\nLPCOMP SHORTS READY_STOP: Shortcut between READY event and STOP task"]
     #[inline]
@@ -12574,12 +12578,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write COMP SHORTS READY_STOP, LPCOMP SHORTS READY_STOP reset value false")
+        todo!("write COMP SHORTS READY_STOP, LPCOMP SHORTS READY_STOP reset value false")
     }
     #[doc = "COMP SHORTS DOWN_STOP: Shortcut between DOWN event and STOP task\n\nLPCOMP SHORTS DOWN_STOP: Shortcut between DOWN event and STOP task"]
     #[inline]
     pub(crate) fn read_complpcomp_shorts_down_stop(&self) -> MemResult<bool> {
-        todo ! ("read COMP SHORTS DOWN_STOP, LPCOMP SHORTS DOWN_STOP reset value false")
+        todo!("read COMP SHORTS DOWN_STOP, LPCOMP SHORTS DOWN_STOP reset value false")
     }
     #[doc = "COMP SHORTS DOWN_STOP: Shortcut between DOWN event and STOP task\n\nLPCOMP SHORTS DOWN_STOP: Shortcut between DOWN event and STOP task"]
     #[inline]
@@ -12587,7 +12591,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write COMP SHORTS DOWN_STOP, LPCOMP SHORTS DOWN_STOP reset value false")
+        todo!("write COMP SHORTS DOWN_STOP, LPCOMP SHORTS DOWN_STOP reset value false")
     }
     #[doc = "COMP SHORTS UP_STOP: Shortcut between UP event and STOP task\n\nLPCOMP SHORTS UP_STOP: Shortcut between UP event and STOP task"]
     #[inline]
@@ -12602,12 +12606,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write COMP SHORTS UP_STOP, LPCOMP SHORTS UP_STOP reset value false")
+        todo!("write COMP SHORTS UP_STOP, LPCOMP SHORTS UP_STOP reset value false")
     }
     #[doc = "COMP SHORTS CROSS_STOP: Shortcut between CROSS event and STOP task\n\nLPCOMP SHORTS CROSS_STOP: Shortcut between CROSS event and STOP task"]
     #[inline]
     pub(crate) fn read_complpcomp_shorts_cross_stop(&self) -> MemResult<bool> {
-        todo ! ("read COMP SHORTS CROSS_STOP, LPCOMP SHORTS CROSS_STOP reset value false")
+        todo!("read COMP SHORTS CROSS_STOP, LPCOMP SHORTS CROSS_STOP reset value false")
     }
     #[doc = "COMP SHORTS CROSS_STOP: Shortcut between CROSS event and STOP task\n\nLPCOMP SHORTS CROSS_STOP: Shortcut between CROSS event and STOP task"]
     #[inline]
@@ -12615,7 +12619,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write COMP SHORTS CROSS_STOP, LPCOMP SHORTS CROSS_STOP reset value false")
+        todo!("write COMP SHORTS CROSS_STOP, LPCOMP SHORTS CROSS_STOP reset value false")
     }
     #[doc = "COMP INTEN READY: Enable or disable interrupt for READY event"]
     #[inline]
@@ -12682,7 +12686,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write COMP INTENSET READY, LPCOMP INTENSET READY reset value false")
+        todo!("write COMP INTENSET READY, LPCOMP INTENSET READY reset value false")
     }
     #[doc = "COMP INTENSET DOWN: Write '1' to Enable interrupt for DOWN event\n\nLPCOMP INTENSET DOWN: Write '1' to Enable interrupt for DOWN event"]
     #[inline]
@@ -12725,7 +12729,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write COMP INTENSET CROSS, LPCOMP INTENSET CROSS reset value false")
+        todo!("write COMP INTENSET CROSS, LPCOMP INTENSET CROSS reset value false")
     }
     #[doc = "COMP INTENCLR READY: Write '1' to Disable interrupt for READY event\n\nLPCOMP INTENCLR READY: Write '1' to Disable interrupt for READY event"]
     #[inline]
@@ -12740,7 +12744,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write COMP INTENCLR READY, LPCOMP INTENCLR READY reset value false")
+        todo!("write COMP INTENCLR READY, LPCOMP INTENCLR READY reset value false")
     }
     #[doc = "COMP INTENCLR DOWN: Write '1' to Disable interrupt for DOWN event\n\nLPCOMP INTENCLR DOWN: Write '1' to Disable interrupt for DOWN event"]
     #[inline]
@@ -12783,7 +12787,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write COMP INTENCLR CROSS, LPCOMP INTENCLR CROSS reset value false")
+        todo!("write COMP INTENCLR CROSS, LPCOMP INTENCLR CROSS reset value false")
     }
     #[doc = "COMP RESULT RESULT: Result of last compare. Decision point SAMPLE task.\n\nLPCOMP RESULT RESULT: Result of last compare. Decision point SAMPLE task."]
     #[inline]
@@ -12793,7 +12797,7 @@ impl Peripherals {
     #[doc = "COMP ENABLE ENABLE: Enable or disable COMP\n\nLPCOMP ENABLE ENABLE: Enable or disable LPCOMP"]
     #[inline]
     pub(crate) fn read_complpcomp_enable_enable(&self) -> MemResult<u8> {
-        todo ! ("read COMP ENABLE ENABLE, LPCOMP ENABLE ENABLE reset value 0x00 mask 0x03")
+        todo!("read COMP ENABLE ENABLE, LPCOMP ENABLE ENABLE reset value 0x00 mask 0x03")
     }
     #[doc = "COMP ENABLE ENABLE: Enable or disable COMP\n\nLPCOMP ENABLE ENABLE: Enable or disable LPCOMP"]
     #[inline]
@@ -12801,7 +12805,7 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write COMP ENABLE ENABLE, LPCOMP ENABLE ENABLE reset value 0x00 mask 0x03")
+        todo!("write COMP ENABLE ENABLE, LPCOMP ENABLE ENABLE reset value 0x00 mask 0x03")
     }
     #[doc = "COMP PSEL PSEL: Analog pin select\n\nLPCOMP PSEL PSEL: Analog pin select"]
     #[inline]
@@ -12823,7 +12827,7 @@ impl Peripherals {
     #[doc = "COMP REFSEL REFSEL: Reference select\n\nLPCOMP REFSEL REFSEL: Reference select"]
     #[inline]
     pub(crate) fn read_complpcomp_refsel_refsel(&self) -> MemResult<u8> {
-        todo ! ("read COMP REFSEL REFSEL, LPCOMP REFSEL REFSEL reset value 0x04 mask 0x07")
+        todo!("read COMP REFSEL REFSEL, LPCOMP REFSEL REFSEL reset value 0x04 mask 0x07")
     }
     #[doc = "COMP REFSEL REFSEL: Reference select\n\nLPCOMP REFSEL REFSEL: Reference select"]
     #[inline]
@@ -12831,12 +12835,12 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write COMP REFSEL REFSEL, LPCOMP REFSEL REFSEL reset value 0x04 mask 0x07")
+        todo!("write COMP REFSEL REFSEL, LPCOMP REFSEL REFSEL reset value 0x04 mask 0x07")
     }
     #[doc = "COMP EXTREFSEL EXTREFSEL: External analog reference select\n\nLPCOMP EXTREFSEL EXTREFSEL: External analog reference select"]
     #[inline]
     pub(crate) fn read_complpcomp_extrefsel_extrefsel(&self) -> MemResult<u8> {
-        todo ! ("read COMP EXTREFSEL EXTREFSEL, LPCOMP EXTREFSEL EXTREFSEL reset value 0x00 mask 0x07")
+        todo!("read COMP EXTREFSEL EXTREFSEL, LPCOMP EXTREFSEL EXTREFSEL reset value 0x00 mask 0x07")
     }
     #[doc = "COMP EXTREFSEL EXTREFSEL: External analog reference select\n\nLPCOMP EXTREFSEL EXTREFSEL: External analog reference select"]
     #[inline]
@@ -12844,7 +12848,7 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write COMP EXTREFSEL EXTREFSEL, LPCOMP EXTREFSEL EXTREFSEL reset value 0x00 mask 0x07")
+        todo!("write COMP EXTREFSEL EXTREFSEL, LPCOMP EXTREFSEL EXTREFSEL reset value 0x00 mask 0x07")
     }
     #[doc = "LPCOMP ANADETECT ANADETECT: Analog detect configuration"]
     #[inline]
@@ -12931,7 +12935,7 @@ impl Peripherals {
     #[doc = "SWI0 UNUSED: Unused.\n\nEGU0 TASKS_TRIGGER[%s]: Description collection[0]:  Trigger 0 for triggering the corresponding TRIGGERED[0] event\n\nSWI0 UNUSED: Unused.\n\nEGU0 TASKS_TRIGGER[%s]: Description collection[0]:  Trigger 0 for triggering the corresponding TRIGGERED[0] event\n\nSWI0 UNUSED: Unused.\n\nEGU0 TASKS_TRIGGER[%s]: Description collection[0]:  Trigger 0 for triggering the corresponding TRIGGERED[0] event\n\nSWI0 UNUSED: Unused.\n\nEGU0 TASKS_TRIGGER[%s]: Description collection[0]:  Trigger 0 for triggering the corresponding TRIGGERED[0] event\n\nSWI0 UNUSED: Unused.\n\nEGU0 TASKS_TRIGGER[%s]: Description collection[0]:  Trigger 0 for triggering the corresponding TRIGGERED[0] event\n\nSWI0 UNUSED: Unused.\n\nEGU0 TASKS_TRIGGER[%s]: Description collection[0]:  Trigger 0 for triggering the corresponding TRIGGERED[0] event"]
     #[inline]
     pub(crate) fn read_swi0egu0_unused(&self, _dim: usize) -> MemResult<u32> {
-        todo ! ("read SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s], SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s], SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s], SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s], SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s], SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s], SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s], SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s], SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s], SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s], SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "SWI0 UNUSED: Unused.\n\nEGU0 TASKS_TRIGGER[%s]: Description collection[0]:  Trigger 0 for triggering the corresponding TRIGGERED[0] event\n\nSWI0 UNUSED: Unused.\n\nEGU0 TASKS_TRIGGER[%s]: Description collection[0]:  Trigger 0 for triggering the corresponding TRIGGERED[0] event\n\nSWI0 UNUSED: Unused.\n\nEGU0 TASKS_TRIGGER[%s]: Description collection[0]:  Trigger 0 for triggering the corresponding TRIGGERED[0] event\n\nSWI0 UNUSED: Unused.\n\nEGU0 TASKS_TRIGGER[%s]: Description collection[0]:  Trigger 0 for triggering the corresponding TRIGGERED[0] event\n\nSWI0 UNUSED: Unused.\n\nEGU0 TASKS_TRIGGER[%s]: Description collection[0]:  Trigger 0 for triggering the corresponding TRIGGERED[0] event\n\nSWI0 UNUSED: Unused.\n\nEGU0 TASKS_TRIGGER[%s]: Description collection[0]:  Trigger 0 for triggering the corresponding TRIGGERED[0] event"]
     #[inline]
@@ -12940,7 +12944,7 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s], SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s], SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s], SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s], SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s], SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s], SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s], SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s], SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s], SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s], SWI0 UNUSED, EGU0 TASKS_TRIGGER[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "EGU0 EVENTS_TRIGGERED[%s]: Description collection[0]:  Event number 0 generated by triggering the corresponding TRIGGER[0] task\n\nEGU0 EVENTS_TRIGGERED[%s]: Description collection[0]:  Event number 0 generated by triggering the corresponding TRIGGER[0] task\n\nEGU0 EVENTS_TRIGGERED[%s]: Description collection[0]:  Event number 0 generated by triggering the corresponding TRIGGER[0] task\n\nEGU0 EVENTS_TRIGGERED[%s]: Description collection[0]:  Event number 0 generated by triggering the corresponding TRIGGER[0] task\n\nEGU0 EVENTS_TRIGGERED[%s]: Description collection[0]:  Event number 0 generated by triggering the corresponding TRIGGER[0] task\n\nEGU0 EVENTS_TRIGGERED[%s]: Description collection[0]:  Event number 0 generated by triggering the corresponding TRIGGER[0] task"]
     #[inline]
@@ -12948,7 +12952,7 @@ impl Peripherals {
         &self,
         _dim: usize,
     ) -> MemResult<u32> {
-        todo ! ("read EGU0 EVENTS_TRIGGERED[%s], EGU0 EVENTS_TRIGGERED[%s], EGU0 EVENTS_TRIGGERED[%s], EGU0 EVENTS_TRIGGERED[%s], EGU0 EVENTS_TRIGGERED[%s], EGU0 EVENTS_TRIGGERED[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read EGU0 EVENTS_TRIGGERED[%s], EGU0 EVENTS_TRIGGERED[%s], EGU0 EVENTS_TRIGGERED[%s], EGU0 EVENTS_TRIGGERED[%s], EGU0 EVENTS_TRIGGERED[%s], EGU0 EVENTS_TRIGGERED[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "EGU0 EVENTS_TRIGGERED[%s]: Description collection[0]:  Event number 0 generated by triggering the corresponding TRIGGER[0] task\n\nEGU0 EVENTS_TRIGGERED[%s]: Description collection[0]:  Event number 0 generated by triggering the corresponding TRIGGER[0] task\n\nEGU0 EVENTS_TRIGGERED[%s]: Description collection[0]:  Event number 0 generated by triggering the corresponding TRIGGER[0] task\n\nEGU0 EVENTS_TRIGGERED[%s]: Description collection[0]:  Event number 0 generated by triggering the corresponding TRIGGER[0] task\n\nEGU0 EVENTS_TRIGGERED[%s]: Description collection[0]:  Event number 0 generated by triggering the corresponding TRIGGER[0] task\n\nEGU0 EVENTS_TRIGGERED[%s]: Description collection[0]:  Event number 0 generated by triggering the corresponding TRIGGER[0] task"]
     #[inline]
@@ -12957,12 +12961,12 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 EVENTS_TRIGGERED[%s], EGU0 EVENTS_TRIGGERED[%s], EGU0 EVENTS_TRIGGERED[%s], EGU0 EVENTS_TRIGGERED[%s], EGU0 EVENTS_TRIGGERED[%s], EGU0 EVENTS_TRIGGERED[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write EGU0 EVENTS_TRIGGERED[%s], EGU0 EVENTS_TRIGGERED[%s], EGU0 EVENTS_TRIGGERED[%s], EGU0 EVENTS_TRIGGERED[%s], EGU0 EVENTS_TRIGGERED[%s], EGU0 EVENTS_TRIGGERED[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "EGU0 INTEN TRIGGERED0: Enable or disable interrupt for TRIGGERED[0] event\n\nEGU0 INTEN TRIGGERED0: Enable or disable interrupt for TRIGGERED[0] event\n\nEGU0 INTEN TRIGGERED0: Enable or disable interrupt for TRIGGERED[0] event\n\nEGU0 INTEN TRIGGERED0: Enable or disable interrupt for TRIGGERED[0] event\n\nEGU0 INTEN TRIGGERED0: Enable or disable interrupt for TRIGGERED[0] event\n\nEGU0 INTEN TRIGGERED0: Enable or disable interrupt for TRIGGERED[0] event"]
     #[inline]
     pub(crate) fn read_egu0_inten_triggered0(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTEN TRIGGERED0, EGU0 INTEN TRIGGERED0, EGU0 INTEN TRIGGERED0, EGU0 INTEN TRIGGERED0, EGU0 INTEN TRIGGERED0, EGU0 INTEN TRIGGERED0 reset value false")
+        todo!("read EGU0 INTEN TRIGGERED0, EGU0 INTEN TRIGGERED0, EGU0 INTEN TRIGGERED0, EGU0 INTEN TRIGGERED0, EGU0 INTEN TRIGGERED0, EGU0 INTEN TRIGGERED0 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED0: Enable or disable interrupt for TRIGGERED[0] event\n\nEGU0 INTEN TRIGGERED0: Enable or disable interrupt for TRIGGERED[0] event\n\nEGU0 INTEN TRIGGERED0: Enable or disable interrupt for TRIGGERED[0] event\n\nEGU0 INTEN TRIGGERED0: Enable or disable interrupt for TRIGGERED[0] event\n\nEGU0 INTEN TRIGGERED0: Enable or disable interrupt for TRIGGERED[0] event\n\nEGU0 INTEN TRIGGERED0: Enable or disable interrupt for TRIGGERED[0] event"]
     #[inline]
@@ -12970,12 +12974,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTEN TRIGGERED0, EGU0 INTEN TRIGGERED0, EGU0 INTEN TRIGGERED0, EGU0 INTEN TRIGGERED0, EGU0 INTEN TRIGGERED0, EGU0 INTEN TRIGGERED0 reset value false")
+        todo!("write EGU0 INTEN TRIGGERED0, EGU0 INTEN TRIGGERED0, EGU0 INTEN TRIGGERED0, EGU0 INTEN TRIGGERED0, EGU0 INTEN TRIGGERED0, EGU0 INTEN TRIGGERED0 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED1: Enable or disable interrupt for TRIGGERED[1] event\n\nEGU0 INTEN TRIGGERED1: Enable or disable interrupt for TRIGGERED[1] event\n\nEGU0 INTEN TRIGGERED1: Enable or disable interrupt for TRIGGERED[1] event\n\nEGU0 INTEN TRIGGERED1: Enable or disable interrupt for TRIGGERED[1] event\n\nEGU0 INTEN TRIGGERED1: Enable or disable interrupt for TRIGGERED[1] event\n\nEGU0 INTEN TRIGGERED1: Enable or disable interrupt for TRIGGERED[1] event"]
     #[inline]
     pub(crate) fn read_egu0_inten_triggered1(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTEN TRIGGERED1, EGU0 INTEN TRIGGERED1, EGU0 INTEN TRIGGERED1, EGU0 INTEN TRIGGERED1, EGU0 INTEN TRIGGERED1, EGU0 INTEN TRIGGERED1 reset value false")
+        todo!("read EGU0 INTEN TRIGGERED1, EGU0 INTEN TRIGGERED1, EGU0 INTEN TRIGGERED1, EGU0 INTEN TRIGGERED1, EGU0 INTEN TRIGGERED1, EGU0 INTEN TRIGGERED1 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED1: Enable or disable interrupt for TRIGGERED[1] event\n\nEGU0 INTEN TRIGGERED1: Enable or disable interrupt for TRIGGERED[1] event\n\nEGU0 INTEN TRIGGERED1: Enable or disable interrupt for TRIGGERED[1] event\n\nEGU0 INTEN TRIGGERED1: Enable or disable interrupt for TRIGGERED[1] event\n\nEGU0 INTEN TRIGGERED1: Enable or disable interrupt for TRIGGERED[1] event\n\nEGU0 INTEN TRIGGERED1: Enable or disable interrupt for TRIGGERED[1] event"]
     #[inline]
@@ -12983,12 +12987,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTEN TRIGGERED1, EGU0 INTEN TRIGGERED1, EGU0 INTEN TRIGGERED1, EGU0 INTEN TRIGGERED1, EGU0 INTEN TRIGGERED1, EGU0 INTEN TRIGGERED1 reset value false")
+        todo!("write EGU0 INTEN TRIGGERED1, EGU0 INTEN TRIGGERED1, EGU0 INTEN TRIGGERED1, EGU0 INTEN TRIGGERED1, EGU0 INTEN TRIGGERED1, EGU0 INTEN TRIGGERED1 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED2: Enable or disable interrupt for TRIGGERED[2] event\n\nEGU0 INTEN TRIGGERED2: Enable or disable interrupt for TRIGGERED[2] event\n\nEGU0 INTEN TRIGGERED2: Enable or disable interrupt for TRIGGERED[2] event\n\nEGU0 INTEN TRIGGERED2: Enable or disable interrupt for TRIGGERED[2] event\n\nEGU0 INTEN TRIGGERED2: Enable or disable interrupt for TRIGGERED[2] event\n\nEGU0 INTEN TRIGGERED2: Enable or disable interrupt for TRIGGERED[2] event"]
     #[inline]
     pub(crate) fn read_egu0_inten_triggered2(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTEN TRIGGERED2, EGU0 INTEN TRIGGERED2, EGU0 INTEN TRIGGERED2, EGU0 INTEN TRIGGERED2, EGU0 INTEN TRIGGERED2, EGU0 INTEN TRIGGERED2 reset value false")
+        todo!("read EGU0 INTEN TRIGGERED2, EGU0 INTEN TRIGGERED2, EGU0 INTEN TRIGGERED2, EGU0 INTEN TRIGGERED2, EGU0 INTEN TRIGGERED2, EGU0 INTEN TRIGGERED2 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED2: Enable or disable interrupt for TRIGGERED[2] event\n\nEGU0 INTEN TRIGGERED2: Enable or disable interrupt for TRIGGERED[2] event\n\nEGU0 INTEN TRIGGERED2: Enable or disable interrupt for TRIGGERED[2] event\n\nEGU0 INTEN TRIGGERED2: Enable or disable interrupt for TRIGGERED[2] event\n\nEGU0 INTEN TRIGGERED2: Enable or disable interrupt for TRIGGERED[2] event\n\nEGU0 INTEN TRIGGERED2: Enable or disable interrupt for TRIGGERED[2] event"]
     #[inline]
@@ -12996,12 +13000,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTEN TRIGGERED2, EGU0 INTEN TRIGGERED2, EGU0 INTEN TRIGGERED2, EGU0 INTEN TRIGGERED2, EGU0 INTEN TRIGGERED2, EGU0 INTEN TRIGGERED2 reset value false")
+        todo!("write EGU0 INTEN TRIGGERED2, EGU0 INTEN TRIGGERED2, EGU0 INTEN TRIGGERED2, EGU0 INTEN TRIGGERED2, EGU0 INTEN TRIGGERED2, EGU0 INTEN TRIGGERED2 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED3: Enable or disable interrupt for TRIGGERED[3] event\n\nEGU0 INTEN TRIGGERED3: Enable or disable interrupt for TRIGGERED[3] event\n\nEGU0 INTEN TRIGGERED3: Enable or disable interrupt for TRIGGERED[3] event\n\nEGU0 INTEN TRIGGERED3: Enable or disable interrupt for TRIGGERED[3] event\n\nEGU0 INTEN TRIGGERED3: Enable or disable interrupt for TRIGGERED[3] event\n\nEGU0 INTEN TRIGGERED3: Enable or disable interrupt for TRIGGERED[3] event"]
     #[inline]
     pub(crate) fn read_egu0_inten_triggered3(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTEN TRIGGERED3, EGU0 INTEN TRIGGERED3, EGU0 INTEN TRIGGERED3, EGU0 INTEN TRIGGERED3, EGU0 INTEN TRIGGERED3, EGU0 INTEN TRIGGERED3 reset value false")
+        todo!("read EGU0 INTEN TRIGGERED3, EGU0 INTEN TRIGGERED3, EGU0 INTEN TRIGGERED3, EGU0 INTEN TRIGGERED3, EGU0 INTEN TRIGGERED3, EGU0 INTEN TRIGGERED3 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED3: Enable or disable interrupt for TRIGGERED[3] event\n\nEGU0 INTEN TRIGGERED3: Enable or disable interrupt for TRIGGERED[3] event\n\nEGU0 INTEN TRIGGERED3: Enable or disable interrupt for TRIGGERED[3] event\n\nEGU0 INTEN TRIGGERED3: Enable or disable interrupt for TRIGGERED[3] event\n\nEGU0 INTEN TRIGGERED3: Enable or disable interrupt for TRIGGERED[3] event\n\nEGU0 INTEN TRIGGERED3: Enable or disable interrupt for TRIGGERED[3] event"]
     #[inline]
@@ -13009,12 +13013,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTEN TRIGGERED3, EGU0 INTEN TRIGGERED3, EGU0 INTEN TRIGGERED3, EGU0 INTEN TRIGGERED3, EGU0 INTEN TRIGGERED3, EGU0 INTEN TRIGGERED3 reset value false")
+        todo!("write EGU0 INTEN TRIGGERED3, EGU0 INTEN TRIGGERED3, EGU0 INTEN TRIGGERED3, EGU0 INTEN TRIGGERED3, EGU0 INTEN TRIGGERED3, EGU0 INTEN TRIGGERED3 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED4: Enable or disable interrupt for TRIGGERED[4] event\n\nEGU0 INTEN TRIGGERED4: Enable or disable interrupt for TRIGGERED[4] event\n\nEGU0 INTEN TRIGGERED4: Enable or disable interrupt for TRIGGERED[4] event\n\nEGU0 INTEN TRIGGERED4: Enable or disable interrupt for TRIGGERED[4] event\n\nEGU0 INTEN TRIGGERED4: Enable or disable interrupt for TRIGGERED[4] event\n\nEGU0 INTEN TRIGGERED4: Enable or disable interrupt for TRIGGERED[4] event"]
     #[inline]
     pub(crate) fn read_egu0_inten_triggered4(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTEN TRIGGERED4, EGU0 INTEN TRIGGERED4, EGU0 INTEN TRIGGERED4, EGU0 INTEN TRIGGERED4, EGU0 INTEN TRIGGERED4, EGU0 INTEN TRIGGERED4 reset value false")
+        todo!("read EGU0 INTEN TRIGGERED4, EGU0 INTEN TRIGGERED4, EGU0 INTEN TRIGGERED4, EGU0 INTEN TRIGGERED4, EGU0 INTEN TRIGGERED4, EGU0 INTEN TRIGGERED4 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED4: Enable or disable interrupt for TRIGGERED[4] event\n\nEGU0 INTEN TRIGGERED4: Enable or disable interrupt for TRIGGERED[4] event\n\nEGU0 INTEN TRIGGERED4: Enable or disable interrupt for TRIGGERED[4] event\n\nEGU0 INTEN TRIGGERED4: Enable or disable interrupt for TRIGGERED[4] event\n\nEGU0 INTEN TRIGGERED4: Enable or disable interrupt for TRIGGERED[4] event\n\nEGU0 INTEN TRIGGERED4: Enable or disable interrupt for TRIGGERED[4] event"]
     #[inline]
@@ -13022,12 +13026,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTEN TRIGGERED4, EGU0 INTEN TRIGGERED4, EGU0 INTEN TRIGGERED4, EGU0 INTEN TRIGGERED4, EGU0 INTEN TRIGGERED4, EGU0 INTEN TRIGGERED4 reset value false")
+        todo!("write EGU0 INTEN TRIGGERED4, EGU0 INTEN TRIGGERED4, EGU0 INTEN TRIGGERED4, EGU0 INTEN TRIGGERED4, EGU0 INTEN TRIGGERED4, EGU0 INTEN TRIGGERED4 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED5: Enable or disable interrupt for TRIGGERED[5] event\n\nEGU0 INTEN TRIGGERED5: Enable or disable interrupt for TRIGGERED[5] event\n\nEGU0 INTEN TRIGGERED5: Enable or disable interrupt for TRIGGERED[5] event\n\nEGU0 INTEN TRIGGERED5: Enable or disable interrupt for TRIGGERED[5] event\n\nEGU0 INTEN TRIGGERED5: Enable or disable interrupt for TRIGGERED[5] event\n\nEGU0 INTEN TRIGGERED5: Enable or disable interrupt for TRIGGERED[5] event"]
     #[inline]
     pub(crate) fn read_egu0_inten_triggered5(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTEN TRIGGERED5, EGU0 INTEN TRIGGERED5, EGU0 INTEN TRIGGERED5, EGU0 INTEN TRIGGERED5, EGU0 INTEN TRIGGERED5, EGU0 INTEN TRIGGERED5 reset value false")
+        todo!("read EGU0 INTEN TRIGGERED5, EGU0 INTEN TRIGGERED5, EGU0 INTEN TRIGGERED5, EGU0 INTEN TRIGGERED5, EGU0 INTEN TRIGGERED5, EGU0 INTEN TRIGGERED5 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED5: Enable or disable interrupt for TRIGGERED[5] event\n\nEGU0 INTEN TRIGGERED5: Enable or disable interrupt for TRIGGERED[5] event\n\nEGU0 INTEN TRIGGERED5: Enable or disable interrupt for TRIGGERED[5] event\n\nEGU0 INTEN TRIGGERED5: Enable or disable interrupt for TRIGGERED[5] event\n\nEGU0 INTEN TRIGGERED5: Enable or disable interrupt for TRIGGERED[5] event\n\nEGU0 INTEN TRIGGERED5: Enable or disable interrupt for TRIGGERED[5] event"]
     #[inline]
@@ -13035,12 +13039,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTEN TRIGGERED5, EGU0 INTEN TRIGGERED5, EGU0 INTEN TRIGGERED5, EGU0 INTEN TRIGGERED5, EGU0 INTEN TRIGGERED5, EGU0 INTEN TRIGGERED5 reset value false")
+        todo!("write EGU0 INTEN TRIGGERED5, EGU0 INTEN TRIGGERED5, EGU0 INTEN TRIGGERED5, EGU0 INTEN TRIGGERED5, EGU0 INTEN TRIGGERED5, EGU0 INTEN TRIGGERED5 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED6: Enable or disable interrupt for TRIGGERED[6] event\n\nEGU0 INTEN TRIGGERED6: Enable or disable interrupt for TRIGGERED[6] event\n\nEGU0 INTEN TRIGGERED6: Enable or disable interrupt for TRIGGERED[6] event\n\nEGU0 INTEN TRIGGERED6: Enable or disable interrupt for TRIGGERED[6] event\n\nEGU0 INTEN TRIGGERED6: Enable or disable interrupt for TRIGGERED[6] event\n\nEGU0 INTEN TRIGGERED6: Enable or disable interrupt for TRIGGERED[6] event"]
     #[inline]
     pub(crate) fn read_egu0_inten_triggered6(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTEN TRIGGERED6, EGU0 INTEN TRIGGERED6, EGU0 INTEN TRIGGERED6, EGU0 INTEN TRIGGERED6, EGU0 INTEN TRIGGERED6, EGU0 INTEN TRIGGERED6 reset value false")
+        todo!("read EGU0 INTEN TRIGGERED6, EGU0 INTEN TRIGGERED6, EGU0 INTEN TRIGGERED6, EGU0 INTEN TRIGGERED6, EGU0 INTEN TRIGGERED6, EGU0 INTEN TRIGGERED6 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED6: Enable or disable interrupt for TRIGGERED[6] event\n\nEGU0 INTEN TRIGGERED6: Enable or disable interrupt for TRIGGERED[6] event\n\nEGU0 INTEN TRIGGERED6: Enable or disable interrupt for TRIGGERED[6] event\n\nEGU0 INTEN TRIGGERED6: Enable or disable interrupt for TRIGGERED[6] event\n\nEGU0 INTEN TRIGGERED6: Enable or disable interrupt for TRIGGERED[6] event\n\nEGU0 INTEN TRIGGERED6: Enable or disable interrupt for TRIGGERED[6] event"]
     #[inline]
@@ -13048,12 +13052,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTEN TRIGGERED6, EGU0 INTEN TRIGGERED6, EGU0 INTEN TRIGGERED6, EGU0 INTEN TRIGGERED6, EGU0 INTEN TRIGGERED6, EGU0 INTEN TRIGGERED6 reset value false")
+        todo!("write EGU0 INTEN TRIGGERED6, EGU0 INTEN TRIGGERED6, EGU0 INTEN TRIGGERED6, EGU0 INTEN TRIGGERED6, EGU0 INTEN TRIGGERED6, EGU0 INTEN TRIGGERED6 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED7: Enable or disable interrupt for TRIGGERED[7] event\n\nEGU0 INTEN TRIGGERED7: Enable or disable interrupt for TRIGGERED[7] event\n\nEGU0 INTEN TRIGGERED7: Enable or disable interrupt for TRIGGERED[7] event\n\nEGU0 INTEN TRIGGERED7: Enable or disable interrupt for TRIGGERED[7] event\n\nEGU0 INTEN TRIGGERED7: Enable or disable interrupt for TRIGGERED[7] event\n\nEGU0 INTEN TRIGGERED7: Enable or disable interrupt for TRIGGERED[7] event"]
     #[inline]
     pub(crate) fn read_egu0_inten_triggered7(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTEN TRIGGERED7, EGU0 INTEN TRIGGERED7, EGU0 INTEN TRIGGERED7, EGU0 INTEN TRIGGERED7, EGU0 INTEN TRIGGERED7, EGU0 INTEN TRIGGERED7 reset value false")
+        todo!("read EGU0 INTEN TRIGGERED7, EGU0 INTEN TRIGGERED7, EGU0 INTEN TRIGGERED7, EGU0 INTEN TRIGGERED7, EGU0 INTEN TRIGGERED7, EGU0 INTEN TRIGGERED7 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED7: Enable or disable interrupt for TRIGGERED[7] event\n\nEGU0 INTEN TRIGGERED7: Enable or disable interrupt for TRIGGERED[7] event\n\nEGU0 INTEN TRIGGERED7: Enable or disable interrupt for TRIGGERED[7] event\n\nEGU0 INTEN TRIGGERED7: Enable or disable interrupt for TRIGGERED[7] event\n\nEGU0 INTEN TRIGGERED7: Enable or disable interrupt for TRIGGERED[7] event\n\nEGU0 INTEN TRIGGERED7: Enable or disable interrupt for TRIGGERED[7] event"]
     #[inline]
@@ -13061,12 +13065,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTEN TRIGGERED7, EGU0 INTEN TRIGGERED7, EGU0 INTEN TRIGGERED7, EGU0 INTEN TRIGGERED7, EGU0 INTEN TRIGGERED7, EGU0 INTEN TRIGGERED7 reset value false")
+        todo!("write EGU0 INTEN TRIGGERED7, EGU0 INTEN TRIGGERED7, EGU0 INTEN TRIGGERED7, EGU0 INTEN TRIGGERED7, EGU0 INTEN TRIGGERED7, EGU0 INTEN TRIGGERED7 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED8: Enable or disable interrupt for TRIGGERED[8] event\n\nEGU0 INTEN TRIGGERED8: Enable or disable interrupt for TRIGGERED[8] event\n\nEGU0 INTEN TRIGGERED8: Enable or disable interrupt for TRIGGERED[8] event\n\nEGU0 INTEN TRIGGERED8: Enable or disable interrupt for TRIGGERED[8] event\n\nEGU0 INTEN TRIGGERED8: Enable or disable interrupt for TRIGGERED[8] event\n\nEGU0 INTEN TRIGGERED8: Enable or disable interrupt for TRIGGERED[8] event"]
     #[inline]
     pub(crate) fn read_egu0_inten_triggered8(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTEN TRIGGERED8, EGU0 INTEN TRIGGERED8, EGU0 INTEN TRIGGERED8, EGU0 INTEN TRIGGERED8, EGU0 INTEN TRIGGERED8, EGU0 INTEN TRIGGERED8 reset value false")
+        todo!("read EGU0 INTEN TRIGGERED8, EGU0 INTEN TRIGGERED8, EGU0 INTEN TRIGGERED8, EGU0 INTEN TRIGGERED8, EGU0 INTEN TRIGGERED8, EGU0 INTEN TRIGGERED8 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED8: Enable or disable interrupt for TRIGGERED[8] event\n\nEGU0 INTEN TRIGGERED8: Enable or disable interrupt for TRIGGERED[8] event\n\nEGU0 INTEN TRIGGERED8: Enable or disable interrupt for TRIGGERED[8] event\n\nEGU0 INTEN TRIGGERED8: Enable or disable interrupt for TRIGGERED[8] event\n\nEGU0 INTEN TRIGGERED8: Enable or disable interrupt for TRIGGERED[8] event\n\nEGU0 INTEN TRIGGERED8: Enable or disable interrupt for TRIGGERED[8] event"]
     #[inline]
@@ -13074,12 +13078,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTEN TRIGGERED8, EGU0 INTEN TRIGGERED8, EGU0 INTEN TRIGGERED8, EGU0 INTEN TRIGGERED8, EGU0 INTEN TRIGGERED8, EGU0 INTEN TRIGGERED8 reset value false")
+        todo!("write EGU0 INTEN TRIGGERED8, EGU0 INTEN TRIGGERED8, EGU0 INTEN TRIGGERED8, EGU0 INTEN TRIGGERED8, EGU0 INTEN TRIGGERED8, EGU0 INTEN TRIGGERED8 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED9: Enable or disable interrupt for TRIGGERED[9] event\n\nEGU0 INTEN TRIGGERED9: Enable or disable interrupt for TRIGGERED[9] event\n\nEGU0 INTEN TRIGGERED9: Enable or disable interrupt for TRIGGERED[9] event\n\nEGU0 INTEN TRIGGERED9: Enable or disable interrupt for TRIGGERED[9] event\n\nEGU0 INTEN TRIGGERED9: Enable or disable interrupt for TRIGGERED[9] event\n\nEGU0 INTEN TRIGGERED9: Enable or disable interrupt for TRIGGERED[9] event"]
     #[inline]
     pub(crate) fn read_egu0_inten_triggered9(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTEN TRIGGERED9, EGU0 INTEN TRIGGERED9, EGU0 INTEN TRIGGERED9, EGU0 INTEN TRIGGERED9, EGU0 INTEN TRIGGERED9, EGU0 INTEN TRIGGERED9 reset value false")
+        todo!("read EGU0 INTEN TRIGGERED9, EGU0 INTEN TRIGGERED9, EGU0 INTEN TRIGGERED9, EGU0 INTEN TRIGGERED9, EGU0 INTEN TRIGGERED9, EGU0 INTEN TRIGGERED9 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED9: Enable or disable interrupt for TRIGGERED[9] event\n\nEGU0 INTEN TRIGGERED9: Enable or disable interrupt for TRIGGERED[9] event\n\nEGU0 INTEN TRIGGERED9: Enable or disable interrupt for TRIGGERED[9] event\n\nEGU0 INTEN TRIGGERED9: Enable or disable interrupt for TRIGGERED[9] event\n\nEGU0 INTEN TRIGGERED9: Enable or disable interrupt for TRIGGERED[9] event\n\nEGU0 INTEN TRIGGERED9: Enable or disable interrupt for TRIGGERED[9] event"]
     #[inline]
@@ -13087,12 +13091,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTEN TRIGGERED9, EGU0 INTEN TRIGGERED9, EGU0 INTEN TRIGGERED9, EGU0 INTEN TRIGGERED9, EGU0 INTEN TRIGGERED9, EGU0 INTEN TRIGGERED9 reset value false")
+        todo!("write EGU0 INTEN TRIGGERED9, EGU0 INTEN TRIGGERED9, EGU0 INTEN TRIGGERED9, EGU0 INTEN TRIGGERED9, EGU0 INTEN TRIGGERED9, EGU0 INTEN TRIGGERED9 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED10: Enable or disable interrupt for TRIGGERED[10] event\n\nEGU0 INTEN TRIGGERED10: Enable or disable interrupt for TRIGGERED[10] event\n\nEGU0 INTEN TRIGGERED10: Enable or disable interrupt for TRIGGERED[10] event\n\nEGU0 INTEN TRIGGERED10: Enable or disable interrupt for TRIGGERED[10] event\n\nEGU0 INTEN TRIGGERED10: Enable or disable interrupt for TRIGGERED[10] event\n\nEGU0 INTEN TRIGGERED10: Enable or disable interrupt for TRIGGERED[10] event"]
     #[inline]
     pub(crate) fn read_egu0_inten_triggered10(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTEN TRIGGERED10, EGU0 INTEN TRIGGERED10, EGU0 INTEN TRIGGERED10, EGU0 INTEN TRIGGERED10, EGU0 INTEN TRIGGERED10, EGU0 INTEN TRIGGERED10 reset value false")
+        todo!("read EGU0 INTEN TRIGGERED10, EGU0 INTEN TRIGGERED10, EGU0 INTEN TRIGGERED10, EGU0 INTEN TRIGGERED10, EGU0 INTEN TRIGGERED10, EGU0 INTEN TRIGGERED10 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED10: Enable or disable interrupt for TRIGGERED[10] event\n\nEGU0 INTEN TRIGGERED10: Enable or disable interrupt for TRIGGERED[10] event\n\nEGU0 INTEN TRIGGERED10: Enable or disable interrupt for TRIGGERED[10] event\n\nEGU0 INTEN TRIGGERED10: Enable or disable interrupt for TRIGGERED[10] event\n\nEGU0 INTEN TRIGGERED10: Enable or disable interrupt for TRIGGERED[10] event\n\nEGU0 INTEN TRIGGERED10: Enable or disable interrupt for TRIGGERED[10] event"]
     #[inline]
@@ -13100,12 +13104,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTEN TRIGGERED10, EGU0 INTEN TRIGGERED10, EGU0 INTEN TRIGGERED10, EGU0 INTEN TRIGGERED10, EGU0 INTEN TRIGGERED10, EGU0 INTEN TRIGGERED10 reset value false")
+        todo!("write EGU0 INTEN TRIGGERED10, EGU0 INTEN TRIGGERED10, EGU0 INTEN TRIGGERED10, EGU0 INTEN TRIGGERED10, EGU0 INTEN TRIGGERED10, EGU0 INTEN TRIGGERED10 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED11: Enable or disable interrupt for TRIGGERED[11] event\n\nEGU0 INTEN TRIGGERED11: Enable or disable interrupt for TRIGGERED[11] event\n\nEGU0 INTEN TRIGGERED11: Enable or disable interrupt for TRIGGERED[11] event\n\nEGU0 INTEN TRIGGERED11: Enable or disable interrupt for TRIGGERED[11] event\n\nEGU0 INTEN TRIGGERED11: Enable or disable interrupt for TRIGGERED[11] event\n\nEGU0 INTEN TRIGGERED11: Enable or disable interrupt for TRIGGERED[11] event"]
     #[inline]
     pub(crate) fn read_egu0_inten_triggered11(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTEN TRIGGERED11, EGU0 INTEN TRIGGERED11, EGU0 INTEN TRIGGERED11, EGU0 INTEN TRIGGERED11, EGU0 INTEN TRIGGERED11, EGU0 INTEN TRIGGERED11 reset value false")
+        todo!("read EGU0 INTEN TRIGGERED11, EGU0 INTEN TRIGGERED11, EGU0 INTEN TRIGGERED11, EGU0 INTEN TRIGGERED11, EGU0 INTEN TRIGGERED11, EGU0 INTEN TRIGGERED11 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED11: Enable or disable interrupt for TRIGGERED[11] event\n\nEGU0 INTEN TRIGGERED11: Enable or disable interrupt for TRIGGERED[11] event\n\nEGU0 INTEN TRIGGERED11: Enable or disable interrupt for TRIGGERED[11] event\n\nEGU0 INTEN TRIGGERED11: Enable or disable interrupt for TRIGGERED[11] event\n\nEGU0 INTEN TRIGGERED11: Enable or disable interrupt for TRIGGERED[11] event\n\nEGU0 INTEN TRIGGERED11: Enable or disable interrupt for TRIGGERED[11] event"]
     #[inline]
@@ -13113,12 +13117,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTEN TRIGGERED11, EGU0 INTEN TRIGGERED11, EGU0 INTEN TRIGGERED11, EGU0 INTEN TRIGGERED11, EGU0 INTEN TRIGGERED11, EGU0 INTEN TRIGGERED11 reset value false")
+        todo!("write EGU0 INTEN TRIGGERED11, EGU0 INTEN TRIGGERED11, EGU0 INTEN TRIGGERED11, EGU0 INTEN TRIGGERED11, EGU0 INTEN TRIGGERED11, EGU0 INTEN TRIGGERED11 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED12: Enable or disable interrupt for TRIGGERED[12] event\n\nEGU0 INTEN TRIGGERED12: Enable or disable interrupt for TRIGGERED[12] event\n\nEGU0 INTEN TRIGGERED12: Enable or disable interrupt for TRIGGERED[12] event\n\nEGU0 INTEN TRIGGERED12: Enable or disable interrupt for TRIGGERED[12] event\n\nEGU0 INTEN TRIGGERED12: Enable or disable interrupt for TRIGGERED[12] event\n\nEGU0 INTEN TRIGGERED12: Enable or disable interrupt for TRIGGERED[12] event"]
     #[inline]
     pub(crate) fn read_egu0_inten_triggered12(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTEN TRIGGERED12, EGU0 INTEN TRIGGERED12, EGU0 INTEN TRIGGERED12, EGU0 INTEN TRIGGERED12, EGU0 INTEN TRIGGERED12, EGU0 INTEN TRIGGERED12 reset value false")
+        todo!("read EGU0 INTEN TRIGGERED12, EGU0 INTEN TRIGGERED12, EGU0 INTEN TRIGGERED12, EGU0 INTEN TRIGGERED12, EGU0 INTEN TRIGGERED12, EGU0 INTEN TRIGGERED12 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED12: Enable or disable interrupt for TRIGGERED[12] event\n\nEGU0 INTEN TRIGGERED12: Enable or disable interrupt for TRIGGERED[12] event\n\nEGU0 INTEN TRIGGERED12: Enable or disable interrupt for TRIGGERED[12] event\n\nEGU0 INTEN TRIGGERED12: Enable or disable interrupt for TRIGGERED[12] event\n\nEGU0 INTEN TRIGGERED12: Enable or disable interrupt for TRIGGERED[12] event\n\nEGU0 INTEN TRIGGERED12: Enable or disable interrupt for TRIGGERED[12] event"]
     #[inline]
@@ -13126,12 +13130,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTEN TRIGGERED12, EGU0 INTEN TRIGGERED12, EGU0 INTEN TRIGGERED12, EGU0 INTEN TRIGGERED12, EGU0 INTEN TRIGGERED12, EGU0 INTEN TRIGGERED12 reset value false")
+        todo!("write EGU0 INTEN TRIGGERED12, EGU0 INTEN TRIGGERED12, EGU0 INTEN TRIGGERED12, EGU0 INTEN TRIGGERED12, EGU0 INTEN TRIGGERED12, EGU0 INTEN TRIGGERED12 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED13: Enable or disable interrupt for TRIGGERED[13] event\n\nEGU0 INTEN TRIGGERED13: Enable or disable interrupt for TRIGGERED[13] event\n\nEGU0 INTEN TRIGGERED13: Enable or disable interrupt for TRIGGERED[13] event\n\nEGU0 INTEN TRIGGERED13: Enable or disable interrupt for TRIGGERED[13] event\n\nEGU0 INTEN TRIGGERED13: Enable or disable interrupt for TRIGGERED[13] event\n\nEGU0 INTEN TRIGGERED13: Enable or disable interrupt for TRIGGERED[13] event"]
     #[inline]
     pub(crate) fn read_egu0_inten_triggered13(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTEN TRIGGERED13, EGU0 INTEN TRIGGERED13, EGU0 INTEN TRIGGERED13, EGU0 INTEN TRIGGERED13, EGU0 INTEN TRIGGERED13, EGU0 INTEN TRIGGERED13 reset value false")
+        todo!("read EGU0 INTEN TRIGGERED13, EGU0 INTEN TRIGGERED13, EGU0 INTEN TRIGGERED13, EGU0 INTEN TRIGGERED13, EGU0 INTEN TRIGGERED13, EGU0 INTEN TRIGGERED13 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED13: Enable or disable interrupt for TRIGGERED[13] event\n\nEGU0 INTEN TRIGGERED13: Enable or disable interrupt for TRIGGERED[13] event\n\nEGU0 INTEN TRIGGERED13: Enable or disable interrupt for TRIGGERED[13] event\n\nEGU0 INTEN TRIGGERED13: Enable or disable interrupt for TRIGGERED[13] event\n\nEGU0 INTEN TRIGGERED13: Enable or disable interrupt for TRIGGERED[13] event\n\nEGU0 INTEN TRIGGERED13: Enable or disable interrupt for TRIGGERED[13] event"]
     #[inline]
@@ -13139,12 +13143,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTEN TRIGGERED13, EGU0 INTEN TRIGGERED13, EGU0 INTEN TRIGGERED13, EGU0 INTEN TRIGGERED13, EGU0 INTEN TRIGGERED13, EGU0 INTEN TRIGGERED13 reset value false")
+        todo!("write EGU0 INTEN TRIGGERED13, EGU0 INTEN TRIGGERED13, EGU0 INTEN TRIGGERED13, EGU0 INTEN TRIGGERED13, EGU0 INTEN TRIGGERED13, EGU0 INTEN TRIGGERED13 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED14: Enable or disable interrupt for TRIGGERED[14] event\n\nEGU0 INTEN TRIGGERED14: Enable or disable interrupt for TRIGGERED[14] event\n\nEGU0 INTEN TRIGGERED14: Enable or disable interrupt for TRIGGERED[14] event\n\nEGU0 INTEN TRIGGERED14: Enable or disable interrupt for TRIGGERED[14] event\n\nEGU0 INTEN TRIGGERED14: Enable or disable interrupt for TRIGGERED[14] event\n\nEGU0 INTEN TRIGGERED14: Enable or disable interrupt for TRIGGERED[14] event"]
     #[inline]
     pub(crate) fn read_egu0_inten_triggered14(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTEN TRIGGERED14, EGU0 INTEN TRIGGERED14, EGU0 INTEN TRIGGERED14, EGU0 INTEN TRIGGERED14, EGU0 INTEN TRIGGERED14, EGU0 INTEN TRIGGERED14 reset value false")
+        todo!("read EGU0 INTEN TRIGGERED14, EGU0 INTEN TRIGGERED14, EGU0 INTEN TRIGGERED14, EGU0 INTEN TRIGGERED14, EGU0 INTEN TRIGGERED14, EGU0 INTEN TRIGGERED14 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED14: Enable or disable interrupt for TRIGGERED[14] event\n\nEGU0 INTEN TRIGGERED14: Enable or disable interrupt for TRIGGERED[14] event\n\nEGU0 INTEN TRIGGERED14: Enable or disable interrupt for TRIGGERED[14] event\n\nEGU0 INTEN TRIGGERED14: Enable or disable interrupt for TRIGGERED[14] event\n\nEGU0 INTEN TRIGGERED14: Enable or disable interrupt for TRIGGERED[14] event\n\nEGU0 INTEN TRIGGERED14: Enable or disable interrupt for TRIGGERED[14] event"]
     #[inline]
@@ -13152,12 +13156,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTEN TRIGGERED14, EGU0 INTEN TRIGGERED14, EGU0 INTEN TRIGGERED14, EGU0 INTEN TRIGGERED14, EGU0 INTEN TRIGGERED14, EGU0 INTEN TRIGGERED14 reset value false")
+        todo!("write EGU0 INTEN TRIGGERED14, EGU0 INTEN TRIGGERED14, EGU0 INTEN TRIGGERED14, EGU0 INTEN TRIGGERED14, EGU0 INTEN TRIGGERED14, EGU0 INTEN TRIGGERED14 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED15: Enable or disable interrupt for TRIGGERED[15] event\n\nEGU0 INTEN TRIGGERED15: Enable or disable interrupt for TRIGGERED[15] event\n\nEGU0 INTEN TRIGGERED15: Enable or disable interrupt for TRIGGERED[15] event\n\nEGU0 INTEN TRIGGERED15: Enable or disable interrupt for TRIGGERED[15] event\n\nEGU0 INTEN TRIGGERED15: Enable or disable interrupt for TRIGGERED[15] event\n\nEGU0 INTEN TRIGGERED15: Enable or disable interrupt for TRIGGERED[15] event"]
     #[inline]
     pub(crate) fn read_egu0_inten_triggered15(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTEN TRIGGERED15, EGU0 INTEN TRIGGERED15, EGU0 INTEN TRIGGERED15, EGU0 INTEN TRIGGERED15, EGU0 INTEN TRIGGERED15, EGU0 INTEN TRIGGERED15 reset value false")
+        todo!("read EGU0 INTEN TRIGGERED15, EGU0 INTEN TRIGGERED15, EGU0 INTEN TRIGGERED15, EGU0 INTEN TRIGGERED15, EGU0 INTEN TRIGGERED15, EGU0 INTEN TRIGGERED15 reset value false")
     }
     #[doc = "EGU0 INTEN TRIGGERED15: Enable or disable interrupt for TRIGGERED[15] event\n\nEGU0 INTEN TRIGGERED15: Enable or disable interrupt for TRIGGERED[15] event\n\nEGU0 INTEN TRIGGERED15: Enable or disable interrupt for TRIGGERED[15] event\n\nEGU0 INTEN TRIGGERED15: Enable or disable interrupt for TRIGGERED[15] event\n\nEGU0 INTEN TRIGGERED15: Enable or disable interrupt for TRIGGERED[15] event\n\nEGU0 INTEN TRIGGERED15: Enable or disable interrupt for TRIGGERED[15] event"]
     #[inline]
@@ -13165,12 +13169,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTEN TRIGGERED15, EGU0 INTEN TRIGGERED15, EGU0 INTEN TRIGGERED15, EGU0 INTEN TRIGGERED15, EGU0 INTEN TRIGGERED15, EGU0 INTEN TRIGGERED15 reset value false")
+        todo!("write EGU0 INTEN TRIGGERED15, EGU0 INTEN TRIGGERED15, EGU0 INTEN TRIGGERED15, EGU0 INTEN TRIGGERED15, EGU0 INTEN TRIGGERED15, EGU0 INTEN TRIGGERED15 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED0: Write '1' to Enable interrupt for TRIGGERED[0] event\n\nEGU0 INTENSET TRIGGERED0: Write '1' to Enable interrupt for TRIGGERED[0] event\n\nEGU0 INTENSET TRIGGERED0: Write '1' to Enable interrupt for TRIGGERED[0] event\n\nEGU0 INTENSET TRIGGERED0: Write '1' to Enable interrupt for TRIGGERED[0] event\n\nEGU0 INTENSET TRIGGERED0: Write '1' to Enable interrupt for TRIGGERED[0] event\n\nEGU0 INTENSET TRIGGERED0: Write '1' to Enable interrupt for TRIGGERED[0] event"]
     #[inline]
     pub(crate) fn read_egu0_intenset_triggered0(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENSET TRIGGERED0, EGU0 INTENSET TRIGGERED0, EGU0 INTENSET TRIGGERED0, EGU0 INTENSET TRIGGERED0, EGU0 INTENSET TRIGGERED0, EGU0 INTENSET TRIGGERED0 reset value false")
+        todo!("read EGU0 INTENSET TRIGGERED0, EGU0 INTENSET TRIGGERED0, EGU0 INTENSET TRIGGERED0, EGU0 INTENSET TRIGGERED0, EGU0 INTENSET TRIGGERED0, EGU0 INTENSET TRIGGERED0 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED0: Write '1' to Enable interrupt for TRIGGERED[0] event\n\nEGU0 INTENSET TRIGGERED0: Write '1' to Enable interrupt for TRIGGERED[0] event\n\nEGU0 INTENSET TRIGGERED0: Write '1' to Enable interrupt for TRIGGERED[0] event\n\nEGU0 INTENSET TRIGGERED0: Write '1' to Enable interrupt for TRIGGERED[0] event\n\nEGU0 INTENSET TRIGGERED0: Write '1' to Enable interrupt for TRIGGERED[0] event\n\nEGU0 INTENSET TRIGGERED0: Write '1' to Enable interrupt for TRIGGERED[0] event"]
     #[inline]
@@ -13178,12 +13182,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENSET TRIGGERED0, EGU0 INTENSET TRIGGERED0, EGU0 INTENSET TRIGGERED0, EGU0 INTENSET TRIGGERED0, EGU0 INTENSET TRIGGERED0, EGU0 INTENSET TRIGGERED0 reset value false")
+        todo!("write EGU0 INTENSET TRIGGERED0, EGU0 INTENSET TRIGGERED0, EGU0 INTENSET TRIGGERED0, EGU0 INTENSET TRIGGERED0, EGU0 INTENSET TRIGGERED0, EGU0 INTENSET TRIGGERED0 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED1: Write '1' to Enable interrupt for TRIGGERED[1] event\n\nEGU0 INTENSET TRIGGERED1: Write '1' to Enable interrupt for TRIGGERED[1] event\n\nEGU0 INTENSET TRIGGERED1: Write '1' to Enable interrupt for TRIGGERED[1] event\n\nEGU0 INTENSET TRIGGERED1: Write '1' to Enable interrupt for TRIGGERED[1] event\n\nEGU0 INTENSET TRIGGERED1: Write '1' to Enable interrupt for TRIGGERED[1] event\n\nEGU0 INTENSET TRIGGERED1: Write '1' to Enable interrupt for TRIGGERED[1] event"]
     #[inline]
     pub(crate) fn read_egu0_intenset_triggered1(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENSET TRIGGERED1, EGU0 INTENSET TRIGGERED1, EGU0 INTENSET TRIGGERED1, EGU0 INTENSET TRIGGERED1, EGU0 INTENSET TRIGGERED1, EGU0 INTENSET TRIGGERED1 reset value false")
+        todo!("read EGU0 INTENSET TRIGGERED1, EGU0 INTENSET TRIGGERED1, EGU0 INTENSET TRIGGERED1, EGU0 INTENSET TRIGGERED1, EGU0 INTENSET TRIGGERED1, EGU0 INTENSET TRIGGERED1 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED1: Write '1' to Enable interrupt for TRIGGERED[1] event\n\nEGU0 INTENSET TRIGGERED1: Write '1' to Enable interrupt for TRIGGERED[1] event\n\nEGU0 INTENSET TRIGGERED1: Write '1' to Enable interrupt for TRIGGERED[1] event\n\nEGU0 INTENSET TRIGGERED1: Write '1' to Enable interrupt for TRIGGERED[1] event\n\nEGU0 INTENSET TRIGGERED1: Write '1' to Enable interrupt for TRIGGERED[1] event\n\nEGU0 INTENSET TRIGGERED1: Write '1' to Enable interrupt for TRIGGERED[1] event"]
     #[inline]
@@ -13191,12 +13195,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENSET TRIGGERED1, EGU0 INTENSET TRIGGERED1, EGU0 INTENSET TRIGGERED1, EGU0 INTENSET TRIGGERED1, EGU0 INTENSET TRIGGERED1, EGU0 INTENSET TRIGGERED1 reset value false")
+        todo!("write EGU0 INTENSET TRIGGERED1, EGU0 INTENSET TRIGGERED1, EGU0 INTENSET TRIGGERED1, EGU0 INTENSET TRIGGERED1, EGU0 INTENSET TRIGGERED1, EGU0 INTENSET TRIGGERED1 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED2: Write '1' to Enable interrupt for TRIGGERED[2] event\n\nEGU0 INTENSET TRIGGERED2: Write '1' to Enable interrupt for TRIGGERED[2] event\n\nEGU0 INTENSET TRIGGERED2: Write '1' to Enable interrupt for TRIGGERED[2] event\n\nEGU0 INTENSET TRIGGERED2: Write '1' to Enable interrupt for TRIGGERED[2] event\n\nEGU0 INTENSET TRIGGERED2: Write '1' to Enable interrupt for TRIGGERED[2] event\n\nEGU0 INTENSET TRIGGERED2: Write '1' to Enable interrupt for TRIGGERED[2] event"]
     #[inline]
     pub(crate) fn read_egu0_intenset_triggered2(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENSET TRIGGERED2, EGU0 INTENSET TRIGGERED2, EGU0 INTENSET TRIGGERED2, EGU0 INTENSET TRIGGERED2, EGU0 INTENSET TRIGGERED2, EGU0 INTENSET TRIGGERED2 reset value false")
+        todo!("read EGU0 INTENSET TRIGGERED2, EGU0 INTENSET TRIGGERED2, EGU0 INTENSET TRIGGERED2, EGU0 INTENSET TRIGGERED2, EGU0 INTENSET TRIGGERED2, EGU0 INTENSET TRIGGERED2 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED2: Write '1' to Enable interrupt for TRIGGERED[2] event\n\nEGU0 INTENSET TRIGGERED2: Write '1' to Enable interrupt for TRIGGERED[2] event\n\nEGU0 INTENSET TRIGGERED2: Write '1' to Enable interrupt for TRIGGERED[2] event\n\nEGU0 INTENSET TRIGGERED2: Write '1' to Enable interrupt for TRIGGERED[2] event\n\nEGU0 INTENSET TRIGGERED2: Write '1' to Enable interrupt for TRIGGERED[2] event\n\nEGU0 INTENSET TRIGGERED2: Write '1' to Enable interrupt for TRIGGERED[2] event"]
     #[inline]
@@ -13204,12 +13208,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENSET TRIGGERED2, EGU0 INTENSET TRIGGERED2, EGU0 INTENSET TRIGGERED2, EGU0 INTENSET TRIGGERED2, EGU0 INTENSET TRIGGERED2, EGU0 INTENSET TRIGGERED2 reset value false")
+        todo!("write EGU0 INTENSET TRIGGERED2, EGU0 INTENSET TRIGGERED2, EGU0 INTENSET TRIGGERED2, EGU0 INTENSET TRIGGERED2, EGU0 INTENSET TRIGGERED2, EGU0 INTENSET TRIGGERED2 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED3: Write '1' to Enable interrupt for TRIGGERED[3] event\n\nEGU0 INTENSET TRIGGERED3: Write '1' to Enable interrupt for TRIGGERED[3] event\n\nEGU0 INTENSET TRIGGERED3: Write '1' to Enable interrupt for TRIGGERED[3] event\n\nEGU0 INTENSET TRIGGERED3: Write '1' to Enable interrupt for TRIGGERED[3] event\n\nEGU0 INTENSET TRIGGERED3: Write '1' to Enable interrupt for TRIGGERED[3] event\n\nEGU0 INTENSET TRIGGERED3: Write '1' to Enable interrupt for TRIGGERED[3] event"]
     #[inline]
     pub(crate) fn read_egu0_intenset_triggered3(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENSET TRIGGERED3, EGU0 INTENSET TRIGGERED3, EGU0 INTENSET TRIGGERED3, EGU0 INTENSET TRIGGERED3, EGU0 INTENSET TRIGGERED3, EGU0 INTENSET TRIGGERED3 reset value false")
+        todo!("read EGU0 INTENSET TRIGGERED3, EGU0 INTENSET TRIGGERED3, EGU0 INTENSET TRIGGERED3, EGU0 INTENSET TRIGGERED3, EGU0 INTENSET TRIGGERED3, EGU0 INTENSET TRIGGERED3 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED3: Write '1' to Enable interrupt for TRIGGERED[3] event\n\nEGU0 INTENSET TRIGGERED3: Write '1' to Enable interrupt for TRIGGERED[3] event\n\nEGU0 INTENSET TRIGGERED3: Write '1' to Enable interrupt for TRIGGERED[3] event\n\nEGU0 INTENSET TRIGGERED3: Write '1' to Enable interrupt for TRIGGERED[3] event\n\nEGU0 INTENSET TRIGGERED3: Write '1' to Enable interrupt for TRIGGERED[3] event\n\nEGU0 INTENSET TRIGGERED3: Write '1' to Enable interrupt for TRIGGERED[3] event"]
     #[inline]
@@ -13217,12 +13221,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENSET TRIGGERED3, EGU0 INTENSET TRIGGERED3, EGU0 INTENSET TRIGGERED3, EGU0 INTENSET TRIGGERED3, EGU0 INTENSET TRIGGERED3, EGU0 INTENSET TRIGGERED3 reset value false")
+        todo!("write EGU0 INTENSET TRIGGERED3, EGU0 INTENSET TRIGGERED3, EGU0 INTENSET TRIGGERED3, EGU0 INTENSET TRIGGERED3, EGU0 INTENSET TRIGGERED3, EGU0 INTENSET TRIGGERED3 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED4: Write '1' to Enable interrupt for TRIGGERED[4] event\n\nEGU0 INTENSET TRIGGERED4: Write '1' to Enable interrupt for TRIGGERED[4] event\n\nEGU0 INTENSET TRIGGERED4: Write '1' to Enable interrupt for TRIGGERED[4] event\n\nEGU0 INTENSET TRIGGERED4: Write '1' to Enable interrupt for TRIGGERED[4] event\n\nEGU0 INTENSET TRIGGERED4: Write '1' to Enable interrupt for TRIGGERED[4] event\n\nEGU0 INTENSET TRIGGERED4: Write '1' to Enable interrupt for TRIGGERED[4] event"]
     #[inline]
     pub(crate) fn read_egu0_intenset_triggered4(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENSET TRIGGERED4, EGU0 INTENSET TRIGGERED4, EGU0 INTENSET TRIGGERED4, EGU0 INTENSET TRIGGERED4, EGU0 INTENSET TRIGGERED4, EGU0 INTENSET TRIGGERED4 reset value false")
+        todo!("read EGU0 INTENSET TRIGGERED4, EGU0 INTENSET TRIGGERED4, EGU0 INTENSET TRIGGERED4, EGU0 INTENSET TRIGGERED4, EGU0 INTENSET TRIGGERED4, EGU0 INTENSET TRIGGERED4 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED4: Write '1' to Enable interrupt for TRIGGERED[4] event\n\nEGU0 INTENSET TRIGGERED4: Write '1' to Enable interrupt for TRIGGERED[4] event\n\nEGU0 INTENSET TRIGGERED4: Write '1' to Enable interrupt for TRIGGERED[4] event\n\nEGU0 INTENSET TRIGGERED4: Write '1' to Enable interrupt for TRIGGERED[4] event\n\nEGU0 INTENSET TRIGGERED4: Write '1' to Enable interrupt for TRIGGERED[4] event\n\nEGU0 INTENSET TRIGGERED4: Write '1' to Enable interrupt for TRIGGERED[4] event"]
     #[inline]
@@ -13230,12 +13234,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENSET TRIGGERED4, EGU0 INTENSET TRIGGERED4, EGU0 INTENSET TRIGGERED4, EGU0 INTENSET TRIGGERED4, EGU0 INTENSET TRIGGERED4, EGU0 INTENSET TRIGGERED4 reset value false")
+        todo!("write EGU0 INTENSET TRIGGERED4, EGU0 INTENSET TRIGGERED4, EGU0 INTENSET TRIGGERED4, EGU0 INTENSET TRIGGERED4, EGU0 INTENSET TRIGGERED4, EGU0 INTENSET TRIGGERED4 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED5: Write '1' to Enable interrupt for TRIGGERED[5] event\n\nEGU0 INTENSET TRIGGERED5: Write '1' to Enable interrupt for TRIGGERED[5] event\n\nEGU0 INTENSET TRIGGERED5: Write '1' to Enable interrupt for TRIGGERED[5] event\n\nEGU0 INTENSET TRIGGERED5: Write '1' to Enable interrupt for TRIGGERED[5] event\n\nEGU0 INTENSET TRIGGERED5: Write '1' to Enable interrupt for TRIGGERED[5] event\n\nEGU0 INTENSET TRIGGERED5: Write '1' to Enable interrupt for TRIGGERED[5] event"]
     #[inline]
     pub(crate) fn read_egu0_intenset_triggered5(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENSET TRIGGERED5, EGU0 INTENSET TRIGGERED5, EGU0 INTENSET TRIGGERED5, EGU0 INTENSET TRIGGERED5, EGU0 INTENSET TRIGGERED5, EGU0 INTENSET TRIGGERED5 reset value false")
+        todo!("read EGU0 INTENSET TRIGGERED5, EGU0 INTENSET TRIGGERED5, EGU0 INTENSET TRIGGERED5, EGU0 INTENSET TRIGGERED5, EGU0 INTENSET TRIGGERED5, EGU0 INTENSET TRIGGERED5 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED5: Write '1' to Enable interrupt for TRIGGERED[5] event\n\nEGU0 INTENSET TRIGGERED5: Write '1' to Enable interrupt for TRIGGERED[5] event\n\nEGU0 INTENSET TRIGGERED5: Write '1' to Enable interrupt for TRIGGERED[5] event\n\nEGU0 INTENSET TRIGGERED5: Write '1' to Enable interrupt for TRIGGERED[5] event\n\nEGU0 INTENSET TRIGGERED5: Write '1' to Enable interrupt for TRIGGERED[5] event\n\nEGU0 INTENSET TRIGGERED5: Write '1' to Enable interrupt for TRIGGERED[5] event"]
     #[inline]
@@ -13243,12 +13247,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENSET TRIGGERED5, EGU0 INTENSET TRIGGERED5, EGU0 INTENSET TRIGGERED5, EGU0 INTENSET TRIGGERED5, EGU0 INTENSET TRIGGERED5, EGU0 INTENSET TRIGGERED5 reset value false")
+        todo!("write EGU0 INTENSET TRIGGERED5, EGU0 INTENSET TRIGGERED5, EGU0 INTENSET TRIGGERED5, EGU0 INTENSET TRIGGERED5, EGU0 INTENSET TRIGGERED5, EGU0 INTENSET TRIGGERED5 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED6: Write '1' to Enable interrupt for TRIGGERED[6] event\n\nEGU0 INTENSET TRIGGERED6: Write '1' to Enable interrupt for TRIGGERED[6] event\n\nEGU0 INTENSET TRIGGERED6: Write '1' to Enable interrupt for TRIGGERED[6] event\n\nEGU0 INTENSET TRIGGERED6: Write '1' to Enable interrupt for TRIGGERED[6] event\n\nEGU0 INTENSET TRIGGERED6: Write '1' to Enable interrupt for TRIGGERED[6] event\n\nEGU0 INTENSET TRIGGERED6: Write '1' to Enable interrupt for TRIGGERED[6] event"]
     #[inline]
     pub(crate) fn read_egu0_intenset_triggered6(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENSET TRIGGERED6, EGU0 INTENSET TRIGGERED6, EGU0 INTENSET TRIGGERED6, EGU0 INTENSET TRIGGERED6, EGU0 INTENSET TRIGGERED6, EGU0 INTENSET TRIGGERED6 reset value false")
+        todo!("read EGU0 INTENSET TRIGGERED6, EGU0 INTENSET TRIGGERED6, EGU0 INTENSET TRIGGERED6, EGU0 INTENSET TRIGGERED6, EGU0 INTENSET TRIGGERED6, EGU0 INTENSET TRIGGERED6 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED6: Write '1' to Enable interrupt for TRIGGERED[6] event\n\nEGU0 INTENSET TRIGGERED6: Write '1' to Enable interrupt for TRIGGERED[6] event\n\nEGU0 INTENSET TRIGGERED6: Write '1' to Enable interrupt for TRIGGERED[6] event\n\nEGU0 INTENSET TRIGGERED6: Write '1' to Enable interrupt for TRIGGERED[6] event\n\nEGU0 INTENSET TRIGGERED6: Write '1' to Enable interrupt for TRIGGERED[6] event\n\nEGU0 INTENSET TRIGGERED6: Write '1' to Enable interrupt for TRIGGERED[6] event"]
     #[inline]
@@ -13256,12 +13260,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENSET TRIGGERED6, EGU0 INTENSET TRIGGERED6, EGU0 INTENSET TRIGGERED6, EGU0 INTENSET TRIGGERED6, EGU0 INTENSET TRIGGERED6, EGU0 INTENSET TRIGGERED6 reset value false")
+        todo!("write EGU0 INTENSET TRIGGERED6, EGU0 INTENSET TRIGGERED6, EGU0 INTENSET TRIGGERED6, EGU0 INTENSET TRIGGERED6, EGU0 INTENSET TRIGGERED6, EGU0 INTENSET TRIGGERED6 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED7: Write '1' to Enable interrupt for TRIGGERED[7] event\n\nEGU0 INTENSET TRIGGERED7: Write '1' to Enable interrupt for TRIGGERED[7] event\n\nEGU0 INTENSET TRIGGERED7: Write '1' to Enable interrupt for TRIGGERED[7] event\n\nEGU0 INTENSET TRIGGERED7: Write '1' to Enable interrupt for TRIGGERED[7] event\n\nEGU0 INTENSET TRIGGERED7: Write '1' to Enable interrupt for TRIGGERED[7] event\n\nEGU0 INTENSET TRIGGERED7: Write '1' to Enable interrupt for TRIGGERED[7] event"]
     #[inline]
     pub(crate) fn read_egu0_intenset_triggered7(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENSET TRIGGERED7, EGU0 INTENSET TRIGGERED7, EGU0 INTENSET TRIGGERED7, EGU0 INTENSET TRIGGERED7, EGU0 INTENSET TRIGGERED7, EGU0 INTENSET TRIGGERED7 reset value false")
+        todo!("read EGU0 INTENSET TRIGGERED7, EGU0 INTENSET TRIGGERED7, EGU0 INTENSET TRIGGERED7, EGU0 INTENSET TRIGGERED7, EGU0 INTENSET TRIGGERED7, EGU0 INTENSET TRIGGERED7 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED7: Write '1' to Enable interrupt for TRIGGERED[7] event\n\nEGU0 INTENSET TRIGGERED7: Write '1' to Enable interrupt for TRIGGERED[7] event\n\nEGU0 INTENSET TRIGGERED7: Write '1' to Enable interrupt for TRIGGERED[7] event\n\nEGU0 INTENSET TRIGGERED7: Write '1' to Enable interrupt for TRIGGERED[7] event\n\nEGU0 INTENSET TRIGGERED7: Write '1' to Enable interrupt for TRIGGERED[7] event\n\nEGU0 INTENSET TRIGGERED7: Write '1' to Enable interrupt for TRIGGERED[7] event"]
     #[inline]
@@ -13269,12 +13273,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENSET TRIGGERED7, EGU0 INTENSET TRIGGERED7, EGU0 INTENSET TRIGGERED7, EGU0 INTENSET TRIGGERED7, EGU0 INTENSET TRIGGERED7, EGU0 INTENSET TRIGGERED7 reset value false")
+        todo!("write EGU0 INTENSET TRIGGERED7, EGU0 INTENSET TRIGGERED7, EGU0 INTENSET TRIGGERED7, EGU0 INTENSET TRIGGERED7, EGU0 INTENSET TRIGGERED7, EGU0 INTENSET TRIGGERED7 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED8: Write '1' to Enable interrupt for TRIGGERED[8] event\n\nEGU0 INTENSET TRIGGERED8: Write '1' to Enable interrupt for TRIGGERED[8] event\n\nEGU0 INTENSET TRIGGERED8: Write '1' to Enable interrupt for TRIGGERED[8] event\n\nEGU0 INTENSET TRIGGERED8: Write '1' to Enable interrupt for TRIGGERED[8] event\n\nEGU0 INTENSET TRIGGERED8: Write '1' to Enable interrupt for TRIGGERED[8] event\n\nEGU0 INTENSET TRIGGERED8: Write '1' to Enable interrupt for TRIGGERED[8] event"]
     #[inline]
     pub(crate) fn read_egu0_intenset_triggered8(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENSET TRIGGERED8, EGU0 INTENSET TRIGGERED8, EGU0 INTENSET TRIGGERED8, EGU0 INTENSET TRIGGERED8, EGU0 INTENSET TRIGGERED8, EGU0 INTENSET TRIGGERED8 reset value false")
+        todo!("read EGU0 INTENSET TRIGGERED8, EGU0 INTENSET TRIGGERED8, EGU0 INTENSET TRIGGERED8, EGU0 INTENSET TRIGGERED8, EGU0 INTENSET TRIGGERED8, EGU0 INTENSET TRIGGERED8 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED8: Write '1' to Enable interrupt for TRIGGERED[8] event\n\nEGU0 INTENSET TRIGGERED8: Write '1' to Enable interrupt for TRIGGERED[8] event\n\nEGU0 INTENSET TRIGGERED8: Write '1' to Enable interrupt for TRIGGERED[8] event\n\nEGU0 INTENSET TRIGGERED8: Write '1' to Enable interrupt for TRIGGERED[8] event\n\nEGU0 INTENSET TRIGGERED8: Write '1' to Enable interrupt for TRIGGERED[8] event\n\nEGU0 INTENSET TRIGGERED8: Write '1' to Enable interrupt for TRIGGERED[8] event"]
     #[inline]
@@ -13282,12 +13286,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENSET TRIGGERED8, EGU0 INTENSET TRIGGERED8, EGU0 INTENSET TRIGGERED8, EGU0 INTENSET TRIGGERED8, EGU0 INTENSET TRIGGERED8, EGU0 INTENSET TRIGGERED8 reset value false")
+        todo!("write EGU0 INTENSET TRIGGERED8, EGU0 INTENSET TRIGGERED8, EGU0 INTENSET TRIGGERED8, EGU0 INTENSET TRIGGERED8, EGU0 INTENSET TRIGGERED8, EGU0 INTENSET TRIGGERED8 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED9: Write '1' to Enable interrupt for TRIGGERED[9] event\n\nEGU0 INTENSET TRIGGERED9: Write '1' to Enable interrupt for TRIGGERED[9] event\n\nEGU0 INTENSET TRIGGERED9: Write '1' to Enable interrupt for TRIGGERED[9] event\n\nEGU0 INTENSET TRIGGERED9: Write '1' to Enable interrupt for TRIGGERED[9] event\n\nEGU0 INTENSET TRIGGERED9: Write '1' to Enable interrupt for TRIGGERED[9] event\n\nEGU0 INTENSET TRIGGERED9: Write '1' to Enable interrupt for TRIGGERED[9] event"]
     #[inline]
     pub(crate) fn read_egu0_intenset_triggered9(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENSET TRIGGERED9, EGU0 INTENSET TRIGGERED9, EGU0 INTENSET TRIGGERED9, EGU0 INTENSET TRIGGERED9, EGU0 INTENSET TRIGGERED9, EGU0 INTENSET TRIGGERED9 reset value false")
+        todo!("read EGU0 INTENSET TRIGGERED9, EGU0 INTENSET TRIGGERED9, EGU0 INTENSET TRIGGERED9, EGU0 INTENSET TRIGGERED9, EGU0 INTENSET TRIGGERED9, EGU0 INTENSET TRIGGERED9 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED9: Write '1' to Enable interrupt for TRIGGERED[9] event\n\nEGU0 INTENSET TRIGGERED9: Write '1' to Enable interrupt for TRIGGERED[9] event\n\nEGU0 INTENSET TRIGGERED9: Write '1' to Enable interrupt for TRIGGERED[9] event\n\nEGU0 INTENSET TRIGGERED9: Write '1' to Enable interrupt for TRIGGERED[9] event\n\nEGU0 INTENSET TRIGGERED9: Write '1' to Enable interrupt for TRIGGERED[9] event\n\nEGU0 INTENSET TRIGGERED9: Write '1' to Enable interrupt for TRIGGERED[9] event"]
     #[inline]
@@ -13295,12 +13299,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENSET TRIGGERED9, EGU0 INTENSET TRIGGERED9, EGU0 INTENSET TRIGGERED9, EGU0 INTENSET TRIGGERED9, EGU0 INTENSET TRIGGERED9, EGU0 INTENSET TRIGGERED9 reset value false")
+        todo!("write EGU0 INTENSET TRIGGERED9, EGU0 INTENSET TRIGGERED9, EGU0 INTENSET TRIGGERED9, EGU0 INTENSET TRIGGERED9, EGU0 INTENSET TRIGGERED9, EGU0 INTENSET TRIGGERED9 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED10: Write '1' to Enable interrupt for TRIGGERED[10] event\n\nEGU0 INTENSET TRIGGERED10: Write '1' to Enable interrupt for TRIGGERED[10] event\n\nEGU0 INTENSET TRIGGERED10: Write '1' to Enable interrupt for TRIGGERED[10] event\n\nEGU0 INTENSET TRIGGERED10: Write '1' to Enable interrupt for TRIGGERED[10] event\n\nEGU0 INTENSET TRIGGERED10: Write '1' to Enable interrupt for TRIGGERED[10] event\n\nEGU0 INTENSET TRIGGERED10: Write '1' to Enable interrupt for TRIGGERED[10] event"]
     #[inline]
     pub(crate) fn read_egu0_intenset_triggered10(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENSET TRIGGERED10, EGU0 INTENSET TRIGGERED10, EGU0 INTENSET TRIGGERED10, EGU0 INTENSET TRIGGERED10, EGU0 INTENSET TRIGGERED10, EGU0 INTENSET TRIGGERED10 reset value false")
+        todo!("read EGU0 INTENSET TRIGGERED10, EGU0 INTENSET TRIGGERED10, EGU0 INTENSET TRIGGERED10, EGU0 INTENSET TRIGGERED10, EGU0 INTENSET TRIGGERED10, EGU0 INTENSET TRIGGERED10 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED10: Write '1' to Enable interrupt for TRIGGERED[10] event\n\nEGU0 INTENSET TRIGGERED10: Write '1' to Enable interrupt for TRIGGERED[10] event\n\nEGU0 INTENSET TRIGGERED10: Write '1' to Enable interrupt for TRIGGERED[10] event\n\nEGU0 INTENSET TRIGGERED10: Write '1' to Enable interrupt for TRIGGERED[10] event\n\nEGU0 INTENSET TRIGGERED10: Write '1' to Enable interrupt for TRIGGERED[10] event\n\nEGU0 INTENSET TRIGGERED10: Write '1' to Enable interrupt for TRIGGERED[10] event"]
     #[inline]
@@ -13308,12 +13312,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENSET TRIGGERED10, EGU0 INTENSET TRIGGERED10, EGU0 INTENSET TRIGGERED10, EGU0 INTENSET TRIGGERED10, EGU0 INTENSET TRIGGERED10, EGU0 INTENSET TRIGGERED10 reset value false")
+        todo!("write EGU0 INTENSET TRIGGERED10, EGU0 INTENSET TRIGGERED10, EGU0 INTENSET TRIGGERED10, EGU0 INTENSET TRIGGERED10, EGU0 INTENSET TRIGGERED10, EGU0 INTENSET TRIGGERED10 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED11: Write '1' to Enable interrupt for TRIGGERED[11] event\n\nEGU0 INTENSET TRIGGERED11: Write '1' to Enable interrupt for TRIGGERED[11] event\n\nEGU0 INTENSET TRIGGERED11: Write '1' to Enable interrupt for TRIGGERED[11] event\n\nEGU0 INTENSET TRIGGERED11: Write '1' to Enable interrupt for TRIGGERED[11] event\n\nEGU0 INTENSET TRIGGERED11: Write '1' to Enable interrupt for TRIGGERED[11] event\n\nEGU0 INTENSET TRIGGERED11: Write '1' to Enable interrupt for TRIGGERED[11] event"]
     #[inline]
     pub(crate) fn read_egu0_intenset_triggered11(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENSET TRIGGERED11, EGU0 INTENSET TRIGGERED11, EGU0 INTENSET TRIGGERED11, EGU0 INTENSET TRIGGERED11, EGU0 INTENSET TRIGGERED11, EGU0 INTENSET TRIGGERED11 reset value false")
+        todo!("read EGU0 INTENSET TRIGGERED11, EGU0 INTENSET TRIGGERED11, EGU0 INTENSET TRIGGERED11, EGU0 INTENSET TRIGGERED11, EGU0 INTENSET TRIGGERED11, EGU0 INTENSET TRIGGERED11 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED11: Write '1' to Enable interrupt for TRIGGERED[11] event\n\nEGU0 INTENSET TRIGGERED11: Write '1' to Enable interrupt for TRIGGERED[11] event\n\nEGU0 INTENSET TRIGGERED11: Write '1' to Enable interrupt for TRIGGERED[11] event\n\nEGU0 INTENSET TRIGGERED11: Write '1' to Enable interrupt for TRIGGERED[11] event\n\nEGU0 INTENSET TRIGGERED11: Write '1' to Enable interrupt for TRIGGERED[11] event\n\nEGU0 INTENSET TRIGGERED11: Write '1' to Enable interrupt for TRIGGERED[11] event"]
     #[inline]
@@ -13321,12 +13325,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENSET TRIGGERED11, EGU0 INTENSET TRIGGERED11, EGU0 INTENSET TRIGGERED11, EGU0 INTENSET TRIGGERED11, EGU0 INTENSET TRIGGERED11, EGU0 INTENSET TRIGGERED11 reset value false")
+        todo!("write EGU0 INTENSET TRIGGERED11, EGU0 INTENSET TRIGGERED11, EGU0 INTENSET TRIGGERED11, EGU0 INTENSET TRIGGERED11, EGU0 INTENSET TRIGGERED11, EGU0 INTENSET TRIGGERED11 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED12: Write '1' to Enable interrupt for TRIGGERED[12] event\n\nEGU0 INTENSET TRIGGERED12: Write '1' to Enable interrupt for TRIGGERED[12] event\n\nEGU0 INTENSET TRIGGERED12: Write '1' to Enable interrupt for TRIGGERED[12] event\n\nEGU0 INTENSET TRIGGERED12: Write '1' to Enable interrupt for TRIGGERED[12] event\n\nEGU0 INTENSET TRIGGERED12: Write '1' to Enable interrupt for TRIGGERED[12] event\n\nEGU0 INTENSET TRIGGERED12: Write '1' to Enable interrupt for TRIGGERED[12] event"]
     #[inline]
     pub(crate) fn read_egu0_intenset_triggered12(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENSET TRIGGERED12, EGU0 INTENSET TRIGGERED12, EGU0 INTENSET TRIGGERED12, EGU0 INTENSET TRIGGERED12, EGU0 INTENSET TRIGGERED12, EGU0 INTENSET TRIGGERED12 reset value false")
+        todo!("read EGU0 INTENSET TRIGGERED12, EGU0 INTENSET TRIGGERED12, EGU0 INTENSET TRIGGERED12, EGU0 INTENSET TRIGGERED12, EGU0 INTENSET TRIGGERED12, EGU0 INTENSET TRIGGERED12 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED12: Write '1' to Enable interrupt for TRIGGERED[12] event\n\nEGU0 INTENSET TRIGGERED12: Write '1' to Enable interrupt for TRIGGERED[12] event\n\nEGU0 INTENSET TRIGGERED12: Write '1' to Enable interrupt for TRIGGERED[12] event\n\nEGU0 INTENSET TRIGGERED12: Write '1' to Enable interrupt for TRIGGERED[12] event\n\nEGU0 INTENSET TRIGGERED12: Write '1' to Enable interrupt for TRIGGERED[12] event\n\nEGU0 INTENSET TRIGGERED12: Write '1' to Enable interrupt for TRIGGERED[12] event"]
     #[inline]
@@ -13334,12 +13338,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENSET TRIGGERED12, EGU0 INTENSET TRIGGERED12, EGU0 INTENSET TRIGGERED12, EGU0 INTENSET TRIGGERED12, EGU0 INTENSET TRIGGERED12, EGU0 INTENSET TRIGGERED12 reset value false")
+        todo!("write EGU0 INTENSET TRIGGERED12, EGU0 INTENSET TRIGGERED12, EGU0 INTENSET TRIGGERED12, EGU0 INTENSET TRIGGERED12, EGU0 INTENSET TRIGGERED12, EGU0 INTENSET TRIGGERED12 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED13: Write '1' to Enable interrupt for TRIGGERED[13] event\n\nEGU0 INTENSET TRIGGERED13: Write '1' to Enable interrupt for TRIGGERED[13] event\n\nEGU0 INTENSET TRIGGERED13: Write '1' to Enable interrupt for TRIGGERED[13] event\n\nEGU0 INTENSET TRIGGERED13: Write '1' to Enable interrupt for TRIGGERED[13] event\n\nEGU0 INTENSET TRIGGERED13: Write '1' to Enable interrupt for TRIGGERED[13] event\n\nEGU0 INTENSET TRIGGERED13: Write '1' to Enable interrupt for TRIGGERED[13] event"]
     #[inline]
     pub(crate) fn read_egu0_intenset_triggered13(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENSET TRIGGERED13, EGU0 INTENSET TRIGGERED13, EGU0 INTENSET TRIGGERED13, EGU0 INTENSET TRIGGERED13, EGU0 INTENSET TRIGGERED13, EGU0 INTENSET TRIGGERED13 reset value false")
+        todo!("read EGU0 INTENSET TRIGGERED13, EGU0 INTENSET TRIGGERED13, EGU0 INTENSET TRIGGERED13, EGU0 INTENSET TRIGGERED13, EGU0 INTENSET TRIGGERED13, EGU0 INTENSET TRIGGERED13 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED13: Write '1' to Enable interrupt for TRIGGERED[13] event\n\nEGU0 INTENSET TRIGGERED13: Write '1' to Enable interrupt for TRIGGERED[13] event\n\nEGU0 INTENSET TRIGGERED13: Write '1' to Enable interrupt for TRIGGERED[13] event\n\nEGU0 INTENSET TRIGGERED13: Write '1' to Enable interrupt for TRIGGERED[13] event\n\nEGU0 INTENSET TRIGGERED13: Write '1' to Enable interrupt for TRIGGERED[13] event\n\nEGU0 INTENSET TRIGGERED13: Write '1' to Enable interrupt for TRIGGERED[13] event"]
     #[inline]
@@ -13347,12 +13351,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENSET TRIGGERED13, EGU0 INTENSET TRIGGERED13, EGU0 INTENSET TRIGGERED13, EGU0 INTENSET TRIGGERED13, EGU0 INTENSET TRIGGERED13, EGU0 INTENSET TRIGGERED13 reset value false")
+        todo!("write EGU0 INTENSET TRIGGERED13, EGU0 INTENSET TRIGGERED13, EGU0 INTENSET TRIGGERED13, EGU0 INTENSET TRIGGERED13, EGU0 INTENSET TRIGGERED13, EGU0 INTENSET TRIGGERED13 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED14: Write '1' to Enable interrupt for TRIGGERED[14] event\n\nEGU0 INTENSET TRIGGERED14: Write '1' to Enable interrupt for TRIGGERED[14] event\n\nEGU0 INTENSET TRIGGERED14: Write '1' to Enable interrupt for TRIGGERED[14] event\n\nEGU0 INTENSET TRIGGERED14: Write '1' to Enable interrupt for TRIGGERED[14] event\n\nEGU0 INTENSET TRIGGERED14: Write '1' to Enable interrupt for TRIGGERED[14] event\n\nEGU0 INTENSET TRIGGERED14: Write '1' to Enable interrupt for TRIGGERED[14] event"]
     #[inline]
     pub(crate) fn read_egu0_intenset_triggered14(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENSET TRIGGERED14, EGU0 INTENSET TRIGGERED14, EGU0 INTENSET TRIGGERED14, EGU0 INTENSET TRIGGERED14, EGU0 INTENSET TRIGGERED14, EGU0 INTENSET TRIGGERED14 reset value false")
+        todo!("read EGU0 INTENSET TRIGGERED14, EGU0 INTENSET TRIGGERED14, EGU0 INTENSET TRIGGERED14, EGU0 INTENSET TRIGGERED14, EGU0 INTENSET TRIGGERED14, EGU0 INTENSET TRIGGERED14 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED14: Write '1' to Enable interrupt for TRIGGERED[14] event\n\nEGU0 INTENSET TRIGGERED14: Write '1' to Enable interrupt for TRIGGERED[14] event\n\nEGU0 INTENSET TRIGGERED14: Write '1' to Enable interrupt for TRIGGERED[14] event\n\nEGU0 INTENSET TRIGGERED14: Write '1' to Enable interrupt for TRIGGERED[14] event\n\nEGU0 INTENSET TRIGGERED14: Write '1' to Enable interrupt for TRIGGERED[14] event\n\nEGU0 INTENSET TRIGGERED14: Write '1' to Enable interrupt for TRIGGERED[14] event"]
     #[inline]
@@ -13360,12 +13364,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENSET TRIGGERED14, EGU0 INTENSET TRIGGERED14, EGU0 INTENSET TRIGGERED14, EGU0 INTENSET TRIGGERED14, EGU0 INTENSET TRIGGERED14, EGU0 INTENSET TRIGGERED14 reset value false")
+        todo!("write EGU0 INTENSET TRIGGERED14, EGU0 INTENSET TRIGGERED14, EGU0 INTENSET TRIGGERED14, EGU0 INTENSET TRIGGERED14, EGU0 INTENSET TRIGGERED14, EGU0 INTENSET TRIGGERED14 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED15: Write '1' to Enable interrupt for TRIGGERED[15] event\n\nEGU0 INTENSET TRIGGERED15: Write '1' to Enable interrupt for TRIGGERED[15] event\n\nEGU0 INTENSET TRIGGERED15: Write '1' to Enable interrupt for TRIGGERED[15] event\n\nEGU0 INTENSET TRIGGERED15: Write '1' to Enable interrupt for TRIGGERED[15] event\n\nEGU0 INTENSET TRIGGERED15: Write '1' to Enable interrupt for TRIGGERED[15] event\n\nEGU0 INTENSET TRIGGERED15: Write '1' to Enable interrupt for TRIGGERED[15] event"]
     #[inline]
     pub(crate) fn read_egu0_intenset_triggered15(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENSET TRIGGERED15, EGU0 INTENSET TRIGGERED15, EGU0 INTENSET TRIGGERED15, EGU0 INTENSET TRIGGERED15, EGU0 INTENSET TRIGGERED15, EGU0 INTENSET TRIGGERED15 reset value false")
+        todo!("read EGU0 INTENSET TRIGGERED15, EGU0 INTENSET TRIGGERED15, EGU0 INTENSET TRIGGERED15, EGU0 INTENSET TRIGGERED15, EGU0 INTENSET TRIGGERED15, EGU0 INTENSET TRIGGERED15 reset value false")
     }
     #[doc = "EGU0 INTENSET TRIGGERED15: Write '1' to Enable interrupt for TRIGGERED[15] event\n\nEGU0 INTENSET TRIGGERED15: Write '1' to Enable interrupt for TRIGGERED[15] event\n\nEGU0 INTENSET TRIGGERED15: Write '1' to Enable interrupt for TRIGGERED[15] event\n\nEGU0 INTENSET TRIGGERED15: Write '1' to Enable interrupt for TRIGGERED[15] event\n\nEGU0 INTENSET TRIGGERED15: Write '1' to Enable interrupt for TRIGGERED[15] event\n\nEGU0 INTENSET TRIGGERED15: Write '1' to Enable interrupt for TRIGGERED[15] event"]
     #[inline]
@@ -13373,12 +13377,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENSET TRIGGERED15, EGU0 INTENSET TRIGGERED15, EGU0 INTENSET TRIGGERED15, EGU0 INTENSET TRIGGERED15, EGU0 INTENSET TRIGGERED15, EGU0 INTENSET TRIGGERED15 reset value false")
+        todo!("write EGU0 INTENSET TRIGGERED15, EGU0 INTENSET TRIGGERED15, EGU0 INTENSET TRIGGERED15, EGU0 INTENSET TRIGGERED15, EGU0 INTENSET TRIGGERED15, EGU0 INTENSET TRIGGERED15 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED0: Write '1' to Disable interrupt for TRIGGERED[0] event\n\nEGU0 INTENCLR TRIGGERED0: Write '1' to Disable interrupt for TRIGGERED[0] event\n\nEGU0 INTENCLR TRIGGERED0: Write '1' to Disable interrupt for TRIGGERED[0] event\n\nEGU0 INTENCLR TRIGGERED0: Write '1' to Disable interrupt for TRIGGERED[0] event\n\nEGU0 INTENCLR TRIGGERED0: Write '1' to Disable interrupt for TRIGGERED[0] event\n\nEGU0 INTENCLR TRIGGERED0: Write '1' to Disable interrupt for TRIGGERED[0] event"]
     #[inline]
     pub(crate) fn read_egu0_intenclr_triggered0(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENCLR TRIGGERED0, EGU0 INTENCLR TRIGGERED0, EGU0 INTENCLR TRIGGERED0, EGU0 INTENCLR TRIGGERED0, EGU0 INTENCLR TRIGGERED0, EGU0 INTENCLR TRIGGERED0 reset value false")
+        todo!("read EGU0 INTENCLR TRIGGERED0, EGU0 INTENCLR TRIGGERED0, EGU0 INTENCLR TRIGGERED0, EGU0 INTENCLR TRIGGERED0, EGU0 INTENCLR TRIGGERED0, EGU0 INTENCLR TRIGGERED0 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED0: Write '1' to Disable interrupt for TRIGGERED[0] event\n\nEGU0 INTENCLR TRIGGERED0: Write '1' to Disable interrupt for TRIGGERED[0] event\n\nEGU0 INTENCLR TRIGGERED0: Write '1' to Disable interrupt for TRIGGERED[0] event\n\nEGU0 INTENCLR TRIGGERED0: Write '1' to Disable interrupt for TRIGGERED[0] event\n\nEGU0 INTENCLR TRIGGERED0: Write '1' to Disable interrupt for TRIGGERED[0] event\n\nEGU0 INTENCLR TRIGGERED0: Write '1' to Disable interrupt for TRIGGERED[0] event"]
     #[inline]
@@ -13386,12 +13390,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENCLR TRIGGERED0, EGU0 INTENCLR TRIGGERED0, EGU0 INTENCLR TRIGGERED0, EGU0 INTENCLR TRIGGERED0, EGU0 INTENCLR TRIGGERED0, EGU0 INTENCLR TRIGGERED0 reset value false")
+        todo!("write EGU0 INTENCLR TRIGGERED0, EGU0 INTENCLR TRIGGERED0, EGU0 INTENCLR TRIGGERED0, EGU0 INTENCLR TRIGGERED0, EGU0 INTENCLR TRIGGERED0, EGU0 INTENCLR TRIGGERED0 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED1: Write '1' to Disable interrupt for TRIGGERED[1] event\n\nEGU0 INTENCLR TRIGGERED1: Write '1' to Disable interrupt for TRIGGERED[1] event\n\nEGU0 INTENCLR TRIGGERED1: Write '1' to Disable interrupt for TRIGGERED[1] event\n\nEGU0 INTENCLR TRIGGERED1: Write '1' to Disable interrupt for TRIGGERED[1] event\n\nEGU0 INTENCLR TRIGGERED1: Write '1' to Disable interrupt for TRIGGERED[1] event\n\nEGU0 INTENCLR TRIGGERED1: Write '1' to Disable interrupt for TRIGGERED[1] event"]
     #[inline]
     pub(crate) fn read_egu0_intenclr_triggered1(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENCLR TRIGGERED1, EGU0 INTENCLR TRIGGERED1, EGU0 INTENCLR TRIGGERED1, EGU0 INTENCLR TRIGGERED1, EGU0 INTENCLR TRIGGERED1, EGU0 INTENCLR TRIGGERED1 reset value false")
+        todo!("read EGU0 INTENCLR TRIGGERED1, EGU0 INTENCLR TRIGGERED1, EGU0 INTENCLR TRIGGERED1, EGU0 INTENCLR TRIGGERED1, EGU0 INTENCLR TRIGGERED1, EGU0 INTENCLR TRIGGERED1 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED1: Write '1' to Disable interrupt for TRIGGERED[1] event\n\nEGU0 INTENCLR TRIGGERED1: Write '1' to Disable interrupt for TRIGGERED[1] event\n\nEGU0 INTENCLR TRIGGERED1: Write '1' to Disable interrupt for TRIGGERED[1] event\n\nEGU0 INTENCLR TRIGGERED1: Write '1' to Disable interrupt for TRIGGERED[1] event\n\nEGU0 INTENCLR TRIGGERED1: Write '1' to Disable interrupt for TRIGGERED[1] event\n\nEGU0 INTENCLR TRIGGERED1: Write '1' to Disable interrupt for TRIGGERED[1] event"]
     #[inline]
@@ -13399,12 +13403,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENCLR TRIGGERED1, EGU0 INTENCLR TRIGGERED1, EGU0 INTENCLR TRIGGERED1, EGU0 INTENCLR TRIGGERED1, EGU0 INTENCLR TRIGGERED1, EGU0 INTENCLR TRIGGERED1 reset value false")
+        todo!("write EGU0 INTENCLR TRIGGERED1, EGU0 INTENCLR TRIGGERED1, EGU0 INTENCLR TRIGGERED1, EGU0 INTENCLR TRIGGERED1, EGU0 INTENCLR TRIGGERED1, EGU0 INTENCLR TRIGGERED1 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED2: Write '1' to Disable interrupt for TRIGGERED[2] event\n\nEGU0 INTENCLR TRIGGERED2: Write '1' to Disable interrupt for TRIGGERED[2] event\n\nEGU0 INTENCLR TRIGGERED2: Write '1' to Disable interrupt for TRIGGERED[2] event\n\nEGU0 INTENCLR TRIGGERED2: Write '1' to Disable interrupt for TRIGGERED[2] event\n\nEGU0 INTENCLR TRIGGERED2: Write '1' to Disable interrupt for TRIGGERED[2] event\n\nEGU0 INTENCLR TRIGGERED2: Write '1' to Disable interrupt for TRIGGERED[2] event"]
     #[inline]
     pub(crate) fn read_egu0_intenclr_triggered2(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENCLR TRIGGERED2, EGU0 INTENCLR TRIGGERED2, EGU0 INTENCLR TRIGGERED2, EGU0 INTENCLR TRIGGERED2, EGU0 INTENCLR TRIGGERED2, EGU0 INTENCLR TRIGGERED2 reset value false")
+        todo!("read EGU0 INTENCLR TRIGGERED2, EGU0 INTENCLR TRIGGERED2, EGU0 INTENCLR TRIGGERED2, EGU0 INTENCLR TRIGGERED2, EGU0 INTENCLR TRIGGERED2, EGU0 INTENCLR TRIGGERED2 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED2: Write '1' to Disable interrupt for TRIGGERED[2] event\n\nEGU0 INTENCLR TRIGGERED2: Write '1' to Disable interrupt for TRIGGERED[2] event\n\nEGU0 INTENCLR TRIGGERED2: Write '1' to Disable interrupt for TRIGGERED[2] event\n\nEGU0 INTENCLR TRIGGERED2: Write '1' to Disable interrupt for TRIGGERED[2] event\n\nEGU0 INTENCLR TRIGGERED2: Write '1' to Disable interrupt for TRIGGERED[2] event\n\nEGU0 INTENCLR TRIGGERED2: Write '1' to Disable interrupt for TRIGGERED[2] event"]
     #[inline]
@@ -13412,12 +13416,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENCLR TRIGGERED2, EGU0 INTENCLR TRIGGERED2, EGU0 INTENCLR TRIGGERED2, EGU0 INTENCLR TRIGGERED2, EGU0 INTENCLR TRIGGERED2, EGU0 INTENCLR TRIGGERED2 reset value false")
+        todo!("write EGU0 INTENCLR TRIGGERED2, EGU0 INTENCLR TRIGGERED2, EGU0 INTENCLR TRIGGERED2, EGU0 INTENCLR TRIGGERED2, EGU0 INTENCLR TRIGGERED2, EGU0 INTENCLR TRIGGERED2 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED3: Write '1' to Disable interrupt for TRIGGERED[3] event\n\nEGU0 INTENCLR TRIGGERED3: Write '1' to Disable interrupt for TRIGGERED[3] event\n\nEGU0 INTENCLR TRIGGERED3: Write '1' to Disable interrupt for TRIGGERED[3] event\n\nEGU0 INTENCLR TRIGGERED3: Write '1' to Disable interrupt for TRIGGERED[3] event\n\nEGU0 INTENCLR TRIGGERED3: Write '1' to Disable interrupt for TRIGGERED[3] event\n\nEGU0 INTENCLR TRIGGERED3: Write '1' to Disable interrupt for TRIGGERED[3] event"]
     #[inline]
     pub(crate) fn read_egu0_intenclr_triggered3(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENCLR TRIGGERED3, EGU0 INTENCLR TRIGGERED3, EGU0 INTENCLR TRIGGERED3, EGU0 INTENCLR TRIGGERED3, EGU0 INTENCLR TRIGGERED3, EGU0 INTENCLR TRIGGERED3 reset value false")
+        todo!("read EGU0 INTENCLR TRIGGERED3, EGU0 INTENCLR TRIGGERED3, EGU0 INTENCLR TRIGGERED3, EGU0 INTENCLR TRIGGERED3, EGU0 INTENCLR TRIGGERED3, EGU0 INTENCLR TRIGGERED3 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED3: Write '1' to Disable interrupt for TRIGGERED[3] event\n\nEGU0 INTENCLR TRIGGERED3: Write '1' to Disable interrupt for TRIGGERED[3] event\n\nEGU0 INTENCLR TRIGGERED3: Write '1' to Disable interrupt for TRIGGERED[3] event\n\nEGU0 INTENCLR TRIGGERED3: Write '1' to Disable interrupt for TRIGGERED[3] event\n\nEGU0 INTENCLR TRIGGERED3: Write '1' to Disable interrupt for TRIGGERED[3] event\n\nEGU0 INTENCLR TRIGGERED3: Write '1' to Disable interrupt for TRIGGERED[3] event"]
     #[inline]
@@ -13425,12 +13429,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENCLR TRIGGERED3, EGU0 INTENCLR TRIGGERED3, EGU0 INTENCLR TRIGGERED3, EGU0 INTENCLR TRIGGERED3, EGU0 INTENCLR TRIGGERED3, EGU0 INTENCLR TRIGGERED3 reset value false")
+        todo!("write EGU0 INTENCLR TRIGGERED3, EGU0 INTENCLR TRIGGERED3, EGU0 INTENCLR TRIGGERED3, EGU0 INTENCLR TRIGGERED3, EGU0 INTENCLR TRIGGERED3, EGU0 INTENCLR TRIGGERED3 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED4: Write '1' to Disable interrupt for TRIGGERED[4] event\n\nEGU0 INTENCLR TRIGGERED4: Write '1' to Disable interrupt for TRIGGERED[4] event\n\nEGU0 INTENCLR TRIGGERED4: Write '1' to Disable interrupt for TRIGGERED[4] event\n\nEGU0 INTENCLR TRIGGERED4: Write '1' to Disable interrupt for TRIGGERED[4] event\n\nEGU0 INTENCLR TRIGGERED4: Write '1' to Disable interrupt for TRIGGERED[4] event\n\nEGU0 INTENCLR TRIGGERED4: Write '1' to Disable interrupt for TRIGGERED[4] event"]
     #[inline]
     pub(crate) fn read_egu0_intenclr_triggered4(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENCLR TRIGGERED4, EGU0 INTENCLR TRIGGERED4, EGU0 INTENCLR TRIGGERED4, EGU0 INTENCLR TRIGGERED4, EGU0 INTENCLR TRIGGERED4, EGU0 INTENCLR TRIGGERED4 reset value false")
+        todo!("read EGU0 INTENCLR TRIGGERED4, EGU0 INTENCLR TRIGGERED4, EGU0 INTENCLR TRIGGERED4, EGU0 INTENCLR TRIGGERED4, EGU0 INTENCLR TRIGGERED4, EGU0 INTENCLR TRIGGERED4 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED4: Write '1' to Disable interrupt for TRIGGERED[4] event\n\nEGU0 INTENCLR TRIGGERED4: Write '1' to Disable interrupt for TRIGGERED[4] event\n\nEGU0 INTENCLR TRIGGERED4: Write '1' to Disable interrupt for TRIGGERED[4] event\n\nEGU0 INTENCLR TRIGGERED4: Write '1' to Disable interrupt for TRIGGERED[4] event\n\nEGU0 INTENCLR TRIGGERED4: Write '1' to Disable interrupt for TRIGGERED[4] event\n\nEGU0 INTENCLR TRIGGERED4: Write '1' to Disable interrupt for TRIGGERED[4] event"]
     #[inline]
@@ -13438,12 +13442,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENCLR TRIGGERED4, EGU0 INTENCLR TRIGGERED4, EGU0 INTENCLR TRIGGERED4, EGU0 INTENCLR TRIGGERED4, EGU0 INTENCLR TRIGGERED4, EGU0 INTENCLR TRIGGERED4 reset value false")
+        todo!("write EGU0 INTENCLR TRIGGERED4, EGU0 INTENCLR TRIGGERED4, EGU0 INTENCLR TRIGGERED4, EGU0 INTENCLR TRIGGERED4, EGU0 INTENCLR TRIGGERED4, EGU0 INTENCLR TRIGGERED4 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED5: Write '1' to Disable interrupt for TRIGGERED[5] event\n\nEGU0 INTENCLR TRIGGERED5: Write '1' to Disable interrupt for TRIGGERED[5] event\n\nEGU0 INTENCLR TRIGGERED5: Write '1' to Disable interrupt for TRIGGERED[5] event\n\nEGU0 INTENCLR TRIGGERED5: Write '1' to Disable interrupt for TRIGGERED[5] event\n\nEGU0 INTENCLR TRIGGERED5: Write '1' to Disable interrupt for TRIGGERED[5] event\n\nEGU0 INTENCLR TRIGGERED5: Write '1' to Disable interrupt for TRIGGERED[5] event"]
     #[inline]
     pub(crate) fn read_egu0_intenclr_triggered5(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENCLR TRIGGERED5, EGU0 INTENCLR TRIGGERED5, EGU0 INTENCLR TRIGGERED5, EGU0 INTENCLR TRIGGERED5, EGU0 INTENCLR TRIGGERED5, EGU0 INTENCLR TRIGGERED5 reset value false")
+        todo!("read EGU0 INTENCLR TRIGGERED5, EGU0 INTENCLR TRIGGERED5, EGU0 INTENCLR TRIGGERED5, EGU0 INTENCLR TRIGGERED5, EGU0 INTENCLR TRIGGERED5, EGU0 INTENCLR TRIGGERED5 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED5: Write '1' to Disable interrupt for TRIGGERED[5] event\n\nEGU0 INTENCLR TRIGGERED5: Write '1' to Disable interrupt for TRIGGERED[5] event\n\nEGU0 INTENCLR TRIGGERED5: Write '1' to Disable interrupt for TRIGGERED[5] event\n\nEGU0 INTENCLR TRIGGERED5: Write '1' to Disable interrupt for TRIGGERED[5] event\n\nEGU0 INTENCLR TRIGGERED5: Write '1' to Disable interrupt for TRIGGERED[5] event\n\nEGU0 INTENCLR TRIGGERED5: Write '1' to Disable interrupt for TRIGGERED[5] event"]
     #[inline]
@@ -13451,12 +13455,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENCLR TRIGGERED5, EGU0 INTENCLR TRIGGERED5, EGU0 INTENCLR TRIGGERED5, EGU0 INTENCLR TRIGGERED5, EGU0 INTENCLR TRIGGERED5, EGU0 INTENCLR TRIGGERED5 reset value false")
+        todo!("write EGU0 INTENCLR TRIGGERED5, EGU0 INTENCLR TRIGGERED5, EGU0 INTENCLR TRIGGERED5, EGU0 INTENCLR TRIGGERED5, EGU0 INTENCLR TRIGGERED5, EGU0 INTENCLR TRIGGERED5 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED6: Write '1' to Disable interrupt for TRIGGERED[6] event\n\nEGU0 INTENCLR TRIGGERED6: Write '1' to Disable interrupt for TRIGGERED[6] event\n\nEGU0 INTENCLR TRIGGERED6: Write '1' to Disable interrupt for TRIGGERED[6] event\n\nEGU0 INTENCLR TRIGGERED6: Write '1' to Disable interrupt for TRIGGERED[6] event\n\nEGU0 INTENCLR TRIGGERED6: Write '1' to Disable interrupt for TRIGGERED[6] event\n\nEGU0 INTENCLR TRIGGERED6: Write '1' to Disable interrupt for TRIGGERED[6] event"]
     #[inline]
     pub(crate) fn read_egu0_intenclr_triggered6(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENCLR TRIGGERED6, EGU0 INTENCLR TRIGGERED6, EGU0 INTENCLR TRIGGERED6, EGU0 INTENCLR TRIGGERED6, EGU0 INTENCLR TRIGGERED6, EGU0 INTENCLR TRIGGERED6 reset value false")
+        todo!("read EGU0 INTENCLR TRIGGERED6, EGU0 INTENCLR TRIGGERED6, EGU0 INTENCLR TRIGGERED6, EGU0 INTENCLR TRIGGERED6, EGU0 INTENCLR TRIGGERED6, EGU0 INTENCLR TRIGGERED6 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED6: Write '1' to Disable interrupt for TRIGGERED[6] event\n\nEGU0 INTENCLR TRIGGERED6: Write '1' to Disable interrupt for TRIGGERED[6] event\n\nEGU0 INTENCLR TRIGGERED6: Write '1' to Disable interrupt for TRIGGERED[6] event\n\nEGU0 INTENCLR TRIGGERED6: Write '1' to Disable interrupt for TRIGGERED[6] event\n\nEGU0 INTENCLR TRIGGERED6: Write '1' to Disable interrupt for TRIGGERED[6] event\n\nEGU0 INTENCLR TRIGGERED6: Write '1' to Disable interrupt for TRIGGERED[6] event"]
     #[inline]
@@ -13464,12 +13468,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENCLR TRIGGERED6, EGU0 INTENCLR TRIGGERED6, EGU0 INTENCLR TRIGGERED6, EGU0 INTENCLR TRIGGERED6, EGU0 INTENCLR TRIGGERED6, EGU0 INTENCLR TRIGGERED6 reset value false")
+        todo!("write EGU0 INTENCLR TRIGGERED6, EGU0 INTENCLR TRIGGERED6, EGU0 INTENCLR TRIGGERED6, EGU0 INTENCLR TRIGGERED6, EGU0 INTENCLR TRIGGERED6, EGU0 INTENCLR TRIGGERED6 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED7: Write '1' to Disable interrupt for TRIGGERED[7] event\n\nEGU0 INTENCLR TRIGGERED7: Write '1' to Disable interrupt for TRIGGERED[7] event\n\nEGU0 INTENCLR TRIGGERED7: Write '1' to Disable interrupt for TRIGGERED[7] event\n\nEGU0 INTENCLR TRIGGERED7: Write '1' to Disable interrupt for TRIGGERED[7] event\n\nEGU0 INTENCLR TRIGGERED7: Write '1' to Disable interrupt for TRIGGERED[7] event\n\nEGU0 INTENCLR TRIGGERED7: Write '1' to Disable interrupt for TRIGGERED[7] event"]
     #[inline]
     pub(crate) fn read_egu0_intenclr_triggered7(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENCLR TRIGGERED7, EGU0 INTENCLR TRIGGERED7, EGU0 INTENCLR TRIGGERED7, EGU0 INTENCLR TRIGGERED7, EGU0 INTENCLR TRIGGERED7, EGU0 INTENCLR TRIGGERED7 reset value false")
+        todo!("read EGU0 INTENCLR TRIGGERED7, EGU0 INTENCLR TRIGGERED7, EGU0 INTENCLR TRIGGERED7, EGU0 INTENCLR TRIGGERED7, EGU0 INTENCLR TRIGGERED7, EGU0 INTENCLR TRIGGERED7 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED7: Write '1' to Disable interrupt for TRIGGERED[7] event\n\nEGU0 INTENCLR TRIGGERED7: Write '1' to Disable interrupt for TRIGGERED[7] event\n\nEGU0 INTENCLR TRIGGERED7: Write '1' to Disable interrupt for TRIGGERED[7] event\n\nEGU0 INTENCLR TRIGGERED7: Write '1' to Disable interrupt for TRIGGERED[7] event\n\nEGU0 INTENCLR TRIGGERED7: Write '1' to Disable interrupt for TRIGGERED[7] event\n\nEGU0 INTENCLR TRIGGERED7: Write '1' to Disable interrupt for TRIGGERED[7] event"]
     #[inline]
@@ -13477,12 +13481,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENCLR TRIGGERED7, EGU0 INTENCLR TRIGGERED7, EGU0 INTENCLR TRIGGERED7, EGU0 INTENCLR TRIGGERED7, EGU0 INTENCLR TRIGGERED7, EGU0 INTENCLR TRIGGERED7 reset value false")
+        todo!("write EGU0 INTENCLR TRIGGERED7, EGU0 INTENCLR TRIGGERED7, EGU0 INTENCLR TRIGGERED7, EGU0 INTENCLR TRIGGERED7, EGU0 INTENCLR TRIGGERED7, EGU0 INTENCLR TRIGGERED7 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED8: Write '1' to Disable interrupt for TRIGGERED[8] event\n\nEGU0 INTENCLR TRIGGERED8: Write '1' to Disable interrupt for TRIGGERED[8] event\n\nEGU0 INTENCLR TRIGGERED8: Write '1' to Disable interrupt for TRIGGERED[8] event\n\nEGU0 INTENCLR TRIGGERED8: Write '1' to Disable interrupt for TRIGGERED[8] event\n\nEGU0 INTENCLR TRIGGERED8: Write '1' to Disable interrupt for TRIGGERED[8] event\n\nEGU0 INTENCLR TRIGGERED8: Write '1' to Disable interrupt for TRIGGERED[8] event"]
     #[inline]
     pub(crate) fn read_egu0_intenclr_triggered8(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENCLR TRIGGERED8, EGU0 INTENCLR TRIGGERED8, EGU0 INTENCLR TRIGGERED8, EGU0 INTENCLR TRIGGERED8, EGU0 INTENCLR TRIGGERED8, EGU0 INTENCLR TRIGGERED8 reset value false")
+        todo!("read EGU0 INTENCLR TRIGGERED8, EGU0 INTENCLR TRIGGERED8, EGU0 INTENCLR TRIGGERED8, EGU0 INTENCLR TRIGGERED8, EGU0 INTENCLR TRIGGERED8, EGU0 INTENCLR TRIGGERED8 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED8: Write '1' to Disable interrupt for TRIGGERED[8] event\n\nEGU0 INTENCLR TRIGGERED8: Write '1' to Disable interrupt for TRIGGERED[8] event\n\nEGU0 INTENCLR TRIGGERED8: Write '1' to Disable interrupt for TRIGGERED[8] event\n\nEGU0 INTENCLR TRIGGERED8: Write '1' to Disable interrupt for TRIGGERED[8] event\n\nEGU0 INTENCLR TRIGGERED8: Write '1' to Disable interrupt for TRIGGERED[8] event\n\nEGU0 INTENCLR TRIGGERED8: Write '1' to Disable interrupt for TRIGGERED[8] event"]
     #[inline]
@@ -13490,12 +13494,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENCLR TRIGGERED8, EGU0 INTENCLR TRIGGERED8, EGU0 INTENCLR TRIGGERED8, EGU0 INTENCLR TRIGGERED8, EGU0 INTENCLR TRIGGERED8, EGU0 INTENCLR TRIGGERED8 reset value false")
+        todo!("write EGU0 INTENCLR TRIGGERED8, EGU0 INTENCLR TRIGGERED8, EGU0 INTENCLR TRIGGERED8, EGU0 INTENCLR TRIGGERED8, EGU0 INTENCLR TRIGGERED8, EGU0 INTENCLR TRIGGERED8 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED9: Write '1' to Disable interrupt for TRIGGERED[9] event\n\nEGU0 INTENCLR TRIGGERED9: Write '1' to Disable interrupt for TRIGGERED[9] event\n\nEGU0 INTENCLR TRIGGERED9: Write '1' to Disable interrupt for TRIGGERED[9] event\n\nEGU0 INTENCLR TRIGGERED9: Write '1' to Disable interrupt for TRIGGERED[9] event\n\nEGU0 INTENCLR TRIGGERED9: Write '1' to Disable interrupt for TRIGGERED[9] event\n\nEGU0 INTENCLR TRIGGERED9: Write '1' to Disable interrupt for TRIGGERED[9] event"]
     #[inline]
     pub(crate) fn read_egu0_intenclr_triggered9(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENCLR TRIGGERED9, EGU0 INTENCLR TRIGGERED9, EGU0 INTENCLR TRIGGERED9, EGU0 INTENCLR TRIGGERED9, EGU0 INTENCLR TRIGGERED9, EGU0 INTENCLR TRIGGERED9 reset value false")
+        todo!("read EGU0 INTENCLR TRIGGERED9, EGU0 INTENCLR TRIGGERED9, EGU0 INTENCLR TRIGGERED9, EGU0 INTENCLR TRIGGERED9, EGU0 INTENCLR TRIGGERED9, EGU0 INTENCLR TRIGGERED9 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED9: Write '1' to Disable interrupt for TRIGGERED[9] event\n\nEGU0 INTENCLR TRIGGERED9: Write '1' to Disable interrupt for TRIGGERED[9] event\n\nEGU0 INTENCLR TRIGGERED9: Write '1' to Disable interrupt for TRIGGERED[9] event\n\nEGU0 INTENCLR TRIGGERED9: Write '1' to Disable interrupt for TRIGGERED[9] event\n\nEGU0 INTENCLR TRIGGERED9: Write '1' to Disable interrupt for TRIGGERED[9] event\n\nEGU0 INTENCLR TRIGGERED9: Write '1' to Disable interrupt for TRIGGERED[9] event"]
     #[inline]
@@ -13503,12 +13507,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENCLR TRIGGERED9, EGU0 INTENCLR TRIGGERED9, EGU0 INTENCLR TRIGGERED9, EGU0 INTENCLR TRIGGERED9, EGU0 INTENCLR TRIGGERED9, EGU0 INTENCLR TRIGGERED9 reset value false")
+        todo!("write EGU0 INTENCLR TRIGGERED9, EGU0 INTENCLR TRIGGERED9, EGU0 INTENCLR TRIGGERED9, EGU0 INTENCLR TRIGGERED9, EGU0 INTENCLR TRIGGERED9, EGU0 INTENCLR TRIGGERED9 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED10: Write '1' to Disable interrupt for TRIGGERED[10] event\n\nEGU0 INTENCLR TRIGGERED10: Write '1' to Disable interrupt for TRIGGERED[10] event\n\nEGU0 INTENCLR TRIGGERED10: Write '1' to Disable interrupt for TRIGGERED[10] event\n\nEGU0 INTENCLR TRIGGERED10: Write '1' to Disable interrupt for TRIGGERED[10] event\n\nEGU0 INTENCLR TRIGGERED10: Write '1' to Disable interrupt for TRIGGERED[10] event\n\nEGU0 INTENCLR TRIGGERED10: Write '1' to Disable interrupt for TRIGGERED[10] event"]
     #[inline]
     pub(crate) fn read_egu0_intenclr_triggered10(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENCLR TRIGGERED10, EGU0 INTENCLR TRIGGERED10, EGU0 INTENCLR TRIGGERED10, EGU0 INTENCLR TRIGGERED10, EGU0 INTENCLR TRIGGERED10, EGU0 INTENCLR TRIGGERED10 reset value false")
+        todo!("read EGU0 INTENCLR TRIGGERED10, EGU0 INTENCLR TRIGGERED10, EGU0 INTENCLR TRIGGERED10, EGU0 INTENCLR TRIGGERED10, EGU0 INTENCLR TRIGGERED10, EGU0 INTENCLR TRIGGERED10 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED10: Write '1' to Disable interrupt for TRIGGERED[10] event\n\nEGU0 INTENCLR TRIGGERED10: Write '1' to Disable interrupt for TRIGGERED[10] event\n\nEGU0 INTENCLR TRIGGERED10: Write '1' to Disable interrupt for TRIGGERED[10] event\n\nEGU0 INTENCLR TRIGGERED10: Write '1' to Disable interrupt for TRIGGERED[10] event\n\nEGU0 INTENCLR TRIGGERED10: Write '1' to Disable interrupt for TRIGGERED[10] event\n\nEGU0 INTENCLR TRIGGERED10: Write '1' to Disable interrupt for TRIGGERED[10] event"]
     #[inline]
@@ -13516,12 +13520,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENCLR TRIGGERED10, EGU0 INTENCLR TRIGGERED10, EGU0 INTENCLR TRIGGERED10, EGU0 INTENCLR TRIGGERED10, EGU0 INTENCLR TRIGGERED10, EGU0 INTENCLR TRIGGERED10 reset value false")
+        todo!("write EGU0 INTENCLR TRIGGERED10, EGU0 INTENCLR TRIGGERED10, EGU0 INTENCLR TRIGGERED10, EGU0 INTENCLR TRIGGERED10, EGU0 INTENCLR TRIGGERED10, EGU0 INTENCLR TRIGGERED10 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED11: Write '1' to Disable interrupt for TRIGGERED[11] event\n\nEGU0 INTENCLR TRIGGERED11: Write '1' to Disable interrupt for TRIGGERED[11] event\n\nEGU0 INTENCLR TRIGGERED11: Write '1' to Disable interrupt for TRIGGERED[11] event\n\nEGU0 INTENCLR TRIGGERED11: Write '1' to Disable interrupt for TRIGGERED[11] event\n\nEGU0 INTENCLR TRIGGERED11: Write '1' to Disable interrupt for TRIGGERED[11] event\n\nEGU0 INTENCLR TRIGGERED11: Write '1' to Disable interrupt for TRIGGERED[11] event"]
     #[inline]
     pub(crate) fn read_egu0_intenclr_triggered11(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENCLR TRIGGERED11, EGU0 INTENCLR TRIGGERED11, EGU0 INTENCLR TRIGGERED11, EGU0 INTENCLR TRIGGERED11, EGU0 INTENCLR TRIGGERED11, EGU0 INTENCLR TRIGGERED11 reset value false")
+        todo!("read EGU0 INTENCLR TRIGGERED11, EGU0 INTENCLR TRIGGERED11, EGU0 INTENCLR TRIGGERED11, EGU0 INTENCLR TRIGGERED11, EGU0 INTENCLR TRIGGERED11, EGU0 INTENCLR TRIGGERED11 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED11: Write '1' to Disable interrupt for TRIGGERED[11] event\n\nEGU0 INTENCLR TRIGGERED11: Write '1' to Disable interrupt for TRIGGERED[11] event\n\nEGU0 INTENCLR TRIGGERED11: Write '1' to Disable interrupt for TRIGGERED[11] event\n\nEGU0 INTENCLR TRIGGERED11: Write '1' to Disable interrupt for TRIGGERED[11] event\n\nEGU0 INTENCLR TRIGGERED11: Write '1' to Disable interrupt for TRIGGERED[11] event\n\nEGU0 INTENCLR TRIGGERED11: Write '1' to Disable interrupt for TRIGGERED[11] event"]
     #[inline]
@@ -13529,12 +13533,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENCLR TRIGGERED11, EGU0 INTENCLR TRIGGERED11, EGU0 INTENCLR TRIGGERED11, EGU0 INTENCLR TRIGGERED11, EGU0 INTENCLR TRIGGERED11, EGU0 INTENCLR TRIGGERED11 reset value false")
+        todo!("write EGU0 INTENCLR TRIGGERED11, EGU0 INTENCLR TRIGGERED11, EGU0 INTENCLR TRIGGERED11, EGU0 INTENCLR TRIGGERED11, EGU0 INTENCLR TRIGGERED11, EGU0 INTENCLR TRIGGERED11 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED12: Write '1' to Disable interrupt for TRIGGERED[12] event\n\nEGU0 INTENCLR TRIGGERED12: Write '1' to Disable interrupt for TRIGGERED[12] event\n\nEGU0 INTENCLR TRIGGERED12: Write '1' to Disable interrupt for TRIGGERED[12] event\n\nEGU0 INTENCLR TRIGGERED12: Write '1' to Disable interrupt for TRIGGERED[12] event\n\nEGU0 INTENCLR TRIGGERED12: Write '1' to Disable interrupt for TRIGGERED[12] event\n\nEGU0 INTENCLR TRIGGERED12: Write '1' to Disable interrupt for TRIGGERED[12] event"]
     #[inline]
     pub(crate) fn read_egu0_intenclr_triggered12(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENCLR TRIGGERED12, EGU0 INTENCLR TRIGGERED12, EGU0 INTENCLR TRIGGERED12, EGU0 INTENCLR TRIGGERED12, EGU0 INTENCLR TRIGGERED12, EGU0 INTENCLR TRIGGERED12 reset value false")
+        todo!("read EGU0 INTENCLR TRIGGERED12, EGU0 INTENCLR TRIGGERED12, EGU0 INTENCLR TRIGGERED12, EGU0 INTENCLR TRIGGERED12, EGU0 INTENCLR TRIGGERED12, EGU0 INTENCLR TRIGGERED12 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED12: Write '1' to Disable interrupt for TRIGGERED[12] event\n\nEGU0 INTENCLR TRIGGERED12: Write '1' to Disable interrupt for TRIGGERED[12] event\n\nEGU0 INTENCLR TRIGGERED12: Write '1' to Disable interrupt for TRIGGERED[12] event\n\nEGU0 INTENCLR TRIGGERED12: Write '1' to Disable interrupt for TRIGGERED[12] event\n\nEGU0 INTENCLR TRIGGERED12: Write '1' to Disable interrupt for TRIGGERED[12] event\n\nEGU0 INTENCLR TRIGGERED12: Write '1' to Disable interrupt for TRIGGERED[12] event"]
     #[inline]
@@ -13542,12 +13546,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENCLR TRIGGERED12, EGU0 INTENCLR TRIGGERED12, EGU0 INTENCLR TRIGGERED12, EGU0 INTENCLR TRIGGERED12, EGU0 INTENCLR TRIGGERED12, EGU0 INTENCLR TRIGGERED12 reset value false")
+        todo!("write EGU0 INTENCLR TRIGGERED12, EGU0 INTENCLR TRIGGERED12, EGU0 INTENCLR TRIGGERED12, EGU0 INTENCLR TRIGGERED12, EGU0 INTENCLR TRIGGERED12, EGU0 INTENCLR TRIGGERED12 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED13: Write '1' to Disable interrupt for TRIGGERED[13] event\n\nEGU0 INTENCLR TRIGGERED13: Write '1' to Disable interrupt for TRIGGERED[13] event\n\nEGU0 INTENCLR TRIGGERED13: Write '1' to Disable interrupt for TRIGGERED[13] event\n\nEGU0 INTENCLR TRIGGERED13: Write '1' to Disable interrupt for TRIGGERED[13] event\n\nEGU0 INTENCLR TRIGGERED13: Write '1' to Disable interrupt for TRIGGERED[13] event\n\nEGU0 INTENCLR TRIGGERED13: Write '1' to Disable interrupt for TRIGGERED[13] event"]
     #[inline]
     pub(crate) fn read_egu0_intenclr_triggered13(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENCLR TRIGGERED13, EGU0 INTENCLR TRIGGERED13, EGU0 INTENCLR TRIGGERED13, EGU0 INTENCLR TRIGGERED13, EGU0 INTENCLR TRIGGERED13, EGU0 INTENCLR TRIGGERED13 reset value false")
+        todo!("read EGU0 INTENCLR TRIGGERED13, EGU0 INTENCLR TRIGGERED13, EGU0 INTENCLR TRIGGERED13, EGU0 INTENCLR TRIGGERED13, EGU0 INTENCLR TRIGGERED13, EGU0 INTENCLR TRIGGERED13 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED13: Write '1' to Disable interrupt for TRIGGERED[13] event\n\nEGU0 INTENCLR TRIGGERED13: Write '1' to Disable interrupt for TRIGGERED[13] event\n\nEGU0 INTENCLR TRIGGERED13: Write '1' to Disable interrupt for TRIGGERED[13] event\n\nEGU0 INTENCLR TRIGGERED13: Write '1' to Disable interrupt for TRIGGERED[13] event\n\nEGU0 INTENCLR TRIGGERED13: Write '1' to Disable interrupt for TRIGGERED[13] event\n\nEGU0 INTENCLR TRIGGERED13: Write '1' to Disable interrupt for TRIGGERED[13] event"]
     #[inline]
@@ -13555,12 +13559,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENCLR TRIGGERED13, EGU0 INTENCLR TRIGGERED13, EGU0 INTENCLR TRIGGERED13, EGU0 INTENCLR TRIGGERED13, EGU0 INTENCLR TRIGGERED13, EGU0 INTENCLR TRIGGERED13 reset value false")
+        todo!("write EGU0 INTENCLR TRIGGERED13, EGU0 INTENCLR TRIGGERED13, EGU0 INTENCLR TRIGGERED13, EGU0 INTENCLR TRIGGERED13, EGU0 INTENCLR TRIGGERED13, EGU0 INTENCLR TRIGGERED13 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED14: Write '1' to Disable interrupt for TRIGGERED[14] event\n\nEGU0 INTENCLR TRIGGERED14: Write '1' to Disable interrupt for TRIGGERED[14] event\n\nEGU0 INTENCLR TRIGGERED14: Write '1' to Disable interrupt for TRIGGERED[14] event\n\nEGU0 INTENCLR TRIGGERED14: Write '1' to Disable interrupt for TRIGGERED[14] event\n\nEGU0 INTENCLR TRIGGERED14: Write '1' to Disable interrupt for TRIGGERED[14] event\n\nEGU0 INTENCLR TRIGGERED14: Write '1' to Disable interrupt for TRIGGERED[14] event"]
     #[inline]
     pub(crate) fn read_egu0_intenclr_triggered14(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENCLR TRIGGERED14, EGU0 INTENCLR TRIGGERED14, EGU0 INTENCLR TRIGGERED14, EGU0 INTENCLR TRIGGERED14, EGU0 INTENCLR TRIGGERED14, EGU0 INTENCLR TRIGGERED14 reset value false")
+        todo!("read EGU0 INTENCLR TRIGGERED14, EGU0 INTENCLR TRIGGERED14, EGU0 INTENCLR TRIGGERED14, EGU0 INTENCLR TRIGGERED14, EGU0 INTENCLR TRIGGERED14, EGU0 INTENCLR TRIGGERED14 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED14: Write '1' to Disable interrupt for TRIGGERED[14] event\n\nEGU0 INTENCLR TRIGGERED14: Write '1' to Disable interrupt for TRIGGERED[14] event\n\nEGU0 INTENCLR TRIGGERED14: Write '1' to Disable interrupt for TRIGGERED[14] event\n\nEGU0 INTENCLR TRIGGERED14: Write '1' to Disable interrupt for TRIGGERED[14] event\n\nEGU0 INTENCLR TRIGGERED14: Write '1' to Disable interrupt for TRIGGERED[14] event\n\nEGU0 INTENCLR TRIGGERED14: Write '1' to Disable interrupt for TRIGGERED[14] event"]
     #[inline]
@@ -13568,12 +13572,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENCLR TRIGGERED14, EGU0 INTENCLR TRIGGERED14, EGU0 INTENCLR TRIGGERED14, EGU0 INTENCLR TRIGGERED14, EGU0 INTENCLR TRIGGERED14, EGU0 INTENCLR TRIGGERED14 reset value false")
+        todo!("write EGU0 INTENCLR TRIGGERED14, EGU0 INTENCLR TRIGGERED14, EGU0 INTENCLR TRIGGERED14, EGU0 INTENCLR TRIGGERED14, EGU0 INTENCLR TRIGGERED14, EGU0 INTENCLR TRIGGERED14 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED15: Write '1' to Disable interrupt for TRIGGERED[15] event\n\nEGU0 INTENCLR TRIGGERED15: Write '1' to Disable interrupt for TRIGGERED[15] event\n\nEGU0 INTENCLR TRIGGERED15: Write '1' to Disable interrupt for TRIGGERED[15] event\n\nEGU0 INTENCLR TRIGGERED15: Write '1' to Disable interrupt for TRIGGERED[15] event\n\nEGU0 INTENCLR TRIGGERED15: Write '1' to Disable interrupt for TRIGGERED[15] event\n\nEGU0 INTENCLR TRIGGERED15: Write '1' to Disable interrupt for TRIGGERED[15] event"]
     #[inline]
     pub(crate) fn read_egu0_intenclr_triggered15(&self) -> MemResult<bool> {
-        todo ! ("read EGU0 INTENCLR TRIGGERED15, EGU0 INTENCLR TRIGGERED15, EGU0 INTENCLR TRIGGERED15, EGU0 INTENCLR TRIGGERED15, EGU0 INTENCLR TRIGGERED15, EGU0 INTENCLR TRIGGERED15 reset value false")
+        todo!("read EGU0 INTENCLR TRIGGERED15, EGU0 INTENCLR TRIGGERED15, EGU0 INTENCLR TRIGGERED15, EGU0 INTENCLR TRIGGERED15, EGU0 INTENCLR TRIGGERED15, EGU0 INTENCLR TRIGGERED15 reset value false")
     }
     #[doc = "EGU0 INTENCLR TRIGGERED15: Write '1' to Disable interrupt for TRIGGERED[15] event\n\nEGU0 INTENCLR TRIGGERED15: Write '1' to Disable interrupt for TRIGGERED[15] event\n\nEGU0 INTENCLR TRIGGERED15: Write '1' to Disable interrupt for TRIGGERED[15] event\n\nEGU0 INTENCLR TRIGGERED15: Write '1' to Disable interrupt for TRIGGERED[15] event\n\nEGU0 INTENCLR TRIGGERED15: Write '1' to Disable interrupt for TRIGGERED[15] event\n\nEGU0 INTENCLR TRIGGERED15: Write '1' to Disable interrupt for TRIGGERED[15] event"]
     #[inline]
@@ -13581,7 +13585,7 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write EGU0 INTENCLR TRIGGERED15, EGU0 INTENCLR TRIGGERED15, EGU0 INTENCLR TRIGGERED15, EGU0 INTENCLR TRIGGERED15, EGU0 INTENCLR TRIGGERED15, EGU0 INTENCLR TRIGGERED15 reset value false")
+        todo!("write EGU0 INTENCLR TRIGGERED15, EGU0 INTENCLR TRIGGERED15, EGU0 INTENCLR TRIGGERED15, EGU0 INTENCLR TRIGGERED15, EGU0 INTENCLR TRIGGERED15, EGU0 INTENCLR TRIGGERED15 reset value false")
     }
     #[doc = "TIMER3 TASKS_START: Start Timer\n\nTIMER3 TASKS_START: Start Timer"]
     #[inline]
@@ -13589,7 +13593,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 TASKS_START, TIMER3 TASKS_START reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TIMER3 TASKS_START, TIMER3 TASKS_START reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TIMER3 TASKS_STOP: Stop Timer\n\nTIMER3 TASKS_STOP: Stop Timer"]
     #[inline]
@@ -13597,7 +13601,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 TASKS_STOP, TIMER3 TASKS_STOP reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TIMER3 TASKS_STOP, TIMER3 TASKS_STOP reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TIMER3 TASKS_COUNT: Increment Timer (Counter mode only)\n\nTIMER3 TASKS_COUNT: Increment Timer (Counter mode only)"]
     #[inline]
@@ -13605,7 +13609,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 TASKS_COUNT, TIMER3 TASKS_COUNT reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TIMER3 TASKS_COUNT, TIMER3 TASKS_COUNT reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TIMER3 TASKS_CLEAR: Clear time\n\nTIMER3 TASKS_CLEAR: Clear time"]
     #[inline]
@@ -13613,7 +13617,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 TASKS_CLEAR, TIMER3 TASKS_CLEAR reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TIMER3 TASKS_CLEAR, TIMER3 TASKS_CLEAR reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TIMER3 TASKS_SHUTDOWN: Deprecated register -  Shut down timer\n\nTIMER3 TASKS_SHUTDOWN: Deprecated register -  Shut down timer"]
     #[inline]
@@ -13621,7 +13625,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 TASKS_SHUTDOWN, TIMER3 TASKS_SHUTDOWN reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TIMER3 TASKS_SHUTDOWN, TIMER3 TASKS_SHUTDOWN reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TIMER3 TASKS_CAPTURE[%s]: Description collection[0]:  Capture Timer value to CC[0] register\n\nTIMER3 TASKS_CAPTURE[%s]: Description collection[0]:  Capture Timer value to CC[0] register"]
     #[inline]
@@ -13630,7 +13634,7 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 TASKS_CAPTURE[%s], TIMER3 TASKS_CAPTURE[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TIMER3 TASKS_CAPTURE[%s], TIMER3 TASKS_CAPTURE[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TIMER3 EVENTS_COMPARE[%s]: Description collection[0]:  Compare event on CC[0] match\n\nTIMER3 EVENTS_COMPARE[%s]: Description collection[0]:  Compare event on CC[0] match"]
     #[inline]
@@ -13638,7 +13642,7 @@ impl Peripherals {
         &self,
         _dim: usize,
     ) -> MemResult<u32> {
-        todo ! ("read TIMER3 EVENTS_COMPARE[%s], TIMER3 EVENTS_COMPARE[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read TIMER3 EVENTS_COMPARE[%s], TIMER3 EVENTS_COMPARE[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TIMER3 EVENTS_COMPARE[%s]: Description collection[0]:  Compare event on CC[0] match\n\nTIMER3 EVENTS_COMPARE[%s]: Description collection[0]:  Compare event on CC[0] match"]
     #[inline]
@@ -13647,12 +13651,12 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 EVENTS_COMPARE[%s], TIMER3 EVENTS_COMPARE[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TIMER3 EVENTS_COMPARE[%s], TIMER3 EVENTS_COMPARE[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TIMER3 SHORTS COMPARE0_CLEAR: Shortcut between COMPARE[0] event and CLEAR task\n\nTIMER3 SHORTS COMPARE0_CLEAR: Shortcut between COMPARE[0] event and CLEAR task"]
     #[inline]
     pub(crate) fn read_timer3_shorts_compare0_clear(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 SHORTS COMPARE0_CLEAR, TIMER3 SHORTS COMPARE0_CLEAR reset value false")
+        todo!("read TIMER3 SHORTS COMPARE0_CLEAR, TIMER3 SHORTS COMPARE0_CLEAR reset value false")
     }
     #[doc = "TIMER3 SHORTS COMPARE0_CLEAR: Shortcut between COMPARE[0] event and CLEAR task\n\nTIMER3 SHORTS COMPARE0_CLEAR: Shortcut between COMPARE[0] event and CLEAR task"]
     #[inline]
@@ -13660,12 +13664,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 SHORTS COMPARE0_CLEAR, TIMER3 SHORTS COMPARE0_CLEAR reset value false")
+        todo!("write TIMER3 SHORTS COMPARE0_CLEAR, TIMER3 SHORTS COMPARE0_CLEAR reset value false")
     }
     #[doc = "TIMER3 SHORTS COMPARE1_CLEAR: Shortcut between COMPARE[1] event and CLEAR task\n\nTIMER3 SHORTS COMPARE1_CLEAR: Shortcut between COMPARE[1] event and CLEAR task"]
     #[inline]
     pub(crate) fn read_timer3_shorts_compare1_clear(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 SHORTS COMPARE1_CLEAR, TIMER3 SHORTS COMPARE1_CLEAR reset value false")
+        todo!("read TIMER3 SHORTS COMPARE1_CLEAR, TIMER3 SHORTS COMPARE1_CLEAR reset value false")
     }
     #[doc = "TIMER3 SHORTS COMPARE1_CLEAR: Shortcut between COMPARE[1] event and CLEAR task\n\nTIMER3 SHORTS COMPARE1_CLEAR: Shortcut between COMPARE[1] event and CLEAR task"]
     #[inline]
@@ -13673,12 +13677,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 SHORTS COMPARE1_CLEAR, TIMER3 SHORTS COMPARE1_CLEAR reset value false")
+        todo!("write TIMER3 SHORTS COMPARE1_CLEAR, TIMER3 SHORTS COMPARE1_CLEAR reset value false")
     }
     #[doc = "TIMER3 SHORTS COMPARE2_CLEAR: Shortcut between COMPARE[2] event and CLEAR task\n\nTIMER3 SHORTS COMPARE2_CLEAR: Shortcut between COMPARE[2] event and CLEAR task"]
     #[inline]
     pub(crate) fn read_timer3_shorts_compare2_clear(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 SHORTS COMPARE2_CLEAR, TIMER3 SHORTS COMPARE2_CLEAR reset value false")
+        todo!("read TIMER3 SHORTS COMPARE2_CLEAR, TIMER3 SHORTS COMPARE2_CLEAR reset value false")
     }
     #[doc = "TIMER3 SHORTS COMPARE2_CLEAR: Shortcut between COMPARE[2] event and CLEAR task\n\nTIMER3 SHORTS COMPARE2_CLEAR: Shortcut between COMPARE[2] event and CLEAR task"]
     #[inline]
@@ -13686,12 +13690,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 SHORTS COMPARE2_CLEAR, TIMER3 SHORTS COMPARE2_CLEAR reset value false")
+        todo!("write TIMER3 SHORTS COMPARE2_CLEAR, TIMER3 SHORTS COMPARE2_CLEAR reset value false")
     }
     #[doc = "TIMER3 SHORTS COMPARE3_CLEAR: Shortcut between COMPARE[3] event and CLEAR task\n\nTIMER3 SHORTS COMPARE3_CLEAR: Shortcut between COMPARE[3] event and CLEAR task"]
     #[inline]
     pub(crate) fn read_timer3_shorts_compare3_clear(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 SHORTS COMPARE3_CLEAR, TIMER3 SHORTS COMPARE3_CLEAR reset value false")
+        todo!("read TIMER3 SHORTS COMPARE3_CLEAR, TIMER3 SHORTS COMPARE3_CLEAR reset value false")
     }
     #[doc = "TIMER3 SHORTS COMPARE3_CLEAR: Shortcut between COMPARE[3] event and CLEAR task\n\nTIMER3 SHORTS COMPARE3_CLEAR: Shortcut between COMPARE[3] event and CLEAR task"]
     #[inline]
@@ -13699,12 +13703,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 SHORTS COMPARE3_CLEAR, TIMER3 SHORTS COMPARE3_CLEAR reset value false")
+        todo!("write TIMER3 SHORTS COMPARE3_CLEAR, TIMER3 SHORTS COMPARE3_CLEAR reset value false")
     }
     #[doc = "TIMER3 SHORTS COMPARE4_CLEAR: Shortcut between COMPARE[4] event and CLEAR task\n\nTIMER3 SHORTS COMPARE4_CLEAR: Shortcut between COMPARE[4] event and CLEAR task"]
     #[inline]
     pub(crate) fn read_timer3_shorts_compare4_clear(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 SHORTS COMPARE4_CLEAR, TIMER3 SHORTS COMPARE4_CLEAR reset value false")
+        todo!("read TIMER3 SHORTS COMPARE4_CLEAR, TIMER3 SHORTS COMPARE4_CLEAR reset value false")
     }
     #[doc = "TIMER3 SHORTS COMPARE4_CLEAR: Shortcut between COMPARE[4] event and CLEAR task\n\nTIMER3 SHORTS COMPARE4_CLEAR: Shortcut between COMPARE[4] event and CLEAR task"]
     #[inline]
@@ -13712,12 +13716,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 SHORTS COMPARE4_CLEAR, TIMER3 SHORTS COMPARE4_CLEAR reset value false")
+        todo!("write TIMER3 SHORTS COMPARE4_CLEAR, TIMER3 SHORTS COMPARE4_CLEAR reset value false")
     }
     #[doc = "TIMER3 SHORTS COMPARE5_CLEAR: Shortcut between COMPARE[5] event and CLEAR task\n\nTIMER3 SHORTS COMPARE5_CLEAR: Shortcut between COMPARE[5] event and CLEAR task"]
     #[inline]
     pub(crate) fn read_timer3_shorts_compare5_clear(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 SHORTS COMPARE5_CLEAR, TIMER3 SHORTS COMPARE5_CLEAR reset value false")
+        todo!("read TIMER3 SHORTS COMPARE5_CLEAR, TIMER3 SHORTS COMPARE5_CLEAR reset value false")
     }
     #[doc = "TIMER3 SHORTS COMPARE5_CLEAR: Shortcut between COMPARE[5] event and CLEAR task\n\nTIMER3 SHORTS COMPARE5_CLEAR: Shortcut between COMPARE[5] event and CLEAR task"]
     #[inline]
@@ -13725,12 +13729,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 SHORTS COMPARE5_CLEAR, TIMER3 SHORTS COMPARE5_CLEAR reset value false")
+        todo!("write TIMER3 SHORTS COMPARE5_CLEAR, TIMER3 SHORTS COMPARE5_CLEAR reset value false")
     }
     #[doc = "TIMER3 SHORTS COMPARE0_STOP: Shortcut between COMPARE[0] event and STOP task\n\nTIMER3 SHORTS COMPARE0_STOP: Shortcut between COMPARE[0] event and STOP task"]
     #[inline]
     pub(crate) fn read_timer3_shorts_compare0_stop(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 SHORTS COMPARE0_STOP, TIMER3 SHORTS COMPARE0_STOP reset value false")
+        todo!("read TIMER3 SHORTS COMPARE0_STOP, TIMER3 SHORTS COMPARE0_STOP reset value false")
     }
     #[doc = "TIMER3 SHORTS COMPARE0_STOP: Shortcut between COMPARE[0] event and STOP task\n\nTIMER3 SHORTS COMPARE0_STOP: Shortcut between COMPARE[0] event and STOP task"]
     #[inline]
@@ -13738,12 +13742,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 SHORTS COMPARE0_STOP, TIMER3 SHORTS COMPARE0_STOP reset value false")
+        todo!("write TIMER3 SHORTS COMPARE0_STOP, TIMER3 SHORTS COMPARE0_STOP reset value false")
     }
     #[doc = "TIMER3 SHORTS COMPARE1_STOP: Shortcut between COMPARE[1] event and STOP task\n\nTIMER3 SHORTS COMPARE1_STOP: Shortcut between COMPARE[1] event and STOP task"]
     #[inline]
     pub(crate) fn read_timer3_shorts_compare1_stop(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 SHORTS COMPARE1_STOP, TIMER3 SHORTS COMPARE1_STOP reset value false")
+        todo!("read TIMER3 SHORTS COMPARE1_STOP, TIMER3 SHORTS COMPARE1_STOP reset value false")
     }
     #[doc = "TIMER3 SHORTS COMPARE1_STOP: Shortcut between COMPARE[1] event and STOP task\n\nTIMER3 SHORTS COMPARE1_STOP: Shortcut between COMPARE[1] event and STOP task"]
     #[inline]
@@ -13751,12 +13755,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 SHORTS COMPARE1_STOP, TIMER3 SHORTS COMPARE1_STOP reset value false")
+        todo!("write TIMER3 SHORTS COMPARE1_STOP, TIMER3 SHORTS COMPARE1_STOP reset value false")
     }
     #[doc = "TIMER3 SHORTS COMPARE2_STOP: Shortcut between COMPARE[2] event and STOP task\n\nTIMER3 SHORTS COMPARE2_STOP: Shortcut between COMPARE[2] event and STOP task"]
     #[inline]
     pub(crate) fn read_timer3_shorts_compare2_stop(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 SHORTS COMPARE2_STOP, TIMER3 SHORTS COMPARE2_STOP reset value false")
+        todo!("read TIMER3 SHORTS COMPARE2_STOP, TIMER3 SHORTS COMPARE2_STOP reset value false")
     }
     #[doc = "TIMER3 SHORTS COMPARE2_STOP: Shortcut between COMPARE[2] event and STOP task\n\nTIMER3 SHORTS COMPARE2_STOP: Shortcut between COMPARE[2] event and STOP task"]
     #[inline]
@@ -13764,12 +13768,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 SHORTS COMPARE2_STOP, TIMER3 SHORTS COMPARE2_STOP reset value false")
+        todo!("write TIMER3 SHORTS COMPARE2_STOP, TIMER3 SHORTS COMPARE2_STOP reset value false")
     }
     #[doc = "TIMER3 SHORTS COMPARE3_STOP: Shortcut between COMPARE[3] event and STOP task\n\nTIMER3 SHORTS COMPARE3_STOP: Shortcut between COMPARE[3] event and STOP task"]
     #[inline]
     pub(crate) fn read_timer3_shorts_compare3_stop(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 SHORTS COMPARE3_STOP, TIMER3 SHORTS COMPARE3_STOP reset value false")
+        todo!("read TIMER3 SHORTS COMPARE3_STOP, TIMER3 SHORTS COMPARE3_STOP reset value false")
     }
     #[doc = "TIMER3 SHORTS COMPARE3_STOP: Shortcut between COMPARE[3] event and STOP task\n\nTIMER3 SHORTS COMPARE3_STOP: Shortcut between COMPARE[3] event and STOP task"]
     #[inline]
@@ -13777,12 +13781,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 SHORTS COMPARE3_STOP, TIMER3 SHORTS COMPARE3_STOP reset value false")
+        todo!("write TIMER3 SHORTS COMPARE3_STOP, TIMER3 SHORTS COMPARE3_STOP reset value false")
     }
     #[doc = "TIMER3 SHORTS COMPARE4_STOP: Shortcut between COMPARE[4] event and STOP task\n\nTIMER3 SHORTS COMPARE4_STOP: Shortcut between COMPARE[4] event and STOP task"]
     #[inline]
     pub(crate) fn read_timer3_shorts_compare4_stop(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 SHORTS COMPARE4_STOP, TIMER3 SHORTS COMPARE4_STOP reset value false")
+        todo!("read TIMER3 SHORTS COMPARE4_STOP, TIMER3 SHORTS COMPARE4_STOP reset value false")
     }
     #[doc = "TIMER3 SHORTS COMPARE4_STOP: Shortcut between COMPARE[4] event and STOP task\n\nTIMER3 SHORTS COMPARE4_STOP: Shortcut between COMPARE[4] event and STOP task"]
     #[inline]
@@ -13790,12 +13794,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 SHORTS COMPARE4_STOP, TIMER3 SHORTS COMPARE4_STOP reset value false")
+        todo!("write TIMER3 SHORTS COMPARE4_STOP, TIMER3 SHORTS COMPARE4_STOP reset value false")
     }
     #[doc = "TIMER3 SHORTS COMPARE5_STOP: Shortcut between COMPARE[5] event and STOP task\n\nTIMER3 SHORTS COMPARE5_STOP: Shortcut between COMPARE[5] event and STOP task"]
     #[inline]
     pub(crate) fn read_timer3_shorts_compare5_stop(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 SHORTS COMPARE5_STOP, TIMER3 SHORTS COMPARE5_STOP reset value false")
+        todo!("read TIMER3 SHORTS COMPARE5_STOP, TIMER3 SHORTS COMPARE5_STOP reset value false")
     }
     #[doc = "TIMER3 SHORTS COMPARE5_STOP: Shortcut between COMPARE[5] event and STOP task\n\nTIMER3 SHORTS COMPARE5_STOP: Shortcut between COMPARE[5] event and STOP task"]
     #[inline]
@@ -13803,12 +13807,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 SHORTS COMPARE5_STOP, TIMER3 SHORTS COMPARE5_STOP reset value false")
+        todo!("write TIMER3 SHORTS COMPARE5_STOP, TIMER3 SHORTS COMPARE5_STOP reset value false")
     }
     #[doc = "TIMER3 INTENSET COMPARE0: Write '1' to Enable interrupt for COMPARE[0] event\n\nTIMER3 INTENSET COMPARE0: Write '1' to Enable interrupt for COMPARE[0] event"]
     #[inline]
     pub(crate) fn read_timer3_intenset_compare0(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 INTENSET COMPARE0, TIMER3 INTENSET COMPARE0 reset value false")
+        todo!("read TIMER3 INTENSET COMPARE0, TIMER3 INTENSET COMPARE0 reset value false")
     }
     #[doc = "TIMER3 INTENSET COMPARE0: Write '1' to Enable interrupt for COMPARE[0] event\n\nTIMER3 INTENSET COMPARE0: Write '1' to Enable interrupt for COMPARE[0] event"]
     #[inline]
@@ -13816,12 +13820,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 INTENSET COMPARE0, TIMER3 INTENSET COMPARE0 reset value false")
+        todo!("write TIMER3 INTENSET COMPARE0, TIMER3 INTENSET COMPARE0 reset value false")
     }
     #[doc = "TIMER3 INTENSET COMPARE1: Write '1' to Enable interrupt for COMPARE[1] event\n\nTIMER3 INTENSET COMPARE1: Write '1' to Enable interrupt for COMPARE[1] event"]
     #[inline]
     pub(crate) fn read_timer3_intenset_compare1(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 INTENSET COMPARE1, TIMER3 INTENSET COMPARE1 reset value false")
+        todo!("read TIMER3 INTENSET COMPARE1, TIMER3 INTENSET COMPARE1 reset value false")
     }
     #[doc = "TIMER3 INTENSET COMPARE1: Write '1' to Enable interrupt for COMPARE[1] event\n\nTIMER3 INTENSET COMPARE1: Write '1' to Enable interrupt for COMPARE[1] event"]
     #[inline]
@@ -13829,12 +13833,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 INTENSET COMPARE1, TIMER3 INTENSET COMPARE1 reset value false")
+        todo!("write TIMER3 INTENSET COMPARE1, TIMER3 INTENSET COMPARE1 reset value false")
     }
     #[doc = "TIMER3 INTENSET COMPARE2: Write '1' to Enable interrupt for COMPARE[2] event\n\nTIMER3 INTENSET COMPARE2: Write '1' to Enable interrupt for COMPARE[2] event"]
     #[inline]
     pub(crate) fn read_timer3_intenset_compare2(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 INTENSET COMPARE2, TIMER3 INTENSET COMPARE2 reset value false")
+        todo!("read TIMER3 INTENSET COMPARE2, TIMER3 INTENSET COMPARE2 reset value false")
     }
     #[doc = "TIMER3 INTENSET COMPARE2: Write '1' to Enable interrupt for COMPARE[2] event\n\nTIMER3 INTENSET COMPARE2: Write '1' to Enable interrupt for COMPARE[2] event"]
     #[inline]
@@ -13842,12 +13846,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 INTENSET COMPARE2, TIMER3 INTENSET COMPARE2 reset value false")
+        todo!("write TIMER3 INTENSET COMPARE2, TIMER3 INTENSET COMPARE2 reset value false")
     }
     #[doc = "TIMER3 INTENSET COMPARE3: Write '1' to Enable interrupt for COMPARE[3] event\n\nTIMER3 INTENSET COMPARE3: Write '1' to Enable interrupt for COMPARE[3] event"]
     #[inline]
     pub(crate) fn read_timer3_intenset_compare3(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 INTENSET COMPARE3, TIMER3 INTENSET COMPARE3 reset value false")
+        todo!("read TIMER3 INTENSET COMPARE3, TIMER3 INTENSET COMPARE3 reset value false")
     }
     #[doc = "TIMER3 INTENSET COMPARE3: Write '1' to Enable interrupt for COMPARE[3] event\n\nTIMER3 INTENSET COMPARE3: Write '1' to Enable interrupt for COMPARE[3] event"]
     #[inline]
@@ -13855,12 +13859,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 INTENSET COMPARE3, TIMER3 INTENSET COMPARE3 reset value false")
+        todo!("write TIMER3 INTENSET COMPARE3, TIMER3 INTENSET COMPARE3 reset value false")
     }
     #[doc = "TIMER3 INTENSET COMPARE4: Write '1' to Enable interrupt for COMPARE[4] event\n\nTIMER3 INTENSET COMPARE4: Write '1' to Enable interrupt for COMPARE[4] event"]
     #[inline]
     pub(crate) fn read_timer3_intenset_compare4(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 INTENSET COMPARE4, TIMER3 INTENSET COMPARE4 reset value false")
+        todo!("read TIMER3 INTENSET COMPARE4, TIMER3 INTENSET COMPARE4 reset value false")
     }
     #[doc = "TIMER3 INTENSET COMPARE4: Write '1' to Enable interrupt for COMPARE[4] event\n\nTIMER3 INTENSET COMPARE4: Write '1' to Enable interrupt for COMPARE[4] event"]
     #[inline]
@@ -13868,12 +13872,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 INTENSET COMPARE4, TIMER3 INTENSET COMPARE4 reset value false")
+        todo!("write TIMER3 INTENSET COMPARE4, TIMER3 INTENSET COMPARE4 reset value false")
     }
     #[doc = "TIMER3 INTENSET COMPARE5: Write '1' to Enable interrupt for COMPARE[5] event\n\nTIMER3 INTENSET COMPARE5: Write '1' to Enable interrupt for COMPARE[5] event"]
     #[inline]
     pub(crate) fn read_timer3_intenset_compare5(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 INTENSET COMPARE5, TIMER3 INTENSET COMPARE5 reset value false")
+        todo!("read TIMER3 INTENSET COMPARE5, TIMER3 INTENSET COMPARE5 reset value false")
     }
     #[doc = "TIMER3 INTENSET COMPARE5: Write '1' to Enable interrupt for COMPARE[5] event\n\nTIMER3 INTENSET COMPARE5: Write '1' to Enable interrupt for COMPARE[5] event"]
     #[inline]
@@ -13881,12 +13885,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 INTENSET COMPARE5, TIMER3 INTENSET COMPARE5 reset value false")
+        todo!("write TIMER3 INTENSET COMPARE5, TIMER3 INTENSET COMPARE5 reset value false")
     }
     #[doc = "TIMER3 INTENCLR COMPARE0: Write '1' to Disable interrupt for COMPARE[0] event\n\nTIMER3 INTENCLR COMPARE0: Write '1' to Disable interrupt for COMPARE[0] event"]
     #[inline]
     pub(crate) fn read_timer3_intenclr_compare0(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 INTENCLR COMPARE0, TIMER3 INTENCLR COMPARE0 reset value false")
+        todo!("read TIMER3 INTENCLR COMPARE0, TIMER3 INTENCLR COMPARE0 reset value false")
     }
     #[doc = "TIMER3 INTENCLR COMPARE0: Write '1' to Disable interrupt for COMPARE[0] event\n\nTIMER3 INTENCLR COMPARE0: Write '1' to Disable interrupt for COMPARE[0] event"]
     #[inline]
@@ -13894,12 +13898,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 INTENCLR COMPARE0, TIMER3 INTENCLR COMPARE0 reset value false")
+        todo!("write TIMER3 INTENCLR COMPARE0, TIMER3 INTENCLR COMPARE0 reset value false")
     }
     #[doc = "TIMER3 INTENCLR COMPARE1: Write '1' to Disable interrupt for COMPARE[1] event\n\nTIMER3 INTENCLR COMPARE1: Write '1' to Disable interrupt for COMPARE[1] event"]
     #[inline]
     pub(crate) fn read_timer3_intenclr_compare1(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 INTENCLR COMPARE1, TIMER3 INTENCLR COMPARE1 reset value false")
+        todo!("read TIMER3 INTENCLR COMPARE1, TIMER3 INTENCLR COMPARE1 reset value false")
     }
     #[doc = "TIMER3 INTENCLR COMPARE1: Write '1' to Disable interrupt for COMPARE[1] event\n\nTIMER3 INTENCLR COMPARE1: Write '1' to Disable interrupt for COMPARE[1] event"]
     #[inline]
@@ -13907,12 +13911,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 INTENCLR COMPARE1, TIMER3 INTENCLR COMPARE1 reset value false")
+        todo!("write TIMER3 INTENCLR COMPARE1, TIMER3 INTENCLR COMPARE1 reset value false")
     }
     #[doc = "TIMER3 INTENCLR COMPARE2: Write '1' to Disable interrupt for COMPARE[2] event\n\nTIMER3 INTENCLR COMPARE2: Write '1' to Disable interrupt for COMPARE[2] event"]
     #[inline]
     pub(crate) fn read_timer3_intenclr_compare2(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 INTENCLR COMPARE2, TIMER3 INTENCLR COMPARE2 reset value false")
+        todo!("read TIMER3 INTENCLR COMPARE2, TIMER3 INTENCLR COMPARE2 reset value false")
     }
     #[doc = "TIMER3 INTENCLR COMPARE2: Write '1' to Disable interrupt for COMPARE[2] event\n\nTIMER3 INTENCLR COMPARE2: Write '1' to Disable interrupt for COMPARE[2] event"]
     #[inline]
@@ -13920,12 +13924,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 INTENCLR COMPARE2, TIMER3 INTENCLR COMPARE2 reset value false")
+        todo!("write TIMER3 INTENCLR COMPARE2, TIMER3 INTENCLR COMPARE2 reset value false")
     }
     #[doc = "TIMER3 INTENCLR COMPARE3: Write '1' to Disable interrupt for COMPARE[3] event\n\nTIMER3 INTENCLR COMPARE3: Write '1' to Disable interrupt for COMPARE[3] event"]
     #[inline]
     pub(crate) fn read_timer3_intenclr_compare3(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 INTENCLR COMPARE3, TIMER3 INTENCLR COMPARE3 reset value false")
+        todo!("read TIMER3 INTENCLR COMPARE3, TIMER3 INTENCLR COMPARE3 reset value false")
     }
     #[doc = "TIMER3 INTENCLR COMPARE3: Write '1' to Disable interrupt for COMPARE[3] event\n\nTIMER3 INTENCLR COMPARE3: Write '1' to Disable interrupt for COMPARE[3] event"]
     #[inline]
@@ -13933,12 +13937,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 INTENCLR COMPARE3, TIMER3 INTENCLR COMPARE3 reset value false")
+        todo!("write TIMER3 INTENCLR COMPARE3, TIMER3 INTENCLR COMPARE3 reset value false")
     }
     #[doc = "TIMER3 INTENCLR COMPARE4: Write '1' to Disable interrupt for COMPARE[4] event\n\nTIMER3 INTENCLR COMPARE4: Write '1' to Disable interrupt for COMPARE[4] event"]
     #[inline]
     pub(crate) fn read_timer3_intenclr_compare4(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 INTENCLR COMPARE4, TIMER3 INTENCLR COMPARE4 reset value false")
+        todo!("read TIMER3 INTENCLR COMPARE4, TIMER3 INTENCLR COMPARE4 reset value false")
     }
     #[doc = "TIMER3 INTENCLR COMPARE4: Write '1' to Disable interrupt for COMPARE[4] event\n\nTIMER3 INTENCLR COMPARE4: Write '1' to Disable interrupt for COMPARE[4] event"]
     #[inline]
@@ -13946,12 +13950,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 INTENCLR COMPARE4, TIMER3 INTENCLR COMPARE4 reset value false")
+        todo!("write TIMER3 INTENCLR COMPARE4, TIMER3 INTENCLR COMPARE4 reset value false")
     }
     #[doc = "TIMER3 INTENCLR COMPARE5: Write '1' to Disable interrupt for COMPARE[5] event\n\nTIMER3 INTENCLR COMPARE5: Write '1' to Disable interrupt for COMPARE[5] event"]
     #[inline]
     pub(crate) fn read_timer3_intenclr_compare5(&self) -> MemResult<bool> {
-        todo ! ("read TIMER3 INTENCLR COMPARE5, TIMER3 INTENCLR COMPARE5 reset value false")
+        todo!("read TIMER3 INTENCLR COMPARE5, TIMER3 INTENCLR COMPARE5 reset value false")
     }
     #[doc = "TIMER3 INTENCLR COMPARE5: Write '1' to Disable interrupt for COMPARE[5] event\n\nTIMER3 INTENCLR COMPARE5: Write '1' to Disable interrupt for COMPARE[5] event"]
     #[inline]
@@ -13959,12 +13963,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 INTENCLR COMPARE5, TIMER3 INTENCLR COMPARE5 reset value false")
+        todo!("write TIMER3 INTENCLR COMPARE5, TIMER3 INTENCLR COMPARE5 reset value false")
     }
     #[doc = "TIMER3 MODE MODE: Timer mode\n\nTIMER3 MODE MODE: Timer mode"]
     #[inline]
     pub(crate) fn read_timer3_mode_mode(&self) -> MemResult<u8> {
-        todo ! ("read TIMER3 MODE MODE, TIMER3 MODE MODE reset value 0x00 mask 0x03")
+        todo!("read TIMER3 MODE MODE, TIMER3 MODE MODE reset value 0x00 mask 0x03")
     }
     #[doc = "TIMER3 MODE MODE: Timer mode\n\nTIMER3 MODE MODE: Timer mode"]
     #[inline]
@@ -13972,12 +13976,12 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 MODE MODE, TIMER3 MODE MODE reset value 0x00 mask 0x03")
+        todo!("write TIMER3 MODE MODE, TIMER3 MODE MODE reset value 0x00 mask 0x03")
     }
     #[doc = "TIMER3 BITMODE BITMODE: Timer bit width\n\nTIMER3 BITMODE BITMODE: Timer bit width"]
     #[inline]
     pub(crate) fn read_timer3_bitmode_bitmode(&self) -> MemResult<u8> {
-        todo ! ("read TIMER3 BITMODE BITMODE, TIMER3 BITMODE BITMODE reset value 0x00 mask 0x03")
+        todo!("read TIMER3 BITMODE BITMODE, TIMER3 BITMODE BITMODE reset value 0x00 mask 0x03")
     }
     #[doc = "TIMER3 BITMODE BITMODE: Timer bit width\n\nTIMER3 BITMODE BITMODE: Timer bit width"]
     #[inline]
@@ -13985,12 +13989,12 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 BITMODE BITMODE, TIMER3 BITMODE BITMODE reset value 0x00 mask 0x03")
+        todo!("write TIMER3 BITMODE BITMODE, TIMER3 BITMODE BITMODE reset value 0x00 mask 0x03")
     }
     #[doc = "TIMER3 PRESCALER PRESCALER: Prescaler value\n\nTIMER3 PRESCALER PRESCALER: Prescaler value"]
     #[inline]
     pub(crate) fn read_timer3_prescaler_prescaler(&self) -> MemResult<u8> {
-        todo ! ("read TIMER3 PRESCALER PRESCALER, TIMER3 PRESCALER PRESCALER reset value 0x04 mask 0x0f")
+        todo!("read TIMER3 PRESCALER PRESCALER, TIMER3 PRESCALER PRESCALER reset value 0x04 mask 0x0f")
     }
     #[doc = "TIMER3 PRESCALER PRESCALER: Prescaler value\n\nTIMER3 PRESCALER PRESCALER: Prescaler value"]
     #[inline]
@@ -13998,12 +14002,12 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 PRESCALER PRESCALER, TIMER3 PRESCALER PRESCALER reset value 0x04 mask 0x0f")
+        todo!("write TIMER3 PRESCALER PRESCALER, TIMER3 PRESCALER PRESCALER reset value 0x04 mask 0x0f")
     }
     #[doc = "TIMER3 CC[%s]: Description collection[0]:  Capture/Compare register 0\n\nTIMER3 CC[%s]: Description collection[0]:  Capture/Compare register 0"]
     #[inline]
     pub(crate) fn read_timer3_ccn(&self, _dim: usize) -> MemResult<u32> {
-        todo ! ("read TIMER3 CC[%s], TIMER3 CC[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read TIMER3 CC[%s], TIMER3 CC[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "TIMER3 CC[%s]: Description collection[0]:  Capture/Compare register 0\n\nTIMER3 CC[%s]: Description collection[0]:  Capture/Compare register 0"]
     #[inline]
@@ -14012,7 +14016,7 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write TIMER3 CC[%s], TIMER3 CC[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write TIMER3 CC[%s], TIMER3 CC[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "PWM0 TASKS_STOP: Stops PWM pulse generation on all channels at the end of current PWM period, and stops sequence playback\n\nPWM0 TASKS_STOP: Stops PWM pulse generation on all channels at the end of current PWM period, and stops sequence playback\n\nPWM0 TASKS_STOP: Stops PWM pulse generation on all channels at the end of current PWM period, and stops sequence playback"]
     #[inline]
@@ -14020,7 +14024,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 TASKS_STOP, PWM0 TASKS_STOP, PWM0 TASKS_STOP reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write PWM0 TASKS_STOP, PWM0 TASKS_STOP, PWM0 TASKS_STOP reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "PWM0 TASKS_SEQSTART[%s]: Description collection[0]:  Loads the first PWM value on all enabled channels from sequence 0, and starts playing that sequence at the rate defined in SEQ[0]REFRESH and/or DECODER.MODE. Causes PWM generation to start it was not running.\n\nPWM0 TASKS_SEQSTART[%s]: Description collection[0]:  Loads the first PWM value on all enabled channels from sequence 0, and starts playing that sequence at the rate defined in SEQ[0]REFRESH and/or DECODER.MODE. Causes PWM generation to start it was not running.\n\nPWM0 TASKS_SEQSTART[%s]: Description collection[0]:  Loads the first PWM value on all enabled channels from sequence 0, and starts playing that sequence at the rate defined in SEQ[0]REFRESH and/or DECODER.MODE. Causes PWM generation to start it was not running."]
     #[inline]
@@ -14029,7 +14033,7 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 TASKS_SEQSTART[%s], PWM0 TASKS_SEQSTART[%s], PWM0 TASKS_SEQSTART[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write PWM0 TASKS_SEQSTART[%s], PWM0 TASKS_SEQSTART[%s], PWM0 TASKS_SEQSTART[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "PWM0 TASKS_NEXTSTEP: Steps by one value in the current sequence on all enabled channels if DECODER.MODE=NextStep. Does not cause PWM generation to start it was not running.\n\nPWM0 TASKS_NEXTSTEP: Steps by one value in the current sequence on all enabled channels if DECODER.MODE=NextStep. Does not cause PWM generation to start it was not running.\n\nPWM0 TASKS_NEXTSTEP: Steps by one value in the current sequence on all enabled channels if DECODER.MODE=NextStep. Does not cause PWM generation to start it was not running."]
     #[inline]
@@ -14037,12 +14041,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 TASKS_NEXTSTEP, PWM0 TASKS_NEXTSTEP, PWM0 TASKS_NEXTSTEP reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write PWM0 TASKS_NEXTSTEP, PWM0 TASKS_NEXTSTEP, PWM0 TASKS_NEXTSTEP reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "PWM0 EVENTS_STOPPED: Response to STOP task, emitted when PWM pulses are no longer generated\n\nPWM0 EVENTS_STOPPED: Response to STOP task, emitted when PWM pulses are no longer generated\n\nPWM0 EVENTS_STOPPED: Response to STOP task, emitted when PWM pulses are no longer generated"]
     #[inline]
     pub(crate) fn read_pwm0_events_stopped(&self) -> MemResult<u32> {
-        todo ! ("read PWM0 EVENTS_STOPPED, PWM0 EVENTS_STOPPED, PWM0 EVENTS_STOPPED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read PWM0 EVENTS_STOPPED, PWM0 EVENTS_STOPPED, PWM0 EVENTS_STOPPED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "PWM0 EVENTS_STOPPED: Response to STOP task, emitted when PWM pulses are no longer generated\n\nPWM0 EVENTS_STOPPED: Response to STOP task, emitted when PWM pulses are no longer generated\n\nPWM0 EVENTS_STOPPED: Response to STOP task, emitted when PWM pulses are no longer generated"]
     #[inline]
@@ -14050,7 +14054,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 EVENTS_STOPPED, PWM0 EVENTS_STOPPED, PWM0 EVENTS_STOPPED reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write PWM0 EVENTS_STOPPED, PWM0 EVENTS_STOPPED, PWM0 EVENTS_STOPPED reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "PWM0 EVENTS_SEQSTARTED[%s]: Description collection[0]:  First PWM period started on sequence 0\n\nPWM0 EVENTS_SEQSTARTED[%s]: Description collection[0]:  First PWM period started on sequence 0\n\nPWM0 EVENTS_SEQSTARTED[%s]: Description collection[0]:  First PWM period started on sequence 0"]
     #[inline]
@@ -14058,7 +14062,7 @@ impl Peripherals {
         &self,
         _dim: usize,
     ) -> MemResult<u32> {
-        todo ! ("read PWM0 EVENTS_SEQSTARTED[%s], PWM0 EVENTS_SEQSTARTED[%s], PWM0 EVENTS_SEQSTARTED[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read PWM0 EVENTS_SEQSTARTED[%s], PWM0 EVENTS_SEQSTARTED[%s], PWM0 EVENTS_SEQSTARTED[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "PWM0 EVENTS_SEQSTARTED[%s]: Description collection[0]:  First PWM period started on sequence 0\n\nPWM0 EVENTS_SEQSTARTED[%s]: Description collection[0]:  First PWM period started on sequence 0\n\nPWM0 EVENTS_SEQSTARTED[%s]: Description collection[0]:  First PWM period started on sequence 0"]
     #[inline]
@@ -14067,7 +14071,7 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 EVENTS_SEQSTARTED[%s], PWM0 EVENTS_SEQSTARTED[%s], PWM0 EVENTS_SEQSTARTED[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write PWM0 EVENTS_SEQSTARTED[%s], PWM0 EVENTS_SEQSTARTED[%s], PWM0 EVENTS_SEQSTARTED[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "PWM0 EVENTS_SEQEND[%s]: Description collection[0]:  Emitted at end of every sequence 0, when last value from RAM has been applied to wave counter\n\nPWM0 EVENTS_SEQEND[%s]: Description collection[0]:  Emitted at end of every sequence 0, when last value from RAM has been applied to wave counter\n\nPWM0 EVENTS_SEQEND[%s]: Description collection[0]:  Emitted at end of every sequence 0, when last value from RAM has been applied to wave counter"]
     #[inline]
@@ -14075,7 +14079,7 @@ impl Peripherals {
         &self,
         _dim: usize,
     ) -> MemResult<u32> {
-        todo ! ("read PWM0 EVENTS_SEQEND[%s], PWM0 EVENTS_SEQEND[%s], PWM0 EVENTS_SEQEND[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read PWM0 EVENTS_SEQEND[%s], PWM0 EVENTS_SEQEND[%s], PWM0 EVENTS_SEQEND[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "PWM0 EVENTS_SEQEND[%s]: Description collection[0]:  Emitted at end of every sequence 0, when last value from RAM has been applied to wave counter\n\nPWM0 EVENTS_SEQEND[%s]: Description collection[0]:  Emitted at end of every sequence 0, when last value from RAM has been applied to wave counter\n\nPWM0 EVENTS_SEQEND[%s]: Description collection[0]:  Emitted at end of every sequence 0, when last value from RAM has been applied to wave counter"]
     #[inline]
@@ -14084,12 +14088,12 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 EVENTS_SEQEND[%s], PWM0 EVENTS_SEQEND[%s], PWM0 EVENTS_SEQEND[%s] reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write PWM0 EVENTS_SEQEND[%s], PWM0 EVENTS_SEQEND[%s], PWM0 EVENTS_SEQEND[%s] reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "PWM0 EVENTS_PWMPERIODEND: Emitted at the end of each PWM period\n\nPWM0 EVENTS_PWMPERIODEND: Emitted at the end of each PWM period\n\nPWM0 EVENTS_PWMPERIODEND: Emitted at the end of each PWM period"]
     #[inline]
     pub(crate) fn read_pwm0_events_pwmperiodend(&self) -> MemResult<u32> {
-        todo ! ("read PWM0 EVENTS_PWMPERIODEND, PWM0 EVENTS_PWMPERIODEND, PWM0 EVENTS_PWMPERIODEND reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read PWM0 EVENTS_PWMPERIODEND, PWM0 EVENTS_PWMPERIODEND, PWM0 EVENTS_PWMPERIODEND reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "PWM0 EVENTS_PWMPERIODEND: Emitted at the end of each PWM period\n\nPWM0 EVENTS_PWMPERIODEND: Emitted at the end of each PWM period\n\nPWM0 EVENTS_PWMPERIODEND: Emitted at the end of each PWM period"]
     #[inline]
@@ -14097,12 +14101,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 EVENTS_PWMPERIODEND, PWM0 EVENTS_PWMPERIODEND, PWM0 EVENTS_PWMPERIODEND reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write PWM0 EVENTS_PWMPERIODEND, PWM0 EVENTS_PWMPERIODEND, PWM0 EVENTS_PWMPERIODEND reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "PWM0 EVENTS_LOOPSDONE: Concatenated sequences have been played the amount of times defined in LOOP.CNT\n\nPWM0 EVENTS_LOOPSDONE: Concatenated sequences have been played the amount of times defined in LOOP.CNT\n\nPWM0 EVENTS_LOOPSDONE: Concatenated sequences have been played the amount of times defined in LOOP.CNT"]
     #[inline]
     pub(crate) fn read_pwm0_events_loopsdone(&self) -> MemResult<u32> {
-        todo ! ("read PWM0 EVENTS_LOOPSDONE, PWM0 EVENTS_LOOPSDONE, PWM0 EVENTS_LOOPSDONE reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read PWM0 EVENTS_LOOPSDONE, PWM0 EVENTS_LOOPSDONE, PWM0 EVENTS_LOOPSDONE reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "PWM0 EVENTS_LOOPSDONE: Concatenated sequences have been played the amount of times defined in LOOP.CNT\n\nPWM0 EVENTS_LOOPSDONE: Concatenated sequences have been played the amount of times defined in LOOP.CNT\n\nPWM0 EVENTS_LOOPSDONE: Concatenated sequences have been played the amount of times defined in LOOP.CNT"]
     #[inline]
@@ -14110,12 +14114,12 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 EVENTS_LOOPSDONE, PWM0 EVENTS_LOOPSDONE, PWM0 EVENTS_LOOPSDONE reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write PWM0 EVENTS_LOOPSDONE, PWM0 EVENTS_LOOPSDONE, PWM0 EVENTS_LOOPSDONE reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "PWM0 SHORTS SEQEND0_STOP: Shortcut between SEQEND[0] event and STOP task\n\nPWM0 SHORTS SEQEND0_STOP: Shortcut between SEQEND[0] event and STOP task\n\nPWM0 SHORTS SEQEND0_STOP: Shortcut between SEQEND[0] event and STOP task"]
     #[inline]
     pub(crate) fn read_pwm0_shorts_seqend0_stop(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 SHORTS SEQEND0_STOP, PWM0 SHORTS SEQEND0_STOP, PWM0 SHORTS SEQEND0_STOP reset value false")
+        todo!("read PWM0 SHORTS SEQEND0_STOP, PWM0 SHORTS SEQEND0_STOP, PWM0 SHORTS SEQEND0_STOP reset value false")
     }
     #[doc = "PWM0 SHORTS SEQEND0_STOP: Shortcut between SEQEND[0] event and STOP task\n\nPWM0 SHORTS SEQEND0_STOP: Shortcut between SEQEND[0] event and STOP task\n\nPWM0 SHORTS SEQEND0_STOP: Shortcut between SEQEND[0] event and STOP task"]
     #[inline]
@@ -14123,12 +14127,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 SHORTS SEQEND0_STOP, PWM0 SHORTS SEQEND0_STOP, PWM0 SHORTS SEQEND0_STOP reset value false")
+        todo!("write PWM0 SHORTS SEQEND0_STOP, PWM0 SHORTS SEQEND0_STOP, PWM0 SHORTS SEQEND0_STOP reset value false")
     }
     #[doc = "PWM0 SHORTS SEQEND1_STOP: Shortcut between SEQEND[1] event and STOP task\n\nPWM0 SHORTS SEQEND1_STOP: Shortcut between SEQEND[1] event and STOP task\n\nPWM0 SHORTS SEQEND1_STOP: Shortcut between SEQEND[1] event and STOP task"]
     #[inline]
     pub(crate) fn read_pwm0_shorts_seqend1_stop(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 SHORTS SEQEND1_STOP, PWM0 SHORTS SEQEND1_STOP, PWM0 SHORTS SEQEND1_STOP reset value false")
+        todo!("read PWM0 SHORTS SEQEND1_STOP, PWM0 SHORTS SEQEND1_STOP, PWM0 SHORTS SEQEND1_STOP reset value false")
     }
     #[doc = "PWM0 SHORTS SEQEND1_STOP: Shortcut between SEQEND[1] event and STOP task\n\nPWM0 SHORTS SEQEND1_STOP: Shortcut between SEQEND[1] event and STOP task\n\nPWM0 SHORTS SEQEND1_STOP: Shortcut between SEQEND[1] event and STOP task"]
     #[inline]
@@ -14136,14 +14140,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 SHORTS SEQEND1_STOP, PWM0 SHORTS SEQEND1_STOP, PWM0 SHORTS SEQEND1_STOP reset value false")
+        todo!("write PWM0 SHORTS SEQEND1_STOP, PWM0 SHORTS SEQEND1_STOP, PWM0 SHORTS SEQEND1_STOP reset value false")
     }
     #[doc = "PWM0 SHORTS LOOPSDONE_SEQSTART0: Shortcut between LOOPSDONE event and SEQSTART[0] task\n\nPWM0 SHORTS LOOPSDONE_SEQSTART0: Shortcut between LOOPSDONE event and SEQSTART[0] task\n\nPWM0 SHORTS LOOPSDONE_SEQSTART0: Shortcut between LOOPSDONE event and SEQSTART[0] task"]
     #[inline]
     pub(crate) fn read_pwm0_shorts_loopsdone_seqstart0(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read PWM0 SHORTS LOOPSDONE_SEQSTART0, PWM0 SHORTS LOOPSDONE_SEQSTART0, PWM0 SHORTS LOOPSDONE_SEQSTART0 reset value false")
+        todo!("read PWM0 SHORTS LOOPSDONE_SEQSTART0, PWM0 SHORTS LOOPSDONE_SEQSTART0, PWM0 SHORTS LOOPSDONE_SEQSTART0 reset value false")
     }
     #[doc = "PWM0 SHORTS LOOPSDONE_SEQSTART0: Shortcut between LOOPSDONE event and SEQSTART[0] task\n\nPWM0 SHORTS LOOPSDONE_SEQSTART0: Shortcut between LOOPSDONE event and SEQSTART[0] task\n\nPWM0 SHORTS LOOPSDONE_SEQSTART0: Shortcut between LOOPSDONE event and SEQSTART[0] task"]
     #[inline]
@@ -14151,14 +14155,14 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 SHORTS LOOPSDONE_SEQSTART0, PWM0 SHORTS LOOPSDONE_SEQSTART0, PWM0 SHORTS LOOPSDONE_SEQSTART0 reset value false")
+        todo!("write PWM0 SHORTS LOOPSDONE_SEQSTART0, PWM0 SHORTS LOOPSDONE_SEQSTART0, PWM0 SHORTS LOOPSDONE_SEQSTART0 reset value false")
     }
     #[doc = "PWM0 SHORTS LOOPSDONE_SEQSTART1: Shortcut between LOOPSDONE event and SEQSTART[1] task\n\nPWM0 SHORTS LOOPSDONE_SEQSTART1: Shortcut between LOOPSDONE event and SEQSTART[1] task\n\nPWM0 SHORTS LOOPSDONE_SEQSTART1: Shortcut between LOOPSDONE event and SEQSTART[1] task"]
     #[inline]
     pub(crate) fn read_pwm0_shorts_loopsdone_seqstart1(
         &self,
     ) -> MemResult<bool> {
-        todo ! ("read PWM0 SHORTS LOOPSDONE_SEQSTART1, PWM0 SHORTS LOOPSDONE_SEQSTART1, PWM0 SHORTS LOOPSDONE_SEQSTART1 reset value false")
+        todo!("read PWM0 SHORTS LOOPSDONE_SEQSTART1, PWM0 SHORTS LOOPSDONE_SEQSTART1, PWM0 SHORTS LOOPSDONE_SEQSTART1 reset value false")
     }
     #[doc = "PWM0 SHORTS LOOPSDONE_SEQSTART1: Shortcut between LOOPSDONE event and SEQSTART[1] task\n\nPWM0 SHORTS LOOPSDONE_SEQSTART1: Shortcut between LOOPSDONE event and SEQSTART[1] task\n\nPWM0 SHORTS LOOPSDONE_SEQSTART1: Shortcut between LOOPSDONE event and SEQSTART[1] task"]
     #[inline]
@@ -14166,12 +14170,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 SHORTS LOOPSDONE_SEQSTART1, PWM0 SHORTS LOOPSDONE_SEQSTART1, PWM0 SHORTS LOOPSDONE_SEQSTART1 reset value false")
+        todo!("write PWM0 SHORTS LOOPSDONE_SEQSTART1, PWM0 SHORTS LOOPSDONE_SEQSTART1, PWM0 SHORTS LOOPSDONE_SEQSTART1 reset value false")
     }
     #[doc = "PWM0 SHORTS LOOPSDONE_STOP: Shortcut between LOOPSDONE event and STOP task\n\nPWM0 SHORTS LOOPSDONE_STOP: Shortcut between LOOPSDONE event and STOP task\n\nPWM0 SHORTS LOOPSDONE_STOP: Shortcut between LOOPSDONE event and STOP task"]
     #[inline]
     pub(crate) fn read_pwm0_shorts_loopsdone_stop(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 SHORTS LOOPSDONE_STOP, PWM0 SHORTS LOOPSDONE_STOP, PWM0 SHORTS LOOPSDONE_STOP reset value false")
+        todo!("read PWM0 SHORTS LOOPSDONE_STOP, PWM0 SHORTS LOOPSDONE_STOP, PWM0 SHORTS LOOPSDONE_STOP reset value false")
     }
     #[doc = "PWM0 SHORTS LOOPSDONE_STOP: Shortcut between LOOPSDONE event and STOP task\n\nPWM0 SHORTS LOOPSDONE_STOP: Shortcut between LOOPSDONE event and STOP task\n\nPWM0 SHORTS LOOPSDONE_STOP: Shortcut between LOOPSDONE event and STOP task"]
     #[inline]
@@ -14179,12 +14183,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 SHORTS LOOPSDONE_STOP, PWM0 SHORTS LOOPSDONE_STOP, PWM0 SHORTS LOOPSDONE_STOP reset value false")
+        todo!("write PWM0 SHORTS LOOPSDONE_STOP, PWM0 SHORTS LOOPSDONE_STOP, PWM0 SHORTS LOOPSDONE_STOP reset value false")
     }
     #[doc = "PWM0 INTEN STOPPED: Enable or disable interrupt for STOPPED event\n\nPWM0 INTEN STOPPED: Enable or disable interrupt for STOPPED event\n\nPWM0 INTEN STOPPED: Enable or disable interrupt for STOPPED event"]
     #[inline]
     pub(crate) fn read_pwm0_inten_stopped(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 INTEN STOPPED, PWM0 INTEN STOPPED, PWM0 INTEN STOPPED reset value false")
+        todo!("read PWM0 INTEN STOPPED, PWM0 INTEN STOPPED, PWM0 INTEN STOPPED reset value false")
     }
     #[doc = "PWM0 INTEN STOPPED: Enable or disable interrupt for STOPPED event\n\nPWM0 INTEN STOPPED: Enable or disable interrupt for STOPPED event\n\nPWM0 INTEN STOPPED: Enable or disable interrupt for STOPPED event"]
     #[inline]
@@ -14192,12 +14196,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 INTEN STOPPED, PWM0 INTEN STOPPED, PWM0 INTEN STOPPED reset value false")
+        todo!("write PWM0 INTEN STOPPED, PWM0 INTEN STOPPED, PWM0 INTEN STOPPED reset value false")
     }
     #[doc = "PWM0 INTEN SEQSTARTED0: Enable or disable interrupt for SEQSTARTED[0] event\n\nPWM0 INTEN SEQSTARTED0: Enable or disable interrupt for SEQSTARTED[0] event\n\nPWM0 INTEN SEQSTARTED0: Enable or disable interrupt for SEQSTARTED[0] event"]
     #[inline]
     pub(crate) fn read_pwm0_inten_seqstarted0(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 INTEN SEQSTARTED0, PWM0 INTEN SEQSTARTED0, PWM0 INTEN SEQSTARTED0 reset value false")
+        todo!("read PWM0 INTEN SEQSTARTED0, PWM0 INTEN SEQSTARTED0, PWM0 INTEN SEQSTARTED0 reset value false")
     }
     #[doc = "PWM0 INTEN SEQSTARTED0: Enable or disable interrupt for SEQSTARTED[0] event\n\nPWM0 INTEN SEQSTARTED0: Enable or disable interrupt for SEQSTARTED[0] event\n\nPWM0 INTEN SEQSTARTED0: Enable or disable interrupt for SEQSTARTED[0] event"]
     #[inline]
@@ -14205,12 +14209,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 INTEN SEQSTARTED0, PWM0 INTEN SEQSTARTED0, PWM0 INTEN SEQSTARTED0 reset value false")
+        todo!("write PWM0 INTEN SEQSTARTED0, PWM0 INTEN SEQSTARTED0, PWM0 INTEN SEQSTARTED0 reset value false")
     }
     #[doc = "PWM0 INTEN SEQSTARTED1: Enable or disable interrupt for SEQSTARTED[1] event\n\nPWM0 INTEN SEQSTARTED1: Enable or disable interrupt for SEQSTARTED[1] event\n\nPWM0 INTEN SEQSTARTED1: Enable or disable interrupt for SEQSTARTED[1] event"]
     #[inline]
     pub(crate) fn read_pwm0_inten_seqstarted1(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 INTEN SEQSTARTED1, PWM0 INTEN SEQSTARTED1, PWM0 INTEN SEQSTARTED1 reset value false")
+        todo!("read PWM0 INTEN SEQSTARTED1, PWM0 INTEN SEQSTARTED1, PWM0 INTEN SEQSTARTED1 reset value false")
     }
     #[doc = "PWM0 INTEN SEQSTARTED1: Enable or disable interrupt for SEQSTARTED[1] event\n\nPWM0 INTEN SEQSTARTED1: Enable or disable interrupt for SEQSTARTED[1] event\n\nPWM0 INTEN SEQSTARTED1: Enable or disable interrupt for SEQSTARTED[1] event"]
     #[inline]
@@ -14218,12 +14222,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 INTEN SEQSTARTED1, PWM0 INTEN SEQSTARTED1, PWM0 INTEN SEQSTARTED1 reset value false")
+        todo!("write PWM0 INTEN SEQSTARTED1, PWM0 INTEN SEQSTARTED1, PWM0 INTEN SEQSTARTED1 reset value false")
     }
     #[doc = "PWM0 INTEN SEQEND0: Enable or disable interrupt for SEQEND[0] event\n\nPWM0 INTEN SEQEND0: Enable or disable interrupt for SEQEND[0] event\n\nPWM0 INTEN SEQEND0: Enable or disable interrupt for SEQEND[0] event"]
     #[inline]
     pub(crate) fn read_pwm0_inten_seqend0(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 INTEN SEQEND0, PWM0 INTEN SEQEND0, PWM0 INTEN SEQEND0 reset value false")
+        todo!("read PWM0 INTEN SEQEND0, PWM0 INTEN SEQEND0, PWM0 INTEN SEQEND0 reset value false")
     }
     #[doc = "PWM0 INTEN SEQEND0: Enable or disable interrupt for SEQEND[0] event\n\nPWM0 INTEN SEQEND0: Enable or disable interrupt for SEQEND[0] event\n\nPWM0 INTEN SEQEND0: Enable or disable interrupt for SEQEND[0] event"]
     #[inline]
@@ -14231,12 +14235,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 INTEN SEQEND0, PWM0 INTEN SEQEND0, PWM0 INTEN SEQEND0 reset value false")
+        todo!("write PWM0 INTEN SEQEND0, PWM0 INTEN SEQEND0, PWM0 INTEN SEQEND0 reset value false")
     }
     #[doc = "PWM0 INTEN SEQEND1: Enable or disable interrupt for SEQEND[1] event\n\nPWM0 INTEN SEQEND1: Enable or disable interrupt for SEQEND[1] event\n\nPWM0 INTEN SEQEND1: Enable or disable interrupt for SEQEND[1] event"]
     #[inline]
     pub(crate) fn read_pwm0_inten_seqend1(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 INTEN SEQEND1, PWM0 INTEN SEQEND1, PWM0 INTEN SEQEND1 reset value false")
+        todo!("read PWM0 INTEN SEQEND1, PWM0 INTEN SEQEND1, PWM0 INTEN SEQEND1 reset value false")
     }
     #[doc = "PWM0 INTEN SEQEND1: Enable or disable interrupt for SEQEND[1] event\n\nPWM0 INTEN SEQEND1: Enable or disable interrupt for SEQEND[1] event\n\nPWM0 INTEN SEQEND1: Enable or disable interrupt for SEQEND[1] event"]
     #[inline]
@@ -14244,12 +14248,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 INTEN SEQEND1, PWM0 INTEN SEQEND1, PWM0 INTEN SEQEND1 reset value false")
+        todo!("write PWM0 INTEN SEQEND1, PWM0 INTEN SEQEND1, PWM0 INTEN SEQEND1 reset value false")
     }
     #[doc = "PWM0 INTEN PWMPERIODEND: Enable or disable interrupt for PWMPERIODEND event\n\nPWM0 INTEN PWMPERIODEND: Enable or disable interrupt for PWMPERIODEND event\n\nPWM0 INTEN PWMPERIODEND: Enable or disable interrupt for PWMPERIODEND event"]
     #[inline]
     pub(crate) fn read_pwm0_inten_pwmperiodend(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 INTEN PWMPERIODEND, PWM0 INTEN PWMPERIODEND, PWM0 INTEN PWMPERIODEND reset value false")
+        todo!("read PWM0 INTEN PWMPERIODEND, PWM0 INTEN PWMPERIODEND, PWM0 INTEN PWMPERIODEND reset value false")
     }
     #[doc = "PWM0 INTEN PWMPERIODEND: Enable or disable interrupt for PWMPERIODEND event\n\nPWM0 INTEN PWMPERIODEND: Enable or disable interrupt for PWMPERIODEND event\n\nPWM0 INTEN PWMPERIODEND: Enable or disable interrupt for PWMPERIODEND event"]
     #[inline]
@@ -14257,12 +14261,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 INTEN PWMPERIODEND, PWM0 INTEN PWMPERIODEND, PWM0 INTEN PWMPERIODEND reset value false")
+        todo!("write PWM0 INTEN PWMPERIODEND, PWM0 INTEN PWMPERIODEND, PWM0 INTEN PWMPERIODEND reset value false")
     }
     #[doc = "PWM0 INTEN LOOPSDONE: Enable or disable interrupt for LOOPSDONE event\n\nPWM0 INTEN LOOPSDONE: Enable or disable interrupt for LOOPSDONE event\n\nPWM0 INTEN LOOPSDONE: Enable or disable interrupt for LOOPSDONE event"]
     #[inline]
     pub(crate) fn read_pwm0_inten_loopsdone(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 INTEN LOOPSDONE, PWM0 INTEN LOOPSDONE, PWM0 INTEN LOOPSDONE reset value false")
+        todo!("read PWM0 INTEN LOOPSDONE, PWM0 INTEN LOOPSDONE, PWM0 INTEN LOOPSDONE reset value false")
     }
     #[doc = "PWM0 INTEN LOOPSDONE: Enable or disable interrupt for LOOPSDONE event\n\nPWM0 INTEN LOOPSDONE: Enable or disable interrupt for LOOPSDONE event\n\nPWM0 INTEN LOOPSDONE: Enable or disable interrupt for LOOPSDONE event"]
     #[inline]
@@ -14270,12 +14274,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 INTEN LOOPSDONE, PWM0 INTEN LOOPSDONE, PWM0 INTEN LOOPSDONE reset value false")
+        todo!("write PWM0 INTEN LOOPSDONE, PWM0 INTEN LOOPSDONE, PWM0 INTEN LOOPSDONE reset value false")
     }
     #[doc = "PWM0 INTENSET STOPPED: Write '1' to Enable interrupt for STOPPED event\n\nPWM0 INTENSET STOPPED: Write '1' to Enable interrupt for STOPPED event\n\nPWM0 INTENSET STOPPED: Write '1' to Enable interrupt for STOPPED event"]
     #[inline]
     pub(crate) fn read_pwm0_intenset_stopped(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 INTENSET STOPPED, PWM0 INTENSET STOPPED, PWM0 INTENSET STOPPED reset value false")
+        todo!("read PWM0 INTENSET STOPPED, PWM0 INTENSET STOPPED, PWM0 INTENSET STOPPED reset value false")
     }
     #[doc = "PWM0 INTENSET STOPPED: Write '1' to Enable interrupt for STOPPED event\n\nPWM0 INTENSET STOPPED: Write '1' to Enable interrupt for STOPPED event\n\nPWM0 INTENSET STOPPED: Write '1' to Enable interrupt for STOPPED event"]
     #[inline]
@@ -14283,12 +14287,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 INTENSET STOPPED, PWM0 INTENSET STOPPED, PWM0 INTENSET STOPPED reset value false")
+        todo!("write PWM0 INTENSET STOPPED, PWM0 INTENSET STOPPED, PWM0 INTENSET STOPPED reset value false")
     }
     #[doc = "PWM0 INTENSET SEQSTARTED0: Write '1' to Enable interrupt for SEQSTARTED[0] event\n\nPWM0 INTENSET SEQSTARTED0: Write '1' to Enable interrupt for SEQSTARTED[0] event\n\nPWM0 INTENSET SEQSTARTED0: Write '1' to Enable interrupt for SEQSTARTED[0] event"]
     #[inline]
     pub(crate) fn read_pwm0_intenset_seqstarted0(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 INTENSET SEQSTARTED0, PWM0 INTENSET SEQSTARTED0, PWM0 INTENSET SEQSTARTED0 reset value false")
+        todo!("read PWM0 INTENSET SEQSTARTED0, PWM0 INTENSET SEQSTARTED0, PWM0 INTENSET SEQSTARTED0 reset value false")
     }
     #[doc = "PWM0 INTENSET SEQSTARTED0: Write '1' to Enable interrupt for SEQSTARTED[0] event\n\nPWM0 INTENSET SEQSTARTED0: Write '1' to Enable interrupt for SEQSTARTED[0] event\n\nPWM0 INTENSET SEQSTARTED0: Write '1' to Enable interrupt for SEQSTARTED[0] event"]
     #[inline]
@@ -14296,12 +14300,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 INTENSET SEQSTARTED0, PWM0 INTENSET SEQSTARTED0, PWM0 INTENSET SEQSTARTED0 reset value false")
+        todo!("write PWM0 INTENSET SEQSTARTED0, PWM0 INTENSET SEQSTARTED0, PWM0 INTENSET SEQSTARTED0 reset value false")
     }
     #[doc = "PWM0 INTENSET SEQSTARTED1: Write '1' to Enable interrupt for SEQSTARTED[1] event\n\nPWM0 INTENSET SEQSTARTED1: Write '1' to Enable interrupt for SEQSTARTED[1] event\n\nPWM0 INTENSET SEQSTARTED1: Write '1' to Enable interrupt for SEQSTARTED[1] event"]
     #[inline]
     pub(crate) fn read_pwm0_intenset_seqstarted1(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 INTENSET SEQSTARTED1, PWM0 INTENSET SEQSTARTED1, PWM0 INTENSET SEQSTARTED1 reset value false")
+        todo!("read PWM0 INTENSET SEQSTARTED1, PWM0 INTENSET SEQSTARTED1, PWM0 INTENSET SEQSTARTED1 reset value false")
     }
     #[doc = "PWM0 INTENSET SEQSTARTED1: Write '1' to Enable interrupt for SEQSTARTED[1] event\n\nPWM0 INTENSET SEQSTARTED1: Write '1' to Enable interrupt for SEQSTARTED[1] event\n\nPWM0 INTENSET SEQSTARTED1: Write '1' to Enable interrupt for SEQSTARTED[1] event"]
     #[inline]
@@ -14309,12 +14313,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 INTENSET SEQSTARTED1, PWM0 INTENSET SEQSTARTED1, PWM0 INTENSET SEQSTARTED1 reset value false")
+        todo!("write PWM0 INTENSET SEQSTARTED1, PWM0 INTENSET SEQSTARTED1, PWM0 INTENSET SEQSTARTED1 reset value false")
     }
     #[doc = "PWM0 INTENSET SEQEND0: Write '1' to Enable interrupt for SEQEND[0] event\n\nPWM0 INTENSET SEQEND0: Write '1' to Enable interrupt for SEQEND[0] event\n\nPWM0 INTENSET SEQEND0: Write '1' to Enable interrupt for SEQEND[0] event"]
     #[inline]
     pub(crate) fn read_pwm0_intenset_seqend0(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 INTENSET SEQEND0, PWM0 INTENSET SEQEND0, PWM0 INTENSET SEQEND0 reset value false")
+        todo!("read PWM0 INTENSET SEQEND0, PWM0 INTENSET SEQEND0, PWM0 INTENSET SEQEND0 reset value false")
     }
     #[doc = "PWM0 INTENSET SEQEND0: Write '1' to Enable interrupt for SEQEND[0] event\n\nPWM0 INTENSET SEQEND0: Write '1' to Enable interrupt for SEQEND[0] event\n\nPWM0 INTENSET SEQEND0: Write '1' to Enable interrupt for SEQEND[0] event"]
     #[inline]
@@ -14322,12 +14326,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 INTENSET SEQEND0, PWM0 INTENSET SEQEND0, PWM0 INTENSET SEQEND0 reset value false")
+        todo!("write PWM0 INTENSET SEQEND0, PWM0 INTENSET SEQEND0, PWM0 INTENSET SEQEND0 reset value false")
     }
     #[doc = "PWM0 INTENSET SEQEND1: Write '1' to Enable interrupt for SEQEND[1] event\n\nPWM0 INTENSET SEQEND1: Write '1' to Enable interrupt for SEQEND[1] event\n\nPWM0 INTENSET SEQEND1: Write '1' to Enable interrupt for SEQEND[1] event"]
     #[inline]
     pub(crate) fn read_pwm0_intenset_seqend1(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 INTENSET SEQEND1, PWM0 INTENSET SEQEND1, PWM0 INTENSET SEQEND1 reset value false")
+        todo!("read PWM0 INTENSET SEQEND1, PWM0 INTENSET SEQEND1, PWM0 INTENSET SEQEND1 reset value false")
     }
     #[doc = "PWM0 INTENSET SEQEND1: Write '1' to Enable interrupt for SEQEND[1] event\n\nPWM0 INTENSET SEQEND1: Write '1' to Enable interrupt for SEQEND[1] event\n\nPWM0 INTENSET SEQEND1: Write '1' to Enable interrupt for SEQEND[1] event"]
     #[inline]
@@ -14335,12 +14339,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 INTENSET SEQEND1, PWM0 INTENSET SEQEND1, PWM0 INTENSET SEQEND1 reset value false")
+        todo!("write PWM0 INTENSET SEQEND1, PWM0 INTENSET SEQEND1, PWM0 INTENSET SEQEND1 reset value false")
     }
     #[doc = "PWM0 INTENSET PWMPERIODEND: Write '1' to Enable interrupt for PWMPERIODEND event\n\nPWM0 INTENSET PWMPERIODEND: Write '1' to Enable interrupt for PWMPERIODEND event\n\nPWM0 INTENSET PWMPERIODEND: Write '1' to Enable interrupt for PWMPERIODEND event"]
     #[inline]
     pub(crate) fn read_pwm0_intenset_pwmperiodend(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 INTENSET PWMPERIODEND, PWM0 INTENSET PWMPERIODEND, PWM0 INTENSET PWMPERIODEND reset value false")
+        todo!("read PWM0 INTENSET PWMPERIODEND, PWM0 INTENSET PWMPERIODEND, PWM0 INTENSET PWMPERIODEND reset value false")
     }
     #[doc = "PWM0 INTENSET PWMPERIODEND: Write '1' to Enable interrupt for PWMPERIODEND event\n\nPWM0 INTENSET PWMPERIODEND: Write '1' to Enable interrupt for PWMPERIODEND event\n\nPWM0 INTENSET PWMPERIODEND: Write '1' to Enable interrupt for PWMPERIODEND event"]
     #[inline]
@@ -14348,12 +14352,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 INTENSET PWMPERIODEND, PWM0 INTENSET PWMPERIODEND, PWM0 INTENSET PWMPERIODEND reset value false")
+        todo!("write PWM0 INTENSET PWMPERIODEND, PWM0 INTENSET PWMPERIODEND, PWM0 INTENSET PWMPERIODEND reset value false")
     }
     #[doc = "PWM0 INTENSET LOOPSDONE: Write '1' to Enable interrupt for LOOPSDONE event\n\nPWM0 INTENSET LOOPSDONE: Write '1' to Enable interrupt for LOOPSDONE event\n\nPWM0 INTENSET LOOPSDONE: Write '1' to Enable interrupt for LOOPSDONE event"]
     #[inline]
     pub(crate) fn read_pwm0_intenset_loopsdone(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 INTENSET LOOPSDONE, PWM0 INTENSET LOOPSDONE, PWM0 INTENSET LOOPSDONE reset value false")
+        todo!("read PWM0 INTENSET LOOPSDONE, PWM0 INTENSET LOOPSDONE, PWM0 INTENSET LOOPSDONE reset value false")
     }
     #[doc = "PWM0 INTENSET LOOPSDONE: Write '1' to Enable interrupt for LOOPSDONE event\n\nPWM0 INTENSET LOOPSDONE: Write '1' to Enable interrupt for LOOPSDONE event\n\nPWM0 INTENSET LOOPSDONE: Write '1' to Enable interrupt for LOOPSDONE event"]
     #[inline]
@@ -14361,12 +14365,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 INTENSET LOOPSDONE, PWM0 INTENSET LOOPSDONE, PWM0 INTENSET LOOPSDONE reset value false")
+        todo!("write PWM0 INTENSET LOOPSDONE, PWM0 INTENSET LOOPSDONE, PWM0 INTENSET LOOPSDONE reset value false")
     }
     #[doc = "PWM0 INTENCLR STOPPED: Write '1' to Disable interrupt for STOPPED event\n\nPWM0 INTENCLR STOPPED: Write '1' to Disable interrupt for STOPPED event\n\nPWM0 INTENCLR STOPPED: Write '1' to Disable interrupt for STOPPED event"]
     #[inline]
     pub(crate) fn read_pwm0_intenclr_stopped(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 INTENCLR STOPPED, PWM0 INTENCLR STOPPED, PWM0 INTENCLR STOPPED reset value false")
+        todo!("read PWM0 INTENCLR STOPPED, PWM0 INTENCLR STOPPED, PWM0 INTENCLR STOPPED reset value false")
     }
     #[doc = "PWM0 INTENCLR STOPPED: Write '1' to Disable interrupt for STOPPED event\n\nPWM0 INTENCLR STOPPED: Write '1' to Disable interrupt for STOPPED event\n\nPWM0 INTENCLR STOPPED: Write '1' to Disable interrupt for STOPPED event"]
     #[inline]
@@ -14374,12 +14378,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 INTENCLR STOPPED, PWM0 INTENCLR STOPPED, PWM0 INTENCLR STOPPED reset value false")
+        todo!("write PWM0 INTENCLR STOPPED, PWM0 INTENCLR STOPPED, PWM0 INTENCLR STOPPED reset value false")
     }
     #[doc = "PWM0 INTENCLR SEQSTARTED0: Write '1' to Disable interrupt for SEQSTARTED[0] event\n\nPWM0 INTENCLR SEQSTARTED0: Write '1' to Disable interrupt for SEQSTARTED[0] event\n\nPWM0 INTENCLR SEQSTARTED0: Write '1' to Disable interrupt for SEQSTARTED[0] event"]
     #[inline]
     pub(crate) fn read_pwm0_intenclr_seqstarted0(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 INTENCLR SEQSTARTED0, PWM0 INTENCLR SEQSTARTED0, PWM0 INTENCLR SEQSTARTED0 reset value false")
+        todo!("read PWM0 INTENCLR SEQSTARTED0, PWM0 INTENCLR SEQSTARTED0, PWM0 INTENCLR SEQSTARTED0 reset value false")
     }
     #[doc = "PWM0 INTENCLR SEQSTARTED0: Write '1' to Disable interrupt for SEQSTARTED[0] event\n\nPWM0 INTENCLR SEQSTARTED0: Write '1' to Disable interrupt for SEQSTARTED[0] event\n\nPWM0 INTENCLR SEQSTARTED0: Write '1' to Disable interrupt for SEQSTARTED[0] event"]
     #[inline]
@@ -14387,12 +14391,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 INTENCLR SEQSTARTED0, PWM0 INTENCLR SEQSTARTED0, PWM0 INTENCLR SEQSTARTED0 reset value false")
+        todo!("write PWM0 INTENCLR SEQSTARTED0, PWM0 INTENCLR SEQSTARTED0, PWM0 INTENCLR SEQSTARTED0 reset value false")
     }
     #[doc = "PWM0 INTENCLR SEQSTARTED1: Write '1' to Disable interrupt for SEQSTARTED[1] event\n\nPWM0 INTENCLR SEQSTARTED1: Write '1' to Disable interrupt for SEQSTARTED[1] event\n\nPWM0 INTENCLR SEQSTARTED1: Write '1' to Disable interrupt for SEQSTARTED[1] event"]
     #[inline]
     pub(crate) fn read_pwm0_intenclr_seqstarted1(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 INTENCLR SEQSTARTED1, PWM0 INTENCLR SEQSTARTED1, PWM0 INTENCLR SEQSTARTED1 reset value false")
+        todo!("read PWM0 INTENCLR SEQSTARTED1, PWM0 INTENCLR SEQSTARTED1, PWM0 INTENCLR SEQSTARTED1 reset value false")
     }
     #[doc = "PWM0 INTENCLR SEQSTARTED1: Write '1' to Disable interrupt for SEQSTARTED[1] event\n\nPWM0 INTENCLR SEQSTARTED1: Write '1' to Disable interrupt for SEQSTARTED[1] event\n\nPWM0 INTENCLR SEQSTARTED1: Write '1' to Disable interrupt for SEQSTARTED[1] event"]
     #[inline]
@@ -14400,12 +14404,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 INTENCLR SEQSTARTED1, PWM0 INTENCLR SEQSTARTED1, PWM0 INTENCLR SEQSTARTED1 reset value false")
+        todo!("write PWM0 INTENCLR SEQSTARTED1, PWM0 INTENCLR SEQSTARTED1, PWM0 INTENCLR SEQSTARTED1 reset value false")
     }
     #[doc = "PWM0 INTENCLR SEQEND0: Write '1' to Disable interrupt for SEQEND[0] event\n\nPWM0 INTENCLR SEQEND0: Write '1' to Disable interrupt for SEQEND[0] event\n\nPWM0 INTENCLR SEQEND0: Write '1' to Disable interrupt for SEQEND[0] event"]
     #[inline]
     pub(crate) fn read_pwm0_intenclr_seqend0(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 INTENCLR SEQEND0, PWM0 INTENCLR SEQEND0, PWM0 INTENCLR SEQEND0 reset value false")
+        todo!("read PWM0 INTENCLR SEQEND0, PWM0 INTENCLR SEQEND0, PWM0 INTENCLR SEQEND0 reset value false")
     }
     #[doc = "PWM0 INTENCLR SEQEND0: Write '1' to Disable interrupt for SEQEND[0] event\n\nPWM0 INTENCLR SEQEND0: Write '1' to Disable interrupt for SEQEND[0] event\n\nPWM0 INTENCLR SEQEND0: Write '1' to Disable interrupt for SEQEND[0] event"]
     #[inline]
@@ -14413,12 +14417,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 INTENCLR SEQEND0, PWM0 INTENCLR SEQEND0, PWM0 INTENCLR SEQEND0 reset value false")
+        todo!("write PWM0 INTENCLR SEQEND0, PWM0 INTENCLR SEQEND0, PWM0 INTENCLR SEQEND0 reset value false")
     }
     #[doc = "PWM0 INTENCLR SEQEND1: Write '1' to Disable interrupt for SEQEND[1] event\n\nPWM0 INTENCLR SEQEND1: Write '1' to Disable interrupt for SEQEND[1] event\n\nPWM0 INTENCLR SEQEND1: Write '1' to Disable interrupt for SEQEND[1] event"]
     #[inline]
     pub(crate) fn read_pwm0_intenclr_seqend1(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 INTENCLR SEQEND1, PWM0 INTENCLR SEQEND1, PWM0 INTENCLR SEQEND1 reset value false")
+        todo!("read PWM0 INTENCLR SEQEND1, PWM0 INTENCLR SEQEND1, PWM0 INTENCLR SEQEND1 reset value false")
     }
     #[doc = "PWM0 INTENCLR SEQEND1: Write '1' to Disable interrupt for SEQEND[1] event\n\nPWM0 INTENCLR SEQEND1: Write '1' to Disable interrupt for SEQEND[1] event\n\nPWM0 INTENCLR SEQEND1: Write '1' to Disable interrupt for SEQEND[1] event"]
     #[inline]
@@ -14426,12 +14430,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 INTENCLR SEQEND1, PWM0 INTENCLR SEQEND1, PWM0 INTENCLR SEQEND1 reset value false")
+        todo!("write PWM0 INTENCLR SEQEND1, PWM0 INTENCLR SEQEND1, PWM0 INTENCLR SEQEND1 reset value false")
     }
     #[doc = "PWM0 INTENCLR PWMPERIODEND: Write '1' to Disable interrupt for PWMPERIODEND event\n\nPWM0 INTENCLR PWMPERIODEND: Write '1' to Disable interrupt for PWMPERIODEND event\n\nPWM0 INTENCLR PWMPERIODEND: Write '1' to Disable interrupt for PWMPERIODEND event"]
     #[inline]
     pub(crate) fn read_pwm0_intenclr_pwmperiodend(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 INTENCLR PWMPERIODEND, PWM0 INTENCLR PWMPERIODEND, PWM0 INTENCLR PWMPERIODEND reset value false")
+        todo!("read PWM0 INTENCLR PWMPERIODEND, PWM0 INTENCLR PWMPERIODEND, PWM0 INTENCLR PWMPERIODEND reset value false")
     }
     #[doc = "PWM0 INTENCLR PWMPERIODEND: Write '1' to Disable interrupt for PWMPERIODEND event\n\nPWM0 INTENCLR PWMPERIODEND: Write '1' to Disable interrupt for PWMPERIODEND event\n\nPWM0 INTENCLR PWMPERIODEND: Write '1' to Disable interrupt for PWMPERIODEND event"]
     #[inline]
@@ -14439,12 +14443,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 INTENCLR PWMPERIODEND, PWM0 INTENCLR PWMPERIODEND, PWM0 INTENCLR PWMPERIODEND reset value false")
+        todo!("write PWM0 INTENCLR PWMPERIODEND, PWM0 INTENCLR PWMPERIODEND, PWM0 INTENCLR PWMPERIODEND reset value false")
     }
     #[doc = "PWM0 INTENCLR LOOPSDONE: Write '1' to Disable interrupt for LOOPSDONE event\n\nPWM0 INTENCLR LOOPSDONE: Write '1' to Disable interrupt for LOOPSDONE event\n\nPWM0 INTENCLR LOOPSDONE: Write '1' to Disable interrupt for LOOPSDONE event"]
     #[inline]
     pub(crate) fn read_pwm0_intenclr_loopsdone(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 INTENCLR LOOPSDONE, PWM0 INTENCLR LOOPSDONE, PWM0 INTENCLR LOOPSDONE reset value false")
+        todo!("read PWM0 INTENCLR LOOPSDONE, PWM0 INTENCLR LOOPSDONE, PWM0 INTENCLR LOOPSDONE reset value false")
     }
     #[doc = "PWM0 INTENCLR LOOPSDONE: Write '1' to Disable interrupt for LOOPSDONE event\n\nPWM0 INTENCLR LOOPSDONE: Write '1' to Disable interrupt for LOOPSDONE event\n\nPWM0 INTENCLR LOOPSDONE: Write '1' to Disable interrupt for LOOPSDONE event"]
     #[inline]
@@ -14452,12 +14456,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 INTENCLR LOOPSDONE, PWM0 INTENCLR LOOPSDONE, PWM0 INTENCLR LOOPSDONE reset value false")
+        todo!("write PWM0 INTENCLR LOOPSDONE, PWM0 INTENCLR LOOPSDONE, PWM0 INTENCLR LOOPSDONE reset value false")
     }
     #[doc = "PWM0 ENABLE ENABLE: Enable or disable PWM module\n\nPWM0 ENABLE ENABLE: Enable or disable PWM module\n\nPWM0 ENABLE ENABLE: Enable or disable PWM module"]
     #[inline]
     pub(crate) fn read_pwm0_enable_enable(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 ENABLE ENABLE, PWM0 ENABLE ENABLE, PWM0 ENABLE ENABLE reset value false")
+        todo!("read PWM0 ENABLE ENABLE, PWM0 ENABLE ENABLE, PWM0 ENABLE ENABLE reset value false")
     }
     #[doc = "PWM0 ENABLE ENABLE: Enable or disable PWM module\n\nPWM0 ENABLE ENABLE: Enable or disable PWM module\n\nPWM0 ENABLE ENABLE: Enable or disable PWM module"]
     #[inline]
@@ -14465,12 +14469,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 ENABLE ENABLE, PWM0 ENABLE ENABLE, PWM0 ENABLE ENABLE reset value false")
+        todo!("write PWM0 ENABLE ENABLE, PWM0 ENABLE ENABLE, PWM0 ENABLE ENABLE reset value false")
     }
     #[doc = "PWM0 MODE UPDOWN: Selects up or up and down as wave counter mode\n\nPWM0 MODE UPDOWN: Selects up or up and down as wave counter mode\n\nPWM0 MODE UPDOWN: Selects up or up and down as wave counter mode"]
     #[inline]
     pub(crate) fn read_pwm0_mode_updown(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 MODE UPDOWN, PWM0 MODE UPDOWN, PWM0 MODE UPDOWN reset value false")
+        todo!("read PWM0 MODE UPDOWN, PWM0 MODE UPDOWN, PWM0 MODE UPDOWN reset value false")
     }
     #[doc = "PWM0 MODE UPDOWN: Selects up or up and down as wave counter mode\n\nPWM0 MODE UPDOWN: Selects up or up and down as wave counter mode\n\nPWM0 MODE UPDOWN: Selects up or up and down as wave counter mode"]
     #[inline]
@@ -14478,12 +14482,12 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 MODE UPDOWN, PWM0 MODE UPDOWN, PWM0 MODE UPDOWN reset value false")
+        todo!("write PWM0 MODE UPDOWN, PWM0 MODE UPDOWN, PWM0 MODE UPDOWN reset value false")
     }
     #[doc = "PWM0 COUNTERTOP COUNTERTOP: Value up to which the pulse generator counter counts. This register is ignored when DECODER.MODE=WaveForm and only values from RAM will be used.\n\nPWM0 COUNTERTOP COUNTERTOP: Value up to which the pulse generator counter counts. This register is ignored when DECODER.MODE=WaveForm and only values from RAM will be used.\n\nPWM0 COUNTERTOP COUNTERTOP: Value up to which the pulse generator counter counts. This register is ignored when DECODER.MODE=WaveForm and only values from RAM will be used."]
     #[inline]
     pub(crate) fn read_pwm0_countertop_countertop(&self) -> MemResult<u16> {
-        todo ! ("read PWM0 COUNTERTOP COUNTERTOP, PWM0 COUNTERTOP COUNTERTOP, PWM0 COUNTERTOP COUNTERTOP reset value 0x3ff mask 0x7fff")
+        todo!("read PWM0 COUNTERTOP COUNTERTOP, PWM0 COUNTERTOP COUNTERTOP, PWM0 COUNTERTOP COUNTERTOP reset value 0x3ff mask 0x7fff")
     }
     #[doc = "PWM0 COUNTERTOP COUNTERTOP: Value up to which the pulse generator counter counts. This register is ignored when DECODER.MODE=WaveForm and only values from RAM will be used.\n\nPWM0 COUNTERTOP COUNTERTOP: Value up to which the pulse generator counter counts. This register is ignored when DECODER.MODE=WaveForm and only values from RAM will be used.\n\nPWM0 COUNTERTOP COUNTERTOP: Value up to which the pulse generator counter counts. This register is ignored when DECODER.MODE=WaveForm and only values from RAM will be used."]
     #[inline]
@@ -14491,12 +14495,12 @@ impl Peripherals {
         &mut self,
         _value: u16,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 COUNTERTOP COUNTERTOP, PWM0 COUNTERTOP COUNTERTOP, PWM0 COUNTERTOP COUNTERTOP reset value 0x3ff mask 0x7fff")
+        todo!("write PWM0 COUNTERTOP COUNTERTOP, PWM0 COUNTERTOP COUNTERTOP, PWM0 COUNTERTOP COUNTERTOP reset value 0x3ff mask 0x7fff")
     }
     #[doc = "PWM0 PRESCALER PRESCALER: Pre-scaler of PWM_CLK\n\nPWM0 PRESCALER PRESCALER: Pre-scaler of PWM_CLK\n\nPWM0 PRESCALER PRESCALER: Pre-scaler of PWM_CLK"]
     #[inline]
     pub(crate) fn read_pwm0_prescaler_prescaler(&self) -> MemResult<u8> {
-        todo ! ("read PWM0 PRESCALER PRESCALER, PWM0 PRESCALER PRESCALER, PWM0 PRESCALER PRESCALER reset value 0x00 mask 0x07")
+        todo!("read PWM0 PRESCALER PRESCALER, PWM0 PRESCALER PRESCALER, PWM0 PRESCALER PRESCALER reset value 0x00 mask 0x07")
     }
     #[doc = "PWM0 PRESCALER PRESCALER: Pre-scaler of PWM_CLK\n\nPWM0 PRESCALER PRESCALER: Pre-scaler of PWM_CLK\n\nPWM0 PRESCALER PRESCALER: Pre-scaler of PWM_CLK"]
     #[inline]
@@ -14504,12 +14508,12 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 PRESCALER PRESCALER, PWM0 PRESCALER PRESCALER, PWM0 PRESCALER PRESCALER reset value 0x00 mask 0x07")
+        todo!("write PWM0 PRESCALER PRESCALER, PWM0 PRESCALER PRESCALER, PWM0 PRESCALER PRESCALER reset value 0x00 mask 0x07")
     }
     #[doc = "PWM0 DECODER LOAD: How a sequence is read from RAM and spread to the compare register\n\nPWM0 DECODER LOAD: How a sequence is read from RAM and spread to the compare register\n\nPWM0 DECODER LOAD: How a sequence is read from RAM and spread to the compare register"]
     #[inline]
     pub(crate) fn read_pwm0_decoder_load(&self) -> MemResult<u8> {
-        todo ! ("read PWM0 DECODER LOAD, PWM0 DECODER LOAD, PWM0 DECODER LOAD reset value 0x00 mask 0x03")
+        todo!("read PWM0 DECODER LOAD, PWM0 DECODER LOAD, PWM0 DECODER LOAD reset value 0x00 mask 0x03")
     }
     #[doc = "PWM0 DECODER LOAD: How a sequence is read from RAM and spread to the compare register\n\nPWM0 DECODER LOAD: How a sequence is read from RAM and spread to the compare register\n\nPWM0 DECODER LOAD: How a sequence is read from RAM and spread to the compare register"]
     #[inline]
@@ -14517,12 +14521,12 @@ impl Peripherals {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 DECODER LOAD, PWM0 DECODER LOAD, PWM0 DECODER LOAD reset value 0x00 mask 0x03")
+        todo!("write PWM0 DECODER LOAD, PWM0 DECODER LOAD, PWM0 DECODER LOAD reset value 0x00 mask 0x03")
     }
     #[doc = "PWM0 DECODER MODE: Selects source for advancing the active sequence\n\nPWM0 DECODER MODE: Selects source for advancing the active sequence\n\nPWM0 DECODER MODE: Selects source for advancing the active sequence"]
     #[inline]
     pub(crate) fn read_pwm0_decoder_mode(&self) -> MemResult<bool> {
-        todo ! ("read PWM0 DECODER MODE, PWM0 DECODER MODE, PWM0 DECODER MODE reset value false")
+        todo!("read PWM0 DECODER MODE, PWM0 DECODER MODE, PWM0 DECODER MODE reset value false")
     }
     #[doc = "PWM0 DECODER MODE: Selects source for advancing the active sequence\n\nPWM0 DECODER MODE: Selects source for advancing the active sequence\n\nPWM0 DECODER MODE: Selects source for advancing the active sequence"]
     #[inline]
@@ -14530,22 +14534,22 @@ impl Peripherals {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 DECODER MODE, PWM0 DECODER MODE, PWM0 DECODER MODE reset value false")
+        todo!("write PWM0 DECODER MODE, PWM0 DECODER MODE, PWM0 DECODER MODE reset value false")
     }
     #[doc = "PWM0 LOOP CNT: Amount of playback of pattern cycles\n\nPWM0 LOOP CNT: Amount of playback of pattern cycles\n\nPWM0 LOOP CNT: Amount of playback of pattern cycles"]
     #[inline]
     pub(crate) fn read_pwm0_loop_cnt(&self) -> MemResult<u16> {
-        todo ! ("read PWM0 LOOP CNT, PWM0 LOOP CNT, PWM0 LOOP CNT reset value 0x00 mask 0xffff")
+        todo!("read PWM0 LOOP CNT, PWM0 LOOP CNT, PWM0 LOOP CNT reset value 0x00 mask 0xffff")
     }
     #[doc = "PWM0 LOOP CNT: Amount of playback of pattern cycles\n\nPWM0 LOOP CNT: Amount of playback of pattern cycles\n\nPWM0 LOOP CNT: Amount of playback of pattern cycles"]
     #[inline]
     pub(crate) fn write_pwm0_loop_cnt(&mut self, _value: u16) -> MemResult<()> {
-        todo ! ("write PWM0 LOOP CNT, PWM0 LOOP CNT, PWM0 LOOP CNT reset value 0x00 mask 0xffff")
+        todo!("write PWM0 LOOP CNT, PWM0 LOOP CNT, PWM0 LOOP CNT reset value 0x00 mask 0xffff")
     }
     #[doc = "PWM0 PTR: Description cluster[0]:  Beginning address in Data RAM of this sequence\n\nPWM0 PTR: Description cluster[0]:  Beginning address in Data RAM of this sequence\n\nPWM0 PTR: Description cluster[0]:  Beginning address in Data RAM of this sequence"]
     #[inline]
     pub(crate) fn read_pwm0_seqn_ptr(&self, _dim: usize) -> MemResult<u32> {
-        todo ! ("read PWM0 PTR, PWM0 PTR, PWM0 PTR reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read PWM0 PTR, PWM0 PTR, PWM0 PTR reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "PWM0 PTR: Description cluster[0]:  Beginning address in Data RAM of this sequence\n\nPWM0 PTR: Description cluster[0]:  Beginning address in Data RAM of this sequence\n\nPWM0 PTR: Description cluster[0]:  Beginning address in Data RAM of this sequence"]
     #[inline]
@@ -14554,12 +14558,12 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 PTR, PWM0 PTR, PWM0 PTR reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write PWM0 PTR, PWM0 PTR, PWM0 PTR reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "PWM0 CNT CNT: Amount of values (duty cycles) in this sequence\n\nPWM0 CNT CNT: Amount of values (duty cycles) in this sequence\n\nPWM0 CNT CNT: Amount of values (duty cycles) in this sequence"]
     #[inline]
     pub(crate) fn read_pwm0_seqn_cnt_cnt(&self, _dim: usize) -> MemResult<u16> {
-        todo ! ("read PWM0 CNT CNT, PWM0 CNT CNT, PWM0 CNT CNT reset value 0x00 mask 0x7fff")
+        todo!("read PWM0 CNT CNT, PWM0 CNT CNT, PWM0 CNT CNT reset value 0x00 mask 0x7fff")
     }
     #[doc = "PWM0 CNT CNT: Amount of values (duty cycles) in this sequence\n\nPWM0 CNT CNT: Amount of values (duty cycles) in this sequence\n\nPWM0 CNT CNT: Amount of values (duty cycles) in this sequence"]
     #[inline]
@@ -14568,7 +14572,7 @@ impl Peripherals {
         _dim: usize,
         _value: u16,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 CNT CNT, PWM0 CNT CNT, PWM0 CNT CNT reset value 0x00 mask 0x7fff")
+        todo!("write PWM0 CNT CNT, PWM0 CNT CNT, PWM0 CNT CNT reset value 0x00 mask 0x7fff")
     }
     #[doc = "PWM0 REFRESH CNT: Amount of additional PWM periods between samples loaded into compare register (load every REFRESH.CNT+1 PWM periods)\n\nPWM0 REFRESH CNT: Amount of additional PWM periods between samples loaded into compare register (load every REFRESH.CNT+1 PWM periods)\n\nPWM0 REFRESH CNT: Amount of additional PWM periods between samples loaded into compare register (load every REFRESH.CNT+1 PWM periods)"]
     #[inline]
@@ -14576,7 +14580,7 @@ impl Peripherals {
         &self,
         _dim: usize,
     ) -> MemResult<u32> {
-        todo ! ("read PWM0 REFRESH CNT, PWM0 REFRESH CNT, PWM0 REFRESH CNT reset value 0x01 mask 0xffffff")
+        todo!("read PWM0 REFRESH CNT, PWM0 REFRESH CNT, PWM0 REFRESH CNT reset value 0x01 mask 0xffffff")
     }
     #[doc = "PWM0 REFRESH CNT: Amount of additional PWM periods between samples loaded into compare register (load every REFRESH.CNT+1 PWM periods)\n\nPWM0 REFRESH CNT: Amount of additional PWM periods between samples loaded into compare register (load every REFRESH.CNT+1 PWM periods)\n\nPWM0 REFRESH CNT: Amount of additional PWM periods between samples loaded into compare register (load every REFRESH.CNT+1 PWM periods)"]
     #[inline]
@@ -14585,7 +14589,7 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 REFRESH CNT, PWM0 REFRESH CNT, PWM0 REFRESH CNT reset value 0x01 mask 0xffffff")
+        todo!("write PWM0 REFRESH CNT, PWM0 REFRESH CNT, PWM0 REFRESH CNT reset value 0x01 mask 0xffffff")
     }
     #[doc = "PWM0 ENDDELAY CNT: Time added after the sequence in PWM periods\n\nPWM0 ENDDELAY CNT: Time added after the sequence in PWM periods\n\nPWM0 ENDDELAY CNT: Time added after the sequence in PWM periods"]
     #[inline]
@@ -14593,7 +14597,7 @@ impl Peripherals {
         &self,
         _dim: usize,
     ) -> MemResult<u32> {
-        todo ! ("read PWM0 ENDDELAY CNT, PWM0 ENDDELAY CNT, PWM0 ENDDELAY CNT reset value 0x00 mask 0xffffff")
+        todo!("read PWM0 ENDDELAY CNT, PWM0 ENDDELAY CNT, PWM0 ENDDELAY CNT reset value 0x00 mask 0xffffff")
     }
     #[doc = "PWM0 ENDDELAY CNT: Time added after the sequence in PWM periods\n\nPWM0 ENDDELAY CNT: Time added after the sequence in PWM periods\n\nPWM0 ENDDELAY CNT: Time added after the sequence in PWM periods"]
     #[inline]
@@ -14602,12 +14606,12 @@ impl Peripherals {
         _dim: usize,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 ENDDELAY CNT, PWM0 ENDDELAY CNT, PWM0 ENDDELAY CNT reset value 0x00 mask 0xffffff")
+        todo!("write PWM0 ENDDELAY CNT, PWM0 ENDDELAY CNT, PWM0 ENDDELAY CNT reset value 0x00 mask 0xffffff")
     }
     #[doc = "PWM0 OUT[%s] PIN: Pin number\n\nPWM0 OUT[%s] PIN: Pin number\n\nPWM0 OUT[%s] PIN: Pin number"]
     #[inline]
     pub(crate) fn read_pwm0_psel_outn_pin(&self, _dim: usize) -> MemResult<u8> {
-        todo ! ("read PWM0 OUT[%s] PIN, PWM0 OUT[%s] PIN, PWM0 OUT[%s] PIN reset value 0x1f mask 0x1f")
+        todo!("read PWM0 OUT[%s] PIN, PWM0 OUT[%s] PIN, PWM0 OUT[%s] PIN reset value 0x1f mask 0x1f")
     }
     #[doc = "PWM0 OUT[%s] PIN: Pin number\n\nPWM0 OUT[%s] PIN: Pin number\n\nPWM0 OUT[%s] PIN: Pin number"]
     #[inline]
@@ -14616,7 +14620,7 @@ impl Peripherals {
         _dim: usize,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 OUT[%s] PIN, PWM0 OUT[%s] PIN, PWM0 OUT[%s] PIN reset value 0x1f mask 0x1f")
+        todo!("write PWM0 OUT[%s] PIN, PWM0 OUT[%s] PIN, PWM0 OUT[%s] PIN reset value 0x1f mask 0x1f")
     }
     #[doc = "PWM0 OUT[%s] CONNECT: Connection\n\nPWM0 OUT[%s] CONNECT: Connection\n\nPWM0 OUT[%s] CONNECT: Connection"]
     #[inline]
@@ -14624,7 +14628,7 @@ impl Peripherals {
         &self,
         _dim: usize,
     ) -> MemResult<bool> {
-        todo ! ("read PWM0 OUT[%s] CONNECT, PWM0 OUT[%s] CONNECT, PWM0 OUT[%s] CONNECT reset value true")
+        todo!("read PWM0 OUT[%s] CONNECT, PWM0 OUT[%s] CONNECT, PWM0 OUT[%s] CONNECT reset value true")
     }
     #[doc = "PWM0 OUT[%s] CONNECT: Connection\n\nPWM0 OUT[%s] CONNECT: Connection\n\nPWM0 OUT[%s] CONNECT: Connection"]
     #[inline]
@@ -14633,7 +14637,7 @@ impl Peripherals {
         _dim: usize,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write PWM0 OUT[%s] CONNECT, PWM0 OUT[%s] CONNECT, PWM0 OUT[%s] CONNECT reset value true")
+        todo!("write PWM0 OUT[%s] CONNECT, PWM0 OUT[%s] CONNECT, PWM0 OUT[%s] CONNECT reset value true")
     }
     #[doc = "PDM TASKS_START: Starts continuous PDM transfer"]
     #[inline]
@@ -14841,7 +14845,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write PDM PDMCLKCTRL reset value 0x8400000 mask 0xffffffffffffffff")
+        todo!("write PDM PDMCLKCTRL reset value 0x8400000 mask 0xffffffffffffffff")
     }
     #[doc = "PDM MODE OPERATION: Mono or stereo operation"]
     #[inline]
@@ -14994,7 +14998,7 @@ impl Peripherals {
     #[doc = "NVMC ERASEPAGE: Register for erasing a page in Code area\n\nNVMC ERASEPCR1: Deprecated register -  Register for erasing a page in Code area. Equivalent to ERASEPAGE."]
     #[inline]
     pub(crate) fn read_nvmc_erasepage(&self) -> MemResult<u32> {
-        todo ! ("read NVMC ERASEPAGE, NVMC ERASEPCR1 reset value 0x00 mask 0xffffffffffffffff")
+        todo!("read NVMC ERASEPAGE, NVMC ERASEPCR1 reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NVMC ERASEPAGE: Register for erasing a page in Code area\n\nNVMC ERASEPCR1: Deprecated register -  Register for erasing a page in Code area. Equivalent to ERASEPAGE."]
     #[inline]
@@ -15002,7 +15006,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write NVMC ERASEPAGE, NVMC ERASEPCR1 reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write NVMC ERASEPAGE, NVMC ERASEPCR1 reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "NVMC ERASEALL ERASEALL: Erase all non-volatile memory including UICR registers. Note that code erase has to be enabled by CONFIG.EEN before the UICR can be erased."]
     #[inline]
@@ -20181,7 +20185,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write I2S EVENTS_RXPTRUPD reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write I2S EVENTS_RXPTRUPD reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "I2S EVENTS_STOPPED: I2S transfer stopped."]
     #[inline]
@@ -20213,7 +20217,7 @@ impl Peripherals {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write I2S EVENTS_TXPTRUPD reset value 0x00 mask 0xffffffffffffffff")
+        todo!("write I2S EVENTS_TXPTRUPD reset value 0x00 mask 0xffffffffffffffff")
     }
     #[doc = "I2S INTEN RXPTRUPD: Enable or disable interrupt for RXPTRUPD event"]
     #[inline]
@@ -20972,7 +20976,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN0: Pin 0"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin0(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin0(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[0].set_out_high(true)
         }
@@ -20985,7 +20992,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN1: Pin 1"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin1(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin1(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[1].set_out_high(true)
         }
@@ -20998,7 +21008,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN2: Pin 2"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin2(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin2(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[2].set_out_high(true)
         }
@@ -21011,7 +21024,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN3: Pin 3"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin3(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin3(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[3].set_out_high(true)
         }
@@ -21024,7 +21040,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN4: Pin 4"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin4(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin4(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[4].set_out_high(true)
         }
@@ -21037,7 +21056,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN5: Pin 5"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin5(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin5(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[5].set_out_high(true)
         }
@@ -21050,7 +21072,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN6: Pin 6"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin6(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin6(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[6].set_out_high(true)
         }
@@ -21063,7 +21088,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN7: Pin 7"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin7(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin7(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[7].set_out_high(true)
         }
@@ -21076,7 +21104,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN8: Pin 8"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin8(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin8(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[8].set_out_high(true)
         }
@@ -21089,7 +21120,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN9: Pin 9"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin9(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin9(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[9].set_out_high(true)
         }
@@ -21102,7 +21136,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN10: Pin 10"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin10(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin10(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[10].set_out_high(true)
         }
@@ -21115,7 +21152,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN11: Pin 11"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin11(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin11(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[11].set_out_high(true)
         }
@@ -21128,7 +21168,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN12: Pin 12"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin12(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin12(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[12].set_out_high(true)
         }
@@ -21141,7 +21184,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN13: Pin 13"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin13(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin13(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[13].set_out_high(true)
         }
@@ -21154,7 +21200,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN14: Pin 14"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin14(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin14(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[14].set_out_high(true)
         }
@@ -21167,7 +21216,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN15: Pin 15"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin15(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin15(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[15].set_out_high(true)
         }
@@ -21180,7 +21232,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN16: Pin 16"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin16(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin16(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[16].set_out_high(true)
         }
@@ -21193,7 +21248,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN17: Pin 17"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin17(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin17(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[17].set_out_high(true)
         }
@@ -21206,7 +21264,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN18: Pin 18"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin18(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin18(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[18].set_out_high(true)
         }
@@ -21219,7 +21280,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN19: Pin 19"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin19(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin19(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[19].set_out_high(true)
         }
@@ -21232,7 +21296,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN20: Pin 20"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin20(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin20(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[20].set_out_high(true)
         }
@@ -21245,7 +21312,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN21: Pin 21"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin21(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin21(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[21].set_out_high(true)
         }
@@ -21258,7 +21328,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN22: Pin 22"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin22(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin22(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[22].set_out_high(true)
         }
@@ -21271,7 +21344,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN23: Pin 23"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin23(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin23(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[23].set_out_high(true)
         }
@@ -21284,7 +21360,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN24: Pin 24"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin24(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin24(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[24].set_out_high(true)
         }
@@ -21297,7 +21376,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN25: Pin 25"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin25(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin25(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[25].set_out_high(true)
         }
@@ -21310,7 +21392,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN26: Pin 26"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin26(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin26(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[26].set_out_high(true)
         }
@@ -21323,7 +21408,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN27: Pin 27"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin27(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin27(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[27].set_out_high(true)
         }
@@ -21336,7 +21424,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN28: Pin 28"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin28(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin28(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[28].set_out_high(true)
         }
@@ -21349,7 +21440,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN29: Pin 29"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin29(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin29(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[29].set_out_high(true)
         }
@@ -21362,7 +21456,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN30: Pin 30"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin30(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin30(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[30].set_out_high(true)
         }
@@ -21375,7 +21472,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTSET PIN31: Pin 31"]
     #[inline]
-    pub(crate) fn write_p0_outset_pin31(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outset_pin31(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[31].set_out_high(true)
         }
@@ -21388,7 +21488,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN0: Pin 0"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin0(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin0(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[0].set_out_high(false)
         }
@@ -21401,7 +21504,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN1: Pin 1"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin1(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin1(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[1].set_out_high(false)
         }
@@ -21414,7 +21520,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN2: Pin 2"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin2(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin2(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[2].set_out_high(false)
         }
@@ -21427,7 +21536,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN3: Pin 3"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin3(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin3(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[3].set_out_high(false)
         }
@@ -21440,7 +21552,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN4: Pin 4"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin4(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin4(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[4].set_out_high(false)
         }
@@ -21453,7 +21568,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN5: Pin 5"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin5(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin5(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[5].set_out_high(false)
         }
@@ -21466,7 +21584,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN6: Pin 6"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin6(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin6(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[6].set_out_high(false)
         }
@@ -21479,7 +21600,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN7: Pin 7"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin7(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin7(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[7].set_out_high(false)
         }
@@ -21492,7 +21616,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN8: Pin 8"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin8(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin8(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[8].set_out_high(false)
         }
@@ -21505,7 +21632,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN9: Pin 9"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin9(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin9(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[9].set_out_high(false)
         }
@@ -21518,7 +21648,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN10: Pin 10"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin10(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin10(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[10].set_out_high(false)
         }
@@ -21531,7 +21664,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN11: Pin 11"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin11(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin11(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[11].set_out_high(false)
         }
@@ -21544,7 +21680,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN12: Pin 12"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin12(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin12(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[12].set_out_high(false)
         }
@@ -21557,7 +21696,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN13: Pin 13"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin13(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin13(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[13].set_out_high(false)
         }
@@ -21570,7 +21712,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN14: Pin 14"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin14(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin14(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[14].set_out_high(false)
         }
@@ -21583,7 +21728,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN15: Pin 15"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin15(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin15(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[15].set_out_high(false)
         }
@@ -21596,7 +21744,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN16: Pin 16"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin16(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin16(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[16].set_out_high(false)
         }
@@ -21609,7 +21760,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN17: Pin 17"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin17(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin17(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[17].set_out_high(false)
         }
@@ -21622,7 +21776,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN18: Pin 18"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin18(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin18(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[18].set_out_high(false)
         }
@@ -21635,7 +21792,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN19: Pin 19"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin19(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin19(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[19].set_out_high(false)
         }
@@ -21648,7 +21808,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN20: Pin 20"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin20(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin20(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[20].set_out_high(false)
         }
@@ -21661,7 +21824,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN21: Pin 21"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin21(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin21(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[21].set_out_high(false)
         }
@@ -21674,7 +21840,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN22: Pin 22"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin22(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin22(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[22].set_out_high(false)
         }
@@ -21687,7 +21856,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN23: Pin 23"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin23(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin23(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[23].set_out_high(false)
         }
@@ -21700,7 +21872,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN24: Pin 24"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin24(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin24(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[24].set_out_high(false)
         }
@@ -21713,7 +21888,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN25: Pin 25"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin25(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin25(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[25].set_out_high(false)
         }
@@ -21726,7 +21904,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN26: Pin 26"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin26(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin26(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[26].set_out_high(false)
         }
@@ -21739,7 +21920,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN27: Pin 27"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin27(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin27(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[27].set_out_high(false)
         }
@@ -21752,7 +21936,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN28: Pin 28"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin28(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin28(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[28].set_out_high(false)
         }
@@ -21765,7 +21952,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN29: Pin 29"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin29(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin29(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[29].set_out_high(false)
         }
@@ -21778,7 +21968,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN30: Pin 30"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin30(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin30(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[30].set_out_high(false)
         }
@@ -21791,7 +21984,10 @@ impl Peripherals {
     }
     #[doc = "P0 OUTCLR PIN31: Pin 31"]
     #[inline]
-    pub(crate) fn write_p0_outclr_pin31(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_outclr_pin31(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[31].set_out_high(false)
         }
@@ -22284,7 +22480,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN0: Set as output pin 0"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin0(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin0(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[0].set_direction(true)
         }
@@ -22297,7 +22496,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN1: Set as output pin 1"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin1(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin1(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[1].set_direction(true)
         }
@@ -22310,7 +22512,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN2: Set as output pin 2"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin2(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin2(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[2].set_direction(true)
         }
@@ -22323,7 +22528,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN3: Set as output pin 3"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin3(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin3(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[3].set_direction(true)
         }
@@ -22336,7 +22544,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN4: Set as output pin 4"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin4(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin4(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[4].set_direction(true)
         }
@@ -22349,7 +22560,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN5: Set as output pin 5"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin5(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin5(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[5].set_direction(true)
         }
@@ -22362,7 +22576,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN6: Set as output pin 6"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin6(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin6(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[6].set_direction(true)
         }
@@ -22375,7 +22592,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN7: Set as output pin 7"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin7(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin7(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[7].set_direction(true)
         }
@@ -22388,7 +22608,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN8: Set as output pin 8"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin8(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin8(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[8].set_direction(true)
         }
@@ -22401,7 +22624,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN9: Set as output pin 9"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin9(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin9(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[9].set_direction(true)
         }
@@ -22414,7 +22640,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN10: Set as output pin 10"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin10(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin10(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[10].set_direction(true)
         }
@@ -22427,7 +22656,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN11: Set as output pin 11"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin11(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin11(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[11].set_direction(true)
         }
@@ -22440,7 +22672,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN12: Set as output pin 12"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin12(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin12(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[12].set_direction(true)
         }
@@ -22453,7 +22688,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN13: Set as output pin 13"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin13(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin13(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[13].set_direction(true)
         }
@@ -22466,7 +22704,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN14: Set as output pin 14"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin14(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin14(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[14].set_direction(true)
         }
@@ -22479,7 +22720,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN15: Set as output pin 15"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin15(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin15(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[15].set_direction(true)
         }
@@ -22492,7 +22736,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN16: Set as output pin 16"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin16(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin16(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[16].set_direction(true)
         }
@@ -22505,7 +22752,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN17: Set as output pin 17"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin17(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin17(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[17].set_direction(true)
         }
@@ -22518,7 +22768,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN18: Set as output pin 18"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin18(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin18(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[18].set_direction(true)
         }
@@ -22531,7 +22784,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN19: Set as output pin 19"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin19(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin19(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[19].set_direction(true)
         }
@@ -22544,7 +22800,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN20: Set as output pin 20"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin20(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin20(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[20].set_direction(true)
         }
@@ -22557,7 +22816,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN21: Set as output pin 21"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin21(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin21(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[21].set_direction(true)
         }
@@ -22570,7 +22832,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN22: Set as output pin 22"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin22(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin22(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[22].set_direction(true)
         }
@@ -22583,7 +22848,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN23: Set as output pin 23"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin23(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin23(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[23].set_direction(true)
         }
@@ -22596,7 +22864,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN24: Set as output pin 24"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin24(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin24(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[24].set_direction(true)
         }
@@ -22609,7 +22880,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN25: Set as output pin 25"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin25(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin25(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[25].set_direction(true)
         }
@@ -22622,7 +22896,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN26: Set as output pin 26"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin26(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin26(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[26].set_direction(true)
         }
@@ -22635,7 +22912,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN27: Set as output pin 27"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin27(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin27(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[27].set_direction(true)
         }
@@ -22648,7 +22928,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN28: Set as output pin 28"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin28(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin28(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[28].set_direction(true)
         }
@@ -22661,7 +22944,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN29: Set as output pin 29"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin29(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin29(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[29].set_direction(true)
         }
@@ -22674,7 +22960,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN30: Set as output pin 30"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin30(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin30(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[30].set_direction(true)
         }
@@ -22687,7 +22976,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRSET PIN31: Set as output pin 31"]
     #[inline]
-    pub(crate) fn write_p0_dirset_pin31(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirset_pin31(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[31].set_direction(true)
         }
@@ -22700,7 +22992,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN0: Set as input pin 0"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin0(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin0(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[0].set_direction(false)
         }
@@ -22713,7 +23008,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN1: Set as input pin 1"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin1(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin1(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[1].set_direction(false)
         }
@@ -22726,7 +23024,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN2: Set as input pin 2"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin2(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin2(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[2].set_direction(false)
         }
@@ -22739,7 +23040,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN3: Set as input pin 3"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin3(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin3(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[3].set_direction(false)
         }
@@ -22752,7 +23056,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN4: Set as input pin 4"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin4(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin4(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[4].set_direction(false)
         }
@@ -22765,7 +23072,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN5: Set as input pin 5"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin5(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin5(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[5].set_direction(false)
         }
@@ -22778,7 +23088,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN6: Set as input pin 6"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin6(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin6(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[6].set_direction(false)
         }
@@ -22791,7 +23104,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN7: Set as input pin 7"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin7(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin7(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[7].set_direction(false)
         }
@@ -22804,7 +23120,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN8: Set as input pin 8"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin8(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin8(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[8].set_direction(false)
         }
@@ -22817,7 +23136,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN9: Set as input pin 9"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin9(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin9(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[9].set_direction(false)
         }
@@ -22830,7 +23152,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN10: Set as input pin 10"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin10(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin10(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[10].set_direction(false)
         }
@@ -22843,7 +23168,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN11: Set as input pin 11"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin11(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin11(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[11].set_direction(false)
         }
@@ -22856,7 +23184,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN12: Set as input pin 12"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin12(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin12(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[12].set_direction(false)
         }
@@ -22869,7 +23200,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN13: Set as input pin 13"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin13(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin13(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[13].set_direction(false)
         }
@@ -22882,7 +23216,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN14: Set as input pin 14"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin14(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin14(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[14].set_direction(false)
         }
@@ -22895,7 +23232,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN15: Set as input pin 15"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin15(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin15(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[15].set_direction(false)
         }
@@ -22908,7 +23248,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN16: Set as input pin 16"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin16(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin16(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[16].set_direction(false)
         }
@@ -22921,7 +23264,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN17: Set as input pin 17"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin17(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin17(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[17].set_direction(false)
         }
@@ -22934,7 +23280,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN18: Set as input pin 18"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin18(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin18(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[18].set_direction(false)
         }
@@ -22947,7 +23296,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN19: Set as input pin 19"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin19(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin19(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[19].set_direction(false)
         }
@@ -22960,7 +23312,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN20: Set as input pin 20"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin20(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin20(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[20].set_direction(false)
         }
@@ -22973,7 +23328,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN21: Set as input pin 21"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin21(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin21(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[21].set_direction(false)
         }
@@ -22986,7 +23344,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN22: Set as input pin 22"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin22(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin22(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[22].set_direction(false)
         }
@@ -22999,7 +23360,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN23: Set as input pin 23"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin23(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin23(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[23].set_direction(false)
         }
@@ -23012,7 +23376,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN24: Set as input pin 24"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin24(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin24(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[24].set_direction(false)
         }
@@ -23025,7 +23392,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN25: Set as input pin 25"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin25(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin25(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[25].set_direction(false)
         }
@@ -23038,7 +23408,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN26: Set as input pin 26"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin26(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin26(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[26].set_direction(false)
         }
@@ -23051,7 +23424,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN27: Set as input pin 27"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin27(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin27(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[27].set_direction(false)
         }
@@ -23064,7 +23440,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN28: Set as input pin 28"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin28(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin28(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[28].set_direction(false)
         }
@@ -23077,7 +23456,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN29: Set as input pin 29"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin29(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin29(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[29].set_direction(false)
         }
@@ -23090,7 +23472,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN30: Set as input pin 30"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin30(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin30(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[30].set_direction(false)
         }
@@ -23103,7 +23488,10 @@ impl Peripherals {
     }
     #[doc = "P0 DIRCLR PIN31: Set as input pin 31"]
     #[inline]
-    pub(crate) fn write_p0_dirclr_pin31(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_p0_dirclr_pin31(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         if _value {
             self.gpio[31].set_direction(false)
         }
@@ -27844,7 +28232,7 @@ impl Peripherals {
     #[doc = "Control AIRCR VECTKEY: Vector Key\n\nControl AIRCR VECTKEYSTAT: UNKNOWN"]
     #[inline]
     pub(crate) fn read_control_aircr_vectkey(&self) -> MemResult<u16> {
-        todo ! ("read Control AIRCR VECTKEY, Control AIRCR VECTKEYSTAT reset value 0x00 mask 0xffff")
+        todo!("read Control AIRCR VECTKEY, Control AIRCR VECTKEYSTAT reset value 0x00 mask 0xffff")
     }
     #[doc = "Control AIRCR VECTKEY: Vector Key\n\nControl AIRCR VECTKEYSTAT: UNKNOWN"]
     #[inline]
@@ -27852,7 +28240,7 @@ impl Peripherals {
         &mut self,
         _value: u16,
     ) -> MemResult<()> {
-        todo ! ("write Control AIRCR VECTKEY, Control AIRCR VECTKEYSTAT reset value 0x00 mask 0xffff")
+        todo!("write Control AIRCR VECTKEY, Control AIRCR VECTKEYSTAT reset value 0x00 mask 0xffff")
     }
     #[doc = "Control SCR SLEEPONEXIT: whether, on an exit from an ISR that returns to the base level of execution priority, the processor enters a sleep state"]
     #[inline]
@@ -28720,7 +29108,7 @@ impl Peripherals {
     pub(crate) fn read_id_id_mmfr0_outermost_shareability(
         &self,
     ) -> MemResult<u8> {
-        todo ! ("read ID ID_MMFR0 Outermost_shareability reset value 0x00 mask 0x0f")
+        todo!("read ID ID_MMFR0 Outermost_shareability reset value 0x00 mask 0x0f")
     }
     #[doc = "ID ID_MMFR0 Shareability_levels: Indicates the number of shareability levels implemented"]
     #[inline]
@@ -29734,7 +30122,10 @@ impl Peripherals {
     }
     #[doc = "Control DEMCR MON_EN: Enable the DebugMonitor exception"]
     #[inline]
-    pub(crate) fn write_control_demcr_mon_en(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_control_demcr_mon_en(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         //TODO debug off by default
         if _value {
             todo!("write Control DEMCR MON_EN reset value false")
@@ -29749,7 +30140,10 @@ impl Peripherals {
     }
     #[doc = "Control DEMCR MON_PEND: Sets or clears the pending state of the DebugMonitor exception"]
     #[inline]
-    pub(crate) fn write_control_demcr_mon_pend(&mut self, _value: bool) -> MemResult<()> {
+    pub(crate) fn write_control_demcr_mon_pend(
+        &mut self,
+        _value: bool,
+    ) -> MemResult<()> {
         //TODO debug off by default
         if _value {
             todo!("write Control DEMCR MON_PEND reset value false")
