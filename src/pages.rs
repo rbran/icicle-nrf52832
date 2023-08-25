@@ -19592,30 +19592,10 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
         let _start = _addr & 4095u64;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
-            (..=43, 1..=44) => {
-                if _start < 4 && _end > 0 {
-                    let value =
-                        self.0.lock().unwrap().scs_fpccr0_read()?.to_ne_bytes();
-                    if _start <= 0 && _end > 0 {
-                        _buf[(0 - _start) as usize] = value[0];
-                    }
-                    if _start <= 1 && _end > 1 {
-                        _buf[(1 - _start) as usize] = value[1];
-                    }
-                    if _start <= 2 && _end > 2 {
-                        _buf[(2 - _start) as usize] = value[2];
-                    }
-                    if _start <= 3 && _end > 3 {
-                        _buf[(3 - _start) as usize] = value[3];
-                    }
-                }
+            (4..=11, 5..=12) => {
                 if _start < 8 && _end > 4 {
-                    let value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .scs_mpu_ctrl4_read()?
-                        .to_ne_bytes();
+                    let value =
+                        self.0.lock().unwrap().scs_ictr4_read()?.to_ne_bytes();
                     if _start <= 4 && _end > 4 {
                         _buf[(4 - _start) as usize] = value[0];
                     }
@@ -19630,12 +19610,8 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     }
                 }
                 if _start < 12 && _end > 8 {
-                    let value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .scs_mpu_rnr8_read()?
-                        .to_ne_bytes();
+                    let value =
+                        self.0.lock().unwrap().scs_actlr8_read()?.to_ne_bytes();
                     if _start <= 8 && _end > 8 {
                         _buf[(8 - _start) as usize] = value[0];
                     }
@@ -19649,32 +19625,14 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         _buf[(11 - _start) as usize] = value[3];
                     }
                 }
-                if _start < 16 && _end > 12 {
-                    let value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .scs_mpu_rbarc_read()?
-                        .to_ne_bytes();
-                    if _start <= 12 && _end > 12 {
-                        _buf[(12 - _start) as usize] = value[0];
-                    }
-                    if _start <= 13 && _end > 13 {
-                        _buf[(13 - _start) as usize] = value[1];
-                    }
-                    if _start <= 14 && _end > 14 {
-                        _buf[(14 - _start) as usize] = value[2];
-                    }
-                    if _start <= 15 && _end > 15 {
-                        _buf[(15 - _start) as usize] = value[3];
-                    }
-                }
+            }
+            (16..=31, 17..=32) => {
                 if _start < 20 && _end > 16 {
                     let value = self
                         .0
                         .lock()
                         .unwrap()
-                        .scs_mpu_rasr10_read()?
+                        .scs_stcsr10_read()?
                         .to_ne_bytes();
                     if _start <= 16 && _end > 16 {
                         _buf[(16 - _start) as usize] = value[0];
@@ -19694,7 +19652,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_mpu_rbar_a114_read()?
+                        .scs_strvr14_read()?
                         .to_ne_bytes();
                     if _start <= 20 && _end > 20 {
                         _buf[(20 - _start) as usize] = value[0];
@@ -19714,7 +19672,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_mpu_rasr_a118_read()?
+                        .scs_stcvr18_read()?
                         .to_ne_bytes();
                     if _start <= 24 && _end > 24 {
                         _buf[(24 - _start) as usize] = value[0];
@@ -19730,12 +19688,8 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     }
                 }
                 if _start < 32 && _end > 28 {
-                    let value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .scs_mpu_rbar_a21c_read()?
-                        .to_ne_bytes();
+                    let value =
+                        self.0.lock().unwrap().scs_stcr1c_read()?.to_ne_bytes();
                     if _start <= 28 && _end > 28 {
                         _buf[(28 - _start) as usize] = value[0];
                     }
@@ -19749,356 +19703,14 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         _buf[(31 - _start) as usize] = value[3];
                     }
                 }
-                if _start < 36 && _end > 32 {
-                    let value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .scs_mpu_rasr_a220_read()?
-                        .to_ne_bytes();
-                    if _start <= 32 && _end > 32 {
-                        _buf[(32 - _start) as usize] = value[0];
-                    }
-                    if _start <= 33 && _end > 33 {
-                        _buf[(33 - _start) as usize] = value[1];
-                    }
-                    if _start <= 34 && _end > 34 {
-                        _buf[(34 - _start) as usize] = value[2];
-                    }
-                    if _start <= 35 && _end > 35 {
-                        _buf[(35 - _start) as usize] = value[3];
-                    }
-                }
-                if _start < 40 && _end > 36 {
-                    let value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .scs_mpu_rbar_a324_read()?
-                        .to_ne_bytes();
-                    if _start <= 36 && _end > 36 {
-                        _buf[(36 - _start) as usize] = value[0];
-                    }
-                    if _start <= 37 && _end > 37 {
-                        _buf[(37 - _start) as usize] = value[1];
-                    }
-                    if _start <= 38 && _end > 38 {
-                        _buf[(38 - _start) as usize] = value[2];
-                    }
-                    if _start <= 39 && _end > 39 {
-                        _buf[(39 - _start) as usize] = value[3];
-                    }
-                }
-                if _start < 44 && _end > 40 {
-                    let value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .scs_mpu_rasr_a328_read()?
-                        .to_ne_bytes();
-                    if _start <= 40 && _end > 40 {
-                        _buf[(40 - _start) as usize] = value[0];
-                    }
-                    if _start <= 41 && _end > 41 {
-                        _buf[(41 - _start) as usize] = value[1];
-                    }
-                    if _start <= 42 && _end > 42 {
-                        _buf[(42 - _start) as usize] = value[2];
-                    }
-                    if _start <= 43 && _end > 43 {
-                        _buf[(43 - _start) as usize] = value[3];
-                    }
-                }
             }
-            (64..=115, 65..=116) => {
-                if _start < 68 && _end > 64 {
-                    let value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .scs_id_pfr040_read()?
-                        .to_ne_bytes();
-                    if _start <= 64 && _end > 64 {
-                        _buf[(64 - _start) as usize] = value[0];
-                    }
-                    if _start <= 65 && _end > 65 {
-                        _buf[(65 - _start) as usize] = value[1];
-                    }
-                    if _start <= 66 && _end > 66 {
-                        _buf[(66 - _start) as usize] = value[2];
-                    }
-                    if _start <= 67 && _end > 67 {
-                        _buf[(67 - _start) as usize] = value[3];
-                    }
-                }
-                if _start < 72 && _end > 68 {
-                    let value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .scs_id_pfr144_read()?
-                        .to_ne_bytes();
-                    if _start <= 68 && _end > 68 {
-                        _buf[(68 - _start) as usize] = value[0];
-                    }
-                    if _start <= 69 && _end > 69 {
-                        _buf[(69 - _start) as usize] = value[1];
-                    }
-                    if _start <= 70 && _end > 70 {
-                        _buf[(70 - _start) as usize] = value[2];
-                    }
-                    if _start <= 71 && _end > 71 {
-                        _buf[(71 - _start) as usize] = value[3];
-                    }
-                }
-                if _start < 76 && _end > 72 {
-                    let value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .scs_id_dfr048_read()?
-                        .to_ne_bytes();
-                    if _start <= 72 && _end > 72 {
-                        _buf[(72 - _start) as usize] = value[0];
-                    }
-                    if _start <= 73 && _end > 73 {
-                        _buf[(73 - _start) as usize] = value[1];
-                    }
-                    if _start <= 74 && _end > 74 {
-                        _buf[(74 - _start) as usize] = value[2];
-                    }
-                    if _start <= 75 && _end > 75 {
-                        _buf[(75 - _start) as usize] = value[3];
-                    }
-                }
-                if _start < 80 && _end > 76 {
-                    let value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .scs_id_afr04c_read()?
-                        .to_ne_bytes();
-                    if _start <= 76 && _end > 76 {
-                        _buf[(76 - _start) as usize] = value[0];
-                    }
-                    if _start <= 77 && _end > 77 {
-                        _buf[(77 - _start) as usize] = value[1];
-                    }
-                    if _start <= 78 && _end > 78 {
-                        _buf[(78 - _start) as usize] = value[2];
-                    }
-                    if _start <= 79 && _end > 79 {
-                        _buf[(79 - _start) as usize] = value[3];
-                    }
-                }
-                if _start < 84 && _end > 80 {
-                    let value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .scs_id_mmfr050_read()?
-                        .to_ne_bytes();
-                    if _start <= 80 && _end > 80 {
-                        _buf[(80 - _start) as usize] = value[0];
-                    }
-                    if _start <= 81 && _end > 81 {
-                        _buf[(81 - _start) as usize] = value[1];
-                    }
-                    if _start <= 82 && _end > 82 {
-                        _buf[(82 - _start) as usize] = value[2];
-                    }
-                    if _start <= 83 && _end > 83 {
-                        _buf[(83 - _start) as usize] = value[3];
-                    }
-                }
-                if _start < 88 && _end > 84 {
-                    let value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .scs_id_mmfr154_read()?
-                        .to_ne_bytes();
-                    if _start <= 84 && _end > 84 {
-                        _buf[(84 - _start) as usize] = value[0];
-                    }
-                    if _start <= 85 && _end > 85 {
-                        _buf[(85 - _start) as usize] = value[1];
-                    }
-                    if _start <= 86 && _end > 86 {
-                        _buf[(86 - _start) as usize] = value[2];
-                    }
-                    if _start <= 87 && _end > 87 {
-                        _buf[(87 - _start) as usize] = value[3];
-                    }
-                }
-                if _start < 92 && _end > 88 {
-                    let value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .scs_id_mmfr258_read()?
-                        .to_ne_bytes();
-                    if _start <= 88 && _end > 88 {
-                        _buf[(88 - _start) as usize] = value[0];
-                    }
-                    if _start <= 89 && _end > 89 {
-                        _buf[(89 - _start) as usize] = value[1];
-                    }
-                    if _start <= 90 && _end > 90 {
-                        _buf[(90 - _start) as usize] = value[2];
-                    }
-                    if _start <= 91 && _end > 91 {
-                        _buf[(91 - _start) as usize] = value[3];
-                    }
-                }
-                if _start < 96 && _end > 92 {
-                    let value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .scs_id_mmfr35c_read()?
-                        .to_ne_bytes();
-                    if _start <= 92 && _end > 92 {
-                        _buf[(92 - _start) as usize] = value[0];
-                    }
-                    if _start <= 93 && _end > 93 {
-                        _buf[(93 - _start) as usize] = value[1];
-                    }
-                    if _start <= 94 && _end > 94 {
-                        _buf[(94 - _start) as usize] = value[2];
-                    }
-                    if _start <= 95 && _end > 95 {
-                        _buf[(95 - _start) as usize] = value[3];
-                    }
-                }
-                if _start < 100 && _end > 96 {
-                    let value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .scs_id_isar060_read()?
-                        .to_ne_bytes();
-                    if _start <= 96 && _end > 96 {
-                        _buf[(96 - _start) as usize] = value[0];
-                    }
-                    if _start <= 97 && _end > 97 {
-                        _buf[(97 - _start) as usize] = value[1];
-                    }
-                    if _start <= 98 && _end > 98 {
-                        _buf[(98 - _start) as usize] = value[2];
-                    }
-                    if _start <= 99 && _end > 99 {
-                        _buf[(99 - _start) as usize] = value[3];
-                    }
-                }
-                if _start < 104 && _end > 100 {
-                    let value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .scs_id_isar164_read()?
-                        .to_ne_bytes();
-                    if _start <= 100 && _end > 100 {
-                        _buf[(100 - _start) as usize] = value[0];
-                    }
-                    if _start <= 101 && _end > 101 {
-                        _buf[(101 - _start) as usize] = value[1];
-                    }
-                    if _start <= 102 && _end > 102 {
-                        _buf[(102 - _start) as usize] = value[2];
-                    }
-                    if _start <= 103 && _end > 103 {
-                        _buf[(103 - _start) as usize] = value[3];
-                    }
-                }
-                if _start < 108 && _end > 104 {
-                    let value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .scs_id_isar268_read()?
-                        .to_ne_bytes();
-                    if _start <= 104 && _end > 104 {
-                        _buf[(104 - _start) as usize] = value[0];
-                    }
-                    if _start <= 105 && _end > 105 {
-                        _buf[(105 - _start) as usize] = value[1];
-                    }
-                    if _start <= 106 && _end > 106 {
-                        _buf[(106 - _start) as usize] = value[2];
-                    }
-                    if _start <= 107 && _end > 107 {
-                        _buf[(107 - _start) as usize] = value[3];
-                    }
-                }
-                if _start < 112 && _end > 108 {
-                    let value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .scs_id_isar36c_read()?
-                        .to_ne_bytes();
-                    if _start <= 108 && _end > 108 {
-                        _buf[(108 - _start) as usize] = value[0];
-                    }
-                    if _start <= 109 && _end > 109 {
-                        _buf[(109 - _start) as usize] = value[1];
-                    }
-                    if _start <= 110 && _end > 110 {
-                        _buf[(110 - _start) as usize] = value[2];
-                    }
-                    if _start <= 111 && _end > 111 {
-                        _buf[(111 - _start) as usize] = value[3];
-                    }
-                }
-                if _start < 116 && _end > 112 {
-                    let value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .scs_id_isar470_read()?
-                        .to_ne_bytes();
-                    if _start <= 112 && _end > 112 {
-                        _buf[(112 - _start) as usize] = value[0];
-                    }
-                    if _start <= 113 && _end > 113 {
-                        _buf[(113 - _start) as usize] = value[1];
-                    }
-                    if _start <= 114 && _end > 114 {
-                        _buf[(114 - _start) as usize] = value[2];
-                    }
-                    if _start <= 115 && _end > 115 {
-                        _buf[(115 - _start) as usize] = value[3];
-                    }
-                }
-            }
-            (252..=283, 253..=284) => {
-                if _start < 256 && _end > 252 {
-                    let value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .scs_nvic_iser0fc_read()?
-                        .to_ne_bytes();
-                    if _start <= 252 && _end > 252 {
-                        _buf[(252 - _start) as usize] = value[0];
-                    }
-                    if _start <= 253 && _end > 253 {
-                        _buf[(253 - _start) as usize] = value[1];
-                    }
-                    if _start <= 254 && _end > 254 {
-                        _buf[(254 - _start) as usize] = value[2];
-                    }
-                    if _start <= 255 && _end > 255 {
-                        _buf[(255 - _start) as usize] = value[3];
-                    }
-                }
+            (256..=287, 257..=288) => {
                 if _start < 260 && _end > 256 {
                     let value = self
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iser1100_read()?
+                        .scs_nvic_iser0100_read()?
                         .to_ne_bytes();
                     if _start <= 256 && _end > 256 {
                         _buf[(256 - _start) as usize] = value[0];
@@ -20118,7 +19730,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iser2104_read()?
+                        .scs_nvic_iser1104_read()?
                         .to_ne_bytes();
                     if _start <= 260 && _end > 260 {
                         _buf[(260 - _start) as usize] = value[0];
@@ -20138,7 +19750,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iser3108_read()?
+                        .scs_nvic_iser2108_read()?
                         .to_ne_bytes();
                     if _start <= 264 && _end > 264 {
                         _buf[(264 - _start) as usize] = value[0];
@@ -20158,7 +19770,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iser410c_read()?
+                        .scs_nvic_iser310c_read()?
                         .to_ne_bytes();
                     if _start <= 268 && _end > 268 {
                         _buf[(268 - _start) as usize] = value[0];
@@ -20178,7 +19790,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iser5110_read()?
+                        .scs_nvic_iser4110_read()?
                         .to_ne_bytes();
                     if _start <= 272 && _end > 272 {
                         _buf[(272 - _start) as usize] = value[0];
@@ -20198,7 +19810,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iser6114_read()?
+                        .scs_nvic_iser5114_read()?
                         .to_ne_bytes();
                     if _start <= 276 && _end > 276 {
                         _buf[(276 - _start) as usize] = value[0];
@@ -20218,7 +19830,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iser7118_read()?
+                        .scs_nvic_iser6118_read()?
                         .to_ne_bytes();
                     if _start <= 280 && _end > 280 {
                         _buf[(280 - _start) as usize] = value[0];
@@ -20233,34 +19845,34 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         _buf[(283 - _start) as usize] = value[3];
                     }
                 }
-            }
-            (380..=411, 381..=412) => {
-                if _start < 384 && _end > 380 {
+                if _start < 288 && _end > 284 {
                     let value = self
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icer017c_read()?
+                        .scs_nvic_iser711c_read()?
                         .to_ne_bytes();
-                    if _start <= 380 && _end > 380 {
-                        _buf[(380 - _start) as usize] = value[0];
+                    if _start <= 284 && _end > 284 {
+                        _buf[(284 - _start) as usize] = value[0];
                     }
-                    if _start <= 381 && _end > 381 {
-                        _buf[(381 - _start) as usize] = value[1];
+                    if _start <= 285 && _end > 285 {
+                        _buf[(285 - _start) as usize] = value[1];
                     }
-                    if _start <= 382 && _end > 382 {
-                        _buf[(382 - _start) as usize] = value[2];
+                    if _start <= 286 && _end > 286 {
+                        _buf[(286 - _start) as usize] = value[2];
                     }
-                    if _start <= 383 && _end > 383 {
-                        _buf[(383 - _start) as usize] = value[3];
+                    if _start <= 287 && _end > 287 {
+                        _buf[(287 - _start) as usize] = value[3];
                     }
                 }
+            }
+            (384..=415, 385..=416) => {
                 if _start < 388 && _end > 384 {
                     let value = self
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icer1180_read()?
+                        .scs_nvic_icer0180_read()?
                         .to_ne_bytes();
                     if _start <= 384 && _end > 384 {
                         _buf[(384 - _start) as usize] = value[0];
@@ -20280,7 +19892,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icer2184_read()?
+                        .scs_nvic_icer1184_read()?
                         .to_ne_bytes();
                     if _start <= 388 && _end > 388 {
                         _buf[(388 - _start) as usize] = value[0];
@@ -20300,7 +19912,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icer3188_read()?
+                        .scs_nvic_icer2188_read()?
                         .to_ne_bytes();
                     if _start <= 392 && _end > 392 {
                         _buf[(392 - _start) as usize] = value[0];
@@ -20320,7 +19932,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icer418c_read()?
+                        .scs_nvic_icer318c_read()?
                         .to_ne_bytes();
                     if _start <= 396 && _end > 396 {
                         _buf[(396 - _start) as usize] = value[0];
@@ -20340,7 +19952,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icer5190_read()?
+                        .scs_nvic_icer4190_read()?
                         .to_ne_bytes();
                     if _start <= 400 && _end > 400 {
                         _buf[(400 - _start) as usize] = value[0];
@@ -20360,7 +19972,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icer6194_read()?
+                        .scs_nvic_icer5194_read()?
                         .to_ne_bytes();
                     if _start <= 404 && _end > 404 {
                         _buf[(404 - _start) as usize] = value[0];
@@ -20380,7 +19992,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icer7198_read()?
+                        .scs_nvic_icer6198_read()?
                         .to_ne_bytes();
                     if _start <= 408 && _end > 408 {
                         _buf[(408 - _start) as usize] = value[0];
@@ -20395,34 +20007,34 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         _buf[(411 - _start) as usize] = value[3];
                     }
                 }
-            }
-            (508..=539, 509..=540) => {
-                if _start < 512 && _end > 508 {
+                if _start < 416 && _end > 412 {
                     let value = self
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ispr01fc_read()?
+                        .scs_nvic_icer719c_read()?
                         .to_ne_bytes();
-                    if _start <= 508 && _end > 508 {
-                        _buf[(508 - _start) as usize] = value[0];
+                    if _start <= 412 && _end > 412 {
+                        _buf[(412 - _start) as usize] = value[0];
                     }
-                    if _start <= 509 && _end > 509 {
-                        _buf[(509 - _start) as usize] = value[1];
+                    if _start <= 413 && _end > 413 {
+                        _buf[(413 - _start) as usize] = value[1];
                     }
-                    if _start <= 510 && _end > 510 {
-                        _buf[(510 - _start) as usize] = value[2];
+                    if _start <= 414 && _end > 414 {
+                        _buf[(414 - _start) as usize] = value[2];
                     }
-                    if _start <= 511 && _end > 511 {
-                        _buf[(511 - _start) as usize] = value[3];
+                    if _start <= 415 && _end > 415 {
+                        _buf[(415 - _start) as usize] = value[3];
                     }
                 }
+            }
+            (512..=543, 513..=544) => {
                 if _start < 516 && _end > 512 {
                     let value = self
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ispr1200_read()?
+                        .scs_nvic_ispr0200_read()?
                         .to_ne_bytes();
                     if _start <= 512 && _end > 512 {
                         _buf[(512 - _start) as usize] = value[0];
@@ -20442,7 +20054,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ispr2204_read()?
+                        .scs_nvic_ispr1204_read()?
                         .to_ne_bytes();
                     if _start <= 516 && _end > 516 {
                         _buf[(516 - _start) as usize] = value[0];
@@ -20462,7 +20074,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ispr3208_read()?
+                        .scs_nvic_ispr2208_read()?
                         .to_ne_bytes();
                     if _start <= 520 && _end > 520 {
                         _buf[(520 - _start) as usize] = value[0];
@@ -20482,7 +20094,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ispr420c_read()?
+                        .scs_nvic_ispr320c_read()?
                         .to_ne_bytes();
                     if _start <= 524 && _end > 524 {
                         _buf[(524 - _start) as usize] = value[0];
@@ -20502,7 +20114,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ispr5210_read()?
+                        .scs_nvic_ispr4210_read()?
                         .to_ne_bytes();
                     if _start <= 528 && _end > 528 {
                         _buf[(528 - _start) as usize] = value[0];
@@ -20522,7 +20134,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ispr6214_read()?
+                        .scs_nvic_ispr5214_read()?
                         .to_ne_bytes();
                     if _start <= 532 && _end > 532 {
                         _buf[(532 - _start) as usize] = value[0];
@@ -20542,7 +20154,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ispr7218_read()?
+                        .scs_nvic_ispr6218_read()?
                         .to_ne_bytes();
                     if _start <= 536 && _end > 536 {
                         _buf[(536 - _start) as usize] = value[0];
@@ -20557,34 +20169,34 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         _buf[(539 - _start) as usize] = value[3];
                     }
                 }
-            }
-            (636..=667, 637..=668) => {
-                if _start < 640 && _end > 636 {
+                if _start < 544 && _end > 540 {
                     let value = self
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icpr027c_read()?
+                        .scs_nvic_ispr721c_read()?
                         .to_ne_bytes();
-                    if _start <= 636 && _end > 636 {
-                        _buf[(636 - _start) as usize] = value[0];
+                    if _start <= 540 && _end > 540 {
+                        _buf[(540 - _start) as usize] = value[0];
                     }
-                    if _start <= 637 && _end > 637 {
-                        _buf[(637 - _start) as usize] = value[1];
+                    if _start <= 541 && _end > 541 {
+                        _buf[(541 - _start) as usize] = value[1];
                     }
-                    if _start <= 638 && _end > 638 {
-                        _buf[(638 - _start) as usize] = value[2];
+                    if _start <= 542 && _end > 542 {
+                        _buf[(542 - _start) as usize] = value[2];
                     }
-                    if _start <= 639 && _end > 639 {
-                        _buf[(639 - _start) as usize] = value[3];
+                    if _start <= 543 && _end > 543 {
+                        _buf[(543 - _start) as usize] = value[3];
                     }
                 }
+            }
+            (640..=671, 641..=672) => {
                 if _start < 644 && _end > 640 {
                     let value = self
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icpr1280_read()?
+                        .scs_nvic_icpr0280_read()?
                         .to_ne_bytes();
                     if _start <= 640 && _end > 640 {
                         _buf[(640 - _start) as usize] = value[0];
@@ -20604,7 +20216,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icpr2284_read()?
+                        .scs_nvic_icpr1284_read()?
                         .to_ne_bytes();
                     if _start <= 644 && _end > 644 {
                         _buf[(644 - _start) as usize] = value[0];
@@ -20624,7 +20236,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icpr3288_read()?
+                        .scs_nvic_icpr2288_read()?
                         .to_ne_bytes();
                     if _start <= 648 && _end > 648 {
                         _buf[(648 - _start) as usize] = value[0];
@@ -20644,7 +20256,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icpr428c_read()?
+                        .scs_nvic_icpr328c_read()?
                         .to_ne_bytes();
                     if _start <= 652 && _end > 652 {
                         _buf[(652 - _start) as usize] = value[0];
@@ -20664,7 +20276,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icpr5290_read()?
+                        .scs_nvic_icpr4290_read()?
                         .to_ne_bytes();
                     if _start <= 656 && _end > 656 {
                         _buf[(656 - _start) as usize] = value[0];
@@ -20684,7 +20296,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icpr6294_read()?
+                        .scs_nvic_icpr5294_read()?
                         .to_ne_bytes();
                     if _start <= 660 && _end > 660 {
                         _buf[(660 - _start) as usize] = value[0];
@@ -20704,7 +20316,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icpr7298_read()?
+                        .scs_nvic_icpr6298_read()?
                         .to_ne_bytes();
                     if _start <= 664 && _end > 664 {
                         _buf[(664 - _start) as usize] = value[0];
@@ -20719,34 +20331,34 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         _buf[(667 - _start) as usize] = value[3];
                     }
                 }
-            }
-            (764..=795, 765..=796) => {
-                if _start < 768 && _end > 764 {
+                if _start < 672 && _end > 668 {
                     let value = self
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iabr02fc_read()?
+                        .scs_nvic_icpr729c_read()?
                         .to_ne_bytes();
-                    if _start <= 764 && _end > 764 {
-                        _buf[(764 - _start) as usize] = value[0];
+                    if _start <= 668 && _end > 668 {
+                        _buf[(668 - _start) as usize] = value[0];
                     }
-                    if _start <= 765 && _end > 765 {
-                        _buf[(765 - _start) as usize] = value[1];
+                    if _start <= 669 && _end > 669 {
+                        _buf[(669 - _start) as usize] = value[1];
                     }
-                    if _start <= 766 && _end > 766 {
-                        _buf[(766 - _start) as usize] = value[2];
+                    if _start <= 670 && _end > 670 {
+                        _buf[(670 - _start) as usize] = value[2];
                     }
-                    if _start <= 767 && _end > 767 {
-                        _buf[(767 - _start) as usize] = value[3];
+                    if _start <= 671 && _end > 671 {
+                        _buf[(671 - _start) as usize] = value[3];
                     }
                 }
+            }
+            (768..=799, 769..=800) => {
                 if _start < 772 && _end > 768 {
                     let value = self
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iabr1300_read()?
+                        .scs_nvic_iabr0300_read()?
                         .to_ne_bytes();
                     if _start <= 768 && _end > 768 {
                         _buf[(768 - _start) as usize] = value[0];
@@ -20766,7 +20378,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iabr2304_read()?
+                        .scs_nvic_iabr1304_read()?
                         .to_ne_bytes();
                     if _start <= 772 && _end > 772 {
                         _buf[(772 - _start) as usize] = value[0];
@@ -20786,7 +20398,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iabr3308_read()?
+                        .scs_nvic_iabr2308_read()?
                         .to_ne_bytes();
                     if _start <= 776 && _end > 776 {
                         _buf[(776 - _start) as usize] = value[0];
@@ -20806,7 +20418,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iabr430c_read()?
+                        .scs_nvic_iabr330c_read()?
                         .to_ne_bytes();
                     if _start <= 780 && _end > 780 {
                         _buf[(780 - _start) as usize] = value[0];
@@ -20826,7 +20438,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iabr5310_read()?
+                        .scs_nvic_iabr4310_read()?
                         .to_ne_bytes();
                     if _start <= 784 && _end > 784 {
                         _buf[(784 - _start) as usize] = value[0];
@@ -20846,7 +20458,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iabr6314_read()?
+                        .scs_nvic_iabr5314_read()?
                         .to_ne_bytes();
                     if _start <= 788 && _end > 788 {
                         _buf[(788 - _start) as usize] = value[0];
@@ -20866,7 +20478,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iabr7318_read()?
+                        .scs_nvic_iabr6318_read()?
                         .to_ne_bytes();
                     if _start <= 792 && _end > 792 {
                         _buf[(792 - _start) as usize] = value[0];
@@ -20881,34 +20493,34 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         _buf[(795 - _start) as usize] = value[3];
                     }
                 }
-            }
-            (1020..=1259, 1021..=1260) => {
-                if _start < 1024 && _end > 1020 {
+                if _start < 800 && _end > 796 {
                     let value = self
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr03fc_read()?
+                        .scs_nvic_iabr731c_read()?
                         .to_ne_bytes();
-                    if _start <= 1020 && _end > 1020 {
-                        _buf[(1020 - _start) as usize] = value[0];
+                    if _start <= 796 && _end > 796 {
+                        _buf[(796 - _start) as usize] = value[0];
                     }
-                    if _start <= 1021 && _end > 1021 {
-                        _buf[(1021 - _start) as usize] = value[1];
+                    if _start <= 797 && _end > 797 {
+                        _buf[(797 - _start) as usize] = value[1];
                     }
-                    if _start <= 1022 && _end > 1022 {
-                        _buf[(1022 - _start) as usize] = value[2];
+                    if _start <= 798 && _end > 798 {
+                        _buf[(798 - _start) as usize] = value[2];
                     }
-                    if _start <= 1023 && _end > 1023 {
-                        _buf[(1023 - _start) as usize] = value[3];
+                    if _start <= 799 && _end > 799 {
+                        _buf[(799 - _start) as usize] = value[3];
                     }
                 }
+            }
+            (1024..=1263, 1025..=1264) => {
                 if _start < 1028 && _end > 1024 {
                     let value = self
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr1400_read()?
+                        .scs_nvic_ipr0400_read()?
                         .to_ne_bytes();
                     if _start <= 1024 && _end > 1024 {
                         _buf[(1024 - _start) as usize] = value[0];
@@ -20928,7 +20540,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr2404_read()?
+                        .scs_nvic_ipr1404_read()?
                         .to_ne_bytes();
                     if _start <= 1028 && _end > 1028 {
                         _buf[(1028 - _start) as usize] = value[0];
@@ -20948,7 +20560,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr3408_read()?
+                        .scs_nvic_ipr2408_read()?
                         .to_ne_bytes();
                     if _start <= 1032 && _end > 1032 {
                         _buf[(1032 - _start) as usize] = value[0];
@@ -20968,7 +20580,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr440c_read()?
+                        .scs_nvic_ipr340c_read()?
                         .to_ne_bytes();
                     if _start <= 1036 && _end > 1036 {
                         _buf[(1036 - _start) as usize] = value[0];
@@ -20988,7 +20600,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr5410_read()?
+                        .scs_nvic_ipr4410_read()?
                         .to_ne_bytes();
                     if _start <= 1040 && _end > 1040 {
                         _buf[(1040 - _start) as usize] = value[0];
@@ -21008,7 +20620,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr6414_read()?
+                        .scs_nvic_ipr5414_read()?
                         .to_ne_bytes();
                     if _start <= 1044 && _end > 1044 {
                         _buf[(1044 - _start) as usize] = value[0];
@@ -21028,7 +20640,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr7418_read()?
+                        .scs_nvic_ipr6418_read()?
                         .to_ne_bytes();
                     if _start <= 1048 && _end > 1048 {
                         _buf[(1048 - _start) as usize] = value[0];
@@ -21048,7 +20660,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr841c_read()?
+                        .scs_nvic_ipr741c_read()?
                         .to_ne_bytes();
                     if _start <= 1052 && _end > 1052 {
                         _buf[(1052 - _start) as usize] = value[0];
@@ -21068,7 +20680,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr9420_read()?
+                        .scs_nvic_ipr8420_read()?
                         .to_ne_bytes();
                     if _start <= 1056 && _end > 1056 {
                         _buf[(1056 - _start) as usize] = value[0];
@@ -21088,7 +20700,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr10424_read()?
+                        .scs_nvic_ipr9424_read()?
                         .to_ne_bytes();
                     if _start <= 1060 && _end > 1060 {
                         _buf[(1060 - _start) as usize] = value[0];
@@ -21108,7 +20720,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr11428_read()?
+                        .scs_nvic_ipr10428_read()?
                         .to_ne_bytes();
                     if _start <= 1064 && _end > 1064 {
                         _buf[(1064 - _start) as usize] = value[0];
@@ -21128,7 +20740,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr1242c_read()?
+                        .scs_nvic_ipr1142c_read()?
                         .to_ne_bytes();
                     if _start <= 1068 && _end > 1068 {
                         _buf[(1068 - _start) as usize] = value[0];
@@ -21148,7 +20760,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr13430_read()?
+                        .scs_nvic_ipr12430_read()?
                         .to_ne_bytes();
                     if _start <= 1072 && _end > 1072 {
                         _buf[(1072 - _start) as usize] = value[0];
@@ -21168,7 +20780,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr14434_read()?
+                        .scs_nvic_ipr13434_read()?
                         .to_ne_bytes();
                     if _start <= 1076 && _end > 1076 {
                         _buf[(1076 - _start) as usize] = value[0];
@@ -21188,7 +20800,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr15438_read()?
+                        .scs_nvic_ipr14438_read()?
                         .to_ne_bytes();
                     if _start <= 1080 && _end > 1080 {
                         _buf[(1080 - _start) as usize] = value[0];
@@ -21208,7 +20820,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr1643c_read()?
+                        .scs_nvic_ipr1543c_read()?
                         .to_ne_bytes();
                     if _start <= 1084 && _end > 1084 {
                         _buf[(1084 - _start) as usize] = value[0];
@@ -21228,7 +20840,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr17440_read()?
+                        .scs_nvic_ipr16440_read()?
                         .to_ne_bytes();
                     if _start <= 1088 && _end > 1088 {
                         _buf[(1088 - _start) as usize] = value[0];
@@ -21248,7 +20860,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr18444_read()?
+                        .scs_nvic_ipr17444_read()?
                         .to_ne_bytes();
                     if _start <= 1092 && _end > 1092 {
                         _buf[(1092 - _start) as usize] = value[0];
@@ -21268,7 +20880,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr19448_read()?
+                        .scs_nvic_ipr18448_read()?
                         .to_ne_bytes();
                     if _start <= 1096 && _end > 1096 {
                         _buf[(1096 - _start) as usize] = value[0];
@@ -21288,7 +20900,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr2044c_read()?
+                        .scs_nvic_ipr1944c_read()?
                         .to_ne_bytes();
                     if _start <= 1100 && _end > 1100 {
                         _buf[(1100 - _start) as usize] = value[0];
@@ -21308,7 +20920,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr21450_read()?
+                        .scs_nvic_ipr20450_read()?
                         .to_ne_bytes();
                     if _start <= 1104 && _end > 1104 {
                         _buf[(1104 - _start) as usize] = value[0];
@@ -21328,7 +20940,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr22454_read()?
+                        .scs_nvic_ipr21454_read()?
                         .to_ne_bytes();
                     if _start <= 1108 && _end > 1108 {
                         _buf[(1108 - _start) as usize] = value[0];
@@ -21348,7 +20960,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr23458_read()?
+                        .scs_nvic_ipr22458_read()?
                         .to_ne_bytes();
                     if _start <= 1112 && _end > 1112 {
                         _buf[(1112 - _start) as usize] = value[0];
@@ -21368,7 +20980,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr2445c_read()?
+                        .scs_nvic_ipr2345c_read()?
                         .to_ne_bytes();
                     if _start <= 1116 && _end > 1116 {
                         _buf[(1116 - _start) as usize] = value[0];
@@ -21388,7 +21000,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr25460_read()?
+                        .scs_nvic_ipr24460_read()?
                         .to_ne_bytes();
                     if _start <= 1120 && _end > 1120 {
                         _buf[(1120 - _start) as usize] = value[0];
@@ -21408,7 +21020,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr26464_read()?
+                        .scs_nvic_ipr25464_read()?
                         .to_ne_bytes();
                     if _start <= 1124 && _end > 1124 {
                         _buf[(1124 - _start) as usize] = value[0];
@@ -21428,7 +21040,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr27468_read()?
+                        .scs_nvic_ipr26468_read()?
                         .to_ne_bytes();
                     if _start <= 1128 && _end > 1128 {
                         _buf[(1128 - _start) as usize] = value[0];
@@ -21448,7 +21060,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr2846c_read()?
+                        .scs_nvic_ipr2746c_read()?
                         .to_ne_bytes();
                     if _start <= 1132 && _end > 1132 {
                         _buf[(1132 - _start) as usize] = value[0];
@@ -21468,7 +21080,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr29470_read()?
+                        .scs_nvic_ipr28470_read()?
                         .to_ne_bytes();
                     if _start <= 1136 && _end > 1136 {
                         _buf[(1136 - _start) as usize] = value[0];
@@ -21488,7 +21100,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr30474_read()?
+                        .scs_nvic_ipr29474_read()?
                         .to_ne_bytes();
                     if _start <= 1140 && _end > 1140 {
                         _buf[(1140 - _start) as usize] = value[0];
@@ -21508,7 +21120,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr31478_read()?
+                        .scs_nvic_ipr30478_read()?
                         .to_ne_bytes();
                     if _start <= 1144 && _end > 1144 {
                         _buf[(1144 - _start) as usize] = value[0];
@@ -21528,7 +21140,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr3247c_read()?
+                        .scs_nvic_ipr3147c_read()?
                         .to_ne_bytes();
                     if _start <= 1148 && _end > 1148 {
                         _buf[(1148 - _start) as usize] = value[0];
@@ -21548,7 +21160,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr33480_read()?
+                        .scs_nvic_ipr32480_read()?
                         .to_ne_bytes();
                     if _start <= 1152 && _end > 1152 {
                         _buf[(1152 - _start) as usize] = value[0];
@@ -21568,7 +21180,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr34484_read()?
+                        .scs_nvic_ipr33484_read()?
                         .to_ne_bytes();
                     if _start <= 1156 && _end > 1156 {
                         _buf[(1156 - _start) as usize] = value[0];
@@ -21588,7 +21200,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr35488_read()?
+                        .scs_nvic_ipr34488_read()?
                         .to_ne_bytes();
                     if _start <= 1160 && _end > 1160 {
                         _buf[(1160 - _start) as usize] = value[0];
@@ -21608,7 +21220,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr3648c_read()?
+                        .scs_nvic_ipr3548c_read()?
                         .to_ne_bytes();
                     if _start <= 1164 && _end > 1164 {
                         _buf[(1164 - _start) as usize] = value[0];
@@ -21628,7 +21240,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr37490_read()?
+                        .scs_nvic_ipr36490_read()?
                         .to_ne_bytes();
                     if _start <= 1168 && _end > 1168 {
                         _buf[(1168 - _start) as usize] = value[0];
@@ -21648,7 +21260,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr38494_read()?
+                        .scs_nvic_ipr37494_read()?
                         .to_ne_bytes();
                     if _start <= 1172 && _end > 1172 {
                         _buf[(1172 - _start) as usize] = value[0];
@@ -21668,7 +21280,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr39498_read()?
+                        .scs_nvic_ipr38498_read()?
                         .to_ne_bytes();
                     if _start <= 1176 && _end > 1176 {
                         _buf[(1176 - _start) as usize] = value[0];
@@ -21688,7 +21300,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr4049c_read()?
+                        .scs_nvic_ipr3949c_read()?
                         .to_ne_bytes();
                     if _start <= 1180 && _end > 1180 {
                         _buf[(1180 - _start) as usize] = value[0];
@@ -21708,7 +21320,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr414a0_read()?
+                        .scs_nvic_ipr404a0_read()?
                         .to_ne_bytes();
                     if _start <= 1184 && _end > 1184 {
                         _buf[(1184 - _start) as usize] = value[0];
@@ -21728,7 +21340,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr424a4_read()?
+                        .scs_nvic_ipr414a4_read()?
                         .to_ne_bytes();
                     if _start <= 1188 && _end > 1188 {
                         _buf[(1188 - _start) as usize] = value[0];
@@ -21748,7 +21360,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr434a8_read()?
+                        .scs_nvic_ipr424a8_read()?
                         .to_ne_bytes();
                     if _start <= 1192 && _end > 1192 {
                         _buf[(1192 - _start) as usize] = value[0];
@@ -21768,7 +21380,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr444ac_read()?
+                        .scs_nvic_ipr434ac_read()?
                         .to_ne_bytes();
                     if _start <= 1196 && _end > 1196 {
                         _buf[(1196 - _start) as usize] = value[0];
@@ -21788,7 +21400,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr454b0_read()?
+                        .scs_nvic_ipr444b0_read()?
                         .to_ne_bytes();
                     if _start <= 1200 && _end > 1200 {
                         _buf[(1200 - _start) as usize] = value[0];
@@ -21808,7 +21420,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr464b4_read()?
+                        .scs_nvic_ipr454b4_read()?
                         .to_ne_bytes();
                     if _start <= 1204 && _end > 1204 {
                         _buf[(1204 - _start) as usize] = value[0];
@@ -21828,7 +21440,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr474b8_read()?
+                        .scs_nvic_ipr464b8_read()?
                         .to_ne_bytes();
                     if _start <= 1208 && _end > 1208 {
                         _buf[(1208 - _start) as usize] = value[0];
@@ -21848,7 +21460,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr484bc_read()?
+                        .scs_nvic_ipr474bc_read()?
                         .to_ne_bytes();
                     if _start <= 1212 && _end > 1212 {
                         _buf[(1212 - _start) as usize] = value[0];
@@ -21868,7 +21480,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr494c0_read()?
+                        .scs_nvic_ipr484c0_read()?
                         .to_ne_bytes();
                     if _start <= 1216 && _end > 1216 {
                         _buf[(1216 - _start) as usize] = value[0];
@@ -21888,7 +21500,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr504c4_read()?
+                        .scs_nvic_ipr494c4_read()?
                         .to_ne_bytes();
                     if _start <= 1220 && _end > 1220 {
                         _buf[(1220 - _start) as usize] = value[0];
@@ -21908,7 +21520,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr514c8_read()?
+                        .scs_nvic_ipr504c8_read()?
                         .to_ne_bytes();
                     if _start <= 1224 && _end > 1224 {
                         _buf[(1224 - _start) as usize] = value[0];
@@ -21928,7 +21540,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr524cc_read()?
+                        .scs_nvic_ipr514cc_read()?
                         .to_ne_bytes();
                     if _start <= 1228 && _end > 1228 {
                         _buf[(1228 - _start) as usize] = value[0];
@@ -21948,7 +21560,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr534d0_read()?
+                        .scs_nvic_ipr524d0_read()?
                         .to_ne_bytes();
                     if _start <= 1232 && _end > 1232 {
                         _buf[(1232 - _start) as usize] = value[0];
@@ -21968,7 +21580,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr544d4_read()?
+                        .scs_nvic_ipr534d4_read()?
                         .to_ne_bytes();
                     if _start <= 1236 && _end > 1236 {
                         _buf[(1236 - _start) as usize] = value[0];
@@ -21988,7 +21600,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr554d8_read()?
+                        .scs_nvic_ipr544d8_read()?
                         .to_ne_bytes();
                     if _start <= 1240 && _end > 1240 {
                         _buf[(1240 - _start) as usize] = value[0];
@@ -22008,7 +21620,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr564dc_read()?
+                        .scs_nvic_ipr554dc_read()?
                         .to_ne_bytes();
                     if _start <= 1244 && _end > 1244 {
                         _buf[(1244 - _start) as usize] = value[0];
@@ -22028,7 +21640,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr574e0_read()?
+                        .scs_nvic_ipr564e0_read()?
                         .to_ne_bytes();
                     if _start <= 1248 && _end > 1248 {
                         _buf[(1248 - _start) as usize] = value[0];
@@ -22048,7 +21660,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr584e4_read()?
+                        .scs_nvic_ipr574e4_read()?
                         .to_ne_bytes();
                     if _start <= 1252 && _end > 1252 {
                         _buf[(1252 - _start) as usize] = value[0];
@@ -22068,7 +21680,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr594e8_read()?
+                        .scs_nvic_ipr584e8_read()?
                         .to_ne_bytes();
                     if _start <= 1256 && _end > 1256 {
                         _buf[(1256 - _start) as usize] = value[0];
@@ -22083,34 +21695,34 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         _buf[(1259 - _start) as usize] = value[3];
                     }
                 }
-            }
-            (3324..=3383, 3325..=3384) => {
-                if _start < 3328 && _end > 3324 {
+                if _start < 1264 && _end > 1260 {
                     let value = self
                         .0
                         .lock()
                         .unwrap()
-                        .scs_icsrcfc_read()?
+                        .scs_nvic_ipr594ec_read()?
                         .to_ne_bytes();
-                    if _start <= 3324 && _end > 3324 {
-                        _buf[(3324 - _start) as usize] = value[0];
+                    if _start <= 1260 && _end > 1260 {
+                        _buf[(1260 - _start) as usize] = value[0];
                     }
-                    if _start <= 3325 && _end > 3325 {
-                        _buf[(3325 - _start) as usize] = value[1];
+                    if _start <= 1261 && _end > 1261 {
+                        _buf[(1261 - _start) as usize] = value[1];
                     }
-                    if _start <= 3326 && _end > 3326 {
-                        _buf[(3326 - _start) as usize] = value[2];
+                    if _start <= 1262 && _end > 1262 {
+                        _buf[(1262 - _start) as usize] = value[2];
                     }
-                    if _start <= 3327 && _end > 3327 {
-                        _buf[(3327 - _start) as usize] = value[3];
+                    if _start <= 1263 && _end > 1263 {
+                        _buf[(1263 - _start) as usize] = value[3];
                     }
                 }
+            }
+            (3328..=3443, 3329..=3444) => {
                 if _start < 3332 && _end > 3328 {
                     let value = self
                         .0
                         .lock()
                         .unwrap()
-                        .scs_vtord00_read()?
+                        .scs_cpuidd00_read()?
                         .to_ne_bytes();
                     if _start <= 3328 && _end > 3328 {
                         _buf[(3328 - _start) as usize] = value[0];
@@ -22130,7 +21742,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_aircrd04_read()?
+                        .scs_icsrd04_read()?
                         .to_ne_bytes();
                     if _start <= 3332 && _end > 3332 {
                         _buf[(3332 - _start) as usize] = value[0];
@@ -22146,8 +21758,12 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     }
                 }
                 if _start < 3340 && _end > 3336 {
-                    let value =
-                        self.0.lock().unwrap().scs_scrd08_read()?.to_ne_bytes();
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_vtord08_read()?
+                        .to_ne_bytes();
                     if _start <= 3336 && _end > 3336 {
                         _buf[(3336 - _start) as usize] = value[0];
                     }
@@ -22162,8 +21778,12 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     }
                 }
                 if _start < 3344 && _end > 3340 {
-                    let value =
-                        self.0.lock().unwrap().scs_ccrd0c_read()?.to_ne_bytes();
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_aircrd0c_read()?
+                        .to_ne_bytes();
                     if _start <= 3340 && _end > 3340 {
                         _buf[(3340 - _start) as usize] = value[0];
                     }
@@ -22178,12 +21798,8 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     }
                 }
                 if _start < 3348 && _end > 3344 {
-                    let value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .scs_shpr1d10_read()?
-                        .to_ne_bytes();
+                    let value =
+                        self.0.lock().unwrap().scs_scrd10_read()?.to_ne_bytes();
                     if _start <= 3344 && _end > 3344 {
                         _buf[(3344 - _start) as usize] = value[0];
                     }
@@ -22198,12 +21814,8 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     }
                 }
                 if _start < 3352 && _end > 3348 {
-                    let value = self
-                        .0
-                        .lock()
-                        .unwrap()
-                        .scs_shpr2d14_read()?
-                        .to_ne_bytes();
+                    let value =
+                        self.0.lock().unwrap().scs_ccrd14_read()?.to_ne_bytes();
                     if _start <= 3348 && _end > 3348 {
                         _buf[(3348 - _start) as usize] = value[0];
                     }
@@ -22222,7 +21834,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_shpr3d18_read()?
+                        .scs_shpr1d18_read()?
                         .to_ne_bytes();
                     if _start <= 3352 && _end > 3352 {
                         _buf[(3352 - _start) as usize] = value[0];
@@ -22242,7 +21854,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_shcsrd1c_read()?
+                        .scs_shpr2d1c_read()?
                         .to_ne_bytes();
                     if _start <= 3356 && _end > 3356 {
                         _buf[(3356 - _start) as usize] = value[0];
@@ -22262,7 +21874,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_cfsrd20_read()?
+                        .scs_shpr3d20_read()?
                         .to_ne_bytes();
                     if _start <= 3360 && _end > 3360 {
                         _buf[(3360 - _start) as usize] = value[0];
@@ -22282,7 +21894,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_hfsrd24_read()?
+                        .scs_shcsrd24_read()?
                         .to_ne_bytes();
                     if _start <= 3364 && _end > 3364 {
                         _buf[(3364 - _start) as usize] = value[0];
@@ -22302,7 +21914,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_dfsrd28_read()?
+                        .scs_cfsrd28_read()?
                         .to_ne_bytes();
                     if _start <= 3368 && _end > 3368 {
                         _buf[(3368 - _start) as usize] = value[0];
@@ -22322,7 +21934,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_mmfard2c_read()?
+                        .scs_hfsrd2c_read()?
                         .to_ne_bytes();
                     if _start <= 3372 && _end > 3372 {
                         _buf[(3372 - _start) as usize] = value[0];
@@ -22342,7 +21954,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_bfard30_read()?
+                        .scs_dfsrd30_read()?
                         .to_ne_bytes();
                     if _start <= 3376 && _end > 3376 {
                         _buf[(3376 - _start) as usize] = value[0];
@@ -22362,7 +21974,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         .0
                         .lock()
                         .unwrap()
-                        .scs_afsrd34_read()?
+                        .scs_mmfard34_read()?
                         .to_ne_bytes();
                     if _start <= 3380 && _end > 3380 {
                         _buf[(3380 - _start) as usize] = value[0];
@@ -22377,53 +21989,677 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                         _buf[(3383 - _start) as usize] = value[3];
                     }
                 }
-            }
-            (3456..=3459, 3457..=3460) => {
-                if _start < 3460 && _end > 3456 {
+                if _start < 3388 && _end > 3384 {
                     let value = self
                         .0
                         .lock()
                         .unwrap()
-                        .scs_cpacrd80_read()?
+                        .scs_bfard38_read()?
                         .to_ne_bytes();
-                    if _start <= 3456 && _end > 3456 {
-                        _buf[(3456 - _start) as usize] = value[0];
+                    if _start <= 3384 && _end > 3384 {
+                        _buf[(3384 - _start) as usize] = value[0];
                     }
-                    if _start <= 3457 && _end > 3457 {
-                        _buf[(3457 - _start) as usize] = value[1];
+                    if _start <= 3385 && _end > 3385 {
+                        _buf[(3385 - _start) as usize] = value[1];
                     }
-                    if _start <= 3458 && _end > 3458 {
-                        _buf[(3458 - _start) as usize] = value[2];
+                    if _start <= 3386 && _end > 3386 {
+                        _buf[(3386 - _start) as usize] = value[2];
                     }
-                    if _start <= 3459 && _end > 3459 {
-                        _buf[(3459 - _start) as usize] = value[3];
+                    if _start <= 3387 && _end > 3387 {
+                        _buf[(3387 - _start) as usize] = value[3];
                     }
                 }
-            }
-            (3572..=3575, 3573..=3576) => {
-                if _start < 3576 && _end > 3572 {
+                if _start < 3392 && _end > 3388 {
                     let value = self
                         .0
                         .lock()
                         .unwrap()
-                        .scs_demcrdf4_read()?
+                        .scs_afsrd3c_read()?
                         .to_ne_bytes();
-                    if _start <= 3572 && _end > 3572 {
-                        _buf[(3572 - _start) as usize] = value[0];
+                    if _start <= 3388 && _end > 3388 {
+                        _buf[(3388 - _start) as usize] = value[0];
                     }
-                    if _start <= 3573 && _end > 3573 {
-                        _buf[(3573 - _start) as usize] = value[1];
+                    if _start <= 3389 && _end > 3389 {
+                        _buf[(3389 - _start) as usize] = value[1];
                     }
-                    if _start <= 3574 && _end > 3574 {
-                        _buf[(3574 - _start) as usize] = value[2];
+                    if _start <= 3390 && _end > 3390 {
+                        _buf[(3390 - _start) as usize] = value[2];
                     }
-                    if _start <= 3575 && _end > 3575 {
-                        _buf[(3575 - _start) as usize] = value[3];
+                    if _start <= 3391 && _end > 3391 {
+                        _buf[(3391 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3396 && _end > 3392 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_id_pfr0d40_read()?
+                        .to_ne_bytes();
+                    if _start <= 3392 && _end > 3392 {
+                        _buf[(3392 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3393 && _end > 3393 {
+                        _buf[(3393 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3394 && _end > 3394 {
+                        _buf[(3394 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3395 && _end > 3395 {
+                        _buf[(3395 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3400 && _end > 3396 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_id_pfr1d44_read()?
+                        .to_ne_bytes();
+                    if _start <= 3396 && _end > 3396 {
+                        _buf[(3396 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3397 && _end > 3397 {
+                        _buf[(3397 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3398 && _end > 3398 {
+                        _buf[(3398 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3399 && _end > 3399 {
+                        _buf[(3399 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3404 && _end > 3400 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_id_dfr0d48_read()?
+                        .to_ne_bytes();
+                    if _start <= 3400 && _end > 3400 {
+                        _buf[(3400 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3401 && _end > 3401 {
+                        _buf[(3401 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3402 && _end > 3402 {
+                        _buf[(3402 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3403 && _end > 3403 {
+                        _buf[(3403 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3408 && _end > 3404 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_id_afr0d4c_read()?
+                        .to_ne_bytes();
+                    if _start <= 3404 && _end > 3404 {
+                        _buf[(3404 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3405 && _end > 3405 {
+                        _buf[(3405 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3406 && _end > 3406 {
+                        _buf[(3406 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3407 && _end > 3407 {
+                        _buf[(3407 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3412 && _end > 3408 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_id_mmfr0d50_read()?
+                        .to_ne_bytes();
+                    if _start <= 3408 && _end > 3408 {
+                        _buf[(3408 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3409 && _end > 3409 {
+                        _buf[(3409 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3410 && _end > 3410 {
+                        _buf[(3410 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3411 && _end > 3411 {
+                        _buf[(3411 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3416 && _end > 3412 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_id_mmfr1d54_read()?
+                        .to_ne_bytes();
+                    if _start <= 3412 && _end > 3412 {
+                        _buf[(3412 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3413 && _end > 3413 {
+                        _buf[(3413 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3414 && _end > 3414 {
+                        _buf[(3414 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3415 && _end > 3415 {
+                        _buf[(3415 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3420 && _end > 3416 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_id_mmfr2d58_read()?
+                        .to_ne_bytes();
+                    if _start <= 3416 && _end > 3416 {
+                        _buf[(3416 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3417 && _end > 3417 {
+                        _buf[(3417 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3418 && _end > 3418 {
+                        _buf[(3418 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3419 && _end > 3419 {
+                        _buf[(3419 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3424 && _end > 3420 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_id_mmfr3d5c_read()?
+                        .to_ne_bytes();
+                    if _start <= 3420 && _end > 3420 {
+                        _buf[(3420 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3421 && _end > 3421 {
+                        _buf[(3421 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3422 && _end > 3422 {
+                        _buf[(3422 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3423 && _end > 3423 {
+                        _buf[(3423 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3428 && _end > 3424 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_id_isar0d60_read()?
+                        .to_ne_bytes();
+                    if _start <= 3424 && _end > 3424 {
+                        _buf[(3424 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3425 && _end > 3425 {
+                        _buf[(3425 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3426 && _end > 3426 {
+                        _buf[(3426 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3427 && _end > 3427 {
+                        _buf[(3427 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3432 && _end > 3428 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_id_isar1d64_read()?
+                        .to_ne_bytes();
+                    if _start <= 3428 && _end > 3428 {
+                        _buf[(3428 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3429 && _end > 3429 {
+                        _buf[(3429 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3430 && _end > 3430 {
+                        _buf[(3430 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3431 && _end > 3431 {
+                        _buf[(3431 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3436 && _end > 3432 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_id_isar2d68_read()?
+                        .to_ne_bytes();
+                    if _start <= 3432 && _end > 3432 {
+                        _buf[(3432 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3433 && _end > 3433 {
+                        _buf[(3433 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3434 && _end > 3434 {
+                        _buf[(3434 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3435 && _end > 3435 {
+                        _buf[(3435 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3440 && _end > 3436 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_id_isar3d6c_read()?
+                        .to_ne_bytes();
+                    if _start <= 3436 && _end > 3436 {
+                        _buf[(3436 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3437 && _end > 3437 {
+                        _buf[(3437 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3438 && _end > 3438 {
+                        _buf[(3438 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3439 && _end > 3439 {
+                        _buf[(3439 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3444 && _end > 3440 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_id_isar4d70_read()?
+                        .to_ne_bytes();
+                    if _start <= 3440 && _end > 3440 {
+                        _buf[(3440 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3441 && _end > 3441 {
+                        _buf[(3441 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3442 && _end > 3442 {
+                        _buf[(3442 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3443 && _end > 3443 {
+                        _buf[(3443 - _start) as usize] = value[3];
                     }
                 }
             }
-            (3832..=3835, 3833..=3836) => {
+            (3464..=3467, 3465..=3468) => {
+                if _start < 3468 && _end > 3464 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_cpacrd88_read()?
+                        .to_ne_bytes();
+                    if _start <= 3464 && _end > 3464 {
+                        _buf[(3464 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3465 && _end > 3465 {
+                        _buf[(3465 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3466 && _end > 3466 {
+                        _buf[(3466 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3467 && _end > 3467 {
+                        _buf[(3467 - _start) as usize] = value[3];
+                    }
+                }
+            }
+            (3472..=3515, 3473..=3516) => {
+                if _start < 3476 && _end > 3472 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_mpu_typed90_read()?
+                        .to_ne_bytes();
+                    if _start <= 3472 && _end > 3472 {
+                        _buf[(3472 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3473 && _end > 3473 {
+                        _buf[(3473 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3474 && _end > 3474 {
+                        _buf[(3474 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3475 && _end > 3475 {
+                        _buf[(3475 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3480 && _end > 3476 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_mpu_ctrld94_read()?
+                        .to_ne_bytes();
+                    if _start <= 3476 && _end > 3476 {
+                        _buf[(3476 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3477 && _end > 3477 {
+                        _buf[(3477 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3478 && _end > 3478 {
+                        _buf[(3478 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3479 && _end > 3479 {
+                        _buf[(3479 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3484 && _end > 3480 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_mpu_rnrd98_read()?
+                        .to_ne_bytes();
+                    if _start <= 3480 && _end > 3480 {
+                        _buf[(3480 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3481 && _end > 3481 {
+                        _buf[(3481 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3482 && _end > 3482 {
+                        _buf[(3482 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3483 && _end > 3483 {
+                        _buf[(3483 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3488 && _end > 3484 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_mpu_rbard9c_read()?
+                        .to_ne_bytes();
+                    if _start <= 3484 && _end > 3484 {
+                        _buf[(3484 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3485 && _end > 3485 {
+                        _buf[(3485 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3486 && _end > 3486 {
+                        _buf[(3486 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3487 && _end > 3487 {
+                        _buf[(3487 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3492 && _end > 3488 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_mpu_rasrda0_read()?
+                        .to_ne_bytes();
+                    if _start <= 3488 && _end > 3488 {
+                        _buf[(3488 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3489 && _end > 3489 {
+                        _buf[(3489 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3490 && _end > 3490 {
+                        _buf[(3490 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3491 && _end > 3491 {
+                        _buf[(3491 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3496 && _end > 3492 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_mpu_rbar_a1da4_read()?
+                        .to_ne_bytes();
+                    if _start <= 3492 && _end > 3492 {
+                        _buf[(3492 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3493 && _end > 3493 {
+                        _buf[(3493 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3494 && _end > 3494 {
+                        _buf[(3494 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3495 && _end > 3495 {
+                        _buf[(3495 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3500 && _end > 3496 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_mpu_rasr_a1da8_read()?
+                        .to_ne_bytes();
+                    if _start <= 3496 && _end > 3496 {
+                        _buf[(3496 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3497 && _end > 3497 {
+                        _buf[(3497 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3498 && _end > 3498 {
+                        _buf[(3498 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3499 && _end > 3499 {
+                        _buf[(3499 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3504 && _end > 3500 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_mpu_rbar_a2dac_read()?
+                        .to_ne_bytes();
+                    if _start <= 3500 && _end > 3500 {
+                        _buf[(3500 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3501 && _end > 3501 {
+                        _buf[(3501 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3502 && _end > 3502 {
+                        _buf[(3502 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3503 && _end > 3503 {
+                        _buf[(3503 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3508 && _end > 3504 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_mpu_rasr_a2db0_read()?
+                        .to_ne_bytes();
+                    if _start <= 3504 && _end > 3504 {
+                        _buf[(3504 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3505 && _end > 3505 {
+                        _buf[(3505 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3506 && _end > 3506 {
+                        _buf[(3506 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3507 && _end > 3507 {
+                        _buf[(3507 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3512 && _end > 3508 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_mpu_rbar_a3db4_read()?
+                        .to_ne_bytes();
+                    if _start <= 3508 && _end > 3508 {
+                        _buf[(3508 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3509 && _end > 3509 {
+                        _buf[(3509 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3510 && _end > 3510 {
+                        _buf[(3510 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3511 && _end > 3511 {
+                        _buf[(3511 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3516 && _end > 3512 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_mpu_rasr_a3db8_read()?
+                        .to_ne_bytes();
+                    if _start <= 3512 && _end > 3512 {
+                        _buf[(3512 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3513 && _end > 3513 {
+                        _buf[(3513 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3514 && _end > 3514 {
+                        _buf[(3514 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3515 && _end > 3515 {
+                        _buf[(3515 - _start) as usize] = value[3];
+                    }
+                }
+            }
+            (3580..=3583, 3581..=3584) => {
+                if _start < 3584 && _end > 3580 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_demcrdfc_read()?
+                        .to_ne_bytes();
+                    if _start <= 3580 && _end > 3580 {
+                        _buf[(3580 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3581 && _end > 3581 {
+                        _buf[(3581 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3582 && _end > 3582 {
+                        _buf[(3582 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3583 && _end > 3583 {
+                        _buf[(3583 - _start) as usize] = value[3];
+                    }
+                }
+            }
+            (3840..=3843, 3841..=3844) => {
                 return Err(MemError::ReadViolation);
+            }
+            (3892..=3911, 3893..=3912) => {
+                if _start < 3896 && _end > 3892 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_fpccrf34_read()?
+                        .to_ne_bytes();
+                    if _start <= 3892 && _end > 3892 {
+                        _buf[(3892 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3893 && _end > 3893 {
+                        _buf[(3893 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3894 && _end > 3894 {
+                        _buf[(3894 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3895 && _end > 3895 {
+                        _buf[(3895 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3900 && _end > 3896 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_fpcarf38_read()?
+                        .to_ne_bytes();
+                    if _start <= 3896 && _end > 3896 {
+                        _buf[(3896 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3897 && _end > 3897 {
+                        _buf[(3897 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3898 && _end > 3898 {
+                        _buf[(3898 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3899 && _end > 3899 {
+                        _buf[(3899 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3904 && _end > 3900 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_fpdscrf3c_read()?
+                        .to_ne_bytes();
+                    if _start <= 3900 && _end > 3900 {
+                        _buf[(3900 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3901 && _end > 3901 {
+                        _buf[(3901 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3902 && _end > 3902 {
+                        _buf[(3902 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3903 && _end > 3903 {
+                        _buf[(3903 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3908 && _end > 3904 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_mvfr0f40_read()?
+                        .to_ne_bytes();
+                    if _start <= 3904 && _end > 3904 {
+                        _buf[(3904 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3905 && _end > 3905 {
+                        _buf[(3905 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3906 && _end > 3906 {
+                        _buf[(3906 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3907 && _end > 3907 {
+                        _buf[(3907 - _start) as usize] = value[3];
+                    }
+                }
+                if _start < 3912 && _end > 3908 {
+                    let value = self
+                        .0
+                        .lock()
+                        .unwrap()
+                        .scs_mvfr1f44_read()?
+                        .to_ne_bytes();
+                    if _start <= 3908 && _end > 3908 {
+                        _buf[(3908 - _start) as usize] = value[0];
+                    }
+                    if _start <= 3909 && _end > 3909 {
+                        _buf[(3909 - _start) as usize] = value[1];
+                    }
+                    if _start <= 3910 && _end > 3910 {
+                        _buf[(3910 - _start) as usize] = value[2];
+                    }
+                    if _start <= 3911 && _end > 3911 {
+                        _buf[(3911 - _start) as usize] = value[3];
+                    }
+                }
             }
             _ => return Err(MemError::Unmapped),
         }
@@ -22436,24 +22672,9 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
         let _start = _addr & 4095u64;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
-            (..=43, 1..=44) => {
-                if _start < 4 && _end > 0 {
-                    let offset = _start.saturating_sub(0);
-                    let start = 0u64.saturating_sub(_start) as usize;
-                    let end = ((_end - 0) - offset) as usize;
-                    self.0
-                        .lock()
-                        .unwrap()
-                        .scs_fpccr0_write(offset, &_buf[start..end])?;
-                }
+            (4..=11, 5..=12) => {
                 if _start < 8 && _end > 4 {
-                    let offset = _start.saturating_sub(4);
-                    let start = 4u64.saturating_sub(_start) as usize;
-                    let end = ((_end - 4) - offset) as usize;
-                    self.0
-                        .lock()
-                        .unwrap()
-                        .scs_mpu_ctrl4_write(offset, &_buf[start..end])?;
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 12 && _end > 8 {
                     let offset = _start.saturating_sub(8);
@@ -22462,17 +22683,10 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_mpu_rnr8_write(offset, &_buf[start..end])?;
+                        .scs_actlr8_write(offset, &_buf[start..end])?;
                 }
-                if _start < 16 && _end > 12 {
-                    let offset = _start.saturating_sub(12);
-                    let start = 12u64.saturating_sub(_start) as usize;
-                    let end = ((_end - 12) - offset) as usize;
-                    self.0
-                        .lock()
-                        .unwrap()
-                        .scs_mpu_rbarc_write(offset, &_buf[start..end])?;
-                }
+            }
+            (16..=31, 17..=32) => {
                 if _start < 20 && _end > 16 {
                     let offset = _start.saturating_sub(16);
                     let start = 16u64.saturating_sub(_start) as usize;
@@ -22480,7 +22694,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_mpu_rasr10_write(offset, &_buf[start..end])?;
+                        .scs_stcsr10_write(offset, &_buf[start..end])?;
                 }
                 if _start < 24 && _end > 20 {
                     let offset = _start.saturating_sub(20);
@@ -22489,7 +22703,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_mpu_rbar_a114_write(offset, &_buf[start..end])?;
+                        .scs_strvr14_write(offset, &_buf[start..end])?;
                 }
                 if _start < 28 && _end > 24 {
                     let offset = _start.saturating_sub(24);
@@ -22498,58 +22712,13 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_mpu_rasr_a118_write(offset, &_buf[start..end])?;
+                        .scs_stcvr18_write(offset, &_buf[start..end])?;
                 }
                 if _start < 32 && _end > 28 {
-                    let offset = _start.saturating_sub(28);
-                    let start = 28u64.saturating_sub(_start) as usize;
-                    let end = ((_end - 28) - offset) as usize;
-                    self.0
-                        .lock()
-                        .unwrap()
-                        .scs_mpu_rbar_a21c_write(offset, &_buf[start..end])?;
-                }
-                if _start < 36 && _end > 32 {
-                    let offset = _start.saturating_sub(32);
-                    let start = 32u64.saturating_sub(_start) as usize;
-                    let end = ((_end - 32) - offset) as usize;
-                    self.0
-                        .lock()
-                        .unwrap()
-                        .scs_mpu_rasr_a220_write(offset, &_buf[start..end])?;
-                }
-                if _start < 40 && _end > 36 {
-                    let offset = _start.saturating_sub(36);
-                    let start = 36u64.saturating_sub(_start) as usize;
-                    let end = ((_end - 36) - offset) as usize;
-                    self.0
-                        .lock()
-                        .unwrap()
-                        .scs_mpu_rbar_a324_write(offset, &_buf[start..end])?;
-                }
-                if _start < 44 && _end > 40 {
-                    let offset = _start.saturating_sub(40);
-                    let start = 40u64.saturating_sub(_start) as usize;
-                    let end = ((_end - 40) - offset) as usize;
-                    self.0
-                        .lock()
-                        .unwrap()
-                        .scs_mpu_rasr_a328_write(offset, &_buf[start..end])?;
+                    return Err(MemError::WriteViolation);
                 }
             }
-            (64..=115, 65..=116) => {
-                return Err(MemError::WriteViolation);
-            }
-            (252..=283, 253..=284) => {
-                if _start < 256 && _end > 252 {
-                    let offset = _start.saturating_sub(252);
-                    let start = 252u64.saturating_sub(_start) as usize;
-                    let end = ((_end - 252) - offset) as usize;
-                    self.0
-                        .lock()
-                        .unwrap()
-                        .scs_nvic_iser0fc_write(offset, &_buf[start..end])?;
-                }
+            (256..=287, 257..=288) => {
                 if _start < 260 && _end > 256 {
                     let offset = _start.saturating_sub(256);
                     let start = 256u64.saturating_sub(_start) as usize;
@@ -22557,7 +22726,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iser1100_write(offset, &_buf[start..end])?;
+                        .scs_nvic_iser0100_write(offset, &_buf[start..end])?;
                 }
                 if _start < 264 && _end > 260 {
                     let offset = _start.saturating_sub(260);
@@ -22566,7 +22735,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iser2104_write(offset, &_buf[start..end])?;
+                        .scs_nvic_iser1104_write(offset, &_buf[start..end])?;
                 }
                 if _start < 268 && _end > 264 {
                     let offset = _start.saturating_sub(264);
@@ -22575,7 +22744,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iser3108_write(offset, &_buf[start..end])?;
+                        .scs_nvic_iser2108_write(offset, &_buf[start..end])?;
                 }
                 if _start < 272 && _end > 268 {
                     let offset = _start.saturating_sub(268);
@@ -22584,7 +22753,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iser410c_write(offset, &_buf[start..end])?;
+                        .scs_nvic_iser310c_write(offset, &_buf[start..end])?;
                 }
                 if _start < 276 && _end > 272 {
                     let offset = _start.saturating_sub(272);
@@ -22593,7 +22762,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iser5110_write(offset, &_buf[start..end])?;
+                        .scs_nvic_iser4110_write(offset, &_buf[start..end])?;
                 }
                 if _start < 280 && _end > 276 {
                     let offset = _start.saturating_sub(276);
@@ -22602,7 +22771,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iser6114_write(offset, &_buf[start..end])?;
+                        .scs_nvic_iser5114_write(offset, &_buf[start..end])?;
                 }
                 if _start < 284 && _end > 280 {
                     let offset = _start.saturating_sub(280);
@@ -22611,19 +22780,19 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iser7118_write(offset, &_buf[start..end])?;
+                        .scs_nvic_iser6118_write(offset, &_buf[start..end])?;
                 }
-            }
-            (380..=411, 381..=412) => {
-                if _start < 384 && _end > 380 {
-                    let offset = _start.saturating_sub(380);
-                    let start = 380u64.saturating_sub(_start) as usize;
-                    let end = ((_end - 380) - offset) as usize;
+                if _start < 288 && _end > 284 {
+                    let offset = _start.saturating_sub(284);
+                    let start = 284u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 284) - offset) as usize;
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icer017c_write(offset, &_buf[start..end])?;
+                        .scs_nvic_iser711c_write(offset, &_buf[start..end])?;
                 }
+            }
+            (384..=415, 385..=416) => {
                 if _start < 388 && _end > 384 {
                     let offset = _start.saturating_sub(384);
                     let start = 384u64.saturating_sub(_start) as usize;
@@ -22631,7 +22800,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icer1180_write(offset, &_buf[start..end])?;
+                        .scs_nvic_icer0180_write(offset, &_buf[start..end])?;
                 }
                 if _start < 392 && _end > 388 {
                     let offset = _start.saturating_sub(388);
@@ -22640,7 +22809,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icer2184_write(offset, &_buf[start..end])?;
+                        .scs_nvic_icer1184_write(offset, &_buf[start..end])?;
                 }
                 if _start < 396 && _end > 392 {
                     let offset = _start.saturating_sub(392);
@@ -22649,7 +22818,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icer3188_write(offset, &_buf[start..end])?;
+                        .scs_nvic_icer2188_write(offset, &_buf[start..end])?;
                 }
                 if _start < 400 && _end > 396 {
                     let offset = _start.saturating_sub(396);
@@ -22658,7 +22827,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icer418c_write(offset, &_buf[start..end])?;
+                        .scs_nvic_icer318c_write(offset, &_buf[start..end])?;
                 }
                 if _start < 404 && _end > 400 {
                     let offset = _start.saturating_sub(400);
@@ -22667,7 +22836,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icer5190_write(offset, &_buf[start..end])?;
+                        .scs_nvic_icer4190_write(offset, &_buf[start..end])?;
                 }
                 if _start < 408 && _end > 404 {
                     let offset = _start.saturating_sub(404);
@@ -22676,7 +22845,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icer6194_write(offset, &_buf[start..end])?;
+                        .scs_nvic_icer5194_write(offset, &_buf[start..end])?;
                 }
                 if _start < 412 && _end > 408 {
                     let offset = _start.saturating_sub(408);
@@ -22685,19 +22854,19 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icer7198_write(offset, &_buf[start..end])?;
+                        .scs_nvic_icer6198_write(offset, &_buf[start..end])?;
                 }
-            }
-            (508..=539, 509..=540) => {
-                if _start < 512 && _end > 508 {
-                    let offset = _start.saturating_sub(508);
-                    let start = 508u64.saturating_sub(_start) as usize;
-                    let end = ((_end - 508) - offset) as usize;
+                if _start < 416 && _end > 412 {
+                    let offset = _start.saturating_sub(412);
+                    let start = 412u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 412) - offset) as usize;
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ispr01fc_write(offset, &_buf[start..end])?;
+                        .scs_nvic_icer719c_write(offset, &_buf[start..end])?;
                 }
+            }
+            (512..=543, 513..=544) => {
                 if _start < 516 && _end > 512 {
                     let offset = _start.saturating_sub(512);
                     let start = 512u64.saturating_sub(_start) as usize;
@@ -22705,7 +22874,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ispr1200_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ispr0200_write(offset, &_buf[start..end])?;
                 }
                 if _start < 520 && _end > 516 {
                     let offset = _start.saturating_sub(516);
@@ -22714,7 +22883,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ispr2204_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ispr1204_write(offset, &_buf[start..end])?;
                 }
                 if _start < 524 && _end > 520 {
                     let offset = _start.saturating_sub(520);
@@ -22723,7 +22892,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ispr3208_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ispr2208_write(offset, &_buf[start..end])?;
                 }
                 if _start < 528 && _end > 524 {
                     let offset = _start.saturating_sub(524);
@@ -22732,7 +22901,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ispr420c_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ispr320c_write(offset, &_buf[start..end])?;
                 }
                 if _start < 532 && _end > 528 {
                     let offset = _start.saturating_sub(528);
@@ -22741,7 +22910,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ispr5210_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ispr4210_write(offset, &_buf[start..end])?;
                 }
                 if _start < 536 && _end > 532 {
                     let offset = _start.saturating_sub(532);
@@ -22750,7 +22919,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ispr6214_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ispr5214_write(offset, &_buf[start..end])?;
                 }
                 if _start < 540 && _end > 536 {
                     let offset = _start.saturating_sub(536);
@@ -22759,19 +22928,19 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ispr7218_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ispr6218_write(offset, &_buf[start..end])?;
                 }
-            }
-            (636..=667, 637..=668) => {
-                if _start < 640 && _end > 636 {
-                    let offset = _start.saturating_sub(636);
-                    let start = 636u64.saturating_sub(_start) as usize;
-                    let end = ((_end - 636) - offset) as usize;
+                if _start < 544 && _end > 540 {
+                    let offset = _start.saturating_sub(540);
+                    let start = 540u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 540) - offset) as usize;
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icpr027c_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ispr721c_write(offset, &_buf[start..end])?;
                 }
+            }
+            (640..=671, 641..=672) => {
                 if _start < 644 && _end > 640 {
                     let offset = _start.saturating_sub(640);
                     let start = 640u64.saturating_sub(_start) as usize;
@@ -22779,7 +22948,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icpr1280_write(offset, &_buf[start..end])?;
+                        .scs_nvic_icpr0280_write(offset, &_buf[start..end])?;
                 }
                 if _start < 648 && _end > 644 {
                     let offset = _start.saturating_sub(644);
@@ -22788,7 +22957,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icpr2284_write(offset, &_buf[start..end])?;
+                        .scs_nvic_icpr1284_write(offset, &_buf[start..end])?;
                 }
                 if _start < 652 && _end > 648 {
                     let offset = _start.saturating_sub(648);
@@ -22797,7 +22966,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icpr3288_write(offset, &_buf[start..end])?;
+                        .scs_nvic_icpr2288_write(offset, &_buf[start..end])?;
                 }
                 if _start < 656 && _end > 652 {
                     let offset = _start.saturating_sub(652);
@@ -22806,7 +22975,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icpr428c_write(offset, &_buf[start..end])?;
+                        .scs_nvic_icpr328c_write(offset, &_buf[start..end])?;
                 }
                 if _start < 660 && _end > 656 {
                     let offset = _start.saturating_sub(656);
@@ -22815,7 +22984,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icpr5290_write(offset, &_buf[start..end])?;
+                        .scs_nvic_icpr4290_write(offset, &_buf[start..end])?;
                 }
                 if _start < 664 && _end > 660 {
                     let offset = _start.saturating_sub(660);
@@ -22824,7 +22993,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icpr6294_write(offset, &_buf[start..end])?;
+                        .scs_nvic_icpr5294_write(offset, &_buf[start..end])?;
                 }
                 if _start < 668 && _end > 664 {
                     let offset = _start.saturating_sub(664);
@@ -22833,19 +23002,19 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_icpr7298_write(offset, &_buf[start..end])?;
+                        .scs_nvic_icpr6298_write(offset, &_buf[start..end])?;
                 }
-            }
-            (764..=795, 765..=796) => {
-                if _start < 768 && _end > 764 {
-                    let offset = _start.saturating_sub(764);
-                    let start = 764u64.saturating_sub(_start) as usize;
-                    let end = ((_end - 764) - offset) as usize;
+                if _start < 672 && _end > 668 {
+                    let offset = _start.saturating_sub(668);
+                    let start = 668u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 668) - offset) as usize;
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iabr02fc_write(offset, &_buf[start..end])?;
+                        .scs_nvic_icpr729c_write(offset, &_buf[start..end])?;
                 }
+            }
+            (768..=799, 769..=800) => {
                 if _start < 772 && _end > 768 {
                     let offset = _start.saturating_sub(768);
                     let start = 768u64.saturating_sub(_start) as usize;
@@ -22853,7 +23022,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iabr1300_write(offset, &_buf[start..end])?;
+                        .scs_nvic_iabr0300_write(offset, &_buf[start..end])?;
                 }
                 if _start < 776 && _end > 772 {
                     let offset = _start.saturating_sub(772);
@@ -22862,7 +23031,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iabr2304_write(offset, &_buf[start..end])?;
+                        .scs_nvic_iabr1304_write(offset, &_buf[start..end])?;
                 }
                 if _start < 780 && _end > 776 {
                     let offset = _start.saturating_sub(776);
@@ -22871,7 +23040,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iabr3308_write(offset, &_buf[start..end])?;
+                        .scs_nvic_iabr2308_write(offset, &_buf[start..end])?;
                 }
                 if _start < 784 && _end > 780 {
                     let offset = _start.saturating_sub(780);
@@ -22880,7 +23049,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iabr430c_write(offset, &_buf[start..end])?;
+                        .scs_nvic_iabr330c_write(offset, &_buf[start..end])?;
                 }
                 if _start < 788 && _end > 784 {
                     let offset = _start.saturating_sub(784);
@@ -22889,7 +23058,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iabr5310_write(offset, &_buf[start..end])?;
+                        .scs_nvic_iabr4310_write(offset, &_buf[start..end])?;
                 }
                 if _start < 792 && _end > 788 {
                     let offset = _start.saturating_sub(788);
@@ -22898,7 +23067,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iabr6314_write(offset, &_buf[start..end])?;
+                        .scs_nvic_iabr5314_write(offset, &_buf[start..end])?;
                 }
                 if _start < 796 && _end > 792 {
                     let offset = _start.saturating_sub(792);
@@ -22907,19 +23076,19 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_iabr7318_write(offset, &_buf[start..end])?;
+                        .scs_nvic_iabr6318_write(offset, &_buf[start..end])?;
                 }
-            }
-            (1020..=1259, 1021..=1260) => {
-                if _start < 1024 && _end > 1020 {
-                    let offset = _start.saturating_sub(1020);
-                    let start = 1020u64.saturating_sub(_start) as usize;
-                    let end = ((_end - 1020) - offset) as usize;
+                if _start < 800 && _end > 796 {
+                    let offset = _start.saturating_sub(796);
+                    let start = 796u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 796) - offset) as usize;
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr03fc_write(offset, &_buf[start..end])?;
+                        .scs_nvic_iabr731c_write(offset, &_buf[start..end])?;
                 }
+            }
+            (1024..=1263, 1025..=1264) => {
                 if _start < 1028 && _end > 1024 {
                     let offset = _start.saturating_sub(1024);
                     let start = 1024u64.saturating_sub(_start) as usize;
@@ -22927,7 +23096,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr1400_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr0400_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1032 && _end > 1028 {
                     let offset = _start.saturating_sub(1028);
@@ -22936,7 +23105,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr2404_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr1404_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1036 && _end > 1032 {
                     let offset = _start.saturating_sub(1032);
@@ -22945,7 +23114,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr3408_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr2408_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1040 && _end > 1036 {
                     let offset = _start.saturating_sub(1036);
@@ -22954,7 +23123,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr440c_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr340c_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1044 && _end > 1040 {
                     let offset = _start.saturating_sub(1040);
@@ -22963,7 +23132,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr5410_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr4410_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1048 && _end > 1044 {
                     let offset = _start.saturating_sub(1044);
@@ -22972,7 +23141,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr6414_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr5414_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1052 && _end > 1048 {
                     let offset = _start.saturating_sub(1048);
@@ -22981,7 +23150,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr7418_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr6418_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1056 && _end > 1052 {
                     let offset = _start.saturating_sub(1052);
@@ -22990,7 +23159,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr841c_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr741c_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1060 && _end > 1056 {
                     let offset = _start.saturating_sub(1056);
@@ -22999,7 +23168,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr9420_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr8420_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1064 && _end > 1060 {
                     let offset = _start.saturating_sub(1060);
@@ -23008,7 +23177,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr10424_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr9424_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1068 && _end > 1064 {
                     let offset = _start.saturating_sub(1064);
@@ -23017,7 +23186,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr11428_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr10428_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1072 && _end > 1068 {
                     let offset = _start.saturating_sub(1068);
@@ -23026,7 +23195,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr1242c_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr1142c_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1076 && _end > 1072 {
                     let offset = _start.saturating_sub(1072);
@@ -23035,7 +23204,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr13430_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr12430_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1080 && _end > 1076 {
                     let offset = _start.saturating_sub(1076);
@@ -23044,7 +23213,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr14434_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr13434_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1084 && _end > 1080 {
                     let offset = _start.saturating_sub(1080);
@@ -23053,7 +23222,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr15438_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr14438_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1088 && _end > 1084 {
                     let offset = _start.saturating_sub(1084);
@@ -23062,7 +23231,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr1643c_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr1543c_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1092 && _end > 1088 {
                     let offset = _start.saturating_sub(1088);
@@ -23071,7 +23240,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr17440_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr16440_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1096 && _end > 1092 {
                     let offset = _start.saturating_sub(1092);
@@ -23080,7 +23249,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr18444_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr17444_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1100 && _end > 1096 {
                     let offset = _start.saturating_sub(1096);
@@ -23089,7 +23258,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr19448_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr18448_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1104 && _end > 1100 {
                     let offset = _start.saturating_sub(1100);
@@ -23098,7 +23267,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr2044c_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr1944c_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1108 && _end > 1104 {
                     let offset = _start.saturating_sub(1104);
@@ -23107,7 +23276,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr21450_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr20450_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1112 && _end > 1108 {
                     let offset = _start.saturating_sub(1108);
@@ -23116,7 +23285,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr22454_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr21454_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1116 && _end > 1112 {
                     let offset = _start.saturating_sub(1112);
@@ -23125,7 +23294,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr23458_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr22458_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1120 && _end > 1116 {
                     let offset = _start.saturating_sub(1116);
@@ -23134,7 +23303,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr2445c_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr2345c_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1124 && _end > 1120 {
                     let offset = _start.saturating_sub(1120);
@@ -23143,7 +23312,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr25460_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr24460_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1128 && _end > 1124 {
                     let offset = _start.saturating_sub(1124);
@@ -23152,7 +23321,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr26464_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr25464_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1132 && _end > 1128 {
                     let offset = _start.saturating_sub(1128);
@@ -23161,7 +23330,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr27468_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr26468_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1136 && _end > 1132 {
                     let offset = _start.saturating_sub(1132);
@@ -23170,7 +23339,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr2846c_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr2746c_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1140 && _end > 1136 {
                     let offset = _start.saturating_sub(1136);
@@ -23179,7 +23348,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr29470_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr28470_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1144 && _end > 1140 {
                     let offset = _start.saturating_sub(1140);
@@ -23188,7 +23357,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr30474_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr29474_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1148 && _end > 1144 {
                     let offset = _start.saturating_sub(1144);
@@ -23197,7 +23366,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr31478_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr30478_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1152 && _end > 1148 {
                     let offset = _start.saturating_sub(1148);
@@ -23206,7 +23375,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr3247c_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr3147c_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1156 && _end > 1152 {
                     let offset = _start.saturating_sub(1152);
@@ -23215,7 +23384,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr33480_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr32480_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1160 && _end > 1156 {
                     let offset = _start.saturating_sub(1156);
@@ -23224,7 +23393,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr34484_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr33484_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1164 && _end > 1160 {
                     let offset = _start.saturating_sub(1160);
@@ -23233,7 +23402,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr35488_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr34488_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1168 && _end > 1164 {
                     let offset = _start.saturating_sub(1164);
@@ -23242,7 +23411,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr3648c_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr3548c_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1172 && _end > 1168 {
                     let offset = _start.saturating_sub(1168);
@@ -23251,7 +23420,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr37490_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr36490_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1176 && _end > 1172 {
                     let offset = _start.saturating_sub(1172);
@@ -23260,7 +23429,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr38494_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr37494_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1180 && _end > 1176 {
                     let offset = _start.saturating_sub(1176);
@@ -23269,7 +23438,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr39498_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr38498_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1184 && _end > 1180 {
                     let offset = _start.saturating_sub(1180);
@@ -23278,7 +23447,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr4049c_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr3949c_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1188 && _end > 1184 {
                     let offset = _start.saturating_sub(1184);
@@ -23287,7 +23456,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr414a0_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr404a0_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1192 && _end > 1188 {
                     let offset = _start.saturating_sub(1188);
@@ -23296,7 +23465,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr424a4_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr414a4_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1196 && _end > 1192 {
                     let offset = _start.saturating_sub(1192);
@@ -23305,7 +23474,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr434a8_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr424a8_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1200 && _end > 1196 {
                     let offset = _start.saturating_sub(1196);
@@ -23314,7 +23483,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr444ac_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr434ac_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1204 && _end > 1200 {
                     let offset = _start.saturating_sub(1200);
@@ -23323,7 +23492,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr454b0_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr444b0_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1208 && _end > 1204 {
                     let offset = _start.saturating_sub(1204);
@@ -23332,7 +23501,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr464b4_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr454b4_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1212 && _end > 1208 {
                     let offset = _start.saturating_sub(1208);
@@ -23341,7 +23510,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr474b8_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr464b8_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1216 && _end > 1212 {
                     let offset = _start.saturating_sub(1212);
@@ -23350,7 +23519,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr484bc_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr474bc_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1220 && _end > 1216 {
                     let offset = _start.saturating_sub(1216);
@@ -23359,7 +23528,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr494c0_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr484c0_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1224 && _end > 1220 {
                     let offset = _start.saturating_sub(1220);
@@ -23368,7 +23537,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr504c4_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr494c4_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1228 && _end > 1224 {
                     let offset = _start.saturating_sub(1224);
@@ -23377,7 +23546,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr514c8_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr504c8_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1232 && _end > 1228 {
                     let offset = _start.saturating_sub(1228);
@@ -23386,7 +23555,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr524cc_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr514cc_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1236 && _end > 1232 {
                     let offset = _start.saturating_sub(1232);
@@ -23395,7 +23564,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr534d0_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr524d0_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1240 && _end > 1236 {
                     let offset = _start.saturating_sub(1236);
@@ -23404,7 +23573,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr544d4_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr534d4_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1244 && _end > 1240 {
                     let offset = _start.saturating_sub(1240);
@@ -23413,7 +23582,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr554d8_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr544d8_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1248 && _end > 1244 {
                     let offset = _start.saturating_sub(1244);
@@ -23422,7 +23591,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr564dc_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr554dc_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1252 && _end > 1248 {
                     let offset = _start.saturating_sub(1248);
@@ -23431,7 +23600,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr574e0_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr564e0_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1256 && _end > 1252 {
                     let offset = _start.saturating_sub(1252);
@@ -23440,7 +23609,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr584e4_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr574e4_write(offset, &_buf[start..end])?;
                 }
                 if _start < 1260 && _end > 1256 {
                     let offset = _start.saturating_sub(1256);
@@ -23449,27 +23618,21 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_nvic_ipr594e8_write(offset, &_buf[start..end])?;
+                        .scs_nvic_ipr584e8_write(offset, &_buf[start..end])?;
+                }
+                if _start < 1264 && _end > 1260 {
+                    let offset = _start.saturating_sub(1260);
+                    let start = 1260u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 1260) - offset) as usize;
+                    self.0
+                        .lock()
+                        .unwrap()
+                        .scs_nvic_ipr594ec_write(offset, &_buf[start..end])?;
                 }
             }
-            (3324..=3383, 3325..=3384) => {
-                if _start < 3328 && _end > 3324 {
-                    let offset = _start.saturating_sub(3324);
-                    let start = 3324u64.saturating_sub(_start) as usize;
-                    let end = ((_end - 3324) - offset) as usize;
-                    self.0
-                        .lock()
-                        .unwrap()
-                        .scs_icsrcfc_write(offset, &_buf[start..end])?;
-                }
+            (3328..=3443, 3329..=3444) => {
                 if _start < 3332 && _end > 3328 {
-                    let offset = _start.saturating_sub(3328);
-                    let start = 3328u64.saturating_sub(_start) as usize;
-                    let end = ((_end - 3328) - offset) as usize;
-                    self.0
-                        .lock()
-                        .unwrap()
-                        .scs_vtord00_write(offset, &_buf[start..end])?;
+                    return Err(MemError::WriteViolation);
                 }
                 if _start < 3336 && _end > 3332 {
                     let offset = _start.saturating_sub(3332);
@@ -23478,7 +23641,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_aircrd04_write(offset, &_buf[start..end])?;
+                        .scs_icsrd04_write(offset, &_buf[start..end])?;
                 }
                 if _start < 3340 && _end > 3336 {
                     let offset = _start.saturating_sub(3336);
@@ -23487,7 +23650,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_scrd08_write(offset, &_buf[start..end])?;
+                        .scs_vtord08_write(offset, &_buf[start..end])?;
                 }
                 if _start < 3344 && _end > 3340 {
                     let offset = _start.saturating_sub(3340);
@@ -23496,7 +23659,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_ccrd0c_write(offset, &_buf[start..end])?;
+                        .scs_aircrd0c_write(offset, &_buf[start..end])?;
                 }
                 if _start < 3348 && _end > 3344 {
                     let offset = _start.saturating_sub(3344);
@@ -23505,7 +23668,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_shpr1d10_write(offset, &_buf[start..end])?;
+                        .scs_scrd10_write(offset, &_buf[start..end])?;
                 }
                 if _start < 3352 && _end > 3348 {
                     let offset = _start.saturating_sub(3348);
@@ -23514,7 +23677,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_shpr2d14_write(offset, &_buf[start..end])?;
+                        .scs_ccrd14_write(offset, &_buf[start..end])?;
                 }
                 if _start < 3356 && _end > 3352 {
                     let offset = _start.saturating_sub(3352);
@@ -23523,7 +23686,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_shpr3d18_write(offset, &_buf[start..end])?;
+                        .scs_shpr1d18_write(offset, &_buf[start..end])?;
                 }
                 if _start < 3360 && _end > 3356 {
                     let offset = _start.saturating_sub(3356);
@@ -23532,7 +23695,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_shcsrd1c_write(offset, &_buf[start..end])?;
+                        .scs_shpr2d1c_write(offset, &_buf[start..end])?;
                 }
                 if _start < 3364 && _end > 3360 {
                     let offset = _start.saturating_sub(3360);
@@ -23541,7 +23704,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_cfsrd20_write(offset, &_buf[start..end])?;
+                        .scs_shpr3d20_write(offset, &_buf[start..end])?;
                 }
                 if _start < 3368 && _end > 3364 {
                     let offset = _start.saturating_sub(3364);
@@ -23550,7 +23713,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_hfsrd24_write(offset, &_buf[start..end])?;
+                        .scs_shcsrd24_write(offset, &_buf[start..end])?;
                 }
                 if _start < 3372 && _end > 3368 {
                     let offset = _start.saturating_sub(3368);
@@ -23559,7 +23722,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_dfsrd28_write(offset, &_buf[start..end])?;
+                        .scs_cfsrd28_write(offset, &_buf[start..end])?;
                 }
                 if _start < 3376 && _end > 3372 {
                     let offset = _start.saturating_sub(3372);
@@ -23568,7 +23731,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_mmfard2c_write(offset, &_buf[start..end])?;
+                        .scs_hfsrd2c_write(offset, &_buf[start..end])?;
                 }
                 if _start < 3380 && _end > 3376 {
                     let offset = _start.saturating_sub(3376);
@@ -23577,7 +23740,7 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_bfard30_write(offset, &_buf[start..end])?;
+                        .scs_dfsrd30_write(offset, &_buf[start..end])?;
                 }
                 if _start < 3384 && _end > 3380 {
                     let offset = _start.saturating_sub(3380);
@@ -23586,40 +23749,227 @@ impl icicle_vm::cpu::mem::IoMemory for Scs {
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_afsrd34_write(offset, &_buf[start..end])?;
+                        .scs_mmfard34_write(offset, &_buf[start..end])?;
                 }
-            }
-            (3456..=3459, 3457..=3460) => {
-                if _start < 3460 && _end > 3456 {
-                    let offset = _start.saturating_sub(3456);
-                    let start = 3456u64.saturating_sub(_start) as usize;
-                    let end = ((_end - 3456) - offset) as usize;
+                if _start < 3388 && _end > 3384 {
+                    let offset = _start.saturating_sub(3384);
+                    let start = 3384u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3384) - offset) as usize;
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_cpacrd80_write(offset, &_buf[start..end])?;
+                        .scs_bfard38_write(offset, &_buf[start..end])?;
                 }
-            }
-            (3572..=3575, 3573..=3576) => {
-                if _start < 3576 && _end > 3572 {
-                    let offset = _start.saturating_sub(3572);
-                    let start = 3572u64.saturating_sub(_start) as usize;
-                    let end = ((_end - 3572) - offset) as usize;
+                if _start < 3392 && _end > 3388 {
+                    let offset = _start.saturating_sub(3388);
+                    let start = 3388u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3388) - offset) as usize;
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_demcrdf4_write(offset, &_buf[start..end])?;
+                        .scs_afsrd3c_write(offset, &_buf[start..end])?;
+                }
+                if _start < 3396 && _end > 3392 {
+                    return Err(MemError::WriteViolation);
+                }
+                if _start < 3400 && _end > 3396 {
+                    return Err(MemError::WriteViolation);
+                }
+                if _start < 3404 && _end > 3400 {
+                    return Err(MemError::WriteViolation);
+                }
+                if _start < 3408 && _end > 3404 {
+                    return Err(MemError::WriteViolation);
+                }
+                if _start < 3412 && _end > 3408 {
+                    return Err(MemError::WriteViolation);
+                }
+                if _start < 3416 && _end > 3412 {
+                    return Err(MemError::WriteViolation);
+                }
+                if _start < 3420 && _end > 3416 {
+                    return Err(MemError::WriteViolation);
+                }
+                if _start < 3424 && _end > 3420 {
+                    return Err(MemError::WriteViolation);
+                }
+                if _start < 3428 && _end > 3424 {
+                    return Err(MemError::WriteViolation);
+                }
+                if _start < 3432 && _end > 3428 {
+                    return Err(MemError::WriteViolation);
+                }
+                if _start < 3436 && _end > 3432 {
+                    return Err(MemError::WriteViolation);
+                }
+                if _start < 3440 && _end > 3436 {
+                    return Err(MemError::WriteViolation);
+                }
+                if _start < 3444 && _end > 3440 {
+                    return Err(MemError::WriteViolation);
                 }
             }
-            (3832..=3835, 3833..=3836) => {
-                if _start < 3836 && _end > 3832 {
-                    let offset = _start.saturating_sub(3832);
-                    let start = 3832u64.saturating_sub(_start) as usize;
-                    let end = ((_end - 3832) - offset) as usize;
+            (3464..=3467, 3465..=3468) => {
+                if _start < 3468 && _end > 3464 {
+                    let offset = _start.saturating_sub(3464);
+                    let start = 3464u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3464) - offset) as usize;
                     self.0
                         .lock()
                         .unwrap()
-                        .scs_stiref8_write(offset, &_buf[start..end])?;
+                        .scs_cpacrd88_write(offset, &_buf[start..end])?;
+                }
+            }
+            (3472..=3515, 3473..=3516) => {
+                if _start < 3476 && _end > 3472 {
+                    return Err(MemError::WriteViolation);
+                }
+                if _start < 3480 && _end > 3476 {
+                    let offset = _start.saturating_sub(3476);
+                    let start = 3476u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3476) - offset) as usize;
+                    self.0
+                        .lock()
+                        .unwrap()
+                        .scs_mpu_ctrld94_write(offset, &_buf[start..end])?;
+                }
+                if _start < 3484 && _end > 3480 {
+                    let offset = _start.saturating_sub(3480);
+                    let start = 3480u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3480) - offset) as usize;
+                    self.0
+                        .lock()
+                        .unwrap()
+                        .scs_mpu_rnrd98_write(offset, &_buf[start..end])?;
+                }
+                if _start < 3488 && _end > 3484 {
+                    let offset = _start.saturating_sub(3484);
+                    let start = 3484u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3484) - offset) as usize;
+                    self.0
+                        .lock()
+                        .unwrap()
+                        .scs_mpu_rbard9c_write(offset, &_buf[start..end])?;
+                }
+                if _start < 3492 && _end > 3488 {
+                    let offset = _start.saturating_sub(3488);
+                    let start = 3488u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3488) - offset) as usize;
+                    self.0
+                        .lock()
+                        .unwrap()
+                        .scs_mpu_rasrda0_write(offset, &_buf[start..end])?;
+                }
+                if _start < 3496 && _end > 3492 {
+                    let offset = _start.saturating_sub(3492);
+                    let start = 3492u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3492) - offset) as usize;
+                    self.0
+                        .lock()
+                        .unwrap()
+                        .scs_mpu_rbar_a1da4_write(offset, &_buf[start..end])?;
+                }
+                if _start < 3500 && _end > 3496 {
+                    let offset = _start.saturating_sub(3496);
+                    let start = 3496u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3496) - offset) as usize;
+                    self.0
+                        .lock()
+                        .unwrap()
+                        .scs_mpu_rasr_a1da8_write(offset, &_buf[start..end])?;
+                }
+                if _start < 3504 && _end > 3500 {
+                    let offset = _start.saturating_sub(3500);
+                    let start = 3500u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3500) - offset) as usize;
+                    self.0
+                        .lock()
+                        .unwrap()
+                        .scs_mpu_rbar_a2dac_write(offset, &_buf[start..end])?;
+                }
+                if _start < 3508 && _end > 3504 {
+                    let offset = _start.saturating_sub(3504);
+                    let start = 3504u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3504) - offset) as usize;
+                    self.0
+                        .lock()
+                        .unwrap()
+                        .scs_mpu_rasr_a2db0_write(offset, &_buf[start..end])?;
+                }
+                if _start < 3512 && _end > 3508 {
+                    let offset = _start.saturating_sub(3508);
+                    let start = 3508u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3508) - offset) as usize;
+                    self.0
+                        .lock()
+                        .unwrap()
+                        .scs_mpu_rbar_a3db4_write(offset, &_buf[start..end])?;
+                }
+                if _start < 3516 && _end > 3512 {
+                    let offset = _start.saturating_sub(3512);
+                    let start = 3512u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3512) - offset) as usize;
+                    self.0
+                        .lock()
+                        .unwrap()
+                        .scs_mpu_rasr_a3db8_write(offset, &_buf[start..end])?;
+                }
+            }
+            (3580..=3583, 3581..=3584) => {
+                if _start < 3584 && _end > 3580 {
+                    let offset = _start.saturating_sub(3580);
+                    let start = 3580u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3580) - offset) as usize;
+                    self.0
+                        .lock()
+                        .unwrap()
+                        .scs_demcrdfc_write(offset, &_buf[start..end])?;
+                }
+            }
+            (3840..=3843, 3841..=3844) => {
+                if _start < 3844 && _end > 3840 {
+                    let offset = _start.saturating_sub(3840);
+                    let start = 3840u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3840) - offset) as usize;
+                    self.0
+                        .lock()
+                        .unwrap()
+                        .scs_stirf00_write(offset, &_buf[start..end])?;
+                }
+            }
+            (3892..=3911, 3893..=3912) => {
+                if _start < 3896 && _end > 3892 {
+                    let offset = _start.saturating_sub(3892);
+                    let start = 3892u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3892) - offset) as usize;
+                    self.0
+                        .lock()
+                        .unwrap()
+                        .scs_fpccrf34_write(offset, &_buf[start..end])?;
+                }
+                if _start < 3900 && _end > 3896 {
+                    let offset = _start.saturating_sub(3896);
+                    let start = 3896u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3896) - offset) as usize;
+                    self.0
+                        .lock()
+                        .unwrap()
+                        .scs_fpcarf38_write(offset, &_buf[start..end])?;
+                }
+                if _start < 3904 && _end > 3900 {
+                    let offset = _start.saturating_sub(3900);
+                    let start = 3900u64.saturating_sub(_start) as usize;
+                    let end = ((_end - 3900) - offset) as usize;
+                    self.0
+                        .lock()
+                        .unwrap()
+                        .scs_fpdscrf3c_write(offset, &_buf[start..end])?;
+                }
+                if _start < 3908 && _end > 3904 {
+                    return Err(MemError::WriteViolation);
+                }
+                if _start < 3912 && _end > 3908 {
+                    return Err(MemError::WriteViolation);
                 }
             }
             _ => return Err(MemError::Unmapped),

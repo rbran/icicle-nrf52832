@@ -91,7 +91,6 @@ pub struct Peripherals {
     // moved into p0
     //#[doc = "Peripheral at 0x40006000"]
     //pub gpiote: gpiote::Gpiote,
-
     #[doc = "Peripheral at 0x40007000"]
     pub saadc: saadc::Saadc,
     #[doc = "Peripheral at 0x40008000, 0x40009000, 0x4000a000"]

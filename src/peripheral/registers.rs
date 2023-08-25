@@ -25910,29 +25910,27 @@ impl super::Peripherals {
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_fpccr0 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_ictr4 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_fpccr0_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_ictr4_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_fpccr0_lspact_read()?);
-        _value |= u32::from(self.scs.scs_fpccr0_user_read()?) << 1u32;
-        _value |= u32::from(self.scs.scs_fpccr0_clksource_read()?) << 2u32;
-        _value |= u32::from(self.scs.scs_fpccr0_thread_read()?) << 3u32;
-        _value |= u32::from(self.scs.scs_fpccr0_hfrdy_read()?) << 4u32;
-        _value |= u32::from(self.scs.scs_fpccr0_mmrdy_read()?) << 5u32;
-        _value |= u32::from(self.scs.scs_fpccr0_bfrdy_read()?) << 6u32;
-        _value |= u32::from(self.scs.scs_fpccr0_monrdy_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_fpccr0_disoofp_read()?) << 9u32;
-        _value |= u32::from(self.scs.scs_fpccr0_countflag_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_fpccr0_variant_read()?) << 20u32;
-        _value |= u32::from(self.scs.scs_fpccr0_implementer_read()?) << 24u32;
-        _value |= u32::from(self.scs.scs_fpccr0_lspen_read()?) << 30u32;
-        _value |= u32::from(self.scs.scs_fpccr0_aspen_read()?) << 31u32;
+        _value |= u32::from(self.scs.scs_ictr4_intlinesnum_read()?);
         Ok(_value)
     }
-    #[doc = "Write scs_fpccr0 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_actlr8 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_fpccr0_write(
+    pub(crate) fn scs_actlr8_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |= u32::from(self.scs.scs_actlr8_dismcycint_read()?);
+        _value |= u32::from(self.scs.scs_actlr8_disdefwbuf_read()?) << 1u32;
+        _value |= u32::from(self.scs.scs_actlr8_disfold_read()?) << 2u32;
+        _value |= u32::from(self.scs.scs_actlr8_disfpca_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_actlr8_disoofp_read()?) << 9u32;
+        Ok(_value)
+    }
+    #[doc = "Write scs_actlr8 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_actlr8_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -25941,7 +25939,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_fpccr0_lspact_write(
+            self.scs.scs_actlr8_dismcycint_write(
                 ((_value[_i] >> 0) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -25949,7 +25947,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_fpccr0_user_write(
+            self.scs.scs_actlr8_disdefwbuf_write(
                 ((_value[_i] >> 1) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -25957,47 +25955,15 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_fpccr0_clksource_write(
+            self.scs.scs_actlr8_disfold_write(
                 ((_value[_i] >> 2) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
             )?;
         }
-        if (_start.._end).contains(&0) {
-            let _i = (0 - _start) as usize;
-            self.scs.scs_fpccr0_thread_write(
-                ((_value[_i] >> 3) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&0) {
-            let _i = (0 - _start) as usize;
-            self.scs.scs_fpccr0_hfrdy_write(
-                ((_value[_i] >> 4) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&0) {
-            let _i = (0 - _start) as usize;
-            self.scs.scs_fpccr0_mmrdy_write(
-                ((_value[_i] >> 5) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&0) {
-            let _i = (0 - _start) as usize;
-            self.scs.scs_fpccr0_bfrdy_write(
-                ((_value[_i] >> 6) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_fpccr0_monrdy_write(
+            self.scs.scs_actlr8_disfpca_write(
                 ((_value[_i] >> 0) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -26005,66 +25971,27 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_fpccr0_disoofp_write(
+            self.scs.scs_actlr8_disoofp_write(
                 ((_value[_i] >> 1) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&2) {
-            let _i = (2 - _start) as usize;
-            self.scs.scs_fpccr0_countflag_write(
-                ((_value[_i] >> 0) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&2) {
-            let _i = (2 - _start) as usize;
-            self.scs.scs_fpccr0_variant_write(
-                ((_value[_i] >> 4) & 15u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&3) {
-            let _i = (3 - _start) as usize;
-            self.scs.scs_fpccr0_implementer_write(
-                ((_value[_i] >> 0) & 255u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&3) {
-            let _i = (3 - _start) as usize;
-            self.scs.scs_fpccr0_lspen_write(
-                ((_value[_i] >> 6) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&3) {
-            let _i = (3 - _start) as usize;
-            self.scs.scs_fpccr0_aspen_write(
-                ((_value[_i] >> 7) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
             )?;
         }
         Ok(())
     }
-    #[doc = "Read scs_mpu_ctrl4 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_stcsr10 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_mpu_ctrl4_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_stcsr10_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_mpu_ctrl4_enable_read()?);
-        _value |= u32::from(self.scs.scs_mpu_ctrl4_hfnmiena_read()?) << 1u32;
-        _value |= u32::from(self.scs.scs_mpu_ctrl4_privdefena_read()?) << 2u32;
+        _value |= u32::from(self.scs.scs_stcsr10_enable_read()?);
+        _value |= u32::from(self.scs.scs_stcsr10_tickint_read()?) << 1u32;
+        _value |= u32::from(self.scs.scs_stcsr10_clksource_read()?) << 2u32;
+        _value |= u32::from(self.scs.scs_stcsr10_countflag_read()?) << 16u32;
         Ok(_value)
     }
-    #[doc = "Write scs_mpu_ctrl4 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_stcsr10 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_mpu_ctrl4_write(
+    pub(crate) fn scs_stcsr10_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -26073,7 +26000,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_mpu_ctrl4_enable_write(
+            self.scs.scs_stcsr10_enable_write(
                 ((_value[_i] >> 0) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -26081,7 +26008,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_mpu_ctrl4_hfnmiena_write(
+            self.scs.scs_stcsr10_tickint_write(
                 ((_value[_i] >> 1) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -26089,289 +26016,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_mpu_ctrl4_privdefena_write(
-                ((_value[_i] >> 2) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        Ok(())
-    }
-    #[doc = "Read scs_mpu_rnr8 from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_mpu_rnr8_read(&mut self) -> MemResult<u32> {
-        let mut _value = 0;
-        _value |= u32::from(self.scs.scs_mpu_rnr8_region_read()?);
-        _value |= u32::from(self.scs.scs_mpu_rnr8_rmode_read()?) << 22u32;
-        _value |= u32::from(self.scs.scs_mpu_rnr8_fz_read()?) << 24u32;
-        _value |= u32::from(self.scs.scs_mpu_rnr8_dn_read()?) << 25u32;
-        _value |= u32::from(self.scs.scs_mpu_rnr8_ahp_read()?) << 26u32;
-        Ok(_value)
-    }
-    #[doc = "Write scs_mpu_rnr8 from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_mpu_rnr8_write(
-        &mut self,
-        _start: u64,
-        _value: &[u8],
-    ) -> MemResult<()> {
-        debug_assert!(!_value.is_empty());
-        let _end = _start + _value.len() as u64;
-        if (_start.._end).contains(&0) {
-            let _i = (0 - _start) as usize;
-            self.scs.scs_mpu_rnr8_region_write(
-                ((_value[_i] >> 0) & 255u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&2) {
-            let _i = (2 - _start) as usize;
-            self.scs.scs_mpu_rnr8_rmode_write(
-                ((_value[_i] >> 6) & 3u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&3) {
-            let _i = (3 - _start) as usize;
-            self.scs.scs_mpu_rnr8_fz_write(
-                ((_value[_i] >> 0) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&3) {
-            let _i = (3 - _start) as usize;
-            self.scs.scs_mpu_rnr8_dn_write(
-                ((_value[_i] >> 1) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&3) {
-            let _i = (3 - _start) as usize;
-            self.scs.scs_mpu_rnr8_ahp_write(
-                ((_value[_i] >> 2) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        Ok(())
-    }
-    #[doc = "Read scs_mpu_rbarc from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_mpu_rbarc_read(&mut self) -> MemResult<u32> {
-        let mut _value = 0;
-        _value |= u32::from(u8::from(self.scs.scs_mpu_rbarc_region_read()?));
-        _value |= u32::from(self.scs.scs_mpu_rbarc_valid_read()?) << 4u32;
-        _value |= u32::from(self.scs.scs_mpu_rbarc_addr_read()?) << 5u32;
-        _value |= u32::from(u8::from(
-            self.scs.scs_mpu_rbarc_double_precision_read()?,
-        )) << 8u32;
-        _value |= u32::from(u8::from(
-            self.scs.scs_mpu_rbarc_fp_exception_trapping_read()?,
-        )) << 12u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_mpu_rbarc_divide_read()?)) << 16u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_mpu_rbarc_square_root_read()?))
-                << 20u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_mpu_rbarc_short_vectors_read()?))
-                << 24u32;
-        _value |= u32::from(u8::from(
-            self.scs.scs_mpu_rbarc_fp_rounding_modes_read()?,
-        )) << 28u32;
-        _value |= u32::from(self.scs.scs_mpu_rbarc_skew_read()?) << 30u32;
-        _value |= u32::from(self.scs.scs_mpu_rbarc_noref_read()?) << 31u32;
-        Ok(_value)
-    }
-    #[doc = "Write scs_mpu_rbarc from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_mpu_rbarc_write(
-        &mut self,
-        _start: u64,
-        _value: &[u8],
-    ) -> MemResult<()> {
-        debug_assert!(!_value.is_empty());
-        let _end = _start + _value.len() as u64;
-        if (_start.._end).contains(&0) {
-            let _i = (0 - _start) as usize;
-            self.scs.scs_mpu_rbarc_region_write(
-                ((_value[_i] >> 0) & 15u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&0) {
-            let _i = (0 - _start) as usize;
-            self.scs.scs_mpu_rbarc_valid_write(
-                ((_value[_i] >> 4) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if _start <= 0 && _end >= 4 {
-            let mut _extracted: u32 = 0;
-            _extracted |= ((_value[(0 - _start) as usize] >> 5) & 7u8) as u32;
-            for byte_i in 0..3 {
-                _extracted |= (_value[((0 + byte_i + 1) - _start) as usize]
-                    as u32)
-                    << (5 + (byte_i * 8));
-            }
-            self.scs.scs_mpu_rbarc_addr_write(
-                _extracted
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        } else if (_start > 0 && _start < 4) || (_end > 0 && _end < 4) {
-            return Err(MemError::WriteViolation);
-        }
-        if (_start.._end).contains(&1) {
-            let _i = (1 - _start) as usize;
-            self.scs.scs_mpu_rbarc_double_precision_write(
-                ((_value[_i] >> 0) & 15u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&1) {
-            let _i = (1 - _start) as usize;
-            self.scs.scs_mpu_rbarc_fp_exception_trapping_write(
-                ((_value[_i] >> 4) & 15u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&2) {
-            let _i = (2 - _start) as usize;
-            self.scs.scs_mpu_rbarc_divide_write(
-                ((_value[_i] >> 0) & 15u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&2) {
-            let _i = (2 - _start) as usize;
-            self.scs.scs_mpu_rbarc_square_root_write(
-                ((_value[_i] >> 4) & 15u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&3) {
-            let _i = (3 - _start) as usize;
-            self.scs.scs_mpu_rbarc_short_vectors_write(
-                ((_value[_i] >> 0) & 15u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&3) {
-            let _i = (3 - _start) as usize;
-            self.scs.scs_mpu_rbarc_fp_rounding_modes_write(
-                ((_value[_i] >> 4) & 15u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&3) {
-            let _i = (3 - _start) as usize;
-            self.scs.scs_mpu_rbarc_skew_write(
-                ((_value[_i] >> 6) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&3) {
-            let _i = (3 - _start) as usize;
-            self.scs.scs_mpu_rbarc_noref_write(
-                ((_value[_i] >> 7) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        Ok(())
-    }
-    #[doc = "Read scs_mpu_rasr10 from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_mpu_rasr10_read(&mut self) -> MemResult<u32> {
-        let mut _value = 0;
-        _value |= u32::from(self.scs.scs_mpu_rasr10_enable_read()?);
-        _value |= u32::from(self.scs.scs_mpu_rasr10_size_read()?) << 1u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_mpu_rasr10_d_nan_read()?)) << 4u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr10_srd_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr10_b_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr10_c_read()?) << 17u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr10_s_read()?) << 18u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr10_tex_read()?) << 19u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_mpu_rasr10_ap_read()?)) << 24u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr10_xn_read()?) << 28u32;
-        Ok(_value)
-    }
-    #[doc = "Write scs_mpu_rasr10 from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_mpu_rasr10_write(
-        &mut self,
-        _start: u64,
-        _value: &[u8],
-    ) -> MemResult<()> {
-        debug_assert!(!_value.is_empty());
-        let _end = _start + _value.len() as u64;
-        if (_start.._end).contains(&0) {
-            let _i = (0 - _start) as usize;
-            self.scs.scs_mpu_rasr10_enable_write(
-                ((_value[_i] >> 0) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&0) {
-            let _i = (0 - _start) as usize;
-            self.scs.scs_mpu_rasr10_size_write(
-                ((_value[_i] >> 1) & 31u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&0) {
-            let _i = (0 - _start) as usize;
-            self.scs.scs_mpu_rasr10_d_nan_write(
-                ((_value[_i] >> 4) & 15u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&1) {
-            let _i = (1 - _start) as usize;
-            self.scs.scs_mpu_rasr10_srd_write(
-                ((_value[_i] >> 0) & 255u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&2) {
-            let _i = (2 - _start) as usize;
-            self.scs.scs_mpu_rasr10_b_write(
-                ((_value[_i] >> 0) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&2) {
-            let _i = (2 - _start) as usize;
-            self.scs.scs_mpu_rasr10_c_write(
-                ((_value[_i] >> 1) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&2) {
-            let _i = (2 - _start) as usize;
-            self.scs.scs_mpu_rasr10_s_write(
+            self.scs.scs_stcsr10_clksource_write(
                 ((_value[_i] >> 2) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -26379,662 +26024,91 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_mpu_rasr10_tex_write(
-                ((_value[_i] >> 3) & 7u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&3) {
-            let _i = (3 - _start) as usize;
-            self.scs.scs_mpu_rasr10_ap_write(
-                ((_value[_i] >> 0) & 7u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&3) {
-            let _i = (3 - _start) as usize;
-            self.scs.scs_mpu_rasr10_xn_write(
-                ((_value[_i] >> 4) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        Ok(())
-    }
-    #[doc = "Read scs_mpu_rbar_a114 from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_mpu_rbar_a114_read(&mut self) -> MemResult<u32> {
-        let mut _value = 0;
-        _value |= u32::from(self.scs.scs_mpu_rbar_a114_region_read()?);
-        _value |= u32::from(self.scs.scs_mpu_rbar_a114_valid_read()?) << 4u32;
-        _value |= u32::from(self.scs.scs_mpu_rbar_a114_addr_read()?) << 5u32;
-        Ok(_value)
-    }
-    #[doc = "Write scs_mpu_rbar_a114 from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_mpu_rbar_a114_write(
-        &mut self,
-        _start: u64,
-        _value: &[u8],
-    ) -> MemResult<()> {
-        debug_assert!(!_value.is_empty());
-        let _end = _start + _value.len() as u64;
-        if (_start.._end).contains(&0) {
-            let _i = (0 - _start) as usize;
-            self.scs.scs_mpu_rbar_a114_region_write(
-                ((_value[_i] >> 0) & 15u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&0) {
-            let _i = (0 - _start) as usize;
-            self.scs.scs_mpu_rbar_a114_valid_write(
-                ((_value[_i] >> 4) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if _start <= 0 && _end >= 4 {
-            let mut _extracted: u32 = 0;
-            _extracted |= ((_value[(0 - _start) as usize] >> 5) & 7u8) as u32;
-            for byte_i in 0..3 {
-                _extracted |= (_value[((0 + byte_i + 1) - _start) as usize]
-                    as u32)
-                    << (5 + (byte_i * 8));
-            }
-            self.scs.scs_mpu_rbar_a114_addr_write(
-                _extracted
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        } else if (_start > 0 && _start < 4) || (_end > 0 && _end < 4) {
-            return Err(MemError::WriteViolation);
-        }
-        Ok(())
-    }
-    #[doc = "Read scs_mpu_rasr_a118 from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_mpu_rasr_a118_read(&mut self) -> MemResult<u32> {
-        let mut _value = 0;
-        _value |= u32::from(self.scs.scs_mpu_rasr_a118_enable_read()?);
-        _value |= u32::from(self.scs.scs_mpu_rasr_a118_size_read()?) << 1u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr_a118_srd_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr_a118_b_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr_a118_c_read()?) << 17u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr_a118_s_read()?) << 18u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr_a118_tex_read()?) << 19u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_mpu_rasr_a118_ap_read()?)) << 24u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr_a118_xn_read()?) << 28u32;
-        Ok(_value)
-    }
-    #[doc = "Write scs_mpu_rasr_a118 from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_mpu_rasr_a118_write(
-        &mut self,
-        _start: u64,
-        _value: &[u8],
-    ) -> MemResult<()> {
-        debug_assert!(!_value.is_empty());
-        let _end = _start + _value.len() as u64;
-        if (_start.._end).contains(&0) {
-            let _i = (0 - _start) as usize;
-            self.scs.scs_mpu_rasr_a118_enable_write(
+            self.scs.scs_stcsr10_countflag_write(
                 ((_value[_i] >> 0) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
             )?;
         }
-        if (_start.._end).contains(&0) {
-            let _i = (0 - _start) as usize;
-            self.scs.scs_mpu_rasr_a118_size_write(
-                ((_value[_i] >> 1) & 31u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&1) {
-            let _i = (1 - _start) as usize;
-            self.scs.scs_mpu_rasr_a118_srd_write(
-                ((_value[_i] >> 0) & 255u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&2) {
-            let _i = (2 - _start) as usize;
-            self.scs.scs_mpu_rasr_a118_b_write(
-                ((_value[_i] >> 0) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&2) {
-            let _i = (2 - _start) as usize;
-            self.scs.scs_mpu_rasr_a118_c_write(
-                ((_value[_i] >> 1) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&2) {
-            let _i = (2 - _start) as usize;
-            self.scs.scs_mpu_rasr_a118_s_write(
-                ((_value[_i] >> 2) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&2) {
-            let _i = (2 - _start) as usize;
-            self.scs.scs_mpu_rasr_a118_tex_write(
-                ((_value[_i] >> 3) & 7u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&3) {
-            let _i = (3 - _start) as usize;
-            self.scs.scs_mpu_rasr_a118_ap_write(
-                ((_value[_i] >> 0) & 7u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&3) {
-            let _i = (3 - _start) as usize;
-            self.scs.scs_mpu_rasr_a118_xn_write(
-                ((_value[_i] >> 4) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
         Ok(())
     }
-    #[doc = "Read scs_mpu_rbar_a21c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_strvr14 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_mpu_rbar_a21c_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_strvr14_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_mpu_rbar_a21c_region_read()?);
-        _value |= u32::from(self.scs.scs_mpu_rbar_a21c_valid_read()?) << 4u32;
-        _value |= u32::from(self.scs.scs_mpu_rbar_a21c_addr_read()?) << 5u32;
+        _value |= u32::from(self.scs.scs_strvr14_reload_read()?);
         Ok(_value)
     }
-    #[doc = "Write scs_mpu_rbar_a21c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_strvr14 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_mpu_rbar_a21c_write(
+    pub(crate) fn scs_strvr14_write(
         &mut self,
         _start: u64,
         _value: &[u8],
     ) -> MemResult<()> {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
-        if (_start.._end).contains(&0) {
-            let _i = (0 - _start) as usize;
-            self.scs.scs_mpu_rbar_a21c_region_write(
-                ((_value[_i] >> 0) & 15u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
+        if _start <= 0 && _end >= 3 {
+            let _offset_start = (0 - _start) as usize;
+            let _offset_end = _offset_start + 3;
+            let _value = u32::from_ne_bytes(
+                _value[_offset_start.._offset_end].try_into().unwrap(),
+            );
+            self.scs.scs_strvr14_reload_write(
+                _value.try_into().map_err(|_| MemError::WriteViolation)?,
             )?;
-        }
-        if (_start.._end).contains(&0) {
-            let _i = (0 - _start) as usize;
-            self.scs.scs_mpu_rbar_a21c_valid_write(
-                ((_value[_i] >> 4) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if _start <= 0 && _end >= 4 {
-            let mut _extracted: u32 = 0;
-            _extracted |= ((_value[(0 - _start) as usize] >> 5) & 7u8) as u32;
-            for byte_i in 0..3 {
-                _extracted |= (_value[((0 + byte_i + 1) - _start) as usize]
-                    as u32)
-                    << (5 + (byte_i * 8));
-            }
-            self.scs.scs_mpu_rbar_a21c_addr_write(
-                _extracted
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        } else if (_start > 0 && _start < 4) || (_end > 0 && _end < 4) {
+        } else if (_start > 0 && _start < 3) || (_end > 0 && _end < 3) {
             return Err(MemError::WriteViolation);
         }
         Ok(())
     }
-    #[doc = "Read scs_mpu_rasr_a220 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_stcvr18 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_mpu_rasr_a220_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_stcvr18_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_mpu_rasr_a220_enable_read()?);
-        _value |= u32::from(self.scs.scs_mpu_rasr_a220_size_read()?) << 1u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr_a220_srd_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr_a220_b_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr_a220_c_read()?) << 17u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr_a220_s_read()?) << 18u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr_a220_tex_read()?) << 19u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_mpu_rasr_a220_ap_read()?)) << 24u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr_a220_xn_read()?) << 28u32;
+        _value |= u32::from(self.scs.scs_stcvr18_current_read()?);
         Ok(_value)
     }
-    #[doc = "Write scs_mpu_rasr_a220 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_stcvr18 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_mpu_rasr_a220_write(
+    pub(crate) fn scs_stcvr18_write(
         &mut self,
         _start: u64,
         _value: &[u8],
     ) -> MemResult<()> {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
-        if (_start.._end).contains(&0) {
-            let _i = (0 - _start) as usize;
-            self.scs.scs_mpu_rasr_a220_enable_write(
-                ((_value[_i] >> 0) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
+        if _start <= 0 && _end >= 3 {
+            let _offset_start = (0 - _start) as usize;
+            let _offset_end = _offset_start + 3;
+            let _value = u32::from_ne_bytes(
+                _value[_offset_start.._offset_end].try_into().unwrap(),
+            );
+            self.scs.scs_stcvr18_current_write(
+                _value.try_into().map_err(|_| MemError::WriteViolation)?,
             )?;
-        }
-        if (_start.._end).contains(&0) {
-            let _i = (0 - _start) as usize;
-            self.scs.scs_mpu_rasr_a220_size_write(
-                ((_value[_i] >> 1) & 31u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&1) {
-            let _i = (1 - _start) as usize;
-            self.scs.scs_mpu_rasr_a220_srd_write(
-                ((_value[_i] >> 0) & 255u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&2) {
-            let _i = (2 - _start) as usize;
-            self.scs.scs_mpu_rasr_a220_b_write(
-                ((_value[_i] >> 0) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&2) {
-            let _i = (2 - _start) as usize;
-            self.scs.scs_mpu_rasr_a220_c_write(
-                ((_value[_i] >> 1) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&2) {
-            let _i = (2 - _start) as usize;
-            self.scs.scs_mpu_rasr_a220_s_write(
-                ((_value[_i] >> 2) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&2) {
-            let _i = (2 - _start) as usize;
-            self.scs.scs_mpu_rasr_a220_tex_write(
-                ((_value[_i] >> 3) & 7u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&3) {
-            let _i = (3 - _start) as usize;
-            self.scs.scs_mpu_rasr_a220_ap_write(
-                ((_value[_i] >> 0) & 7u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&3) {
-            let _i = (3 - _start) as usize;
-            self.scs.scs_mpu_rasr_a220_xn_write(
-                ((_value[_i] >> 4) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        Ok(())
-    }
-    #[doc = "Read scs_mpu_rbar_a324 from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_mpu_rbar_a324_read(&mut self) -> MemResult<u32> {
-        let mut _value = 0;
-        _value |= u32::from(self.scs.scs_mpu_rbar_a324_region_read()?);
-        _value |= u32::from(self.scs.scs_mpu_rbar_a324_valid_read()?) << 4u32;
-        _value |= u32::from(self.scs.scs_mpu_rbar_a324_addr_read()?) << 5u32;
-        Ok(_value)
-    }
-    #[doc = "Write scs_mpu_rbar_a324 from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_mpu_rbar_a324_write(
-        &mut self,
-        _start: u64,
-        _value: &[u8],
-    ) -> MemResult<()> {
-        debug_assert!(!_value.is_empty());
-        let _end = _start + _value.len() as u64;
-        if (_start.._end).contains(&0) {
-            let _i = (0 - _start) as usize;
-            self.scs.scs_mpu_rbar_a324_region_write(
-                ((_value[_i] >> 0) & 15u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&0) {
-            let _i = (0 - _start) as usize;
-            self.scs.scs_mpu_rbar_a324_valid_write(
-                ((_value[_i] >> 4) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if _start <= 0 && _end >= 4 {
-            let mut _extracted: u32 = 0;
-            _extracted |= ((_value[(0 - _start) as usize] >> 5) & 7u8) as u32;
-            for byte_i in 0..3 {
-                _extracted |= (_value[((0 + byte_i + 1) - _start) as usize]
-                    as u32)
-                    << (5 + (byte_i * 8));
-            }
-            self.scs.scs_mpu_rbar_a324_addr_write(
-                _extracted
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        } else if (_start > 0 && _start < 4) || (_end > 0 && _end < 4) {
+        } else if (_start > 0 && _start < 3) || (_end > 0 && _end < 3) {
             return Err(MemError::WriteViolation);
         }
         Ok(())
     }
-    #[doc = "Read scs_mpu_rasr_a328 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_stcr1c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_mpu_rasr_a328_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_stcr1c_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_mpu_rasr_a328_enable_read()?);
-        _value |= u32::from(self.scs.scs_mpu_rasr_a328_size_read()?) << 1u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr_a328_srd_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr_a328_b_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr_a328_c_read()?) << 17u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr_a328_s_read()?) << 18u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr_a328_tex_read()?) << 19u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_mpu_rasr_a328_ap_read()?)) << 24u32;
-        _value |= u32::from(self.scs.scs_mpu_rasr_a328_xn_read()?) << 28u32;
+        _value |= u32::from(self.scs.scs_stcr1c_tenms_read()?);
+        _value |= u32::from(self.scs.scs_stcr1c_skew_read()?) << 30u32;
+        _value |= u32::from(self.scs.scs_stcr1c_noref_read()?) << 31u32;
         Ok(_value)
     }
-    #[doc = "Write scs_mpu_rasr_a328 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_iser0100 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_mpu_rasr_a328_write(
-        &mut self,
-        _start: u64,
-        _value: &[u8],
-    ) -> MemResult<()> {
-        debug_assert!(!_value.is_empty());
-        let _end = _start + _value.len() as u64;
-        if (_start.._end).contains(&0) {
-            let _i = (0 - _start) as usize;
-            self.scs.scs_mpu_rasr_a328_enable_write(
-                ((_value[_i] >> 0) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&0) {
-            let _i = (0 - _start) as usize;
-            self.scs.scs_mpu_rasr_a328_size_write(
-                ((_value[_i] >> 1) & 31u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&1) {
-            let _i = (1 - _start) as usize;
-            self.scs.scs_mpu_rasr_a328_srd_write(
-                ((_value[_i] >> 0) & 255u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&2) {
-            let _i = (2 - _start) as usize;
-            self.scs.scs_mpu_rasr_a328_b_write(
-                ((_value[_i] >> 0) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&2) {
-            let _i = (2 - _start) as usize;
-            self.scs.scs_mpu_rasr_a328_c_write(
-                ((_value[_i] >> 1) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&2) {
-            let _i = (2 - _start) as usize;
-            self.scs.scs_mpu_rasr_a328_s_write(
-                ((_value[_i] >> 2) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&2) {
-            let _i = (2 - _start) as usize;
-            self.scs.scs_mpu_rasr_a328_tex_write(
-                ((_value[_i] >> 3) & 7u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&3) {
-            let _i = (3 - _start) as usize;
-            self.scs.scs_mpu_rasr_a328_ap_write(
-                ((_value[_i] >> 0) & 7u8)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        if (_start.._end).contains(&3) {
-            let _i = (3 - _start) as usize;
-            self.scs.scs_mpu_rasr_a328_xn_write(
-                ((_value[_i] >> 4) & 1 != 0)
-                    .try_into()
-                    .map_err(|_| MemError::WriteViolation)?,
-            )?;
-        }
-        Ok(())
+    pub(crate) fn scs_nvic_iser0100_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_iser0100_read()
     }
-    #[doc = "Read scs_id_pfr040 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_iser0100 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_id_pfr040_read(&mut self) -> MemResult<u32> {
-        let mut _value = 0;
-        _value |=
-            u32::from(u8::from(self.scs.scs_id_pfr040_state1_read()?)) << 4u32;
-        Ok(_value)
-    }
-    #[doc = "Read scs_id_pfr144 from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_id_pfr144_read(&mut self) -> MemResult<u32> {
-        let mut _value = 0;
-        _value |= u32::from(u8::from(self.scs.scs_id_pfr144_m_profile_read()?))
-            << 8u32;
-        Ok(_value)
-    }
-    #[doc = "Read scs_id_dfr048 from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_id_dfr048_read(&mut self) -> MemResult<u32> {
-        let mut _value = 0;
-        _value |= u32::from(u8::from(self.scs.scs_id_dfr048_m_profile_read()?))
-            << 20u32;
-        Ok(_value)
-    }
-    #[doc = "Read scs_id_afr04c from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_id_afr04c_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_id_afr04c_read()
-    }
-    #[doc = "Read scs_id_mmfr050 from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_id_mmfr050_read(&mut self) -> MemResult<u32> {
-        let mut _value = 0;
-        _value |=
-            u32::from(u8::from(self.scs.scs_id_mmfr050_pmsa_read()?)) << 4u32;
-        _value |= u32::from(u8::from(
-            self.scs.scs_id_mmfr050_outermost_shareability_read()?,
-        )) << 8u32;
-        _value |= u32::from(u8::from(
-            self.scs.scs_id_mmfr050_shareability_levels_read()?,
-        )) << 12u32;
-        _value |= u32::from(u8::from(
-            self.scs.scs_id_mmfr050_auxiliary_registers_read()?,
-        )) << 20u32;
-        Ok(_value)
-    }
-    #[doc = "Read scs_id_mmfr154 from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_id_mmfr154_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_id_mmfr154_read()
-    }
-    #[doc = "Read scs_id_mmfr258 from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_id_mmfr258_read(&mut self) -> MemResult<u32> {
-        let mut _value = 0;
-        _value |=
-            u32::from(u8::from(self.scs.scs_id_mmfr258_wfi_read()?)) << 24u32;
-        Ok(_value)
-    }
-    #[doc = "Read scs_id_mmfr35c from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_id_mmfr35c_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_id_mmfr35c_read()
-    }
-    #[doc = "Read scs_id_isar060 from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_id_isar060_read(&mut self) -> MemResult<u32> {
-        let mut _value = 0;
-        _value |= u32::from(u8::from(
-            self.scs.scs_id_isar060_bitcount_instrs_read()?,
-        )) << 4u32;
-        _value |= u32::from(u8::from(
-            self.scs.scs_id_isar060_bitfield_instrs_read()?,
-        )) << 8u32;
-        _value |= u32::from(u8::from(
-            self.scs.scs_id_isar060_cmpbranch_instrs_read()?,
-        )) << 12u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_id_isar060_coproc_instrs_read()?))
-                << 16u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_id_isar060_debug_instrs_read()?))
-                << 20u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_id_isar060_divide_instrs_read()?))
-                << 24u32;
-        Ok(_value)
-    }
-    #[doc = "Read scs_id_isar164 from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_id_isar164_read(&mut self) -> MemResult<u32> {
-        let mut _value = 0;
-        _value |=
-            u32::from(self.scs.scs_id_isar164_extend_instrs_read()?) << 12u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_id_isar164_ifthen_instrs_read()?))
-                << 16u32;
-        _value |= u32::from(u8::from(
-            self.scs.scs_id_isar164_immediate_instrs_read()?,
-        )) << 20u32;
-        _value |= u32::from(u8::from(
-            self.scs.scs_id_isar164_interwork_instrs_read()?,
-        )) << 24u32;
-        Ok(_value)
-    }
-    #[doc = "Read scs_id_isar268 from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_id_isar268_read(&mut self) -> MemResult<u32> {
-        let mut _value = 0;
-        _value |= u32::from(self.scs.scs_id_isar268_loadstore_instrs_read()?);
-        _value |=
-            u32::from(self.scs.scs_id_isar268_memhint_instrs_read()?) << 4u32;
-        _value |=
-            u32::from(self.scs.scs_id_isar268_multiaccessint_instrs_read()?)
-                << 8u32;
-        _value |=
-            u32::from(self.scs.scs_id_isar268_mult_instrs_read()?) << 12u32;
-        _value |=
-            u32::from(self.scs.scs_id_isar268_mults_instrs_read()?) << 16u32;
-        _value |=
-            u32::from(self.scs.scs_id_isar268_multu_instrs_read()?) << 20u32;
-        _value |=
-            u32::from(self.scs.scs_id_isar268_reversal_instrs_read()?) << 28u32;
-        Ok(_value)
-    }
-    #[doc = "Read scs_id_isar36c from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_id_isar36c_read(&mut self) -> MemResult<u32> {
-        let mut _value = 0;
-        _value |= u32::from(u8::from(
-            self.scs.scs_id_isar36c_saturate_instrs_read()?,
-        ));
-        _value |=
-            u32::from(self.scs.scs_id_isar36c_simd_instrs_read()?) << 4u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_id_isar36c_svc_instrs_read()?))
-                << 8u32;
-        _value |= u32::from(self.scs.scs_id_isar36c_synchprim_instrs_read()?)
-            << 12u32;
-        _value |= u32::from(u8::from(
-            self.scs.scs_id_isar36c_tabbranch_instrs_read()?,
-        )) << 16u32;
-        _value |= u32::from(u8::from(
-            self.scs.scs_id_isar36c_thumbcopy_instrs_read()?,
-        )) << 20u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_id_isar36c_truenop_instrs_read()?))
-                << 24u32;
-        Ok(_value)
-    }
-    #[doc = "Read scs_id_isar470 from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_id_isar470_read(&mut self) -> MemResult<u32> {
-        let mut _value = 0;
-        _value |= u32::from(self.scs.scs_id_isar470_unpriv_instrs_read()?);
-        _value |= u32::from(self.scs.scs_id_isar470_withshifts_instrs_read()?)
-            << 4u32;
-        _value |= u32::from(u8::from(
-            self.scs.scs_id_isar470_writeback_instrs_read()?,
-        )) << 8u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_id_isar470_barrier_instrs_read()?))
-                << 16u32;
-        _value |=
-            u32::from(self.scs.scs_id_isar470_synchprim_instrs_frac_read()?)
-                << 20u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_id_isar470_psr_m_instrs_read()?))
-                << 24u32;
-        Ok(_value)
-    }
-    #[doc = "Read scs_nvic_iser0fc from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_nvic_iser0fc_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_iser0fc_read()
-    }
-    #[doc = "Write scs_nvic_iser0fc from [crate::peripheral::scs::Scs]"]
-    #[inline]
-    pub(crate) fn scs_nvic_iser0fc_write(
+    pub(crate) fn scs_nvic_iser0100_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27042,18 +26116,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_iser0fc_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_iser0100_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_iser1100 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_iser1104 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iser1100_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_iser1100_read()
+    pub(crate) fn scs_nvic_iser1104_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_iser1104_read()
     }
-    #[doc = "Write scs_nvic_iser1100 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_iser1104 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iser1100_write(
+    pub(crate) fn scs_nvic_iser1104_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27061,18 +26135,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_iser1100_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_iser1104_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_iser2104 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_iser2108 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iser2104_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_iser2104_read()
+    pub(crate) fn scs_nvic_iser2108_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_iser2108_read()
     }
-    #[doc = "Write scs_nvic_iser2104 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_iser2108 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iser2104_write(
+    pub(crate) fn scs_nvic_iser2108_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27080,18 +26154,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_iser2104_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_iser2108_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_iser3108 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_iser310c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iser3108_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_iser3108_read()
+    pub(crate) fn scs_nvic_iser310c_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_iser310c_read()
     }
-    #[doc = "Write scs_nvic_iser3108 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_iser310c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iser3108_write(
+    pub(crate) fn scs_nvic_iser310c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27099,18 +26173,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_iser3108_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_iser310c_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_iser410c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_iser4110 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iser410c_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_iser410c_read()
+    pub(crate) fn scs_nvic_iser4110_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_iser4110_read()
     }
-    #[doc = "Write scs_nvic_iser410c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_iser4110 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iser410c_write(
+    pub(crate) fn scs_nvic_iser4110_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27118,18 +26192,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_iser410c_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_iser4110_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_iser5110 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_iser5114 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iser5110_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_iser5110_read()
+    pub(crate) fn scs_nvic_iser5114_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_iser5114_read()
     }
-    #[doc = "Write scs_nvic_iser5110 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_iser5114 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iser5110_write(
+    pub(crate) fn scs_nvic_iser5114_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27137,18 +26211,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_iser5110_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_iser5114_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_iser6114 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_iser6118 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iser6114_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_iser6114_read()
+    pub(crate) fn scs_nvic_iser6118_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_iser6118_read()
     }
-    #[doc = "Write scs_nvic_iser6114 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_iser6118 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iser6114_write(
+    pub(crate) fn scs_nvic_iser6118_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27156,18 +26230,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_iser6114_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_iser6118_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_iser7118 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_iser711c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iser7118_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_iser7118_read()
+    pub(crate) fn scs_nvic_iser711c_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_iser711c_read()
     }
-    #[doc = "Write scs_nvic_iser7118 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_iser711c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iser7118_write(
+    pub(crate) fn scs_nvic_iser711c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27175,18 +26249,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_iser7118_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_iser711c_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_icer017c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_icer0180 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icer017c_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_icer017c_read()
+    pub(crate) fn scs_nvic_icer0180_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_icer0180_read()
     }
-    #[doc = "Write scs_nvic_icer017c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_icer0180 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icer017c_write(
+    pub(crate) fn scs_nvic_icer0180_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27194,18 +26268,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_icer017c_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_icer0180_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_icer1180 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_icer1184 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icer1180_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_icer1180_read()
+    pub(crate) fn scs_nvic_icer1184_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_icer1184_read()
     }
-    #[doc = "Write scs_nvic_icer1180 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_icer1184 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icer1180_write(
+    pub(crate) fn scs_nvic_icer1184_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27213,18 +26287,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_icer1180_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_icer1184_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_icer2184 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_icer2188 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icer2184_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_icer2184_read()
+    pub(crate) fn scs_nvic_icer2188_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_icer2188_read()
     }
-    #[doc = "Write scs_nvic_icer2184 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_icer2188 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icer2184_write(
+    pub(crate) fn scs_nvic_icer2188_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27232,18 +26306,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_icer2184_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_icer2188_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_icer3188 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_icer318c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icer3188_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_icer3188_read()
+    pub(crate) fn scs_nvic_icer318c_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_icer318c_read()
     }
-    #[doc = "Write scs_nvic_icer3188 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_icer318c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icer3188_write(
+    pub(crate) fn scs_nvic_icer318c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27251,18 +26325,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_icer3188_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_icer318c_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_icer418c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_icer4190 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icer418c_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_icer418c_read()
+    pub(crate) fn scs_nvic_icer4190_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_icer4190_read()
     }
-    #[doc = "Write scs_nvic_icer418c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_icer4190 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icer418c_write(
+    pub(crate) fn scs_nvic_icer4190_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27270,18 +26344,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_icer418c_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_icer4190_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_icer5190 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_icer5194 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icer5190_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_icer5190_read()
+    pub(crate) fn scs_nvic_icer5194_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_icer5194_read()
     }
-    #[doc = "Write scs_nvic_icer5190 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_icer5194 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icer5190_write(
+    pub(crate) fn scs_nvic_icer5194_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27289,18 +26363,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_icer5190_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_icer5194_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_icer6194 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_icer6198 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icer6194_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_icer6194_read()
+    pub(crate) fn scs_nvic_icer6198_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_icer6198_read()
     }
-    #[doc = "Write scs_nvic_icer6194 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_icer6198 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icer6194_write(
+    pub(crate) fn scs_nvic_icer6198_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27308,18 +26382,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_icer6194_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_icer6198_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_icer7198 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_icer719c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icer7198_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_icer7198_read()
+    pub(crate) fn scs_nvic_icer719c_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_icer719c_read()
     }
-    #[doc = "Write scs_nvic_icer7198 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_icer719c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icer7198_write(
+    pub(crate) fn scs_nvic_icer719c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27327,18 +26401,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_icer7198_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_icer719c_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_ispr01fc from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ispr0200 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ispr01fc_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_ispr01fc_read()
+    pub(crate) fn scs_nvic_ispr0200_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_ispr0200_read()
     }
-    #[doc = "Write scs_nvic_ispr01fc from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ispr0200 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ispr01fc_write(
+    pub(crate) fn scs_nvic_ispr0200_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27346,18 +26420,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_ispr01fc_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_ispr0200_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_ispr1200 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ispr1204 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ispr1200_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_ispr1200_read()
+    pub(crate) fn scs_nvic_ispr1204_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_ispr1204_read()
     }
-    #[doc = "Write scs_nvic_ispr1200 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ispr1204 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ispr1200_write(
+    pub(crate) fn scs_nvic_ispr1204_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27365,18 +26439,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_ispr1200_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_ispr1204_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_ispr2204 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ispr2208 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ispr2204_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_ispr2204_read()
+    pub(crate) fn scs_nvic_ispr2208_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_ispr2208_read()
     }
-    #[doc = "Write scs_nvic_ispr2204 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ispr2208 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ispr2204_write(
+    pub(crate) fn scs_nvic_ispr2208_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27384,18 +26458,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_ispr2204_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_ispr2208_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_ispr3208 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ispr320c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ispr3208_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_ispr3208_read()
+    pub(crate) fn scs_nvic_ispr320c_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_ispr320c_read()
     }
-    #[doc = "Write scs_nvic_ispr3208 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ispr320c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ispr3208_write(
+    pub(crate) fn scs_nvic_ispr320c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27403,18 +26477,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_ispr3208_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_ispr320c_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_ispr420c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ispr4210 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ispr420c_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_ispr420c_read()
+    pub(crate) fn scs_nvic_ispr4210_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_ispr4210_read()
     }
-    #[doc = "Write scs_nvic_ispr420c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ispr4210 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ispr420c_write(
+    pub(crate) fn scs_nvic_ispr4210_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27422,18 +26496,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_ispr420c_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_ispr4210_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_ispr5210 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ispr5214 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ispr5210_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_ispr5210_read()
+    pub(crate) fn scs_nvic_ispr5214_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_ispr5214_read()
     }
-    #[doc = "Write scs_nvic_ispr5210 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ispr5214 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ispr5210_write(
+    pub(crate) fn scs_nvic_ispr5214_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27441,18 +26515,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_ispr5210_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_ispr5214_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_ispr6214 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ispr6218 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ispr6214_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_ispr6214_read()
+    pub(crate) fn scs_nvic_ispr6218_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_ispr6218_read()
     }
-    #[doc = "Write scs_nvic_ispr6214 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ispr6218 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ispr6214_write(
+    pub(crate) fn scs_nvic_ispr6218_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27460,18 +26534,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_ispr6214_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_ispr6218_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_ispr7218 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ispr721c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ispr7218_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_ispr7218_read()
+    pub(crate) fn scs_nvic_ispr721c_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_ispr721c_read()
     }
-    #[doc = "Write scs_nvic_ispr7218 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ispr721c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ispr7218_write(
+    pub(crate) fn scs_nvic_ispr721c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27479,18 +26553,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_ispr7218_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_ispr721c_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_icpr027c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_icpr0280 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icpr027c_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_icpr027c_read()
+    pub(crate) fn scs_nvic_icpr0280_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_icpr0280_read()
     }
-    #[doc = "Write scs_nvic_icpr027c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_icpr0280 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icpr027c_write(
+    pub(crate) fn scs_nvic_icpr0280_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27498,18 +26572,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_icpr027c_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_icpr0280_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_icpr1280 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_icpr1284 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icpr1280_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_icpr1280_read()
+    pub(crate) fn scs_nvic_icpr1284_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_icpr1284_read()
     }
-    #[doc = "Write scs_nvic_icpr1280 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_icpr1284 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icpr1280_write(
+    pub(crate) fn scs_nvic_icpr1284_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27517,18 +26591,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_icpr1280_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_icpr1284_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_icpr2284 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_icpr2288 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icpr2284_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_icpr2284_read()
+    pub(crate) fn scs_nvic_icpr2288_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_icpr2288_read()
     }
-    #[doc = "Write scs_nvic_icpr2284 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_icpr2288 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icpr2284_write(
+    pub(crate) fn scs_nvic_icpr2288_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27536,18 +26610,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_icpr2284_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_icpr2288_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_icpr3288 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_icpr328c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icpr3288_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_icpr3288_read()
+    pub(crate) fn scs_nvic_icpr328c_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_icpr328c_read()
     }
-    #[doc = "Write scs_nvic_icpr3288 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_icpr328c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icpr3288_write(
+    pub(crate) fn scs_nvic_icpr328c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27555,18 +26629,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_icpr3288_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_icpr328c_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_icpr428c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_icpr4290 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icpr428c_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_icpr428c_read()
+    pub(crate) fn scs_nvic_icpr4290_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_icpr4290_read()
     }
-    #[doc = "Write scs_nvic_icpr428c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_icpr4290 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icpr428c_write(
+    pub(crate) fn scs_nvic_icpr4290_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27574,18 +26648,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_icpr428c_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_icpr4290_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_icpr5290 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_icpr5294 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icpr5290_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_icpr5290_read()
+    pub(crate) fn scs_nvic_icpr5294_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_icpr5294_read()
     }
-    #[doc = "Write scs_nvic_icpr5290 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_icpr5294 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icpr5290_write(
+    pub(crate) fn scs_nvic_icpr5294_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27593,18 +26667,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_icpr5290_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_icpr5294_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_icpr6294 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_icpr6298 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icpr6294_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_icpr6294_read()
+    pub(crate) fn scs_nvic_icpr6298_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_icpr6298_read()
     }
-    #[doc = "Write scs_nvic_icpr6294 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_icpr6298 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icpr6294_write(
+    pub(crate) fn scs_nvic_icpr6298_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27612,18 +26686,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_icpr6294_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_icpr6298_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_icpr7298 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_icpr729c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icpr7298_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_icpr7298_read()
+    pub(crate) fn scs_nvic_icpr729c_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_icpr729c_read()
     }
-    #[doc = "Write scs_nvic_icpr7298 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_icpr729c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_icpr7298_write(
+    pub(crate) fn scs_nvic_icpr729c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27631,18 +26705,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_icpr7298_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_icpr729c_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_iabr02fc from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_iabr0300 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iabr02fc_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_iabr02fc_read()
+    pub(crate) fn scs_nvic_iabr0300_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_iabr0300_read()
     }
-    #[doc = "Write scs_nvic_iabr02fc from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_iabr0300 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iabr02fc_write(
+    pub(crate) fn scs_nvic_iabr0300_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27650,18 +26724,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_iabr02fc_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_iabr0300_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_iabr1300 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_iabr1304 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iabr1300_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_iabr1300_read()
+    pub(crate) fn scs_nvic_iabr1304_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_iabr1304_read()
     }
-    #[doc = "Write scs_nvic_iabr1300 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_iabr1304 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iabr1300_write(
+    pub(crate) fn scs_nvic_iabr1304_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27669,18 +26743,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_iabr1300_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_iabr1304_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_iabr2304 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_iabr2308 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iabr2304_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_iabr2304_read()
+    pub(crate) fn scs_nvic_iabr2308_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_iabr2308_read()
     }
-    #[doc = "Write scs_nvic_iabr2304 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_iabr2308 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iabr2304_write(
+    pub(crate) fn scs_nvic_iabr2308_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27688,18 +26762,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_iabr2304_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_iabr2308_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_iabr3308 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_iabr330c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iabr3308_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_iabr3308_read()
+    pub(crate) fn scs_nvic_iabr330c_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_iabr330c_read()
     }
-    #[doc = "Write scs_nvic_iabr3308 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_iabr330c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iabr3308_write(
+    pub(crate) fn scs_nvic_iabr330c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27707,18 +26781,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_iabr3308_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_iabr330c_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_iabr430c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_iabr4310 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iabr430c_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_iabr430c_read()
+    pub(crate) fn scs_nvic_iabr4310_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_iabr4310_read()
     }
-    #[doc = "Write scs_nvic_iabr430c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_iabr4310 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iabr430c_write(
+    pub(crate) fn scs_nvic_iabr4310_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27726,18 +26800,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_iabr430c_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_iabr4310_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_iabr5310 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_iabr5314 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iabr5310_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_iabr5310_read()
+    pub(crate) fn scs_nvic_iabr5314_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_iabr5314_read()
     }
-    #[doc = "Write scs_nvic_iabr5310 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_iabr5314 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iabr5310_write(
+    pub(crate) fn scs_nvic_iabr5314_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27745,18 +26819,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_iabr5310_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_iabr5314_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_iabr6314 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_iabr6318 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iabr6314_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_iabr6314_read()
+    pub(crate) fn scs_nvic_iabr6318_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_iabr6318_read()
     }
-    #[doc = "Write scs_nvic_iabr6314 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_iabr6318 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iabr6314_write(
+    pub(crate) fn scs_nvic_iabr6318_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27764,18 +26838,18 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_iabr6314_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_iabr6318_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_iabr7318 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_iabr731c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iabr7318_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_nvic_iabr7318_read()
+    pub(crate) fn scs_nvic_iabr731c_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_nvic_iabr731c_read()
     }
-    #[doc = "Write scs_nvic_iabr7318 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_iabr731c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_iabr7318_write(
+    pub(crate) fn scs_nvic_iabr731c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27783,23 +26857,23 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.scs.scs_nvic_iabr7318_write(u32::from_ne_bytes(
+        self.scs.scs_nvic_iabr731c_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
-    #[doc = "Read scs_nvic_ipr03fc from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr0400 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr03fc_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr0400_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr03fc_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr03fc_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr03fc_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr03fc_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr0400_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr0400_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr0400_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr0400_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr03fc from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr0400 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr03fc_write(
+    pub(crate) fn scs_nvic_ipr0400_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27808,7 +26882,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr03fc_pri_n0_write(
+            self.scs.scs_nvic_ipr0400_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -27816,7 +26890,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr03fc_pri_n1_write(
+            self.scs.scs_nvic_ipr0400_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -27824,7 +26898,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr03fc_pri_n2_write(
+            self.scs.scs_nvic_ipr0400_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -27832,7 +26906,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr03fc_pri_n3_write(
+            self.scs.scs_nvic_ipr0400_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -27840,19 +26914,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr1400 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr1404 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr1400_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr1404_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr1400_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr1400_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr1400_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr1400_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr1404_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr1404_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr1404_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr1404_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr1400 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr1404 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr1400_write(
+    pub(crate) fn scs_nvic_ipr1404_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27861,7 +26935,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr1400_pri_n0_write(
+            self.scs.scs_nvic_ipr1404_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -27869,7 +26943,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr1400_pri_n1_write(
+            self.scs.scs_nvic_ipr1404_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -27877,7 +26951,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr1400_pri_n2_write(
+            self.scs.scs_nvic_ipr1404_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -27885,7 +26959,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr1400_pri_n3_write(
+            self.scs.scs_nvic_ipr1404_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -27893,19 +26967,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr2404 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr2408 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr2404_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr2408_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr2404_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr2404_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr2404_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr2404_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr2408_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr2408_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr2408_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr2408_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr2404 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr2408 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr2404_write(
+    pub(crate) fn scs_nvic_ipr2408_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27914,7 +26988,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr2404_pri_n0_write(
+            self.scs.scs_nvic_ipr2408_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -27922,7 +26996,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr2404_pri_n1_write(
+            self.scs.scs_nvic_ipr2408_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -27930,7 +27004,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr2404_pri_n2_write(
+            self.scs.scs_nvic_ipr2408_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -27938,7 +27012,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr2404_pri_n3_write(
+            self.scs.scs_nvic_ipr2408_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -27946,19 +27020,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr3408 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr340c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr3408_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr340c_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr3408_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr3408_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr3408_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr3408_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr340c_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr340c_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr340c_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr340c_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr3408 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr340c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr3408_write(
+    pub(crate) fn scs_nvic_ipr340c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -27967,7 +27041,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr3408_pri_n0_write(
+            self.scs.scs_nvic_ipr340c_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -27975,7 +27049,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr3408_pri_n1_write(
+            self.scs.scs_nvic_ipr340c_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -27983,7 +27057,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr3408_pri_n2_write(
+            self.scs.scs_nvic_ipr340c_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -27991,7 +27065,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr3408_pri_n3_write(
+            self.scs.scs_nvic_ipr340c_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -27999,19 +27073,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr440c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr4410 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr440c_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr4410_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr440c_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr440c_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr440c_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr440c_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr4410_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr4410_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr4410_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr4410_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr440c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr4410 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr440c_write(
+    pub(crate) fn scs_nvic_ipr4410_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -28020,7 +27094,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr440c_pri_n0_write(
+            self.scs.scs_nvic_ipr4410_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28028,7 +27102,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr440c_pri_n1_write(
+            self.scs.scs_nvic_ipr4410_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28036,7 +27110,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr440c_pri_n2_write(
+            self.scs.scs_nvic_ipr4410_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28044,7 +27118,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr440c_pri_n3_write(
+            self.scs.scs_nvic_ipr4410_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28052,19 +27126,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr5410 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr5414 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr5410_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr5414_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr5410_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr5410_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr5410_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr5410_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr5414_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr5414_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr5414_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr5414_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr5410 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr5414 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr5410_write(
+    pub(crate) fn scs_nvic_ipr5414_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -28073,7 +27147,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr5410_pri_n0_write(
+            self.scs.scs_nvic_ipr5414_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28081,7 +27155,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr5410_pri_n1_write(
+            self.scs.scs_nvic_ipr5414_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28089,7 +27163,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr5410_pri_n2_write(
+            self.scs.scs_nvic_ipr5414_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28097,7 +27171,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr5410_pri_n3_write(
+            self.scs.scs_nvic_ipr5414_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28105,19 +27179,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr6414 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr6418 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr6414_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr6418_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr6414_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr6414_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr6414_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr6414_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr6418_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr6418_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr6418_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr6418_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr6414 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr6418 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr6414_write(
+    pub(crate) fn scs_nvic_ipr6418_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -28126,7 +27200,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr6414_pri_n0_write(
+            self.scs.scs_nvic_ipr6418_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28134,7 +27208,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr6414_pri_n1_write(
+            self.scs.scs_nvic_ipr6418_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28142,7 +27216,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr6414_pri_n2_write(
+            self.scs.scs_nvic_ipr6418_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28150,7 +27224,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr6414_pri_n3_write(
+            self.scs.scs_nvic_ipr6418_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28158,19 +27232,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr7418 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr741c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr7418_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr741c_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr7418_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr7418_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr7418_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr7418_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr741c_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr741c_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr741c_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr741c_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr7418 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr741c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr7418_write(
+    pub(crate) fn scs_nvic_ipr741c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -28179,7 +27253,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr7418_pri_n0_write(
+            self.scs.scs_nvic_ipr741c_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28187,7 +27261,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr7418_pri_n1_write(
+            self.scs.scs_nvic_ipr741c_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28195,7 +27269,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr7418_pri_n2_write(
+            self.scs.scs_nvic_ipr741c_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28203,7 +27277,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr7418_pri_n3_write(
+            self.scs.scs_nvic_ipr741c_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28211,19 +27285,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr841c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr8420 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr841c_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr8420_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr841c_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr841c_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr841c_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr841c_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr8420_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr8420_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr8420_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr8420_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr841c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr8420 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr841c_write(
+    pub(crate) fn scs_nvic_ipr8420_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -28232,7 +27306,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr841c_pri_n0_write(
+            self.scs.scs_nvic_ipr8420_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28240,7 +27314,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr841c_pri_n1_write(
+            self.scs.scs_nvic_ipr8420_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28248,7 +27322,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr841c_pri_n2_write(
+            self.scs.scs_nvic_ipr8420_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28256,7 +27330,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr841c_pri_n3_write(
+            self.scs.scs_nvic_ipr8420_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28264,19 +27338,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr9420 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr9424 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr9420_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr9424_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr9420_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr9420_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr9420_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr9420_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr9424_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr9424_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr9424_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr9424_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr9420 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr9424 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr9420_write(
+    pub(crate) fn scs_nvic_ipr9424_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -28285,7 +27359,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr9420_pri_n0_write(
+            self.scs.scs_nvic_ipr9424_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28293,7 +27367,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr9420_pri_n1_write(
+            self.scs.scs_nvic_ipr9424_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28301,7 +27375,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr9420_pri_n2_write(
+            self.scs.scs_nvic_ipr9424_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28309,7 +27383,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr9420_pri_n3_write(
+            self.scs.scs_nvic_ipr9424_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28317,19 +27391,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr10424 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr10428 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr10424_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr10428_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr10424_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr10424_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr10424_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr10424_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr10428_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr10428_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr10428_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr10428_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr10424 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr10428 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr10424_write(
+    pub(crate) fn scs_nvic_ipr10428_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -28338,7 +27412,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr10424_pri_n0_write(
+            self.scs.scs_nvic_ipr10428_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28346,7 +27420,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr10424_pri_n1_write(
+            self.scs.scs_nvic_ipr10428_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28354,7 +27428,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr10424_pri_n2_write(
+            self.scs.scs_nvic_ipr10428_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28362,7 +27436,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr10424_pri_n3_write(
+            self.scs.scs_nvic_ipr10428_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28370,19 +27444,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr11428 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr1142c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr11428_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr1142c_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr11428_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr11428_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr11428_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr11428_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr1142c_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr1142c_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr1142c_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr1142c_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr11428 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr1142c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr11428_write(
+    pub(crate) fn scs_nvic_ipr1142c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -28391,7 +27465,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr11428_pri_n0_write(
+            self.scs.scs_nvic_ipr1142c_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28399,7 +27473,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr11428_pri_n1_write(
+            self.scs.scs_nvic_ipr1142c_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28407,7 +27481,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr11428_pri_n2_write(
+            self.scs.scs_nvic_ipr1142c_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28415,7 +27489,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr11428_pri_n3_write(
+            self.scs.scs_nvic_ipr1142c_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28423,19 +27497,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr1242c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr12430 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr1242c_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr12430_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr1242c_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr1242c_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr1242c_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr1242c_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr12430_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr12430_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr12430_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr12430_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr1242c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr12430 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr1242c_write(
+    pub(crate) fn scs_nvic_ipr12430_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -28444,7 +27518,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr1242c_pri_n0_write(
+            self.scs.scs_nvic_ipr12430_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28452,7 +27526,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr1242c_pri_n1_write(
+            self.scs.scs_nvic_ipr12430_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28460,7 +27534,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr1242c_pri_n2_write(
+            self.scs.scs_nvic_ipr12430_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28468,7 +27542,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr1242c_pri_n3_write(
+            self.scs.scs_nvic_ipr12430_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28476,19 +27550,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr13430 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr13434 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr13430_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr13434_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr13430_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr13430_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr13430_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr13430_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr13434_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr13434_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr13434_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr13434_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr13430 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr13434 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr13430_write(
+    pub(crate) fn scs_nvic_ipr13434_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -28497,7 +27571,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr13430_pri_n0_write(
+            self.scs.scs_nvic_ipr13434_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28505,7 +27579,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr13430_pri_n1_write(
+            self.scs.scs_nvic_ipr13434_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28513,7 +27587,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr13430_pri_n2_write(
+            self.scs.scs_nvic_ipr13434_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28521,7 +27595,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr13430_pri_n3_write(
+            self.scs.scs_nvic_ipr13434_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28529,19 +27603,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr14434 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr14438 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr14434_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr14438_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr14434_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr14434_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr14434_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr14434_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr14438_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr14438_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr14438_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr14438_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr14434 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr14438 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr14434_write(
+    pub(crate) fn scs_nvic_ipr14438_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -28550,7 +27624,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr14434_pri_n0_write(
+            self.scs.scs_nvic_ipr14438_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28558,7 +27632,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr14434_pri_n1_write(
+            self.scs.scs_nvic_ipr14438_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28566,7 +27640,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr14434_pri_n2_write(
+            self.scs.scs_nvic_ipr14438_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28574,7 +27648,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr14434_pri_n3_write(
+            self.scs.scs_nvic_ipr14438_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28582,19 +27656,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr15438 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr1543c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr15438_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr1543c_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr15438_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr15438_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr15438_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr15438_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr1543c_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr1543c_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr1543c_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr1543c_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr15438 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr1543c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr15438_write(
+    pub(crate) fn scs_nvic_ipr1543c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -28603,7 +27677,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr15438_pri_n0_write(
+            self.scs.scs_nvic_ipr1543c_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28611,7 +27685,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr15438_pri_n1_write(
+            self.scs.scs_nvic_ipr1543c_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28619,7 +27693,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr15438_pri_n2_write(
+            self.scs.scs_nvic_ipr1543c_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28627,7 +27701,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr15438_pri_n3_write(
+            self.scs.scs_nvic_ipr1543c_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28635,19 +27709,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr1643c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr16440 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr1643c_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr16440_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr1643c_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr1643c_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr1643c_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr1643c_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr16440_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr16440_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr16440_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr16440_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr1643c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr16440 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr1643c_write(
+    pub(crate) fn scs_nvic_ipr16440_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -28656,7 +27730,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr1643c_pri_n0_write(
+            self.scs.scs_nvic_ipr16440_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28664,7 +27738,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr1643c_pri_n1_write(
+            self.scs.scs_nvic_ipr16440_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28672,7 +27746,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr1643c_pri_n2_write(
+            self.scs.scs_nvic_ipr16440_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28680,7 +27754,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr1643c_pri_n3_write(
+            self.scs.scs_nvic_ipr16440_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28688,19 +27762,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr17440 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr17444 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr17440_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr17444_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr17440_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr17440_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr17440_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr17440_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr17444_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr17444_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr17444_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr17444_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr17440 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr17444 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr17440_write(
+    pub(crate) fn scs_nvic_ipr17444_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -28709,7 +27783,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr17440_pri_n0_write(
+            self.scs.scs_nvic_ipr17444_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28717,7 +27791,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr17440_pri_n1_write(
+            self.scs.scs_nvic_ipr17444_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28725,7 +27799,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr17440_pri_n2_write(
+            self.scs.scs_nvic_ipr17444_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28733,7 +27807,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr17440_pri_n3_write(
+            self.scs.scs_nvic_ipr17444_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28741,19 +27815,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr18444 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr18448 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr18444_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr18448_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr18444_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr18444_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr18444_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr18444_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr18448_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr18448_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr18448_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr18448_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr18444 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr18448 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr18444_write(
+    pub(crate) fn scs_nvic_ipr18448_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -28762,7 +27836,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr18444_pri_n0_write(
+            self.scs.scs_nvic_ipr18448_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28770,7 +27844,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr18444_pri_n1_write(
+            self.scs.scs_nvic_ipr18448_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28778,7 +27852,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr18444_pri_n2_write(
+            self.scs.scs_nvic_ipr18448_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28786,7 +27860,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr18444_pri_n3_write(
+            self.scs.scs_nvic_ipr18448_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28794,19 +27868,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr19448 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr1944c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr19448_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr1944c_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr19448_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr19448_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr19448_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr19448_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr1944c_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr1944c_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr1944c_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr1944c_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr19448 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr1944c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr19448_write(
+    pub(crate) fn scs_nvic_ipr1944c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -28815,7 +27889,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr19448_pri_n0_write(
+            self.scs.scs_nvic_ipr1944c_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28823,7 +27897,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr19448_pri_n1_write(
+            self.scs.scs_nvic_ipr1944c_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28831,7 +27905,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr19448_pri_n2_write(
+            self.scs.scs_nvic_ipr1944c_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28839,7 +27913,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr19448_pri_n3_write(
+            self.scs.scs_nvic_ipr1944c_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28847,19 +27921,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr2044c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr20450 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr2044c_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr20450_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr2044c_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr2044c_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr2044c_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr2044c_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr20450_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr20450_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr20450_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr20450_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr2044c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr20450 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr2044c_write(
+    pub(crate) fn scs_nvic_ipr20450_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -28868,7 +27942,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr2044c_pri_n0_write(
+            self.scs.scs_nvic_ipr20450_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28876,7 +27950,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr2044c_pri_n1_write(
+            self.scs.scs_nvic_ipr20450_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28884,7 +27958,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr2044c_pri_n2_write(
+            self.scs.scs_nvic_ipr20450_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28892,7 +27966,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr2044c_pri_n3_write(
+            self.scs.scs_nvic_ipr20450_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28900,19 +27974,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr21450 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr21454 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr21450_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr21454_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr21450_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr21450_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr21450_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr21450_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr21454_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr21454_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr21454_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr21454_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr21450 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr21454 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr21450_write(
+    pub(crate) fn scs_nvic_ipr21454_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -28921,7 +27995,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr21450_pri_n0_write(
+            self.scs.scs_nvic_ipr21454_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28929,7 +28003,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr21450_pri_n1_write(
+            self.scs.scs_nvic_ipr21454_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28937,7 +28011,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr21450_pri_n2_write(
+            self.scs.scs_nvic_ipr21454_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28945,7 +28019,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr21450_pri_n3_write(
+            self.scs.scs_nvic_ipr21454_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28953,19 +28027,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr22454 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr22458 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr22454_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr22458_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr22454_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr22454_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr22454_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr22454_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr22458_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr22458_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr22458_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr22458_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr22454 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr22458 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr22454_write(
+    pub(crate) fn scs_nvic_ipr22458_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -28974,7 +28048,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr22454_pri_n0_write(
+            self.scs.scs_nvic_ipr22458_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28982,7 +28056,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr22454_pri_n1_write(
+            self.scs.scs_nvic_ipr22458_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28990,7 +28064,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr22454_pri_n2_write(
+            self.scs.scs_nvic_ipr22458_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -28998,7 +28072,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr22454_pri_n3_write(
+            self.scs.scs_nvic_ipr22458_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29006,19 +28080,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr23458 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr2345c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr23458_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr2345c_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr23458_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr23458_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr23458_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr23458_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr2345c_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr2345c_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr2345c_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr2345c_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr23458 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr2345c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr23458_write(
+    pub(crate) fn scs_nvic_ipr2345c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -29027,7 +28101,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr23458_pri_n0_write(
+            self.scs.scs_nvic_ipr2345c_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29035,7 +28109,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr23458_pri_n1_write(
+            self.scs.scs_nvic_ipr2345c_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29043,7 +28117,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr23458_pri_n2_write(
+            self.scs.scs_nvic_ipr2345c_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29051,7 +28125,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr23458_pri_n3_write(
+            self.scs.scs_nvic_ipr2345c_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29059,19 +28133,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr2445c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr24460 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr2445c_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr24460_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr2445c_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr2445c_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr2445c_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr2445c_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr24460_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr24460_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr24460_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr24460_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr2445c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr24460 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr2445c_write(
+    pub(crate) fn scs_nvic_ipr24460_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -29080,7 +28154,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr2445c_pri_n0_write(
+            self.scs.scs_nvic_ipr24460_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29088,7 +28162,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr2445c_pri_n1_write(
+            self.scs.scs_nvic_ipr24460_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29096,7 +28170,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr2445c_pri_n2_write(
+            self.scs.scs_nvic_ipr24460_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29104,7 +28178,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr2445c_pri_n3_write(
+            self.scs.scs_nvic_ipr24460_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29112,19 +28186,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr25460 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr25464 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr25460_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr25464_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr25460_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr25460_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr25460_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr25460_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr25464_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr25464_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr25464_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr25464_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr25460 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr25464 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr25460_write(
+    pub(crate) fn scs_nvic_ipr25464_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -29133,7 +28207,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr25460_pri_n0_write(
+            self.scs.scs_nvic_ipr25464_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29141,7 +28215,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr25460_pri_n1_write(
+            self.scs.scs_nvic_ipr25464_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29149,7 +28223,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr25460_pri_n2_write(
+            self.scs.scs_nvic_ipr25464_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29157,7 +28231,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr25460_pri_n3_write(
+            self.scs.scs_nvic_ipr25464_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29165,19 +28239,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr26464 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr26468 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr26464_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr26468_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr26464_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr26464_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr26464_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr26464_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr26468_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr26468_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr26468_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr26468_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr26464 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr26468 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr26464_write(
+    pub(crate) fn scs_nvic_ipr26468_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -29186,7 +28260,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr26464_pri_n0_write(
+            self.scs.scs_nvic_ipr26468_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29194,7 +28268,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr26464_pri_n1_write(
+            self.scs.scs_nvic_ipr26468_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29202,7 +28276,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr26464_pri_n2_write(
+            self.scs.scs_nvic_ipr26468_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29210,7 +28284,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr26464_pri_n3_write(
+            self.scs.scs_nvic_ipr26468_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29218,19 +28292,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr27468 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr2746c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr27468_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr2746c_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr27468_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr27468_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr27468_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr27468_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr2746c_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr2746c_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr2746c_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr2746c_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr27468 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr2746c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr27468_write(
+    pub(crate) fn scs_nvic_ipr2746c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -29239,7 +28313,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr27468_pri_n0_write(
+            self.scs.scs_nvic_ipr2746c_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29247,7 +28321,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr27468_pri_n1_write(
+            self.scs.scs_nvic_ipr2746c_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29255,7 +28329,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr27468_pri_n2_write(
+            self.scs.scs_nvic_ipr2746c_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29263,7 +28337,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr27468_pri_n3_write(
+            self.scs.scs_nvic_ipr2746c_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29271,19 +28345,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr2846c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr28470 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr2846c_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr28470_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr2846c_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr2846c_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr2846c_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr2846c_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr28470_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr28470_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr28470_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr28470_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr2846c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr28470 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr2846c_write(
+    pub(crate) fn scs_nvic_ipr28470_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -29292,7 +28366,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr2846c_pri_n0_write(
+            self.scs.scs_nvic_ipr28470_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29300,7 +28374,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr2846c_pri_n1_write(
+            self.scs.scs_nvic_ipr28470_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29308,7 +28382,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr2846c_pri_n2_write(
+            self.scs.scs_nvic_ipr28470_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29316,7 +28390,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr2846c_pri_n3_write(
+            self.scs.scs_nvic_ipr28470_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29324,19 +28398,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr29470 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr29474 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr29470_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr29474_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr29470_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr29470_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr29470_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr29470_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr29474_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr29474_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr29474_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr29474_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr29470 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr29474 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr29470_write(
+    pub(crate) fn scs_nvic_ipr29474_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -29345,7 +28419,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr29470_pri_n0_write(
+            self.scs.scs_nvic_ipr29474_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29353,7 +28427,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr29470_pri_n1_write(
+            self.scs.scs_nvic_ipr29474_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29361,7 +28435,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr29470_pri_n2_write(
+            self.scs.scs_nvic_ipr29474_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29369,7 +28443,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr29470_pri_n3_write(
+            self.scs.scs_nvic_ipr29474_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29377,19 +28451,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr30474 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr30478 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr30474_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr30478_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr30474_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr30474_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr30474_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr30474_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr30478_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr30478_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr30478_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr30478_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr30474 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr30478 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr30474_write(
+    pub(crate) fn scs_nvic_ipr30478_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -29398,7 +28472,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr30474_pri_n0_write(
+            self.scs.scs_nvic_ipr30478_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29406,7 +28480,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr30474_pri_n1_write(
+            self.scs.scs_nvic_ipr30478_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29414,7 +28488,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr30474_pri_n2_write(
+            self.scs.scs_nvic_ipr30478_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29422,7 +28496,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr30474_pri_n3_write(
+            self.scs.scs_nvic_ipr30478_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29430,19 +28504,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr31478 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr3147c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr31478_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr3147c_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr31478_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr31478_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr31478_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr31478_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr3147c_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr3147c_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr3147c_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr3147c_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr31478 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr3147c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr31478_write(
+    pub(crate) fn scs_nvic_ipr3147c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -29451,7 +28525,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr31478_pri_n0_write(
+            self.scs.scs_nvic_ipr3147c_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29459,7 +28533,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr31478_pri_n1_write(
+            self.scs.scs_nvic_ipr3147c_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29467,7 +28541,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr31478_pri_n2_write(
+            self.scs.scs_nvic_ipr3147c_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29475,7 +28549,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr31478_pri_n3_write(
+            self.scs.scs_nvic_ipr3147c_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29483,19 +28557,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr3247c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr32480 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr3247c_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr32480_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr3247c_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr3247c_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr3247c_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr3247c_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr32480_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr32480_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr32480_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr32480_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr3247c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr32480 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr3247c_write(
+    pub(crate) fn scs_nvic_ipr32480_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -29504,7 +28578,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr3247c_pri_n0_write(
+            self.scs.scs_nvic_ipr32480_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29512,7 +28586,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr3247c_pri_n1_write(
+            self.scs.scs_nvic_ipr32480_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29520,7 +28594,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr3247c_pri_n2_write(
+            self.scs.scs_nvic_ipr32480_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29528,7 +28602,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr3247c_pri_n3_write(
+            self.scs.scs_nvic_ipr32480_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29536,19 +28610,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr33480 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr33484 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr33480_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr33484_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr33480_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr33480_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr33480_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr33480_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr33484_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr33484_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr33484_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr33484_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr33480 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr33484 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr33480_write(
+    pub(crate) fn scs_nvic_ipr33484_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -29557,7 +28631,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr33480_pri_n0_write(
+            self.scs.scs_nvic_ipr33484_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29565,7 +28639,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr33480_pri_n1_write(
+            self.scs.scs_nvic_ipr33484_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29573,7 +28647,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr33480_pri_n2_write(
+            self.scs.scs_nvic_ipr33484_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29581,7 +28655,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr33480_pri_n3_write(
+            self.scs.scs_nvic_ipr33484_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29589,19 +28663,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr34484 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr34488 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr34484_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr34488_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr34484_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr34484_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr34484_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr34484_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr34488_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr34488_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr34488_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr34488_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr34484 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr34488 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr34484_write(
+    pub(crate) fn scs_nvic_ipr34488_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -29610,7 +28684,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr34484_pri_n0_write(
+            self.scs.scs_nvic_ipr34488_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29618,7 +28692,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr34484_pri_n1_write(
+            self.scs.scs_nvic_ipr34488_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29626,7 +28700,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr34484_pri_n2_write(
+            self.scs.scs_nvic_ipr34488_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29634,7 +28708,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr34484_pri_n3_write(
+            self.scs.scs_nvic_ipr34488_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29642,19 +28716,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr35488 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr3548c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr35488_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr3548c_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr35488_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr35488_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr35488_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr35488_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr3548c_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr3548c_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr3548c_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr3548c_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr35488 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr3548c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr35488_write(
+    pub(crate) fn scs_nvic_ipr3548c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -29663,7 +28737,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr35488_pri_n0_write(
+            self.scs.scs_nvic_ipr3548c_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29671,7 +28745,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr35488_pri_n1_write(
+            self.scs.scs_nvic_ipr3548c_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29679,7 +28753,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr35488_pri_n2_write(
+            self.scs.scs_nvic_ipr3548c_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29687,7 +28761,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr35488_pri_n3_write(
+            self.scs.scs_nvic_ipr3548c_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29695,19 +28769,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr3648c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr36490 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr3648c_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr36490_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr3648c_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr3648c_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr3648c_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr3648c_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr36490_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr36490_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr36490_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr36490_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr3648c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr36490 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr3648c_write(
+    pub(crate) fn scs_nvic_ipr36490_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -29716,7 +28790,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr3648c_pri_n0_write(
+            self.scs.scs_nvic_ipr36490_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29724,7 +28798,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr3648c_pri_n1_write(
+            self.scs.scs_nvic_ipr36490_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29732,7 +28806,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr3648c_pri_n2_write(
+            self.scs.scs_nvic_ipr36490_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29740,7 +28814,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr3648c_pri_n3_write(
+            self.scs.scs_nvic_ipr36490_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29748,19 +28822,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr37490 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr37494 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr37490_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr37494_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr37490_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr37490_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr37490_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr37490_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr37494_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr37494_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr37494_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr37494_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr37490 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr37494 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr37490_write(
+    pub(crate) fn scs_nvic_ipr37494_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -29769,7 +28843,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr37490_pri_n0_write(
+            self.scs.scs_nvic_ipr37494_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29777,7 +28851,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr37490_pri_n1_write(
+            self.scs.scs_nvic_ipr37494_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29785,7 +28859,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr37490_pri_n2_write(
+            self.scs.scs_nvic_ipr37494_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29793,7 +28867,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr37490_pri_n3_write(
+            self.scs.scs_nvic_ipr37494_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29801,19 +28875,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr38494 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr38498 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr38494_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr38498_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr38494_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr38494_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr38494_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr38494_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr38498_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr38498_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr38498_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr38498_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr38494 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr38498 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr38494_write(
+    pub(crate) fn scs_nvic_ipr38498_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -29822,7 +28896,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr38494_pri_n0_write(
+            self.scs.scs_nvic_ipr38498_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29830,7 +28904,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr38494_pri_n1_write(
+            self.scs.scs_nvic_ipr38498_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29838,7 +28912,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr38494_pri_n2_write(
+            self.scs.scs_nvic_ipr38498_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29846,7 +28920,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr38494_pri_n3_write(
+            self.scs.scs_nvic_ipr38498_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29854,19 +28928,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr39498 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr3949c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr39498_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr3949c_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr39498_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr39498_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr39498_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr39498_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr3949c_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr3949c_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr3949c_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr3949c_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr39498 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr3949c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr39498_write(
+    pub(crate) fn scs_nvic_ipr3949c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -29875,7 +28949,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr39498_pri_n0_write(
+            self.scs.scs_nvic_ipr3949c_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29883,7 +28957,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr39498_pri_n1_write(
+            self.scs.scs_nvic_ipr3949c_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29891,7 +28965,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr39498_pri_n2_write(
+            self.scs.scs_nvic_ipr3949c_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29899,7 +28973,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr39498_pri_n3_write(
+            self.scs.scs_nvic_ipr3949c_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29907,19 +28981,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr4049c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr404a0 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr4049c_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr404a0_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr4049c_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr4049c_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr4049c_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr4049c_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr404a0_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr404a0_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr404a0_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr404a0_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr4049c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr404a0 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr4049c_write(
+    pub(crate) fn scs_nvic_ipr404a0_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -29928,7 +29002,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr4049c_pri_n0_write(
+            self.scs.scs_nvic_ipr404a0_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29936,7 +29010,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr4049c_pri_n1_write(
+            self.scs.scs_nvic_ipr404a0_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29944,7 +29018,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr4049c_pri_n2_write(
+            self.scs.scs_nvic_ipr404a0_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29952,7 +29026,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr4049c_pri_n3_write(
+            self.scs.scs_nvic_ipr404a0_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29960,19 +29034,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr414a0 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr414a4 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr414a0_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr414a4_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr414a0_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr414a0_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr414a0_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr414a0_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr414a4_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr414a4_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr414a4_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr414a4_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr414a0 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr414a4 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr414a0_write(
+    pub(crate) fn scs_nvic_ipr414a4_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -29981,7 +29055,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr414a0_pri_n0_write(
+            self.scs.scs_nvic_ipr414a4_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29989,7 +29063,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr414a0_pri_n1_write(
+            self.scs.scs_nvic_ipr414a4_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -29997,7 +29071,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr414a0_pri_n2_write(
+            self.scs.scs_nvic_ipr414a4_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30005,7 +29079,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr414a0_pri_n3_write(
+            self.scs.scs_nvic_ipr414a4_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30013,19 +29087,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr424a4 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr424a8 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr424a4_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr424a8_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr424a4_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr424a4_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr424a4_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr424a4_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr424a8_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr424a8_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr424a8_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr424a8_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr424a4 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr424a8 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr424a4_write(
+    pub(crate) fn scs_nvic_ipr424a8_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -30034,7 +29108,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr424a4_pri_n0_write(
+            self.scs.scs_nvic_ipr424a8_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30042,7 +29116,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr424a4_pri_n1_write(
+            self.scs.scs_nvic_ipr424a8_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30050,7 +29124,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr424a4_pri_n2_write(
+            self.scs.scs_nvic_ipr424a8_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30058,7 +29132,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr424a4_pri_n3_write(
+            self.scs.scs_nvic_ipr424a8_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30066,19 +29140,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr434a8 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr434ac from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr434a8_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr434ac_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr434a8_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr434a8_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr434a8_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr434a8_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr434ac_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr434ac_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr434ac_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr434ac_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr434a8 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr434ac from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr434a8_write(
+    pub(crate) fn scs_nvic_ipr434ac_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -30087,7 +29161,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr434a8_pri_n0_write(
+            self.scs.scs_nvic_ipr434ac_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30095,7 +29169,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr434a8_pri_n1_write(
+            self.scs.scs_nvic_ipr434ac_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30103,7 +29177,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr434a8_pri_n2_write(
+            self.scs.scs_nvic_ipr434ac_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30111,7 +29185,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr434a8_pri_n3_write(
+            self.scs.scs_nvic_ipr434ac_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30119,19 +29193,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr444ac from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr444b0 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr444ac_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr444b0_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr444ac_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr444ac_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr444ac_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr444ac_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr444b0_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr444b0_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr444b0_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr444b0_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr444ac from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr444b0 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr444ac_write(
+    pub(crate) fn scs_nvic_ipr444b0_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -30140,7 +29214,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr444ac_pri_n0_write(
+            self.scs.scs_nvic_ipr444b0_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30148,7 +29222,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr444ac_pri_n1_write(
+            self.scs.scs_nvic_ipr444b0_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30156,7 +29230,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr444ac_pri_n2_write(
+            self.scs.scs_nvic_ipr444b0_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30164,7 +29238,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr444ac_pri_n3_write(
+            self.scs.scs_nvic_ipr444b0_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30172,19 +29246,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr454b0 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr454b4 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr454b0_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr454b4_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr454b0_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr454b0_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr454b0_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr454b0_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr454b4_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr454b4_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr454b4_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr454b4_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr454b0 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr454b4 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr454b0_write(
+    pub(crate) fn scs_nvic_ipr454b4_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -30193,7 +29267,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr454b0_pri_n0_write(
+            self.scs.scs_nvic_ipr454b4_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30201,7 +29275,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr454b0_pri_n1_write(
+            self.scs.scs_nvic_ipr454b4_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30209,7 +29283,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr454b0_pri_n2_write(
+            self.scs.scs_nvic_ipr454b4_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30217,7 +29291,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr454b0_pri_n3_write(
+            self.scs.scs_nvic_ipr454b4_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30225,19 +29299,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr464b4 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr464b8 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr464b4_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr464b8_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr464b4_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr464b4_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr464b4_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr464b4_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr464b8_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr464b8_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr464b8_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr464b8_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr464b4 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr464b8 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr464b4_write(
+    pub(crate) fn scs_nvic_ipr464b8_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -30246,7 +29320,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr464b4_pri_n0_write(
+            self.scs.scs_nvic_ipr464b8_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30254,7 +29328,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr464b4_pri_n1_write(
+            self.scs.scs_nvic_ipr464b8_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30262,7 +29336,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr464b4_pri_n2_write(
+            self.scs.scs_nvic_ipr464b8_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30270,7 +29344,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr464b4_pri_n3_write(
+            self.scs.scs_nvic_ipr464b8_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30278,19 +29352,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr474b8 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr474bc from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr474b8_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr474bc_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr474b8_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr474b8_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr474b8_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr474b8_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr474bc_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr474bc_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr474bc_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr474bc_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr474b8 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr474bc from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr474b8_write(
+    pub(crate) fn scs_nvic_ipr474bc_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -30299,7 +29373,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr474b8_pri_n0_write(
+            self.scs.scs_nvic_ipr474bc_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30307,7 +29381,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr474b8_pri_n1_write(
+            self.scs.scs_nvic_ipr474bc_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30315,7 +29389,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr474b8_pri_n2_write(
+            self.scs.scs_nvic_ipr474bc_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30323,7 +29397,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr474b8_pri_n3_write(
+            self.scs.scs_nvic_ipr474bc_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30331,19 +29405,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr484bc from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr484c0 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr484bc_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr484c0_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr484bc_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr484bc_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr484bc_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr484bc_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr484c0_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr484c0_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr484c0_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr484c0_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr484bc from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr484c0 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr484bc_write(
+    pub(crate) fn scs_nvic_ipr484c0_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -30352,7 +29426,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr484bc_pri_n0_write(
+            self.scs.scs_nvic_ipr484c0_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30360,7 +29434,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr484bc_pri_n1_write(
+            self.scs.scs_nvic_ipr484c0_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30368,7 +29442,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr484bc_pri_n2_write(
+            self.scs.scs_nvic_ipr484c0_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30376,7 +29450,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr484bc_pri_n3_write(
+            self.scs.scs_nvic_ipr484c0_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30384,19 +29458,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr494c0 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr494c4 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr494c0_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr494c4_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr494c0_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr494c0_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr494c0_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr494c0_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr494c4_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr494c4_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr494c4_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr494c4_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr494c0 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr494c4 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr494c0_write(
+    pub(crate) fn scs_nvic_ipr494c4_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -30405,7 +29479,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr494c0_pri_n0_write(
+            self.scs.scs_nvic_ipr494c4_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30413,7 +29487,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr494c0_pri_n1_write(
+            self.scs.scs_nvic_ipr494c4_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30421,7 +29495,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr494c0_pri_n2_write(
+            self.scs.scs_nvic_ipr494c4_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30429,7 +29503,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr494c0_pri_n3_write(
+            self.scs.scs_nvic_ipr494c4_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30437,19 +29511,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr504c4 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr504c8 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr504c4_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr504c8_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr504c4_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr504c4_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr504c4_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr504c4_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr504c8_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr504c8_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr504c8_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr504c8_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr504c4 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr504c8 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr504c4_write(
+    pub(crate) fn scs_nvic_ipr504c8_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -30458,7 +29532,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr504c4_pri_n0_write(
+            self.scs.scs_nvic_ipr504c8_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30466,7 +29540,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr504c4_pri_n1_write(
+            self.scs.scs_nvic_ipr504c8_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30474,7 +29548,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr504c4_pri_n2_write(
+            self.scs.scs_nvic_ipr504c8_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30482,7 +29556,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr504c4_pri_n3_write(
+            self.scs.scs_nvic_ipr504c8_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30490,19 +29564,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr514c8 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr514cc from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr514c8_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr514cc_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr514c8_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr514c8_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr514c8_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr514c8_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr514cc_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr514cc_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr514cc_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr514cc_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr514c8 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr514cc from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr514c8_write(
+    pub(crate) fn scs_nvic_ipr514cc_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -30511,7 +29585,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr514c8_pri_n0_write(
+            self.scs.scs_nvic_ipr514cc_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30519,7 +29593,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr514c8_pri_n1_write(
+            self.scs.scs_nvic_ipr514cc_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30527,7 +29601,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr514c8_pri_n2_write(
+            self.scs.scs_nvic_ipr514cc_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30535,7 +29609,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr514c8_pri_n3_write(
+            self.scs.scs_nvic_ipr514cc_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30543,19 +29617,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr524cc from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr524d0 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr524cc_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr524d0_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr524cc_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr524cc_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr524cc_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr524cc_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr524d0_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr524d0_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr524d0_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr524d0_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr524cc from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr524d0 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr524cc_write(
+    pub(crate) fn scs_nvic_ipr524d0_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -30564,7 +29638,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr524cc_pri_n0_write(
+            self.scs.scs_nvic_ipr524d0_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30572,7 +29646,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr524cc_pri_n1_write(
+            self.scs.scs_nvic_ipr524d0_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30580,7 +29654,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr524cc_pri_n2_write(
+            self.scs.scs_nvic_ipr524d0_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30588,7 +29662,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr524cc_pri_n3_write(
+            self.scs.scs_nvic_ipr524d0_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30596,19 +29670,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr534d0 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr534d4 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr534d0_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr534d4_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr534d0_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr534d0_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr534d0_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr534d0_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr534d4_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr534d4_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr534d4_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr534d4_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr534d0 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr534d4 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr534d0_write(
+    pub(crate) fn scs_nvic_ipr534d4_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -30617,7 +29691,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr534d0_pri_n0_write(
+            self.scs.scs_nvic_ipr534d4_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30625,7 +29699,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr534d0_pri_n1_write(
+            self.scs.scs_nvic_ipr534d4_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30633,7 +29707,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr534d0_pri_n2_write(
+            self.scs.scs_nvic_ipr534d4_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30641,7 +29715,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr534d0_pri_n3_write(
+            self.scs.scs_nvic_ipr534d4_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30649,19 +29723,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr544d4 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr544d8 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr544d4_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr544d8_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr544d4_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr544d4_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr544d4_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr544d4_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr544d8_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr544d8_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr544d8_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr544d8_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr544d4 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr544d8 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr544d4_write(
+    pub(crate) fn scs_nvic_ipr544d8_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -30670,7 +29744,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr544d4_pri_n0_write(
+            self.scs.scs_nvic_ipr544d8_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30678,7 +29752,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr544d4_pri_n1_write(
+            self.scs.scs_nvic_ipr544d8_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30686,7 +29760,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr544d4_pri_n2_write(
+            self.scs.scs_nvic_ipr544d8_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30694,7 +29768,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr544d4_pri_n3_write(
+            self.scs.scs_nvic_ipr544d8_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30702,19 +29776,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr554d8 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr554dc from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr554d8_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr554dc_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr554d8_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr554d8_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr554d8_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr554d8_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr554dc_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr554dc_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr554dc_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr554dc_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr554d8 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr554dc from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr554d8_write(
+    pub(crate) fn scs_nvic_ipr554dc_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -30723,7 +29797,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr554d8_pri_n0_write(
+            self.scs.scs_nvic_ipr554dc_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30731,7 +29805,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr554d8_pri_n1_write(
+            self.scs.scs_nvic_ipr554dc_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30739,7 +29813,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr554d8_pri_n2_write(
+            self.scs.scs_nvic_ipr554dc_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30747,7 +29821,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr554d8_pri_n3_write(
+            self.scs.scs_nvic_ipr554dc_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30755,19 +29829,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr564dc from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr564e0 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr564dc_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr564e0_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr564dc_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr564dc_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr564dc_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr564dc_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr564e0_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr564e0_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr564e0_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr564e0_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr564dc from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr564e0 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr564dc_write(
+    pub(crate) fn scs_nvic_ipr564e0_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -30776,7 +29850,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr564dc_pri_n0_write(
+            self.scs.scs_nvic_ipr564e0_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30784,7 +29858,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr564dc_pri_n1_write(
+            self.scs.scs_nvic_ipr564e0_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30792,7 +29866,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr564dc_pri_n2_write(
+            self.scs.scs_nvic_ipr564e0_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30800,7 +29874,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr564dc_pri_n3_write(
+            self.scs.scs_nvic_ipr564e0_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30808,19 +29882,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr574e0 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr574e4 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr574e0_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr574e4_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr574e0_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr574e0_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr574e0_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr574e0_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr574e4_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr574e4_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr574e4_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr574e4_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr574e0 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr574e4 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr574e0_write(
+    pub(crate) fn scs_nvic_ipr574e4_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -30829,7 +29903,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr574e0_pri_n0_write(
+            self.scs.scs_nvic_ipr574e4_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30837,7 +29911,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr574e0_pri_n1_write(
+            self.scs.scs_nvic_ipr574e4_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30845,7 +29919,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr574e0_pri_n2_write(
+            self.scs.scs_nvic_ipr574e4_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30853,7 +29927,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr574e0_pri_n3_write(
+            self.scs.scs_nvic_ipr574e4_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30861,19 +29935,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr584e4 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr584e8 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr584e4_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr584e8_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr584e4_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr584e4_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr584e4_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr584e4_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr584e8_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr584e8_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr584e8_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr584e8_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr584e4 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr584e8 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr584e4_write(
+    pub(crate) fn scs_nvic_ipr584e8_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -30882,7 +29956,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr584e4_pri_n0_write(
+            self.scs.scs_nvic_ipr584e8_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30890,7 +29964,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr584e4_pri_n1_write(
+            self.scs.scs_nvic_ipr584e8_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30898,7 +29972,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr584e4_pri_n2_write(
+            self.scs.scs_nvic_ipr584e8_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30906,7 +29980,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr584e4_pri_n3_write(
+            self.scs.scs_nvic_ipr584e8_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30914,19 +29988,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_nvic_ipr594e8 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_nvic_ipr594ec from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr594e8_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_nvic_ipr594ec_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_nvic_ipr594e8_pri_n0_read()?);
-        _value |= u32::from(self.scs.scs_nvic_ipr594e8_pri_n1_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr594e8_pri_n2_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_nvic_ipr594e8_pri_n3_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr594ec_pri_n0_read()?);
+        _value |= u32::from(self.scs.scs_nvic_ipr594ec_pri_n1_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr594ec_pri_n2_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_nvic_ipr594ec_pri_n3_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_nvic_ipr594e8 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_nvic_ipr594ec from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_nvic_ipr594e8_write(
+    pub(crate) fn scs_nvic_ipr594ec_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -30935,7 +30009,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_nvic_ipr594e8_pri_n0_write(
+            self.scs.scs_nvic_ipr594ec_pri_n0_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30943,7 +30017,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_nvic_ipr594e8_pri_n1_write(
+            self.scs.scs_nvic_ipr594ec_pri_n1_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30951,7 +30025,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_nvic_ipr594e8_pri_n2_write(
+            self.scs.scs_nvic_ipr594ec_pri_n2_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30959,7 +30033,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_nvic_ipr594e8_pri_n3_write(
+            self.scs.scs_nvic_ipr594ec_pri_n3_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -30967,25 +30041,36 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_icsrcfc from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_cpuidd00 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_icsrcfc_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_cpuidd00_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_icsrcfc_vectactive_read()?);
-        _value |= u32::from(self.scs.scs_icsrcfc_rettobase_read()?) << 11u32;
-        _value |= u32::from(self.scs.scs_icsrcfc_vectpending_read()?) << 12u32;
-        _value |= u32::from(self.scs.scs_icsrcfc_isrpending_read()?) << 22u32;
-        _value |= u32::from(self.scs.scs_icsrcfc_isrpreempt_read()?) << 23u32;
-        _value |= u32::from(self.scs.scs_icsrcfc_pendstclr_read()?) << 25u32;
-        _value |= u32::from(self.scs.scs_icsrcfc_pendstset_read()?) << 26u32;
-        _value |= u32::from(self.scs.scs_icsrcfc_pendsvclr_read()?) << 27u32;
-        _value |= u32::from(self.scs.scs_icsrcfc_pendsvset_read()?) << 28u32;
-        _value |= u32::from(self.scs.scs_icsrcfc_nmipendset_read()?) << 31u32;
+        _value |= u32::from(self.scs.scs_cpuidd00_revision_read()?);
+        _value |= u32::from(self.scs.scs_cpuidd00_partno_read()?) << 4u32;
+        _value |= u32::from(self.scs.scs_cpuidd00_constant_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_cpuidd00_variant_read()?) << 20u32;
+        _value |= u32::from(self.scs.scs_cpuidd00_implementer_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_icsrcfc from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_icsrd04 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_icsrcfc_write(
+    pub(crate) fn scs_icsrd04_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |= u32::from(self.scs.scs_icsrd04_vectactive_read()?);
+        _value |= u32::from(self.scs.scs_icsrd04_rettobase_read()?) << 11u32;
+        _value |= u32::from(self.scs.scs_icsrd04_vectpending_read()?) << 12u32;
+        _value |= u32::from(self.scs.scs_icsrd04_isrpending_read()?) << 22u32;
+        _value |= u32::from(self.scs.scs_icsrd04_isrpreempt_read()?) << 23u32;
+        _value |= u32::from(self.scs.scs_icsrd04_pendstclr_read()?) << 25u32;
+        _value |= u32::from(self.scs.scs_icsrd04_pendstset_read()?) << 26u32;
+        _value |= u32::from(self.scs.scs_icsrd04_pendsvclr_read()?) << 27u32;
+        _value |= u32::from(self.scs.scs_icsrd04_pendsvset_read()?) << 28u32;
+        _value |= u32::from(self.scs.scs_icsrd04_nmipendset_read()?) << 31u32;
+        Ok(_value)
+    }
+    #[doc = "Write scs_icsrd04 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_icsrd04_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -31002,7 +30087,7 @@ impl super::Peripherals {
             _extracted |= ((_value[((0 + 1 + 1) - _start) as usize] & 1u8)
                 as u16)
                 << (0 + (1 * 8));
-            self.scs.scs_icsrcfc_vectactive_write(
+            self.scs.scs_icsrd04_vectactive_write(
                 _extracted
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31012,7 +30097,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_icsrcfc_rettobase_write(
+            self.scs.scs_icsrd04_rettobase_write(
                 ((_value[_i] >> 3) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31024,7 +30109,7 @@ impl super::Peripherals {
             _extracted |= ((_value[((1 + 0 + 1) - _start) as usize] & 31u8)
                 as u16)
                 << (4 + (0 * 8));
-            self.scs.scs_icsrcfc_vectpending_write(
+            self.scs.scs_icsrd04_vectpending_write(
                 _extracted
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31034,7 +30119,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_icsrcfc_isrpending_write(
+            self.scs.scs_icsrd04_isrpending_write(
                 ((_value[_i] >> 6) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31042,7 +30127,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_icsrcfc_isrpreempt_write(
+            self.scs.scs_icsrd04_isrpreempt_write(
                 ((_value[_i] >> 7) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31050,7 +30135,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_icsrcfc_pendstclr_write(
+            self.scs.scs_icsrd04_pendstclr_write(
                 ((_value[_i] >> 1) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31058,7 +30143,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_icsrcfc_pendstset_write(
+            self.scs.scs_icsrd04_pendstset_write(
                 ((_value[_i] >> 2) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31066,7 +30151,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_icsrcfc_pendsvclr_write(
+            self.scs.scs_icsrd04_pendsvclr_write(
                 ((_value[_i] >> 3) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31074,7 +30159,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_icsrcfc_pendsvset_write(
+            self.scs.scs_icsrd04_pendsvset_write(
                 ((_value[_i] >> 4) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31082,7 +30167,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_icsrcfc_nmipendset_write(
+            self.scs.scs_icsrd04_nmipendset_write(
                 ((_value[_i] >> 7) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31090,17 +30175,17 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_vtord00 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_vtord08 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_vtord00_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_vtord08_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_vtord00_tbloff_read()?) << 7u32;
-        _value |= u32::from(self.scs.scs_vtord00_tblbase_read()?) << 29u32;
+        _value |= u32::from(self.scs.scs_vtord08_tbloff_read()?) << 7u32;
+        _value |= u32::from(self.scs.scs_vtord08_tblbase_read()?) << 29u32;
         Ok(_value)
     }
-    #[doc = "Write scs_vtord00 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_vtord08 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_vtord00_write(
+    pub(crate) fn scs_vtord08_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -31115,7 +30200,7 @@ impl super::Peripherals {
                     as u32)
                     << (7 + (byte_i * 8));
             }
-            self.scs.scs_vtord00_tbloff_write(
+            self.scs.scs_vtord08_tbloff_write(
                 _extracted
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31125,7 +30210,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_vtord00_tblbase_write(
+            self.scs.scs_vtord08_tblbase_write(
                 ((_value[_i] >> 5) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31133,21 +30218,21 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_aircrd04 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_aircrd0c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_aircrd04_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_aircrd0c_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
         _value |=
-            u32::from(self.scs.scs_aircrd04_vectclractive_read()?) << 1u32;
-        _value |= u32::from(self.scs.scs_aircrd04_sysresetreq_read()?) << 2u32;
-        _value |= u32::from(self.scs.scs_aircrd04_prigroup_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_aircrd04_endianness_read()?) << 15u32;
-        _value |= u32::from(self.scs.scs_aircrd04_vectkey_read()?) << 16u32;
+            u32::from(self.scs.scs_aircrd0c_vectclractive_read()?) << 1u32;
+        _value |= u32::from(self.scs.scs_aircrd0c_sysresetreq_read()?) << 2u32;
+        _value |= u32::from(self.scs.scs_aircrd0c_prigroup_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_aircrd0c_endianness_read()?) << 15u32;
+        _value |= u32::from(self.scs.scs_aircrd0c_vectkey_read()?) << 16u32;
         Ok(_value)
     }
-    #[doc = "Write scs_aircrd04 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_aircrd0c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_aircrd04_write(
+    pub(crate) fn scs_aircrd0c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -31156,7 +30241,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_aircrd04_vectclractive_write(
+            self.scs.scs_aircrd0c_vectclractive_write(
                 ((_value[_i] >> 1) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31164,7 +30249,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_aircrd04_sysresetreq_write(
+            self.scs.scs_aircrd0c_sysresetreq_write(
                 ((_value[_i] >> 2) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31172,7 +30257,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_aircrd04_prigroup_write(
+            self.scs.scs_aircrd0c_prigroup_write(
                 ((_value[_i] >> 0) & 7u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31180,7 +30265,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_aircrd04_endianness_write(
+            self.scs.scs_aircrd0c_endianness_write(
                 ((_value[_i] >> 7) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31192,7 +30277,7 @@ impl super::Peripherals {
             let _value = u16::from_ne_bytes(
                 _value[_offset_start.._offset_end].try_into().unwrap(),
             );
-            self.scs.scs_aircrd04_vectkey_write(
+            self.scs.scs_aircrd0c_vectkey_write(
                 _value.try_into().map_err(|_| MemError::WriteViolation)?,
             )?;
         } else if (_start > 2 && _start < 4) || (_end > 2 && _end < 4) {
@@ -31200,18 +30285,18 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_scrd08 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_scrd10 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_scrd08_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_scrd10_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_scrd08_sleeponexit_read()?) << 1u32;
-        _value |= u32::from(self.scs.scs_scrd08_sleepdeep_read()?) << 2u32;
-        _value |= u32::from(self.scs.scs_scrd08_sevonpend_read()?) << 4u32;
+        _value |= u32::from(self.scs.scs_scrd10_sleeponexit_read()?) << 1u32;
+        _value |= u32::from(self.scs.scs_scrd10_sleepdeep_read()?) << 2u32;
+        _value |= u32::from(self.scs.scs_scrd10_sevonpend_read()?) << 4u32;
         Ok(_value)
     }
-    #[doc = "Write scs_scrd08 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_scrd10 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_scrd08_write(
+    pub(crate) fn scs_scrd10_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -31220,7 +30305,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_scrd08_sleeponexit_write(
+            self.scs.scs_scrd10_sleeponexit_write(
                 ((_value[_i] >> 1) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31228,7 +30313,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_scrd08_sleepdeep_write(
+            self.scs.scs_scrd10_sleepdeep_write(
                 ((_value[_i] >> 2) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31236,7 +30321,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_scrd08_sevonpend_write(
+            self.scs.scs_scrd10_sevonpend_write(
                 ((_value[_i] >> 4) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31244,21 +30329,21 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_ccrd0c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_ccrd14 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_ccrd0c_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_ccrd14_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_ccrd0c_nonbasethrdena_read()?);
-        _value |= u32::from(self.scs.scs_ccrd0c_usersetmpend_read()?) << 1u32;
-        _value |= u32::from(self.scs.scs_ccrd0c_unalign_trp_read()?) << 3u32;
-        _value |= u32::from(self.scs.scs_ccrd0c_div_0_trp_read()?) << 4u32;
-        _value |= u32::from(self.scs.scs_ccrd0c_bfhfnmign_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_ccrd0c_stkalign_read()?) << 9u32;
+        _value |= u32::from(self.scs.scs_ccrd14_nonbasethrdena_read()?);
+        _value |= u32::from(self.scs.scs_ccrd14_usersetmpend_read()?) << 1u32;
+        _value |= u32::from(self.scs.scs_ccrd14_unalign_trp_read()?) << 3u32;
+        _value |= u32::from(self.scs.scs_ccrd14_div_0_trp_read()?) << 4u32;
+        _value |= u32::from(self.scs.scs_ccrd14_bfhfnmign_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_ccrd14_stkalign_read()?) << 9u32;
         Ok(_value)
     }
-    #[doc = "Write scs_ccrd0c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_ccrd14 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_ccrd0c_write(
+    pub(crate) fn scs_ccrd14_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -31267,7 +30352,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_ccrd0c_nonbasethrdena_write(
+            self.scs.scs_ccrd14_nonbasethrdena_write(
                 ((_value[_i] >> 0) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31275,7 +30360,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_ccrd0c_usersetmpend_write(
+            self.scs.scs_ccrd14_usersetmpend_write(
                 ((_value[_i] >> 1) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31283,7 +30368,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_ccrd0c_unalign_trp_write(
+            self.scs.scs_ccrd14_unalign_trp_write(
                 ((_value[_i] >> 3) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31291,7 +30376,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_ccrd0c_div_0_trp_write(
+            self.scs.scs_ccrd14_div_0_trp_write(
                 ((_value[_i] >> 4) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31299,7 +30384,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_ccrd0c_bfhfnmign_write(
+            self.scs.scs_ccrd14_bfhfnmign_write(
                 ((_value[_i] >> 0) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31307,7 +30392,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_ccrd0c_stkalign_write(
+            self.scs.scs_ccrd14_stkalign_write(
                 ((_value[_i] >> 1) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31315,19 +30400,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_shpr1d10 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_shpr1d18 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_shpr1d10_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_shpr1d18_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_shpr1d10_pri_4_read()?);
-        _value |= u32::from(self.scs.scs_shpr1d10_pri_5_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_shpr1d10_pri_6_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_shpr1d10_pri_7_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_shpr1d18_pri_4_read()?);
+        _value |= u32::from(self.scs.scs_shpr1d18_pri_5_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_shpr1d18_pri_6_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_shpr1d18_pri_7_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_shpr1d10 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_shpr1d18 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_shpr1d10_write(
+    pub(crate) fn scs_shpr1d18_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -31336,7 +30421,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_shpr1d10_pri_4_write(
+            self.scs.scs_shpr1d18_pri_4_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31344,7 +30429,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_shpr1d10_pri_5_write(
+            self.scs.scs_shpr1d18_pri_5_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31352,7 +30437,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_shpr1d10_pri_6_write(
+            self.scs.scs_shpr1d18_pri_6_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31360,7 +30445,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_shpr1d10_pri_7_write(
+            self.scs.scs_shpr1d18_pri_7_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31368,19 +30453,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_shpr2d14 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_shpr2d1c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_shpr2d14_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_shpr2d1c_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_shpr2d14_pri_8_read()?);
-        _value |= u32::from(self.scs.scs_shpr2d14_pri_9_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_shpr2d14_pri_10_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_shpr2d14_pri_11_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_shpr2d1c_pri_8_read()?);
+        _value |= u32::from(self.scs.scs_shpr2d1c_pri_9_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_shpr2d1c_pri_10_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_shpr2d1c_pri_11_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_shpr2d14 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_shpr2d1c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_shpr2d14_write(
+    pub(crate) fn scs_shpr2d1c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -31389,7 +30474,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_shpr2d14_pri_8_write(
+            self.scs.scs_shpr2d1c_pri_8_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31397,7 +30482,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_shpr2d14_pri_9_write(
+            self.scs.scs_shpr2d1c_pri_9_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31405,7 +30490,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_shpr2d14_pri_10_write(
+            self.scs.scs_shpr2d1c_pri_10_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31413,7 +30498,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_shpr2d14_pri_11_write(
+            self.scs.scs_shpr2d1c_pri_11_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31421,19 +30506,19 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_shpr3d18 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_shpr3d20 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_shpr3d18_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_shpr3d20_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_shpr3d18_pri_12_read()?);
-        _value |= u32::from(self.scs.scs_shpr3d18_pri_13_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_shpr3d18_pri_14_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_shpr3d18_pri_15_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_shpr3d20_pri_12_read()?);
+        _value |= u32::from(self.scs.scs_shpr3d20_pri_13_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_shpr3d20_pri_14_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_shpr3d20_pri_15_read()?) << 24u32;
         Ok(_value)
     }
-    #[doc = "Write scs_shpr3d18 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_shpr3d20 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_shpr3d18_write(
+    pub(crate) fn scs_shpr3d20_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -31442,7 +30527,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_shpr3d18_pri_12_write(
+            self.scs.scs_shpr3d20_pri_12_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31450,7 +30535,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_shpr3d18_pri_13_write(
+            self.scs.scs_shpr3d20_pri_13_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31458,7 +30543,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_shpr3d18_pri_14_write(
+            self.scs.scs_shpr3d20_pri_14_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31466,7 +30551,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_shpr3d18_pri_15_write(
+            self.scs.scs_shpr3d20_pri_15_write(
                 ((_value[_i] >> 0) & 255u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31474,33 +30559,33 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_shcsrd1c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_shcsrd24 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_shcsrd1c_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_shcsrd24_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_shcsrd1c_memfaultact_read()?);
-        _value |= u32::from(self.scs.scs_shcsrd1c_busfaultact_read()?) << 1u32;
-        _value |= u32::from(self.scs.scs_shcsrd1c_usgfaultact_read()?) << 3u32;
-        _value |= u32::from(self.scs.scs_shcsrd1c_svcallact_read()?) << 7u32;
-        _value |= u32::from(self.scs.scs_shcsrd1c_monitoract_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_shcsrd1c_pendsvact_read()?) << 10u32;
-        _value |= u32::from(self.scs.scs_shcsrd1c_systickact_read()?) << 11u32;
+        _value |= u32::from(self.scs.scs_shcsrd24_memfaultact_read()?);
+        _value |= u32::from(self.scs.scs_shcsrd24_busfaultact_read()?) << 1u32;
+        _value |= u32::from(self.scs.scs_shcsrd24_usgfaultact_read()?) << 3u32;
+        _value |= u32::from(self.scs.scs_shcsrd24_svcallact_read()?) << 7u32;
+        _value |= u32::from(self.scs.scs_shcsrd24_monitoract_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_shcsrd24_pendsvact_read()?) << 10u32;
+        _value |= u32::from(self.scs.scs_shcsrd24_systickact_read()?) << 11u32;
         _value |=
-            u32::from(self.scs.scs_shcsrd1c_usgfaultpended_read()?) << 12u32;
+            u32::from(self.scs.scs_shcsrd24_usgfaultpended_read()?) << 12u32;
         _value |=
-            u32::from(self.scs.scs_shcsrd1c_memfaultpended_read()?) << 13u32;
+            u32::from(self.scs.scs_shcsrd24_memfaultpended_read()?) << 13u32;
         _value |=
-            u32::from(self.scs.scs_shcsrd1c_busfaultpended_read()?) << 14u32;
+            u32::from(self.scs.scs_shcsrd24_busfaultpended_read()?) << 14u32;
         _value |=
-            u32::from(self.scs.scs_shcsrd1c_svcallpended_read()?) << 15u32;
-        _value |= u32::from(self.scs.scs_shcsrd1c_memfaultena_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_shcsrd1c_busfaultena_read()?) << 17u32;
-        _value |= u32::from(self.scs.scs_shcsrd1c_usgfaultena_read()?) << 18u32;
+            u32::from(self.scs.scs_shcsrd24_svcallpended_read()?) << 15u32;
+        _value |= u32::from(self.scs.scs_shcsrd24_memfaultena_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_shcsrd24_busfaultena_read()?) << 17u32;
+        _value |= u32::from(self.scs.scs_shcsrd24_usgfaultena_read()?) << 18u32;
         Ok(_value)
     }
-    #[doc = "Write scs_shcsrd1c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_shcsrd24 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_shcsrd1c_write(
+    pub(crate) fn scs_shcsrd24_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -31509,7 +30594,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_shcsrd1c_memfaultact_write(
+            self.scs.scs_shcsrd24_memfaultact_write(
                 ((_value[_i] >> 0) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31517,7 +30602,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_shcsrd1c_busfaultact_write(
+            self.scs.scs_shcsrd24_busfaultact_write(
                 ((_value[_i] >> 1) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31525,7 +30610,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_shcsrd1c_usgfaultact_write(
+            self.scs.scs_shcsrd24_usgfaultact_write(
                 ((_value[_i] >> 3) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31533,7 +30618,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_shcsrd1c_svcallact_write(
+            self.scs.scs_shcsrd24_svcallact_write(
                 ((_value[_i] >> 7) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31541,7 +30626,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_shcsrd1c_monitoract_write(
+            self.scs.scs_shcsrd24_monitoract_write(
                 ((_value[_i] >> 0) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31549,7 +30634,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_shcsrd1c_pendsvact_write(
+            self.scs.scs_shcsrd24_pendsvact_write(
                 ((_value[_i] >> 2) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31557,7 +30642,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_shcsrd1c_systickact_write(
+            self.scs.scs_shcsrd24_systickact_write(
                 ((_value[_i] >> 3) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31565,7 +30650,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_shcsrd1c_usgfaultpended_write(
+            self.scs.scs_shcsrd24_usgfaultpended_write(
                 ((_value[_i] >> 4) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31573,7 +30658,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_shcsrd1c_memfaultpended_write(
+            self.scs.scs_shcsrd24_memfaultpended_write(
                 ((_value[_i] >> 5) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31581,7 +30666,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_shcsrd1c_busfaultpended_write(
+            self.scs.scs_shcsrd24_busfaultpended_write(
                 ((_value[_i] >> 6) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31589,7 +30674,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_shcsrd1c_svcallpended_write(
+            self.scs.scs_shcsrd24_svcallpended_write(
                 ((_value[_i] >> 7) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31597,7 +30682,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_shcsrd1c_memfaultena_write(
+            self.scs.scs_shcsrd24_memfaultena_write(
                 ((_value[_i] >> 0) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31605,7 +30690,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_shcsrd1c_busfaultena_write(
+            self.scs.scs_shcsrd24_busfaultena_write(
                 ((_value[_i] >> 1) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31613,7 +30698,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_shcsrd1c_usgfaultena_write(
+            self.scs.scs_shcsrd24_usgfaultena_write(
                 ((_value[_i] >> 2) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31621,34 +30706,34 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_cfsrd20 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_cfsrd28 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_cfsrd20_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_cfsrd28_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_cfsrd20_iaccviol_read()?);
-        _value |= u32::from(self.scs.scs_cfsrd20_daccviol_read()?) << 1u32;
-        _value |= u32::from(self.scs.scs_cfsrd20_munstkerr_read()?) << 3u32;
-        _value |= u32::from(self.scs.scs_cfsrd20_mstkerr_read()?) << 4u32;
-        _value |= u32::from(self.scs.scs_cfsrd20_mlsperr_read()?) << 5u32;
-        _value |= u32::from(self.scs.scs_cfsrd20_mmarvalid_read()?) << 7u32;
-        _value |= u32::from(self.scs.scs_cfsrd20_ibuserr_read()?) << 8u32;
-        _value |= u32::from(self.scs.scs_cfsrd20_preciserr_read()?) << 9u32;
-        _value |= u32::from(self.scs.scs_cfsrd20_impreciserr_read()?) << 10u32;
-        _value |= u32::from(self.scs.scs_cfsrd20_unstkerr_read()?) << 11u32;
-        _value |= u32::from(self.scs.scs_cfsrd20_stkerr_read()?) << 12u32;
-        _value |= u32::from(self.scs.scs_cfsrd20_lsperr_read()?) << 13u32;
-        _value |= u32::from(self.scs.scs_cfsrd20_bfarvalid_read()?) << 15u32;
-        _value |= u32::from(self.scs.scs_cfsrd20_undefinstr_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_cfsrd20_invstate_read()?) << 17u32;
-        _value |= u32::from(self.scs.scs_cfsrd20_invpc_read()?) << 18u32;
-        _value |= u32::from(self.scs.scs_cfsrd20_nocp_read()?) << 19u32;
-        _value |= u32::from(self.scs.scs_cfsrd20_unaligned_read()?) << 24u32;
-        _value |= u32::from(self.scs.scs_cfsrd20_divbyzero_read()?) << 25u32;
+        _value |= u32::from(self.scs.scs_cfsrd28_iaccviol_read()?);
+        _value |= u32::from(self.scs.scs_cfsrd28_daccviol_read()?) << 1u32;
+        _value |= u32::from(self.scs.scs_cfsrd28_munstkerr_read()?) << 3u32;
+        _value |= u32::from(self.scs.scs_cfsrd28_mstkerr_read()?) << 4u32;
+        _value |= u32::from(self.scs.scs_cfsrd28_mlsperr_read()?) << 5u32;
+        _value |= u32::from(self.scs.scs_cfsrd28_mmarvalid_read()?) << 7u32;
+        _value |= u32::from(self.scs.scs_cfsrd28_ibuserr_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_cfsrd28_preciserr_read()?) << 9u32;
+        _value |= u32::from(self.scs.scs_cfsrd28_impreciserr_read()?) << 10u32;
+        _value |= u32::from(self.scs.scs_cfsrd28_unstkerr_read()?) << 11u32;
+        _value |= u32::from(self.scs.scs_cfsrd28_stkerr_read()?) << 12u32;
+        _value |= u32::from(self.scs.scs_cfsrd28_lsperr_read()?) << 13u32;
+        _value |= u32::from(self.scs.scs_cfsrd28_bfarvalid_read()?) << 15u32;
+        _value |= u32::from(self.scs.scs_cfsrd28_undefinstr_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_cfsrd28_invstate_read()?) << 17u32;
+        _value |= u32::from(self.scs.scs_cfsrd28_invpc_read()?) << 18u32;
+        _value |= u32::from(self.scs.scs_cfsrd28_nocp_read()?) << 19u32;
+        _value |= u32::from(self.scs.scs_cfsrd28_unaligned_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_cfsrd28_divbyzero_read()?) << 25u32;
         Ok(_value)
     }
-    #[doc = "Write scs_cfsrd20 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_cfsrd28 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_cfsrd20_write(
+    pub(crate) fn scs_cfsrd28_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -31657,7 +30742,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_cfsrd20_iaccviol_write(
+            self.scs.scs_cfsrd28_iaccviol_write(
                 ((_value[_i] >> 0) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31665,7 +30750,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_cfsrd20_daccviol_write(
+            self.scs.scs_cfsrd28_daccviol_write(
                 ((_value[_i] >> 1) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31673,7 +30758,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_cfsrd20_munstkerr_write(
+            self.scs.scs_cfsrd28_munstkerr_write(
                 ((_value[_i] >> 3) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31681,7 +30766,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_cfsrd20_mstkerr_write(
+            self.scs.scs_cfsrd28_mstkerr_write(
                 ((_value[_i] >> 4) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31689,7 +30774,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_cfsrd20_mlsperr_write(
+            self.scs.scs_cfsrd28_mlsperr_write(
                 ((_value[_i] >> 5) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31697,7 +30782,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_cfsrd20_mmarvalid_write(
+            self.scs.scs_cfsrd28_mmarvalid_write(
                 ((_value[_i] >> 7) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31705,7 +30790,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_cfsrd20_ibuserr_write(
+            self.scs.scs_cfsrd28_ibuserr_write(
                 ((_value[_i] >> 0) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31713,7 +30798,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_cfsrd20_preciserr_write(
+            self.scs.scs_cfsrd28_preciserr_write(
                 ((_value[_i] >> 1) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31721,7 +30806,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_cfsrd20_impreciserr_write(
+            self.scs.scs_cfsrd28_impreciserr_write(
                 ((_value[_i] >> 2) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31729,7 +30814,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_cfsrd20_unstkerr_write(
+            self.scs.scs_cfsrd28_unstkerr_write(
                 ((_value[_i] >> 3) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31737,7 +30822,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_cfsrd20_stkerr_write(
+            self.scs.scs_cfsrd28_stkerr_write(
                 ((_value[_i] >> 4) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31745,7 +30830,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_cfsrd20_lsperr_write(
+            self.scs.scs_cfsrd28_lsperr_write(
                 ((_value[_i] >> 5) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31753,7 +30838,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_cfsrd20_bfarvalid_write(
+            self.scs.scs_cfsrd28_bfarvalid_write(
                 ((_value[_i] >> 7) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31761,7 +30846,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_cfsrd20_undefinstr_write(
+            self.scs.scs_cfsrd28_undefinstr_write(
                 ((_value[_i] >> 0) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31769,7 +30854,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_cfsrd20_invstate_write(
+            self.scs.scs_cfsrd28_invstate_write(
                 ((_value[_i] >> 1) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31777,7 +30862,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_cfsrd20_invpc_write(
+            self.scs.scs_cfsrd28_invpc_write(
                 ((_value[_i] >> 2) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31785,7 +30870,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_cfsrd20_nocp_write(
+            self.scs.scs_cfsrd28_nocp_write(
                 ((_value[_i] >> 3) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31793,7 +30878,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_cfsrd20_unaligned_write(
+            self.scs.scs_cfsrd28_unaligned_write(
                 ((_value[_i] >> 0) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31801,7 +30886,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_cfsrd20_divbyzero_write(
+            self.scs.scs_cfsrd28_divbyzero_write(
                 ((_value[_i] >> 1) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31809,18 +30894,18 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_hfsrd24 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_hfsrd2c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_hfsrd24_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_hfsrd2c_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_hfsrd24_vecttbl_read()?) << 1u32;
-        _value |= u32::from(self.scs.scs_hfsrd24_forced_read()?) << 30u32;
-        _value |= u32::from(self.scs.scs_hfsrd24_debugevt_read()?) << 31u32;
+        _value |= u32::from(self.scs.scs_hfsrd2c_vecttbl_read()?) << 1u32;
+        _value |= u32::from(self.scs.scs_hfsrd2c_forced_read()?) << 30u32;
+        _value |= u32::from(self.scs.scs_hfsrd2c_debugevt_read()?) << 31u32;
         Ok(_value)
     }
-    #[doc = "Write scs_hfsrd24 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_hfsrd2c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_hfsrd24_write(
+    pub(crate) fn scs_hfsrd2c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -31829,7 +30914,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_hfsrd24_vecttbl_write(
+            self.scs.scs_hfsrd2c_vecttbl_write(
                 ((_value[_i] >> 1) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31837,7 +30922,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_hfsrd24_forced_write(
+            self.scs.scs_hfsrd2c_forced_write(
                 ((_value[_i] >> 6) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31845,7 +30930,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.scs.scs_hfsrd24_debugevt_write(
+            self.scs.scs_hfsrd2c_debugevt_write(
                 ((_value[_i] >> 7) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31853,20 +30938,20 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_dfsrd28 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_dfsrd30 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_dfsrd28_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_dfsrd30_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_dfsrd28_halted_read()?);
-        _value |= u32::from(self.scs.scs_dfsrd28_bkpt_read()?) << 1u32;
-        _value |= u32::from(self.scs.scs_dfsrd28_dwttrap_read()?) << 2u32;
-        _value |= u32::from(self.scs.scs_dfsrd28_vcatch_read()?) << 3u32;
-        _value |= u32::from(self.scs.scs_dfsrd28_external_read()?) << 4u32;
+        _value |= u32::from(self.scs.scs_dfsrd30_halted_read()?);
+        _value |= u32::from(self.scs.scs_dfsrd30_bkpt_read()?) << 1u32;
+        _value |= u32::from(self.scs.scs_dfsrd30_dwttrap_read()?) << 2u32;
+        _value |= u32::from(self.scs.scs_dfsrd30_vcatch_read()?) << 3u32;
+        _value |= u32::from(self.scs.scs_dfsrd30_external_read()?) << 4u32;
         Ok(_value)
     }
-    #[doc = "Write scs_dfsrd28 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_dfsrd30 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_dfsrd28_write(
+    pub(crate) fn scs_dfsrd30_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -31875,7 +30960,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_dfsrd28_halted_write(
+            self.scs.scs_dfsrd30_halted_write(
                 ((_value[_i] >> 0) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31883,7 +30968,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_dfsrd28_bkpt_write(
+            self.scs.scs_dfsrd30_bkpt_write(
                 ((_value[_i] >> 1) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31891,7 +30976,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_dfsrd28_dwttrap_write(
+            self.scs.scs_dfsrd30_dwttrap_write(
                 ((_value[_i] >> 2) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31899,7 +30984,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_dfsrd28_vcatch_write(
+            self.scs.scs_dfsrd30_vcatch_write(
                 ((_value[_i] >> 3) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31907,7 +30992,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_dfsrd28_external_write(
+            self.scs.scs_dfsrd30_external_write(
                 ((_value[_i] >> 4) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -31915,14 +31000,14 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_mmfard2c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_mmfard34 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_mmfard2c_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_mmfard2c_read()
+    pub(crate) fn scs_mmfard34_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_mmfard34_read()
     }
-    #[doc = "Write scs_mmfard2c from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_mmfard34 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_mmfard2c_write(
+    pub(crate) fn scs_mmfard34_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -31931,16 +31016,16 @@ impl super::Peripherals {
             return Err(MemError::WriteViolation);
         }
         self.scs
-            .scs_mmfard2c_write(u32::from_ne_bytes(_value.try_into().unwrap()))
+            .scs_mmfard34_write(u32::from_ne_bytes(_value.try_into().unwrap()))
     }
-    #[doc = "Read scs_bfard30 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_bfard38 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_bfard30_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_bfard30_read()
+    pub(crate) fn scs_bfard38_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_bfard38_read()
     }
-    #[doc = "Write scs_bfard30 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_bfard38 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_bfard30_write(
+    pub(crate) fn scs_bfard38_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -31949,16 +31034,16 @@ impl super::Peripherals {
             return Err(MemError::WriteViolation);
         }
         self.scs
-            .scs_bfard30_write(u32::from_ne_bytes(_value.try_into().unwrap()))
+            .scs_bfard38_write(u32::from_ne_bytes(_value.try_into().unwrap()))
     }
-    #[doc = "Read scs_afsrd34 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_afsrd3c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_afsrd34_read(&mut self) -> MemResult<u32> {
-        self.scs.scs_afsrd34_read()
+    pub(crate) fn scs_afsrd3c_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_afsrd3c_read()
     }
-    #[doc = "Write scs_afsrd34 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_afsrd3c from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_afsrd34_write(
+    pub(crate) fn scs_afsrd3c_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -31967,36 +31052,209 @@ impl super::Peripherals {
             return Err(MemError::WriteViolation);
         }
         self.scs
-            .scs_afsrd34_write(u32::from_ne_bytes(_value.try_into().unwrap()))
+            .scs_afsrd3c_write(u32::from_ne_bytes(_value.try_into().unwrap()))
     }
-    #[doc = "Read scs_cpacrd80 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_id_pfr0d40 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_cpacrd80_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_id_pfr0d40_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(u8::from(self.scs.scs_cpacrd80_cp0_read()?));
         _value |=
-            u32::from(u8::from(self.scs.scs_cpacrd80_cp1_read()?)) << 2u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_cpacrd80_cp2_read()?)) << 4u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_cpacrd80_cp3_read()?)) << 6u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_cpacrd80_cp4_read()?)) << 8u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_cpacrd80_cp5_read()?)) << 10u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_cpacrd80_cp6_read()?)) << 12u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_cpacrd80_cp7_read()?)) << 14u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_cpacrd80_cp10_read()?)) << 20u32;
-        _value |=
-            u32::from(u8::from(self.scs.scs_cpacrd80_cp11_read()?)) << 22u32;
+            u32::from(u8::from(self.scs.scs_id_pfr0d40_state1_read()?)) << 4u32;
         Ok(_value)
     }
-    #[doc = "Write scs_cpacrd80 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_id_pfr1d44 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_cpacrd80_write(
+    pub(crate) fn scs_id_pfr1d44_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |=
+            u32::from(u8::from(self.scs.scs_id_pfr1d44_m_profile_read()?))
+                << 8u32;
+        Ok(_value)
+    }
+    #[doc = "Read scs_id_dfr0d48 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_id_dfr0d48_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |=
+            u32::from(u8::from(self.scs.scs_id_dfr0d48_m_profile_read()?))
+                << 20u32;
+        Ok(_value)
+    }
+    #[doc = "Read scs_id_afr0d4c from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_id_afr0d4c_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_id_afr0d4c_read()
+    }
+    #[doc = "Read scs_id_mmfr0d50 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_id_mmfr0d50_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |=
+            u32::from(u8::from(self.scs.scs_id_mmfr0d50_pmsa_read()?)) << 4u32;
+        _value |= u32::from(u8::from(
+            self.scs.scs_id_mmfr0d50_outermost_shareability_read()?,
+        )) << 8u32;
+        _value |= u32::from(u8::from(
+            self.scs.scs_id_mmfr0d50_shareability_levels_read()?,
+        )) << 12u32;
+        _value |= u32::from(u8::from(
+            self.scs.scs_id_mmfr0d50_auxiliary_registers_read()?,
+        )) << 20u32;
+        Ok(_value)
+    }
+    #[doc = "Read scs_id_mmfr1d54 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_id_mmfr1d54_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_id_mmfr1d54_read()
+    }
+    #[doc = "Read scs_id_mmfr2d58 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_id_mmfr2d58_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |=
+            u32::from(u8::from(self.scs.scs_id_mmfr2d58_wfi_read()?)) << 24u32;
+        Ok(_value)
+    }
+    #[doc = "Read scs_id_mmfr3d5c from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_id_mmfr3d5c_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_id_mmfr3d5c_read()
+    }
+    #[doc = "Read scs_id_isar0d60 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_id_isar0d60_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |= u32::from(u8::from(
+            self.scs.scs_id_isar0d60_bitcount_instrs_read()?,
+        )) << 4u32;
+        _value |= u32::from(u8::from(
+            self.scs.scs_id_isar0d60_bitfield_instrs_read()?,
+        )) << 8u32;
+        _value |= u32::from(u8::from(
+            self.scs.scs_id_isar0d60_cmpbranch_instrs_read()?,
+        )) << 12u32;
+        _value |=
+            u32::from(u8::from(self.scs.scs_id_isar0d60_coproc_instrs_read()?))
+                << 16u32;
+        _value |=
+            u32::from(u8::from(self.scs.scs_id_isar0d60_debug_instrs_read()?))
+                << 20u32;
+        _value |=
+            u32::from(u8::from(self.scs.scs_id_isar0d60_divide_instrs_read()?))
+                << 24u32;
+        Ok(_value)
+    }
+    #[doc = "Read scs_id_isar1d64 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_id_isar1d64_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |=
+            u32::from(self.scs.scs_id_isar1d64_extend_instrs_read()?) << 12u32;
+        _value |=
+            u32::from(u8::from(self.scs.scs_id_isar1d64_ifthen_instrs_read()?))
+                << 16u32;
+        _value |= u32::from(u8::from(
+            self.scs.scs_id_isar1d64_immediate_instrs_read()?,
+        )) << 20u32;
+        _value |= u32::from(u8::from(
+            self.scs.scs_id_isar1d64_interwork_instrs_read()?,
+        )) << 24u32;
+        Ok(_value)
+    }
+    #[doc = "Read scs_id_isar2d68 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_id_isar2d68_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |= u32::from(self.scs.scs_id_isar2d68_loadstore_instrs_read()?);
+        _value |=
+            u32::from(self.scs.scs_id_isar2d68_memhint_instrs_read()?) << 4u32;
+        _value |=
+            u32::from(self.scs.scs_id_isar2d68_multiaccessint_instrs_read()?)
+                << 8u32;
+        _value |=
+            u32::from(self.scs.scs_id_isar2d68_mult_instrs_read()?) << 12u32;
+        _value |=
+            u32::from(self.scs.scs_id_isar2d68_mults_instrs_read()?) << 16u32;
+        _value |=
+            u32::from(self.scs.scs_id_isar2d68_multu_instrs_read()?) << 20u32;
+        _value |= u32::from(self.scs.scs_id_isar2d68_reversal_instrs_read()?)
+            << 28u32;
+        Ok(_value)
+    }
+    #[doc = "Read scs_id_isar3d6c from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_id_isar3d6c_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |= u32::from(u8::from(
+            self.scs.scs_id_isar3d6c_saturate_instrs_read()?,
+        ));
+        _value |=
+            u32::from(self.scs.scs_id_isar3d6c_simd_instrs_read()?) << 4u32;
+        _value |=
+            u32::from(u8::from(self.scs.scs_id_isar3d6c_svc_instrs_read()?))
+                << 8u32;
+        _value |= u32::from(self.scs.scs_id_isar3d6c_synchprim_instrs_read()?)
+            << 12u32;
+        _value |= u32::from(u8::from(
+            self.scs.scs_id_isar3d6c_tabbranch_instrs_read()?,
+        )) << 16u32;
+        _value |= u32::from(u8::from(
+            self.scs.scs_id_isar3d6c_thumbcopy_instrs_read()?,
+        )) << 20u32;
+        _value |= u32::from(u8::from(
+            self.scs.scs_id_isar3d6c_truenop_instrs_read()?,
+        )) << 24u32;
+        Ok(_value)
+    }
+    #[doc = "Read scs_id_isar4d70 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_id_isar4d70_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |= u32::from(self.scs.scs_id_isar4d70_unpriv_instrs_read()?);
+        _value |= u32::from(self.scs.scs_id_isar4d70_withshifts_instrs_read()?)
+            << 4u32;
+        _value |= u32::from(u8::from(
+            self.scs.scs_id_isar4d70_writeback_instrs_read()?,
+        )) << 8u32;
+        _value |= u32::from(u8::from(
+            self.scs.scs_id_isar4d70_barrier_instrs_read()?,
+        )) << 16u32;
+        _value |=
+            u32::from(self.scs.scs_id_isar4d70_synchprim_instrs_frac_read()?)
+                << 20u32;
+        _value |=
+            u32::from(u8::from(self.scs.scs_id_isar4d70_psr_m_instrs_read()?))
+                << 24u32;
+        Ok(_value)
+    }
+    #[doc = "Read scs_cpacrd88 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_cpacrd88_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |= u32::from(u8::from(self.scs.scs_cpacrd88_cp0_read()?));
+        _value |=
+            u32::from(u8::from(self.scs.scs_cpacrd88_cp1_read()?)) << 2u32;
+        _value |=
+            u32::from(u8::from(self.scs.scs_cpacrd88_cp2_read()?)) << 4u32;
+        _value |=
+            u32::from(u8::from(self.scs.scs_cpacrd88_cp3_read()?)) << 6u32;
+        _value |=
+            u32::from(u8::from(self.scs.scs_cpacrd88_cp4_read()?)) << 8u32;
+        _value |=
+            u32::from(u8::from(self.scs.scs_cpacrd88_cp5_read()?)) << 10u32;
+        _value |=
+            u32::from(u8::from(self.scs.scs_cpacrd88_cp6_read()?)) << 12u32;
+        _value |=
+            u32::from(u8::from(self.scs.scs_cpacrd88_cp7_read()?)) << 14u32;
+        _value |=
+            u32::from(u8::from(self.scs.scs_cpacrd88_cp10_read()?)) << 20u32;
+        _value |=
+            u32::from(u8::from(self.scs.scs_cpacrd88_cp11_read()?)) << 22u32;
+        Ok(_value)
+    }
+    #[doc = "Write scs_cpacrd88 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_cpacrd88_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -32005,7 +31263,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_cpacrd80_cp0_write(
+            self.scs.scs_cpacrd88_cp0_write(
                 ((_value[_i] >> 0) & 3u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -32013,7 +31271,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_cpacrd80_cp1_write(
+            self.scs.scs_cpacrd88_cp1_write(
                 ((_value[_i] >> 2) & 3u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -32021,7 +31279,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_cpacrd80_cp2_write(
+            self.scs.scs_cpacrd88_cp2_write(
                 ((_value[_i] >> 4) & 3u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -32029,7 +31287,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.scs.scs_cpacrd80_cp3_write(
+            self.scs.scs_cpacrd88_cp3_write(
                 ((_value[_i] >> 6) & 3u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -32037,7 +31295,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_cpacrd80_cp4_write(
+            self.scs.scs_cpacrd88_cp4_write(
                 ((_value[_i] >> 0) & 3u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -32045,7 +31303,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_cpacrd80_cp5_write(
+            self.scs.scs_cpacrd88_cp5_write(
                 ((_value[_i] >> 2) & 3u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -32053,7 +31311,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_cpacrd80_cp6_write(
+            self.scs.scs_cpacrd88_cp6_write(
                 ((_value[_i] >> 4) & 3u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -32061,7 +31319,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.scs.scs_cpacrd80_cp7_write(
+            self.scs.scs_cpacrd88_cp7_write(
                 ((_value[_i] >> 6) & 3u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -32069,7 +31327,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_cpacrd80_cp10_write(
+            self.scs.scs_cpacrd88_cp10_write(
                 ((_value[_i] >> 4) & 3u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -32077,7 +31335,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_cpacrd80_cp11_write(
+            self.scs.scs_cpacrd88_cp11_write(
                 ((_value[_i] >> 6) & 3u8)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -32085,26 +31343,190 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Read scs_demcrdf4 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_mpu_typed90 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_demcrdf4_read(&mut self) -> MemResult<u32> {
+    pub(crate) fn scs_mpu_typed90_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.scs.scs_demcrdf4_mon_en_read()?) << 16u32;
-        _value |= u32::from(self.scs.scs_demcrdf4_mon_pend_read()?) << 17u32;
+        _value |= u32::from(self.scs.scs_mpu_typed90_separate_read()?);
+        _value |= u32::from(self.scs.scs_mpu_typed90_dregion_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_mpu_typed90_iregion_read()?) << 16u32;
         Ok(_value)
     }
-    #[doc = "Write scs_demcrdf4 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Read scs_mpu_ctrld94 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_demcrdf4_write(
+    pub(crate) fn scs_mpu_ctrld94_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |= u32::from(self.scs.scs_mpu_ctrld94_enable_read()?);
+        _value |= u32::from(self.scs.scs_mpu_ctrld94_hfnmiena_read()?) << 1u32;
+        _value |=
+            u32::from(self.scs.scs_mpu_ctrld94_privdefena_read()?) << 2u32;
+        Ok(_value)
+    }
+    #[doc = "Write scs_mpu_ctrld94 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_mpu_ctrld94_write(
         &mut self,
         _start: u64,
         _value: &[u8],
     ) -> MemResult<()> {
         debug_assert!(!_value.is_empty());
         let _end = _start + _value.len() as u64;
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_mpu_ctrld94_enable_write(
+                ((_value[_i] >> 0) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_mpu_ctrld94_hfnmiena_write(
+                ((_value[_i] >> 1) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_mpu_ctrld94_privdefena_write(
+                ((_value[_i] >> 2) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        Ok(())
+    }
+    #[doc = "Read scs_mpu_rnrd98 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_mpu_rnrd98_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |= u32::from(self.scs.scs_mpu_rnrd98_region_read()?);
+        Ok(_value)
+    }
+    #[doc = "Write scs_mpu_rnrd98 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_mpu_rnrd98_write(
+        &mut self,
+        _start: u64,
+        _value: &[u8],
+    ) -> MemResult<()> {
+        debug_assert!(!_value.is_empty());
+        let _end = _start + _value.len() as u64;
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_mpu_rnrd98_region_write(
+                ((_value[_i] >> 0) & 255u8)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        Ok(())
+    }
+    #[doc = "Read scs_mpu_rbard9c from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_mpu_rbard9c_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |= u32::from(self.scs.scs_mpu_rbard9c_region_read()?);
+        _value |= u32::from(self.scs.scs_mpu_rbard9c_valid_read()?) << 4u32;
+        _value |= u32::from(self.scs.scs_mpu_rbard9c_addr_read()?) << 5u32;
+        Ok(_value)
+    }
+    #[doc = "Write scs_mpu_rbard9c from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_mpu_rbard9c_write(
+        &mut self,
+        _start: u64,
+        _value: &[u8],
+    ) -> MemResult<()> {
+        debug_assert!(!_value.is_empty());
+        let _end = _start + _value.len() as u64;
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_mpu_rbard9c_region_write(
+                ((_value[_i] >> 0) & 15u8)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_mpu_rbard9c_valid_write(
+                ((_value[_i] >> 4) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if _start <= 0 && _end >= 4 {
+            let mut _extracted: u32 = 0;
+            _extracted |= ((_value[(0 - _start) as usize] >> 5) & 7u8) as u32;
+            for byte_i in 0..3 {
+                _extracted |= (_value[((0 + byte_i + 1) - _start) as usize]
+                    as u32)
+                    << (5 + (byte_i * 8));
+            }
+            self.scs.scs_mpu_rbard9c_addr_write(
+                _extracted
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        } else if (_start > 0 && _start < 4) || (_end > 0 && _end < 4) {
+            return Err(MemError::WriteViolation);
+        }
+        Ok(())
+    }
+    #[doc = "Read scs_mpu_rasrda0 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_mpu_rasrda0_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |= u32::from(self.scs.scs_mpu_rasrda0_enable_read()?);
+        _value |= u32::from(self.scs.scs_mpu_rasrda0_size_read()?) << 1u32;
+        _value |= u32::from(self.scs.scs_mpu_rasrda0_srd_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_mpu_rasrda0_b_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_mpu_rasrda0_c_read()?) << 17u32;
+        _value |= u32::from(self.scs.scs_mpu_rasrda0_s_read()?) << 18u32;
+        _value |= u32::from(self.scs.scs_mpu_rasrda0_tex_read()?) << 19u32;
+        _value |=
+            u32::from(u8::from(self.scs.scs_mpu_rasrda0_ap_read()?)) << 24u32;
+        _value |= u32::from(self.scs.scs_mpu_rasrda0_xn_read()?) << 28u32;
+        Ok(_value)
+    }
+    #[doc = "Write scs_mpu_rasrda0 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_mpu_rasrda0_write(
+        &mut self,
+        _start: u64,
+        _value: &[u8],
+    ) -> MemResult<()> {
+        debug_assert!(!_value.is_empty());
+        let _end = _start + _value.len() as u64;
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_mpu_rasrda0_enable_write(
+                ((_value[_i] >> 0) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_mpu_rasrda0_size_write(
+                ((_value[_i] >> 1) & 31u8)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&1) {
+            let _i = (1 - _start) as usize;
+            self.scs.scs_mpu_rasrda0_srd_write(
+                ((_value[_i] >> 0) & 255u8)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_demcrdf4_mon_en_write(
+            self.scs.scs_mpu_rasrda0_b_write(
                 ((_value[_i] >> 0) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -32112,7 +31534,527 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.scs.scs_demcrdf4_mon_pend_write(
+            self.scs.scs_mpu_rasrda0_c_write(
+                ((_value[_i] >> 1) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&2) {
+            let _i = (2 - _start) as usize;
+            self.scs.scs_mpu_rasrda0_s_write(
+                ((_value[_i] >> 2) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&2) {
+            let _i = (2 - _start) as usize;
+            self.scs.scs_mpu_rasrda0_tex_write(
+                ((_value[_i] >> 3) & 7u8)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&3) {
+            let _i = (3 - _start) as usize;
+            self.scs.scs_mpu_rasrda0_ap_write(
+                ((_value[_i] >> 0) & 7u8)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&3) {
+            let _i = (3 - _start) as usize;
+            self.scs.scs_mpu_rasrda0_xn_write(
+                ((_value[_i] >> 4) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        Ok(())
+    }
+    #[doc = "Read scs_mpu_rbar_a1da4 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_mpu_rbar_a1da4_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |= u32::from(self.scs.scs_mpu_rbar_a1da4_region_read()?);
+        _value |= u32::from(self.scs.scs_mpu_rbar_a1da4_valid_read()?) << 4u32;
+        _value |= u32::from(self.scs.scs_mpu_rbar_a1da4_addr_read()?) << 5u32;
+        Ok(_value)
+    }
+    #[doc = "Write scs_mpu_rbar_a1da4 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_mpu_rbar_a1da4_write(
+        &mut self,
+        _start: u64,
+        _value: &[u8],
+    ) -> MemResult<()> {
+        debug_assert!(!_value.is_empty());
+        let _end = _start + _value.len() as u64;
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_mpu_rbar_a1da4_region_write(
+                ((_value[_i] >> 0) & 15u8)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_mpu_rbar_a1da4_valid_write(
+                ((_value[_i] >> 4) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if _start <= 0 && _end >= 4 {
+            let mut _extracted: u32 = 0;
+            _extracted |= ((_value[(0 - _start) as usize] >> 5) & 7u8) as u32;
+            for byte_i in 0..3 {
+                _extracted |= (_value[((0 + byte_i + 1) - _start) as usize]
+                    as u32)
+                    << (5 + (byte_i * 8));
+            }
+            self.scs.scs_mpu_rbar_a1da4_addr_write(
+                _extracted
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        } else if (_start > 0 && _start < 4) || (_end > 0 && _end < 4) {
+            return Err(MemError::WriteViolation);
+        }
+        Ok(())
+    }
+    #[doc = "Read scs_mpu_rasr_a1da8 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_mpu_rasr_a1da8_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |= u32::from(self.scs.scs_mpu_rasr_a1da8_enable_read()?);
+        _value |= u32::from(self.scs.scs_mpu_rasr_a1da8_size_read()?) << 1u32;
+        _value |= u32::from(self.scs.scs_mpu_rasr_a1da8_srd_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_mpu_rasr_a1da8_b_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_mpu_rasr_a1da8_c_read()?) << 17u32;
+        _value |= u32::from(self.scs.scs_mpu_rasr_a1da8_s_read()?) << 18u32;
+        _value |= u32::from(self.scs.scs_mpu_rasr_a1da8_tex_read()?) << 19u32;
+        _value |= u32::from(u8::from(self.scs.scs_mpu_rasr_a1da8_ap_read()?))
+            << 24u32;
+        _value |= u32::from(self.scs.scs_mpu_rasr_a1da8_xn_read()?) << 28u32;
+        Ok(_value)
+    }
+    #[doc = "Write scs_mpu_rasr_a1da8 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_mpu_rasr_a1da8_write(
+        &mut self,
+        _start: u64,
+        _value: &[u8],
+    ) -> MemResult<()> {
+        debug_assert!(!_value.is_empty());
+        let _end = _start + _value.len() as u64;
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_mpu_rasr_a1da8_enable_write(
+                ((_value[_i] >> 0) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_mpu_rasr_a1da8_size_write(
+                ((_value[_i] >> 1) & 31u8)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&1) {
+            let _i = (1 - _start) as usize;
+            self.scs.scs_mpu_rasr_a1da8_srd_write(
+                ((_value[_i] >> 0) & 255u8)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&2) {
+            let _i = (2 - _start) as usize;
+            self.scs.scs_mpu_rasr_a1da8_b_write(
+                ((_value[_i] >> 0) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&2) {
+            let _i = (2 - _start) as usize;
+            self.scs.scs_mpu_rasr_a1da8_c_write(
+                ((_value[_i] >> 1) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&2) {
+            let _i = (2 - _start) as usize;
+            self.scs.scs_mpu_rasr_a1da8_s_write(
+                ((_value[_i] >> 2) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&2) {
+            let _i = (2 - _start) as usize;
+            self.scs.scs_mpu_rasr_a1da8_tex_write(
+                ((_value[_i] >> 3) & 7u8)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&3) {
+            let _i = (3 - _start) as usize;
+            self.scs.scs_mpu_rasr_a1da8_ap_write(
+                ((_value[_i] >> 0) & 7u8)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&3) {
+            let _i = (3 - _start) as usize;
+            self.scs.scs_mpu_rasr_a1da8_xn_write(
+                ((_value[_i] >> 4) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        Ok(())
+    }
+    #[doc = "Read scs_mpu_rbar_a2dac from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_mpu_rbar_a2dac_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |= u32::from(self.scs.scs_mpu_rbar_a2dac_region_read()?);
+        _value |= u32::from(self.scs.scs_mpu_rbar_a2dac_valid_read()?) << 4u32;
+        _value |= u32::from(self.scs.scs_mpu_rbar_a2dac_addr_read()?) << 5u32;
+        Ok(_value)
+    }
+    #[doc = "Write scs_mpu_rbar_a2dac from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_mpu_rbar_a2dac_write(
+        &mut self,
+        _start: u64,
+        _value: &[u8],
+    ) -> MemResult<()> {
+        debug_assert!(!_value.is_empty());
+        let _end = _start + _value.len() as u64;
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_mpu_rbar_a2dac_region_write(
+                ((_value[_i] >> 0) & 15u8)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_mpu_rbar_a2dac_valid_write(
+                ((_value[_i] >> 4) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if _start <= 0 && _end >= 4 {
+            let mut _extracted: u32 = 0;
+            _extracted |= ((_value[(0 - _start) as usize] >> 5) & 7u8) as u32;
+            for byte_i in 0..3 {
+                _extracted |= (_value[((0 + byte_i + 1) - _start) as usize]
+                    as u32)
+                    << (5 + (byte_i * 8));
+            }
+            self.scs.scs_mpu_rbar_a2dac_addr_write(
+                _extracted
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        } else if (_start > 0 && _start < 4) || (_end > 0 && _end < 4) {
+            return Err(MemError::WriteViolation);
+        }
+        Ok(())
+    }
+    #[doc = "Read scs_mpu_rasr_a2db0 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_mpu_rasr_a2db0_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |= u32::from(self.scs.scs_mpu_rasr_a2db0_enable_read()?);
+        _value |= u32::from(self.scs.scs_mpu_rasr_a2db0_size_read()?) << 1u32;
+        _value |= u32::from(self.scs.scs_mpu_rasr_a2db0_srd_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_mpu_rasr_a2db0_b_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_mpu_rasr_a2db0_c_read()?) << 17u32;
+        _value |= u32::from(self.scs.scs_mpu_rasr_a2db0_s_read()?) << 18u32;
+        _value |= u32::from(self.scs.scs_mpu_rasr_a2db0_tex_read()?) << 19u32;
+        _value |= u32::from(u8::from(self.scs.scs_mpu_rasr_a2db0_ap_read()?))
+            << 24u32;
+        _value |= u32::from(self.scs.scs_mpu_rasr_a2db0_xn_read()?) << 28u32;
+        Ok(_value)
+    }
+    #[doc = "Write scs_mpu_rasr_a2db0 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_mpu_rasr_a2db0_write(
+        &mut self,
+        _start: u64,
+        _value: &[u8],
+    ) -> MemResult<()> {
+        debug_assert!(!_value.is_empty());
+        let _end = _start + _value.len() as u64;
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_mpu_rasr_a2db0_enable_write(
+                ((_value[_i] >> 0) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_mpu_rasr_a2db0_size_write(
+                ((_value[_i] >> 1) & 31u8)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&1) {
+            let _i = (1 - _start) as usize;
+            self.scs.scs_mpu_rasr_a2db0_srd_write(
+                ((_value[_i] >> 0) & 255u8)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&2) {
+            let _i = (2 - _start) as usize;
+            self.scs.scs_mpu_rasr_a2db0_b_write(
+                ((_value[_i] >> 0) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&2) {
+            let _i = (2 - _start) as usize;
+            self.scs.scs_mpu_rasr_a2db0_c_write(
+                ((_value[_i] >> 1) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&2) {
+            let _i = (2 - _start) as usize;
+            self.scs.scs_mpu_rasr_a2db0_s_write(
+                ((_value[_i] >> 2) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&2) {
+            let _i = (2 - _start) as usize;
+            self.scs.scs_mpu_rasr_a2db0_tex_write(
+                ((_value[_i] >> 3) & 7u8)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&3) {
+            let _i = (3 - _start) as usize;
+            self.scs.scs_mpu_rasr_a2db0_ap_write(
+                ((_value[_i] >> 0) & 7u8)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&3) {
+            let _i = (3 - _start) as usize;
+            self.scs.scs_mpu_rasr_a2db0_xn_write(
+                ((_value[_i] >> 4) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        Ok(())
+    }
+    #[doc = "Read scs_mpu_rbar_a3db4 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_mpu_rbar_a3db4_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |= u32::from(self.scs.scs_mpu_rbar_a3db4_region_read()?);
+        _value |= u32::from(self.scs.scs_mpu_rbar_a3db4_valid_read()?) << 4u32;
+        _value |= u32::from(self.scs.scs_mpu_rbar_a3db4_addr_read()?) << 5u32;
+        Ok(_value)
+    }
+    #[doc = "Write scs_mpu_rbar_a3db4 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_mpu_rbar_a3db4_write(
+        &mut self,
+        _start: u64,
+        _value: &[u8],
+    ) -> MemResult<()> {
+        debug_assert!(!_value.is_empty());
+        let _end = _start + _value.len() as u64;
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_mpu_rbar_a3db4_region_write(
+                ((_value[_i] >> 0) & 15u8)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_mpu_rbar_a3db4_valid_write(
+                ((_value[_i] >> 4) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if _start <= 0 && _end >= 4 {
+            let mut _extracted: u32 = 0;
+            _extracted |= ((_value[(0 - _start) as usize] >> 5) & 7u8) as u32;
+            for byte_i in 0..3 {
+                _extracted |= (_value[((0 + byte_i + 1) - _start) as usize]
+                    as u32)
+                    << (5 + (byte_i * 8));
+            }
+            self.scs.scs_mpu_rbar_a3db4_addr_write(
+                _extracted
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        } else if (_start > 0 && _start < 4) || (_end > 0 && _end < 4) {
+            return Err(MemError::WriteViolation);
+        }
+        Ok(())
+    }
+    #[doc = "Read scs_mpu_rasr_a3db8 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_mpu_rasr_a3db8_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |= u32::from(self.scs.scs_mpu_rasr_a3db8_enable_read()?);
+        _value |= u32::from(self.scs.scs_mpu_rasr_a3db8_size_read()?) << 1u32;
+        _value |= u32::from(self.scs.scs_mpu_rasr_a3db8_srd_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_mpu_rasr_a3db8_b_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_mpu_rasr_a3db8_c_read()?) << 17u32;
+        _value |= u32::from(self.scs.scs_mpu_rasr_a3db8_s_read()?) << 18u32;
+        _value |= u32::from(self.scs.scs_mpu_rasr_a3db8_tex_read()?) << 19u32;
+        _value |= u32::from(u8::from(self.scs.scs_mpu_rasr_a3db8_ap_read()?))
+            << 24u32;
+        _value |= u32::from(self.scs.scs_mpu_rasr_a3db8_xn_read()?) << 28u32;
+        Ok(_value)
+    }
+    #[doc = "Write scs_mpu_rasr_a3db8 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_mpu_rasr_a3db8_write(
+        &mut self,
+        _start: u64,
+        _value: &[u8],
+    ) -> MemResult<()> {
+        debug_assert!(!_value.is_empty());
+        let _end = _start + _value.len() as u64;
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_mpu_rasr_a3db8_enable_write(
+                ((_value[_i] >> 0) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_mpu_rasr_a3db8_size_write(
+                ((_value[_i] >> 1) & 31u8)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&1) {
+            let _i = (1 - _start) as usize;
+            self.scs.scs_mpu_rasr_a3db8_srd_write(
+                ((_value[_i] >> 0) & 255u8)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&2) {
+            let _i = (2 - _start) as usize;
+            self.scs.scs_mpu_rasr_a3db8_b_write(
+                ((_value[_i] >> 0) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&2) {
+            let _i = (2 - _start) as usize;
+            self.scs.scs_mpu_rasr_a3db8_c_write(
+                ((_value[_i] >> 1) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&2) {
+            let _i = (2 - _start) as usize;
+            self.scs.scs_mpu_rasr_a3db8_s_write(
+                ((_value[_i] >> 2) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&2) {
+            let _i = (2 - _start) as usize;
+            self.scs.scs_mpu_rasr_a3db8_tex_write(
+                ((_value[_i] >> 3) & 7u8)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&3) {
+            let _i = (3 - _start) as usize;
+            self.scs.scs_mpu_rasr_a3db8_ap_write(
+                ((_value[_i] >> 0) & 7u8)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&3) {
+            let _i = (3 - _start) as usize;
+            self.scs.scs_mpu_rasr_a3db8_xn_write(
+                ((_value[_i] >> 4) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        Ok(())
+    }
+    #[doc = "Read scs_demcrdfc from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_demcrdfc_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |= u32::from(self.scs.scs_demcrdfc_mon_en_read()?) << 16u32;
+        _value |= u32::from(self.scs.scs_demcrdfc_mon_pend_read()?) << 17u32;
+        Ok(_value)
+    }
+    #[doc = "Write scs_demcrdfc from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_demcrdfc_write(
+        &mut self,
+        _start: u64,
+        _value: &[u8],
+    ) -> MemResult<()> {
+        debug_assert!(!_value.is_empty());
+        let _end = _start + _value.len() as u64;
+        if (_start.._end).contains(&2) {
+            let _i = (2 - _start) as usize;
+            self.scs.scs_demcrdfc_mon_en_write(
+                ((_value[_i] >> 0) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&2) {
+            let _i = (2 - _start) as usize;
+            self.scs.scs_demcrdfc_mon_pend_write(
                 ((_value[_i] >> 1) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -32120,9 +32062,9 @@ impl super::Peripherals {
         }
         Ok(())
     }
-    #[doc = "Write scs_stiref8 from [crate::peripheral::scs::Scs]"]
+    #[doc = "Write scs_stirf00 from [crate::peripheral::scs::Scs]"]
     #[inline]
-    pub(crate) fn scs_stiref8_write(
+    pub(crate) fn scs_stirf00_write(
         &mut self,
         _start: u64,
         _value: &[u8],
@@ -32139,7 +32081,7 @@ impl super::Peripherals {
             _extracted |= ((_value[((0 + 1 + 1) - _start) as usize] & 1u8)
                 as u16)
                 << (0 + (1 * 8));
-            self.scs.scs_stiref8_intid_write(
+            self.scs.scs_stirf00_intid_write(
                 _extracted
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -32148,6 +32090,216 @@ impl super::Peripherals {
             return Err(MemError::WriteViolation);
         }
         Ok(())
+    }
+    #[doc = "Read scs_fpccrf34 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_fpccrf34_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |= u32::from(self.scs.scs_fpccrf34_lspact_read()?);
+        _value |= u32::from(self.scs.scs_fpccrf34_user_read()?) << 1u32;
+        _value |= u32::from(self.scs.scs_fpccrf34_thread_read()?) << 3u32;
+        _value |= u32::from(self.scs.scs_fpccrf34_hfrdy_read()?) << 4u32;
+        _value |= u32::from(self.scs.scs_fpccrf34_mmrdy_read()?) << 5u32;
+        _value |= u32::from(self.scs.scs_fpccrf34_bfrdy_read()?) << 6u32;
+        _value |= u32::from(self.scs.scs_fpccrf34_monrdy_read()?) << 8u32;
+        _value |= u32::from(self.scs.scs_fpccrf34_lspen_read()?) << 30u32;
+        _value |= u32::from(self.scs.scs_fpccrf34_aspen_read()?) << 31u32;
+        Ok(_value)
+    }
+    #[doc = "Write scs_fpccrf34 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_fpccrf34_write(
+        &mut self,
+        _start: u64,
+        _value: &[u8],
+    ) -> MemResult<()> {
+        debug_assert!(!_value.is_empty());
+        let _end = _start + _value.len() as u64;
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_fpccrf34_lspact_write(
+                ((_value[_i] >> 0) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_fpccrf34_user_write(
+                ((_value[_i] >> 1) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_fpccrf34_thread_write(
+                ((_value[_i] >> 3) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_fpccrf34_hfrdy_write(
+                ((_value[_i] >> 4) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_fpccrf34_mmrdy_write(
+                ((_value[_i] >> 5) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&0) {
+            let _i = (0 - _start) as usize;
+            self.scs.scs_fpccrf34_bfrdy_write(
+                ((_value[_i] >> 6) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&1) {
+            let _i = (1 - _start) as usize;
+            self.scs.scs_fpccrf34_monrdy_write(
+                ((_value[_i] >> 0) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&3) {
+            let _i = (3 - _start) as usize;
+            self.scs.scs_fpccrf34_lspen_write(
+                ((_value[_i] >> 6) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&3) {
+            let _i = (3 - _start) as usize;
+            self.scs.scs_fpccrf34_aspen_write(
+                ((_value[_i] >> 7) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        Ok(())
+    }
+    #[doc = "Read scs_fpcarf38 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_fpcarf38_read(&mut self) -> MemResult<u32> {
+        self.scs.scs_fpcarf38_read()
+    }
+    #[doc = "Write scs_fpcarf38 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_fpcarf38_write(
+        &mut self,
+        _start: u64,
+        _value: &[u8],
+    ) -> MemResult<()> {
+        if _start != 0 || _value.len() != 4 {
+            return Err(MemError::WriteViolation);
+        }
+        self.scs
+            .scs_fpcarf38_write(u32::from_ne_bytes(_value.try_into().unwrap()))
+    }
+    #[doc = "Read scs_fpdscrf3c from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_fpdscrf3c_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |= u32::from(self.scs.scs_fpdscrf3c_rmode_read()?) << 22u32;
+        _value |= u32::from(self.scs.scs_fpdscrf3c_fz_read()?) << 24u32;
+        _value |= u32::from(self.scs.scs_fpdscrf3c_dn_read()?) << 25u32;
+        _value |= u32::from(self.scs.scs_fpdscrf3c_ahp_read()?) << 26u32;
+        Ok(_value)
+    }
+    #[doc = "Write scs_fpdscrf3c from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_fpdscrf3c_write(
+        &mut self,
+        _start: u64,
+        _value: &[u8],
+    ) -> MemResult<()> {
+        debug_assert!(!_value.is_empty());
+        let _end = _start + _value.len() as u64;
+        if (_start.._end).contains(&2) {
+            let _i = (2 - _start) as usize;
+            self.scs.scs_fpdscrf3c_rmode_write(
+                ((_value[_i] >> 6) & 3u8)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&3) {
+            let _i = (3 - _start) as usize;
+            self.scs.scs_fpdscrf3c_fz_write(
+                ((_value[_i] >> 0) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&3) {
+            let _i = (3 - _start) as usize;
+            self.scs.scs_fpdscrf3c_dn_write(
+                ((_value[_i] >> 1) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        if (_start.._end).contains(&3) {
+            let _i = (3 - _start) as usize;
+            self.scs.scs_fpdscrf3c_ahp_write(
+                ((_value[_i] >> 2) & 1 != 0)
+                    .try_into()
+                    .map_err(|_| MemError::WriteViolation)?,
+            )?;
+        }
+        Ok(())
+    }
+    #[doc = "Read scs_mvfr0f40 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_mvfr0f40_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |= u32::from(u8::from(self.scs.scs_mvfr0f40_a_simd_read()?));
+        _value |=
+            u32::from(u8::from(self.scs.scs_mvfr0f40_single_precision_read()?))
+                << 4u32;
+        _value |=
+            u32::from(u8::from(self.scs.scs_mvfr0f40_double_precision_read()?))
+                << 8u32;
+        _value |= u32::from(u8::from(
+            self.scs.scs_mvfr0f40_fp_exception_trapping_read()?,
+        )) << 12u32;
+        _value |=
+            u32::from(u8::from(self.scs.scs_mvfr0f40_divide_read()?)) << 16u32;
+        _value |=
+            u32::from(u8::from(self.scs.scs_mvfr0f40_square_root_read()?))
+                << 20u32;
+        _value |=
+            u32::from(u8::from(self.scs.scs_mvfr0f40_short_vectors_read()?))
+                << 24u32;
+        _value |= u32::from(u8::from(
+            self.scs.scs_mvfr0f40_fp_rounding_modes_read()?,
+        )) << 28u32;
+        Ok(_value)
+    }
+    #[doc = "Read scs_mvfr1f44 from [crate::peripheral::scs::Scs]"]
+    #[inline]
+    pub(crate) fn scs_mvfr1f44_read(&mut self) -> MemResult<u32> {
+        let mut _value = 0;
+        _value |= u32::from(u8::from(self.scs.scs_mvfr1f44_ftz_read()?));
+        _value |=
+            u32::from(u8::from(self.scs.scs_mvfr1f44_d_nan_read()?)) << 4u32;
+        _value |=
+            u32::from(u8::from(self.scs.scs_mvfr1f44_fp_hpfp_read()?)) << 24u32;
+        _value |=
+            u32::from(u8::from(self.scs.scs_mvfr1f44_fp_fused_mac_read()?))
+                << 28u32;
+        Ok(_value)
     }
     #[doc = "Write apb35_tasks_start10 from [crate::peripheral::apb35::Apb35]"]
     #[inline]

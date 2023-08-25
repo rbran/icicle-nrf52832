@@ -350,13 +350,13 @@ impl Apb35 {
     #[doc = "ENABLE: Enable or disable SPI<br>ENABLE: Enable or disable SPIM<br>ENABLE: Enable or disable SPI slave<br>"]
     pub(crate) fn apb35_enable500_enable_read(
         &self,
-    ) -> MemResult<crate::peripheral::enums::E82Apb35Enable500Enable> {
+    ) -> MemResult<crate::peripheral::enums::E83Apb35Enable500Enable> {
         todo ! ("read ENABLE, ENABLE, ENABLE mwrite None write None rac None reset value 0x00 mask 0x0f")
     }
     #[doc = "ENABLE: Enable or disable SPI<br>ENABLE: Enable or disable SPIM<br>ENABLE: Enable or disable SPI slave<br>"]
     pub(crate) fn apb35_enable500_enable_write(
         &mut self,
-        _value: crate::peripheral::enums::E82Apb35Enable500Enable,
+        _value: crate::peripheral::enums::E83Apb35Enable500Enable,
     ) -> MemResult<()> {
         todo ! ("write ENABLE, ENABLE, ENABLE mwrite None write None rac None reset value 0x00 mask 0x0f")
     }
@@ -466,14 +466,14 @@ impl Apb35 {
     #[doc = "FREQUENCY: SPI master data rate<br>FREQUENCY: SPI master data rate<br>"]
     pub(crate) fn apb35_frequency524_frequency_read(
         &self,
-    ) -> MemResult<crate::peripheral::enums::E83Apb35Frequency524Frequency>
+    ) -> MemResult<crate::peripheral::enums::E84Apb35Frequency524Frequency>
     {
         todo ! ("read FREQUENCY, FREQUENCY mwrite None write None rac None reset value 0x4000000 mask 0xffffffff")
     }
     #[doc = "FREQUENCY: SPI master data rate<br>FREQUENCY: SPI master data rate<br>"]
     pub(crate) fn apb35_frequency524_frequency_write(
         &mut self,
-        _value: crate::peripheral::enums::E83Apb35Frequency524Frequency,
+        _value: crate::peripheral::enums::E84Apb35Frequency524Frequency,
     ) -> MemResult<()> {
         todo ! ("write FREQUENCY, FREQUENCY mwrite None write None rac None reset value 0x4000000 mask 0xffffffff")
     }
@@ -506,13 +506,13 @@ impl Apb35 {
     #[doc = "LIST: List type<br>"]
     pub(crate) fn apb35_rxd_listc_list_read(
         &self,
-    ) -> MemResult<crate::peripheral::enums::E84Apb35RxdListcList> {
+    ) -> MemResult<crate::peripheral::enums::E85Apb35RxdListcList> {
         todo ! ("read LIST mwrite None write None rac None reset value 0x00 mask 0x07")
     }
     #[doc = "LIST: List type<br>"]
     pub(crate) fn apb35_rxd_listc_list_write(
         &mut self,
-        _value: crate::peripheral::enums::E84Apb35RxdListcList,
+        _value: crate::peripheral::enums::E85Apb35RxdListcList,
     ) -> MemResult<()> {
         todo ! ("write LIST mwrite None write None rac None reset value 0x00 mask 0x07")
     }
@@ -545,13 +545,13 @@ impl Apb35 {
     #[doc = "LIST: List type<br>"]
     pub(crate) fn apb35_txd_listc_list_read(
         &self,
-    ) -> MemResult<crate::peripheral::enums::E85Apb35TxdListcList> {
+    ) -> MemResult<crate::peripheral::enums::E86Apb35TxdListcList> {
         todo ! ("read LIST mwrite None write None rac None reset value 0x00 mask 0x07")
     }
     #[doc = "LIST: List type<br>"]
     pub(crate) fn apb35_txd_listc_list_write(
         &mut self,
-        _value: crate::peripheral::enums::E85Apb35TxdListcList,
+        _value: crate::peripheral::enums::E86Apb35TxdListcList,
     ) -> MemResult<()> {
         todo ! ("write LIST mwrite None write None rac None reset value 0x00 mask 0x07")
     }

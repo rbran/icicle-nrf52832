@@ -198,8 +198,8 @@ impl TryFrom<u8> for E5UicrApprotect208Pall {
 }
 #[derive(Default, Debug, Clone, Copy)]
 pub enum LfclkSrc {
-    #[doc = "RC: 32.768 kHz RC oscillator<br>"]
     #[default]
+    #[doc = "RC: 32.768 kHz RC oscillator<br>"]
     E0Rc,
     #[doc = "Xtal: 32.768 kHz crystal oscillator<br>"]
     E1Xtal,
@@ -292,6 +292,7 @@ impl TryFrom<u8> for E8Apb0Pofcon510Threshold {
         }
     }
 }
+
 #[derive(Debug, Clone, Copy)]
 pub enum E10Apb0Traceconfig55cTraceportspeed {
     #[doc = "32MHz: 32 MHz Trace Port clock (TRACECLK = 16 MHz)<br>"]
@@ -2508,77 +2509,290 @@ impl TryFrom<u8> for PinSense {
         }
     }
 }
-#[doc = "E_MVFR0_SIMD"]
+#[doc = "ID_PFR0_STATE1"]
 #[derive(Debug, Clone, Copy)]
-pub enum E68ScsMpuRbarcRegion {
-    #[doc = "_16x64:  16x64<br>"]
-    E0_16x64,
+pub enum E68ScsIdPfr0d40State1 {
+    #[doc = "Thumb_Thumb2: Thumb Thumb2<br>"]
+    E0ThumbThumb2,
 }
-impl From<E68ScsMpuRbarcRegion> for u8 {
-    fn from(value: E68ScsMpuRbarcRegion) -> u8 {
+impl From<E68ScsIdPfr0d40State1> for u8 {
+    fn from(value: E68ScsIdPfr0d40State1) -> u8 {
         match value {
-            E68ScsMpuRbarcRegion::E0_16x64 => 1,
+            E68ScsIdPfr0d40State1::E0ThumbThumb2 => 3,
         }
     }
 }
-impl TryFrom<u8> for E68ScsMpuRbarcRegion {
+impl TryFrom<u8> for E68ScsIdPfr0d40State1 {
     type Error = ();
-    fn try_from(value: u8) -> Result<E68ScsMpuRbarcRegion, Self::Error> {
+    fn try_from(value: u8) -> Result<E68ScsIdPfr0d40State1, Self::Error> {
         match value {
-            1 => Ok(Self::E0_16x64),
+            3 => Ok(Self::E0ThumbThumb2),
             _ => Err(()),
         }
     }
 }
-#[doc = "E_NOT_SUPPORTED"]
+#[doc = "ID_PFR1_M_PROFILE"]
 #[derive(Debug, Clone, Copy)]
-pub enum E69ScsMpuRbarcDoublePrecision {
-    #[doc = "Not_Supported: Not Supported<br>"]
-    E0NotSupported,
+pub enum E69ScsIdPfr1d44MProfile {
+    #[doc = "Two_stack: Two stack<br>"]
+    E0TwoStack,
 }
-impl From<E69ScsMpuRbarcDoublePrecision> for u8 {
-    fn from(value: E69ScsMpuRbarcDoublePrecision) -> u8 {
+impl From<E69ScsIdPfr1d44MProfile> for u8 {
+    fn from(value: E69ScsIdPfr1d44MProfile) -> u8 {
         match value {
-            E69ScsMpuRbarcDoublePrecision::E0NotSupported => 0,
+            E69ScsIdPfr1d44MProfile::E0TwoStack => 2,
         }
     }
 }
-impl TryFrom<u8> for E69ScsMpuRbarcDoublePrecision {
+impl TryFrom<u8> for E69ScsIdPfr1d44MProfile {
+    type Error = ();
+    fn try_from(value: u8) -> Result<E69ScsIdPfr1d44MProfile, Self::Error> {
+        match value {
+            2 => Ok(Self::E0TwoStack),
+            _ => Err(()),
+        }
+    }
+}
+#[doc = "E_FEATURE_SUPPORT"]
+#[derive(Debug, Clone, Copy)]
+pub enum E70ScsIdDfr0d48MProfile {
+    #[doc = "Not_supported: Not supported<br>"]
+    E0NotSupported,
+    #[doc = "Supported: Supported<br>"]
+    E1Supported,
+}
+impl From<E70ScsIdDfr0d48MProfile> for u8 {
+    fn from(value: E70ScsIdDfr0d48MProfile) -> u8 {
+        match value {
+            E70ScsIdDfr0d48MProfile::E0NotSupported => 0,
+            E70ScsIdDfr0d48MProfile::E1Supported => 1,
+        }
+    }
+}
+impl TryFrom<u8> for E70ScsIdDfr0d48MProfile {
+    type Error = ();
+    fn try_from(value: u8) -> Result<E70ScsIdDfr0d48MProfile, Self::Error> {
+        match value {
+            0 => Ok(Self::E0NotSupported),
+            1 => Ok(Self::E1Supported),
+            _ => Err(()),
+        }
+    }
+}
+#[doc = "ID_MMFR0_PMSA"]
+#[derive(Debug, Clone, Copy)]
+pub enum E71ScsIdMmfr0d50Pmsa {
+    #[doc = "Not_supported: Not supported<br>"]
+    E0NotSupported,
+    #[doc = "PMSAv7: PMSAv7<br>"]
+    E1Pmsav7,
+}
+impl From<E71ScsIdMmfr0d50Pmsa> for u8 {
+    fn from(value: E71ScsIdMmfr0d50Pmsa) -> u8 {
+        match value {
+            E71ScsIdMmfr0d50Pmsa::E0NotSupported => 0,
+            E71ScsIdMmfr0d50Pmsa::E1Pmsav7 => 3,
+        }
+    }
+}
+impl TryFrom<u8> for E71ScsIdMmfr0d50Pmsa {
+    type Error = ();
+    fn try_from(value: u8) -> Result<E71ScsIdMmfr0d50Pmsa, Self::Error> {
+        match value {
+            0 => Ok(Self::E0NotSupported),
+            3 => Ok(Self::E1Pmsav7),
+            _ => Err(()),
+        }
+    }
+}
+#[doc = "ID_MMFR0_OUTER_SHARABILITY"]
+#[derive(Debug, Clone, Copy)]
+pub enum E72ScsIdMmfr0d50OutermostShareability {
+    #[doc = "Non_cacheable: Non cacheable<br>"]
+    E0NonCacheable,
+    #[doc = "Ignored: Ignored<br>"]
+    E1Ignored,
+}
+impl From<E72ScsIdMmfr0d50OutermostShareability> for u8 {
+    fn from(value: E72ScsIdMmfr0d50OutermostShareability) -> u8 {
+        match value {
+            E72ScsIdMmfr0d50OutermostShareability::E0NonCacheable => 0,
+            E72ScsIdMmfr0d50OutermostShareability::E1Ignored => 15,
+        }
+    }
+}
+impl TryFrom<u8> for E72ScsIdMmfr0d50OutermostShareability {
     type Error = ();
     fn try_from(
         value: u8,
-    ) -> Result<E69ScsMpuRbarcDoublePrecision, Self::Error> {
+    ) -> Result<E72ScsIdMmfr0d50OutermostShareability, Self::Error> {
         match value {
-            0 => Ok(Self::E0NotSupported),
+            0 => Ok(Self::E0NonCacheable),
+            15 => Ok(Self::E1Ignored),
             _ => Err(()),
         }
     }
 }
-#[doc = "E_SUPPORTED"]
+#[doc = "ID_MMFR0_SHARABILITY"]
 #[derive(Debug, Clone, Copy)]
-pub enum E70ScsMpuRbarcDivide {
-    #[doc = "Supported: Supported<br>"]
-    E0Supported,
+pub enum E73ScsIdMmfr0d50ShareabilityLevels {
+    #[doc = "One_level: One level<br>"]
+    E0OneLevel,
 }
-impl From<E70ScsMpuRbarcDivide> for u8 {
-    fn from(value: E70ScsMpuRbarcDivide) -> u8 {
+impl From<E73ScsIdMmfr0d50ShareabilityLevels> for u8 {
+    fn from(value: E73ScsIdMmfr0d50ShareabilityLevels) -> u8 {
         match value {
-            E70ScsMpuRbarcDivide::E0Supported => 1,
+            E73ScsIdMmfr0d50ShareabilityLevels::E0OneLevel => 0,
         }
     }
 }
-impl TryFrom<u8> for E70ScsMpuRbarcDivide {
+impl TryFrom<u8> for E73ScsIdMmfr0d50ShareabilityLevels {
     type Error = ();
-    fn try_from(value: u8) -> Result<E70ScsMpuRbarcDivide, Self::Error> {
+    fn try_from(
+        value: u8,
+    ) -> Result<E73ScsIdMmfr0d50ShareabilityLevels, Self::Error> {
         match value {
-            1 => Ok(Self::E0Supported),
+            0 => Ok(Self::E0OneLevel),
             _ => Err(()),
+        }
+    }
+}
+#[doc = "ID_ISAR0_COPROC"]
+#[derive(Debug, Clone, Copy)]
+pub enum E74ScsIdIsar0d60CoprocInstrs {
+    #[doc = "None: None<br>"]
+    E0None,
+    #[doc = "Generic: Generic<br>"]
+    E1Generic,
+    #[doc = "Generic2: Generic2<br>"]
+    E2Generic2,
+    #[doc = "MCRR_MRRC: MCRR MRRC<br>"]
+    E3McrrMrrc,
+    #[doc = "MCRR2_MRRC2: MCRR2 MRRC2<br>"]
+    E4Mcrr2Mrrc2,
+}
+impl From<E74ScsIdIsar0d60CoprocInstrs> for u8 {
+    fn from(value: E74ScsIdIsar0d60CoprocInstrs) -> u8 {
+        match value {
+            E74ScsIdIsar0d60CoprocInstrs::E0None => 0,
+            E74ScsIdIsar0d60CoprocInstrs::E1Generic => 1,
+            E74ScsIdIsar0d60CoprocInstrs::E2Generic2 => 2,
+            E74ScsIdIsar0d60CoprocInstrs::E3McrrMrrc => 3,
+            E74ScsIdIsar0d60CoprocInstrs::E4Mcrr2Mrrc2 => 4,
+        }
+    }
+}
+impl TryFrom<u8> for E74ScsIdIsar0d60CoprocInstrs {
+    type Error = ();
+    fn try_from(
+        value: u8,
+    ) -> Result<E74ScsIdIsar0d60CoprocInstrs, Self::Error> {
+        match value {
+            0 => Ok(Self::E0None),
+            1 => Ok(Self::E1Generic),
+            2 => Ok(Self::E2Generic2),
+            3 => Ok(Self::E3McrrMrrc),
+            4 => Ok(Self::E4Mcrr2Mrrc2),
+            _ => Err(()),
+        }
+    }
+}
+#[doc = "ID_ISAR1_INTERWORK"]
+#[derive(Debug, Clone, Copy)]
+pub enum E75ScsIdIsar1d64InterworkInstrs {
+    #[doc = "None: None<br>"]
+    E0None,
+    #[doc = "BX: BX<br>"]
+    E1Bx,
+    #[doc = "BX_BLX2: BX BLX2<br>"]
+    E2BxBlx2,
+}
+impl From<E75ScsIdIsar1d64InterworkInstrs> for u8 {
+    fn from(value: E75ScsIdIsar1d64InterworkInstrs) -> u8 {
+        match value {
+            E75ScsIdIsar1d64InterworkInstrs::E0None => 0,
+            E75ScsIdIsar1d64InterworkInstrs::E1Bx => 1,
+            E75ScsIdIsar1d64InterworkInstrs::E2BxBlx2 => 2,
+        }
+    }
+}
+impl TryFrom<u8> for E75ScsIdIsar1d64InterworkInstrs {
+    type Error = ();
+    fn try_from(
+        value: u8,
+    ) -> Result<E75ScsIdIsar1d64InterworkInstrs, Self::Error> {
+        match value {
+            0 => Ok(Self::E0None),
+            1 => Ok(Self::E1Bx),
+            2 => Ok(Self::E2BxBlx2),
+            _ => Err(()),
+        }
+    }
+}
+#[doc = "E_BASIC_FULL"]
+#[derive(Debug, Clone, Copy)]
+pub enum E76ScsIdIsar4d70WritebackInstrs {
+    #[doc = "Basic: Basic<br>"]
+    E0Basic,
+    #[doc = "Full: Full<br>"]
+    E1Full,
+}
+impl From<E76ScsIdIsar4d70WritebackInstrs> for u8 {
+    fn from(value: E76ScsIdIsar4d70WritebackInstrs) -> u8 {
+        match value {
+            E76ScsIdIsar4d70WritebackInstrs::E0Basic => 0,
+            E76ScsIdIsar4d70WritebackInstrs::E1Full => 1,
+        }
+    }
+}
+impl TryFrom<u8> for E76ScsIdIsar4d70WritebackInstrs {
+    type Error = ();
+    fn try_from(
+        value: u8,
+    ) -> Result<E76ScsIdIsar4d70WritebackInstrs, Self::Error> {
+        match value {
+            0 => Ok(Self::E0Basic),
+            1 => Ok(Self::E1Full),
+            _ => Err(()),
+        }
+    }
+}
+#[doc = "E_CP_ACC_PERMISSION"]
+#[derive(Debug, Clone, Copy)]
+pub enum E77ScsCpacrd88Cp0 {
+    #[doc = "Access_denied: Access denied<br>"]
+    E0AccessDenied,
+    #[doc = "Privileged_mode_access_only: Privileged mode access only<br>"]
+    E1PrivilegedModeAccessOnly,
+    #[doc = "Reserved: Reserved<br>"]
+    E2Reserved,
+    #[doc = "Full_access: Full access<br>"]
+    E3FullAccess,
+}
+impl From<E77ScsCpacrd88Cp0> for u8 {
+    fn from(value: E77ScsCpacrd88Cp0) -> u8 {
+        match value {
+            E77ScsCpacrd88Cp0::E0AccessDenied => 0,
+            E77ScsCpacrd88Cp0::E1PrivilegedModeAccessOnly => 1,
+            E77ScsCpacrd88Cp0::E2Reserved => 2,
+            E77ScsCpacrd88Cp0::E3FullAccess => 3,
+        }
+    }
+}
+impl From<u8> for E77ScsCpacrd88Cp0 {
+    fn from(value: u8) -> E77ScsCpacrd88Cp0 {
+        match value {
+            0 => Self::E0AccessDenied,
+            1 => Self::E1PrivilegedModeAccessOnly,
+            2 => Self::E2Reserved,
+            3 => Self::E3FullAccess,
+            _ => unreachable!(),
         }
     }
 }
 #[doc = "ACCESS_PERMISSIONS"]
 #[derive(Debug, Clone, Copy)]
-pub enum E71ScsMpuRasr10Ap {
+pub enum E78ScsMpuRasrda0Ap {
     #[doc = "Any_access_generates_a_permission_fault: Any access generates a permission fault<br>"]
     E0AnyAccessGeneratesAPermissionFault,
     #[doc = "Privileged_access_only: Privileged access only<br>"]
@@ -2596,13 +2810,13 @@ pub enum E71ScsMpuRasr10Ap {
     #[doc = "Privileged_and_unprivileged_read_only: Privileged and unprivileged read only<br>"]
     E7PrivilegedAndUnprivilegedReadOnly,
 }
-impl From<E71ScsMpuRasr10Ap> for u8 {
-    fn from(value: E71ScsMpuRasr10Ap) -> u8 {
-        match value { E71ScsMpuRasr10Ap :: E0AnyAccessGeneratesAPermissionFault => 0 , E71ScsMpuRasr10Ap :: E1PrivilegedAccessOnly => 1 , E71ScsMpuRasr10Ap :: E2AnyUnprivilegedWriteGeneratesAPermissionFault => 2 , E71ScsMpuRasr10Ap :: E3FullAccess => 3 , E71ScsMpuRasr10Ap :: E4Reserved => 4 , E71ScsMpuRasr10Ap :: E5PrivilegedReadOnly => 5 , E71ScsMpuRasr10Ap :: E6PrivilegedAndUnprivilegedReadOnly => 6 , E71ScsMpuRasr10Ap :: E7PrivilegedAndUnprivilegedReadOnly => 7 , }
+impl From<E78ScsMpuRasrda0Ap> for u8 {
+    fn from(value: E78ScsMpuRasrda0Ap) -> u8 {
+        match value { E78ScsMpuRasrda0Ap :: E0AnyAccessGeneratesAPermissionFault => 0 , E78ScsMpuRasrda0Ap :: E1PrivilegedAccessOnly => 1 , E78ScsMpuRasrda0Ap :: E2AnyUnprivilegedWriteGeneratesAPermissionFault => 2 , E78ScsMpuRasrda0Ap :: E3FullAccess => 3 , E78ScsMpuRasrda0Ap :: E4Reserved => 4 , E78ScsMpuRasrda0Ap :: E5PrivilegedReadOnly => 5 , E78ScsMpuRasrda0Ap :: E6PrivilegedAndUnprivilegedReadOnly => 6 , E78ScsMpuRasrda0Ap :: E7PrivilegedAndUnprivilegedReadOnly => 7 , }
     }
 }
-impl From<u8> for E71ScsMpuRasr10Ap {
-    fn from(value: u8) -> E71ScsMpuRasr10Ap {
+impl From<u8> for E78ScsMpuRasrda0Ap {
+    fn from(value: u8) -> E78ScsMpuRasrda0Ap {
         match value {
             0 => Self::E0AnyAccessGeneratesAPermissionFault,
             1 => Self::E1PrivilegedAccessOnly,
@@ -2616,287 +2830,100 @@ impl From<u8> for E71ScsMpuRasr10Ap {
         }
     }
 }
-#[doc = "ID_PFR0_STATE1"]
+#[doc = "E_MVFR0_SIMD"]
 #[derive(Debug, Clone, Copy)]
-pub enum E72ScsIdPfr040State1 {
-    #[doc = "Thumb_Thumb2: Thumb Thumb2<br>"]
-    E0ThumbThumb2,
+pub enum E79ScsMvfr0f40ASimd {
+    #[doc = "_16x64:  16x64<br>"]
+    E0_16x64,
 }
-impl From<E72ScsIdPfr040State1> for u8 {
-    fn from(value: E72ScsIdPfr040State1) -> u8 {
+impl From<E79ScsMvfr0f40ASimd> for u8 {
+    fn from(value: E79ScsMvfr0f40ASimd) -> u8 {
         match value {
-            E72ScsIdPfr040State1::E0ThumbThumb2 => 3,
+            E79ScsMvfr0f40ASimd::E0_16x64 => 1,
         }
     }
 }
-impl TryFrom<u8> for E72ScsIdPfr040State1 {
+impl TryFrom<u8> for E79ScsMvfr0f40ASimd {
     type Error = ();
-    fn try_from(value: u8) -> Result<E72ScsIdPfr040State1, Self::Error> {
+    fn try_from(value: u8) -> Result<E79ScsMvfr0f40ASimd, Self::Error> {
         match value {
-            3 => Ok(Self::E0ThumbThumb2),
+            1 => Ok(Self::E0_16x64),
             _ => Err(()),
         }
     }
 }
-#[doc = "ID_PFR1_M_PROFILE"]
+#[doc = "E_SUPPORTED2"]
 #[derive(Debug, Clone, Copy)]
-pub enum E73ScsIdPfr144MProfile {
-    #[doc = "Two_stack: Two stack<br>"]
-    E0TwoStack,
-}
-impl From<E73ScsIdPfr144MProfile> for u8 {
-    fn from(value: E73ScsIdPfr144MProfile) -> u8 {
-        match value {
-            E73ScsIdPfr144MProfile::E0TwoStack => 2,
-        }
-    }
-}
-impl TryFrom<u8> for E73ScsIdPfr144MProfile {
-    type Error = ();
-    fn try_from(value: u8) -> Result<E73ScsIdPfr144MProfile, Self::Error> {
-        match value {
-            2 => Ok(Self::E0TwoStack),
-            _ => Err(()),
-        }
-    }
-}
-#[doc = "E_FEATURE_SUPPORT"]
-#[derive(Debug, Clone, Copy)]
-pub enum E74ScsIdDfr048MProfile {
-    #[doc = "Not_supported: Not supported<br>"]
-    E0NotSupported,
+pub enum E80ScsMvfr0f40SinglePrecision {
     #[doc = "Supported: Supported<br>"]
-    E1Supported,
+    E0Supported,
 }
-impl From<E74ScsIdDfr048MProfile> for u8 {
-    fn from(value: E74ScsIdDfr048MProfile) -> u8 {
+impl From<E80ScsMvfr0f40SinglePrecision> for u8 {
+    fn from(value: E80ScsMvfr0f40SinglePrecision) -> u8 {
         match value {
-            E74ScsIdDfr048MProfile::E0NotSupported => 0,
-            E74ScsIdDfr048MProfile::E1Supported => 1,
+            E80ScsMvfr0f40SinglePrecision::E0Supported => 2,
         }
     }
 }
-impl TryFrom<u8> for E74ScsIdDfr048MProfile {
+impl TryFrom<u8> for E80ScsMvfr0f40SinglePrecision {
     type Error = ();
-    fn try_from(value: u8) -> Result<E74ScsIdDfr048MProfile, Self::Error> {
+    fn try_from(
+        value: u8,
+    ) -> Result<E80ScsMvfr0f40SinglePrecision, Self::Error> {
         match value {
-            0 => Ok(Self::E0NotSupported),
-            1 => Ok(Self::E1Supported),
+            2 => Ok(Self::E0Supported),
             _ => Err(()),
         }
     }
 }
-#[doc = "ID_MMFR0_PMSA"]
+#[doc = "E_NOT_SUPPORTED"]
 #[derive(Debug, Clone, Copy)]
-pub enum E75ScsIdMmfr050Pmsa {
-    #[doc = "Not_supported: Not supported<br>"]
+pub enum E81ScsMvfr0f40DoublePrecision {
+    #[doc = "Not_Supported: Not Supported<br>"]
     E0NotSupported,
-    #[doc = "PMSAv7: PMSAv7<br>"]
-    E1Pmsav7,
 }
-impl From<E75ScsIdMmfr050Pmsa> for u8 {
-    fn from(value: E75ScsIdMmfr050Pmsa) -> u8 {
+impl From<E81ScsMvfr0f40DoublePrecision> for u8 {
+    fn from(value: E81ScsMvfr0f40DoublePrecision) -> u8 {
         match value {
-            E75ScsIdMmfr050Pmsa::E0NotSupported => 0,
-            E75ScsIdMmfr050Pmsa::E1Pmsav7 => 3,
+            E81ScsMvfr0f40DoublePrecision::E0NotSupported => 0,
         }
     }
 }
-impl TryFrom<u8> for E75ScsIdMmfr050Pmsa {
+impl TryFrom<u8> for E81ScsMvfr0f40DoublePrecision {
     type Error = ();
-    fn try_from(value: u8) -> Result<E75ScsIdMmfr050Pmsa, Self::Error> {
+    fn try_from(
+        value: u8,
+    ) -> Result<E81ScsMvfr0f40DoublePrecision, Self::Error> {
         match value {
             0 => Ok(Self::E0NotSupported),
-            3 => Ok(Self::E1Pmsav7),
             _ => Err(()),
         }
     }
 }
-#[doc = "ID_MMFR0_OUTER_SHARABILITY"]
+#[doc = "E_SUPPORTED"]
 #[derive(Debug, Clone, Copy)]
-pub enum E76ScsIdMmfr050OutermostShareability {
-    #[doc = "Non_cacheable: Non cacheable<br>"]
-    E0NonCacheable,
-    #[doc = "Ignored: Ignored<br>"]
-    E1Ignored,
+pub enum E82ScsMvfr0f40Divide {
+    #[doc = "Supported: Supported<br>"]
+    E0Supported,
 }
-impl From<E76ScsIdMmfr050OutermostShareability> for u8 {
-    fn from(value: E76ScsIdMmfr050OutermostShareability) -> u8 {
+impl From<E82ScsMvfr0f40Divide> for u8 {
+    fn from(value: E82ScsMvfr0f40Divide) -> u8 {
         match value {
-            E76ScsIdMmfr050OutermostShareability::E0NonCacheable => 0,
-            E76ScsIdMmfr050OutermostShareability::E1Ignored => 15,
+            E82ScsMvfr0f40Divide::E0Supported => 1,
         }
     }
 }
-impl TryFrom<u8> for E76ScsIdMmfr050OutermostShareability {
+impl TryFrom<u8> for E82ScsMvfr0f40Divide {
     type Error = ();
-    fn try_from(
-        value: u8,
-    ) -> Result<E76ScsIdMmfr050OutermostShareability, Self::Error> {
+    fn try_from(value: u8) -> Result<E82ScsMvfr0f40Divide, Self::Error> {
         match value {
-            0 => Ok(Self::E0NonCacheable),
-            15 => Ok(Self::E1Ignored),
+            1 => Ok(Self::E0Supported),
             _ => Err(()),
         }
     }
 }
-#[doc = "ID_MMFR0_SHARABILITY"]
 #[derive(Debug, Clone, Copy)]
-pub enum E77ScsIdMmfr050ShareabilityLevels {
-    #[doc = "One_level: One level<br>"]
-    E0OneLevel,
-}
-impl From<E77ScsIdMmfr050ShareabilityLevels> for u8 {
-    fn from(value: E77ScsIdMmfr050ShareabilityLevels) -> u8 {
-        match value {
-            E77ScsIdMmfr050ShareabilityLevels::E0OneLevel => 0,
-        }
-    }
-}
-impl TryFrom<u8> for E77ScsIdMmfr050ShareabilityLevels {
-    type Error = ();
-    fn try_from(
-        value: u8,
-    ) -> Result<E77ScsIdMmfr050ShareabilityLevels, Self::Error> {
-        match value {
-            0 => Ok(Self::E0OneLevel),
-            _ => Err(()),
-        }
-    }
-}
-#[doc = "ID_ISAR0_COPROC"]
-#[derive(Debug, Clone, Copy)]
-pub enum E78ScsIdIsar060CoprocInstrs {
-    #[doc = "None: None<br>"]
-    E0None,
-    #[doc = "Generic: Generic<br>"]
-    E1Generic,
-    #[doc = "Generic2: Generic2<br>"]
-    E2Generic2,
-    #[doc = "MCRR_MRRC: MCRR MRRC<br>"]
-    E3McrrMrrc,
-    #[doc = "MCRR2_MRRC2: MCRR2 MRRC2<br>"]
-    E4Mcrr2Mrrc2,
-}
-impl From<E78ScsIdIsar060CoprocInstrs> for u8 {
-    fn from(value: E78ScsIdIsar060CoprocInstrs) -> u8 {
-        match value {
-            E78ScsIdIsar060CoprocInstrs::E0None => 0,
-            E78ScsIdIsar060CoprocInstrs::E1Generic => 1,
-            E78ScsIdIsar060CoprocInstrs::E2Generic2 => 2,
-            E78ScsIdIsar060CoprocInstrs::E3McrrMrrc => 3,
-            E78ScsIdIsar060CoprocInstrs::E4Mcrr2Mrrc2 => 4,
-        }
-    }
-}
-impl TryFrom<u8> for E78ScsIdIsar060CoprocInstrs {
-    type Error = ();
-    fn try_from(value: u8) -> Result<E78ScsIdIsar060CoprocInstrs, Self::Error> {
-        match value {
-            0 => Ok(Self::E0None),
-            1 => Ok(Self::E1Generic),
-            2 => Ok(Self::E2Generic2),
-            3 => Ok(Self::E3McrrMrrc),
-            4 => Ok(Self::E4Mcrr2Mrrc2),
-            _ => Err(()),
-        }
-    }
-}
-#[doc = "ID_ISAR1_INTERWORK"]
-#[derive(Debug, Clone, Copy)]
-pub enum E79ScsIdIsar164InterworkInstrs {
-    #[doc = "None: None<br>"]
-    E0None,
-    #[doc = "BX: BX<br>"]
-    E1Bx,
-    #[doc = "BX_BLX2: BX BLX2<br>"]
-    E2BxBlx2,
-}
-impl From<E79ScsIdIsar164InterworkInstrs> for u8 {
-    fn from(value: E79ScsIdIsar164InterworkInstrs) -> u8 {
-        match value {
-            E79ScsIdIsar164InterworkInstrs::E0None => 0,
-            E79ScsIdIsar164InterworkInstrs::E1Bx => 1,
-            E79ScsIdIsar164InterworkInstrs::E2BxBlx2 => 2,
-        }
-    }
-}
-impl TryFrom<u8> for E79ScsIdIsar164InterworkInstrs {
-    type Error = ();
-    fn try_from(
-        value: u8,
-    ) -> Result<E79ScsIdIsar164InterworkInstrs, Self::Error> {
-        match value {
-            0 => Ok(Self::E0None),
-            1 => Ok(Self::E1Bx),
-            2 => Ok(Self::E2BxBlx2),
-            _ => Err(()),
-        }
-    }
-}
-#[doc = "E_BASIC_FULL"]
-#[derive(Debug, Clone, Copy)]
-pub enum E80ScsIdIsar470WritebackInstrs {
-    #[doc = "Basic: Basic<br>"]
-    E0Basic,
-    #[doc = "Full: Full<br>"]
-    E1Full,
-}
-impl From<E80ScsIdIsar470WritebackInstrs> for u8 {
-    fn from(value: E80ScsIdIsar470WritebackInstrs) -> u8 {
-        match value {
-            E80ScsIdIsar470WritebackInstrs::E0Basic => 0,
-            E80ScsIdIsar470WritebackInstrs::E1Full => 1,
-        }
-    }
-}
-impl TryFrom<u8> for E80ScsIdIsar470WritebackInstrs {
-    type Error = ();
-    fn try_from(
-        value: u8,
-    ) -> Result<E80ScsIdIsar470WritebackInstrs, Self::Error> {
-        match value {
-            0 => Ok(Self::E0Basic),
-            1 => Ok(Self::E1Full),
-            _ => Err(()),
-        }
-    }
-}
-#[doc = "E_CP_ACC_PERMISSION"]
-#[derive(Debug, Clone, Copy)]
-pub enum E81ScsCpacrd80Cp0 {
-    #[doc = "Access_denied: Access denied<br>"]
-    E0AccessDenied,
-    #[doc = "Privileged_mode_access_only: Privileged mode access only<br>"]
-    E1PrivilegedModeAccessOnly,
-    #[doc = "Reserved: Reserved<br>"]
-    E2Reserved,
-    #[doc = "Full_access: Full access<br>"]
-    E3FullAccess,
-}
-impl From<E81ScsCpacrd80Cp0> for u8 {
-    fn from(value: E81ScsCpacrd80Cp0) -> u8 {
-        match value {
-            E81ScsCpacrd80Cp0::E0AccessDenied => 0,
-            E81ScsCpacrd80Cp0::E1PrivilegedModeAccessOnly => 1,
-            E81ScsCpacrd80Cp0::E2Reserved => 2,
-            E81ScsCpacrd80Cp0::E3FullAccess => 3,
-        }
-    }
-}
-impl From<u8> for E81ScsCpacrd80Cp0 {
-    fn from(value: u8) -> E81ScsCpacrd80Cp0 {
-        match value {
-            0 => Self::E0AccessDenied,
-            1 => Self::E1PrivilegedModeAccessOnly,
-            2 => Self::E2Reserved,
-            3 => Self::E3FullAccess,
-            _ => unreachable!(),
-        }
-    }
-}
-#[derive(Debug, Clone, Copy)]
-pub enum E82Apb35Enable500Enable {
+pub enum E83Apb35Enable500Enable {
     #[doc = "Disabled: Disable SPI<br>Disabled: Disable SPIM<br>Disabled: Disable SPI slave<br>"]
     E0Disabled,
     #[doc = "Enabled: Enable SPI<br>"]
@@ -2906,19 +2933,19 @@ pub enum E82Apb35Enable500Enable {
     #[doc = "Enabled: Enable SPIM<br>"]
     E3Enabled,
 }
-impl From<E82Apb35Enable500Enable> for u8 {
-    fn from(value: E82Apb35Enable500Enable) -> u8 {
+impl From<E83Apb35Enable500Enable> for u8 {
+    fn from(value: E83Apb35Enable500Enable) -> u8 {
         match value {
-            E82Apb35Enable500Enable::E0Disabled => 0,
-            E82Apb35Enable500Enable::E1Enabled => 1,
-            E82Apb35Enable500Enable::E2Enabled => 2,
-            E82Apb35Enable500Enable::E3Enabled => 7,
+            E83Apb35Enable500Enable::E0Disabled => 0,
+            E83Apb35Enable500Enable::E1Enabled => 1,
+            E83Apb35Enable500Enable::E2Enabled => 2,
+            E83Apb35Enable500Enable::E3Enabled => 7,
         }
     }
 }
-impl TryFrom<u8> for E82Apb35Enable500Enable {
+impl TryFrom<u8> for E83Apb35Enable500Enable {
     type Error = ();
-    fn try_from(value: u8) -> Result<E82Apb35Enable500Enable, Self::Error> {
+    fn try_from(value: u8) -> Result<E83Apb35Enable500Enable, Self::Error> {
         match value {
             0 => Ok(Self::E0Disabled),
             1 => Ok(Self::E1Enabled),
@@ -2929,7 +2956,7 @@ impl TryFrom<u8> for E82Apb35Enable500Enable {
     }
 }
 #[derive(Debug, Clone, Copy)]
-pub enum E83Apb35Frequency524Frequency {
+pub enum E84Apb35Frequency524Frequency {
     #[doc = "K125: 125 kbps<br>K125: 125 kbps<br>"]
     E0K125,
     #[doc = "K250: 250 kbps<br>K250: 250 kbps<br>"]
@@ -2945,24 +2972,24 @@ pub enum E83Apb35Frequency524Frequency {
     #[doc = "M8: 8 Mbps<br>M8: 8 Mbps<br>"]
     E6M8,
 }
-impl From<E83Apb35Frequency524Frequency> for u32 {
-    fn from(value: E83Apb35Frequency524Frequency) -> u32 {
+impl From<E84Apb35Frequency524Frequency> for u32 {
+    fn from(value: E84Apb35Frequency524Frequency) -> u32 {
         match value {
-            E83Apb35Frequency524Frequency::E0K125 => 33554432,
-            E83Apb35Frequency524Frequency::E1K250 => 67108864,
-            E83Apb35Frequency524Frequency::E2K500 => 134217728,
-            E83Apb35Frequency524Frequency::E3M1 => 268435456,
-            E83Apb35Frequency524Frequency::E4M2 => 536870912,
-            E83Apb35Frequency524Frequency::E5M4 => 1073741824,
-            E83Apb35Frequency524Frequency::E6M8 => 2147483648,
+            E84Apb35Frequency524Frequency::E0K125 => 33554432,
+            E84Apb35Frequency524Frequency::E1K250 => 67108864,
+            E84Apb35Frequency524Frequency::E2K500 => 134217728,
+            E84Apb35Frequency524Frequency::E3M1 => 268435456,
+            E84Apb35Frequency524Frequency::E4M2 => 536870912,
+            E84Apb35Frequency524Frequency::E5M4 => 1073741824,
+            E84Apb35Frequency524Frequency::E6M8 => 2147483648,
         }
     }
 }
-impl TryFrom<u32> for E83Apb35Frequency524Frequency {
+impl TryFrom<u32> for E84Apb35Frequency524Frequency {
     type Error = ();
     fn try_from(
         value: u32,
-    ) -> Result<E83Apb35Frequency524Frequency, Self::Error> {
+    ) -> Result<E84Apb35Frequency524Frequency, Self::Error> {
         match value {
             33554432 => Ok(Self::E0K125),
             67108864 => Ok(Self::E1K250),
@@ -2976,23 +3003,23 @@ impl TryFrom<u32> for E83Apb35Frequency524Frequency {
     }
 }
 #[derive(Debug, Clone, Copy)]
-pub enum E84Apb35RxdListcList {
+pub enum E85Apb35RxdListcList {
     #[doc = "Disabled: Disable EasyDMA list<br>"]
     E0Disabled,
     #[doc = "ArrayList: Use array list<br>"]
     E1Arraylist,
 }
-impl From<E84Apb35RxdListcList> for u8 {
-    fn from(value: E84Apb35RxdListcList) -> u8 {
+impl From<E85Apb35RxdListcList> for u8 {
+    fn from(value: E85Apb35RxdListcList) -> u8 {
         match value {
-            E84Apb35RxdListcList::E0Disabled => 0,
-            E84Apb35RxdListcList::E1Arraylist => 1,
+            E85Apb35RxdListcList::E0Disabled => 0,
+            E85Apb35RxdListcList::E1Arraylist => 1,
         }
     }
 }
-impl TryFrom<u8> for E84Apb35RxdListcList {
+impl TryFrom<u8> for E85Apb35RxdListcList {
     type Error = ();
-    fn try_from(value: u8) -> Result<E84Apb35RxdListcList, Self::Error> {
+    fn try_from(value: u8) -> Result<E85Apb35RxdListcList, Self::Error> {
         match value {
             0 => Ok(Self::E0Disabled),
             1 => Ok(Self::E1Arraylist),
@@ -3001,23 +3028,23 @@ impl TryFrom<u8> for E84Apb35RxdListcList {
     }
 }
 #[derive(Debug, Clone, Copy)]
-pub enum E85Apb35TxdListcList {
+pub enum E86Apb35TxdListcList {
     #[doc = "Disabled: Disable EasyDMA list<br>"]
     E0Disabled,
     #[doc = "ArrayList: Use array list<br>"]
     E1Arraylist,
 }
-impl From<E85Apb35TxdListcList> for u8 {
-    fn from(value: E85Apb35TxdListcList) -> u8 {
+impl From<E86Apb35TxdListcList> for u8 {
+    fn from(value: E86Apb35TxdListcList) -> u8 {
         match value {
-            E85Apb35TxdListcList::E0Disabled => 0,
-            E85Apb35TxdListcList::E1Arraylist => 1,
+            E86Apb35TxdListcList::E0Disabled => 0,
+            E86Apb35TxdListcList::E1Arraylist => 1,
         }
     }
 }
-impl TryFrom<u8> for E85Apb35TxdListcList {
+impl TryFrom<u8> for E86Apb35TxdListcList {
     type Error = ();
-    fn try_from(value: u8) -> Result<E85Apb35TxdListcList, Self::Error> {
+    fn try_from(value: u8) -> Result<E86Apb35TxdListcList, Self::Error> {
         match value {
             0 => Ok(Self::E0Disabled),
             1 => Ok(Self::E1Arraylist),
