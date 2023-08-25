@@ -14,15 +14,29 @@ impl Dwt {
     }
     #[doc = "DWT_CTRL: Control Register<br>"]
     pub(crate) fn dwt_dwt_ctrl0_read(&self) -> MemResult<u32> {
-        todo ! ("read dwt_dwt_ctrl0 mwrite None write None rac None reset value 0x00 mask 0x00")
+        // TODO implement that?
+        // todo ! ("read dwt_dwt_ctrl0 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(0)
     }
     #[doc = "DWT_CTRL: Control Register<br>"]
     pub(crate) fn dwt_dwt_ctrl0_write(&mut self, _value: u32) -> MemResult<()> {
-        todo ! ("write dwt_dwt_ctrl0 mwrite None write None rac None reset value 0x00 mask 0x00")
+        // TODO implement that?
+        // todo ! ("write dwt_dwt_ctrl0 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(())
     }
     #[doc = "DWT_CYCCNT: Cycle Count Register<br>"]
     pub(crate) fn dwt_dwt_cyccnt4_read(&self) -> MemResult<u32> {
-        todo ! ("read dwt_dwt_cyccnt4 mwrite None write None rac None reset value 0x00 mask 0x00")
+        //TODO implement that?
+        // todo ! ("read dwt_dwt_cyccnt4 mwrite None write None rac None reset value 0x00 mask 0x00")
+        static mut LOL: bool = true;
+        unsafe {
+            LOL = !LOL;
+            if LOL {
+                Ok(u32::MAX)
+            } else {
+                Ok(0)
+            }
+        }
     }
     #[doc = "DWT_CYCCNT: Cycle Count Register<br>"]
     pub(crate) fn dwt_dwt_cyccnt4_write(

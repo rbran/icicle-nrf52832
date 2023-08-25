@@ -196,27 +196,28 @@ impl TryFrom<u8> for E5UicrApprotect208Pall {
         }
     }
 }
-#[derive(Debug, Clone, Copy)]
-pub enum E6Apb0Lfclkstat418Src {
+#[derive(Default, Debug, Clone, Copy)]
+pub enum LfclkSrc {
     #[doc = "RC: 32.768 kHz RC oscillator<br>"]
+    #[default]
     E0Rc,
     #[doc = "Xtal: 32.768 kHz crystal oscillator<br>"]
     E1Xtal,
     #[doc = "Synth: 32.768 kHz synthesized from HFCLK<br>"]
     E2Synth,
 }
-impl From<E6Apb0Lfclkstat418Src> for u8 {
-    fn from(value: E6Apb0Lfclkstat418Src) -> u8 {
+impl From<LfclkSrc> for u8 {
+    fn from(value: LfclkSrc) -> u8 {
         match value {
-            E6Apb0Lfclkstat418Src::E0Rc => 0,
-            E6Apb0Lfclkstat418Src::E1Xtal => 1,
-            E6Apb0Lfclkstat418Src::E2Synth => 2,
+            LfclkSrc::E0Rc => 0,
+            LfclkSrc::E1Xtal => 1,
+            LfclkSrc::E2Synth => 2,
         }
     }
 }
-impl TryFrom<u8> for E6Apb0Lfclkstat418Src {
+impl TryFrom<u8> for LfclkSrc {
     type Error = ();
-    fn try_from(value: u8) -> Result<E6Apb0Lfclkstat418Src, Self::Error> {
+    fn try_from(value: u8) -> Result<LfclkSrc, Self::Error> {
         match value {
             0 => Ok(Self::E0Rc),
             1 => Ok(Self::E1Xtal),
@@ -225,35 +226,7 @@ impl TryFrom<u8> for E6Apb0Lfclkstat418Src {
         }
     }
 }
-#[derive(Debug, Clone, Copy)]
-pub enum E7Apb0Lfclksrccopy41cSrc {
-    #[doc = "RC: 32.768 kHz RC oscillator<br>"]
-    E0Rc,
-    #[doc = "Xtal: 32.768 kHz crystal oscillator<br>"]
-    E1Xtal,
-    #[doc = "Synth: 32.768 kHz synthesized from HFCLK<br>"]
-    E2Synth,
-}
-impl From<E7Apb0Lfclksrccopy41cSrc> for u8 {
-    fn from(value: E7Apb0Lfclksrccopy41cSrc) -> u8 {
-        match value {
-            E7Apb0Lfclksrccopy41cSrc::E0Rc => 0,
-            E7Apb0Lfclksrccopy41cSrc::E1Xtal => 1,
-            E7Apb0Lfclksrccopy41cSrc::E2Synth => 2,
-        }
-    }
-}
-impl TryFrom<u8> for E7Apb0Lfclksrccopy41cSrc {
-    type Error = ();
-    fn try_from(value: u8) -> Result<E7Apb0Lfclksrccopy41cSrc, Self::Error> {
-        match value {
-            0 => Ok(Self::E0Rc),
-            1 => Ok(Self::E1Xtal),
-            2 => Ok(Self::E2Synth),
-            _ => Err(()),
-        }
-    }
-}
+
 #[derive(Debug, Clone, Copy)]
 pub enum E8Apb0Pofcon510Threshold {
     #[doc = "V17: Set threshold to 1.7 V<br>"]
@@ -315,35 +288,6 @@ impl TryFrom<u8> for E8Apb0Pofcon510Threshold {
             13 => Ok(Self::E9V26),
             14 => Ok(Self::E10V27),
             15 => Ok(Self::E11V28),
-            _ => Err(()),
-        }
-    }
-}
-#[derive(Debug, Clone, Copy)]
-pub enum E9Apb0Lfclksrc518Src {
-    #[doc = "RC: 32.768 kHz RC oscillator<br>"]
-    E0Rc,
-    #[doc = "Xtal: 32.768 kHz crystal oscillator<br>"]
-    E1Xtal,
-    #[doc = "Synth: 32.768 kHz synthesized from HFCLK<br>"]
-    E2Synth,
-}
-impl From<E9Apb0Lfclksrc518Src> for u8 {
-    fn from(value: E9Apb0Lfclksrc518Src) -> u8 {
-        match value {
-            E9Apb0Lfclksrc518Src::E0Rc => 0,
-            E9Apb0Lfclksrc518Src::E1Xtal => 1,
-            E9Apb0Lfclksrc518Src::E2Synth => 2,
-        }
-    }
-}
-impl TryFrom<u8> for E9Apb0Lfclksrc518Src {
-    type Error = ();
-    fn try_from(value: u8) -> Result<E9Apb0Lfclksrc518Src, Self::Error> {
-        match value {
-            0 => Ok(Self::E0Rc),
-            1 => Ok(Self::E1Xtal),
-            2 => Ok(Self::E2Synth),
             _ => Err(()),
         }
     }
@@ -2455,8 +2399,9 @@ impl TryFrom<u8> for E64I2sConfigChannels24Channels {
         }
     }
 }
-#[derive(Debug, Clone, Copy)]
-pub enum E65P0PinCnfn700Pull {
+#[derive(Default, Debug, Clone, Copy)]
+pub enum PinPull {
+    #[default]
     #[doc = "Disabled: No pull<br>"]
     E0Disabled,
     #[doc = "Pulldown: Pull down on pin<br>"]
@@ -2464,18 +2409,18 @@ pub enum E65P0PinCnfn700Pull {
     #[doc = "Pullup: Pull up on pin<br>"]
     E2Pullup,
 }
-impl From<E65P0PinCnfn700Pull> for u8 {
-    fn from(value: E65P0PinCnfn700Pull) -> u8 {
+impl From<PinPull> for u8 {
+    fn from(value: PinPull) -> u8 {
         match value {
-            E65P0PinCnfn700Pull::E0Disabled => 0,
-            E65P0PinCnfn700Pull::E1Pulldown => 1,
-            E65P0PinCnfn700Pull::E2Pullup => 3,
+            PinPull::E0Disabled => 0,
+            PinPull::E1Pulldown => 1,
+            PinPull::E2Pullup => 3,
         }
     }
 }
-impl TryFrom<u8> for E65P0PinCnfn700Pull {
+impl TryFrom<u8> for PinPull {
     type Error = ();
-    fn try_from(value: u8) -> Result<E65P0PinCnfn700Pull, Self::Error> {
+    fn try_from(value: u8) -> Result<PinPull, Self::Error> {
         match value {
             0 => Ok(Self::E0Disabled),
             1 => Ok(Self::E1Pulldown),
@@ -2484,8 +2429,9 @@ impl TryFrom<u8> for E65P0PinCnfn700Pull {
         }
     }
 }
-#[derive(Debug, Clone, Copy)]
-pub enum E66P0PinCnfn700Drive {
+#[derive(Default, Debug, Clone, Copy)]
+pub enum PinDrive {
+    #[default]
     #[doc = "S0S1: Standard '0', standard '1'<br>"]
     E0S0s1,
     #[doc = "H0S1: High drive '0', standard '1'<br>"]
@@ -2503,22 +2449,22 @@ pub enum E66P0PinCnfn700Drive {
     #[doc = "H0D1: High drive '0', disconnect '1' (normally used for wired-and connections)<br>"]
     E7H0d1,
 }
-impl From<E66P0PinCnfn700Drive> for u8 {
-    fn from(value: E66P0PinCnfn700Drive) -> u8 {
+impl From<PinDrive> for u8 {
+    fn from(value: PinDrive) -> u8 {
         match value {
-            E66P0PinCnfn700Drive::E0S0s1 => 0,
-            E66P0PinCnfn700Drive::E1H0s1 => 1,
-            E66P0PinCnfn700Drive::E2S0h1 => 2,
-            E66P0PinCnfn700Drive::E3H0h1 => 3,
-            E66P0PinCnfn700Drive::E4D0s1 => 4,
-            E66P0PinCnfn700Drive::E5D0h1 => 5,
-            E66P0PinCnfn700Drive::E6S0d1 => 6,
-            E66P0PinCnfn700Drive::E7H0d1 => 7,
+            PinDrive::E0S0s1 => 0,
+            PinDrive::E1H0s1 => 1,
+            PinDrive::E2S0h1 => 2,
+            PinDrive::E3H0h1 => 3,
+            PinDrive::E4D0s1 => 4,
+            PinDrive::E5D0h1 => 5,
+            PinDrive::E6S0d1 => 6,
+            PinDrive::E7H0d1 => 7,
         }
     }
 }
-impl From<u8> for E66P0PinCnfn700Drive {
-    fn from(value: u8) -> E66P0PinCnfn700Drive {
+impl From<u8> for PinDrive {
+    fn from(value: u8) -> PinDrive {
         match value {
             0 => Self::E0S0s1,
             1 => Self::E1H0s1,
@@ -2532,8 +2478,9 @@ impl From<u8> for E66P0PinCnfn700Drive {
         }
     }
 }
-#[derive(Debug, Clone, Copy)]
-pub enum E67P0PinCnfn700Sense {
+#[derive(Default, Debug, Clone, Copy)]
+pub enum PinSense {
+    #[default]
     #[doc = "Disabled: Disabled<br>"]
     E0Disabled,
     #[doc = "High: Sense for high level<br>"]
@@ -2541,18 +2488,18 @@ pub enum E67P0PinCnfn700Sense {
     #[doc = "Low: Sense for low level<br>"]
     E2Low,
 }
-impl From<E67P0PinCnfn700Sense> for u8 {
-    fn from(value: E67P0PinCnfn700Sense) -> u8 {
+impl From<PinSense> for u8 {
+    fn from(value: PinSense) -> u8 {
         match value {
-            E67P0PinCnfn700Sense::E0Disabled => 0,
-            E67P0PinCnfn700Sense::E1High => 2,
-            E67P0PinCnfn700Sense::E2Low => 3,
+            PinSense::E0Disabled => 0,
+            PinSense::E1High => 2,
+            PinSense::E2Low => 3,
         }
     }
 }
-impl TryFrom<u8> for E67P0PinCnfn700Sense {
+impl TryFrom<u8> for PinSense {
     type Error = ();
-    fn try_from(value: u8) -> Result<E67P0PinCnfn700Sense, Self::Error> {
+    fn try_from(value: u8) -> Result<PinSense, Self::Error> {
         match value {
             0 => Ok(Self::E0Disabled),
             2 => Ok(Self::E1High),

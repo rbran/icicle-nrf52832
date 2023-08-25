@@ -8439,7 +8439,7 @@ pub(crate) struct Gpiote(
 impl icicle_vm::cpu::mem::IoMemory for Gpiote {
     fn read(&mut self, _addr: u64, _buf: &mut [u8]) -> MemResult<()> {
         let _instance_page =
-            crate::peripheral::gpiote::Gpiote::page_to_index(_addr >> 12u32);
+            crate::peripheral::p0::P0::page_to_index(_addr >> 12u32);
         let _start = _addr & 4095u64;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {
@@ -8737,7 +8737,7 @@ impl icicle_vm::cpu::mem::IoMemory for Gpiote {
     }
     fn write(&mut self, _addr: u64, _buf: &[u8]) -> MemResult<()> {
         let _instance_page =
-            crate::peripheral::gpiote::Gpiote::page_to_index(_addr >> 12u32);
+            crate::peripheral::p0::P0::page_to_index(_addr >> 12u32);
         let _start = _addr & 4095u64;
         let _end = _start + u64::try_from(_buf.len()).unwrap();
         match (_start, _end) {

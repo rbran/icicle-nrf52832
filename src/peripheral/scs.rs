@@ -1,10 +1,81 @@
 use icicle_vm::cpu::mem::MemResult;
-#[derive(Default)]
+
 #[doc = "Control: System Control registers<br>ID: ID registers<br>FPE: System Control registers for the FP extension<br>SysTick: System Timer registers<br>NVIC: Nested Vectored Interrupt Controller registers<br>MPU: Memory Protection Unit<br><br>Instances:<br>0xe000e000: Control, ID, FPE, SysTick, NVIC, MPU<br>"]
 pub struct Scs {
-    #[doc = "TODO: implement things here"]
-    _todo: (),
+    pub interrupts_enabled: [u32; 8],
+    pub interrupts_pending: [u32; 8],
+    pub interrupts_priority: [u8; 240],
+
+    /// Indicates sleep-on-exit when returning from Handler mode to Thread mode:
+    /// 0 = do not sleep when returning to Thread mode.
+    /// 1 = enter sleep, or deep sleep, on return from an ISR.
+    /// Setting this bit to 1 enables an interrupt driven application to avoid
+    /// returning to an empty main application.
+    sleep_on_exit: bool,
+    /// Controls whether the processor uses sleep or deep sleep as its low power
+    /// mode: 0 = sleep, 1 = deep sleep.
+    sleep_deep: bool,
+    /// Send Event on Pending bit:
+    /// 0 = only enabled interrupts or events can wakeup the processor, disabled
+    /// interrupts are excluded
+    ///
+    /// 1 = enabled events and all interrupts, including disabled interrupts,
+    /// can wakeup the processor.
+    ///
+    /// When an event or interrupt enters pending state, the event signal wakes up the processor
+    /// from WFE. If the processor is not waiting for an event, the event is registered and affects the
+    /// next WFE.
+    /// The processor also wakes up on execution of an SEV instruction or an external event
+    event_on_pending: bool,
+    /// 4.3.8 System Handler Priority Registers
+    /// The SHPR1-SHPR3 registers set the priority level, 0 to 255, of the
+    /// exception handlers that have configurable priority.
+    priorities: [u8; 12],
 }
+impl Default for Scs {
+    fn default() -> Self {
+        Self {
+            interrupts_enabled: [0; 8],
+            interrupts_pending: [0; 8],
+            interrupts_priority: [0; 240],
+
+            sleep_on_exit: false,
+            sleep_deep: false,
+            event_on_pending: false,
+            priorities: [0; 12],
+        }
+    }
+}
+
+#[derive(Clone, Copy)]
+#[repr(usize)]
+pub enum SysHandlerPriority {
+    /// handler 4, MemManage
+    Pri4 = 0,
+    /// handler 5, BusFault
+    Pri5 = 1,
+    /// handler 6, UsageFault
+    Pri6 = 2,
+    /// handler 11, SVCall
+    Pri11 = 3,
+    /// handler 14, PendSV
+    Pri14 = 4,
+    /// handler 15, SysTick exception
+    Pri15 = 5,
+    /// Reserved
+    Pri7,
+    /// Reserved
+    Pri8,
+    /// Reserved
+    Pri9,
+    /// Reserved
+    Pri10,
+    /// Reserved
+    Pri12,
+    /// Reserved
+    Pri13,
+}
+
 impl Scs {
     pub(crate) fn page_to_index(page: u64) -> usize {
         match page {
@@ -1142,359 +1213,263 @@ impl Scs {
     }
     #[doc = "NVIC_ISER0: Enables, or reads the enable state of a group of interrupts<br>"]
     pub(crate) fn scs_nvic_iser0fc_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_iser0fc mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[0])
     }
     #[doc = "NVIC_ISER0: Enables, or reads the enable state of a group of interrupts<br>"]
-    pub(crate) fn scs_nvic_iser0fc_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_iser0fc mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_iser0fc_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_enabled[0] |= _value)
     }
     #[doc = "NVIC_ISER1: Enables, or reads the enable state of a group of interrupts<br>"]
     pub(crate) fn scs_nvic_iser1100_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_iser1100 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[1])
     }
     #[doc = "NVIC_ISER1: Enables, or reads the enable state of a group of interrupts<br>"]
-    pub(crate) fn scs_nvic_iser1100_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_iser1100 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_iser1100_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_enabled[1] |= _value)
     }
     #[doc = "NVIC_ISER2: Enables, or reads the enable state of a group of interrupts<br>"]
     pub(crate) fn scs_nvic_iser2104_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_iser2104 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[2])
     }
     #[doc = "NVIC_ISER2: Enables, or reads the enable state of a group of interrupts<br>"]
-    pub(crate) fn scs_nvic_iser2104_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_iser2104 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_iser2104_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_enabled[2] |= _value)
     }
     #[doc = "NVIC_ISER3: Enables, or reads the enable state of a group of interrupts<br>"]
     pub(crate) fn scs_nvic_iser3108_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_iser3108 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[3])
     }
     #[doc = "NVIC_ISER3: Enables, or reads the enable state of a group of interrupts<br>"]
-    pub(crate) fn scs_nvic_iser3108_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_iser3108 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_iser3108_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_enabled[3] |= _value)
     }
     #[doc = "NVIC_ISER4: Enables, or reads the enable state of a group of interrupts<br>"]
     pub(crate) fn scs_nvic_iser410c_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_iser410c mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[4])
     }
     #[doc = "NVIC_ISER4: Enables, or reads the enable state of a group of interrupts<br>"]
-    pub(crate) fn scs_nvic_iser410c_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_iser410c mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_iser410c_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_enabled[4] |= _value)
     }
     #[doc = "NVIC_ISER5: Enables, or reads the enable state of a group of interrupts<br>"]
     pub(crate) fn scs_nvic_iser5110_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_iser5110 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[5])
     }
     #[doc = "NVIC_ISER5: Enables, or reads the enable state of a group of interrupts<br>"]
-    pub(crate) fn scs_nvic_iser5110_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_iser5110 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_iser5110_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_enabled[5] |= _value)
     }
     #[doc = "NVIC_ISER6: Enables, or reads the enable state of a group of interrupts<br>"]
     pub(crate) fn scs_nvic_iser6114_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_iser6114 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[6])
     }
     #[doc = "NVIC_ISER6: Enables, or reads the enable state of a group of interrupts<br>"]
-    pub(crate) fn scs_nvic_iser6114_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_iser6114 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_iser6114_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_enabled[6] |= _value)
     }
     #[doc = "NVIC_ISER7: Enables, or reads the enable state of a group of interrupts<br>"]
     pub(crate) fn scs_nvic_iser7118_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_iser7118 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[7])
     }
     #[doc = "NVIC_ISER7: Enables, or reads the enable state of a group of interrupts<br>"]
-    pub(crate) fn scs_nvic_iser7118_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_iser7118 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_iser7118_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_enabled[7] |= _value)
     }
     #[doc = "NVIC_ICER0: Disables, or reads the enable state of a group of interrupts<br>"]
     pub(crate) fn scs_nvic_icer017c_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_icer017c mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[0])
     }
     #[doc = "NVIC_ICER0: Disables, or reads the enable state of a group of interrupts<br>"]
-    pub(crate) fn scs_nvic_icer017c_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_icer017c mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_icer017c_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_enabled[0] &= !_value)
     }
     #[doc = "NVIC_ICER1: Disables, or reads the enable state of a group of interrupts<br>"]
     pub(crate) fn scs_nvic_icer1180_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_icer1180 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[1])
     }
     #[doc = "NVIC_ICER1: Disables, or reads the enable state of a group of interrupts<br>"]
-    pub(crate) fn scs_nvic_icer1180_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_icer1180 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_icer1180_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_enabled[1] &= !_value)
     }
     #[doc = "NVIC_ICER2: Disables, or reads the enable state of a group of interrupts<br>"]
     pub(crate) fn scs_nvic_icer2184_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_icer2184 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[2])
     }
     #[doc = "NVIC_ICER2: Disables, or reads the enable state of a group of interrupts<br>"]
-    pub(crate) fn scs_nvic_icer2184_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_icer2184 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_icer2184_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_enabled[2] &= !_value)
     }
     #[doc = "NVIC_ICER3: Disables, or reads the enable state of a group of interrupts<br>"]
     pub(crate) fn scs_nvic_icer3188_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_icer3188 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[3])
     }
     #[doc = "NVIC_ICER3: Disables, or reads the enable state of a group of interrupts<br>"]
-    pub(crate) fn scs_nvic_icer3188_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_icer3188 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_icer3188_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_enabled[3] &= !_value)
     }
     #[doc = "NVIC_ICER4: Disables, or reads the enable state of a group of interrupts<br>"]
     pub(crate) fn scs_nvic_icer418c_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_icer418c mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[4])
     }
     #[doc = "NVIC_ICER4: Disables, or reads the enable state of a group of interrupts<br>"]
-    pub(crate) fn scs_nvic_icer418c_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_icer418c mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_icer418c_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_enabled[4] &= !_value)
     }
     #[doc = "NVIC_ICER5: Disables, or reads the enable state of a group of interrupts<br>"]
     pub(crate) fn scs_nvic_icer5190_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_icer5190 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[5])
     }
     #[doc = "NVIC_ICER5: Disables, or reads the enable state of a group of interrupts<br>"]
-    pub(crate) fn scs_nvic_icer5190_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_icer5190 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_icer5190_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_enabled[5] &= !_value)
     }
     #[doc = "NVIC_ICER6: Disables, or reads the enable state of a group of interrupts<br>"]
     pub(crate) fn scs_nvic_icer6194_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_icer6194 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[6])
     }
     #[doc = "NVIC_ICER6: Disables, or reads the enable state of a group of interrupts<br>"]
-    pub(crate) fn scs_nvic_icer6194_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_icer6194 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_icer6194_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_enabled[6] &= !_value)
     }
     #[doc = "NVIC_ICER7: Disables, or reads the enable state of a group of interrupts<br>"]
     pub(crate) fn scs_nvic_icer7198_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_icer7198 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[7])
     }
     #[doc = "NVIC_ICER7: Disables, or reads the enable state of a group of interrupts<br>"]
-    pub(crate) fn scs_nvic_icer7198_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_icer7198 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_icer7198_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_enabled[7] &= !_value)
     }
     #[doc = "NVIC_ISPR0: For a group of interrupts, changes interrupt status to pending, or shows the current pending\nstatus<br>"]
     pub(crate) fn scs_nvic_ispr01fc_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_ispr01fc mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_pending[0])
     }
     #[doc = "NVIC_ISPR0: For a group of interrupts, changes interrupt status to pending, or shows the current pending\nstatus<br>"]
-    pub(crate) fn scs_nvic_ispr01fc_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_ispr01fc mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_ispr01fc_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_pending[0] |= _value)
     }
     #[doc = "NVIC_ISPR1: For a group of interrupts, changes interrupt status to pending, or shows the current pending\nstatus<br>"]
     pub(crate) fn scs_nvic_ispr1200_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_ispr1200 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_pending[1])
     }
     #[doc = "NVIC_ISPR1: For a group of interrupts, changes interrupt status to pending, or shows the current pending\nstatus<br>"]
-    pub(crate) fn scs_nvic_ispr1200_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_ispr1200 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_ispr1200_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_pending[1] |= _value)
     }
     #[doc = "NVIC_ISPR2: For a group of interrupts, changes interrupt status to pending, or shows the current pending\nstatus<br>"]
     pub(crate) fn scs_nvic_ispr2204_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_ispr2204 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_pending[2])
     }
     #[doc = "NVIC_ISPR2: For a group of interrupts, changes interrupt status to pending, or shows the current pending\nstatus<br>"]
-    pub(crate) fn scs_nvic_ispr2204_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_ispr2204 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_ispr2204_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_pending[2] |= _value)
     }
     #[doc = "NVIC_ISPR3: For a group of interrupts, changes interrupt status to pending, or shows the current pending\nstatus<br>"]
     pub(crate) fn scs_nvic_ispr3208_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_ispr3208 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_pending[3])
     }
     #[doc = "NVIC_ISPR3: For a group of interrupts, changes interrupt status to pending, or shows the current pending\nstatus<br>"]
-    pub(crate) fn scs_nvic_ispr3208_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_ispr3208 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_ispr3208_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_pending[3] |= _value)
     }
     #[doc = "NVIC_ISPR4: For a group of interrupts, changes interrupt status to pending, or shows the current pending\nstatus<br>"]
     pub(crate) fn scs_nvic_ispr420c_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_ispr420c mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_pending[4])
     }
     #[doc = "NVIC_ISPR4: For a group of interrupts, changes interrupt status to pending, or shows the current pending\nstatus<br>"]
-    pub(crate) fn scs_nvic_ispr420c_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_ispr420c mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_ispr420c_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_pending[4] |= _value)
     }
     #[doc = "NVIC_ISPR5: For a group of interrupts, changes interrupt status to pending, or shows the current pending\nstatus<br>"]
     pub(crate) fn scs_nvic_ispr5210_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_ispr5210 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_pending[5])
     }
     #[doc = "NVIC_ISPR5: For a group of interrupts, changes interrupt status to pending, or shows the current pending\nstatus<br>"]
-    pub(crate) fn scs_nvic_ispr5210_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_ispr5210 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_ispr5210_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_pending[5] |= _value)
     }
     #[doc = "NVIC_ISPR6: For a group of interrupts, changes interrupt status to pending, or shows the current pending\nstatus<br>"]
     pub(crate) fn scs_nvic_ispr6214_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_ispr6214 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_pending[6])
     }
     #[doc = "NVIC_ISPR6: For a group of interrupts, changes interrupt status to pending, or shows the current pending\nstatus<br>"]
-    pub(crate) fn scs_nvic_ispr6214_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_ispr6214 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_ispr6214_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_pending[6] |= _value)
     }
     #[doc = "NVIC_ISPR7: For a group of interrupts, changes interrupt status to pending, or shows the current pending\nstatus<br>"]
     pub(crate) fn scs_nvic_ispr7218_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_ispr7218 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_pending[7])
     }
     #[doc = "NVIC_ISPR7: For a group of interrupts, changes interrupt status to pending, or shows the current pending\nstatus<br>"]
-    pub(crate) fn scs_nvic_ispr7218_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_ispr7218 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_ispr7218_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_pending[7] |= _value)
     }
     #[doc = "NVIC_ICPR0: For a group of interrupts, clears the interrupt pending status, or shows the current pending\nstatus<br>"]
     pub(crate) fn scs_nvic_icpr027c_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_icpr027c mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_pending[0])
     }
     #[doc = "NVIC_ICPR0: For a group of interrupts, clears the interrupt pending status, or shows the current pending\nstatus<br>"]
-    pub(crate) fn scs_nvic_icpr027c_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_icpr027c mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_icpr027c_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_pending[0] &= !_value)
     }
     #[doc = "NVIC_ICPR1: For a group of interrupts, clears the interrupt pending status, or shows the current pending\nstatus<br>"]
     pub(crate) fn scs_nvic_icpr1280_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_icpr1280 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_pending[1])
     }
     #[doc = "NVIC_ICPR1: For a group of interrupts, clears the interrupt pending status, or shows the current pending\nstatus<br>"]
-    pub(crate) fn scs_nvic_icpr1280_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_icpr1280 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_icpr1280_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_pending[1] &= !_value)
     }
     #[doc = "NVIC_ICPR2: For a group of interrupts, clears the interrupt pending status, or shows the current pending\nstatus<br>"]
     pub(crate) fn scs_nvic_icpr2284_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_icpr2284 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_pending[2])
     }
     #[doc = "NVIC_ICPR2: For a group of interrupts, clears the interrupt pending status, or shows the current pending\nstatus<br>"]
-    pub(crate) fn scs_nvic_icpr2284_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_icpr2284 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_icpr2284_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_pending[2] &= !_value)
     }
     #[doc = "NVIC_ICPR3: For a group of interrupts, clears the interrupt pending status, or shows the current pending\nstatus<br>"]
     pub(crate) fn scs_nvic_icpr3288_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_icpr3288 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_pending[3])
     }
     #[doc = "NVIC_ICPR3: For a group of interrupts, clears the interrupt pending status, or shows the current pending\nstatus<br>"]
-    pub(crate) fn scs_nvic_icpr3288_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_icpr3288 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_icpr3288_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_pending[3] &= !_value)
     }
     #[doc = "NVIC_ICPR4: For a group of interrupts, clears the interrupt pending status, or shows the current pending\nstatus<br>"]
     pub(crate) fn scs_nvic_icpr428c_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_icpr428c mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_pending[4])
     }
     #[doc = "NVIC_ICPR4: For a group of interrupts, clears the interrupt pending status, or shows the current pending\nstatus<br>"]
-    pub(crate) fn scs_nvic_icpr428c_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_icpr428c mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_icpr428c_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_pending[4] &= !_value)
     }
     #[doc = "NVIC_ICPR5: For a group of interrupts, clears the interrupt pending status, or shows the current pending\nstatus<br>"]
     pub(crate) fn scs_nvic_icpr5290_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_icpr5290 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_pending[5])
     }
     #[doc = "NVIC_ICPR5: For a group of interrupts, clears the interrupt pending status, or shows the current pending\nstatus<br>"]
-    pub(crate) fn scs_nvic_icpr5290_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_icpr5290 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_icpr5290_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_pending[5] &= !_value)
     }
     #[doc = "NVIC_ICPR6: For a group of interrupts, clears the interrupt pending status, or shows the current pending\nstatus<br>"]
     pub(crate) fn scs_nvic_icpr6294_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_icpr6294 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_pending[6])
     }
     #[doc = "NVIC_ICPR6: For a group of interrupts, clears the interrupt pending status, or shows the current pending\nstatus<br>"]
-    pub(crate) fn scs_nvic_icpr6294_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_icpr6294 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_icpr6294_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_pending[6] &= !_value)
     }
     #[doc = "NVIC_ICPR7: For a group of interrupts, clears the interrupt pending status, or shows the current pending\nstatus<br>"]
     pub(crate) fn scs_nvic_icpr7298_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_icpr7298 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_pending[7])
     }
     #[doc = "NVIC_ICPR7: For a group of interrupts, clears the interrupt pending status, or shows the current pending\nstatus<br>"]
-    pub(crate) fn scs_nvic_icpr7298_write(
-        &mut self,
-        _value: u32,
-    ) -> MemResult<()> {
-        todo ! ("write scs_nvic_icpr7298 mwrite None write None rac None reset value 0x00 mask 0x00")
+    pub fn scs_nvic_icpr7298_write(&mut self, _value: u32) -> MemResult<()> {
+        Ok(self.interrupts_pending[7] &= !_value)
     }
     #[doc = "NVIC_IABR0: For a group of 32 interrupts, shows whether each interrupt is active<br>"]
     pub(crate) fn scs_nvic_iabr02fc_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_iabr02fc mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[0])
     }
     #[doc = "NVIC_IABR0: For a group of 32 interrupts, shows whether each interrupt is active<br>"]
     pub(crate) fn scs_nvic_iabr02fc_write(
@@ -1505,7 +1480,7 @@ impl Scs {
     }
     #[doc = "NVIC_IABR1: For a group of 32 interrupts, shows whether each interrupt is active<br>"]
     pub(crate) fn scs_nvic_iabr1300_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_iabr1300 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[1])
     }
     #[doc = "NVIC_IABR1: For a group of 32 interrupts, shows whether each interrupt is active<br>"]
     pub(crate) fn scs_nvic_iabr1300_write(
@@ -1516,7 +1491,7 @@ impl Scs {
     }
     #[doc = "NVIC_IABR2: For a group of 32 interrupts, shows whether each interrupt is active<br>"]
     pub(crate) fn scs_nvic_iabr2304_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_iabr2304 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[2])
     }
     #[doc = "NVIC_IABR2: For a group of 32 interrupts, shows whether each interrupt is active<br>"]
     pub(crate) fn scs_nvic_iabr2304_write(
@@ -1527,7 +1502,7 @@ impl Scs {
     }
     #[doc = "NVIC_IABR3: For a group of 32 interrupts, shows whether each interrupt is active<br>"]
     pub(crate) fn scs_nvic_iabr3308_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_iabr3308 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[3])
     }
     #[doc = "NVIC_IABR3: For a group of 32 interrupts, shows whether each interrupt is active<br>"]
     pub(crate) fn scs_nvic_iabr3308_write(
@@ -1538,7 +1513,7 @@ impl Scs {
     }
     #[doc = "NVIC_IABR4: For a group of 32 interrupts, shows whether each interrupt is active<br>"]
     pub(crate) fn scs_nvic_iabr430c_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_iabr430c mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[4])
     }
     #[doc = "NVIC_IABR4: For a group of 32 interrupts, shows whether each interrupt is active<br>"]
     pub(crate) fn scs_nvic_iabr430c_write(
@@ -1549,7 +1524,7 @@ impl Scs {
     }
     #[doc = "NVIC_IABR5: For a group of 32 interrupts, shows whether each interrupt is active<br>"]
     pub(crate) fn scs_nvic_iabr5310_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_iabr5310 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[5])
     }
     #[doc = "NVIC_IABR5: For a group of 32 interrupts, shows whether each interrupt is active<br>"]
     pub(crate) fn scs_nvic_iabr5310_write(
@@ -1560,7 +1535,7 @@ impl Scs {
     }
     #[doc = "NVIC_IABR6: For a group of 32 interrupts, shows whether each interrupt is active<br>"]
     pub(crate) fn scs_nvic_iabr6314_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_iabr6314 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[6])
     }
     #[doc = "NVIC_IABR6: For a group of 32 interrupts, shows whether each interrupt is active<br>"]
     pub(crate) fn scs_nvic_iabr6314_write(
@@ -1571,7 +1546,7 @@ impl Scs {
     }
     #[doc = "NVIC_IABR7: For a group of 32 interrupts, shows whether each interrupt is active<br>"]
     pub(crate) fn scs_nvic_iabr7318_read(&self) -> MemResult<u32> {
-        todo ! ("read scs_nvic_iabr7318 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.interrupts_enabled[7])
     }
     #[doc = "NVIC_IABR7: For a group of 32 interrupts, shows whether each interrupt is active<br>"]
     pub(crate) fn scs_nvic_iabr7318_write(
@@ -1582,2643 +1557,2643 @@ impl Scs {
     }
     #[doc = "PRI_N0: Priority of interrupt 0<br>"]
     pub(crate) fn scs_nvic_ipr03fc_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 0) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 0<br>"]
-    pub(crate) fn scs_nvic_ipr03fc_pri_n0_write(
+    pub fn scs_nvic_ipr03fc_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 0) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 1<br>"]
     pub(crate) fn scs_nvic_ipr03fc_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 0) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 1<br>"]
-    pub(crate) fn scs_nvic_ipr03fc_pri_n1_write(
+    pub fn scs_nvic_ipr03fc_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 0) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 2<br>"]
     pub(crate) fn scs_nvic_ipr03fc_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 0) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 2<br>"]
-    pub(crate) fn scs_nvic_ipr03fc_pri_n2_write(
+    pub fn scs_nvic_ipr03fc_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 0) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 3<br>"]
     pub(crate) fn scs_nvic_ipr03fc_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 0) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 3<br>"]
-    pub(crate) fn scs_nvic_ipr03fc_pri_n3_write(
+    pub fn scs_nvic_ipr03fc_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 0) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 4<br>"]
     pub(crate) fn scs_nvic_ipr1400_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 1) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 4<br>"]
-    pub(crate) fn scs_nvic_ipr1400_pri_n0_write(
+    pub fn scs_nvic_ipr1400_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 1) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 5<br>"]
     pub(crate) fn scs_nvic_ipr1400_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 1) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 5<br>"]
-    pub(crate) fn scs_nvic_ipr1400_pri_n1_write(
+    pub fn scs_nvic_ipr1400_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 1) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 6<br>"]
     pub(crate) fn scs_nvic_ipr1400_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 1) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 6<br>"]
-    pub(crate) fn scs_nvic_ipr1400_pri_n2_write(
+    pub fn scs_nvic_ipr1400_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 1) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 7<br>"]
     pub(crate) fn scs_nvic_ipr1400_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 1) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 7<br>"]
-    pub(crate) fn scs_nvic_ipr1400_pri_n3_write(
+    pub fn scs_nvic_ipr1400_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 1) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 8<br>"]
     pub(crate) fn scs_nvic_ipr2404_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 2) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 8<br>"]
-    pub(crate) fn scs_nvic_ipr2404_pri_n0_write(
+    pub fn scs_nvic_ipr2404_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 2) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 9<br>"]
     pub(crate) fn scs_nvic_ipr2404_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 2) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 9<br>"]
-    pub(crate) fn scs_nvic_ipr2404_pri_n1_write(
+    pub fn scs_nvic_ipr2404_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 2) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 10<br>"]
     pub(crate) fn scs_nvic_ipr2404_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 2) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 10<br>"]
-    pub(crate) fn scs_nvic_ipr2404_pri_n2_write(
+    pub fn scs_nvic_ipr2404_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 2) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 11<br>"]
     pub(crate) fn scs_nvic_ipr2404_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 2) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 11<br>"]
-    pub(crate) fn scs_nvic_ipr2404_pri_n3_write(
+    pub fn scs_nvic_ipr2404_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 2) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 12<br>"]
     pub(crate) fn scs_nvic_ipr3408_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 3) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 12<br>"]
-    pub(crate) fn scs_nvic_ipr3408_pri_n0_write(
+    pub fn scs_nvic_ipr3408_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 3) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 13<br>"]
     pub(crate) fn scs_nvic_ipr3408_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 3) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 13<br>"]
-    pub(crate) fn scs_nvic_ipr3408_pri_n1_write(
+    pub fn scs_nvic_ipr3408_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 3) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 14<br>"]
     pub(crate) fn scs_nvic_ipr3408_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 3) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 14<br>"]
-    pub(crate) fn scs_nvic_ipr3408_pri_n2_write(
+    pub fn scs_nvic_ipr3408_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 3) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 15<br>"]
     pub(crate) fn scs_nvic_ipr3408_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 3) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 15<br>"]
-    pub(crate) fn scs_nvic_ipr3408_pri_n3_write(
+    pub fn scs_nvic_ipr3408_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 3) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 16<br>"]
     pub(crate) fn scs_nvic_ipr440c_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 4) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 16<br>"]
-    pub(crate) fn scs_nvic_ipr440c_pri_n0_write(
+    pub fn scs_nvic_ipr440c_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 4) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 17<br>"]
     pub(crate) fn scs_nvic_ipr440c_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 4) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 17<br>"]
-    pub(crate) fn scs_nvic_ipr440c_pri_n1_write(
+    pub fn scs_nvic_ipr440c_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 4) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 18<br>"]
     pub(crate) fn scs_nvic_ipr440c_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 4) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 18<br>"]
-    pub(crate) fn scs_nvic_ipr440c_pri_n2_write(
+    pub fn scs_nvic_ipr440c_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 4) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 19<br>"]
     pub(crate) fn scs_nvic_ipr440c_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 4) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 19<br>"]
-    pub(crate) fn scs_nvic_ipr440c_pri_n3_write(
+    pub fn scs_nvic_ipr440c_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 4) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 20<br>"]
     pub(crate) fn scs_nvic_ipr5410_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 5) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 20<br>"]
-    pub(crate) fn scs_nvic_ipr5410_pri_n0_write(
+    pub fn scs_nvic_ipr5410_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 5) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 21<br>"]
     pub(crate) fn scs_nvic_ipr5410_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 5) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 21<br>"]
-    pub(crate) fn scs_nvic_ipr5410_pri_n1_write(
+    pub fn scs_nvic_ipr5410_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 5) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 22<br>"]
     pub(crate) fn scs_nvic_ipr5410_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 5) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 22<br>"]
-    pub(crate) fn scs_nvic_ipr5410_pri_n2_write(
+    pub fn scs_nvic_ipr5410_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 5) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 23<br>"]
     pub(crate) fn scs_nvic_ipr5410_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 5) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 23<br>"]
-    pub(crate) fn scs_nvic_ipr5410_pri_n3_write(
+    pub fn scs_nvic_ipr5410_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 5) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 24<br>"]
     pub(crate) fn scs_nvic_ipr6414_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 6) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 24<br>"]
-    pub(crate) fn scs_nvic_ipr6414_pri_n0_write(
+    pub fn scs_nvic_ipr6414_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 6) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 25<br>"]
     pub(crate) fn scs_nvic_ipr6414_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 6) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 25<br>"]
-    pub(crate) fn scs_nvic_ipr6414_pri_n1_write(
+    pub fn scs_nvic_ipr6414_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 6) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 26<br>"]
     pub(crate) fn scs_nvic_ipr6414_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 6) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 26<br>"]
-    pub(crate) fn scs_nvic_ipr6414_pri_n2_write(
+    pub fn scs_nvic_ipr6414_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 6) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 27<br>"]
     pub(crate) fn scs_nvic_ipr6414_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 6) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 27<br>"]
-    pub(crate) fn scs_nvic_ipr6414_pri_n3_write(
+    pub fn scs_nvic_ipr6414_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 6) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 28<br>"]
     pub(crate) fn scs_nvic_ipr7418_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 7) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 28<br>"]
-    pub(crate) fn scs_nvic_ipr7418_pri_n0_write(
+    pub fn scs_nvic_ipr7418_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 7) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 29<br>"]
     pub(crate) fn scs_nvic_ipr7418_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 7) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 29<br>"]
-    pub(crate) fn scs_nvic_ipr7418_pri_n1_write(
+    pub fn scs_nvic_ipr7418_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 7) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 30<br>"]
     pub(crate) fn scs_nvic_ipr7418_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 7) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 30<br>"]
-    pub(crate) fn scs_nvic_ipr7418_pri_n2_write(
+    pub fn scs_nvic_ipr7418_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 7) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 31<br>"]
     pub(crate) fn scs_nvic_ipr7418_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 7) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 31<br>"]
-    pub(crate) fn scs_nvic_ipr7418_pri_n3_write(
+    pub fn scs_nvic_ipr7418_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 7) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 32<br>"]
     pub(crate) fn scs_nvic_ipr841c_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 8) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 32<br>"]
-    pub(crate) fn scs_nvic_ipr841c_pri_n0_write(
+    pub fn scs_nvic_ipr841c_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 8) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 33<br>"]
     pub(crate) fn scs_nvic_ipr841c_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 8) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 33<br>"]
-    pub(crate) fn scs_nvic_ipr841c_pri_n1_write(
+    pub fn scs_nvic_ipr841c_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 8) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 34<br>"]
     pub(crate) fn scs_nvic_ipr841c_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 8) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 34<br>"]
-    pub(crate) fn scs_nvic_ipr841c_pri_n2_write(
+    pub fn scs_nvic_ipr841c_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 8) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 35<br>"]
     pub(crate) fn scs_nvic_ipr841c_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 8) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 35<br>"]
-    pub(crate) fn scs_nvic_ipr841c_pri_n3_write(
+    pub fn scs_nvic_ipr841c_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 8) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 36<br>"]
     pub(crate) fn scs_nvic_ipr9420_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 9) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 36<br>"]
-    pub(crate) fn scs_nvic_ipr9420_pri_n0_write(
+    pub fn scs_nvic_ipr9420_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 9) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 37<br>"]
     pub(crate) fn scs_nvic_ipr9420_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 9) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 37<br>"]
-    pub(crate) fn scs_nvic_ipr9420_pri_n1_write(
+    pub fn scs_nvic_ipr9420_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 9) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 38<br>"]
     pub(crate) fn scs_nvic_ipr9420_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 9) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 38<br>"]
-    pub(crate) fn scs_nvic_ipr9420_pri_n2_write(
+    pub fn scs_nvic_ipr9420_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 9) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 39<br>"]
     pub(crate) fn scs_nvic_ipr9420_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 9) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 39<br>"]
-    pub(crate) fn scs_nvic_ipr9420_pri_n3_write(
+    pub fn scs_nvic_ipr9420_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 9) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 40<br>"]
     pub(crate) fn scs_nvic_ipr10424_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 10) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 40<br>"]
-    pub(crate) fn scs_nvic_ipr10424_pri_n0_write(
+    pub fn scs_nvic_ipr10424_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 10) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 41<br>"]
     pub(crate) fn scs_nvic_ipr10424_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 10) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 41<br>"]
-    pub(crate) fn scs_nvic_ipr10424_pri_n1_write(
+    pub fn scs_nvic_ipr10424_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 10) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 42<br>"]
     pub(crate) fn scs_nvic_ipr10424_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 10) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 42<br>"]
-    pub(crate) fn scs_nvic_ipr10424_pri_n2_write(
+    pub fn scs_nvic_ipr10424_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 10) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 43<br>"]
     pub(crate) fn scs_nvic_ipr10424_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 10) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 43<br>"]
-    pub(crate) fn scs_nvic_ipr10424_pri_n3_write(
+    pub fn scs_nvic_ipr10424_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 10) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 44<br>"]
     pub(crate) fn scs_nvic_ipr11428_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 11) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 44<br>"]
-    pub(crate) fn scs_nvic_ipr11428_pri_n0_write(
+    pub fn scs_nvic_ipr11428_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 11) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 45<br>"]
     pub(crate) fn scs_nvic_ipr11428_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 11) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 45<br>"]
-    pub(crate) fn scs_nvic_ipr11428_pri_n1_write(
+    pub fn scs_nvic_ipr11428_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 11) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 46<br>"]
     pub(crate) fn scs_nvic_ipr11428_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 11) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 46<br>"]
-    pub(crate) fn scs_nvic_ipr11428_pri_n2_write(
+    pub fn scs_nvic_ipr11428_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 11) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 47<br>"]
     pub(crate) fn scs_nvic_ipr11428_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 11) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 47<br>"]
-    pub(crate) fn scs_nvic_ipr11428_pri_n3_write(
+    pub fn scs_nvic_ipr11428_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 11) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 48<br>"]
     pub(crate) fn scs_nvic_ipr1242c_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 12) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 48<br>"]
-    pub(crate) fn scs_nvic_ipr1242c_pri_n0_write(
+    pub fn scs_nvic_ipr1242c_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 12) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 49<br>"]
     pub(crate) fn scs_nvic_ipr1242c_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 12) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 49<br>"]
-    pub(crate) fn scs_nvic_ipr1242c_pri_n1_write(
+    pub fn scs_nvic_ipr1242c_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 12) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 50<br>"]
     pub(crate) fn scs_nvic_ipr1242c_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 12) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 50<br>"]
-    pub(crate) fn scs_nvic_ipr1242c_pri_n2_write(
+    pub fn scs_nvic_ipr1242c_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 12) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 51<br>"]
     pub(crate) fn scs_nvic_ipr1242c_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 12) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 51<br>"]
-    pub(crate) fn scs_nvic_ipr1242c_pri_n3_write(
+    pub fn scs_nvic_ipr1242c_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 12) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 52<br>"]
     pub(crate) fn scs_nvic_ipr13430_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 13) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 52<br>"]
-    pub(crate) fn scs_nvic_ipr13430_pri_n0_write(
+    pub fn scs_nvic_ipr13430_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 13) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 53<br>"]
     pub(crate) fn scs_nvic_ipr13430_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 13) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 53<br>"]
-    pub(crate) fn scs_nvic_ipr13430_pri_n1_write(
+    pub fn scs_nvic_ipr13430_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 13) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 54<br>"]
     pub(crate) fn scs_nvic_ipr13430_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 13) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 54<br>"]
-    pub(crate) fn scs_nvic_ipr13430_pri_n2_write(
+    pub fn scs_nvic_ipr13430_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 13) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 55<br>"]
     pub(crate) fn scs_nvic_ipr13430_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 13) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 55<br>"]
-    pub(crate) fn scs_nvic_ipr13430_pri_n3_write(
+    pub fn scs_nvic_ipr13430_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 13) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 56<br>"]
     pub(crate) fn scs_nvic_ipr14434_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 14) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 56<br>"]
-    pub(crate) fn scs_nvic_ipr14434_pri_n0_write(
+    pub fn scs_nvic_ipr14434_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 14) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 57<br>"]
     pub(crate) fn scs_nvic_ipr14434_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 14) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 57<br>"]
-    pub(crate) fn scs_nvic_ipr14434_pri_n1_write(
+    pub fn scs_nvic_ipr14434_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 14) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 58<br>"]
     pub(crate) fn scs_nvic_ipr14434_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 14) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 58<br>"]
-    pub(crate) fn scs_nvic_ipr14434_pri_n2_write(
+    pub fn scs_nvic_ipr14434_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 14) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 59<br>"]
     pub(crate) fn scs_nvic_ipr14434_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 14) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 59<br>"]
-    pub(crate) fn scs_nvic_ipr14434_pri_n3_write(
+    pub fn scs_nvic_ipr14434_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 14) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 60<br>"]
     pub(crate) fn scs_nvic_ipr15438_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 15) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 60<br>"]
-    pub(crate) fn scs_nvic_ipr15438_pri_n0_write(
+    pub fn scs_nvic_ipr15438_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 15) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 61<br>"]
     pub(crate) fn scs_nvic_ipr15438_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 15) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 61<br>"]
-    pub(crate) fn scs_nvic_ipr15438_pri_n1_write(
+    pub fn scs_nvic_ipr15438_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 15) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 62<br>"]
     pub(crate) fn scs_nvic_ipr15438_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 15) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 62<br>"]
-    pub(crate) fn scs_nvic_ipr15438_pri_n2_write(
+    pub fn scs_nvic_ipr15438_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 15) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 63<br>"]
     pub(crate) fn scs_nvic_ipr15438_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 15) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 63<br>"]
-    pub(crate) fn scs_nvic_ipr15438_pri_n3_write(
+    pub fn scs_nvic_ipr15438_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 15) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 64<br>"]
     pub(crate) fn scs_nvic_ipr1643c_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 16) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 64<br>"]
-    pub(crate) fn scs_nvic_ipr1643c_pri_n0_write(
+    pub fn scs_nvic_ipr1643c_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 16) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 65<br>"]
     pub(crate) fn scs_nvic_ipr1643c_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 16) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 65<br>"]
-    pub(crate) fn scs_nvic_ipr1643c_pri_n1_write(
+    pub fn scs_nvic_ipr1643c_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 16) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 66<br>"]
     pub(crate) fn scs_nvic_ipr1643c_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 16) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 66<br>"]
-    pub(crate) fn scs_nvic_ipr1643c_pri_n2_write(
+    pub fn scs_nvic_ipr1643c_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 16) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 67<br>"]
     pub(crate) fn scs_nvic_ipr1643c_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 16) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 67<br>"]
-    pub(crate) fn scs_nvic_ipr1643c_pri_n3_write(
+    pub fn scs_nvic_ipr1643c_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 16) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 68<br>"]
     pub(crate) fn scs_nvic_ipr17440_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 17) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 68<br>"]
-    pub(crate) fn scs_nvic_ipr17440_pri_n0_write(
+    pub fn scs_nvic_ipr17440_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 17) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 69<br>"]
     pub(crate) fn scs_nvic_ipr17440_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 17) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 69<br>"]
-    pub(crate) fn scs_nvic_ipr17440_pri_n1_write(
+    pub fn scs_nvic_ipr17440_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 17) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 70<br>"]
     pub(crate) fn scs_nvic_ipr17440_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 17) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 70<br>"]
-    pub(crate) fn scs_nvic_ipr17440_pri_n2_write(
+    pub fn scs_nvic_ipr17440_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 17) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 71<br>"]
     pub(crate) fn scs_nvic_ipr17440_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 17) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 71<br>"]
-    pub(crate) fn scs_nvic_ipr17440_pri_n3_write(
+    pub fn scs_nvic_ipr17440_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 17) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 72<br>"]
     pub(crate) fn scs_nvic_ipr18444_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 18) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 72<br>"]
-    pub(crate) fn scs_nvic_ipr18444_pri_n0_write(
+    pub fn scs_nvic_ipr18444_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 18) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 73<br>"]
     pub(crate) fn scs_nvic_ipr18444_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 18) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 73<br>"]
-    pub(crate) fn scs_nvic_ipr18444_pri_n1_write(
+    pub fn scs_nvic_ipr18444_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 18) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 74<br>"]
     pub(crate) fn scs_nvic_ipr18444_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 18) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 74<br>"]
-    pub(crate) fn scs_nvic_ipr18444_pri_n2_write(
+    pub fn scs_nvic_ipr18444_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 18) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 75<br>"]
     pub(crate) fn scs_nvic_ipr18444_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 18) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 75<br>"]
-    pub(crate) fn scs_nvic_ipr18444_pri_n3_write(
+    pub fn scs_nvic_ipr18444_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 18) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 76<br>"]
     pub(crate) fn scs_nvic_ipr19448_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 19) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 76<br>"]
-    pub(crate) fn scs_nvic_ipr19448_pri_n0_write(
+    pub fn scs_nvic_ipr19448_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 19) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 77<br>"]
     pub(crate) fn scs_nvic_ipr19448_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 19) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 77<br>"]
-    pub(crate) fn scs_nvic_ipr19448_pri_n1_write(
+    pub fn scs_nvic_ipr19448_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 19) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 78<br>"]
     pub(crate) fn scs_nvic_ipr19448_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 19) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 78<br>"]
-    pub(crate) fn scs_nvic_ipr19448_pri_n2_write(
+    pub fn scs_nvic_ipr19448_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 19) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 79<br>"]
     pub(crate) fn scs_nvic_ipr19448_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 19) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 79<br>"]
-    pub(crate) fn scs_nvic_ipr19448_pri_n3_write(
+    pub fn scs_nvic_ipr19448_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 19) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 80<br>"]
     pub(crate) fn scs_nvic_ipr2044c_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 20) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 80<br>"]
-    pub(crate) fn scs_nvic_ipr2044c_pri_n0_write(
+    pub fn scs_nvic_ipr2044c_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 20) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 81<br>"]
     pub(crate) fn scs_nvic_ipr2044c_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 20) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 81<br>"]
-    pub(crate) fn scs_nvic_ipr2044c_pri_n1_write(
+    pub fn scs_nvic_ipr2044c_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 20) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 82<br>"]
     pub(crate) fn scs_nvic_ipr2044c_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 20) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 82<br>"]
-    pub(crate) fn scs_nvic_ipr2044c_pri_n2_write(
+    pub fn scs_nvic_ipr2044c_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 20) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 83<br>"]
     pub(crate) fn scs_nvic_ipr2044c_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 20) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 83<br>"]
-    pub(crate) fn scs_nvic_ipr2044c_pri_n3_write(
+    pub fn scs_nvic_ipr2044c_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 20) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 84<br>"]
     pub(crate) fn scs_nvic_ipr21450_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 21) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 84<br>"]
-    pub(crate) fn scs_nvic_ipr21450_pri_n0_write(
+    pub fn scs_nvic_ipr21450_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 21) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 85<br>"]
     pub(crate) fn scs_nvic_ipr21450_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 21) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 85<br>"]
-    pub(crate) fn scs_nvic_ipr21450_pri_n1_write(
+    pub fn scs_nvic_ipr21450_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 21) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 86<br>"]
     pub(crate) fn scs_nvic_ipr21450_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 21) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 86<br>"]
-    pub(crate) fn scs_nvic_ipr21450_pri_n2_write(
+    pub fn scs_nvic_ipr21450_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 21) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 87<br>"]
     pub(crate) fn scs_nvic_ipr21450_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 21) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 87<br>"]
-    pub(crate) fn scs_nvic_ipr21450_pri_n3_write(
+    pub fn scs_nvic_ipr21450_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 21) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 88<br>"]
     pub(crate) fn scs_nvic_ipr22454_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 22) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 88<br>"]
-    pub(crate) fn scs_nvic_ipr22454_pri_n0_write(
+    pub fn scs_nvic_ipr22454_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 22) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 89<br>"]
     pub(crate) fn scs_nvic_ipr22454_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 22) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 89<br>"]
-    pub(crate) fn scs_nvic_ipr22454_pri_n1_write(
+    pub fn scs_nvic_ipr22454_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 22) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 90<br>"]
     pub(crate) fn scs_nvic_ipr22454_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 22) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 90<br>"]
-    pub(crate) fn scs_nvic_ipr22454_pri_n2_write(
+    pub fn scs_nvic_ipr22454_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 22) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 91<br>"]
     pub(crate) fn scs_nvic_ipr22454_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 22) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 91<br>"]
-    pub(crate) fn scs_nvic_ipr22454_pri_n3_write(
+    pub fn scs_nvic_ipr22454_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 22) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 92<br>"]
     pub(crate) fn scs_nvic_ipr23458_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 23) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 92<br>"]
-    pub(crate) fn scs_nvic_ipr23458_pri_n0_write(
+    pub fn scs_nvic_ipr23458_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 23) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 93<br>"]
     pub(crate) fn scs_nvic_ipr23458_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 23) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 93<br>"]
-    pub(crate) fn scs_nvic_ipr23458_pri_n1_write(
+    pub fn scs_nvic_ipr23458_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 23) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 94<br>"]
     pub(crate) fn scs_nvic_ipr23458_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 23) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 94<br>"]
-    pub(crate) fn scs_nvic_ipr23458_pri_n2_write(
+    pub fn scs_nvic_ipr23458_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 23) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 95<br>"]
     pub(crate) fn scs_nvic_ipr23458_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 23) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 95<br>"]
-    pub(crate) fn scs_nvic_ipr23458_pri_n3_write(
+    pub fn scs_nvic_ipr23458_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 23) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 96<br>"]
     pub(crate) fn scs_nvic_ipr2445c_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 24) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 96<br>"]
-    pub(crate) fn scs_nvic_ipr2445c_pri_n0_write(
+    pub fn scs_nvic_ipr2445c_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 24) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 97<br>"]
     pub(crate) fn scs_nvic_ipr2445c_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 24) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 97<br>"]
-    pub(crate) fn scs_nvic_ipr2445c_pri_n1_write(
+    pub fn scs_nvic_ipr2445c_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 24) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 98<br>"]
     pub(crate) fn scs_nvic_ipr2445c_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 24) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 98<br>"]
-    pub(crate) fn scs_nvic_ipr2445c_pri_n2_write(
+    pub fn scs_nvic_ipr2445c_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 24) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 99<br>"]
     pub(crate) fn scs_nvic_ipr2445c_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 24) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 99<br>"]
-    pub(crate) fn scs_nvic_ipr2445c_pri_n3_write(
+    pub fn scs_nvic_ipr2445c_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 24) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 100<br>"]
     pub(crate) fn scs_nvic_ipr25460_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 25) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 100<br>"]
-    pub(crate) fn scs_nvic_ipr25460_pri_n0_write(
+    pub fn scs_nvic_ipr25460_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 25) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 101<br>"]
     pub(crate) fn scs_nvic_ipr25460_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 25) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 101<br>"]
-    pub(crate) fn scs_nvic_ipr25460_pri_n1_write(
+    pub fn scs_nvic_ipr25460_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 25) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 102<br>"]
     pub(crate) fn scs_nvic_ipr25460_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 25) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 102<br>"]
-    pub(crate) fn scs_nvic_ipr25460_pri_n2_write(
+    pub fn scs_nvic_ipr25460_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 25) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 103<br>"]
     pub(crate) fn scs_nvic_ipr25460_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 25) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 103<br>"]
-    pub(crate) fn scs_nvic_ipr25460_pri_n3_write(
+    pub fn scs_nvic_ipr25460_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 25) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 104<br>"]
     pub(crate) fn scs_nvic_ipr26464_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 26) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 104<br>"]
-    pub(crate) fn scs_nvic_ipr26464_pri_n0_write(
+    pub fn scs_nvic_ipr26464_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 26) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 105<br>"]
     pub(crate) fn scs_nvic_ipr26464_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 26) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 105<br>"]
-    pub(crate) fn scs_nvic_ipr26464_pri_n1_write(
+    pub fn scs_nvic_ipr26464_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 26) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 106<br>"]
     pub(crate) fn scs_nvic_ipr26464_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 26) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 106<br>"]
-    pub(crate) fn scs_nvic_ipr26464_pri_n2_write(
+    pub fn scs_nvic_ipr26464_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 26) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 107<br>"]
     pub(crate) fn scs_nvic_ipr26464_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 26) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 107<br>"]
-    pub(crate) fn scs_nvic_ipr26464_pri_n3_write(
+    pub fn scs_nvic_ipr26464_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 26) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 108<br>"]
     pub(crate) fn scs_nvic_ipr27468_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 27) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 108<br>"]
-    pub(crate) fn scs_nvic_ipr27468_pri_n0_write(
+    pub fn scs_nvic_ipr27468_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 27) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 109<br>"]
     pub(crate) fn scs_nvic_ipr27468_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 27) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 109<br>"]
-    pub(crate) fn scs_nvic_ipr27468_pri_n1_write(
+    pub fn scs_nvic_ipr27468_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 27) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 110<br>"]
     pub(crate) fn scs_nvic_ipr27468_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 27) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 110<br>"]
-    pub(crate) fn scs_nvic_ipr27468_pri_n2_write(
+    pub fn scs_nvic_ipr27468_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 27) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 111<br>"]
     pub(crate) fn scs_nvic_ipr27468_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 27) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 111<br>"]
-    pub(crate) fn scs_nvic_ipr27468_pri_n3_write(
+    pub fn scs_nvic_ipr27468_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 27) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 112<br>"]
     pub(crate) fn scs_nvic_ipr2846c_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 28) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 112<br>"]
-    pub(crate) fn scs_nvic_ipr2846c_pri_n0_write(
+    pub fn scs_nvic_ipr2846c_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 28) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 113<br>"]
     pub(crate) fn scs_nvic_ipr2846c_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 28) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 113<br>"]
-    pub(crate) fn scs_nvic_ipr2846c_pri_n1_write(
+    pub fn scs_nvic_ipr2846c_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 28) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 114<br>"]
     pub(crate) fn scs_nvic_ipr2846c_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 28) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 114<br>"]
-    pub(crate) fn scs_nvic_ipr2846c_pri_n2_write(
+    pub fn scs_nvic_ipr2846c_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 28) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 115<br>"]
     pub(crate) fn scs_nvic_ipr2846c_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 28) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 115<br>"]
-    pub(crate) fn scs_nvic_ipr2846c_pri_n3_write(
+    pub fn scs_nvic_ipr2846c_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 28) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 116<br>"]
     pub(crate) fn scs_nvic_ipr29470_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 29) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 116<br>"]
-    pub(crate) fn scs_nvic_ipr29470_pri_n0_write(
+    pub fn scs_nvic_ipr29470_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 29) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 117<br>"]
     pub(crate) fn scs_nvic_ipr29470_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 29) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 117<br>"]
-    pub(crate) fn scs_nvic_ipr29470_pri_n1_write(
+    pub fn scs_nvic_ipr29470_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 29) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 118<br>"]
     pub(crate) fn scs_nvic_ipr29470_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 29) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 118<br>"]
-    pub(crate) fn scs_nvic_ipr29470_pri_n2_write(
+    pub fn scs_nvic_ipr29470_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 29) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 119<br>"]
     pub(crate) fn scs_nvic_ipr29470_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 29) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 119<br>"]
-    pub(crate) fn scs_nvic_ipr29470_pri_n3_write(
+    pub fn scs_nvic_ipr29470_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 29) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 120<br>"]
     pub(crate) fn scs_nvic_ipr30474_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 30) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 120<br>"]
-    pub(crate) fn scs_nvic_ipr30474_pri_n0_write(
+    pub fn scs_nvic_ipr30474_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 30) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 121<br>"]
     pub(crate) fn scs_nvic_ipr30474_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 30) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 121<br>"]
-    pub(crate) fn scs_nvic_ipr30474_pri_n1_write(
+    pub fn scs_nvic_ipr30474_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 30) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 122<br>"]
     pub(crate) fn scs_nvic_ipr30474_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 30) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 122<br>"]
-    pub(crate) fn scs_nvic_ipr30474_pri_n2_write(
+    pub fn scs_nvic_ipr30474_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 30) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 123<br>"]
     pub(crate) fn scs_nvic_ipr30474_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 30) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 123<br>"]
-    pub(crate) fn scs_nvic_ipr30474_pri_n3_write(
+    pub fn scs_nvic_ipr30474_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 30) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 124<br>"]
     pub(crate) fn scs_nvic_ipr31478_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 31) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 124<br>"]
-    pub(crate) fn scs_nvic_ipr31478_pri_n0_write(
+    pub fn scs_nvic_ipr31478_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 31) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 125<br>"]
     pub(crate) fn scs_nvic_ipr31478_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 31) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 125<br>"]
-    pub(crate) fn scs_nvic_ipr31478_pri_n1_write(
+    pub fn scs_nvic_ipr31478_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 31) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 126<br>"]
     pub(crate) fn scs_nvic_ipr31478_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 31) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 126<br>"]
-    pub(crate) fn scs_nvic_ipr31478_pri_n2_write(
+    pub fn scs_nvic_ipr31478_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 31) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 127<br>"]
     pub(crate) fn scs_nvic_ipr31478_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 31) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 127<br>"]
-    pub(crate) fn scs_nvic_ipr31478_pri_n3_write(
+    pub fn scs_nvic_ipr31478_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 31) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 128<br>"]
     pub(crate) fn scs_nvic_ipr3247c_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 32) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 128<br>"]
-    pub(crate) fn scs_nvic_ipr3247c_pri_n0_write(
+    pub fn scs_nvic_ipr3247c_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 32) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 129<br>"]
     pub(crate) fn scs_nvic_ipr3247c_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 32) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 129<br>"]
-    pub(crate) fn scs_nvic_ipr3247c_pri_n1_write(
+    pub fn scs_nvic_ipr3247c_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 32) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 130<br>"]
     pub(crate) fn scs_nvic_ipr3247c_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 32) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 130<br>"]
-    pub(crate) fn scs_nvic_ipr3247c_pri_n2_write(
+    pub fn scs_nvic_ipr3247c_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 32) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 131<br>"]
     pub(crate) fn scs_nvic_ipr3247c_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 32) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 131<br>"]
-    pub(crate) fn scs_nvic_ipr3247c_pri_n3_write(
+    pub fn scs_nvic_ipr3247c_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 32) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 132<br>"]
     pub(crate) fn scs_nvic_ipr33480_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 33) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 132<br>"]
-    pub(crate) fn scs_nvic_ipr33480_pri_n0_write(
+    pub fn scs_nvic_ipr33480_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 33) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 133<br>"]
     pub(crate) fn scs_nvic_ipr33480_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 33) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 133<br>"]
-    pub(crate) fn scs_nvic_ipr33480_pri_n1_write(
+    pub fn scs_nvic_ipr33480_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 33) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 134<br>"]
     pub(crate) fn scs_nvic_ipr33480_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 33) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 134<br>"]
-    pub(crate) fn scs_nvic_ipr33480_pri_n2_write(
+    pub fn scs_nvic_ipr33480_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 33) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 135<br>"]
     pub(crate) fn scs_nvic_ipr33480_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 33) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 135<br>"]
-    pub(crate) fn scs_nvic_ipr33480_pri_n3_write(
+    pub fn scs_nvic_ipr33480_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 33) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 136<br>"]
     pub(crate) fn scs_nvic_ipr34484_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 34) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 136<br>"]
-    pub(crate) fn scs_nvic_ipr34484_pri_n0_write(
+    pub fn scs_nvic_ipr34484_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 34) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 137<br>"]
     pub(crate) fn scs_nvic_ipr34484_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 34) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 137<br>"]
-    pub(crate) fn scs_nvic_ipr34484_pri_n1_write(
+    pub fn scs_nvic_ipr34484_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 34) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 138<br>"]
     pub(crate) fn scs_nvic_ipr34484_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 34) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 138<br>"]
-    pub(crate) fn scs_nvic_ipr34484_pri_n2_write(
+    pub fn scs_nvic_ipr34484_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 34) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 139<br>"]
     pub(crate) fn scs_nvic_ipr34484_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 34) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 139<br>"]
-    pub(crate) fn scs_nvic_ipr34484_pri_n3_write(
+    pub fn scs_nvic_ipr34484_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 34) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 140<br>"]
     pub(crate) fn scs_nvic_ipr35488_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 35) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 140<br>"]
-    pub(crate) fn scs_nvic_ipr35488_pri_n0_write(
+    pub fn scs_nvic_ipr35488_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 35) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 141<br>"]
     pub(crate) fn scs_nvic_ipr35488_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 35) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 141<br>"]
-    pub(crate) fn scs_nvic_ipr35488_pri_n1_write(
+    pub fn scs_nvic_ipr35488_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 35) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 142<br>"]
     pub(crate) fn scs_nvic_ipr35488_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 35) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 142<br>"]
-    pub(crate) fn scs_nvic_ipr35488_pri_n2_write(
+    pub fn scs_nvic_ipr35488_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 35) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 143<br>"]
     pub(crate) fn scs_nvic_ipr35488_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 35) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 143<br>"]
-    pub(crate) fn scs_nvic_ipr35488_pri_n3_write(
+    pub fn scs_nvic_ipr35488_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 35) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 144<br>"]
     pub(crate) fn scs_nvic_ipr3648c_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 36) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 144<br>"]
-    pub(crate) fn scs_nvic_ipr3648c_pri_n0_write(
+    pub fn scs_nvic_ipr3648c_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 36) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 145<br>"]
     pub(crate) fn scs_nvic_ipr3648c_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 36) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 145<br>"]
-    pub(crate) fn scs_nvic_ipr3648c_pri_n1_write(
+    pub fn scs_nvic_ipr3648c_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 36) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 146<br>"]
     pub(crate) fn scs_nvic_ipr3648c_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 36) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 146<br>"]
-    pub(crate) fn scs_nvic_ipr3648c_pri_n2_write(
+    pub fn scs_nvic_ipr3648c_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 36) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 147<br>"]
     pub(crate) fn scs_nvic_ipr3648c_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 36) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 147<br>"]
-    pub(crate) fn scs_nvic_ipr3648c_pri_n3_write(
+    pub fn scs_nvic_ipr3648c_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 36) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 148<br>"]
     pub(crate) fn scs_nvic_ipr37490_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 37) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 148<br>"]
-    pub(crate) fn scs_nvic_ipr37490_pri_n0_write(
+    pub fn scs_nvic_ipr37490_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 37) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 149<br>"]
     pub(crate) fn scs_nvic_ipr37490_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 37) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 149<br>"]
-    pub(crate) fn scs_nvic_ipr37490_pri_n1_write(
+    pub fn scs_nvic_ipr37490_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 37) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 150<br>"]
     pub(crate) fn scs_nvic_ipr37490_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 37) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 150<br>"]
-    pub(crate) fn scs_nvic_ipr37490_pri_n2_write(
+    pub fn scs_nvic_ipr37490_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 37) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 151<br>"]
     pub(crate) fn scs_nvic_ipr37490_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 37) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 151<br>"]
-    pub(crate) fn scs_nvic_ipr37490_pri_n3_write(
+    pub fn scs_nvic_ipr37490_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 37) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 152<br>"]
     pub(crate) fn scs_nvic_ipr38494_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 38) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 152<br>"]
-    pub(crate) fn scs_nvic_ipr38494_pri_n0_write(
+    pub fn scs_nvic_ipr38494_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 38) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 153<br>"]
     pub(crate) fn scs_nvic_ipr38494_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 38) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 153<br>"]
-    pub(crate) fn scs_nvic_ipr38494_pri_n1_write(
+    pub fn scs_nvic_ipr38494_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 38) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 154<br>"]
     pub(crate) fn scs_nvic_ipr38494_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 38) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 154<br>"]
-    pub(crate) fn scs_nvic_ipr38494_pri_n2_write(
+    pub fn scs_nvic_ipr38494_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 38) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 155<br>"]
     pub(crate) fn scs_nvic_ipr38494_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 38) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 155<br>"]
-    pub(crate) fn scs_nvic_ipr38494_pri_n3_write(
+    pub fn scs_nvic_ipr38494_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 38) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 156<br>"]
     pub(crate) fn scs_nvic_ipr39498_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 39) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 156<br>"]
-    pub(crate) fn scs_nvic_ipr39498_pri_n0_write(
+    pub fn scs_nvic_ipr39498_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 39) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 157<br>"]
     pub(crate) fn scs_nvic_ipr39498_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 39) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 157<br>"]
-    pub(crate) fn scs_nvic_ipr39498_pri_n1_write(
+    pub fn scs_nvic_ipr39498_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 39) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 158<br>"]
     pub(crate) fn scs_nvic_ipr39498_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 39) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 158<br>"]
-    pub(crate) fn scs_nvic_ipr39498_pri_n2_write(
+    pub fn scs_nvic_ipr39498_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 39) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 159<br>"]
     pub(crate) fn scs_nvic_ipr39498_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 39) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 159<br>"]
-    pub(crate) fn scs_nvic_ipr39498_pri_n3_write(
+    pub fn scs_nvic_ipr39498_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 39) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 160<br>"]
     pub(crate) fn scs_nvic_ipr4049c_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 40) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 160<br>"]
-    pub(crate) fn scs_nvic_ipr4049c_pri_n0_write(
+    pub fn scs_nvic_ipr4049c_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 40) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 161<br>"]
     pub(crate) fn scs_nvic_ipr4049c_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 40) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 161<br>"]
-    pub(crate) fn scs_nvic_ipr4049c_pri_n1_write(
+    pub fn scs_nvic_ipr4049c_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 40) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 162<br>"]
     pub(crate) fn scs_nvic_ipr4049c_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 40) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 162<br>"]
-    pub(crate) fn scs_nvic_ipr4049c_pri_n2_write(
+    pub fn scs_nvic_ipr4049c_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 40) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 163<br>"]
     pub(crate) fn scs_nvic_ipr4049c_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 40) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 163<br>"]
-    pub(crate) fn scs_nvic_ipr4049c_pri_n3_write(
+    pub fn scs_nvic_ipr4049c_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 40) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 164<br>"]
     pub(crate) fn scs_nvic_ipr414a0_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 41) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 164<br>"]
-    pub(crate) fn scs_nvic_ipr414a0_pri_n0_write(
+    pub fn scs_nvic_ipr414a0_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 41) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 165<br>"]
     pub(crate) fn scs_nvic_ipr414a0_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 41) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 165<br>"]
-    pub(crate) fn scs_nvic_ipr414a0_pri_n1_write(
+    pub fn scs_nvic_ipr414a0_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 41) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 166<br>"]
     pub(crate) fn scs_nvic_ipr414a0_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 41) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 166<br>"]
-    pub(crate) fn scs_nvic_ipr414a0_pri_n2_write(
+    pub fn scs_nvic_ipr414a0_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 41) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 167<br>"]
     pub(crate) fn scs_nvic_ipr414a0_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 41) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 167<br>"]
-    pub(crate) fn scs_nvic_ipr414a0_pri_n3_write(
+    pub fn scs_nvic_ipr414a0_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 41) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 168<br>"]
     pub(crate) fn scs_nvic_ipr424a4_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 42) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 168<br>"]
-    pub(crate) fn scs_nvic_ipr424a4_pri_n0_write(
+    pub fn scs_nvic_ipr424a4_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 42) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 169<br>"]
     pub(crate) fn scs_nvic_ipr424a4_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 42) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 169<br>"]
-    pub(crate) fn scs_nvic_ipr424a4_pri_n1_write(
+    pub fn scs_nvic_ipr424a4_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 42) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 170<br>"]
     pub(crate) fn scs_nvic_ipr424a4_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 42) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 170<br>"]
-    pub(crate) fn scs_nvic_ipr424a4_pri_n2_write(
+    pub fn scs_nvic_ipr424a4_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 42) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 171<br>"]
     pub(crate) fn scs_nvic_ipr424a4_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 42) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 171<br>"]
-    pub(crate) fn scs_nvic_ipr424a4_pri_n3_write(
+    pub fn scs_nvic_ipr424a4_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 42) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 172<br>"]
     pub(crate) fn scs_nvic_ipr434a8_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 43) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 172<br>"]
-    pub(crate) fn scs_nvic_ipr434a8_pri_n0_write(
+    pub fn scs_nvic_ipr434a8_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 43) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 173<br>"]
     pub(crate) fn scs_nvic_ipr434a8_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 43) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 173<br>"]
-    pub(crate) fn scs_nvic_ipr434a8_pri_n1_write(
+    pub fn scs_nvic_ipr434a8_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 43) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 174<br>"]
     pub(crate) fn scs_nvic_ipr434a8_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 43) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 174<br>"]
-    pub(crate) fn scs_nvic_ipr434a8_pri_n2_write(
+    pub fn scs_nvic_ipr434a8_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 43) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 175<br>"]
     pub(crate) fn scs_nvic_ipr434a8_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 43) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 175<br>"]
-    pub(crate) fn scs_nvic_ipr434a8_pri_n3_write(
+    pub fn scs_nvic_ipr434a8_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 43) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 176<br>"]
     pub(crate) fn scs_nvic_ipr444ac_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 44) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 176<br>"]
-    pub(crate) fn scs_nvic_ipr444ac_pri_n0_write(
+    pub fn scs_nvic_ipr444ac_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 44) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 177<br>"]
     pub(crate) fn scs_nvic_ipr444ac_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 44) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 177<br>"]
-    pub(crate) fn scs_nvic_ipr444ac_pri_n1_write(
+    pub fn scs_nvic_ipr444ac_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 44) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 178<br>"]
     pub(crate) fn scs_nvic_ipr444ac_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 44) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 178<br>"]
-    pub(crate) fn scs_nvic_ipr444ac_pri_n2_write(
+    pub fn scs_nvic_ipr444ac_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 44) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 179<br>"]
     pub(crate) fn scs_nvic_ipr444ac_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 44) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 179<br>"]
-    pub(crate) fn scs_nvic_ipr444ac_pri_n3_write(
+    pub fn scs_nvic_ipr444ac_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 44) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 180<br>"]
     pub(crate) fn scs_nvic_ipr454b0_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 45) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 180<br>"]
-    pub(crate) fn scs_nvic_ipr454b0_pri_n0_write(
+    pub fn scs_nvic_ipr454b0_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 45) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 181<br>"]
     pub(crate) fn scs_nvic_ipr454b0_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 45) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 181<br>"]
-    pub(crate) fn scs_nvic_ipr454b0_pri_n1_write(
+    pub fn scs_nvic_ipr454b0_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 45) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 182<br>"]
     pub(crate) fn scs_nvic_ipr454b0_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 45) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 182<br>"]
-    pub(crate) fn scs_nvic_ipr454b0_pri_n2_write(
+    pub fn scs_nvic_ipr454b0_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 45) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 183<br>"]
     pub(crate) fn scs_nvic_ipr454b0_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 45) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 183<br>"]
-    pub(crate) fn scs_nvic_ipr454b0_pri_n3_write(
+    pub fn scs_nvic_ipr454b0_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 45) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 184<br>"]
     pub(crate) fn scs_nvic_ipr464b4_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 46) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 184<br>"]
-    pub(crate) fn scs_nvic_ipr464b4_pri_n0_write(
+    pub fn scs_nvic_ipr464b4_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 46) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 185<br>"]
     pub(crate) fn scs_nvic_ipr464b4_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 46) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 185<br>"]
-    pub(crate) fn scs_nvic_ipr464b4_pri_n1_write(
+    pub fn scs_nvic_ipr464b4_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 46) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 186<br>"]
     pub(crate) fn scs_nvic_ipr464b4_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 46) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 186<br>"]
-    pub(crate) fn scs_nvic_ipr464b4_pri_n2_write(
+    pub fn scs_nvic_ipr464b4_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 46) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 187<br>"]
     pub(crate) fn scs_nvic_ipr464b4_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 46) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 187<br>"]
-    pub(crate) fn scs_nvic_ipr464b4_pri_n3_write(
+    pub fn scs_nvic_ipr464b4_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 46) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 188<br>"]
     pub(crate) fn scs_nvic_ipr474b8_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 47) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 188<br>"]
-    pub(crate) fn scs_nvic_ipr474b8_pri_n0_write(
+    pub fn scs_nvic_ipr474b8_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 47) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 189<br>"]
     pub(crate) fn scs_nvic_ipr474b8_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 47) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 189<br>"]
-    pub(crate) fn scs_nvic_ipr474b8_pri_n1_write(
+    pub fn scs_nvic_ipr474b8_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 47) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 190<br>"]
     pub(crate) fn scs_nvic_ipr474b8_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 47) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 190<br>"]
-    pub(crate) fn scs_nvic_ipr474b8_pri_n2_write(
+    pub fn scs_nvic_ipr474b8_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 47) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 191<br>"]
     pub(crate) fn scs_nvic_ipr474b8_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 47) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 191<br>"]
-    pub(crate) fn scs_nvic_ipr474b8_pri_n3_write(
+    pub fn scs_nvic_ipr474b8_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 47) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 192<br>"]
     pub(crate) fn scs_nvic_ipr484bc_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 48) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 192<br>"]
-    pub(crate) fn scs_nvic_ipr484bc_pri_n0_write(
+    pub fn scs_nvic_ipr484bc_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 48) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 193<br>"]
     pub(crate) fn scs_nvic_ipr484bc_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 48) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 193<br>"]
-    pub(crate) fn scs_nvic_ipr484bc_pri_n1_write(
+    pub fn scs_nvic_ipr484bc_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 48) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 194<br>"]
     pub(crate) fn scs_nvic_ipr484bc_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 48) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 194<br>"]
-    pub(crate) fn scs_nvic_ipr484bc_pri_n2_write(
+    pub fn scs_nvic_ipr484bc_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 48) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 195<br>"]
     pub(crate) fn scs_nvic_ipr484bc_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 48) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 195<br>"]
-    pub(crate) fn scs_nvic_ipr484bc_pri_n3_write(
+    pub fn scs_nvic_ipr484bc_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 48) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 196<br>"]
     pub(crate) fn scs_nvic_ipr494c0_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 49) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 196<br>"]
-    pub(crate) fn scs_nvic_ipr494c0_pri_n0_write(
+    pub fn scs_nvic_ipr494c0_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 49) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 197<br>"]
     pub(crate) fn scs_nvic_ipr494c0_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 49) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 197<br>"]
-    pub(crate) fn scs_nvic_ipr494c0_pri_n1_write(
+    pub fn scs_nvic_ipr494c0_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 49) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 198<br>"]
     pub(crate) fn scs_nvic_ipr494c0_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 49) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 198<br>"]
-    pub(crate) fn scs_nvic_ipr494c0_pri_n2_write(
+    pub fn scs_nvic_ipr494c0_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 49) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 199<br>"]
     pub(crate) fn scs_nvic_ipr494c0_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 49) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 199<br>"]
-    pub(crate) fn scs_nvic_ipr494c0_pri_n3_write(
+    pub fn scs_nvic_ipr494c0_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 49) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 200<br>"]
     pub(crate) fn scs_nvic_ipr504c4_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 50) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 200<br>"]
-    pub(crate) fn scs_nvic_ipr504c4_pri_n0_write(
+    pub fn scs_nvic_ipr504c4_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 50) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 201<br>"]
     pub(crate) fn scs_nvic_ipr504c4_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 50) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 201<br>"]
-    pub(crate) fn scs_nvic_ipr504c4_pri_n1_write(
+    pub fn scs_nvic_ipr504c4_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 50) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 202<br>"]
     pub(crate) fn scs_nvic_ipr504c4_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 50) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 202<br>"]
-    pub(crate) fn scs_nvic_ipr504c4_pri_n2_write(
+    pub fn scs_nvic_ipr504c4_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 50) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 203<br>"]
     pub(crate) fn scs_nvic_ipr504c4_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 50) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 203<br>"]
-    pub(crate) fn scs_nvic_ipr504c4_pri_n3_write(
+    pub fn scs_nvic_ipr504c4_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 50) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 204<br>"]
     pub(crate) fn scs_nvic_ipr514c8_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 51) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 204<br>"]
-    pub(crate) fn scs_nvic_ipr514c8_pri_n0_write(
+    pub fn scs_nvic_ipr514c8_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 51) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 205<br>"]
     pub(crate) fn scs_nvic_ipr514c8_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 51) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 205<br>"]
-    pub(crate) fn scs_nvic_ipr514c8_pri_n1_write(
+    pub fn scs_nvic_ipr514c8_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 51) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 206<br>"]
     pub(crate) fn scs_nvic_ipr514c8_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 51) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 206<br>"]
-    pub(crate) fn scs_nvic_ipr514c8_pri_n2_write(
+    pub fn scs_nvic_ipr514c8_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 51) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 207<br>"]
     pub(crate) fn scs_nvic_ipr514c8_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 51) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 207<br>"]
-    pub(crate) fn scs_nvic_ipr514c8_pri_n3_write(
+    pub fn scs_nvic_ipr514c8_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 51) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 208<br>"]
     pub(crate) fn scs_nvic_ipr524cc_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 52) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 208<br>"]
-    pub(crate) fn scs_nvic_ipr524cc_pri_n0_write(
+    pub fn scs_nvic_ipr524cc_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 52) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 209<br>"]
     pub(crate) fn scs_nvic_ipr524cc_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 52) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 209<br>"]
-    pub(crate) fn scs_nvic_ipr524cc_pri_n1_write(
+    pub fn scs_nvic_ipr524cc_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 52) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 210<br>"]
     pub(crate) fn scs_nvic_ipr524cc_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 52) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 210<br>"]
-    pub(crate) fn scs_nvic_ipr524cc_pri_n2_write(
+    pub fn scs_nvic_ipr524cc_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 52) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 211<br>"]
     pub(crate) fn scs_nvic_ipr524cc_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 52) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 211<br>"]
-    pub(crate) fn scs_nvic_ipr524cc_pri_n3_write(
+    pub fn scs_nvic_ipr524cc_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 52) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 212<br>"]
     pub(crate) fn scs_nvic_ipr534d0_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 53) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 212<br>"]
-    pub(crate) fn scs_nvic_ipr534d0_pri_n0_write(
+    pub fn scs_nvic_ipr534d0_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 53) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 213<br>"]
     pub(crate) fn scs_nvic_ipr534d0_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 53) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 213<br>"]
-    pub(crate) fn scs_nvic_ipr534d0_pri_n1_write(
+    pub fn scs_nvic_ipr534d0_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 53) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 214<br>"]
     pub(crate) fn scs_nvic_ipr534d0_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 53) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 214<br>"]
-    pub(crate) fn scs_nvic_ipr534d0_pri_n2_write(
+    pub fn scs_nvic_ipr534d0_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 53) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 215<br>"]
     pub(crate) fn scs_nvic_ipr534d0_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 53) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 215<br>"]
-    pub(crate) fn scs_nvic_ipr534d0_pri_n3_write(
+    pub fn scs_nvic_ipr534d0_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 53) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 216<br>"]
     pub(crate) fn scs_nvic_ipr544d4_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 54) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 216<br>"]
-    pub(crate) fn scs_nvic_ipr544d4_pri_n0_write(
+    pub fn scs_nvic_ipr544d4_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 54) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 217<br>"]
     pub(crate) fn scs_nvic_ipr544d4_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 54) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 217<br>"]
-    pub(crate) fn scs_nvic_ipr544d4_pri_n1_write(
+    pub fn scs_nvic_ipr544d4_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 54) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 218<br>"]
     pub(crate) fn scs_nvic_ipr544d4_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 54) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 218<br>"]
-    pub(crate) fn scs_nvic_ipr544d4_pri_n2_write(
+    pub fn scs_nvic_ipr544d4_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 54) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 219<br>"]
     pub(crate) fn scs_nvic_ipr544d4_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 54) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 219<br>"]
-    pub(crate) fn scs_nvic_ipr544d4_pri_n3_write(
+    pub fn scs_nvic_ipr544d4_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 54) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 220<br>"]
     pub(crate) fn scs_nvic_ipr554d8_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 55) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 220<br>"]
-    pub(crate) fn scs_nvic_ipr554d8_pri_n0_write(
+    pub fn scs_nvic_ipr554d8_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 55) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 221<br>"]
     pub(crate) fn scs_nvic_ipr554d8_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 55) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 221<br>"]
-    pub(crate) fn scs_nvic_ipr554d8_pri_n1_write(
+    pub fn scs_nvic_ipr554d8_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 55) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 222<br>"]
     pub(crate) fn scs_nvic_ipr554d8_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 55) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 222<br>"]
-    pub(crate) fn scs_nvic_ipr554d8_pri_n2_write(
+    pub fn scs_nvic_ipr554d8_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 55) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 223<br>"]
     pub(crate) fn scs_nvic_ipr554d8_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 55) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 223<br>"]
-    pub(crate) fn scs_nvic_ipr554d8_pri_n3_write(
+    pub fn scs_nvic_ipr554d8_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 55) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 224<br>"]
     pub(crate) fn scs_nvic_ipr564dc_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 56) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 224<br>"]
-    pub(crate) fn scs_nvic_ipr564dc_pri_n0_write(
+    pub fn scs_nvic_ipr564dc_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 56) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 225<br>"]
     pub(crate) fn scs_nvic_ipr564dc_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 56) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 225<br>"]
-    pub(crate) fn scs_nvic_ipr564dc_pri_n1_write(
+    pub fn scs_nvic_ipr564dc_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 56) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 226<br>"]
     pub(crate) fn scs_nvic_ipr564dc_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 56) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 226<br>"]
-    pub(crate) fn scs_nvic_ipr564dc_pri_n2_write(
+    pub fn scs_nvic_ipr564dc_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 56) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 227<br>"]
     pub(crate) fn scs_nvic_ipr564dc_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 56) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 227<br>"]
-    pub(crate) fn scs_nvic_ipr564dc_pri_n3_write(
+    pub fn scs_nvic_ipr564dc_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 56) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 228<br>"]
     pub(crate) fn scs_nvic_ipr574e0_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 57) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 228<br>"]
-    pub(crate) fn scs_nvic_ipr574e0_pri_n0_write(
+    pub fn scs_nvic_ipr574e0_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 57) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 229<br>"]
     pub(crate) fn scs_nvic_ipr574e0_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 57) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 229<br>"]
-    pub(crate) fn scs_nvic_ipr574e0_pri_n1_write(
+    pub fn scs_nvic_ipr574e0_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 57) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 230<br>"]
     pub(crate) fn scs_nvic_ipr574e0_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 57) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 230<br>"]
-    pub(crate) fn scs_nvic_ipr574e0_pri_n2_write(
+    pub fn scs_nvic_ipr574e0_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 57) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 231<br>"]
     pub(crate) fn scs_nvic_ipr574e0_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 57) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 231<br>"]
-    pub(crate) fn scs_nvic_ipr574e0_pri_n3_write(
+    pub fn scs_nvic_ipr574e0_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 57) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 232<br>"]
     pub(crate) fn scs_nvic_ipr584e4_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 58) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 232<br>"]
-    pub(crate) fn scs_nvic_ipr584e4_pri_n0_write(
+    pub fn scs_nvic_ipr584e4_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 58) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 233<br>"]
     pub(crate) fn scs_nvic_ipr584e4_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 58) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 233<br>"]
-    pub(crate) fn scs_nvic_ipr584e4_pri_n1_write(
+    pub fn scs_nvic_ipr584e4_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 58) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 234<br>"]
     pub(crate) fn scs_nvic_ipr584e4_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 58) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 234<br>"]
-    pub(crate) fn scs_nvic_ipr584e4_pri_n2_write(
+    pub fn scs_nvic_ipr584e4_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 58) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 235<br>"]
     pub(crate) fn scs_nvic_ipr584e4_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 58) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 235<br>"]
-    pub(crate) fn scs_nvic_ipr584e4_pri_n3_write(
+    pub fn scs_nvic_ipr584e4_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 58) + 3] = _value)
     }
     #[doc = "PRI_N0: Priority of interrupt 236<br>"]
     pub(crate) fn scs_nvic_ipr594e8_pri_n0_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 59) + 0])
     }
     #[doc = "PRI_N0: Priority of interrupt 236<br>"]
-    pub(crate) fn scs_nvic_ipr594e8_pri_n0_write(
+    pub fn scs_nvic_ipr594e8_pri_n0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 59) + 0] = _value)
     }
     #[doc = "PRI_N1: Priority of interrupt 237<br>"]
     pub(crate) fn scs_nvic_ipr594e8_pri_n1_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 59) + 1])
     }
     #[doc = "PRI_N1: Priority of interrupt 237<br>"]
-    pub(crate) fn scs_nvic_ipr594e8_pri_n1_write(
+    pub fn scs_nvic_ipr594e8_pri_n1_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 59) + 1] = _value)
     }
     #[doc = "PRI_N2: Priority of interrupt 238<br>"]
     pub(crate) fn scs_nvic_ipr594e8_pri_n2_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 59) + 2])
     }
     #[doc = "PRI_N2: Priority of interrupt 238<br>"]
-    pub(crate) fn scs_nvic_ipr594e8_pri_n2_write(
+    pub fn scs_nvic_ipr594e8_pri_n2_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 59) + 2] = _value)
     }
     #[doc = "PRI_N3: Priority of interrupt 239<br>"]
     pub(crate) fn scs_nvic_ipr594e8_pri_n3_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 59) + 3])
     }
     #[doc = "PRI_N3: Priority of interrupt 239<br>"]
-    pub(crate) fn scs_nvic_ipr594e8_pri_n3_write(
+    pub fn scs_nvic_ipr594e8_pri_n3_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_N3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.interrupts_priority[(4 * 59) + 3] = _value)
     }
     #[doc = "VECTACTIVE: The exception number for the current executing exception<br>"]
     pub(crate) fn scs_icsrcfc_vectactive_read(&self) -> MemResult<u16> {
@@ -4437,44 +4412,36 @@ impl Scs {
     }
     #[doc = "SLEEPONEXIT: whether, on an exit from an ISR that returns to the base level of execution priority, the processor enters a sleep state<br>"]
     pub(crate) fn scs_scrd08_sleeponexit_read(&self) -> MemResult<bool> {
-        todo ! ("read SLEEPONEXIT mwrite None write None rac None reset value false")
+        Ok(self.sleep_on_exit)
     }
     #[doc = "SLEEPONEXIT: whether, on an exit from an ISR that returns to the base level of execution priority, the processor enters a sleep state<br>"]
     pub(crate) fn scs_scrd08_sleeponexit_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SLEEPONEXIT mwrite None write None rac None reset value false")
+        Ok(self.sleep_on_exit = _value)
     }
     #[doc = "SLEEPDEEP: Hint indicating that waking from sleep might take longer<br>"]
     pub(crate) fn scs_scrd08_sleepdeep_read(&self) -> MemResult<bool> {
-        todo!(
-            "read SLEEPDEEP mwrite None write None rac None reset value false"
-        )
+        Ok(self.sleep_deep)
     }
     #[doc = "SLEEPDEEP: Hint indicating that waking from sleep might take longer<br>"]
     pub(crate) fn scs_scrd08_sleepdeep_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!(
-            "write SLEEPDEEP mwrite None write None rac None reset value false"
-        )
+        Ok(self.sleep_deep = _value)
     }
     #[doc = "SEVONPEND: Determines whether an interrupt transition from inactive state to pending state is a wakeup event<br>"]
     pub(crate) fn scs_scrd08_sevonpend_read(&self) -> MemResult<bool> {
-        todo!(
-            "read SEVONPEND mwrite None write None rac None reset value false"
-        )
+        Ok(self.event_on_pending)
     }
     #[doc = "SEVONPEND: Determines whether an interrupt transition from inactive state to pending state is a wakeup event<br>"]
     pub(crate) fn scs_scrd08_sevonpend_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!(
-            "write SEVONPEND mwrite None write None rac None reset value false"
-        )
+        Ok(self.event_on_pending = _value)
     }
     #[doc = "NONBASETHRDENA: Controls whether the processor can enter Thread mode at an execution priority level other than base level<br>"]
     pub(crate) fn scs_ccrd0c_nonbasethrdena_read(&self) -> MemResult<bool> {
@@ -4554,135 +4521,108 @@ impl Scs {
     }
     #[doc = "PRI_4: Priority of system handler 4, MemManage<br>"]
     pub(crate) fn scs_shpr1d10_pri_4_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_4 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.priorities[SysHandlerPriority::Pri4 as usize])
     }
     #[doc = "PRI_4: Priority of system handler 4, MemManage<br>"]
     pub(crate) fn scs_shpr1d10_pri_4_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_4 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.priorities[SysHandlerPriority::Pri4 as usize] = _value)
     }
     #[doc = "PRI_5: Priority of system handler 5, BusFault<br>"]
     pub(crate) fn scs_shpr1d10_pri_5_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_5 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.priorities[SysHandlerPriority::Pri5 as usize])
     }
     #[doc = "PRI_5: Priority of system handler 5, BusFault<br>"]
     pub(crate) fn scs_shpr1d10_pri_5_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_5 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.priorities[SysHandlerPriority::Pri5 as usize] = _value)
     }
     #[doc = "PRI_6: Priority of system handler 6, UsageFault<br>"]
     pub(crate) fn scs_shpr1d10_pri_6_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_6 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.priorities[SysHandlerPriority::Pri6 as usize])
     }
     #[doc = "PRI_6: Priority of system handler 6, UsageFault<br>"]
     pub(crate) fn scs_shpr1d10_pri_6_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write PRI_6 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.priorities[SysHandlerPriority::Pri6 as usize] = _value)
     }
     #[doc = "PRI_7: Priority of system handler 7<br>"]
     pub(crate) fn scs_shpr1d10_pri_7_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_7 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.priorities[SysHandlerPriority::Pri7 as usize])
     }
     #[doc = "PRI_7: Priority of system handler 7<br>"]
-    pub(crate) fn scs_shpr1d10_pri_7_write(
-        &mut self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo ! ("write PRI_7 mwrite None write None rac None reset value 0x00 mask 0xff")
+    pub fn scs_shpr1d10_pri_7_write(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.priorities[SysHandlerPriority::Pri7 as usize] = _value)
     }
     #[doc = "PRI_8: Priority of system handler 8<br>"]
     pub(crate) fn scs_shpr2d14_pri_8_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_8 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.priorities[SysHandlerPriority::Pri8 as usize])
     }
     #[doc = "PRI_8: Priority of system handler 8<br>"]
-    pub(crate) fn scs_shpr2d14_pri_8_write(
-        &mut self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo ! ("write PRI_8 mwrite None write None rac None reset value 0x00 mask 0xff")
+    pub fn scs_shpr2d14_pri_8_write(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.priorities[SysHandlerPriority::Pri8 as usize] = _value)
     }
     #[doc = "PRI_9: Priority of system handler 9<br>"]
     pub(crate) fn scs_shpr2d14_pri_9_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_9 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.priorities[SysHandlerPriority::Pri9 as usize])
     }
     #[doc = "PRI_9: Priority of system handler 9<br>"]
-    pub(crate) fn scs_shpr2d14_pri_9_write(
-        &mut self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo ! ("write PRI_9 mwrite None write None rac None reset value 0x00 mask 0xff")
+    pub fn scs_shpr2d14_pri_9_write(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.priorities[SysHandlerPriority::Pri9 as usize] = _value)
     }
     #[doc = "PRI_10: Priority of system handler 10<br>"]
     pub(crate) fn scs_shpr2d14_pri_10_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_10 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.priorities[SysHandlerPriority::Pri10 as usize])
     }
     #[doc = "PRI_10: Priority of system handler 10<br>"]
-    pub(crate) fn scs_shpr2d14_pri_10_write(
-        &mut self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo ! ("write PRI_10 mwrite None write None rac None reset value 0x00 mask 0xff")
+    pub fn scs_shpr2d14_pri_10_write(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.priorities[SysHandlerPriority::Pri10 as usize] = _value)
     }
     #[doc = "PRI_11: Priority of system handler 11, SVCall<br>"]
     pub(crate) fn scs_shpr2d14_pri_11_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_11 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.priorities[SysHandlerPriority::Pri11 as usize])
     }
     #[doc = "PRI_11: Priority of system handler 11, SVCall<br>"]
-    pub(crate) fn scs_shpr2d14_pri_11_write(
-        &mut self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo ! ("write PRI_11 mwrite None write None rac None reset value 0x00 mask 0xff")
+    pub fn scs_shpr2d14_pri_11_write(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.priorities[SysHandlerPriority::Pri11 as usize] = _value)
     }
     #[doc = "PRI_12: Priority of system handler 4, DebugMonitor<br>"]
     pub(crate) fn scs_shpr3d18_pri_12_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_12 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.priorities[SysHandlerPriority::Pri12 as usize])
     }
     #[doc = "PRI_12: Priority of system handler 4, DebugMonitor<br>"]
-    pub(crate) fn scs_shpr3d18_pri_12_write(
-        &mut self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo ! ("write PRI_12 mwrite None write None rac None reset value 0x00 mask 0xff")
+    pub fn scs_shpr3d18_pri_12_write(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.priorities[SysHandlerPriority::Pri12 as usize] = _value)
     }
     #[doc = "PRI_13: Priority of system handler 13<br>"]
     pub(crate) fn scs_shpr3d18_pri_13_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_13 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.priorities[SysHandlerPriority::Pri13 as usize])
     }
     #[doc = "PRI_13: Priority of system handler 13<br>"]
-    pub(crate) fn scs_shpr3d18_pri_13_write(
-        &mut self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo ! ("write PRI_13 mwrite None write None rac None reset value 0x00 mask 0xff")
+    pub fn scs_shpr3d18_pri_13_write(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.priorities[SysHandlerPriority::Pri13 as usize] = _value)
     }
     #[doc = "PRI_14: Priority of system handler 14, PendSV<br>"]
     pub(crate) fn scs_shpr3d18_pri_14_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_14 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.priorities[SysHandlerPriority::Pri14 as usize])
     }
     #[doc = "PRI_14: Priority of system handler 14, PendSV<br>"]
-    pub(crate) fn scs_shpr3d18_pri_14_write(
-        &mut self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo ! ("write PRI_14 mwrite None write None rac None reset value 0x00 mask 0xff")
+    pub fn scs_shpr3d18_pri_14_write(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.priorities[SysHandlerPriority::Pri14 as usize] = _value)
     }
     #[doc = "PRI_15: Priority of system handler 15, SysTick<br>"]
     pub(crate) fn scs_shpr3d18_pri_15_read(&self) -> MemResult<u8> {
-        todo ! ("read PRI_15 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.priorities[SysHandlerPriority::Pri15 as usize])
     }
     #[doc = "PRI_15: Priority of system handler 15, SysTick<br>"]
-    pub(crate) fn scs_shpr3d18_pri_15_write(
-        &mut self,
-        _value: u8,
-    ) -> MemResult<()> {
-        todo ! ("write PRI_15 mwrite None write None rac None reset value 0x00 mask 0xff")
+    pub fn scs_shpr3d18_pri_15_write(&mut self, _value: u8) -> MemResult<()> {
+        Ok(self.priorities[SysHandlerPriority::Pri15 as usize] = _value)
     }
     #[doc = "MEMFAULTACT: MemManage active<br>"]
     pub(crate) fn scs_shcsrd1c_memfaultact_read(&self) -> MemResult<bool> {
@@ -5341,27 +5281,41 @@ impl Scs {
     }
     #[doc = "MON_EN: Enable the DebugMonitor exception<br>"]
     pub(crate) fn scs_demcrdf4_mon_en_read(&self) -> MemResult<bool> {
-        todo!("read MON_EN mwrite None write None rac None reset value false")
+        //TODO debug off by default
+        // todo!("read MON_EN mwrite None write None rac None reset value false")
+        Ok(false)
     }
     #[doc = "MON_EN: Enable the DebugMonitor exception<br>"]
     pub(crate) fn scs_demcrdf4_mon_en_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write MON_EN mwrite None write None rac None reset value false")
+        //TODO debug off by default
+        // todo!("write MON_EN mwrite None write None rac None reset value false")
+        if _value {
+            todo!("write Control DEMCR MON_EN reset value false")
+        }
+        Ok(())
     }
     #[doc = "MON_PEND: Sets or clears the pending state of the DebugMonitor exception<br>"]
     pub(crate) fn scs_demcrdf4_mon_pend_read(&self) -> MemResult<bool> {
-        todo!("read MON_PEND mwrite None write None rac None reset value false")
+        //TODO debug off by default
+        // todo!("read MON_PEND mwrite None write None rac None reset value false")
+        Ok(false)
     }
     #[doc = "MON_PEND: Sets or clears the pending state of the DebugMonitor exception<br>"]
     pub(crate) fn scs_demcrdf4_mon_pend_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!(
-            "write MON_PEND mwrite None write None rac None reset value false"
-        )
+        //TODO debug off by default
+        //todo!(
+        //    "write MON_PEND mwrite None write None rac None reset value false"
+        //)
+        if _value {
+            todo!("write Control DEMCR MON_PEND reset value false")
+        }
+        Ok(())
     }
     #[doc = "INTID: Indicates the interrupt to be triggered. The value written is (ExceptionNumber - 16)<br>"]
     pub(crate) fn scs_stiref8_intid_write(

@@ -1,10 +1,45 @@
 use icicle_vm::cpu::mem::MemResult;
+
+use super::enums::LfclkSrc;
+use super::event;
+
 #[derive(Default)]
 #[doc = "BPROT: Block Protect<br>POWER: Power control<br>CLOCK: Clock control<br><br>Instances:<br>0x40000000: BPROT, POWER, CLOCK<br>"]
 pub struct Apb0 {
-    #[doc = "TODO: implement things here"]
-    _todo: (),
+    pub source: LfclkSrc,
+    // FUTURE: use the `core::mem::variant_count` to avoid using a number
+    pub events: [event::Event; 7],
+    pub bypass: bool,
+    pub external: bool,
+
+    pub ram: [RamBlock; 4],
 }
+
+#[derive(Default)]
+pub struct RamBlock {
+    pub keep_on: bool,
+    pub retain: bool,
+}
+
+impl RamBlock {
+    fn is_on(&self) -> bool {
+        // if needs to implement a "powering up" delay, do it here
+        self.keep_on
+    }
+}
+
+#[derive(Clone, Copy, PartialEq, Eq)]
+#[repr(usize)]
+enum EventId {
+    HFCLKSTARTED = 0,
+    LFCLKSTARTED = 1,
+    POFWARN = 2,
+    DONE = 3,
+    CTTO = 4,
+    SLEEPENTER = 5,
+    SLEEPEXIT = 6,
+}
+
 impl Apb0 {
     pub(crate) fn page_to_index(page: u64) -> usize {
         match page {
@@ -31,7 +66,12 @@ impl Apb0 {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write apb0_tasks_lfclkstart8 mwrite None write None rac None reset value 0x00 mask 0x00")
+        // TODO for now we don't care about this task, just rementer to write
+        // to the event of finishing.
+        if _value != 0 {
+            todo!("Trigger task LFCLKSTART")
+        }
+        Ok(())
     }
     #[doc = "TASKS_LFCLKSTOP: Stop LFCLK source<br>"]
     pub(crate) fn apb0_tasks_lfclkstopc_write(
@@ -77,135 +117,156 @@ impl Apb0 {
     }
     #[doc = "EVENTS_HFCLKSTARTED: HFCLK oscillator started<br>"]
     pub(crate) fn apb0_events_hfclkstarted100_read(&self) -> MemResult<u32> {
-        todo ! ("read apb0_events_hfclkstarted100 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.events[EventId::HFCLKSTARTED as usize].triggered as u32)
     }
     #[doc = "EVENTS_HFCLKSTARTED: HFCLK oscillator started<br>"]
     pub(crate) fn apb0_events_hfclkstarted100_write(
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write apb0_events_hfclkstarted100 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(
+            self.events[EventId::HFCLKSTARTED as usize]
+                .trigger_on_write(_value),
+        )
     }
     #[doc = "EVENTS_LFCLKSTARTED: LFCLK started<br>"]
     pub(crate) fn apb0_events_lfclkstarted104_read(&self) -> MemResult<u32> {
-        todo ! ("read apb0_events_lfclkstarted104 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.events[EventId::LFCLKSTARTED as usize].triggered as u32)
     }
     #[doc = "EVENTS_LFCLKSTARTED: LFCLK started<br>"]
     pub(crate) fn apb0_events_lfclkstarted104_write(
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write apb0_events_lfclkstarted104 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(
+            self.events[EventId::LFCLKSTARTED as usize]
+                .trigger_on_write(_value),
+        )
     }
     #[doc = "EVENTS_POFWARN: Power failure warning<br>"]
     pub(crate) fn apb0_events_pofwarn108_read(&self) -> MemResult<u32> {
-        todo ! ("read apb0_events_pofwarn108 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.events[EventId::POFWARN as usize].triggered as u32)
     }
     #[doc = "EVENTS_POFWARN: Power failure warning<br>"]
     pub(crate) fn apb0_events_pofwarn108_write(
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write apb0_events_pofwarn108 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.events[EventId::POFWARN as usize].trigger_on_write(_value))
     }
     #[doc = "EVENTS_DONE: Calibration of LFCLK RC oscillator complete event<br>"]
     pub(crate) fn apb0_events_done10c_read(&self) -> MemResult<u32> {
-        todo ! ("read apb0_events_done10c mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.events[EventId::DONE as usize].triggered as u32)
     }
     #[doc = "EVENTS_DONE: Calibration of LFCLK RC oscillator complete event<br>"]
     pub(crate) fn apb0_events_done10c_write(
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write apb0_events_done10c mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.events[EventId::DONE as usize].trigger_on_write(_value))
     }
     #[doc = "EVENTS_CTTO: Calibration timer timeout<br>"]
     pub(crate) fn apb0_events_ctto110_read(&self) -> MemResult<u32> {
-        todo ! ("read apb0_events_ctto110 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.events[EventId::CTTO as usize].triggered as u32)
     }
     #[doc = "EVENTS_CTTO: Calibration timer timeout<br>"]
     pub(crate) fn apb0_events_ctto110_write(
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write apb0_events_ctto110 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.events[EventId::CTTO as usize].trigger_on_write(_value))
     }
     #[doc = "EVENTS_SLEEPENTER: CPU entered WFI/WFE sleep<br>"]
     pub(crate) fn apb0_events_sleepenter114_read(&self) -> MemResult<u32> {
-        todo ! ("read apb0_events_sleepenter114 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.events[EventId::SLEEPENTER as usize].triggered as u32)
     }
     #[doc = "EVENTS_SLEEPENTER: CPU entered WFI/WFE sleep<br>"]
     pub(crate) fn apb0_events_sleepenter114_write(
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write apb0_events_sleepenter114 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.events[EventId::SLEEPENTER as usize].trigger_on_write(_value))
     }
     #[doc = "EVENTS_SLEEPEXIT: CPU exited WFI/WFE sleep<br>"]
     pub(crate) fn apb0_events_sleepexit118_read(&self) -> MemResult<u32> {
-        todo ! ("read apb0_events_sleepexit118 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.events[EventId::SLEEPEXIT as usize].triggered as u32)
     }
     #[doc = "EVENTS_SLEEPEXIT: CPU exited WFI/WFE sleep<br>"]
     pub(crate) fn apb0_events_sleepexit118_write(
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        todo ! ("write apb0_events_sleepexit118 mwrite None write None rac None reset value 0x00 mask 0x00")
+        Ok(self.events[EventId::SLEEPEXIT as usize].trigger_on_write(_value))
     }
     #[doc = "HFCLKSTARTED: Write '1' to Enable interrupt for HFCLKSTARTED event<br>"]
     pub(crate) fn apb0_intenset304_hfclkstarted_read(&self) -> MemResult<bool> {
-        todo ! ("read HFCLKSTARTED mwrite None write None rac None reset value false")
+        Ok(self.events[EventId::HFCLKSTARTED as usize].triggered)
     }
     #[doc = "HFCLKSTARTED: Write '1' to Enable interrupt for HFCLKSTARTED event<br>"]
     pub(crate) fn apb0_intenset304_hfclkstarted_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write HFCLKSTARTED mwrite None write None rac None reset value false")
+        if _value {
+            self.events[EventId::HFCLKSTARTED as usize].triggered = true;
+        }
+        Ok(())
     }
     #[doc = "LFCLKSTARTED: Write '1' to Enable interrupt for LFCLKSTARTED event<br>"]
     pub(crate) fn apb0_intenset304_lfclkstarted_read(&self) -> MemResult<bool> {
-        todo ! ("read LFCLKSTARTED mwrite None write None rac None reset value false")
+        Ok(self.events[EventId::LFCLKSTARTED as usize].triggered)
     }
     #[doc = "LFCLKSTARTED: Write '1' to Enable interrupt for LFCLKSTARTED event<br>"]
     pub(crate) fn apb0_intenset304_lfclkstarted_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write LFCLKSTARTED mwrite None write None rac None reset value false")
+        if _value {
+            self.events[EventId::LFCLKSTARTED as usize].triggered = true;
+        }
+        Ok(())
     }
     #[doc = "POFWARN: Write '1' to Enable interrupt for POFWARN event<br>"]
     pub(crate) fn apb0_intenset304_pofwarn_read(&self) -> MemResult<bool> {
-        todo!("read POFWARN mwrite None write None rac None reset value false")
+        Ok(self.events[EventId::POFWARN as usize].triggered)
     }
     #[doc = "POFWARN: Write '1' to Enable interrupt for POFWARN event<br>"]
     pub(crate) fn apb0_intenset304_pofwarn_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write POFWARN mwrite None write None rac None reset value false")
+        if _value {
+            self.events[EventId::POFWARN as usize].triggered = true;
+        }
+        Ok(())
     }
     #[doc = "DONE: Write '1' to Enable interrupt for DONE event<br>"]
     pub(crate) fn apb0_intenset304_done_read(&self) -> MemResult<bool> {
-        todo!("read DONE mwrite None write None rac None reset value false")
+        Ok(self.events[EventId::DONE as usize].triggered)
     }
     #[doc = "DONE: Write '1' to Enable interrupt for DONE event<br>"]
     pub(crate) fn apb0_intenset304_done_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write DONE mwrite None write None rac None reset value false")
+        if _value {
+            self.events[EventId::DONE as usize].triggered = true;
+        }
+        Ok(())
     }
     #[doc = "CTTO: Write '1' to Enable interrupt for CTTO event<br>"]
     pub(crate) fn apb0_intenset304_ctto_read(&self) -> MemResult<bool> {
-        todo!("read CTTO mwrite None write None rac None reset value false")
+        Ok(self.events[EventId::CTTO as usize].triggered)
     }
     #[doc = "CTTO: Write '1' to Enable interrupt for CTTO event<br>"]
     pub(crate) fn apb0_intenset304_ctto_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write CTTO mwrite None write None rac None reset value false")
+        if _value {
+            self.events[EventId::CTTO as usize].triggered = true;
+        }
+        Ok(())
     }
     #[doc = "SLEEPENTER: Write '1' to Enable interrupt for SLEEPENTER event<br>"]
     pub(crate) fn apb0_intenset304_sleepenter_read(&self) -> MemResult<bool> {
@@ -218,7 +279,10 @@ impl Apb0 {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SLEEPENTER mwrite None write None rac None reset value false")
+        if _value {
+            self.events[EventId::SLEEPENTER as usize].triggered = true;
+        }
+        Ok(())
     }
     #[doc = "SLEEPEXIT: Write '1' to Enable interrupt for SLEEPEXIT event<br>"]
     pub(crate) fn apb0_intenset304_sleepexit_read(&self) -> MemResult<bool> {
@@ -231,83 +295,98 @@ impl Apb0 {
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!(
-            "write SLEEPEXIT mwrite None write None rac None reset value false"
-        )
+        if _value {
+            self.events[EventId::SLEEPEXIT as usize].triggered = true;
+        }
+        Ok(())
     }
     #[doc = "HFCLKSTARTED: Write '1' to Disable interrupt for HFCLKSTARTED event<br>"]
     pub(crate) fn apb0_intenclr308_hfclkstarted_read(&self) -> MemResult<bool> {
-        todo ! ("read HFCLKSTARTED mwrite None write None rac None reset value false")
+        Ok(self.events[EventId::HFCLKSTARTED as usize].triggered)
     }
     #[doc = "HFCLKSTARTED: Write '1' to Disable interrupt for HFCLKSTARTED event<br>"]
     pub(crate) fn apb0_intenclr308_hfclkstarted_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write HFCLKSTARTED mwrite None write None rac None reset value false")
+        if _value {
+            self.events[EventId::HFCLKSTARTED as usize].triggered = false;
+        }
+        Ok(())
     }
     #[doc = "LFCLKSTARTED: Write '1' to Disable interrupt for LFCLKSTARTED event<br>"]
     pub(crate) fn apb0_intenclr308_lfclkstarted_read(&self) -> MemResult<bool> {
-        todo ! ("read LFCLKSTARTED mwrite None write None rac None reset value false")
+        Ok(self.events[EventId::LFCLKSTARTED as usize].triggered)
     }
     #[doc = "LFCLKSTARTED: Write '1' to Disable interrupt for LFCLKSTARTED event<br>"]
     pub(crate) fn apb0_intenclr308_lfclkstarted_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write LFCLKSTARTED mwrite None write None rac None reset value false")
+        if _value {
+            self.events[EventId::LFCLKSTARTED as usize].triggered = false;
+        }
+        Ok(())
     }
     #[doc = "POFWARN: Write '1' to Disable interrupt for POFWARN event<br>"]
     pub(crate) fn apb0_intenclr308_pofwarn_read(&self) -> MemResult<bool> {
-        todo!("read POFWARN mwrite None write None rac None reset value false")
+        Ok(self.events[EventId::POFWARN as usize].triggered)
     }
     #[doc = "POFWARN: Write '1' to Disable interrupt for POFWARN event<br>"]
     pub(crate) fn apb0_intenclr308_pofwarn_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write POFWARN mwrite None write None rac None reset value false")
+        if _value {
+            self.events[EventId::POFWARN as usize].triggered = false;
+        }
+        Ok(())
     }
     #[doc = "DONE: Write '1' to Disable interrupt for DONE event<br>"]
     pub(crate) fn apb0_intenclr308_done_read(&self) -> MemResult<bool> {
-        todo!("read DONE mwrite None write None rac None reset value false")
+        Ok(self.events[EventId::DONE as usize].triggered)
     }
     #[doc = "DONE: Write '1' to Disable interrupt for DONE event<br>"]
     pub(crate) fn apb0_intenclr308_done_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write DONE mwrite None write None rac None reset value false")
+        if _value {
+            self.events[EventId::DONE as usize].triggered = false;
+        }
+        Ok(())
     }
     #[doc = "CTTO: Write '1' to Disable interrupt for CTTO event<br>"]
     pub(crate) fn apb0_intenclr308_ctto_read(&self) -> MemResult<bool> {
-        todo!("read CTTO mwrite None write None rac None reset value false")
+        Ok(self.events[EventId::CTTO as usize].triggered)
     }
     #[doc = "CTTO: Write '1' to Disable interrupt for CTTO event<br>"]
     pub(crate) fn apb0_intenclr308_ctto_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write CTTO mwrite None write None rac None reset value false")
+        if _value {
+            self.events[EventId::CTTO as usize].triggered = false;
+        }
+        Ok(())
     }
     #[doc = "SLEEPENTER: Write '1' to Disable interrupt for SLEEPENTER event<br>"]
     pub(crate) fn apb0_intenclr308_sleepenter_read(&self) -> MemResult<bool> {
-        todo!(
-            "read SLEEPENTER mwrite None write None rac None reset value false"
-        )
+        Ok(self.events[EventId::SLEEPENTER as usize].triggered)
     }
     #[doc = "SLEEPENTER: Write '1' to Disable interrupt for SLEEPENTER event<br>"]
     pub(crate) fn apb0_intenclr308_sleepenter_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo ! ("write SLEEPENTER mwrite None write None rac None reset value false")
+        if _value {
+            self.events[EventId::SLEEPENTER as usize].triggered = false;
+        }
+        Ok(())
     }
     #[doc = "SLEEPEXIT: Write '1' to Disable interrupt for SLEEPEXIT event<br>"]
     pub(crate) fn apb0_intenclr308_sleepexit_read(&self) -> MemResult<bool> {
-        todo!(
-            "read SLEEPEXIT mwrite None write None rac None reset value false"
-        )
+        Ok(self.events[EventId::SLEEPEXIT as usize].triggered)
     }
     #[doc = "SLEEPEXIT: Write '1' to Disable interrupt for SLEEPEXIT event<br>"]
     pub(crate) fn apb0_intenclr308_sleepexit_write(
@@ -425,9 +504,7 @@ impl Apb0 {
         todo!("read STATUS mwrite None write None rac None reset value false")
     }
     #[doc = "SRC: Source of LFCLK<br>"]
-    pub(crate) fn apb0_lfclkstat418_src_read(
-        &self,
-    ) -> MemResult<crate::peripheral::enums::E6Apb0Lfclkstat418Src> {
+    pub(crate) fn apb0_lfclkstat418_src_read(&self) -> MemResult<LfclkSrc> {
         todo ! ("read SRC mwrite None write None rac None reset value 0x00 mask 0x03")
     }
     #[doc = "STATE: LFCLK state<br>"]
@@ -435,34 +512,24 @@ impl Apb0 {
         todo!("read STATE mwrite None write None rac None reset value false")
     }
     #[doc = "SRC: Clock source<br>"]
-    pub(crate) fn apb0_lfclksrccopy41c_src_read(
-        &self,
-    ) -> MemResult<crate::peripheral::enums::E7Apb0Lfclksrccopy41cSrc> {
-        todo ! ("read SRC mwrite None write None rac None reset value 0x00 mask 0x03")
+    pub(crate) fn apb0_lfclksrccopy41c_src_read(&self) -> MemResult<LfclkSrc> {
+        Ok(self.source)
     }
     #[doc = "RAMBLOCK0: RAM block 0 is on or off/powering up<br>"]
     pub(crate) fn apb0_ramstatus428_ramblock0_read(&self) -> MemResult<bool> {
-        todo!(
-            "read RAMBLOCK0 mwrite None write None rac None reset value false"
-        )
+        Ok(self.ram[0].is_on())
     }
     #[doc = "RAMBLOCK1: RAM block 1 is on or off/powering up<br>"]
     pub(crate) fn apb0_ramstatus428_ramblock1_read(&self) -> MemResult<bool> {
-        todo!(
-            "read RAMBLOCK1 mwrite None write None rac None reset value false"
-        )
+        Ok(self.ram[1].is_on())
     }
     #[doc = "RAMBLOCK2: RAM block 2 is on or off/powering up<br>"]
     pub(crate) fn apb0_ramstatus428_ramblock2_read(&self) -> MemResult<bool> {
-        todo!(
-            "read RAMBLOCK2 mwrite None write None rac None reset value false"
-        )
+        Ok(self.ram[2].is_on())
     }
     #[doc = "RAMBLOCK3: RAM block 3 is on or off/powering up<br>"]
     pub(crate) fn apb0_ramstatus428_ramblock3_read(&self) -> MemResult<bool> {
-        todo!(
-            "read RAMBLOCK3 mwrite None write None rac None reset value false"
-        )
+        Ok(self.ram[3].is_on())
     }
     #[doc = "SYSTEMOFF: Enable System OFF mode<br>"]
     pub(crate) fn apb0_systemoff500_systemoff_write(
@@ -498,41 +565,37 @@ impl Apb0 {
         todo ! ("write THRESHOLD mwrite None write None rac None reset value 0x00 mask 0x0f")
     }
     #[doc = "SRC: Clock source<br>"]
-    pub(crate) fn apb0_lfclksrc518_src_read(
-        &self,
-    ) -> MemResult<crate::peripheral::enums::E9Apb0Lfclksrc518Src> {
-        todo ! ("read SRC mwrite None write None rac None reset value 0x00 mask 0x03")
+    pub(crate) fn apb0_lfclksrc518_src_read(&self) -> MemResult<LfclkSrc> {
+        Ok(self.source)
     }
     #[doc = "SRC: Clock source<br>"]
     pub(crate) fn apb0_lfclksrc518_src_write(
         &mut self,
-        _value: crate::peripheral::enums::E9Apb0Lfclksrc518Src,
+        _value: LfclkSrc,
     ) -> MemResult<()> {
-        todo ! ("write SRC mwrite None write None rac None reset value 0x00 mask 0x03")
+        Ok(self.source = _value)
     }
     #[doc = "BYPASS: Enable or disable bypass of LFCLK crystal oscillator with external clock source<br>"]
     pub(crate) fn apb0_lfclksrc518_bypass_read(&self) -> MemResult<bool> {
-        todo!("read BYPASS mwrite None write None rac None reset value false")
+        Ok(self.bypass)
     }
     #[doc = "BYPASS: Enable or disable bypass of LFCLK crystal oscillator with external clock source<br>"]
     pub(crate) fn apb0_lfclksrc518_bypass_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write BYPASS mwrite None write None rac None reset value false")
+        Ok(self.bypass = _value)
     }
     #[doc = "EXTERNAL: Enable or disable external source for LFCLK<br>"]
     pub(crate) fn apb0_lfclksrc518_external_read(&self) -> MemResult<bool> {
-        todo!("read EXTERNAL mwrite None write None rac None reset value false")
+        Ok(self.external)
     }
     #[doc = "EXTERNAL: Enable or disable external source for LFCLK<br>"]
     pub(crate) fn apb0_lfclksrc518_external_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!(
-            "write EXTERNAL mwrite None write None rac None reset value false"
-        )
+        Ok(self.external = _value)
     }
     #[doc = "GPREGRET: General purpose retention register<br>"]
     pub(crate) fn apb0_gpregret51c_gpregret_read(&self) -> MemResult<u8> {
@@ -558,47 +621,47 @@ impl Apb0 {
     }
     #[doc = "ONRAM0: Keep RAM block 0 on or off in system ON Mode<br>"]
     pub(crate) fn apb0_ramon524_onram0_read(&self) -> MemResult<bool> {
-        todo!("read ONRAM0 mwrite None write None rac None reset value true")
+        Ok(self.ram[0].keep_on)
     }
     #[doc = "ONRAM0: Keep RAM block 0 on or off in system ON Mode<br>"]
     pub(crate) fn apb0_ramon524_onram0_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write ONRAM0 mwrite None write None rac None reset value true")
+        Ok(self.ram[0].keep_on = _value)
     }
     #[doc = "ONRAM1: Keep RAM block 1 on or off in system ON Mode<br>"]
     pub(crate) fn apb0_ramon524_onram1_read(&self) -> MemResult<bool> {
-        todo!("read ONRAM1 mwrite None write None rac None reset value true")
+        Ok(self.ram[1].keep_on)
     }
     #[doc = "ONRAM1: Keep RAM block 1 on or off in system ON Mode<br>"]
     pub(crate) fn apb0_ramon524_onram1_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write ONRAM1 mwrite None write None rac None reset value true")
+        Ok(self.ram[1].keep_on = _value)
     }
     #[doc = "OFFRAM0: Keep retention on RAM block 0 when RAM block is switched off<br>"]
     pub(crate) fn apb0_ramon524_offram0_read(&self) -> MemResult<bool> {
-        todo!("read OFFRAM0 mwrite None write None rac None reset value false")
+        Ok(self.ram[0].retain)
     }
     #[doc = "OFFRAM0: Keep retention on RAM block 0 when RAM block is switched off<br>"]
     pub(crate) fn apb0_ramon524_offram0_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write OFFRAM0 mwrite None write None rac None reset value false")
+        Ok(self.ram[0].retain = _value)
     }
     #[doc = "OFFRAM1: Keep retention on RAM block 1 when RAM block is switched off<br>"]
     pub(crate) fn apb0_ramon524_offram1_read(&self) -> MemResult<bool> {
-        todo!("read OFFRAM1 mwrite None write None rac None reset value false")
+        Ok(self.ram[1].retain)
     }
     #[doc = "OFFRAM1: Keep retention on RAM block 1 when RAM block is switched off<br>"]
     pub(crate) fn apb0_ramon524_offram1_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write OFFRAM1 mwrite None write None rac None reset value false")
+        Ok(self.ram[1].retain = _value)
     }
     #[doc = "CTIV: Calibration timer interval in multiple of 0.25 seconds. Range: 0.25 seconds to 31.75 seconds.<br>"]
     pub(crate) fn apb0_ctiv538_ctiv_read(&self) -> MemResult<u8> {
@@ -613,47 +676,47 @@ impl Apb0 {
     }
     #[doc = "ONRAM2: Keep RAM block 2 on or off in system ON Mode<br>"]
     pub(crate) fn apb0_ramonb554_onram2_read(&self) -> MemResult<bool> {
-        todo!("read ONRAM2 mwrite None write None rac None reset value true")
+        Ok(self.ram[2].keep_on)
     }
     #[doc = "ONRAM2: Keep RAM block 2 on or off in system ON Mode<br>"]
     pub(crate) fn apb0_ramonb554_onram2_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write ONRAM2 mwrite None write None rac None reset value true")
+        Ok(self.ram[2].keep_on = _value)
     }
     #[doc = "ONRAM3: Keep RAM block 3 on or off in system ON Mode<br>"]
     pub(crate) fn apb0_ramonb554_onram3_read(&self) -> MemResult<bool> {
-        todo!("read ONRAM3 mwrite None write None rac None reset value true")
+        Ok(self.ram[3].keep_on)
     }
     #[doc = "ONRAM3: Keep RAM block 3 on or off in system ON Mode<br>"]
     pub(crate) fn apb0_ramonb554_onram3_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write ONRAM3 mwrite None write None rac None reset value true")
+        Ok(self.ram[3].keep_on = _value)
     }
     #[doc = "OFFRAM2: Keep retention on RAM block 2 when RAM block is switched off<br>"]
     pub(crate) fn apb0_ramonb554_offram2_read(&self) -> MemResult<bool> {
-        todo!("read OFFRAM2 mwrite None write None rac None reset value false")
+        Ok(self.ram[2].retain)
     }
     #[doc = "OFFRAM2: Keep retention on RAM block 2 when RAM block is switched off<br>"]
     pub(crate) fn apb0_ramonb554_offram2_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write OFFRAM2 mwrite None write None rac None reset value false")
+        Ok(self.ram[2].retain = _value)
     }
     #[doc = "OFFRAM3: Keep retention on RAM block 3 when RAM block is switched off<br>"]
     pub(crate) fn apb0_ramonb554_offram3_read(&self) -> MemResult<bool> {
-        todo!("read OFFRAM3 mwrite None write None rac None reset value false")
+        Ok(self.ram[3].retain)
     }
     #[doc = "OFFRAM3: Keep retention on RAM block 3 when RAM block is switched off<br>"]
     pub(crate) fn apb0_ramonb554_offram3_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write OFFRAM3 mwrite None write None rac None reset value false")
+        Ok(self.ram[3].retain = _value)
     }
     #[doc = "TRACEPORTSPEED: Speed of Trace Port clock. Note that the TRACECLK pin will output this clock divided by two.<br>"]
     pub(crate) fn apb0_traceconfig55c_traceportspeed_read(

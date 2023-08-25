@@ -16,14 +16,15 @@ pub mod apb35;
 pub mod dwt;
 #[doc = "Peripheral ECB"]
 pub mod ecb;
-#[doc = "Values used for read/write by the peripheral fields"]
-pub mod enums;
 #[doc = "Peripheral FICR"]
 pub mod ficr;
 #[doc = "Peripheral FPU"]
 pub mod fpu;
-#[doc = "Peripheral GPIOTE"]
-pub mod gpiote;
+
+// Moved into p0
+//#[doc = "Peripheral GPIOTE"]
+//pub mod gpiote;
+
 #[doc = "Peripheral I2S"]
 pub mod i2s;
 #[doc = "Peripheral MWU"]
@@ -44,8 +45,6 @@ pub mod pwm0;
 pub mod qdec;
 #[doc = "Peripheral RADIO"]
 pub mod radio;
-#[doc = "Register read/write from pages, used for behavior affecting multiple peripherals"]
-pub(crate) mod registers;
 #[doc = "Peripheral RNG"]
 pub mod rng;
 #[doc = "Peripheral RTC0"]
@@ -64,6 +63,13 @@ pub mod timer3;
 pub mod uicr;
 #[doc = "Peripheral WDT"]
 pub mod wdt;
+
+#[doc = "Values used for read/write by the peripheral fields"]
+pub mod enums;
+pub(crate) mod event;
+#[doc = "Register read/write from pages, used for behavior affecting multiple peripherals"]
+pub(crate) mod registers;
+
 #[doc = "A Global Peripheral device"]
 #[derive(Default)]
 pub struct Peripherals {
@@ -81,8 +87,11 @@ pub struct Peripherals {
     pub apb3: [apb3::Apb3; 2],
     #[doc = "Peripheral at 0x40005000"]
     pub nfct: nfct::Nfct,
-    #[doc = "Peripheral at 0x40006000"]
-    pub gpiote: gpiote::Gpiote,
+
+    // moved into p0
+    //#[doc = "Peripheral at 0x40006000"]
+    //pub gpiote: gpiote::Gpiote,
+
     #[doc = "Peripheral at 0x40007000"]
     pub saadc: saadc::Saadc,
     #[doc = "Peripheral at 0x40008000, 0x40009000, 0x4000a000"]

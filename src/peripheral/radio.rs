@@ -2,8 +2,10 @@ use icicle_vm::cpu::mem::MemResult;
 #[derive(Default)]
 #[doc = "RADIO: 2.4 GHz Radio<br><br>Instances:<br>0x40001000: RADIO<br>"]
 pub struct Radio {
-    #[doc = "TODO: implement things here"]
-    _todo: (),
+    pub address_prefix: [u8; 8],
+    pub receive_on_ap: [bool; 8],
+    pub tx_on_ap: [bool; 8],
+    pub address_prefix_on: [bool; 8],
 }
 impl Radio {
     pub(crate) fn page_to_index(page: u64) -> usize {
@@ -759,18 +761,18 @@ impl Radio {
     }
     #[doc = "AP0: Address prefix 0.<br>"]
     pub(crate) fn radio_prefix0524_ap0_read(&self) -> MemResult<u8> {
-        todo ! ("read AP0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.address_prefix[0])
     }
     #[doc = "AP0: Address prefix 0.<br>"]
     pub(crate) fn radio_prefix0524_ap0_write(
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write AP0 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.address_prefix[0] = _value)
     }
     #[doc = "AP1: Address prefix 1.<br>"]
     pub(crate) fn radio_prefix0524_ap1_read(&self) -> MemResult<u8> {
-        todo ! ("read AP1 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.address_prefix[1])
     }
     #[doc = "AP1: Address prefix 1.<br>"]
     pub(crate) fn radio_prefix0524_ap1_write(
@@ -781,7 +783,7 @@ impl Radio {
     }
     #[doc = "AP2: Address prefix 2.<br>"]
     pub(crate) fn radio_prefix0524_ap2_read(&self) -> MemResult<u8> {
-        todo ! ("read AP2 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.address_prefix[2])
     }
     #[doc = "AP2: Address prefix 2.<br>"]
     pub(crate) fn radio_prefix0524_ap2_write(
@@ -792,7 +794,7 @@ impl Radio {
     }
     #[doc = "AP3: Address prefix 3.<br>"]
     pub(crate) fn radio_prefix0524_ap3_read(&self) -> MemResult<u8> {
-        todo ! ("read AP3 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.address_prefix[3])
     }
     #[doc = "AP3: Address prefix 3.<br>"]
     pub(crate) fn radio_prefix0524_ap3_write(
@@ -810,7 +812,7 @@ impl Radio {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write AP4 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.address_prefix[4] = _value)
     }
     #[doc = "AP5: Address prefix 5.<br>"]
     pub(crate) fn radio_prefix1528_ap5_read(&self) -> MemResult<u8> {
@@ -821,7 +823,7 @@ impl Radio {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write AP5 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.address_prefix[5] = _value)
     }
     #[doc = "AP6: Address prefix 6.<br>"]
     pub(crate) fn radio_prefix1528_ap6_read(&self) -> MemResult<u8> {
@@ -832,7 +834,7 @@ impl Radio {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write AP6 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.address_prefix[6] = _value)
     }
     #[doc = "AP7: Address prefix 7.<br>"]
     pub(crate) fn radio_prefix1528_ap7_read(&self) -> MemResult<u8> {
@@ -843,7 +845,7 @@ impl Radio {
         &mut self,
         _value: u8,
     ) -> MemResult<()> {
-        todo ! ("write AP7 mwrite None write None rac None reset value 0x00 mask 0xff")
+        Ok(self.address_prefix[7] = _value)
     }
     #[doc = "TXADDRESS: Transmit address select<br>"]
     pub(crate) fn radio_txaddress52c_txaddress_read(&self) -> MemResult<u8> {
@@ -858,91 +860,91 @@ impl Radio {
     }
     #[doc = "ADDR0: Enable or disable reception on logical address 0.<br>"]
     pub(crate) fn radio_rxaddresses530_addr0_read(&self) -> MemResult<bool> {
-        todo!("read ADDR0 mwrite None write None rac None reset value false")
+        Ok(self.receive_on_ap[0])
     }
     #[doc = "ADDR0: Enable or disable reception on logical address 0.<br>"]
     pub(crate) fn radio_rxaddresses530_addr0_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write ADDR0 mwrite None write None rac None reset value false")
+        Ok(self.receive_on_ap[0] = _value)
     }
     #[doc = "ADDR1: Enable or disable reception on logical address 1.<br>"]
     pub(crate) fn radio_rxaddresses530_addr1_read(&self) -> MemResult<bool> {
-        todo!("read ADDR1 mwrite None write None rac None reset value false")
+        Ok(self.receive_on_ap[1])
     }
     #[doc = "ADDR1: Enable or disable reception on logical address 1.<br>"]
     pub(crate) fn radio_rxaddresses530_addr1_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write ADDR1 mwrite None write None rac None reset value false")
+        Ok(self.receive_on_ap[1] = _value)
     }
     #[doc = "ADDR2: Enable or disable reception on logical address 2.<br>"]
     pub(crate) fn radio_rxaddresses530_addr2_read(&self) -> MemResult<bool> {
-        todo!("read ADDR2 mwrite None write None rac None reset value false")
+        Ok(self.receive_on_ap[2])
     }
     #[doc = "ADDR2: Enable or disable reception on logical address 2.<br>"]
     pub(crate) fn radio_rxaddresses530_addr2_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write ADDR2 mwrite None write None rac None reset value false")
+        Ok(self.receive_on_ap[2] = _value)
     }
     #[doc = "ADDR3: Enable or disable reception on logical address 3.<br>"]
     pub(crate) fn radio_rxaddresses530_addr3_read(&self) -> MemResult<bool> {
-        todo!("read ADDR3 mwrite None write None rac None reset value false")
+        Ok(self.receive_on_ap[3])
     }
     #[doc = "ADDR3: Enable or disable reception on logical address 3.<br>"]
     pub(crate) fn radio_rxaddresses530_addr3_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write ADDR3 mwrite None write None rac None reset value false")
+        Ok(self.receive_on_ap[3] = _value)
     }
     #[doc = "ADDR4: Enable or disable reception on logical address 4.<br>"]
     pub(crate) fn radio_rxaddresses530_addr4_read(&self) -> MemResult<bool> {
-        todo!("read ADDR4 mwrite None write None rac None reset value false")
+        Ok(self.receive_on_ap[4])
     }
     #[doc = "ADDR4: Enable or disable reception on logical address 4.<br>"]
     pub(crate) fn radio_rxaddresses530_addr4_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write ADDR4 mwrite None write None rac None reset value false")
+        Ok(self.receive_on_ap[4] = _value)
     }
     #[doc = "ADDR5: Enable or disable reception on logical address 5.<br>"]
     pub(crate) fn radio_rxaddresses530_addr5_read(&self) -> MemResult<bool> {
-        todo!("read ADDR5 mwrite None write None rac None reset value false")
+        Ok(self.receive_on_ap[5])
     }
     #[doc = "ADDR5: Enable or disable reception on logical address 5.<br>"]
     pub(crate) fn radio_rxaddresses530_addr5_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write ADDR5 mwrite None write None rac None reset value false")
+        Ok(self.receive_on_ap[5] = _value)
     }
     #[doc = "ADDR6: Enable or disable reception on logical address 6.<br>"]
     pub(crate) fn radio_rxaddresses530_addr6_read(&self) -> MemResult<bool> {
-        todo!("read ADDR6 mwrite None write None rac None reset value false")
+        Ok(self.receive_on_ap[6])
     }
     #[doc = "ADDR6: Enable or disable reception on logical address 6.<br>"]
     pub(crate) fn radio_rxaddresses530_addr6_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write ADDR6 mwrite None write None rac None reset value false")
+        Ok(self.receive_on_ap[6] = _value)
     }
     #[doc = "ADDR7: Enable or disable reception on logical address 7.<br>"]
     pub(crate) fn radio_rxaddresses530_addr7_read(&self) -> MemResult<bool> {
-        todo!("read ADDR7 mwrite None write None rac None reset value false")
+        Ok(self.receive_on_ap[7])
     }
     #[doc = "ADDR7: Enable or disable reception on logical address 7.<br>"]
     pub(crate) fn radio_rxaddresses530_addr7_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write ADDR7 mwrite None write None rac None reset value false")
+        Ok(self.receive_on_ap[7] = _value)
     }
     #[doc = "LEN: CRC length in number of bytes.<br>"]
     pub(crate) fn radio_crccnf534_len_read(
@@ -1080,179 +1082,179 @@ impl Radio {
     }
     #[doc = "ENA0: Enable or disable device address matching using device address 0<br>"]
     pub(crate) fn radio_dacnf640_ena0_read(&self) -> MemResult<bool> {
-        todo!("read ENA0 mwrite None write None rac None reset value false")
+        Ok(self.address_prefix_on[0])
     }
     #[doc = "ENA0: Enable or disable device address matching using device address 0<br>"]
     pub(crate) fn radio_dacnf640_ena0_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write ENA0 mwrite None write None rac None reset value false")
+        Ok(self.address_prefix_on[0] = _value)
     }
     #[doc = "ENA1: Enable or disable device address matching using device address 1<br>"]
     pub(crate) fn radio_dacnf640_ena1_read(&self) -> MemResult<bool> {
-        todo!("read ENA1 mwrite None write None rac None reset value false")
+        Ok(self.address_prefix_on[1])
     }
     #[doc = "ENA1: Enable or disable device address matching using device address 1<br>"]
     pub(crate) fn radio_dacnf640_ena1_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write ENA1 mwrite None write None rac None reset value false")
+        Ok(self.address_prefix_on[1] = _value)
     }
     #[doc = "ENA2: Enable or disable device address matching using device address 2<br>"]
     pub(crate) fn radio_dacnf640_ena2_read(&self) -> MemResult<bool> {
-        todo!("read ENA2 mwrite None write None rac None reset value false")
+        Ok(self.address_prefix_on[2])
     }
     #[doc = "ENA2: Enable or disable device address matching using device address 2<br>"]
     pub(crate) fn radio_dacnf640_ena2_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write ENA2 mwrite None write None rac None reset value false")
+        Ok(self.address_prefix_on[2] = _value)
     }
     #[doc = "ENA3: Enable or disable device address matching using device address 3<br>"]
     pub(crate) fn radio_dacnf640_ena3_read(&self) -> MemResult<bool> {
-        todo!("read ENA3 mwrite None write None rac None reset value false")
+        Ok(self.address_prefix_on[3])
     }
     #[doc = "ENA3: Enable or disable device address matching using device address 3<br>"]
     pub(crate) fn radio_dacnf640_ena3_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write ENA3 mwrite None write None rac None reset value false")
+        Ok(self.address_prefix_on[3] = _value)
     }
     #[doc = "ENA4: Enable or disable device address matching using device address 4<br>"]
     pub(crate) fn radio_dacnf640_ena4_read(&self) -> MemResult<bool> {
-        todo!("read ENA4 mwrite None write None rac None reset value false")
+        Ok(self.address_prefix_on[4])
     }
     #[doc = "ENA4: Enable or disable device address matching using device address 4<br>"]
     pub(crate) fn radio_dacnf640_ena4_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write ENA4 mwrite None write None rac None reset value false")
+        Ok(self.address_prefix_on[4] = _value)
     }
     #[doc = "ENA5: Enable or disable device address matching using device address 5<br>"]
     pub(crate) fn radio_dacnf640_ena5_read(&self) -> MemResult<bool> {
-        todo!("read ENA5 mwrite None write None rac None reset value false")
+        Ok(self.address_prefix_on[5])
     }
     #[doc = "ENA5: Enable or disable device address matching using device address 5<br>"]
     pub(crate) fn radio_dacnf640_ena5_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write ENA5 mwrite None write None rac None reset value false")
+        Ok(self.address_prefix_on[5] = _value)
     }
     #[doc = "ENA6: Enable or disable device address matching using device address 6<br>"]
     pub(crate) fn radio_dacnf640_ena6_read(&self) -> MemResult<bool> {
-        todo!("read ENA6 mwrite None write None rac None reset value false")
+        Ok(self.address_prefix_on[6])
     }
     #[doc = "ENA6: Enable or disable device address matching using device address 6<br>"]
     pub(crate) fn radio_dacnf640_ena6_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write ENA6 mwrite None write None rac None reset value false")
+        Ok(self.address_prefix_on[6] = _value)
     }
     #[doc = "ENA7: Enable or disable device address matching using device address 7<br>"]
     pub(crate) fn radio_dacnf640_ena7_read(&self) -> MemResult<bool> {
-        todo!("read ENA7 mwrite None write None rac None reset value false")
+        Ok(self.address_prefix_on[7])
     }
     #[doc = "ENA7: Enable or disable device address matching using device address 7<br>"]
     pub(crate) fn radio_dacnf640_ena7_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write ENA7 mwrite None write None rac None reset value false")
+        Ok(self.address_prefix_on[7] = _value)
     }
     #[doc = "TXADD0: TxAdd for device address 0<br>"]
     pub(crate) fn radio_dacnf640_txadd0_read(&self) -> MemResult<bool> {
-        todo!("read TXADD0 mwrite None write None rac None reset value false")
+        Ok(self.tx_on_ap[0])
     }
     #[doc = "TXADD0: TxAdd for device address 0<br>"]
     pub(crate) fn radio_dacnf640_txadd0_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write TXADD0 mwrite None write None rac None reset value false")
+        Ok(self.tx_on_ap[0] = _value)
     }
     #[doc = "TXADD1: TxAdd for device address 1<br>"]
     pub(crate) fn radio_dacnf640_txadd1_read(&self) -> MemResult<bool> {
-        todo!("read TXADD1 mwrite None write None rac None reset value false")
+        Ok(self.tx_on_ap[1])
     }
     #[doc = "TXADD1: TxAdd for device address 1<br>"]
     pub(crate) fn radio_dacnf640_txadd1_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write TXADD1 mwrite None write None rac None reset value false")
+        Ok(self.tx_on_ap[1] = _value)
     }
     #[doc = "TXADD2: TxAdd for device address 2<br>"]
     pub(crate) fn radio_dacnf640_txadd2_read(&self) -> MemResult<bool> {
-        todo!("read TXADD2 mwrite None write None rac None reset value false")
+        Ok(self.tx_on_ap[2])
     }
     #[doc = "TXADD2: TxAdd for device address 2<br>"]
     pub(crate) fn radio_dacnf640_txadd2_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write TXADD2 mwrite None write None rac None reset value false")
+        Ok(self.tx_on_ap[2] = _value)
     }
     #[doc = "TXADD3: TxAdd for device address 3<br>"]
     pub(crate) fn radio_dacnf640_txadd3_read(&self) -> MemResult<bool> {
-        todo!("read TXADD3 mwrite None write None rac None reset value false")
+        Ok(self.tx_on_ap[3])
     }
     #[doc = "TXADD3: TxAdd for device address 3<br>"]
     pub(crate) fn radio_dacnf640_txadd3_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write TXADD3 mwrite None write None rac None reset value false")
+        Ok(self.tx_on_ap[3] = _value)
     }
     #[doc = "TXADD4: TxAdd for device address 4<br>"]
     pub(crate) fn radio_dacnf640_txadd4_read(&self) -> MemResult<bool> {
-        todo!("read TXADD4 mwrite None write None rac None reset value false")
+        Ok(self.tx_on_ap[4])
     }
     #[doc = "TXADD4: TxAdd for device address 4<br>"]
     pub(crate) fn radio_dacnf640_txadd4_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write TXADD4 mwrite None write None rac None reset value false")
+        Ok(self.tx_on_ap[4] = _value)
     }
     #[doc = "TXADD5: TxAdd for device address 5<br>"]
     pub(crate) fn radio_dacnf640_txadd5_read(&self) -> MemResult<bool> {
-        todo!("read TXADD5 mwrite None write None rac None reset value false")
+        Ok(self.tx_on_ap[5])
     }
     #[doc = "TXADD5: TxAdd for device address 5<br>"]
     pub(crate) fn radio_dacnf640_txadd5_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write TXADD5 mwrite None write None rac None reset value false")
+        Ok(self.tx_on_ap[5] = _value)
     }
     #[doc = "TXADD6: TxAdd for device address 6<br>"]
     pub(crate) fn radio_dacnf640_txadd6_read(&self) -> MemResult<bool> {
-        todo!("read TXADD6 mwrite None write None rac None reset value false")
+        Ok(self.tx_on_ap[6])
     }
     #[doc = "TXADD6: TxAdd for device address 6<br>"]
     pub(crate) fn radio_dacnf640_txadd6_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write TXADD6 mwrite None write None rac None reset value false")
+        Ok(self.tx_on_ap[6] = _value)
     }
     #[doc = "TXADD7: TxAdd for device address 7<br>"]
     pub(crate) fn radio_dacnf640_txadd7_read(&self) -> MemResult<bool> {
-        todo!("read TXADD7 mwrite None write None rac None reset value false")
+        Ok(self.tx_on_ap[7])
     }
     #[doc = "TXADD7: TxAdd for device address 7<br>"]
     pub(crate) fn radio_dacnf640_txadd7_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write TXADD7 mwrite None write None rac None reset value false")
+        Ok(self.tx_on_ap[7] = _value)
     }
     #[doc = "RU: Radio ramp-up time<br>"]
     pub(crate) fn radio_modecnf0650_ru_read(&self) -> MemResult<bool> {

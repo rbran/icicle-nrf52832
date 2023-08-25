@@ -2,8 +2,7 @@ use icicle_vm::cpu::mem::MemResult;
 #[derive(Default)]
 #[doc = "WDT: Watchdog Timer<br><br>Instances:<br>0x40010000: WDT<br>"]
 pub struct Wdt {
-    #[doc = "TODO: implement things here"]
-    _todo: (),
+    pub on: bool,
 }
 impl Wdt {
     pub(crate) fn page_to_index(page: u64) -> usize {
@@ -54,9 +53,7 @@ impl Wdt {
     }
     #[doc = "RUNSTATUS: Indicates whether or not the watchdog is running<br>"]
     pub(crate) fn wdt_runstatus400_runstatus_read(&self) -> MemResult<bool> {
-        todo!(
-            "read RUNSTATUS mwrite None write None rac None reset value false"
-        )
+        Ok(self.on)
     }
     #[doc = "RR0: Request status for RR\\[0\\] register<br>"]
     pub(crate) fn wdt_reqstatus404_rr0_read(&self) -> MemResult<bool> {

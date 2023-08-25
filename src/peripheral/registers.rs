@@ -9605,7 +9605,7 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.gpiote.gpiote_tasks_outn0_write(
+        self.p0.gpiote_tasks_outn0_write(
             _reg_array,
             u32::from_ne_bytes(_value.try_into().unwrap()),
         )
@@ -9621,7 +9621,7 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.gpiote.gpiote_tasks_setn30_write(
+        self.p0.gpiote_tasks_setn30_write(
             _reg_array,
             u32::from_ne_bytes(_value.try_into().unwrap()),
         )
@@ -9637,7 +9637,7 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.gpiote.gpiote_tasks_clrn60_write(
+        self.p0.gpiote_tasks_clrn60_write(
             _reg_array,
             u32::from_ne_bytes(_value.try_into().unwrap()),
         )
@@ -9648,7 +9648,7 @@ impl super::Peripherals {
         &mut self,
         _reg_array: usize,
     ) -> MemResult<u32> {
-        self.gpiote.gpiote_events_inn100_read(_reg_array)
+        self.p0.gpiote_events_inn100_read(_reg_array)
     }
     #[doc = "Write gpiote_events_inn100 from [crate::peripheral::gpiote::Gpiote]"]
     #[inline]
@@ -9661,7 +9661,7 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.gpiote.gpiote_events_inn100_write(
+        self.p0.gpiote_events_inn100_write(
             _reg_array,
             u32::from_ne_bytes(_value.try_into().unwrap()),
         )
@@ -9669,7 +9669,7 @@ impl super::Peripherals {
     #[doc = "Read gpiote_events_port17c from [crate::peripheral::gpiote::Gpiote]"]
     #[inline]
     pub(crate) fn gpiote_events_port17c_read(&mut self) -> MemResult<u32> {
-        self.gpiote.gpiote_events_port17c_read()
+        self.p0.gpiote_events_port17c_read()
     }
     #[doc = "Write gpiote_events_port17c from [crate::peripheral::gpiote::Gpiote]"]
     #[inline]
@@ -9681,7 +9681,7 @@ impl super::Peripherals {
         if _start != 0 || _value.len() != 4 {
             return Err(MemError::WriteViolation);
         }
-        self.gpiote.gpiote_events_port17c_write(u32::from_ne_bytes(
+        self.p0.gpiote_events_port17c_write(u32::from_ne_bytes(
             _value.try_into().unwrap(),
         ))
     }
@@ -9689,16 +9689,15 @@ impl super::Peripherals {
     #[inline]
     pub(crate) fn gpiote_intenset304_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.gpiote.gpiote_intenset304_in0_read()?);
-        _value |= u32::from(self.gpiote.gpiote_intenset304_in1_read()?) << 1u32;
-        _value |= u32::from(self.gpiote.gpiote_intenset304_in2_read()?) << 2u32;
-        _value |= u32::from(self.gpiote.gpiote_intenset304_in3_read()?) << 3u32;
-        _value |= u32::from(self.gpiote.gpiote_intenset304_in4_read()?) << 4u32;
-        _value |= u32::from(self.gpiote.gpiote_intenset304_in5_read()?) << 5u32;
-        _value |= u32::from(self.gpiote.gpiote_intenset304_in6_read()?) << 6u32;
-        _value |= u32::from(self.gpiote.gpiote_intenset304_in7_read()?) << 7u32;
-        _value |=
-            u32::from(self.gpiote.gpiote_intenset304_port_read()?) << 31u32;
+        _value |= u32::from(self.p0.gpiote_intenset304_in0_read()?);
+        _value |= u32::from(self.p0.gpiote_intenset304_in1_read()?) << 1u32;
+        _value |= u32::from(self.p0.gpiote_intenset304_in2_read()?) << 2u32;
+        _value |= u32::from(self.p0.gpiote_intenset304_in3_read()?) << 3u32;
+        _value |= u32::from(self.p0.gpiote_intenset304_in4_read()?) << 4u32;
+        _value |= u32::from(self.p0.gpiote_intenset304_in5_read()?) << 5u32;
+        _value |= u32::from(self.p0.gpiote_intenset304_in6_read()?) << 6u32;
+        _value |= u32::from(self.p0.gpiote_intenset304_in7_read()?) << 7u32;
+        _value |= u32::from(self.p0.gpiote_intenset304_port_read()?) << 31u32;
         Ok(_value)
     }
     #[doc = "Write gpiote_intenset304 from [crate::peripheral::gpiote::Gpiote]"]
@@ -9712,7 +9711,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.gpiote.gpiote_intenset304_in0_write(
+            self.p0.gpiote_intenset304_in0_write(
                 ((_value[_i] >> 0) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -9720,7 +9719,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.gpiote.gpiote_intenset304_in1_write(
+            self.p0.gpiote_intenset304_in1_write(
                 ((_value[_i] >> 1) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -9728,7 +9727,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.gpiote.gpiote_intenset304_in2_write(
+            self.p0.gpiote_intenset304_in2_write(
                 ((_value[_i] >> 2) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -9736,7 +9735,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.gpiote.gpiote_intenset304_in3_write(
+            self.p0.gpiote_intenset304_in3_write(
                 ((_value[_i] >> 3) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -9744,7 +9743,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.gpiote.gpiote_intenset304_in4_write(
+            self.p0.gpiote_intenset304_in4_write(
                 ((_value[_i] >> 4) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -9752,7 +9751,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.gpiote.gpiote_intenset304_in5_write(
+            self.p0.gpiote_intenset304_in5_write(
                 ((_value[_i] >> 5) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -9760,7 +9759,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.gpiote.gpiote_intenset304_in6_write(
+            self.p0.gpiote_intenset304_in6_write(
                 ((_value[_i] >> 6) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -9768,7 +9767,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.gpiote.gpiote_intenset304_in7_write(
+            self.p0.gpiote_intenset304_in7_write(
                 ((_value[_i] >> 7) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -9776,7 +9775,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.gpiote.gpiote_intenset304_port_write(
+            self.p0.gpiote_intenset304_port_write(
                 ((_value[_i] >> 7) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -9788,16 +9787,15 @@ impl super::Peripherals {
     #[inline]
     pub(crate) fn gpiote_intenclr308_read(&mut self) -> MemResult<u32> {
         let mut _value = 0;
-        _value |= u32::from(self.gpiote.gpiote_intenclr308_in0_read()?);
-        _value |= u32::from(self.gpiote.gpiote_intenclr308_in1_read()?) << 1u32;
-        _value |= u32::from(self.gpiote.gpiote_intenclr308_in2_read()?) << 2u32;
-        _value |= u32::from(self.gpiote.gpiote_intenclr308_in3_read()?) << 3u32;
-        _value |= u32::from(self.gpiote.gpiote_intenclr308_in4_read()?) << 4u32;
-        _value |= u32::from(self.gpiote.gpiote_intenclr308_in5_read()?) << 5u32;
-        _value |= u32::from(self.gpiote.gpiote_intenclr308_in6_read()?) << 6u32;
-        _value |= u32::from(self.gpiote.gpiote_intenclr308_in7_read()?) << 7u32;
-        _value |=
-            u32::from(self.gpiote.gpiote_intenclr308_port_read()?) << 31u32;
+        _value |= u32::from(self.p0.gpiote_intenclr308_in0_read()?);
+        _value |= u32::from(self.p0.gpiote_intenclr308_in1_read()?) << 1u32;
+        _value |= u32::from(self.p0.gpiote_intenclr308_in2_read()?) << 2u32;
+        _value |= u32::from(self.p0.gpiote_intenclr308_in3_read()?) << 3u32;
+        _value |= u32::from(self.p0.gpiote_intenclr308_in4_read()?) << 4u32;
+        _value |= u32::from(self.p0.gpiote_intenclr308_in5_read()?) << 5u32;
+        _value |= u32::from(self.p0.gpiote_intenclr308_in6_read()?) << 6u32;
+        _value |= u32::from(self.p0.gpiote_intenclr308_in7_read()?) << 7u32;
+        _value |= u32::from(self.p0.gpiote_intenclr308_port_read()?) << 31u32;
         Ok(_value)
     }
     #[doc = "Write gpiote_intenclr308 from [crate::peripheral::gpiote::Gpiote]"]
@@ -9811,7 +9809,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.gpiote.gpiote_intenclr308_in0_write(
+            self.p0.gpiote_intenclr308_in0_write(
                 ((_value[_i] >> 0) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -9819,7 +9817,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.gpiote.gpiote_intenclr308_in1_write(
+            self.p0.gpiote_intenclr308_in1_write(
                 ((_value[_i] >> 1) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -9827,7 +9825,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.gpiote.gpiote_intenclr308_in2_write(
+            self.p0.gpiote_intenclr308_in2_write(
                 ((_value[_i] >> 2) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -9835,7 +9833,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.gpiote.gpiote_intenclr308_in3_write(
+            self.p0.gpiote_intenclr308_in3_write(
                 ((_value[_i] >> 3) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -9843,7 +9841,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.gpiote.gpiote_intenclr308_in4_write(
+            self.p0.gpiote_intenclr308_in4_write(
                 ((_value[_i] >> 4) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -9851,7 +9849,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.gpiote.gpiote_intenclr308_in5_write(
+            self.p0.gpiote_intenclr308_in5_write(
                 ((_value[_i] >> 5) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -9859,7 +9857,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.gpiote.gpiote_intenclr308_in6_write(
+            self.p0.gpiote_intenclr308_in6_write(
                 ((_value[_i] >> 6) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -9867,7 +9865,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.gpiote.gpiote_intenclr308_in7_write(
+            self.p0.gpiote_intenclr308_in7_write(
                 ((_value[_i] >> 7) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -9875,7 +9873,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&3) {
             let _i = (3 - _start) as usize;
-            self.gpiote.gpiote_intenclr308_port_write(
+            self.p0.gpiote_intenclr308_port_write(
                 ((_value[_i] >> 7) & 1 != 0)
                     .try_into()
                     .map_err(|_| MemError::WriteViolation)?,
@@ -9891,16 +9889,15 @@ impl super::Peripherals {
     ) -> MemResult<u32> {
         let mut _value = 0;
         _value |= u32::from(u8::from(
-            self.gpiote.gpiote_confign510_mode_read(_reg_array)?,
+            self.p0.gpiote_confign510_mode_read(_reg_array)?,
         ));
         _value |=
-            u32::from(self.gpiote.gpiote_confign510_psel_read(_reg_array)?)
-                << 8u32;
+            u32::from(self.p0.gpiote_confign510_psel_read(_reg_array)?) << 8u32;
         _value |= u32::from(u8::from(
-            self.gpiote.gpiote_confign510_polarity_read(_reg_array)?,
+            self.p0.gpiote_confign510_polarity_read(_reg_array)?,
         )) << 16u32;
         _value |=
-            u32::from(self.gpiote.gpiote_confign510_outinit_read(_reg_array)?)
+            u32::from(self.p0.gpiote_confign510_outinit_read(_reg_array)?)
                 << 20u32;
         Ok(_value)
     }
@@ -9916,7 +9913,7 @@ impl super::Peripherals {
         let _end = _start + _value.len() as u64;
         if (_start.._end).contains(&0) {
             let _i = (0 - _start) as usize;
-            self.gpiote.gpiote_confign510_mode_write(
+            self.p0.gpiote_confign510_mode_write(
                 _reg_array,
                 ((_value[_i] >> 0) & 3u8)
                     .try_into()
@@ -9925,7 +9922,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&1) {
             let _i = (1 - _start) as usize;
-            self.gpiote.gpiote_confign510_psel_write(
+            self.p0.gpiote_confign510_psel_write(
                 _reg_array,
                 ((_value[_i] >> 0) & 31u8)
                     .try_into()
@@ -9934,7 +9931,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.gpiote.gpiote_confign510_polarity_write(
+            self.p0.gpiote_confign510_polarity_write(
                 _reg_array,
                 ((_value[_i] >> 0) & 3u8)
                     .try_into()
@@ -9943,7 +9940,7 @@ impl super::Peripherals {
         }
         if (_start.._end).contains(&2) {
             let _i = (2 - _start) as usize;
-            self.gpiote.gpiote_confign510_outinit_write(
+            self.p0.gpiote_confign510_outinit_write(
                 _reg_array,
                 ((_value[_i] >> 4) & 1 != 0)
                     .try_into()
