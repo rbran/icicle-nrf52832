@@ -20,6 +20,7 @@ pub struct Pin {
 
 /// internals here
 impl P0 {
+    /// read the pin input state, returning High (true) or Low (false)
     pub fn read_input(&self, pin: usize) -> bool {
         todo!(
             "Read input pin {pin} in {} mode",
@@ -29,6 +30,72 @@ impl P0 {
                 "input"
             }
         );
+    }
+
+    /// pull mode
+    pub fn get_pull(&self, pin: usize) -> PinPull {
+        self.pins[pin].pull
+    }
+
+    /// set pull mode
+    pub fn set_pull(&mut self, pin: usize, pull: PinPull) {
+        self.pins[pin].pull = pull
+    }
+
+    /// drive mode
+    pub fn get_drive(&self, pin: usize) -> PinDrive {
+        self.pins[pin].drive
+    }
+
+    /// set drive mode
+    pub fn set_drive(&mut self, pin: usize, drive: PinDrive) {
+        self.pins[pin].drive = drive
+    }
+
+    /// sense mode
+    pub fn get_sense(&self, pin: usize) -> PinSense {
+        self.pins[pin].sense
+    }
+
+    /// set input_buffer on/off
+    pub fn set_input_buffer(&mut self, pin: usize, on: bool) {
+        self.pins[pin].input_buffer = on
+    }
+
+    /// input_buffer on/off
+    pub fn get_input_buffer(&self, pin: usize) -> bool {
+        self.pins[pin].input_buffer
+    }
+
+    /// set sense mode
+    pub fn set_sense(&mut self, pin: usize, sense: PinSense) {
+        self.pins[pin].sense = sense
+    }
+
+
+    /// if the pin is output (true) or input (false) mode
+    pub fn get_output_mode(&self, pin: usize) -> bool {
+        self.pins[pin].output_mode
+    }
+
+    /// set the pin output (true) or input (false) mode
+    pub fn set_output_mode(&mut self, pin: usize, mode: bool) {
+        self.pins[pin].output_mode = mode;
+    }
+
+    /// get the output pin state, returning High (true) or Low (false)
+    /// NOTE not the same as [P0::read_input], this don't read the input value
+    /// just read if the output is configured to output High/Low.
+    pub fn get_output(&self, pin: usize) -> bool {
+        self.pins[pin].output_high
+    }
+
+    /// set the output pin state, returning High (true) or Low (false)
+    pub fn set_output(&mut self, pin: usize, state: bool) {
+        //if !self.pins[pin].output_mode {
+        //    todo!("change output mode of {pin} while in input mode");
+        //}
+        self.pins[pin].output_high = state;
     }
 }
 
@@ -42,961 +109,961 @@ impl P0 {
     }
     #[doc = "PIN0: Pin 0<br>"]
     pub(crate) fn p0_out504_pin0_read(&self) -> MemResult<bool> {
-        Ok(self.pins[0].output_high)
+        Ok(self.get_output(0))
     }
     #[doc = "PIN0: Pin 0<br>"]
     pub fn p0_out504_pin0_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[0].output_high = _value)
+        Ok(self.set_output(0, _value))
     }
     #[doc = "PIN1: Pin 1<br>"]
     pub(crate) fn p0_out504_pin1_read(&self) -> MemResult<bool> {
-        Ok(self.pins[1].output_high)
+        Ok(self.get_output(1))
     }
     #[doc = "PIN1: Pin 1<br>"]
     pub fn p0_out504_pin1_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[1].output_high = _value)
+        Ok(self.set_output(1, _value))
     }
     #[doc = "PIN2: Pin 2<br>"]
     pub(crate) fn p0_out504_pin2_read(&self) -> MemResult<bool> {
-        Ok(self.pins[2].output_high)
+        Ok(self.get_output(2))
     }
     #[doc = "PIN2: Pin 2<br>"]
     pub fn p0_out504_pin2_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[2].output_high = _value)
+        Ok(self.set_output(2, _value))
     }
     #[doc = "PIN3: Pin 3<br>"]
     pub(crate) fn p0_out504_pin3_read(&self) -> MemResult<bool> {
-        Ok(self.pins[3].output_high)
+        Ok(self.get_output(3))
     }
     #[doc = "PIN3: Pin 3<br>"]
     pub fn p0_out504_pin3_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[3].output_high = _value)
+        Ok(self.set_output(3, _value))
     }
     #[doc = "PIN4: Pin 4<br>"]
     pub(crate) fn p0_out504_pin4_read(&self) -> MemResult<bool> {
-        Ok(self.pins[4].output_high)
+        Ok(self.get_output(4))
     }
     #[doc = "PIN4: Pin 4<br>"]
     pub fn p0_out504_pin4_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[4].output_high = _value)
+        Ok(self.set_output(4, _value))
     }
     #[doc = "PIN5: Pin 5<br>"]
     pub(crate) fn p0_out504_pin5_read(&self) -> MemResult<bool> {
-        Ok(self.pins[5].output_high)
+        Ok(self.get_output(5))
     }
     #[doc = "PIN5: Pin 5<br>"]
     pub fn p0_out504_pin5_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[5].output_high = _value)
+        Ok(self.set_output(5, _value))
     }
     #[doc = "PIN6: Pin 6<br>"]
     pub(crate) fn p0_out504_pin6_read(&self) -> MemResult<bool> {
-        Ok(self.pins[6].output_high)
+        Ok(self.get_output(6))
     }
     #[doc = "PIN6: Pin 6<br>"]
     pub fn p0_out504_pin6_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[6].output_high = _value)
+        Ok(self.set_output(6, _value))
     }
     #[doc = "PIN7: Pin 7<br>"]
     pub(crate) fn p0_out504_pin7_read(&self) -> MemResult<bool> {
-        Ok(self.pins[7].output_high)
+        Ok(self.get_output(7))
     }
     #[doc = "PIN7: Pin 7<br>"]
     pub fn p0_out504_pin7_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[7].output_high = _value)
+        Ok(self.set_output(7, _value))
     }
     #[doc = "PIN8: Pin 8<br>"]
     pub(crate) fn p0_out504_pin8_read(&self) -> MemResult<bool> {
-        Ok(self.pins[8].output_high)
+        Ok(self.get_output(8))
     }
     #[doc = "PIN8: Pin 8<br>"]
     pub fn p0_out504_pin8_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[8].output_high = _value)
+        Ok(self.set_output(8, _value))
     }
     #[doc = "PIN9: Pin 9<br>"]
     pub(crate) fn p0_out504_pin9_read(&self) -> MemResult<bool> {
-        Ok(self.pins[9].output_high)
+        Ok(self.get_output(9))
     }
     #[doc = "PIN9: Pin 9<br>"]
     pub fn p0_out504_pin9_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[9].output_high = _value)
+        Ok(self.set_output(9, _value))
     }
     #[doc = "PIN10: Pin 10<br>"]
     pub(crate) fn p0_out504_pin10_read(&self) -> MemResult<bool> {
-        Ok(self.pins[10].output_high)
+        Ok(self.get_output(10))
     }
     #[doc = "PIN10: Pin 10<br>"]
     pub fn p0_out504_pin10_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[10].output_high = _value)
+        Ok(self.set_output(10, _value))
     }
     #[doc = "PIN11: Pin 11<br>"]
     pub(crate) fn p0_out504_pin11_read(&self) -> MemResult<bool> {
-        Ok(self.pins[11].output_high)
+        Ok(self.get_output(11))
     }
     #[doc = "PIN11: Pin 11<br>"]
     pub fn p0_out504_pin11_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[11].output_high = _value)
+        Ok(self.set_output(11, _value))
     }
     #[doc = "PIN12: Pin 12<br>"]
     pub(crate) fn p0_out504_pin12_read(&self) -> MemResult<bool> {
-        Ok(self.pins[12].output_high)
+        Ok(self.get_output(12))
     }
     #[doc = "PIN12: Pin 12<br>"]
     pub fn p0_out504_pin12_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[12].output_high = _value)
+        Ok(self.set_output(12, _value))
     }
     #[doc = "PIN13: Pin 13<br>"]
     pub(crate) fn p0_out504_pin13_read(&self) -> MemResult<bool> {
-        Ok(self.pins[13].output_high)
+        Ok(self.get_output(13))
     }
     #[doc = "PIN13: Pin 13<br>"]
     pub fn p0_out504_pin13_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[13].output_high = _value)
+        Ok(self.set_output(13, _value))
     }
     #[doc = "PIN14: Pin 14<br>"]
     pub(crate) fn p0_out504_pin14_read(&self) -> MemResult<bool> {
-        Ok(self.pins[14].output_high)
+        Ok(self.get_output(14))
     }
     #[doc = "PIN14: Pin 14<br>"]
     pub fn p0_out504_pin14_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[14].output_high = _value)
+        Ok(self.set_output(14, _value))
     }
     #[doc = "PIN15: Pin 15<br>"]
     pub(crate) fn p0_out504_pin15_read(&self) -> MemResult<bool> {
-        Ok(self.pins[15].output_high)
+        Ok(self.get_output(15))
     }
     #[doc = "PIN15: Pin 15<br>"]
     pub fn p0_out504_pin15_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[15].output_high = _value)
+        Ok(self.set_output(15, _value))
     }
     #[doc = "PIN16: Pin 16<br>"]
     pub(crate) fn p0_out504_pin16_read(&self) -> MemResult<bool> {
-        Ok(self.pins[16].output_high)
+        Ok(self.get_output(16))
     }
     #[doc = "PIN16: Pin 16<br>"]
     pub fn p0_out504_pin16_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[16].output_high = _value)
+        Ok(self.set_output(16, _value))
     }
     #[doc = "PIN17: Pin 17<br>"]
     pub(crate) fn p0_out504_pin17_read(&self) -> MemResult<bool> {
-        Ok(self.pins[17].output_high)
+        Ok(self.get_output(17))
     }
     #[doc = "PIN17: Pin 17<br>"]
     pub fn p0_out504_pin17_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[17].output_high = _value)
+        Ok(self.set_output(17, _value))
     }
     #[doc = "PIN18: Pin 18<br>"]
     pub(crate) fn p0_out504_pin18_read(&self) -> MemResult<bool> {
-        Ok(self.pins[18].output_high)
+        Ok(self.get_output(18))
     }
     #[doc = "PIN18: Pin 18<br>"]
     pub fn p0_out504_pin18_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[18].output_high = _value)
+        Ok(self.set_output(18, _value))
     }
     #[doc = "PIN19: Pin 19<br>"]
     pub(crate) fn p0_out504_pin19_read(&self) -> MemResult<bool> {
-        Ok(self.pins[19].output_high)
+        Ok(self.get_output(19))
     }
     #[doc = "PIN19: Pin 19<br>"]
     pub fn p0_out504_pin19_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[19].output_high = _value)
+        Ok(self.set_output(19, _value))
     }
     #[doc = "PIN20: Pin 20<br>"]
     pub(crate) fn p0_out504_pin20_read(&self) -> MemResult<bool> {
-        Ok(self.pins[20].output_high)
+        Ok(self.get_output(20))
     }
     #[doc = "PIN20: Pin 20<br>"]
     pub fn p0_out504_pin20_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[20].output_high = _value)
+        Ok(self.set_output(20, _value))
     }
     #[doc = "PIN21: Pin 21<br>"]
     pub(crate) fn p0_out504_pin21_read(&self) -> MemResult<bool> {
-        Ok(self.pins[21].output_high)
+        Ok(self.get_output(21))
     }
     #[doc = "PIN21: Pin 21<br>"]
     pub fn p0_out504_pin21_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[21].output_high = _value)
+        Ok(self.set_output(21, _value))
     }
     #[doc = "PIN22: Pin 22<br>"]
     pub(crate) fn p0_out504_pin22_read(&self) -> MemResult<bool> {
-        Ok(self.pins[22].output_high)
+        Ok(self.get_output(22))
     }
     #[doc = "PIN22: Pin 22<br>"]
     pub fn p0_out504_pin22_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[22].output_high = _value)
+        Ok(self.set_output(22, _value))
     }
     #[doc = "PIN23: Pin 23<br>"]
     pub(crate) fn p0_out504_pin23_read(&self) -> MemResult<bool> {
-        Ok(self.pins[23].output_high)
+        Ok(self.get_output(23))
     }
     #[doc = "PIN23: Pin 23<br>"]
     pub fn p0_out504_pin23_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[23].output_high = _value)
+        Ok(self.set_output(23, _value))
     }
     #[doc = "PIN24: Pin 24<br>"]
     pub(crate) fn p0_out504_pin24_read(&self) -> MemResult<bool> {
-        Ok(self.pins[24].output_high)
+        Ok(self.get_output(24))
     }
     #[doc = "PIN24: Pin 24<br>"]
     pub fn p0_out504_pin24_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[24].output_high = _value)
+        Ok(self.set_output(24, _value))
     }
     #[doc = "PIN25: Pin 25<br>"]
     pub(crate) fn p0_out504_pin25_read(&self) -> MemResult<bool> {
-        Ok(self.pins[25].output_high)
+        Ok(self.get_output(25))
     }
     #[doc = "PIN25: Pin 25<br>"]
     pub fn p0_out504_pin25_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[25].output_high = _value)
+        Ok(self.set_output(25, _value))
     }
     #[doc = "PIN26: Pin 26<br>"]
     pub(crate) fn p0_out504_pin26_read(&self) -> MemResult<bool> {
-        Ok(self.pins[26].output_high)
+        Ok(self.get_output(26))
     }
     #[doc = "PIN26: Pin 26<br>"]
     pub fn p0_out504_pin26_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[26].output_high = _value)
+        Ok(self.set_output(26, _value))
     }
     #[doc = "PIN27: Pin 27<br>"]
     pub(crate) fn p0_out504_pin27_read(&self) -> MemResult<bool> {
-        Ok(self.pins[27].output_high)
+        Ok(self.get_output(27))
     }
     #[doc = "PIN27: Pin 27<br>"]
     pub fn p0_out504_pin27_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[27].output_high = _value)
+        Ok(self.set_output(27, _value))
     }
     #[doc = "PIN28: Pin 28<br>"]
     pub(crate) fn p0_out504_pin28_read(&self) -> MemResult<bool> {
-        Ok(self.pins[28].output_high)
+        Ok(self.get_output(28))
     }
     #[doc = "PIN28: Pin 28<br>"]
     pub fn p0_out504_pin28_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[28].output_high = _value)
+        Ok(self.set_output(28, _value))
     }
     #[doc = "PIN29: Pin 29<br>"]
     pub(crate) fn p0_out504_pin29_read(&self) -> MemResult<bool> {
-        Ok(self.pins[29].output_high)
+        Ok(self.get_output(29))
     }
     #[doc = "PIN29: Pin 29<br>"]
     pub fn p0_out504_pin29_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[29].output_high = _value)
+        Ok(self.set_output(29, _value))
     }
     #[doc = "PIN30: Pin 30<br>"]
     pub(crate) fn p0_out504_pin30_read(&self) -> MemResult<bool> {
-        Ok(self.pins[30].output_high)
+        Ok(self.get_output(30))
     }
     #[doc = "PIN30: Pin 30<br>"]
     pub fn p0_out504_pin30_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[30].output_high = _value)
+        Ok(self.set_output(30, _value))
     }
     #[doc = "PIN31: Pin 31<br>"]
     pub(crate) fn p0_out504_pin31_read(&self) -> MemResult<bool> {
-        Ok(self.pins[31].output_high)
+        Ok(self.get_output(31))
     }
     #[doc = "PIN31: Pin 31<br>"]
     pub fn p0_out504_pin31_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[31].output_high = _value)
+        Ok(self.set_output(31, _value))
     }
     #[doc = "PIN0: Pin 0<br>"]
     pub(crate) fn p0_outset508_pin0_read(&self) -> MemResult<bool> {
-        Ok(self.pins[0].output_high)
+        Ok(self.get_output(0))
     }
     #[doc = "PIN0: Pin 0<br>"]
     pub fn p0_outset508_pin0_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[0].output_high = true;
+            self.set_output(0, true);
         }
         Ok(())
     }
     #[doc = "PIN1: Pin 1<br>"]
     pub(crate) fn p0_outset508_pin1_read(&self) -> MemResult<bool> {
-        Ok(self.pins[1].output_high)
+        Ok(self.get_output(1))
     }
     #[doc = "PIN1: Pin 1<br>"]
     pub fn p0_outset508_pin1_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[1].output_high = true;
+            self.set_output(1, true);
         }
         Ok(())
     }
     #[doc = "PIN2: Pin 2<br>"]
     pub(crate) fn p0_outset508_pin2_read(&self) -> MemResult<bool> {
-        Ok(self.pins[2].output_high)
+        Ok(self.get_output(2))
     }
     #[doc = "PIN2: Pin 2<br>"]
     pub fn p0_outset508_pin2_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[2].output_high = true;
+            self.set_output(2, true);
         }
         Ok(())
     }
     #[doc = "PIN3: Pin 3<br>"]
     pub(crate) fn p0_outset508_pin3_read(&self) -> MemResult<bool> {
-        Ok(self.pins[3].output_high)
+        Ok(self.get_output(3))
     }
     #[doc = "PIN3: Pin 3<br>"]
     pub fn p0_outset508_pin3_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[3].output_high = true;
+            self.set_output(3, true);
         }
         Ok(())
     }
     #[doc = "PIN4: Pin 4<br>"]
     pub(crate) fn p0_outset508_pin4_read(&self) -> MemResult<bool> {
-        Ok(self.pins[4].output_high)
+        Ok(self.get_output(4))
     }
     #[doc = "PIN4: Pin 4<br>"]
     pub fn p0_outset508_pin4_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[4].output_high = true;
+            self.set_output(4, true);
         }
         Ok(())
     }
     #[doc = "PIN5: Pin 5<br>"]
     pub(crate) fn p0_outset508_pin5_read(&self) -> MemResult<bool> {
-        Ok(self.pins[5].output_high)
+        Ok(self.get_output(5))
     }
     #[doc = "PIN5: Pin 5<br>"]
     pub fn p0_outset508_pin5_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[5].output_high = true;
+            self.set_output(5, true);
         }
         Ok(())
     }
     #[doc = "PIN6: Pin 6<br>"]
     pub(crate) fn p0_outset508_pin6_read(&self) -> MemResult<bool> {
-        Ok(self.pins[6].output_high)
+        Ok(self.get_output(6))
     }
     #[doc = "PIN6: Pin 6<br>"]
     pub fn p0_outset508_pin6_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[6].output_high = true;
+            self.set_output(6, true);
         }
         Ok(())
     }
     #[doc = "PIN7: Pin 7<br>"]
     pub(crate) fn p0_outset508_pin7_read(&self) -> MemResult<bool> {
-        Ok(self.pins[7].output_high)
+        Ok(self.get_output(7))
     }
     #[doc = "PIN7: Pin 7<br>"]
     pub fn p0_outset508_pin7_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[7].output_high = true;
+            self.set_output(7, true);
         }
         Ok(())
     }
     #[doc = "PIN8: Pin 8<br>"]
     pub(crate) fn p0_outset508_pin8_read(&self) -> MemResult<bool> {
-        Ok(self.pins[8].output_high)
+        Ok(self.get_output(8))
     }
     #[doc = "PIN8: Pin 8<br>"]
     pub fn p0_outset508_pin8_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[8].output_high = true;
+            self.set_output(8, true);
         }
         Ok(())
     }
     #[doc = "PIN9: Pin 9<br>"]
     pub(crate) fn p0_outset508_pin9_read(&self) -> MemResult<bool> {
-        Ok(self.pins[9].output_high)
+        Ok(self.get_output(9))
     }
     #[doc = "PIN9: Pin 9<br>"]
     pub fn p0_outset508_pin9_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[9].output_high = true;
+            self.set_output(9, true);
         }
         Ok(())
     }
     #[doc = "PIN10: Pin 10<br>"]
     pub(crate) fn p0_outset508_pin10_read(&self) -> MemResult<bool> {
-        Ok(self.pins[10].output_high)
+        Ok(self.get_output(10))
     }
     #[doc = "PIN10: Pin 10<br>"]
     pub fn p0_outset508_pin10_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[10].output_high = true;
+            self.set_output(10, true);
         }
         Ok(())
     }
     #[doc = "PIN11: Pin 11<br>"]
     pub(crate) fn p0_outset508_pin11_read(&self) -> MemResult<bool> {
-        Ok(self.pins[11].output_high)
+        Ok(self.get_output(11))
     }
     #[doc = "PIN11: Pin 11<br>"]
     pub fn p0_outset508_pin11_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[11].output_high = true;
+            self.set_output(11, true);
         }
         Ok(())
     }
     #[doc = "PIN12: Pin 12<br>"]
     pub(crate) fn p0_outset508_pin12_read(&self) -> MemResult<bool> {
-        Ok(self.pins[12].output_high)
+        Ok(self.get_output(12))
     }
     #[doc = "PIN12: Pin 12<br>"]
     pub fn p0_outset508_pin12_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[12].output_high = true;
+            self.set_output(12, true);
         }
         Ok(())
     }
     #[doc = "PIN13: Pin 13<br>"]
     pub(crate) fn p0_outset508_pin13_read(&self) -> MemResult<bool> {
-        Ok(self.pins[13].output_high)
+        Ok(self.get_output(13))
     }
     #[doc = "PIN13: Pin 13<br>"]
     pub fn p0_outset508_pin13_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[13].output_high = true;
+            self.set_output(13, true);
         }
         Ok(())
     }
     #[doc = "PIN14: Pin 14<br>"]
     pub(crate) fn p0_outset508_pin14_read(&self) -> MemResult<bool> {
-        Ok(self.pins[14].output_high)
+        Ok(self.get_output(14))
     }
     #[doc = "PIN14: Pin 14<br>"]
     pub fn p0_outset508_pin14_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[14].output_high = true;
+            self.set_output(14, true);
         }
         Ok(())
     }
     #[doc = "PIN15: Pin 15<br>"]
     pub(crate) fn p0_outset508_pin15_read(&self) -> MemResult<bool> {
-        Ok(self.pins[15].output_high)
+        Ok(self.get_output(15))
     }
     #[doc = "PIN15: Pin 15<br>"]
     pub fn p0_outset508_pin15_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[15].output_high = true;
+            self.set_output(15, true);
         }
         Ok(())
     }
     #[doc = "PIN16: Pin 16<br>"]
     pub(crate) fn p0_outset508_pin16_read(&self) -> MemResult<bool> {
-        Ok(self.pins[16].output_high)
+        Ok(self.get_output(16))
     }
     #[doc = "PIN16: Pin 16<br>"]
     pub fn p0_outset508_pin16_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[16].output_high = true;
+            self.set_output(16, true);
         }
         Ok(())
     }
     #[doc = "PIN17: Pin 17<br>"]
     pub(crate) fn p0_outset508_pin17_read(&self) -> MemResult<bool> {
-        Ok(self.pins[17].output_high)
+        Ok(self.get_output(17))
     }
     #[doc = "PIN17: Pin 17<br>"]
     pub fn p0_outset508_pin17_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[17].output_high = true;
+            self.set_output(17, true);
         }
         Ok(())
     }
     #[doc = "PIN18: Pin 18<br>"]
     pub(crate) fn p0_outset508_pin18_read(&self) -> MemResult<bool> {
-        Ok(self.pins[18].output_high)
+        Ok(self.get_output(18))
     }
     #[doc = "PIN18: Pin 18<br>"]
     pub fn p0_outset508_pin18_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[18].output_high = true;
+            self.set_output(18, true);
         }
         Ok(())
     }
     #[doc = "PIN19: Pin 19<br>"]
     pub(crate) fn p0_outset508_pin19_read(&self) -> MemResult<bool> {
-        Ok(self.pins[19].output_high)
+        Ok(self.get_output(19))
     }
     #[doc = "PIN19: Pin 19<br>"]
     pub fn p0_outset508_pin19_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[19].output_high = true;
+            self.set_output(19, true);
         }
         Ok(())
     }
     #[doc = "PIN20: Pin 20<br>"]
     pub(crate) fn p0_outset508_pin20_read(&self) -> MemResult<bool> {
-        Ok(self.pins[20].output_high)
+        Ok(self.get_output(20))
     }
     #[doc = "PIN20: Pin 20<br>"]
     pub fn p0_outset508_pin20_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[20].output_high = true;
+            self.set_output(20, true);
         }
         Ok(())
     }
     #[doc = "PIN21: Pin 21<br>"]
     pub(crate) fn p0_outset508_pin21_read(&self) -> MemResult<bool> {
-        Ok(self.pins[21].output_high)
+        Ok(self.get_output(21))
     }
     #[doc = "PIN21: Pin 21<br>"]
     pub fn p0_outset508_pin21_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[21].output_high = true;
+            self.set_output(21, true);
         }
         Ok(())
     }
     #[doc = "PIN22: Pin 22<br>"]
     pub(crate) fn p0_outset508_pin22_read(&self) -> MemResult<bool> {
-        Ok(self.pins[22].output_high)
+        Ok(self.get_output(22))
     }
     #[doc = "PIN22: Pin 22<br>"]
     pub fn p0_outset508_pin22_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[22].output_high = true;
+            self.set_output(22, true);
         }
         Ok(())
     }
     #[doc = "PIN23: Pin 23<br>"]
     pub(crate) fn p0_outset508_pin23_read(&self) -> MemResult<bool> {
-        Ok(self.pins[23].output_high)
+        Ok(self.get_output(23))
     }
     #[doc = "PIN23: Pin 23<br>"]
     pub fn p0_outset508_pin23_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[23].output_high = true;
+            self.set_output(23, true);
         }
         Ok(())
     }
     #[doc = "PIN24: Pin 24<br>"]
     pub(crate) fn p0_outset508_pin24_read(&self) -> MemResult<bool> {
-        Ok(self.pins[24].output_high)
+        Ok(self.get_output(24))
     }
     #[doc = "PIN24: Pin 24<br>"]
     pub fn p0_outset508_pin24_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[24].output_high = true;
+            self.set_output(24, true);
         }
         Ok(())
     }
     #[doc = "PIN25: Pin 25<br>"]
     pub(crate) fn p0_outset508_pin25_read(&self) -> MemResult<bool> {
-        Ok(self.pins[25].output_high)
+        Ok(self.get_output(25))
     }
     #[doc = "PIN25: Pin 25<br>"]
     pub fn p0_outset508_pin25_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[25].output_high = true;
+            self.set_output(25, true);
         }
         Ok(())
     }
     #[doc = "PIN26: Pin 26<br>"]
     pub(crate) fn p0_outset508_pin26_read(&self) -> MemResult<bool> {
-        Ok(self.pins[26].output_high)
+        Ok(self.get_output(26))
     }
     #[doc = "PIN26: Pin 26<br>"]
     pub fn p0_outset508_pin26_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[26].output_high = true;
+            self.set_output(26, true);
         }
         Ok(())
     }
     #[doc = "PIN27: Pin 27<br>"]
     pub(crate) fn p0_outset508_pin27_read(&self) -> MemResult<bool> {
-        Ok(self.pins[27].output_high)
+        Ok(self.get_output(27))
     }
     #[doc = "PIN27: Pin 27<br>"]
     pub fn p0_outset508_pin27_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[27].output_high = true;
+            self.set_output(27, true);
         }
         Ok(())
     }
     #[doc = "PIN28: Pin 28<br>"]
     pub(crate) fn p0_outset508_pin28_read(&self) -> MemResult<bool> {
-        Ok(self.pins[28].output_high)
+        Ok(self.get_output(28))
     }
     #[doc = "PIN28: Pin 28<br>"]
     pub fn p0_outset508_pin28_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[28].output_high = true;
+            self.set_output(28, true);
         }
         Ok(())
     }
     #[doc = "PIN29: Pin 29<br>"]
     pub(crate) fn p0_outset508_pin29_read(&self) -> MemResult<bool> {
-        Ok(self.pins[29].output_high)
+        Ok(self.get_output(29))
     }
     #[doc = "PIN29: Pin 29<br>"]
     pub fn p0_outset508_pin29_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[29].output_high = true;
+            self.set_output(29, true);
         }
         Ok(())
     }
     #[doc = "PIN30: Pin 30<br>"]
     pub(crate) fn p0_outset508_pin30_read(&self) -> MemResult<bool> {
-        Ok(self.pins[30].output_high)
+        Ok(self.get_output(30))
     }
     #[doc = "PIN30: Pin 30<br>"]
     pub fn p0_outset508_pin30_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[30].output_high = true;
+            self.set_output(30, true);
         }
         Ok(())
     }
     #[doc = "PIN31: Pin 31<br>"]
     pub(crate) fn p0_outset508_pin31_read(&self) -> MemResult<bool> {
-        Ok(self.pins[31].output_high)
+        Ok(self.get_output(31))
     }
     #[doc = "PIN31: Pin 31<br>"]
     pub fn p0_outset508_pin31_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[31].output_high = true;
+            self.set_output(31, true);
         }
         Ok(())
     }
     #[doc = "PIN0: Pin 0<br>"]
     pub(crate) fn p0_outclr50c_pin0_read(&self) -> MemResult<bool> {
-        Ok(self.pins[0].output_high)
+        Ok(self.get_output(0))
     }
     #[doc = "PIN0: Pin 0<br>"]
     pub fn p0_outclr50c_pin0_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[0].output_high = false;
+            self.set_output(0, false);
         }
         Ok(())
     }
     #[doc = "PIN1: Pin 1<br>"]
     pub(crate) fn p0_outclr50c_pin1_read(&self) -> MemResult<bool> {
-        Ok(self.pins[1].output_high)
+        Ok(self.get_output(1))
     }
     #[doc = "PIN1: Pin 1<br>"]
     pub fn p0_outclr50c_pin1_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[1].output_high = false;
+            self.set_output(1, false);
         }
         Ok(())
     }
     #[doc = "PIN2: Pin 2<br>"]
     pub(crate) fn p0_outclr50c_pin2_read(&self) -> MemResult<bool> {
-        Ok(self.pins[2].output_high)
+        Ok(self.get_output(2))
     }
     #[doc = "PIN2: Pin 2<br>"]
     pub fn p0_outclr50c_pin2_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[2].output_high = false;
+            self.set_output(2, false);
         }
         Ok(())
     }
     #[doc = "PIN3: Pin 3<br>"]
     pub(crate) fn p0_outclr50c_pin3_read(&self) -> MemResult<bool> {
-        Ok(self.pins[3].output_high)
+        Ok(self.get_output(3))
     }
     #[doc = "PIN3: Pin 3<br>"]
     pub fn p0_outclr50c_pin3_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[3].output_high = false;
+            self.set_output(3, false);
         }
         Ok(())
     }
     #[doc = "PIN4: Pin 4<br>"]
     pub(crate) fn p0_outclr50c_pin4_read(&self) -> MemResult<bool> {
-        Ok(self.pins[4].output_high)
+        Ok(self.get_output(4))
     }
     #[doc = "PIN4: Pin 4<br>"]
     pub fn p0_outclr50c_pin4_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[4].output_high = false;
+            self.set_output(4, false);
         }
         Ok(())
     }
     #[doc = "PIN5: Pin 5<br>"]
     pub(crate) fn p0_outclr50c_pin5_read(&self) -> MemResult<bool> {
-        Ok(self.pins[5].output_high)
+        Ok(self.get_output(5))
     }
     #[doc = "PIN5: Pin 5<br>"]
     pub fn p0_outclr50c_pin5_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[5].output_high = false;
+            self.set_output(5, false);
         }
         Ok(())
     }
     #[doc = "PIN6: Pin 6<br>"]
     pub(crate) fn p0_outclr50c_pin6_read(&self) -> MemResult<bool> {
-        Ok(self.pins[6].output_high)
+        Ok(self.get_output(6))
     }
     #[doc = "PIN6: Pin 6<br>"]
     pub fn p0_outclr50c_pin6_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[6].output_high = false;
+            self.set_output(6, false);
         }
         Ok(())
     }
     #[doc = "PIN7: Pin 7<br>"]
     pub(crate) fn p0_outclr50c_pin7_read(&self) -> MemResult<bool> {
-        Ok(self.pins[7].output_high)
+        Ok(self.get_output(7))
     }
     #[doc = "PIN7: Pin 7<br>"]
     pub fn p0_outclr50c_pin7_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[7].output_high = false;
+            self.set_output(7, false);
         }
         Ok(())
     }
     #[doc = "PIN8: Pin 8<br>"]
     pub(crate) fn p0_outclr50c_pin8_read(&self) -> MemResult<bool> {
-        Ok(self.pins[8].output_high)
+        Ok(self.get_output(8))
     }
     #[doc = "PIN8: Pin 8<br>"]
     pub fn p0_outclr50c_pin8_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[8].output_high = false;
+            self.set_output(8, false);
         }
         Ok(())
     }
     #[doc = "PIN9: Pin 9<br>"]
     pub(crate) fn p0_outclr50c_pin9_read(&self) -> MemResult<bool> {
-        Ok(self.pins[9].output_high)
+        Ok(self.get_output(9))
     }
     #[doc = "PIN9: Pin 9<br>"]
     pub fn p0_outclr50c_pin9_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[9].output_high = false;
+            self.set_output(9, false);
         }
         Ok(())
     }
     #[doc = "PIN10: Pin 10<br>"]
     pub(crate) fn p0_outclr50c_pin10_read(&self) -> MemResult<bool> {
-        Ok(self.pins[10].output_high)
+        Ok(self.get_output(10))
     }
     #[doc = "PIN10: Pin 10<br>"]
     pub fn p0_outclr50c_pin10_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[10].output_high = false;
+            self.set_output(10, false);
         }
         Ok(())
     }
     #[doc = "PIN11: Pin 11<br>"]
     pub(crate) fn p0_outclr50c_pin11_read(&self) -> MemResult<bool> {
-        Ok(self.pins[11].output_high)
+        Ok(self.get_output(11))
     }
     #[doc = "PIN11: Pin 11<br>"]
     pub fn p0_outclr50c_pin11_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[11].output_high = false;
+            self.set_output(11, false);
         }
         Ok(())
     }
     #[doc = "PIN12: Pin 12<br>"]
     pub(crate) fn p0_outclr50c_pin12_read(&self) -> MemResult<bool> {
-        Ok(self.pins[12].output_high)
+        Ok(self.get_output(12))
     }
     #[doc = "PIN12: Pin 12<br>"]
     pub fn p0_outclr50c_pin12_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[12].output_high = false;
+            self.set_output(12, false);
         }
         Ok(())
     }
     #[doc = "PIN13: Pin 13<br>"]
     pub(crate) fn p0_outclr50c_pin13_read(&self) -> MemResult<bool> {
-        Ok(self.pins[13].output_high)
+        Ok(self.get_output(13))
     }
     #[doc = "PIN13: Pin 13<br>"]
     pub fn p0_outclr50c_pin13_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[13].output_high = false;
+            self.set_output(13, false);
         }
         Ok(())
     }
     #[doc = "PIN14: Pin 14<br>"]
     pub(crate) fn p0_outclr50c_pin14_read(&self) -> MemResult<bool> {
-        Ok(self.pins[14].output_high)
+        Ok(self.get_output(14))
     }
     #[doc = "PIN14: Pin 14<br>"]
     pub fn p0_outclr50c_pin14_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[14].output_high = false;
+            self.set_output(14, false);
         }
         Ok(())
     }
     #[doc = "PIN15: Pin 15<br>"]
     pub(crate) fn p0_outclr50c_pin15_read(&self) -> MemResult<bool> {
-        Ok(self.pins[15].output_high)
+        Ok(self.get_output(15))
     }
     #[doc = "PIN15: Pin 15<br>"]
     pub fn p0_outclr50c_pin15_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[15].output_high = false;
+            self.set_output(15, false);
         }
         Ok(())
     }
     #[doc = "PIN16: Pin 16<br>"]
     pub(crate) fn p0_outclr50c_pin16_read(&self) -> MemResult<bool> {
-        Ok(self.pins[16].output_high)
+        Ok(self.get_output(16))
     }
     #[doc = "PIN16: Pin 16<br>"]
     pub fn p0_outclr50c_pin16_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[16].output_high = false;
+            self.set_output(16, false);
         }
         Ok(())
     }
     #[doc = "PIN17: Pin 17<br>"]
     pub(crate) fn p0_outclr50c_pin17_read(&self) -> MemResult<bool> {
-        Ok(self.pins[17].output_high)
+        Ok(self.get_output(17))
     }
     #[doc = "PIN17: Pin 17<br>"]
     pub fn p0_outclr50c_pin17_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[17].output_high = false;
+            self.set_output(17, false);
         }
         Ok(())
     }
     #[doc = "PIN18: Pin 18<br>"]
     pub(crate) fn p0_outclr50c_pin18_read(&self) -> MemResult<bool> {
-        Ok(self.pins[18].output_high)
+        Ok(self.get_output(18))
     }
     #[doc = "PIN18: Pin 18<br>"]
     pub fn p0_outclr50c_pin18_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[18].output_high = false;
+            self.set_output(18, false);
         }
         Ok(())
     }
     #[doc = "PIN19: Pin 19<br>"]
     pub(crate) fn p0_outclr50c_pin19_read(&self) -> MemResult<bool> {
-        Ok(self.pins[19].output_high)
+        Ok(self.get_output(19))
     }
     #[doc = "PIN19: Pin 19<br>"]
     pub fn p0_outclr50c_pin19_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[19].output_high = false;
+            self.set_output(19, false);
         }
         Ok(())
     }
     #[doc = "PIN20: Pin 20<br>"]
     pub(crate) fn p0_outclr50c_pin20_read(&self) -> MemResult<bool> {
-        Ok(self.pins[20].output_high)
+        Ok(self.get_output(20))
     }
     #[doc = "PIN20: Pin 20<br>"]
     pub fn p0_outclr50c_pin20_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[20].output_high = false;
+            self.set_output(20, false);
         }
         Ok(())
     }
     #[doc = "PIN21: Pin 21<br>"]
     pub(crate) fn p0_outclr50c_pin21_read(&self) -> MemResult<bool> {
-        Ok(self.pins[21].output_high)
+        Ok(self.get_output(21))
     }
     #[doc = "PIN21: Pin 21<br>"]
     pub fn p0_outclr50c_pin21_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[21].output_high = false;
+            self.set_output(21, false);
         }
         Ok(())
     }
     #[doc = "PIN22: Pin 22<br>"]
     pub(crate) fn p0_outclr50c_pin22_read(&self) -> MemResult<bool> {
-        Ok(self.pins[22].output_high)
+        Ok(self.get_output(22))
     }
     #[doc = "PIN22: Pin 22<br>"]
     pub fn p0_outclr50c_pin22_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[22].output_high = false;
+            self.set_output(22, false);
         }
         Ok(())
     }
     #[doc = "PIN23: Pin 23<br>"]
     pub(crate) fn p0_outclr50c_pin23_read(&self) -> MemResult<bool> {
-        Ok(self.pins[23].output_high)
+        Ok(self.get_output(23))
     }
     #[doc = "PIN23: Pin 23<br>"]
     pub fn p0_outclr50c_pin23_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[23].output_high = false;
+            self.set_output(23, false);
         }
         Ok(())
     }
     #[doc = "PIN24: Pin 24<br>"]
     pub(crate) fn p0_outclr50c_pin24_read(&self) -> MemResult<bool> {
-        Ok(self.pins[24].output_high)
+        Ok(self.get_output(24))
     }
     #[doc = "PIN24: Pin 24<br>"]
     pub fn p0_outclr50c_pin24_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[24].output_high = false;
+            self.set_output(24, false);
         }
         Ok(())
     }
     #[doc = "PIN25: Pin 25<br>"]
     pub(crate) fn p0_outclr50c_pin25_read(&self) -> MemResult<bool> {
-        Ok(self.pins[25].output_high)
+        Ok(self.get_output(25))
     }
     #[doc = "PIN25: Pin 25<br>"]
     pub fn p0_outclr50c_pin25_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[25].output_high = false;
+            self.set_output(25, false);
         }
         Ok(())
     }
     #[doc = "PIN26: Pin 26<br>"]
     pub(crate) fn p0_outclr50c_pin26_read(&self) -> MemResult<bool> {
-        Ok(self.pins[26].output_high)
+        Ok(self.get_output(26))
     }
     #[doc = "PIN26: Pin 26<br>"]
     pub fn p0_outclr50c_pin26_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[26].output_high = false;
+            self.set_output(26, false);
         }
         Ok(())
     }
     #[doc = "PIN27: Pin 27<br>"]
     pub(crate) fn p0_outclr50c_pin27_read(&self) -> MemResult<bool> {
-        Ok(self.pins[27].output_high)
+        Ok(self.get_output(27))
     }
     #[doc = "PIN27: Pin 27<br>"]
     pub fn p0_outclr50c_pin27_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[27].output_high = false;
+            self.set_output(27, false);
         }
         Ok(())
     }
     #[doc = "PIN28: Pin 28<br>"]
     pub(crate) fn p0_outclr50c_pin28_read(&self) -> MemResult<bool> {
-        Ok(self.pins[28].output_high)
+        Ok(self.get_output(28))
     }
     #[doc = "PIN28: Pin 28<br>"]
     pub fn p0_outclr50c_pin28_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[28].output_high = false;
+            self.set_output(28, false);
         }
         Ok(())
     }
     #[doc = "PIN29: Pin 29<br>"]
     pub(crate) fn p0_outclr50c_pin29_read(&self) -> MemResult<bool> {
-        Ok(self.pins[29].output_high)
+        Ok(self.get_output(29))
     }
     #[doc = "PIN29: Pin 29<br>"]
     pub fn p0_outclr50c_pin29_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[29].output_high = false;
+            self.set_output(29, false);
         }
         Ok(())
     }
     #[doc = "PIN30: Pin 30<br>"]
     pub(crate) fn p0_outclr50c_pin30_read(&self) -> MemResult<bool> {
-        Ok(self.pins[30].output_high)
+        Ok(self.get_output(30))
     }
     #[doc = "PIN30: Pin 30<br>"]
     pub fn p0_outclr50c_pin30_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[30].output_high = false;
+            self.set_output(30, false);
         }
         Ok(())
     }
     #[doc = "PIN31: Pin 31<br>"]
     pub(crate) fn p0_outclr50c_pin31_read(&self) -> MemResult<bool> {
-        Ok(self.pins[31].output_high)
+        Ok(self.get_output(31))
     }
     #[doc = "PIN31: Pin 31<br>"]
     pub fn p0_outclr50c_pin31_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[31].output_high = false;
+            self.set_output(31, false);
         }
         Ok(())
     }
@@ -1130,961 +1197,961 @@ impl P0 {
     }
     #[doc = "PIN0: Pin 0<br>"]
     pub(crate) fn p0_dir514_pin0_read(&self) -> MemResult<bool> {
-        Ok(self.pins[0].output_mode)
+        Ok(self.get_output_mode(0))
     }
     #[doc = "PIN0: Pin 0<br>"]
     pub fn p0_dir514_pin0_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[0].output_mode = _value)
+        Ok(self.set_output_mode(0, _value))
     }
     #[doc = "PIN1: Pin 1<br>"]
     pub(crate) fn p0_dir514_pin1_read(&self) -> MemResult<bool> {
-        Ok(self.pins[1].output_mode)
+        Ok(self.get_output_mode(1))
     }
     #[doc = "PIN1: Pin 1<br>"]
     pub fn p0_dir514_pin1_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[1].output_mode = _value)
+        Ok(self.set_output_mode(1, _value))
     }
     #[doc = "PIN2: Pin 2<br>"]
     pub(crate) fn p0_dir514_pin2_read(&self) -> MemResult<bool> {
-        Ok(self.pins[2].output_mode)
+        Ok(self.get_output_mode(2))
     }
     #[doc = "PIN2: Pin 2<br>"]
     pub fn p0_dir514_pin2_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[2].output_mode = _value)
+        Ok(self.set_output_mode(2, _value))
     }
     #[doc = "PIN3: Pin 3<br>"]
     pub(crate) fn p0_dir514_pin3_read(&self) -> MemResult<bool> {
-        Ok(self.pins[3].output_mode)
+        Ok(self.get_output_mode(3))
     }
     #[doc = "PIN3: Pin 3<br>"]
     pub fn p0_dir514_pin3_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[3].output_mode = _value)
+        Ok(self.set_output_mode(3, _value))
     }
     #[doc = "PIN4: Pin 4<br>"]
     pub(crate) fn p0_dir514_pin4_read(&self) -> MemResult<bool> {
-        Ok(self.pins[4].output_mode)
+        Ok(self.get_output_mode(4))
     }
     #[doc = "PIN4: Pin 4<br>"]
     pub fn p0_dir514_pin4_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[4].output_mode = _value)
+        Ok(self.set_output_mode(4, _value))
     }
     #[doc = "PIN5: Pin 5<br>"]
     pub(crate) fn p0_dir514_pin5_read(&self) -> MemResult<bool> {
-        Ok(self.pins[5].output_mode)
+        Ok(self.get_output_mode(5))
     }
     #[doc = "PIN5: Pin 5<br>"]
     pub fn p0_dir514_pin5_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[5].output_mode = _value)
+        Ok(self.set_output_mode(5, _value))
     }
     #[doc = "PIN6: Pin 6<br>"]
     pub(crate) fn p0_dir514_pin6_read(&self) -> MemResult<bool> {
-        Ok(self.pins[6].output_mode)
+        Ok(self.get_output_mode(6))
     }
     #[doc = "PIN6: Pin 6<br>"]
     pub fn p0_dir514_pin6_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[6].output_mode = _value)
+        Ok(self.set_output_mode(6, _value))
     }
     #[doc = "PIN7: Pin 7<br>"]
     pub(crate) fn p0_dir514_pin7_read(&self) -> MemResult<bool> {
-        Ok(self.pins[7].output_mode)
+        Ok(self.get_output_mode(7))
     }
     #[doc = "PIN7: Pin 7<br>"]
     pub fn p0_dir514_pin7_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[7].output_mode = _value)
+        Ok(self.set_output_mode(7, _value))
     }
     #[doc = "PIN8: Pin 8<br>"]
     pub(crate) fn p0_dir514_pin8_read(&self) -> MemResult<bool> {
-        Ok(self.pins[8].output_mode)
+        Ok(self.get_output_mode(8))
     }
     #[doc = "PIN8: Pin 8<br>"]
     pub fn p0_dir514_pin8_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[8].output_mode = _value)
+        Ok(self.set_output_mode(8, _value))
     }
     #[doc = "PIN9: Pin 9<br>"]
     pub(crate) fn p0_dir514_pin9_read(&self) -> MemResult<bool> {
-        Ok(self.pins[9].output_mode)
+        Ok(self.get_output_mode(9))
     }
     #[doc = "PIN9: Pin 9<br>"]
     pub fn p0_dir514_pin9_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[9].output_mode = _value)
+        Ok(self.set_output_mode(9, _value))
     }
     #[doc = "PIN10: Pin 10<br>"]
     pub(crate) fn p0_dir514_pin10_read(&self) -> MemResult<bool> {
-        Ok(self.pins[10].output_mode)
+        Ok(self.get_output_mode(10))
     }
     #[doc = "PIN10: Pin 10<br>"]
     pub fn p0_dir514_pin10_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[10].output_mode = _value)
+        Ok(self.set_output_mode(10, _value))
     }
     #[doc = "PIN11: Pin 11<br>"]
     pub(crate) fn p0_dir514_pin11_read(&self) -> MemResult<bool> {
-        Ok(self.pins[11].output_mode)
+        Ok(self.get_output_mode(11))
     }
     #[doc = "PIN11: Pin 11<br>"]
     pub fn p0_dir514_pin11_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[11].output_mode = _value)
+        Ok(self.set_output_mode(11, _value))
     }
     #[doc = "PIN12: Pin 12<br>"]
     pub(crate) fn p0_dir514_pin12_read(&self) -> MemResult<bool> {
-        Ok(self.pins[12].output_mode)
+        Ok(self.get_output_mode(12))
     }
     #[doc = "PIN12: Pin 12<br>"]
     pub fn p0_dir514_pin12_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[12].output_mode = _value)
+        Ok(self.set_output_mode(12, _value))
     }
     #[doc = "PIN13: Pin 13<br>"]
     pub(crate) fn p0_dir514_pin13_read(&self) -> MemResult<bool> {
-        Ok(self.pins[13].output_mode)
+        Ok(self.get_output_mode(13))
     }
     #[doc = "PIN13: Pin 13<br>"]
     pub fn p0_dir514_pin13_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[13].output_mode = _value)
+        Ok(self.set_output_mode(13, _value))
     }
     #[doc = "PIN14: Pin 14<br>"]
     pub(crate) fn p0_dir514_pin14_read(&self) -> MemResult<bool> {
-        Ok(self.pins[14].output_mode)
+        Ok(self.get_output_mode(14))
     }
     #[doc = "PIN14: Pin 14<br>"]
     pub fn p0_dir514_pin14_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[14].output_mode = _value)
+        Ok(self.set_output_mode(14, _value))
     }
     #[doc = "PIN15: Pin 15<br>"]
     pub(crate) fn p0_dir514_pin15_read(&self) -> MemResult<bool> {
-        Ok(self.pins[15].output_mode)
+        Ok(self.get_output_mode(15))
     }
     #[doc = "PIN15: Pin 15<br>"]
     pub fn p0_dir514_pin15_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[15].output_mode = _value)
+        Ok(self.set_output_mode(15, _value))
     }
     #[doc = "PIN16: Pin 16<br>"]
     pub(crate) fn p0_dir514_pin16_read(&self) -> MemResult<bool> {
-        Ok(self.pins[16].output_mode)
+        Ok(self.get_output_mode(16))
     }
     #[doc = "PIN16: Pin 16<br>"]
     pub fn p0_dir514_pin16_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[16].output_mode = _value)
+        Ok(self.set_output_mode(16, _value))
     }
     #[doc = "PIN17: Pin 17<br>"]
     pub(crate) fn p0_dir514_pin17_read(&self) -> MemResult<bool> {
-        Ok(self.pins[17].output_mode)
+        Ok(self.get_output_mode(17))
     }
     #[doc = "PIN17: Pin 17<br>"]
     pub fn p0_dir514_pin17_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[17].output_mode = _value)
+        Ok(self.set_output_mode(17, _value))
     }
     #[doc = "PIN18: Pin 18<br>"]
     pub(crate) fn p0_dir514_pin18_read(&self) -> MemResult<bool> {
-        Ok(self.pins[18].output_mode)
+        Ok(self.get_output_mode(18))
     }
     #[doc = "PIN18: Pin 18<br>"]
     pub fn p0_dir514_pin18_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[18].output_mode = _value)
+        Ok(self.set_output_mode(18, _value))
     }
     #[doc = "PIN19: Pin 19<br>"]
     pub(crate) fn p0_dir514_pin19_read(&self) -> MemResult<bool> {
-        Ok(self.pins[19].output_mode)
+        Ok(self.get_output_mode(19))
     }
     #[doc = "PIN19: Pin 19<br>"]
     pub fn p0_dir514_pin19_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[19].output_mode = _value)
+        Ok(self.set_output_mode(19, _value))
     }
     #[doc = "PIN20: Pin 20<br>"]
     pub(crate) fn p0_dir514_pin20_read(&self) -> MemResult<bool> {
-        Ok(self.pins[20].output_mode)
+        Ok(self.get_output_mode(20))
     }
     #[doc = "PIN20: Pin 20<br>"]
     pub fn p0_dir514_pin20_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[20].output_mode = _value)
+        Ok(self.set_output_mode(20, _value))
     }
     #[doc = "PIN21: Pin 21<br>"]
     pub(crate) fn p0_dir514_pin21_read(&self) -> MemResult<bool> {
-        Ok(self.pins[21].output_mode)
+        Ok(self.get_output_mode(21))
     }
     #[doc = "PIN21: Pin 21<br>"]
     pub fn p0_dir514_pin21_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[21].output_mode = _value)
+        Ok(self.set_output_mode(21, _value))
     }
     #[doc = "PIN22: Pin 22<br>"]
     pub(crate) fn p0_dir514_pin22_read(&self) -> MemResult<bool> {
-        Ok(self.pins[22].output_mode)
+        Ok(self.get_output_mode(22))
     }
     #[doc = "PIN22: Pin 22<br>"]
     pub fn p0_dir514_pin22_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[22].output_mode = _value)
+        Ok(self.set_output_mode(22, _value))
     }
     #[doc = "PIN23: Pin 23<br>"]
     pub(crate) fn p0_dir514_pin23_read(&self) -> MemResult<bool> {
-        Ok(self.pins[23].output_mode)
+        Ok(self.get_output_mode(23))
     }
     #[doc = "PIN23: Pin 23<br>"]
     pub fn p0_dir514_pin23_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[23].output_mode = _value)
+        Ok(self.set_output_mode(23, _value))
     }
     #[doc = "PIN24: Pin 24<br>"]
     pub(crate) fn p0_dir514_pin24_read(&self) -> MemResult<bool> {
-        Ok(self.pins[24].output_mode)
+        Ok(self.get_output_mode(24))
     }
     #[doc = "PIN24: Pin 24<br>"]
     pub fn p0_dir514_pin24_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[24].output_mode = _value)
+        Ok(self.set_output_mode(24, _value))
     }
     #[doc = "PIN25: Pin 25<br>"]
     pub(crate) fn p0_dir514_pin25_read(&self) -> MemResult<bool> {
-        Ok(self.pins[25].output_mode)
+        Ok(self.get_output_mode(25))
     }
     #[doc = "PIN25: Pin 25<br>"]
     pub fn p0_dir514_pin25_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[25].output_mode = _value)
+        Ok(self.set_output_mode(25, _value))
     }
     #[doc = "PIN26: Pin 26<br>"]
     pub(crate) fn p0_dir514_pin26_read(&self) -> MemResult<bool> {
-        Ok(self.pins[26].output_mode)
+        Ok(self.get_output_mode(26))
     }
     #[doc = "PIN26: Pin 26<br>"]
     pub fn p0_dir514_pin26_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[26].output_mode = _value)
+        Ok(self.set_output_mode(26, _value))
     }
     #[doc = "PIN27: Pin 27<br>"]
     pub(crate) fn p0_dir514_pin27_read(&self) -> MemResult<bool> {
-        Ok(self.pins[27].output_mode)
+        Ok(self.get_output_mode(27))
     }
     #[doc = "PIN27: Pin 27<br>"]
     pub fn p0_dir514_pin27_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[27].output_mode = _value)
+        Ok(self.set_output_mode(27, _value))
     }
     #[doc = "PIN28: Pin 28<br>"]
     pub(crate) fn p0_dir514_pin28_read(&self) -> MemResult<bool> {
-        Ok(self.pins[28].output_mode)
+        Ok(self.get_output_mode(28))
     }
     #[doc = "PIN28: Pin 28<br>"]
     pub fn p0_dir514_pin28_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[28].output_mode = _value)
+        Ok(self.set_output_mode(28, _value))
     }
     #[doc = "PIN29: Pin 29<br>"]
     pub(crate) fn p0_dir514_pin29_read(&self) -> MemResult<bool> {
-        Ok(self.pins[29].output_mode)
+        Ok(self.get_output_mode(29))
     }
     #[doc = "PIN29: Pin 29<br>"]
     pub fn p0_dir514_pin29_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[29].output_mode = _value)
+        Ok(self.set_output_mode(29, _value))
     }
     #[doc = "PIN30: Pin 30<br>"]
     pub(crate) fn p0_dir514_pin30_read(&self) -> MemResult<bool> {
-        Ok(self.pins[30].output_mode)
+        Ok(self.get_output_mode(30))
     }
     #[doc = "PIN30: Pin 30<br>"]
     pub fn p0_dir514_pin30_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[30].output_mode = _value)
+        Ok(self.set_output_mode(30, _value))
     }
     #[doc = "PIN31: Pin 31<br>"]
     pub(crate) fn p0_dir514_pin31_read(&self) -> MemResult<bool> {
-        Ok(self.pins[31].output_mode)
+        Ok(self.get_output_mode(31))
     }
     #[doc = "PIN31: Pin 31<br>"]
     pub fn p0_dir514_pin31_write(&mut self, _value: bool) -> MemResult<()> {
-        Ok(self.pins[31].output_mode = _value)
+        Ok(self.set_output_mode(31, _value))
     }
     #[doc = "PIN0: Set as output pin 0<br>"]
     pub(crate) fn p0_dirset518_pin0_read(&self) -> MemResult<bool> {
-        Ok(self.pins[0].output_mode)
+        Ok(self.get_output_mode(0))
     }
     #[doc = "PIN0: Set as output pin 0<br>"]
     pub fn p0_dirset518_pin0_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[0].output_mode = true;
+            self.set_output_mode(0, true);
         }
         Ok(())
     }
     #[doc = "PIN1: Set as output pin 1<br>"]
     pub(crate) fn p0_dirset518_pin1_read(&self) -> MemResult<bool> {
-        Ok(self.pins[1].output_mode)
+        Ok(self.get_output_mode(1))
     }
     #[doc = "PIN1: Set as output pin 1<br>"]
     pub fn p0_dirset518_pin1_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[1].output_mode = true;
+            self.set_output_mode(1, true);
         }
         Ok(())
     }
     #[doc = "PIN2: Set as output pin 2<br>"]
     pub(crate) fn p0_dirset518_pin2_read(&self) -> MemResult<bool> {
-        Ok(self.pins[2].output_mode)
+        Ok(self.get_output_mode(2))
     }
     #[doc = "PIN2: Set as output pin 2<br>"]
     pub fn p0_dirset518_pin2_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[2].output_mode = true;
+            self.set_output_mode(2, true);
         }
         Ok(())
     }
     #[doc = "PIN3: Set as output pin 3<br>"]
     pub(crate) fn p0_dirset518_pin3_read(&self) -> MemResult<bool> {
-        Ok(self.pins[3].output_mode)
+        Ok(self.get_output_mode(3))
     }
     #[doc = "PIN3: Set as output pin 3<br>"]
     pub fn p0_dirset518_pin3_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[3].output_mode = true;
+            self.set_output_mode(3, true);
         }
         Ok(())
     }
     #[doc = "PIN4: Set as output pin 4<br>"]
     pub(crate) fn p0_dirset518_pin4_read(&self) -> MemResult<bool> {
-        Ok(self.pins[4].output_mode)
+        Ok(self.get_output_mode(4))
     }
     #[doc = "PIN4: Set as output pin 4<br>"]
     pub fn p0_dirset518_pin4_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[4].output_mode = true;
+            self.set_output_mode(4, true);
         }
         Ok(())
     }
     #[doc = "PIN5: Set as output pin 5<br>"]
     pub(crate) fn p0_dirset518_pin5_read(&self) -> MemResult<bool> {
-        Ok(self.pins[5].output_mode)
+        Ok(self.get_output_mode(5))
     }
     #[doc = "PIN5: Set as output pin 5<br>"]
     pub fn p0_dirset518_pin5_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[5].output_mode = true;
+            self.set_output_mode(5, true);
         }
         Ok(())
     }
     #[doc = "PIN6: Set as output pin 6<br>"]
     pub(crate) fn p0_dirset518_pin6_read(&self) -> MemResult<bool> {
-        Ok(self.pins[6].output_mode)
+        Ok(self.get_output_mode(6))
     }
     #[doc = "PIN6: Set as output pin 6<br>"]
     pub fn p0_dirset518_pin6_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[6].output_mode = true;
+            self.set_output_mode(6, true);
         }
         Ok(())
     }
     #[doc = "PIN7: Set as output pin 7<br>"]
     pub(crate) fn p0_dirset518_pin7_read(&self) -> MemResult<bool> {
-        Ok(self.pins[7].output_mode)
+        Ok(self.get_output_mode(7))
     }
     #[doc = "PIN7: Set as output pin 7<br>"]
     pub fn p0_dirset518_pin7_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[7].output_mode = true;
+            self.set_output_mode(7, true);
         }
         Ok(())
     }
     #[doc = "PIN8: Set as output pin 8<br>"]
     pub(crate) fn p0_dirset518_pin8_read(&self) -> MemResult<bool> {
-        Ok(self.pins[8].output_mode)
+        Ok(self.get_output_mode(8))
     }
     #[doc = "PIN8: Set as output pin 8<br>"]
     pub fn p0_dirset518_pin8_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[8].output_mode = true;
+            self.set_output_mode(8, true);
         }
         Ok(())
     }
     #[doc = "PIN9: Set as output pin 9<br>"]
     pub(crate) fn p0_dirset518_pin9_read(&self) -> MemResult<bool> {
-        Ok(self.pins[9].output_mode)
+        Ok(self.get_output_mode(9))
     }
     #[doc = "PIN9: Set as output pin 9<br>"]
     pub fn p0_dirset518_pin9_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[9].output_mode = true;
+            self.set_output_mode(9, true);
         }
         Ok(())
     }
     #[doc = "PIN10: Set as output pin 10<br>"]
     pub(crate) fn p0_dirset518_pin10_read(&self) -> MemResult<bool> {
-        Ok(self.pins[10].output_mode)
+        Ok(self.get_output_mode(10))
     }
     #[doc = "PIN10: Set as output pin 10<br>"]
     pub fn p0_dirset518_pin10_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[10].output_mode = true;
+            self.set_output_mode(10, true);
         }
         Ok(())
     }
     #[doc = "PIN11: Set as output pin 11<br>"]
     pub(crate) fn p0_dirset518_pin11_read(&self) -> MemResult<bool> {
-        Ok(self.pins[11].output_mode)
+        Ok(self.get_output_mode(11))
     }
     #[doc = "PIN11: Set as output pin 11<br>"]
     pub fn p0_dirset518_pin11_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[11].output_mode = true;
+            self.set_output_mode(11, true);
         }
         Ok(())
     }
     #[doc = "PIN12: Set as output pin 12<br>"]
     pub(crate) fn p0_dirset518_pin12_read(&self) -> MemResult<bool> {
-        Ok(self.pins[12].output_mode)
+        Ok(self.get_output_mode(12))
     }
     #[doc = "PIN12: Set as output pin 12<br>"]
     pub fn p0_dirset518_pin12_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[12].output_mode = true;
+            self.set_output_mode(12, true);
         }
         Ok(())
     }
     #[doc = "PIN13: Set as output pin 13<br>"]
     pub(crate) fn p0_dirset518_pin13_read(&self) -> MemResult<bool> {
-        Ok(self.pins[13].output_mode)
+        Ok(self.get_output_mode(13))
     }
     #[doc = "PIN13: Set as output pin 13<br>"]
     pub fn p0_dirset518_pin13_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[13].output_mode = true;
+            self.set_output_mode(13, true);
         }
         Ok(())
     }
     #[doc = "PIN14: Set as output pin 14<br>"]
     pub(crate) fn p0_dirset518_pin14_read(&self) -> MemResult<bool> {
-        Ok(self.pins[14].output_mode)
+        Ok(self.get_output_mode(14))
     }
     #[doc = "PIN14: Set as output pin 14<br>"]
     pub fn p0_dirset518_pin14_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[14].output_mode = true;
+            self.set_output_mode(14, true);
         }
         Ok(())
     }
     #[doc = "PIN15: Set as output pin 15<br>"]
     pub(crate) fn p0_dirset518_pin15_read(&self) -> MemResult<bool> {
-        Ok(self.pins[15].output_mode)
+        Ok(self.get_output_mode(15))
     }
     #[doc = "PIN15: Set as output pin 15<br>"]
     pub fn p0_dirset518_pin15_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[15].output_mode = true;
+            self.set_output_mode(15, true);
         }
         Ok(())
     }
     #[doc = "PIN16: Set as output pin 16<br>"]
     pub(crate) fn p0_dirset518_pin16_read(&self) -> MemResult<bool> {
-        Ok(self.pins[16].output_mode)
+        Ok(self.get_output_mode(16))
     }
     #[doc = "PIN16: Set as output pin 16<br>"]
     pub fn p0_dirset518_pin16_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[16].output_mode = true;
+            self.set_output_mode(16, true);
         }
         Ok(())
     }
     #[doc = "PIN17: Set as output pin 17<br>"]
     pub(crate) fn p0_dirset518_pin17_read(&self) -> MemResult<bool> {
-        Ok(self.pins[17].output_mode)
+        Ok(self.get_output_mode(17))
     }
     #[doc = "PIN17: Set as output pin 17<br>"]
     pub fn p0_dirset518_pin17_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[17].output_mode = true;
+            self.set_output_mode(17, true);
         }
         Ok(())
     }
     #[doc = "PIN18: Set as output pin 18<br>"]
     pub(crate) fn p0_dirset518_pin18_read(&self) -> MemResult<bool> {
-        Ok(self.pins[18].output_mode)
+        Ok(self.get_output_mode(18))
     }
     #[doc = "PIN18: Set as output pin 18<br>"]
     pub fn p0_dirset518_pin18_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[18].output_mode = true;
+            self.set_output_mode(18, true);
         }
         Ok(())
     }
     #[doc = "PIN19: Set as output pin 19<br>"]
     pub(crate) fn p0_dirset518_pin19_read(&self) -> MemResult<bool> {
-        Ok(self.pins[19].output_mode)
+        Ok(self.get_output_mode(19))
     }
     #[doc = "PIN19: Set as output pin 19<br>"]
     pub fn p0_dirset518_pin19_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[19].output_mode = true;
+            self.set_output_mode(19, true);
         }
         Ok(())
     }
     #[doc = "PIN20: Set as output pin 20<br>"]
     pub(crate) fn p0_dirset518_pin20_read(&self) -> MemResult<bool> {
-        Ok(self.pins[20].output_mode)
+        Ok(self.get_output_mode(20))
     }
     #[doc = "PIN20: Set as output pin 20<br>"]
     pub fn p0_dirset518_pin20_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[20].output_mode = true;
+            self.set_output_mode(20, true);
         }
         Ok(())
     }
     #[doc = "PIN21: Set as output pin 21<br>"]
     pub(crate) fn p0_dirset518_pin21_read(&self) -> MemResult<bool> {
-        Ok(self.pins[21].output_mode)
+        Ok(self.get_output_mode(21))
     }
     #[doc = "PIN21: Set as output pin 21<br>"]
     pub fn p0_dirset518_pin21_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[21].output_mode = true;
+            self.set_output_mode(21, true);
         }
         Ok(())
     }
     #[doc = "PIN22: Set as output pin 22<br>"]
     pub(crate) fn p0_dirset518_pin22_read(&self) -> MemResult<bool> {
-        Ok(self.pins[22].output_mode)
+        Ok(self.get_output_mode(22))
     }
     #[doc = "PIN22: Set as output pin 22<br>"]
     pub fn p0_dirset518_pin22_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[22].output_mode = true;
+            self.set_output_mode(22, true);
         }
         Ok(())
     }
     #[doc = "PIN23: Set as output pin 23<br>"]
     pub(crate) fn p0_dirset518_pin23_read(&self) -> MemResult<bool> {
-        Ok(self.pins[23].output_mode)
+        Ok(self.get_output_mode(23))
     }
     #[doc = "PIN23: Set as output pin 23<br>"]
     pub fn p0_dirset518_pin23_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[23].output_mode = true;
+            self.set_output_mode(23, true);
         }
         Ok(())
     }
     #[doc = "PIN24: Set as output pin 24<br>"]
     pub(crate) fn p0_dirset518_pin24_read(&self) -> MemResult<bool> {
-        Ok(self.pins[24].output_mode)
+        Ok(self.get_output_mode(24))
     }
     #[doc = "PIN24: Set as output pin 24<br>"]
     pub fn p0_dirset518_pin24_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[24].output_mode = true;
+            self.set_output_mode(24, true);
         }
         Ok(())
     }
     #[doc = "PIN25: Set as output pin 25<br>"]
     pub(crate) fn p0_dirset518_pin25_read(&self) -> MemResult<bool> {
-        Ok(self.pins[25].output_mode)
+        Ok(self.get_output_mode(25))
     }
     #[doc = "PIN25: Set as output pin 25<br>"]
     pub fn p0_dirset518_pin25_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[25].output_mode = true;
+            self.set_output_mode(25, true);
         }
         Ok(())
     }
     #[doc = "PIN26: Set as output pin 26<br>"]
     pub(crate) fn p0_dirset518_pin26_read(&self) -> MemResult<bool> {
-        Ok(self.pins[26].output_mode)
+        Ok(self.get_output_mode(26))
     }
     #[doc = "PIN26: Set as output pin 26<br>"]
     pub fn p0_dirset518_pin26_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[26].output_mode = true;
+            self.set_output_mode(26, true);
         }
         Ok(())
     }
     #[doc = "PIN27: Set as output pin 27<br>"]
     pub(crate) fn p0_dirset518_pin27_read(&self) -> MemResult<bool> {
-        Ok(self.pins[27].output_mode)
+        Ok(self.get_output_mode(27))
     }
     #[doc = "PIN27: Set as output pin 27<br>"]
     pub fn p0_dirset518_pin27_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[27].output_mode = true;
+            self.set_output_mode(27, true);
         }
         Ok(())
     }
     #[doc = "PIN28: Set as output pin 28<br>"]
     pub(crate) fn p0_dirset518_pin28_read(&self) -> MemResult<bool> {
-        Ok(self.pins[28].output_mode)
+        Ok(self.get_output_mode(28))
     }
     #[doc = "PIN28: Set as output pin 28<br>"]
     pub fn p0_dirset518_pin28_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[28].output_mode = true;
+            self.set_output_mode(28, true);
         }
         Ok(())
     }
     #[doc = "PIN29: Set as output pin 29<br>"]
     pub(crate) fn p0_dirset518_pin29_read(&self) -> MemResult<bool> {
-        Ok(self.pins[29].output_mode)
+        Ok(self.get_output_mode(29))
     }
     #[doc = "PIN29: Set as output pin 29<br>"]
     pub fn p0_dirset518_pin29_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[29].output_mode = true;
+            self.set_output_mode(29, true);
         }
         Ok(())
     }
     #[doc = "PIN30: Set as output pin 30<br>"]
     pub(crate) fn p0_dirset518_pin30_read(&self) -> MemResult<bool> {
-        Ok(self.pins[30].output_mode)
+        Ok(self.get_output_mode(30))
     }
     #[doc = "PIN30: Set as output pin 30<br>"]
     pub fn p0_dirset518_pin30_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[30].output_mode = true;
+            self.set_output_mode(30, true);
         }
         Ok(())
     }
     #[doc = "PIN31: Set as output pin 31<br>"]
     pub(crate) fn p0_dirset518_pin31_read(&self) -> MemResult<bool> {
-        Ok(self.pins[31].output_mode)
+        Ok(self.get_output_mode(31))
     }
     #[doc = "PIN31: Set as output pin 31<br>"]
     pub fn p0_dirset518_pin31_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[31].output_mode = true;
+            self.set_output_mode(31, true);
         }
         Ok(())
     }
     #[doc = "PIN0: Set as input pin 0<br>"]
     pub(crate) fn p0_dirclr51c_pin0_read(&self) -> MemResult<bool> {
-        Ok(self.pins[0].output_mode)
+        Ok(self.get_output_mode(0))
     }
     #[doc = "PIN0: Set as input pin 0<br>"]
     pub fn p0_dirclr51c_pin0_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[0].output_mode = false;
+            self.set_output_mode(0, false);
         }
         Ok(())
     }
     #[doc = "PIN1: Set as input pin 1<br>"]
     pub(crate) fn p0_dirclr51c_pin1_read(&self) -> MemResult<bool> {
-        Ok(self.pins[1].output_mode)
+        Ok(self.get_output_mode(1))
     }
     #[doc = "PIN1: Set as input pin 1<br>"]
     pub fn p0_dirclr51c_pin1_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[1].output_mode = false;
+            self.set_output_mode(1, false);
         }
         Ok(())
     }
     #[doc = "PIN2: Set as input pin 2<br>"]
     pub(crate) fn p0_dirclr51c_pin2_read(&self) -> MemResult<bool> {
-        Ok(self.pins[2].output_mode)
+        Ok(self.get_output_mode(2))
     }
     #[doc = "PIN2: Set as input pin 2<br>"]
     pub fn p0_dirclr51c_pin2_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[2].output_mode = false;
+            self.set_output_mode(2, false);
         }
         Ok(())
     }
     #[doc = "PIN3: Set as input pin 3<br>"]
     pub(crate) fn p0_dirclr51c_pin3_read(&self) -> MemResult<bool> {
-        Ok(self.pins[3].output_mode)
+        Ok(self.get_output_mode(3))
     }
     #[doc = "PIN3: Set as input pin 3<br>"]
     pub fn p0_dirclr51c_pin3_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[3].output_mode = false;
+            self.set_output_mode(3, false);
         }
         Ok(())
     }
     #[doc = "PIN4: Set as input pin 4<br>"]
     pub(crate) fn p0_dirclr51c_pin4_read(&self) -> MemResult<bool> {
-        Ok(self.pins[4].output_mode)
+        Ok(self.get_output_mode(4))
     }
     #[doc = "PIN4: Set as input pin 4<br>"]
     pub fn p0_dirclr51c_pin4_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[4].output_mode = false;
+            self.set_output_mode(4, false);
         }
         Ok(())
     }
     #[doc = "PIN5: Set as input pin 5<br>"]
     pub(crate) fn p0_dirclr51c_pin5_read(&self) -> MemResult<bool> {
-        Ok(self.pins[5].output_mode)
+        Ok(self.get_output_mode(5))
     }
     #[doc = "PIN5: Set as input pin 5<br>"]
     pub fn p0_dirclr51c_pin5_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[5].output_mode = false;
+            self.set_output_mode(5, false);
         }
         Ok(())
     }
     #[doc = "PIN6: Set as input pin 6<br>"]
     pub(crate) fn p0_dirclr51c_pin6_read(&self) -> MemResult<bool> {
-        Ok(self.pins[6].output_mode)
+        Ok(self.get_output_mode(6))
     }
     #[doc = "PIN6: Set as input pin 6<br>"]
     pub fn p0_dirclr51c_pin6_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[6].output_mode = false;
+            self.set_output_mode(6, false);
         }
         Ok(())
     }
     #[doc = "PIN7: Set as input pin 7<br>"]
     pub(crate) fn p0_dirclr51c_pin7_read(&self) -> MemResult<bool> {
-        Ok(self.pins[7].output_mode)
+        Ok(self.get_output_mode(7))
     }
     #[doc = "PIN7: Set as input pin 7<br>"]
     pub fn p0_dirclr51c_pin7_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[7].output_mode = false;
+            self.set_output_mode(7, false);
         }
         Ok(())
     }
     #[doc = "PIN8: Set as input pin 8<br>"]
     pub(crate) fn p0_dirclr51c_pin8_read(&self) -> MemResult<bool> {
-        Ok(self.pins[8].output_mode)
+        Ok(self.get_output_mode(8))
     }
     #[doc = "PIN8: Set as input pin 8<br>"]
     pub fn p0_dirclr51c_pin8_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[8].output_mode = false;
+            self.set_output_mode(8, false);
         }
         Ok(())
     }
     #[doc = "PIN9: Set as input pin 9<br>"]
     pub(crate) fn p0_dirclr51c_pin9_read(&self) -> MemResult<bool> {
-        Ok(self.pins[9].output_mode)
+        Ok(self.get_output_mode(9))
     }
     #[doc = "PIN9: Set as input pin 9<br>"]
     pub fn p0_dirclr51c_pin9_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[9].output_mode = false;
+            self.set_output_mode(9, false);
         }
         Ok(())
     }
     #[doc = "PIN10: Set as input pin 10<br>"]
     pub(crate) fn p0_dirclr51c_pin10_read(&self) -> MemResult<bool> {
-        Ok(self.pins[10].output_mode)
+        Ok(self.get_output_mode(10))
     }
     #[doc = "PIN10: Set as input pin 10<br>"]
     pub fn p0_dirclr51c_pin10_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[10].output_mode = false;
+            self.set_output_mode(10, false);
         }
         Ok(())
     }
     #[doc = "PIN11: Set as input pin 11<br>"]
     pub(crate) fn p0_dirclr51c_pin11_read(&self) -> MemResult<bool> {
-        Ok(self.pins[11].output_mode)
+        Ok(self.get_output_mode(11))
     }
     #[doc = "PIN11: Set as input pin 11<br>"]
     pub fn p0_dirclr51c_pin11_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[11].output_mode = false;
+            self.set_output_mode(11, false);
         }
         Ok(())
     }
     #[doc = "PIN12: Set as input pin 12<br>"]
     pub(crate) fn p0_dirclr51c_pin12_read(&self) -> MemResult<bool> {
-        Ok(self.pins[12].output_mode)
+        Ok(self.get_output_mode(12))
     }
     #[doc = "PIN12: Set as input pin 12<br>"]
     pub fn p0_dirclr51c_pin12_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[12].output_mode = false;
+            self.set_output_mode(12, false);
         }
         Ok(())
     }
     #[doc = "PIN13: Set as input pin 13<br>"]
     pub(crate) fn p0_dirclr51c_pin13_read(&self) -> MemResult<bool> {
-        Ok(self.pins[13].output_mode)
+        Ok(self.get_output_mode(13))
     }
     #[doc = "PIN13: Set as input pin 13<br>"]
     pub fn p0_dirclr51c_pin13_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[13].output_mode = false;
+            self.set_output_mode(13, false);
         }
         Ok(())
     }
     #[doc = "PIN14: Set as input pin 14<br>"]
     pub(crate) fn p0_dirclr51c_pin14_read(&self) -> MemResult<bool> {
-        Ok(self.pins[14].output_mode)
+        Ok(self.get_output_mode(14))
     }
     #[doc = "PIN14: Set as input pin 14<br>"]
     pub fn p0_dirclr51c_pin14_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[14].output_mode = false;
+            self.set_output_mode(14, false);
         }
         Ok(())
     }
     #[doc = "PIN15: Set as input pin 15<br>"]
     pub(crate) fn p0_dirclr51c_pin15_read(&self) -> MemResult<bool> {
-        Ok(self.pins[15].output_mode)
+        Ok(self.get_output_mode(15))
     }
     #[doc = "PIN15: Set as input pin 15<br>"]
     pub fn p0_dirclr51c_pin15_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[15].output_mode = false;
+            self.set_output_mode(15, false);
         }
         Ok(())
     }
     #[doc = "PIN16: Set as input pin 16<br>"]
     pub(crate) fn p0_dirclr51c_pin16_read(&self) -> MemResult<bool> {
-        Ok(self.pins[16].output_mode)
+        Ok(self.get_output_mode(16))
     }
     #[doc = "PIN16: Set as input pin 16<br>"]
     pub fn p0_dirclr51c_pin16_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[16].output_mode = false;
+            self.set_output_mode(16, false);
         }
         Ok(())
     }
     #[doc = "PIN17: Set as input pin 17<br>"]
     pub(crate) fn p0_dirclr51c_pin17_read(&self) -> MemResult<bool> {
-        Ok(self.pins[17].output_mode)
+        Ok(self.get_output_mode(17))
     }
     #[doc = "PIN17: Set as input pin 17<br>"]
     pub fn p0_dirclr51c_pin17_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[17].output_mode = false;
+            self.set_output_mode(17, false);
         }
         Ok(())
     }
     #[doc = "PIN18: Set as input pin 18<br>"]
     pub(crate) fn p0_dirclr51c_pin18_read(&self) -> MemResult<bool> {
-        Ok(self.pins[18].output_mode)
+        Ok(self.get_output_mode(18))
     }
     #[doc = "PIN18: Set as input pin 18<br>"]
     pub fn p0_dirclr51c_pin18_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[18].output_mode = false;
+            self.set_output_mode(18, false);
         }
         Ok(())
     }
     #[doc = "PIN19: Set as input pin 19<br>"]
     pub(crate) fn p0_dirclr51c_pin19_read(&self) -> MemResult<bool> {
-        Ok(self.pins[19].output_mode)
+        Ok(self.get_output_mode(19))
     }
     #[doc = "PIN19: Set as input pin 19<br>"]
     pub fn p0_dirclr51c_pin19_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[19].output_mode = false;
+            self.set_output_mode(19, false);
         }
         Ok(())
     }
     #[doc = "PIN20: Set as input pin 20<br>"]
     pub(crate) fn p0_dirclr51c_pin20_read(&self) -> MemResult<bool> {
-        Ok(self.pins[20].output_mode)
+        Ok(self.get_output_mode(20))
     }
     #[doc = "PIN20: Set as input pin 20<br>"]
     pub fn p0_dirclr51c_pin20_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[20].output_mode = false;
+            self.set_output_mode(20, false);
         }
         Ok(())
     }
     #[doc = "PIN21: Set as input pin 21<br>"]
     pub(crate) fn p0_dirclr51c_pin21_read(&self) -> MemResult<bool> {
-        Ok(self.pins[21].output_mode)
+        Ok(self.get_output_mode(21))
     }
     #[doc = "PIN21: Set as input pin 21<br>"]
     pub fn p0_dirclr51c_pin21_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[21].output_mode = false;
+            self.set_output_mode(21, false);
         }
         Ok(())
     }
     #[doc = "PIN22: Set as input pin 22<br>"]
     pub(crate) fn p0_dirclr51c_pin22_read(&self) -> MemResult<bool> {
-        Ok(self.pins[22].output_mode)
+        Ok(self.get_output_mode(22))
     }
     #[doc = "PIN22: Set as input pin 22<br>"]
     pub fn p0_dirclr51c_pin22_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[22].output_mode = false;
+            self.set_output_mode(22, false);
         }
         Ok(())
     }
     #[doc = "PIN23: Set as input pin 23<br>"]
     pub(crate) fn p0_dirclr51c_pin23_read(&self) -> MemResult<bool> {
-        Ok(self.pins[23].output_mode)
+        Ok(self.get_output_mode(23))
     }
     #[doc = "PIN23: Set as input pin 23<br>"]
     pub fn p0_dirclr51c_pin23_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[23].output_mode = false;
+            self.set_output_mode(23, false);
         }
         Ok(())
     }
     #[doc = "PIN24: Set as input pin 24<br>"]
     pub(crate) fn p0_dirclr51c_pin24_read(&self) -> MemResult<bool> {
-        Ok(self.pins[24].output_mode)
+        Ok(self.get_output_mode(24))
     }
     #[doc = "PIN24: Set as input pin 24<br>"]
     pub fn p0_dirclr51c_pin24_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[24].output_mode = false;
+            self.set_output_mode(24, false);
         }
         Ok(())
     }
     #[doc = "PIN25: Set as input pin 25<br>"]
     pub(crate) fn p0_dirclr51c_pin25_read(&self) -> MemResult<bool> {
-        Ok(self.pins[25].output_mode)
+        Ok(self.get_output_mode(25))
     }
     #[doc = "PIN25: Set as input pin 25<br>"]
     pub fn p0_dirclr51c_pin25_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[25].output_mode = false;
+            self.set_output_mode(25, false);
         }
         Ok(())
     }
     #[doc = "PIN26: Set as input pin 26<br>"]
     pub(crate) fn p0_dirclr51c_pin26_read(&self) -> MemResult<bool> {
-        Ok(self.pins[26].output_mode)
+        Ok(self.get_output_mode(26))
     }
     #[doc = "PIN26: Set as input pin 26<br>"]
     pub fn p0_dirclr51c_pin26_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[26].output_mode = false;
+            self.set_output_mode(26, false);
         }
         Ok(())
     }
     #[doc = "PIN27: Set as input pin 27<br>"]
     pub(crate) fn p0_dirclr51c_pin27_read(&self) -> MemResult<bool> {
-        Ok(self.pins[27].output_mode)
+        Ok(self.get_output_mode(27))
     }
     #[doc = "PIN27: Set as input pin 27<br>"]
     pub fn p0_dirclr51c_pin27_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[27].output_mode = false;
+            self.set_output_mode(27, false);
         }
         Ok(())
     }
     #[doc = "PIN28: Set as input pin 28<br>"]
     pub(crate) fn p0_dirclr51c_pin28_read(&self) -> MemResult<bool> {
-        Ok(self.pins[28].output_mode)
+        Ok(self.get_output_mode(28))
     }
     #[doc = "PIN28: Set as input pin 28<br>"]
     pub fn p0_dirclr51c_pin28_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[28].output_mode = false;
+            self.set_output_mode(28, false);
         }
         Ok(())
     }
     #[doc = "PIN29: Set as input pin 29<br>"]
     pub(crate) fn p0_dirclr51c_pin29_read(&self) -> MemResult<bool> {
-        Ok(self.pins[29].output_mode)
+        Ok(self.get_output_mode(29))
     }
     #[doc = "PIN29: Set as input pin 29<br>"]
     pub fn p0_dirclr51c_pin29_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[29].output_mode = false;
+            self.set_output_mode(29, false);
         }
         Ok(())
     }
     #[doc = "PIN30: Set as input pin 30<br>"]
     pub(crate) fn p0_dirclr51c_pin30_read(&self) -> MemResult<bool> {
-        Ok(self.pins[30].output_mode)
+        Ok(self.get_output_mode(30))
     }
     #[doc = "PIN30: Set as input pin 30<br>"]
     pub fn p0_dirclr51c_pin30_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[30].output_mode = false;
+            self.set_output_mode(30, false);
         }
         Ok(())
     }
     #[doc = "PIN31: Set as input pin 31<br>"]
     pub(crate) fn p0_dirclr51c_pin31_read(&self) -> MemResult<bool> {
-        Ok(self.pins[31].output_mode)
+        Ok(self.get_output_mode(31))
     }
     #[doc = "PIN31: Set as input pin 31<br>"]
     pub fn p0_dirclr51c_pin31_write(&mut self, _value: bool) -> MemResult<()> {
         if _value {
-            self.pins[31].output_mode = false;
+            self.set_output_mode(31, false);
         }
         Ok(())
     }
@@ -2458,7 +2525,7 @@ impl P0 {
         &self,
         _reg_array: usize,
     ) -> MemResult<bool> {
-        Ok(self.pins[_reg_array].output_mode)
+        Ok(self.get_output_mode(_reg_array))
     }
     #[doc = "DIR: Pin direction. Same physical register as DIR register<br>"]
     pub(crate) fn p0_pin_cnfn700_dir_write(
@@ -2466,14 +2533,14 @@ impl P0 {
         _reg_array: usize,
         _value: bool,
     ) -> MemResult<()> {
-        Ok(self.pins[_reg_array].output_mode = _value)
+        Ok(self.set_output_mode(_reg_array, _value))
     }
     #[doc = "INPUT: Connect or disconnect input buffer<br>"]
     pub(crate) fn p0_pin_cnfn700_input_read(
         &self,
         _reg_array: usize,
     ) -> MemResult<bool> {
-        Ok(self.pins[_reg_array].input_buffer)
+        Ok(self.get_input_buffer(_reg_array))
     }
     #[doc = "INPUT: Connect or disconnect input buffer<br>"]
     pub(crate) fn p0_pin_cnfn700_input_write(
@@ -2481,14 +2548,14 @@ impl P0 {
         _reg_array: usize,
         _value: bool,
     ) -> MemResult<()> {
-        Ok(self.pins[_reg_array].input_buffer = _value)
+        Ok(self.set_input_buffer(_reg_array, _value))
     }
     #[doc = "PULL: Pull configuration<br>"]
     pub(crate) fn p0_pin_cnfn700_pull_read(
         &self,
         _reg_array: usize,
     ) -> MemResult<PinPull> {
-        Ok(self.pins[_reg_array].pull)
+        Ok(self.get_pull(_reg_array))
     }
     #[doc = "PULL: Pull configuration<br>"]
     pub(crate) fn p0_pin_cnfn700_pull_write(
@@ -2496,14 +2563,14 @@ impl P0 {
         _reg_array: usize,
         _value: PinPull,
     ) -> MemResult<()> {
-        Ok(self.pins[_reg_array].pull = _value)
+        Ok(self.set_pull(_reg_array, _value))
     }
     #[doc = "DRIVE: Drive configuration<br>"]
     pub(crate) fn p0_pin_cnfn700_drive_read(
         &self,
         _reg_array: usize,
     ) -> MemResult<PinDrive> {
-        Ok(self.pins[_reg_array].drive)
+        Ok(self.get_drive(_reg_array))
     }
     #[doc = "DRIVE: Drive configuration<br>"]
     pub(crate) fn p0_pin_cnfn700_drive_write(
@@ -2511,14 +2578,14 @@ impl P0 {
         _reg_array: usize,
         _value: PinDrive,
     ) -> MemResult<()> {
-        Ok(self.pins[_reg_array].drive = _value)
+        Ok(self.set_drive(_reg_array, _value))
     }
     #[doc = "SENSE: Pin sensing mechanism<br>"]
     pub(crate) fn p0_pin_cnfn700_sense_read(
         &self,
         _reg_array: usize,
     ) -> MemResult<PinSense> {
-        Ok(self.pins[_reg_array].sense)
+        Ok(self.get_sense(_reg_array))
     }
     #[doc = "SENSE: Pin sensing mechanism<br>"]
     pub(crate) fn p0_pin_cnfn700_sense_write(
@@ -2526,7 +2593,7 @@ impl P0 {
         _reg_array: usize,
         _value: PinSense,
     ) -> MemResult<()> {
-        Ok(self.pins[_reg_array].sense = _value)
+        Ok(self.set_sense(_reg_array, _value))
     }
 
     #[doc = "TASKS_OUT\\[%s\\]: Description collection\\[0\\]:  Task for writing to pin specified in CONFIG\\[0\\].PSEL. Action on pin is configured in CONFIG\\[0\\].POLARITY.<br>"]
