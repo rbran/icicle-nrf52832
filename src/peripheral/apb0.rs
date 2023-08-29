@@ -69,7 +69,7 @@ impl Apb0 {
         // TODO for now we don't care about this task, just rementer to write
         // to the event of finishing.
         if _value != 0 {
-            todo!("Trigger task LFCLKSTART")
+            //todo!("Trigger task LFCLKSTART")
         }
         Ok(())
     }

@@ -92,9 +92,9 @@ impl P0 {
 
     /// set the output pin state, returning High (true) or Low (false)
     pub fn set_output(&mut self, pin: usize, state: bool) {
-        //if !self.pins[pin].output_mode {
-        //    todo!("change output mode of {pin} while in input mode");
-        //}
+        if !self.pins[pin].output_mode {
+            todo!("change output mode of {pin} while in input mode");
+        }
         self.pins[pin].output_high = state;
     }
 }
