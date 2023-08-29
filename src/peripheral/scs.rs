@@ -1,5 +1,7 @@
 use icicle_vm::cpu::mem::MemResult;
 
+use crate::peripheral::enums::CoopPerm;
+
 #[doc = "Control: System Control registers<br>ID: ID registers<br>FPE: System Control registers for the FP extension<br>SysTick: System Timer registers<br>NVIC: Nested Vectored Interrupt Controller registers<br>MPU: Memory Protection Unit<br><br>Instances:<br>0xe000e000: Control, ID, FPE, SysTick, NVIC, MPU<br>"]
 pub struct Scs {
     pub interrupts_enabled: [u32; 8],
@@ -31,6 +33,13 @@ pub struct Scs {
     /// The SHPR1-SHPR3 registers set the priority level, 0 to 255, of the
     /// exception handlers that have configurable priority.
     pub priorities: [u8; 12],
+    /// Coprocessor Access Control Register
+    pub cp_permissions: [CoopPerm; 12],
+    /// Lazy preservation of the FP state is active
+    pub lazy_preservation: bool,
+    /// privilege level of the software executing when the processor allocated
+    /// the FP stack frame
+    pub privilege_fp_stack: bool,
 }
 
 impl Default for Scs {
@@ -44,6 +53,9 @@ impl Default for Scs {
             sleep_deep: false,
             event_on_pending: false,
             priorities: [0; 12],
+            cp_permissions: [CoopPerm::default(); 12],
+            lazy_preservation: false,
+            privilege_fp_stack: false,
         }
     }
 }
@@ -4412,134 +4424,114 @@ impl Scs {
         todo ! ("read PSR_M_instrs mwrite None write None rac None reset value 0x00 mask 0x0f")
     }
     #[doc = "CP0: Defines access permissions for the CP0 coprocessor.<br>"]
-    pub(crate) fn scs_cpacrd88_cp0_read(
-        &self,
-    ) -> MemResult<crate::peripheral::enums::E77ScsCpacrd88Cp0> {
-        todo ! ("read CP0 mwrite None write None rac None reset value 0x00 mask 0x03")
+    pub(crate) fn scs_cpacrd88_cp0_read(&self) -> MemResult<CoopPerm> {
+        Ok(self.cp_permissions[0])
     }
     #[doc = "CP0: Defines access permissions for the CP0 coprocessor.<br>"]
     pub(crate) fn scs_cpacrd88_cp0_write(
         &mut self,
-        _value: crate::peripheral::enums::E77ScsCpacrd88Cp0,
+        _value: CoopPerm,
     ) -> MemResult<()> {
-        todo ! ("write CP0 mwrite None write None rac None reset value 0x00 mask 0x03")
+        Ok(self.cp_permissions[0] = _value)
     }
     #[doc = "CP1: Defines access permissions for the CP1 coprocessor.<br>"]
-    pub(crate) fn scs_cpacrd88_cp1_read(
-        &self,
-    ) -> MemResult<crate::peripheral::enums::E77ScsCpacrd88Cp0> {
-        todo ! ("read CP1 mwrite None write None rac None reset value 0x00 mask 0x03")
+    pub(crate) fn scs_cpacrd88_cp1_read(&self) -> MemResult<CoopPerm> {
+        Ok(self.cp_permissions[1])
     }
     #[doc = "CP1: Defines access permissions for the CP1 coprocessor.<br>"]
     pub(crate) fn scs_cpacrd88_cp1_write(
         &mut self,
-        _value: crate::peripheral::enums::E77ScsCpacrd88Cp0,
+        _value: CoopPerm,
     ) -> MemResult<()> {
-        todo ! ("write CP1 mwrite None write None rac None reset value 0x00 mask 0x03")
+        Ok(self.cp_permissions[1] = _value)
     }
     #[doc = "CP2: Defines access permissions for the CP2 coprocessor.<br>"]
-    pub(crate) fn scs_cpacrd88_cp2_read(
-        &self,
-    ) -> MemResult<crate::peripheral::enums::E77ScsCpacrd88Cp0> {
-        todo ! ("read CP2 mwrite None write None rac None reset value 0x00 mask 0x03")
+    pub(crate) fn scs_cpacrd88_cp2_read(&self) -> MemResult<CoopPerm> {
+        Ok(self.cp_permissions[2])
     }
     #[doc = "CP2: Defines access permissions for the CP2 coprocessor.<br>"]
     pub(crate) fn scs_cpacrd88_cp2_write(
         &mut self,
-        _value: crate::peripheral::enums::E77ScsCpacrd88Cp0,
+        _value: CoopPerm,
     ) -> MemResult<()> {
-        todo ! ("write CP2 mwrite None write None rac None reset value 0x00 mask 0x03")
+        Ok(self.cp_permissions[2] = _value)
     }
     #[doc = "CP3: Defines access permissions for the CP3 coprocessor.<br>"]
-    pub(crate) fn scs_cpacrd88_cp3_read(
-        &self,
-    ) -> MemResult<crate::peripheral::enums::E77ScsCpacrd88Cp0> {
-        todo ! ("read CP3 mwrite None write None rac None reset value 0x00 mask 0x03")
+    pub(crate) fn scs_cpacrd88_cp3_read(&self) -> MemResult<CoopPerm> {
+        Ok(self.cp_permissions[3])
     }
     #[doc = "CP3: Defines access permissions for the CP3 coprocessor.<br>"]
     pub(crate) fn scs_cpacrd88_cp3_write(
         &mut self,
-        _value: crate::peripheral::enums::E77ScsCpacrd88Cp0,
+        _value: CoopPerm,
     ) -> MemResult<()> {
-        todo ! ("write CP3 mwrite None write None rac None reset value 0x00 mask 0x03")
+        Ok(self.cp_permissions[3] = _value)
     }
     #[doc = "CP4: Defines access permissions for the CP4 coprocessor.<br>"]
-    pub(crate) fn scs_cpacrd88_cp4_read(
-        &self,
-    ) -> MemResult<crate::peripheral::enums::E77ScsCpacrd88Cp0> {
-        todo ! ("read CP4 mwrite None write None rac None reset value 0x00 mask 0x03")
+    pub(crate) fn scs_cpacrd88_cp4_read(&self) -> MemResult<CoopPerm> {
+        Ok(self.cp_permissions[4])
     }
     #[doc = "CP4: Defines access permissions for the CP4 coprocessor.<br>"]
     pub(crate) fn scs_cpacrd88_cp4_write(
         &mut self,
-        _value: crate::peripheral::enums::E77ScsCpacrd88Cp0,
+        _value: CoopPerm,
     ) -> MemResult<()> {
-        todo ! ("write CP4 mwrite None write None rac None reset value 0x00 mask 0x03")
+        Ok(self.cp_permissions[4] = _value)
     }
     #[doc = "CP5: Defines access permissions for the CP5 coprocessor.<br>"]
-    pub(crate) fn scs_cpacrd88_cp5_read(
-        &self,
-    ) -> MemResult<crate::peripheral::enums::E77ScsCpacrd88Cp0> {
-        todo ! ("read CP5 mwrite None write None rac None reset value 0x00 mask 0x03")
+    pub(crate) fn scs_cpacrd88_cp5_read(&self) -> MemResult<CoopPerm> {
+        Ok(self.cp_permissions[5])
     }
     #[doc = "CP5: Defines access permissions for the CP5 coprocessor.<br>"]
     pub(crate) fn scs_cpacrd88_cp5_write(
         &mut self,
-        _value: crate::peripheral::enums::E77ScsCpacrd88Cp0,
+        _value: CoopPerm,
     ) -> MemResult<()> {
-        todo ! ("write CP5 mwrite None write None rac None reset value 0x00 mask 0x03")
+        Ok(self.cp_permissions[5] = _value)
     }
     #[doc = "CP6: Defines access permissions for the CP6 coprocessor.<br>"]
-    pub(crate) fn scs_cpacrd88_cp6_read(
-        &self,
-    ) -> MemResult<crate::peripheral::enums::E77ScsCpacrd88Cp0> {
-        todo ! ("read CP6 mwrite None write None rac None reset value 0x00 mask 0x03")
+    pub(crate) fn scs_cpacrd88_cp6_read(&self) -> MemResult<CoopPerm> {
+        Ok(self.cp_permissions[6])
     }
     #[doc = "CP6: Defines access permissions for the CP6 coprocessor.<br>"]
     pub(crate) fn scs_cpacrd88_cp6_write(
         &mut self,
-        _value: crate::peripheral::enums::E77ScsCpacrd88Cp0,
+        _value: CoopPerm,
     ) -> MemResult<()> {
-        todo ! ("write CP6 mwrite None write None rac None reset value 0x00 mask 0x03")
+        Ok(self.cp_permissions[6] = _value)
     }
     #[doc = "CP7: Defines access permissions for the CP7 coprocessor.<br>"]
-    pub(crate) fn scs_cpacrd88_cp7_read(
-        &self,
-    ) -> MemResult<crate::peripheral::enums::E77ScsCpacrd88Cp0> {
-        todo ! ("read CP7 mwrite None write None rac None reset value 0x00 mask 0x03")
+    pub(crate) fn scs_cpacrd88_cp7_read(&self) -> MemResult<CoopPerm> {
+        Ok(self.cp_permissions[7])
     }
     #[doc = "CP7: Defines access permissions for the CP7 coprocessor.<br>"]
     pub(crate) fn scs_cpacrd88_cp7_write(
         &mut self,
-        _value: crate::peripheral::enums::E77ScsCpacrd88Cp0,
+        _value: CoopPerm,
     ) -> MemResult<()> {
-        todo ! ("write CP7 mwrite None write None rac None reset value 0x00 mask 0x03")
+        Ok(self.cp_permissions[7] = _value)
     }
     #[doc = "CP10: Defines access permissions for the CP10 coprocessor.<br>"]
-    pub(crate) fn scs_cpacrd88_cp10_read(
-        &self,
-    ) -> MemResult<crate::peripheral::enums::E77ScsCpacrd88Cp0> {
-        todo ! ("read CP10 mwrite None write None rac None reset value 0x00 mask 0x03")
+    pub(crate) fn scs_cpacrd88_cp10_read(&self) -> MemResult<CoopPerm> {
+        Ok(self.cp_permissions[10])
     }
     #[doc = "CP10: Defines access permissions for the CP10 coprocessor.<br>"]
     pub(crate) fn scs_cpacrd88_cp10_write(
         &mut self,
-        _value: crate::peripheral::enums::E77ScsCpacrd88Cp0,
+        _value: CoopPerm,
     ) -> MemResult<()> {
-        todo ! ("write CP10 mwrite None write None rac None reset value 0x00 mask 0x03")
+        Ok(self.cp_permissions[10] = _value)
     }
     #[doc = "CP11: Defines access permissions for the CP11 coprocessor.<br>"]
-    pub(crate) fn scs_cpacrd88_cp11_read(
-        &self,
-    ) -> MemResult<crate::peripheral::enums::E77ScsCpacrd88Cp0> {
-        todo ! ("read CP11 mwrite None write None rac None reset value 0x00 mask 0x03")
+    pub(crate) fn scs_cpacrd88_cp11_read(&self) -> MemResult<CoopPerm> {
+        Ok(self.cp_permissions[11])
     }
     #[doc = "CP11: Defines access permissions for the CP11 coprocessor.<br>"]
     pub(crate) fn scs_cpacrd88_cp11_write(
         &mut self,
-        _value: crate::peripheral::enums::E77ScsCpacrd88Cp0,
+        _value: CoopPerm,
     ) -> MemResult<()> {
-        todo ! ("write CP11 mwrite None write None rac None reset value 0x00 mask 0x03")
+        Ok(self.cp_permissions[11] = _value)
     }
     #[doc = "SEPARATE: Indicates support for separate instruction and data address maps<br>"]
     pub(crate) fn scs_mpu_typed90_separate_read(&self) -> MemResult<bool> {
@@ -5184,102 +5176,148 @@ impl Scs {
     }
     #[doc = "LSPACT: Indicates whether Lazy preservation of the FP state is active<br>"]
     pub(crate) fn scs_fpccrf34_lspact_read(&self) -> MemResult<bool> {
-        todo!("read LSPACT mwrite None write None rac None reset value false")
+        Ok(self.lazy_preservation)
     }
     #[doc = "LSPACT: Indicates whether Lazy preservation of the FP state is active<br>"]
     pub(crate) fn scs_fpccrf34_lspact_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write LSPACT mwrite None write None rac None reset value false")
+        Ok(self.lazy_preservation = _value)
     }
     #[doc = "USER: Indicates the privilege level of the software executing when the processor allocated the FP stack frame<br>"]
     pub(crate) fn scs_fpccrf34_user_read(&self) -> MemResult<bool> {
-        todo!("read USER mwrite None write None rac None reset value false")
+        Ok(self.privilege_fp_stack)
     }
     #[doc = "USER: Indicates the privilege level of the software executing when the processor allocated the FP stack frame<br>"]
     pub(crate) fn scs_fpccrf34_user_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write USER mwrite None write None rac None reset value false")
+        Ok(self.privilege_fp_stack = _value)
     }
     #[doc = "THREAD: Indicates the processor mode when it allocated the FP stack frame<br>"]
     pub(crate) fn scs_fpccrf34_thread_read(&self) -> MemResult<bool> {
-        todo!("read THREAD mwrite None write None rac None reset value false")
+        // TODO implement this?
+        //todo!("read THREAD mwrite None write None rac None reset value false")
+        Ok(false)
     }
     #[doc = "THREAD: Indicates the processor mode when it allocated the FP stack frame<br>"]
     pub(crate) fn scs_fpccrf34_thread_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
+        if !_value {
+            // TODO implement this?
+            return Ok(());
+        }
         todo!("write THREAD mwrite None write None rac None reset value false")
     }
     #[doc = "HFRDY: Indicates whether the software executing when the processor allocated the FP stack frame was able to set the HardFault exception to pending<br>"]
     pub(crate) fn scs_fpccrf34_hfrdy_read(&self) -> MemResult<bool> {
-        todo!("read HFRDY mwrite None write None rac None reset value false")
+        // TODO implement this?
+        //todo!("read HFRDY mwrite None write None rac None reset value false")
+        Ok(false)
     }
     #[doc = "HFRDY: Indicates whether the software executing when the processor allocated the FP stack frame was able to set the HardFault exception to pending<br>"]
     pub(crate) fn scs_fpccrf34_hfrdy_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
+        if !_value {
+            // TODO implement this?
+            return Ok(());
+        }
         todo!("write HFRDY mwrite None write None rac None reset value false")
     }
     #[doc = "MMRDY: Indicates whether the software executing when the processor allocated the FP stack frame was able to set the MemManage exception to pending<br>"]
     pub(crate) fn scs_fpccrf34_mmrdy_read(&self) -> MemResult<bool> {
-        todo!("read MMRDY mwrite None write None rac None reset value false")
+        // TODO implement this?
+        //todo!("read MMRDY mwrite None write None rac None reset value false")
+        Ok(false)
     }
     #[doc = "MMRDY: Indicates whether the software executing when the processor allocated the FP stack frame was able to set the MemManage exception to pending<br>"]
     pub(crate) fn scs_fpccrf34_mmrdy_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
+        if !_value {
+            // TODO implement this?
+            return Ok(());
+        }
         todo!("write MMRDY mwrite None write None rac None reset value false")
     }
     #[doc = "BFRDY: Indicates whether the software executing when the processor allocated the FP stack frame was able to set the BusFault exception to pending<br>"]
     pub(crate) fn scs_fpccrf34_bfrdy_read(&self) -> MemResult<bool> {
-        todo!("read BFRDY mwrite None write None rac None reset value false")
+        // TODO implement this?
+        //todo!("read BFRDY mwrite None write None rac None reset value false")
+        Ok(false)
     }
     #[doc = "BFRDY: Indicates whether the software executing when the processor allocated the FP stack frame was able to set the BusFault exception to pending<br>"]
     pub(crate) fn scs_fpccrf34_bfrdy_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
+        if !_value {
+            // TODO implement this?
+            return Ok(());
+        }
         todo!("write BFRDY mwrite None write None rac None reset value false")
     }
     #[doc = "MONRDY: Indicates whether the software executing when the processor allocated the FP stack frame was able to set the DebugMonitor exception to pending<br>"]
     pub(crate) fn scs_fpccrf34_monrdy_read(&self) -> MemResult<bool> {
-        todo!("read MONRDY mwrite None write None rac None reset value false")
+        // TODO implement this?
+        //todo!("read MONRDY mwrite None write None rac None reset value false")
+        Ok(false)
     }
     #[doc = "MONRDY: Indicates whether the software executing when the processor allocated the FP stack frame was able to set the DebugMonitor exception to pending<br>"]
     pub(crate) fn scs_fpccrf34_monrdy_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
+        if !_value {
+            // TODO implement this?
+            return Ok(());
+        }
         todo!("write MONRDY mwrite None write None rac None reset value false")
     }
     #[doc = "LSPEN: Enables lazy context save of FP state<br>"]
     pub(crate) fn scs_fpccrf34_lspen_read(&self) -> MemResult<bool> {
-        todo!("read LSPEN mwrite None write None rac None reset value false")
+        // TODO implement this?
+        //todo!("read LSPEN mwrite None write None rac None reset value false")
+        Ok(false)
     }
     #[doc = "LSPEN: Enables lazy context save of FP state<br>"]
     pub(crate) fn scs_fpccrf34_lspen_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write LSPEN mwrite None write None rac None reset value false")
+        // TODO implement this?
+        Ok(())
+        //if !_value {
+        //    // TODO implement this?
+        //    return Ok(());
+        //}
+        //todo!("write LSPEN mwrite None write None rac None reset value false")
     }
     #[doc = "ASPEN: When this bit is set to 1, execution of a floating-point instruction sets the CONTROL.FPCA bit to 1<br>"]
     pub(crate) fn scs_fpccrf34_aspen_read(&self) -> MemResult<bool> {
-        todo!("read ASPEN mwrite None write None rac None reset value false")
+        // TODO implement this?
+        //todo!("read LSPEN mwrite None write None rac None reset value false")
+        Ok(false)
     }
     #[doc = "ASPEN: When this bit is set to 1, execution of a floating-point instruction sets the CONTROL.FPCA bit to 1<br>"]
     pub(crate) fn scs_fpccrf34_aspen_write(
         &mut self,
         _value: bool,
     ) -> MemResult<()> {
-        todo!("write ASPEN mwrite None write None rac None reset value false")
+        // TODO implement this?
+        Ok(())
+        //if !_value {
+        //    // TODO implement this?
+        //    return Ok(());
+        //}
+        //todo!("write ASPEN mwrite None write None rac None reset value false")
     }
     #[doc = "FPCAR: Holds the location of the unpopulated floating-point register space allocated on an exception stack frame<br>"]
     pub(crate) fn scs_fpcarf38_read(&self) -> MemResult<u32> {

@@ -2758,8 +2758,9 @@ impl TryFrom<u8> for E76ScsIdIsar4d70WritebackInstrs {
     }
 }
 #[doc = "E_CP_ACC_PERMISSION"]
-#[derive(Debug, Clone, Copy)]
-pub enum E77ScsCpacrd88Cp0 {
+#[derive(Default, Debug, Clone, Copy)]
+pub enum CoopPerm {
+    #[default]
     #[doc = "Access_denied: Access denied<br>"]
     E0AccessDenied,
     #[doc = "Privileged_mode_access_only: Privileged mode access only<br>"]
@@ -2769,18 +2770,18 @@ pub enum E77ScsCpacrd88Cp0 {
     #[doc = "Full_access: Full access<br>"]
     E3FullAccess,
 }
-impl From<E77ScsCpacrd88Cp0> for u8 {
-    fn from(value: E77ScsCpacrd88Cp0) -> u8 {
+impl From<CoopPerm> for u8 {
+    fn from(value: CoopPerm) -> u8 {
         match value {
-            E77ScsCpacrd88Cp0::E0AccessDenied => 0,
-            E77ScsCpacrd88Cp0::E1PrivilegedModeAccessOnly => 1,
-            E77ScsCpacrd88Cp0::E2Reserved => 2,
-            E77ScsCpacrd88Cp0::E3FullAccess => 3,
+            CoopPerm::E0AccessDenied => 0,
+            CoopPerm::E1PrivilegedModeAccessOnly => 1,
+            CoopPerm::E2Reserved => 2,
+            CoopPerm::E3FullAccess => 3,
         }
     }
 }
-impl From<u8> for E77ScsCpacrd88Cp0 {
-    fn from(value: u8) -> E77ScsCpacrd88Cp0 {
+impl From<u8> for CoopPerm {
+    fn from(value: u8) -> CoopPerm {
         match value {
             0 => Self::E0AccessDenied,
             1 => Self::E1PrivilegedModeAccessOnly,
