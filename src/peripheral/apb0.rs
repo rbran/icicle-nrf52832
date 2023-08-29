@@ -126,7 +126,7 @@ impl Apb0 {
     ) -> MemResult<()> {
         Ok(
             self.events[EventId::HFCLKSTARTED as usize]
-                .trigger_on_write(_value),
+                .clean_on_write(_value),
         )
     }
     #[doc = "EVENTS_LFCLKSTARTED: LFCLK started<br>"]
@@ -140,7 +140,7 @@ impl Apb0 {
     ) -> MemResult<()> {
         Ok(
             self.events[EventId::LFCLKSTARTED as usize]
-                .trigger_on_write(_value),
+                .clean_on_write(_value),
         )
     }
     #[doc = "EVENTS_POFWARN: Power failure warning<br>"]
@@ -152,7 +152,7 @@ impl Apb0 {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        Ok(self.events[EventId::POFWARN as usize].trigger_on_write(_value))
+        Ok(self.events[EventId::POFWARN as usize].clean_on_write(_value))
     }
     #[doc = "EVENTS_DONE: Calibration of LFCLK RC oscillator complete event<br>"]
     pub(crate) fn apb0_events_done10c_read(&self) -> MemResult<u32> {
@@ -163,7 +163,7 @@ impl Apb0 {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        Ok(self.events[EventId::DONE as usize].trigger_on_write(_value))
+        Ok(self.events[EventId::DONE as usize].clean_on_write(_value))
     }
     #[doc = "EVENTS_CTTO: Calibration timer timeout<br>"]
     pub(crate) fn apb0_events_ctto110_read(&self) -> MemResult<u32> {
@@ -174,7 +174,7 @@ impl Apb0 {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        Ok(self.events[EventId::CTTO as usize].trigger_on_write(_value))
+        Ok(self.events[EventId::CTTO as usize].clean_on_write(_value))
     }
     #[doc = "EVENTS_SLEEPENTER: CPU entered WFI/WFE sleep<br>"]
     pub(crate) fn apb0_events_sleepenter114_read(&self) -> MemResult<u32> {
@@ -185,7 +185,7 @@ impl Apb0 {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        Ok(self.events[EventId::SLEEPENTER as usize].trigger_on_write(_value))
+        Ok(self.events[EventId::SLEEPENTER as usize].clean_on_write(_value))
     }
     #[doc = "EVENTS_SLEEPEXIT: CPU exited WFI/WFE sleep<br>"]
     pub(crate) fn apb0_events_sleepexit118_read(&self) -> MemResult<u32> {
@@ -196,7 +196,7 @@ impl Apb0 {
         &mut self,
         _value: u32,
     ) -> MemResult<()> {
-        Ok(self.events[EventId::SLEEPEXIT as usize].trigger_on_write(_value))
+        Ok(self.events[EventId::SLEEPEXIT as usize].clean_on_write(_value))
     }
     #[doc = "HFCLKSTARTED: Write '1' to Enable interrupt for HFCLKSTARTED event<br>"]
     pub(crate) fn apb0_intenset304_hfclkstarted_read(&self) -> MemResult<bool> {
